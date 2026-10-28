@@ -8,7 +8,24 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import {ROOT, TOPICS, loadPost, parseArgs, readJSON, writeJSON, saveWorkflow, copyRevision, designRevision, requireApproval, requireCopyApproval, fileHash, wib, isMain, fail, rel} from './core.mjs';
+import {
+  ROOT,
+  TOPICS,
+  loadPost,
+  parseArgs,
+  readJSON,
+  writeJSON,
+  saveWorkflow,
+  copyRevision,
+  designRevision,
+  requireApproval,
+  requireCopyApproval,
+  fileHash,
+  wib,
+  isMain,
+  fail,
+  rel
+} from './core.mjs';
 
 export const NOTION = {
   dataSourceId: '405f909f-26a5-8029-8e7a-000b3f2a28a4',

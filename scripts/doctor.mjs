@@ -35,7 +35,8 @@ ok('NOTION_UPLOAD_TOKEN set (needed for npm run export)', true, process.env.NOTI
 const posts = path.join(ROOT, 'content/posts');
 for (const slug of fs.existsSync(posts) ? fs.readdirSync(posts).filter(d => fs.existsSync(path.join(posts, d, 'post.json'))) : []) {
   try {
-    const {paths, post, workflow} = loadPost(slug), a = workflow.approvals;
+    const {paths, post, workflow} = loadPost(slug),
+      a = workflow.approvals;
     const copy = a.copy ? (copyApprovalCurrent(a.copy, post) ? 'current' : 'STALE') : '—';
     const fin = a.final ? (a.final.revision === designRevision(post, paths.dir) ? 'current' : 'STALE') : '—';
     ok('post ' + slug, true, `stage ${workflow.stage} · copy ${copy} · final ${fin} · notion ${workflow.notion ? 'recorded' : '—'}`);

@@ -5,7 +5,28 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import sharp from 'sharp';
-import {ROOT, loadPost, parseArgs, writeFile, writeJSON, saveWorkflow, appendLog, copyRevision, creditsRevision, requireCopyApproval, designRevision, processedImage, requireApproval, fileHash, launchBrowser, wib, isMain, fail, rel, imageGaps} from './core.mjs';
+import {
+  ROOT,
+  loadPost,
+  parseArgs,
+  writeFile,
+  writeJSON,
+  saveWorkflow,
+  appendLog,
+  copyRevision,
+  creditsRevision,
+  requireCopyApproval,
+  designRevision,
+  processedImage,
+  requireApproval,
+  fileHash,
+  launchBrowser,
+  wib,
+  isMain,
+  fail,
+  rel,
+  imageGaps
+} from './core.mjs';
 import {blueInk} from './blue-ink.mjs';
 import {renderSlidePage} from '../templates/html/post.mjs';
 import {pageCSS, editorHTML} from './copy-review.mjs';
@@ -92,8 +113,10 @@ async function contactSheet(files, target, cols = 3) {
 export async function designBuild(ref) {
   const {paths, post, workflow} = loadPost(ref);
   requireCopyApproval(workflow, post);
-  const slidesDir = path.join(paths.out, 'slides'), pngDir = path.join(paths.out, 'png');
-  fs.rmSync(slidesDir, {recursive: true, force: true}); fs.rmSync(pngDir, {recursive: true, force: true});
+  const slidesDir = path.join(paths.out, 'slides'),
+    pngDir = path.join(paths.out, 'png');
+  fs.rmSync(slidesDir, {recursive: true, force: true});
+  fs.rmSync(pngDir, {recursive: true, force: true});
   const images = [];
   for (const s of post.slides) {
     if (!s.imageSource?.originalFile) throw Error(`Slide ${s.id} has no imageSource.originalFile`);
@@ -140,7 +163,15 @@ export async function designBuild(ref) {
     embedded[s.id] =
       'data:image/jpeg;base64,' + (await sharp(images[i]).resize({width: 1080, withoutEnlargement: true}).jpeg({quality: 88}).toBuffer()).toString('base64');
   writeFile(path.join(paths.out, `${post.slug}.html`), editorHTML(post, 'design', embedded));
-  const build = {schemaVersion: 1, slug: post.slug, copyRevision: copyRevision(post), creditsRevision: creditsRevision(post), designRevision: designRevision(post, paths.dir), builtAt: new Date().toISOString(), slides};
+  const build = {
+    schemaVersion: 1,
+    slug: post.slug,
+    copyRevision: copyRevision(post),
+    creditsRevision: creditsRevision(post),
+    designRevision: designRevision(post, paths.dir),
+    builtAt: new Date().toISOString(),
+    slides
+  };
   writeJSON(path.join(paths.out, 'build.json'), build);
   workflow.designStale = false;
   workflow.stage = 'design-check';

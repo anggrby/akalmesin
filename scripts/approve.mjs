@@ -2,7 +2,21 @@
 // Records an owner approval verbatim. Only the owner's own words count; never paraphrase.
 import fs from 'node:fs';
 import path from 'node:path';
-import {GATES, loadPost, parseArgs, readJSON, saveWorkflow, copyRevision, designRevision, requireApproval, requireCopyApproval, COPY_RULE, wib, isMain, fail} from './core.mjs';
+import {
+  GATES,
+  loadPost,
+  parseArgs,
+  readJSON,
+  saveWorkflow,
+  copyRevision,
+  designRevision,
+  requireApproval,
+  requireCopyApproval,
+  COPY_RULE,
+  wib,
+  isMain,
+  fail
+} from './core.mjs';
 import {checkPost} from './quality.mjs';
 
 export function approve(ref, {gate, words, 'words-file': wordsFile, source, at, context = ''}) {
@@ -28,7 +42,17 @@ export function approve(ref, {gate, words, 'words-file': wordsFile, source, at, 
     if (!c.passed || c.designRevision !== revision) throw Error('design:check is missing, failing or stale for this revision; rebuild and recheck');
     if (workflow.designStale) throw Error('Design is stale after text edits; run design:build and design:check');
   }
-  const approval = {gate, words: words.trim(), source: source.trim(), context: context.trim(), at: when.toISOString(), atWIB: wib(when), revision, ...(gate === 'copy' ? {copyRule: COPY_RULE} : {}), recordedAt: new Date().toISOString()};
+  const approval = {
+    gate,
+    words: words.trim(),
+    source: source.trim(),
+    context: context.trim(),
+    at: when.toISOString(),
+    atWIB: wib(when),
+    revision,
+    ...(gate === 'copy' ? {copyRule: COPY_RULE} : {}),
+    recordedAt: new Date().toISOString()
+  };
   if (workflow.approvals[gate]) workflow.history.push({event: 'approval-replaced', gate, approval: workflow.approvals[gate], at: approval.recordedAt});
   workflow.approvals[gate] = approval;
   workflow.history.push({event: 'approved', gate, source: approval.source, revision, at: approval.at});

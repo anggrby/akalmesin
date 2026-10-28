@@ -4,7 +4,22 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import sharp from 'sharp';
-import {ROOT, loadPost, parseArgs, readJSON, writeJSON, copyRevision, copyApprovalCurrent, designRevision, processedImage, fileHash, launchBrowser, isMain, fail, imageGaps} from './core.mjs';
+import {
+  ROOT,
+  loadPost,
+  parseArgs,
+  readJSON,
+  writeJSON,
+  copyRevision,
+  copyApprovalCurrent,
+  designRevision,
+  processedImage,
+  fileHash,
+  launchBrowser,
+  isMain,
+  fail,
+  imageGaps
+} from './core.mjs';
 import {checkPost} from './quality.mjs';
 import {inkStats, looksInked} from './blue-ink.mjs';
 import {inspectLayout} from './design-build.mjs';

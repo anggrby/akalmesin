@@ -7,7 +7,8 @@ import {ROOT, readJSON, fontCSS} from '../scripts/core.mjs';
 import {editorHTML, editorFontCSS} from '../scripts/copy-review.mjs';
 import {KIMI} from './helpers.mjs';
 
-const post = readJSON(path.join(KIMI, 'post.json')), cov = readJSON(path.join(ROOT, 'templates/html/fonts/coverage.json'));
+const post = readJSON(path.join(KIMI, 'post.json')),
+  cov = readJSON(path.join(ROOT, 'templates/html/fonts/coverage.json'));
 
 test('copy-review editor is small and carries no full-size fonts', () => {
   const html = editorHTML(post, 'copy');
@@ -21,8 +22,13 @@ test('subset covers Indonesian copy and the punctuation the owner types', () => 
   assert.ok(editorFontCSS(post).slim);
 });
 test('a character outside the subset falls back to the full fonts', () => {
-  const ch = [...cov.droppedFromManrope][0], p = structuredClone(post); p.caption[0] += ' ' + ch;
-  const f = editorFontCSS(p); assert.equal(f.slim, false); assert.deepEqual(f.missing, [ch]); assert.equal(f.css, fontCSS());
+  const ch = [...cov.droppedFromManrope][0],
+    p = structuredClone(post);
+  p.caption[0] += ' ' + ch;
+  const f = editorFontCSS(p);
+  assert.equal(f.slim, false);
+  assert.deepEqual(f.missing, [ch]);
+  assert.equal(f.css, fontCSS());
 });
 test('design-mode (final) HTML still embeds the full brand fonts', () => {
   assert.ok(editorHTML(post, 'design').includes(fontCSS()));
