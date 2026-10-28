@@ -19,7 +19,7 @@ export async function designCheck(ref) {
   const approvedCopy = workflow.approvals.copy?.revision;
   if (approvedCopy !== copyRevision(post)) add('Copy approval missing or stale');
   if (workflow.designStale) add('Text was edited in design review; rebuild');
-  const q = checkPost(post); q.errors.forEach(e => add('Editorial: ' + e.message));
+  const q = checkPost(post, undefined, {dir: paths.dir}); q.errors.forEach(e => add('Editorial: ' + e.message));
   if (build.slides.length !== post.slides.length) add('PNG count differs from slide count');
   const browser = await launchBrowser();
   try {

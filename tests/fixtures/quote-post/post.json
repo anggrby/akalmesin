@@ -13,7 +13,21 @@
       "alt": "Test fixture: Meta server room in blue ink with a quotation.",
       "imagePosition": "50% 50%",
       "imageScale": 1.1,
-      "imageSource": {"id": "fixture-meta", "kind": "source-photo", "originalFile": "assets/originals/meta.jpg", "subject": "Meta server room, approved blue-ink sample (test only)", "supplier": "owner style reference", "treatment": "blue-ink", "process": {"maxWidth": 2160}}
+      "imageSource": {
+        "id": "fixture-dario-portrait",
+        "kind": "portrait-photo",
+        "originalFile": "assets/originals/meta.jpg",
+        "subject": "Dario Amodei",
+        "supplier": "owner style reference",
+        "treatment": "blue-ink",
+        "process": {
+          "maxWidth": 2160
+        },
+        "note": "test fixture only: the file is the Meta server-room sample, standing in for a portrait; real posts must use the person's own photo"
+      },
+      "subjectAliases": [
+        "Dario"
+      ]
     }
   ],
   "caption": [],

@@ -43,7 +43,7 @@
 | Main | 64 sides (header 952 wide); header top 50; divider y130; divider → content 57 (content y187, frame 948 wide); headline may run to 971 wide; headline → summary 32; summary → image 64; image to the bottom edge (702 tall in the sample, from y648) |
 | Detail-1 / Detail-2 | 64 sides (952 wide); header top 50; wordmark row → divider 20 (divider y130); divider → body 44 (body y174); body → image 54; image to the bottom edge (702 tall in the sample). Detail-2 has no sheet and uses Detail-1 |
 | Quote | No masthead. 56 left/right (column 968); content box bottom at y1294 (56 from the bottom; sample box x56 y782 968 × 512); 40 between quote mark → statement → attribution; 8 author → role; photo crop intentionally oversized; overlay over the whole frame |
-| Quote mark (from his example) | Manrope Bold 700 `“` at 400 px, ink 116 × 103 at x482 y782 (centred), 104 px box, colour `color.editorial-gray` per sheet 2 |
+| Quote mark (from his example) | Manrope Bold 700 `“` at 400 px, ink 116 × 103 at x482 y782 (centred), 104 px box, colour `color.editorial-gray` #EEEEEE (light, owner t55u) |
 
 ### Not on the sheets yet (`unmeasured` in tokens.json)
 
@@ -54,9 +54,9 @@ Current behaviour, kept until measured: wordmark row 60 (sheet says auto; implie
 - **Main:** masthead → headline → summary → full-width photo to the bottom edge, credit inside. No kicker, footer strip or arrow. Main + caption can be the whole post.
 - **Detail-1:** masthead → news paragraph → supporting photo.
 - **Detail-2:** masthead → shorter text → larger photo (same tokens as Detail-1).
-- **Quote:** no masthead (owner t54u). Full-bleed blue-inked portrait (`object-fit: cover`, focal point `imagePosition`, optional zoom `imageScale`, face in the upper area), quote overlay over the whole frame, then centred mark → statement → author / role, anchored 56 px above the bottom. No on-image photo credit: provenance goes in `sources.md` / `assets/PROVENANCE.md`. Verified wording only. A `\n` in `quote` forces the line break (his example breaks after "perlu"). Max 3 lines; longer fails the build.
+- **Quote:** optional, only when the post carries an important quote from a person in the news (owner t55u); the photo must be that person, never an object or scene. Errors if `imageSource.subject` ≠ `author` (case/diacritics ignored; extra spellings in slide `subjectAliases`), if `imageSource.kind` is not `news-photo`/`portrait-photo`, if the image repeats another slide's (e.g. Main), or if `assets/PROVENANCE.md` doesn't name the person. Code checks the declared subject only; the face is checked in the owner's design review. No masthead (owner t54u). Full-bleed blue-inked portrait (`object-fit: cover`, focal point `imagePosition`, optional zoom `imageScale`, face in the upper area), quote overlay over the whole frame, then centred mark → statement → author / role, anchored 56 px above the bottom. No on-image photo credit: provenance goes in `sources.md` / `assets/PROVENANCE.md`. Verified wording only. A `\n` in `quote` forces the line break (his example breaks after "perlu"). Max 3 lines; longer fails the build.
 
-  post.json slide: `{"id", "layout": "quote", "quote", "author", "role", "quoteSource", "alt", "imagePosition", "imageScale", "imageSource"}`; no `credit`. The editor edits `quote`, `author`, `role`. Reference: [references/quote-example-2026-10-28.png](references/quote-example-2026-10-28.png).
+  post.json slide: `{"id", "layout": "quote", "quote", "author", "role", "quoteSource", "alt", "imagePosition", "imageScale", "subjectAliases"?, "imageSource" {"id", "kind": "news-photo"|"portrait-photo", "subject": author name, …}}`; no `credit`. The editor edits `quote`, `author`, `role`. Reference: [references/quote-example-2026-10-28.png](references/quote-example-2026-10-28.png).
 
 ## Photography and treatment
 

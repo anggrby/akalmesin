@@ -43,7 +43,7 @@ Recheck any changed factual claim against `sources.md`. Point out conflicts with
 
 ## 6. Design → `design:build`
 
-This step requires a current copy approval. It applies the blue ink to every original using its `process` crop and pad (see `scripts/blue-ink.mjs`), saving the result to `assets/processed/<id>-blue-ink.png`, and renders each slide in Chromium at 1080×1350 with network access blocked. Before taking each screenshot it checks the layout: canvas size, text inside the canvas with no overflow, the text-to-photo gap from brand/tokens.json (Main 64, Detail 54), a photo of at least 360 px that reaches the bottom, a white left-aligned credit inside the photo (Quote slides instead: no masthead, no credit, block 56 px from the bottom and side insets, at most 3 statement lines), both bundled fonts loaded, and no placeholder. It writes `out/png/NN-id.png`, `out/contact-sheet.png`, `out/<slug>.html` (the final HTML: one file, images embedded, also editable with Simpan in design mode) and `out/build.json`.
+This step requires a current copy approval. It applies the blue ink to every original using its `process` crop and pad (see `scripts/blue-ink.mjs`), saving the result to `assets/processed/<id>-blue-ink.png`, and renders each slide in Chromium at 1080×1350 with network access blocked. Before taking each screenshot it checks the layout: canvas size, text inside the canvas with no overflow, the text-to-photo gap from brand/tokens.json (Main 64, Detail 54), a photo of at least 360 px that reaches the bottom, a white left-aligned credit inside the photo (Quote slides — optional, only for an important quote from a person in the news, photo of that person — instead: no masthead, no credit, block 56 px from the bottom and side insets, at most 3 statement lines), both bundled fonts loaded, and no placeholder. It writes `out/png/NN-id.png`, `out/contact-sheet.png`, `out/<slug>.html` (the final HTML: one file, images embedded, also editable with Simpan in design mode) and `out/build.json`.
 
 ## 7. Check → `design:check`
 
@@ -58,6 +58,12 @@ This step fails if:
 - the final HTML is over 20 MB.
 
 It writes `out/check.json`. Look at the contact sheet yourself before sending anything.
+
+### What the checks guarantee
+
+- Every check is plain code: no AI/LLM, no network (Chromium runs with network blocked), no randomness. The blue-ink grain uses a seeded mulberry32 (seed 7).
+- Same inputs → same verdicts and the same files. `builtAt` / `checkedAt` (and the workflow log timestamps) are the only varying outputs, and they never affect pass/fail. Tested: `checkPost` twice deep-equals, blue ink twice is byte-identical; Kimi built + checked twice gave identical PNG hashes and check.json minus `checkedAt`.
+- Not covered: a different Chromium, sharp/libvips or font build on another machine can shift pixels and so PNG hashes (the verdicts are expected to hold; the PNG hash check compares against the same machine's build). The ink thresholds (95 % / mean 12) and other limits are fixed numbers we chose, not proof of good looks. Code cannot judge whether a photo is relevant or really shows the quoted person, whether facts are right, or the tone; that is the owner's copy and design review.
 
 ## 8. Final approval → Notion
 

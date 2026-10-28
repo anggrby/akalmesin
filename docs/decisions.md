@@ -2,6 +2,14 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-10-28 — Light quote mark, image follows the copy, Quote slide only for real quotes (t55u)
+
+- Owner (t55u): "Good catch. Use light. The quote slide is not required for every post, it just for the post that contain important quote from the person in that news and it should use that person photo, not the other object. It should start where the copy ends, The image should adjust their height automatically relative to the copy. The check are deterministic, correct? it should".
+- Quote mark stays light `color.editorial-gray` #EEEEEE (closes open question 12).
+- Main/Detail image starts where the copy ends (gap 64 / 54) and its height adapts to the copy; no fixed y648 (closes open question 11).
+- The Quote slide is optional: only when a person in the news said something important. Its photo must be that person. Enforced as errors in `checkPost` (so also `approve` and `design:check`): `imageSource.subject` equals `author` (case/diacritics ignored) or a listed `subjectAliases` entry; `imageSource.kind` is `news-photo` or `portrait-photo`; `assets/PROVENANCE.md` names the person. Any slide reusing another slide's image (same `imageSource.id`, or same original bytes) is an error. Code checks the *declared* subject only; the owner's design review checks the actual face.
+- Checks are deterministic; see docs/workflow.md "What the checks guarantee". Verified: Kimi built + checked twice → identical PNGs and identical check.json apart from `checkedAt`.
+
 ## 2026-10-28 — Quote layout: no masthead (t54u)
 
 - Owner (t54u): "Yes, it should have no masthead." He also sent a finished Quote example (`brand/references/quote-example-2026-10-28.png`, Dario Amodei).
