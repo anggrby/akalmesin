@@ -13,16 +13,16 @@ This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news a
 | 5 | Record his file: applies it and logs a sentence/word diff | `npm run copy:record -- <slug> edits.json` | `approve --gate copy` with his words |
 | 6 | Design: blue ink + render | `npm run design:build -- <slug>` | needs current copy approval |
 | 7 | Check, then look at `out/contact-sheet.png` | `npm run design:check -- <slug>` | must pass |
-| 8 | Send him `out/<slug>.html` plus the contact sheet | `approve --gate final`, then `npm run export -- <slug> --dry-run` → Notion | needs current final approval |
+| 8 | Send him `out/<slug>.html` plus the contact sheet | `approve --gate final`, then `npm run export -- <slug>` (one command: Notion REST API) | needs current final approval |
 
 ## Rules that are not negotiable
 
 - **Approvals are his verbatim words.** Record them with `npm run approve -- <slug> --gate … --words "…" --source "chat tNNu"`. Positive feedback ("so far so good") is not an approval, and neither is a draft that already exists. Never paraphrase his words.
 - Any copy change clears the copy and final approvals (`copy:record` handles this). Any design change makes final stale (the hashes catch it).
 - Write the copy in his voice: [brand/voice.md](brand/voice.md). Before writing, read the [Terra example](brand/examples/terra/README.md) and the [feedback log](brand/style-feedback-log.md). Visual rules live in [brand/design.md](brand/design.md).
-- Notion: create or update the page with the **Notion connector**, following the recipe in docs/workflow.md, then run `export --attach`. Post only to the akalmesin database, and look the page up by its body marker before creating one.
+- Notion: `npm run export -- <slug>` finds the page by its body marker, creates or updates it, uploads the PNGs, verifies them by SHA-256 and writes the receipt. Re-running never makes a second page. The connector route is only a fallback (docs/workflow.md). Post only to the akalmesin database.
 - Never publish, schedule, push to a remote, or message anyone without his explicit instruction. Neither Export nor Notion grants that.
-- Secrets live only in the environment (`NOTION_UPLOAD_TOKEN`). Never print them or write them to a file.
+- Secrets live only in the environment (`NOTION_UPLOAD_TOKEN`) or in the git-ignored `.env.local`. Never print them, paste them into chat, or put them in a tracked file.
 - When a decision changes, update the file that owns it and add a dated entry to [docs/decisions.md](docs/decisions.md).
 
 ## Setup (macOS or Linux)
@@ -33,6 +33,8 @@ npm ci
 npx playwright-core install chromium   # same Chromium build the renderer expects
 npm run doctor                          # Node, deps, Chromium, fonts, every post's gate status
 npm test
+# Notion export token (once): put it in your shell profile or in .env.local (git-ignored)
+#   echo 'NOTION_UPLOAD_TOKEN=<your token>' > .env.local && chmod 600 .env.local
 ```
 
 To use a Chrome you already have, set `AKALMESIN_CHROME_PATH`, for example `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Nothing else is machine-specific: every path resolves from the repo root.

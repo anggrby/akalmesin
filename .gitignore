@@ -6,3 +6,5 @@ content/posts/*/out/*
 .DS_Store
 *.tmp
 __pycache__/
+.env.local
+.env

@@ -9,7 +9,7 @@ ok('Node >= 20', major >= 20, process.version);
 for (const dep of ['playwright-core', 'sharp']) { try { await import(dep); ok(dep, true, readJSON(path.join(ROOT, 'node_modules', dep, 'package.json')).version); } catch (e) { ok(dep, false, 'run npm ci'); } }
 try { const b = await launchBrowser(); ok('Chromium', true, b.version()); await b.close(); } catch (e) { ok('Chromium', false, e.message.split('\n')[0]); }
 for (const f of ['brand/tokens.json', 'brand/editorial-policy.json', 'brand/fonts/Manrope.ttf', 'brand/fonts/IBMPlexMono-Regular.ttf', 'templates/html/post.css']) ok(f, fs.existsSync(path.join(ROOT, f)));
-ok('NOTION_UPLOAD_TOKEN set (only needed for export --attach)', true, process.env.NOTION_UPLOAD_TOKEN ? 'set' : 'not set');
+ok('NOTION_UPLOAD_TOKEN set (needed for npm run export)', true, process.env.NOTION_UPLOAD_TOKEN ? 'set' : 'not set');
 const posts = path.join(ROOT, 'content/posts');
 for (const slug of fs.existsSync(posts) ? fs.readdirSync(posts).filter(d => fs.existsSync(path.join(posts, d, 'post.json'))) : []) {
   try {

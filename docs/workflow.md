@@ -63,13 +63,26 @@ It writes `out/check.json`. Look at the contact sheet yourself before sending an
 
 Send `out/<slug>.html` and the contact sheet. When he approves, run `npm run approve -- <slug> --gate final --words "…" --source "chat tNNu" --at …`. This requires a passing, current check.
 
-Then follow the Notion recipe:
+Then export with one command (decision 2026-10-28, t50u):
 
-1. `npm run export -- <slug> --dry-run` writes `out/notion-manifest.json`: the properties, the body markdown, the ordered asset hashes, and the body marker `akalmesin-content-id:akalmesin:<slug>`. It refuses to run without a current final approval.
-2. With the **Notion connector**, work only in data source `405f909f-26a5-8029-8e7a-000b3f2a28a4` (database `405f909f-26a5-8057-ad0a-e9562fe9c915`). First use `workflow.json → notion.pageId` if one exists. Otherwise query the data source and read page bodies for the exact marker; never match by title alone.
-3. Create or update the page with these properties: `Post` = title, `Status` = **Ready to Publish**, `Format` = Carousel (Single image for a single slide), `Caption`, `Topic` = category (AI/Robotika/Komputasi/Chip/Software). Leave `Publish date` empty. The body is the manifest's `body`. Keep any human notes and publishing fields that are already on the page.
-4. Run `NOTION_UPLOAD_TOKEN=… npm run export -- <slug> --attach --page <page id>`. It uploads the PNGs in order to `Assets` (create upload → send → PATCH → read back the order). The token comes from the environment and is never printed.
-5. Read the page back with the connector (title, status, marker, asset names in order), then run `npm run export -- <slug> --record --page <id> --url <url>`.
+```sh
+npm run export -- <slug> --dry-run   # optional: writes out/notion-manifest.json, no network
+npm run export -- <slug>             # or --post <slug>
+```
+
+`export` refuses without a current copy and final approval, then talks to Notion's REST API directly with `NOTION_UPLOAD_TOKEN` (from the environment or a git-ignored `.env.local`; never printed):
+
+1. **Find.** `POST /v1/data_sources/405f909f-26a5-8029-8e7a-000b3f2a28a4/query` with `Notion-Version: 2025-09-03` (the database endpoint `POST /v1/databases/405f909f-26a5-8057-ad0a-e9562fe9c915/query` only works with the older `2022-06-28`). It reads every live page's body for the exact paragraph `akalmesin-content-id:<contentId>` (`contentId` defaults to `akalmesin:<slug>`). Never by title. More than one hit stops the run.
+2. **Upload.** Each PNG, in slide order: `POST /v1/file_uploads` → `POST /v1/file_uploads/<id>/send` (multipart).
+3. **Create or update.** No hit: `POST /v1/pages` with parent `data_source_id`. One hit: `PATCH /v1/pages/<id>` on the same page. Properties: `Post` = title (follows the Main headline), `Status` = **Ready to Publish**, `Format` = Carousel (Single image for one slide), `Caption` (split into ≤2000-character rich_text items), `Topic` from the category (AI/Robotika/Komputasi/Chip/Software; anything else fails), `Publish date` empty, `Assets` = the uploads in order. The body is the marker, the manifest's `body`, then `akalmesin-managed-end`. On update only that managed range is replaced; human notes outside it stay.
+4. **Verify.** Read the page back: properties, marker, asset names in order, and the SHA-256 of every downloaded file against the build.
+5. **Receipt.** `workflow.json → notion` gets the page id, URL, created/updated, API version, hashes, `assetsMatchBuild` and the time in WIB.
+
+429 and 5xx are retried with backoff. The page create is never retried blindly: re-running looks the page up by its marker first, so a second run updates and never duplicates. Pages made by the connector before this change (Terra, Anthropic, Kimi) have no `akalmesin-managed-end` line; `export` refuses to update them rather than guess, so use the fallback for those.
+
+### Connector fallback
+
+If the REST route is unavailable (no token, or the integration lost access to the database), use the Notion connector: work only in data source `405f909f-26a5-8029-8e7a-000b3f2a28a4`, find the page by marker, create or update it with the manifest's properties and body, attach the PNGs in order, read it back, and write the receipt in `workflow.json` by hand. If the integration can't see the database, share the database with it in Notion (••• → Connections).
 
 If a create or upload ended uncertainly, look the page up by its marker before trying again. Never repeat a create blindly. Notion delivery does **not** authorize publishing to Instagram or scheduling in Postiz; that happens separately, only after he gives a date and time in WIB.
 
@@ -79,7 +92,7 @@ If he edits text in the final HTML (mode design), go back to step 5, then rebuil
 
 ## Outside this repo
 
-The repo stops at Notion. These rules come verbatim from the old workflow, kept for the separate publisher bot and for measurement (see OPEN-QUESTIONS 6).
+The repo stops at Notion. These rules come verbatim from the old workflow, kept for the separate publisher bot and for measurement (decided 2026-10-28, t50u: step 9 stays out of the repo).
 
 ### Separate publishing handoff
 

@@ -1,15 +1,23 @@
-// npm run export -- <slug> --dry-run            → out/notion-manifest.json (no network)
-// npm run export -- <slug> --attach --page <id> → uploads the PNGs, in order, to the page's Assets
-//                                                (needs NOTION_UPLOAD_TOKEN in the environment)
-// npm run export -- <slug> --record --page <id> --url <notion url> [--at ISO] [--uploaded-hashes h1,h2,…]
-// Step 8. Requires a current final approval. Page creation/update itself goes through the
-// Notion connector (see docs/workflow.md). This never publishes or schedules anything.
+// npm run export -- <slug> --dry-run   → out/notion-manifest.json only (no network)
+// npm run export -- <slug>             → one command, Notion REST API (token: NOTION_UPLOAD_TOKEN):
+//   find page by body marker → create or update it → upload PNGs in order → read back + SHA-256
+//   check → receipt in workflow.json. Re-running updates the same page; it never makes a second one.
+// `--post <slug>` works too. Step 8. Requires a current final approval. Never publishes or schedules.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {ROOT, TOPICS, loadPost, parseArgs, readJSON, writeJSON, saveWorkflow, copyRevision, designRevision, requireApproval, fileHash, wib, isMain, fail, rel} from './core.mjs';
 
-export const NOTION = {dataSourceId: '405f909f-26a5-8029-8e7a-000b3f2a28a4', databaseId: '405f909f-26a5-8057-ad0a-e9562fe9c915', accountPageId: '403f909f-26a5-80a6-bb5f-ff38accdc8d0', version: '2022-06-28'};
+export const NOTION = {dataSourceId: '405f909f-26a5-8029-8e7a-000b3f2a28a4', databaseId: '405f909f-26a5-8057-ad0a-e9562fe9c915', accountPageId: '403f909f-26a5-80a6-bb5f-ff38accdc8d0', version: '2025-09-03'};
 const PAGE_ID = /^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/i;
+
+/** Post category → Notion Topic select. Unknown categories fail loudly (no silent default). */
+const TOPIC_ALIASES = {ai: 'AI', robotika: 'Robotika', robotics: 'Robotika', komputasi: 'Komputasi', computing: 'Komputasi', chip: 'Chip', chips: 'Chip', semiconductor: 'Chip', software: 'Software'};
+export function topicFor(category) {
+  const t = TOPIC_ALIASES[String(category || '').trim().toLowerCase()];
+  if (!t || !TOPICS.includes(t)) throw Error(`category "${category}" has no Notion Topic; use one of ${TOPICS.join(', ')}`);
+  return t;
+}
 
 export function manifest(ref) {
   const {paths, post, workflow} = loadPost(ref);
@@ -22,8 +30,8 @@ export function manifest(ref) {
     if (bytes > 20 * 1024 * 1024) throw Error(s.png + ' exceeds Notion 20 MB upload limit');
     return {slideId: s.id, file: s.png, sha256: s.pngHash, bytes};
   });
-  if (!TOPICS.includes(post.category)) throw Error('category must be one of ' + TOPICS.join(', '));
-  const marker = 'akalmesin-content-id:akalmesin:' + post.slug;
+  const topic = topicFor(post.category);
+  const contentId = post.contentId || 'akalmesin:' + post.slug, marker = 'akalmesin-content-id:' + contentId;
   const body = ['# Approved copy', ...post.slides.map(s => `## ${s.id}\n\n` + (s.layout === 'main' ? `${s.headline.join(' ')}\n\n${s.summary}` : s.paragraphs.join('\n\n'))),
     '# Caption', post.caption.join('\n\n'), '# Sources', post.sources.map(s => `- [${s.title}](${s.url})`).join('\n'),
     '# Alt text and photo credits', post.slides.map(s => `${s.id}: ${s.alt}\n\n${s.credit}`).join('\n\n'),
@@ -34,55 +42,164 @@ export function manifest(ref) {
     schemaVersion: 1, slug: post.slug, destination: NOTION, approvedRevision: final.revision, approval: final,
     existingPageId: workflow.notion?.pageId || null,
     lookup: `Before creating, query data source ${NOTION.dataSourceId} and read page bodies for the exact marker "${marker}". Never match by title alone.`,
-    properties: {Post: post.title, Status: 'Ready to Publish', Format: post.slides.length === 1 ? 'Single image' : 'Carousel', Caption: post.caption.join('\n\n'), Topic: post.category, 'Publish date': null, Assets: assets.map(a => path.basename(a.file))},
-    bodyMarker: marker, body, assets, generatedAt: new Date().toISOString()
+    properties: {Post: post.title, Status: 'Ready to Publish', Format: post.slides.length === 1 ? 'Single image' : 'Carousel', Caption: post.caption.join('\n\n'), Topic: topic, 'Publish date': null, Assets: assets.map(a => path.basename(a.file))},
+    contentId, bodyMarker: marker, body, assets, generatedAt: new Date().toISOString()
   };
 }
 
-async function notion(method, url, token, body, isForm) {
-  const r = await fetch('https://api.notion.com/v1/' + url, {method, headers: {Authorization: 'Bearer ' + token, 'Notion-Version': NOTION.version, ...(body && !isForm ? {'Content-Type': 'application/json'} : {})}, body: isForm ? body : body && JSON.stringify(body)});
-  if (!r.ok) throw Error(`Notion ${method} ${url.split('/')[0]} → HTTP ${r.status}`);
-  return r.json();
+
+// ---------- Notion REST client ----------
+const API = 'https://api.notion.com/v1/', END = 'akalmesin-managed-end';
+const sleepMs = ms => new Promise(r => setTimeout(r, ms));
+
+/** One client per run. Retries 429 and 5xx (honouring Retry-After); never logs the token. */
+export function client({token = process.env.NOTION_UPLOAD_TOKEN, fetch: f = globalThis.fetch, sleep = sleepMs, tries = 5} = {}) {
+  if (!token) throw Error('Set NOTION_UPLOAD_TOKEN in the environment (see AGENTS.md; never paste it into chat or tracked files).');
+  async function call(method, url, body, {form, retry = true} = {}) {
+    for (let i = 1; ; i++) {
+      const r = await f(url.startsWith('http') ? url : API + url, {method, headers: {Authorization: 'Bearer ' + token, 'Notion-Version': NOTION.version, ...(body && !form ? {'Content-Type': 'application/json'} : {})}, body: form ? body : body && JSON.stringify(body)});
+      if (r.ok) return r.json();
+      const transient = r.status === 429 || r.status >= 500;
+      if (!transient || !retry || i >= tries) {
+        let msg = ''; try { msg = (await r.json()).message || ''; } catch {}
+        throw Error(`Notion ${method} ${url.split('?')[0]} → HTTP ${r.status} ${msg}`.trim());
+      }
+      await sleep(Math.min(30000, (Number(r.headers?.get?.('retry-after')) || 2 ** i) * 1000));
+    }
+  }
+  return {call, fetch: f};
 }
 
-/** Port of notion_attach_assets.py: create upload → send → PATCH Assets → read back. */
-export async function attach(m, pageId, token = process.env.NOTION_UPLOAD_TOKEN) {
-  if (!token) throw Error('Set NOTION_UPLOAD_TOKEN in the environment (never paste it into chat or files).');
-  if (!PAGE_ID.test(pageId || '')) throw Error('--page must be a Notion page id');
-  const files = [];
+/** Plain text → rich_text items of ≤2000 chars each (Notion's per-item limit). */
+export function richText(text, limit = 2000) {
+  const out = [];
+  for (let i = 0; i < text.length; i += limit) out.push({type: 'text', text: {content: text.slice(i, i + limit)}});
+  return out.length ? out : [{type: 'text', text: {content: ''}}];
+}
+/** Inline markdown (**bold**, [text](url)) → rich_text, chunked. */
+function inline(md) {
+  const out = [], re = /\*\*(.+?)\*\*|\[([^\]]+)\]\((https?:[^)\s]+)\)/g; let last = 0, m;
+  const push = (t, extra = {}) => { for (const x of richText(t)) if (t) out.push({...x, text: {...x.text, ...(extra.link ? {link: {url: extra.link}} : {})}, ...(extra.bold ? {annotations: {bold: true}} : {})}); };
+  while ((m = re.exec(md))) { push(md.slice(last, m.index)); m[1] ? push(m[1], {bold: true}) : push(m[2], {link: m[3]}); last = re.lastIndex; }
+  push(md.slice(last));
+  return out.length ? out : [{type: 'text', text: {content: ''}}];
+}
+const block = (type, md) => ({object: 'block', type, [type]: {rich_text: inline(md)}});
+/** The manifest body markdown → Notion blocks: marker paragraph, managed content, end marker. */
+export function bodyBlocks(m) {
+  const blocks = [block('paragraph', m.bodyMarker)];
+  for (const para of m.body.split(/\n{2,}/)) {
+    const lines = para.split('\n');
+    if (/^# /.test(para)) blocks.push(block('heading_1', para.slice(2)));
+    else if (/^## /.test(para)) blocks.push(block('heading_2', para.slice(3)));
+    else if (/^### /.test(para)) blocks.push(block('heading_3', para.slice(4)));
+    else if (lines.every(l => /^\s*[-*] /.test(l))) lines.forEach(l => blocks.push(block('bulleted_list_item', l.replace(/^\s*[-*] /, ''))));
+    else if (para.trim()) blocks.push(block('paragraph', para));
+  }
+  blocks.push(block('paragraph', END));
+  return blocks;
+}
+const plain = b => (b[b.type]?.rich_text || []).map(t => t.plain_text ?? t.text?.content ?? '').join('');
+
+async function children(api, id) {
+  const all = []; let cursor;
+  do { const r = await api.call('GET', `blocks/${id}/children?page_size=100${cursor ? '&start_cursor=' + cursor : ''}`); all.push(...r.results); cursor = r.has_more && r.next_cursor; } while (cursor);
+  return all;
+}
+/** Every live page in the Posts data source whose body contains the exact marker paragraph. */
+export async function findByMarker(api, marker) {
+  const pages = []; let cursor;
+  do { const r = await api.call('POST', `data_sources/${NOTION.dataSourceId}/query`, {page_size: 100, ...(cursor ? {start_cursor: cursor} : {})}); pages.push(...r.results); cursor = r.has_more && r.next_cursor; } while (cursor);
+  const hits = [];
+  for (const p of pages.filter(p => !p.in_trash && !p.archived)) if ((await children(api, p.id)).some(b => plain(b).trim() === marker)) hits.push(p);
+  return hits;
+}
+export function properties(m, fileUploads) {
+  const P = m.properties;
+  return {Post: {title: richText(P.Post)}, Status: {status: {name: P.Status}}, Format: {select: {name: P.Format}}, Caption: {rich_text: richText(P.Caption)}, Topic: {select: {name: P.Topic}}, 'Publish date': {date: null},
+    Assets: {files: fileUploads.map(u => ({name: u.name, type: 'file_upload', file_upload: {id: u.id}}))}};
+}
+async function upload(api, m) {
+  const ups = [];
   for (const a of m.assets) {
     const name = path.basename(a.file);
-    const up = await notion('POST', 'file_uploads', token, {filename: name, content_type: 'image/png'});
+    const up = await api.call('POST', 'file_uploads', {filename: name, content_type: 'image/png'});
     const form = new FormData(); form.append('file', new Blob([fs.readFileSync(path.join(ROOT, a.file))], {type: 'image/png'}), name);
-    await notion('POST', `file_uploads/${up.id}/send`, token, form, true);
-    files.push({name, type: 'file_upload', file_upload: {id: up.id}});
+    await api.call('POST', `file_uploads/${up.id}/send`, form, {form: true});
+    ups.push({id: up.id, name});
   }
-  await notion('PATCH', 'pages/' + pageId, token, {properties: {Assets: {files}}});
-  const page = await notion('GET', 'pages/' + pageId, token);
-  const names = page.properties.Assets.files.map(f => f.name);
-  if (names.join('|') !== files.map(f => f.name).join('|')) throw Error('Assets read-back order mismatch: ' + names.join(', '));
-  return names;
+  return ups;
+}
+async function appendBlocks(api, pageId, blocks) {
+  for (let i = 0; i < blocks.length; i += 100) await api.call('PATCH', `blocks/${pageId}/children`, {children: blocks.slice(i, i + 100)});
+}
+/** Replace only the managed range (marker … end marker); human notes outside it stay. */
+async function replaceBody(api, pageId, m) {
+  const kids = await children(api, pageId), s = kids.findIndex(b => plain(b).trim() === m.bodyMarker), e = kids.findIndex(b => plain(b).trim() === END);
+  if (s < 0 || e < s) throw Error(`Page ${pageId} has the marker but no "${END}" line (older connector-made page). Update it by hand with the connector fallback; export will not guess what to delete.`);
+  for (const b of kids.slice(s, e + 1)) await api.call('DELETE', 'blocks/' + b.id);
+  await appendBlocks(api, pageId, bodyBlocks(m));
+}
+const sha = buf => crypto.createHash('sha256').update(buf).digest('hex');
+/** Read the page back: properties, marker, asset order and the SHA-256 of every downloaded file. */
+export async function verify(api, pageId, m) {
+  const page = await api.call('GET', 'pages/' + pageId), P = page.properties, txt = x => x.map(t => t.plain_text ?? t.text.content).join('');
+  const want = m.properties, errs = [];
+  if (txt(P.Post.title) !== want.Post) errs.push('Post title');
+  if (P.Status.status?.name !== want.Status) errs.push('Status');
+  if (P.Format.select?.name !== want.Format) errs.push('Format');
+  if (P.Topic.select?.name !== want.Topic) errs.push('Topic');
+  if (txt(P.Caption.rich_text) !== want.Caption) errs.push('Caption');
+  if (P['Publish date'].date) errs.push('Publish date is set');
+  if (page.parent?.data_source_id && page.parent.data_source_id.replace(/-/g, '') !== NOTION.dataSourceId.replace(/-/g, '')) errs.push('wrong data source');
+  if (!(await children(api, pageId)).some(b => plain(b).trim() === m.bodyMarker)) errs.push('body marker');
+  const files = P.Assets.files, names = files.map(f => f.name);
+  if (names.join('|') !== m.assets.map(a => path.basename(a.file)).join('|')) errs.push('Assets order: ' + names.join(', '));
+  const hashes = [];
+  for (const f of files) { const r = await api.fetch(f.file?.url || f.external?.url); if (!r.ok) throw Error('Could not download ' + f.name + ' for verification (HTTP ' + r.status + ')'); hashes.push(sha(Buffer.from(await r.arrayBuffer()))); }
+  const assetsMatchBuild = hashes.join(',') === m.assets.map(a => a.sha256).join(',');
+  if (!assetsMatchBuild) errs.push('downloaded asset hashes differ from the build');
+  if (errs.length) throw Error(`Read-back of ${pageId} failed: ${errs.join('; ')}`);
+  return {page, hashes, assetsMatchBuild};
 }
 
-export function record(ref, {page, url, at, 'uploaded-hashes': uploaded}) {
-  const {paths, post, workflow} = loadPost(ref);
-  if (!PAGE_ID.test(page || '')) throw Error('--page must be a Notion page id');
-  if (!/^https:\/\/(?:www\.|app\.)?notion\.(?:so|com)\//.test(url || '')) throw Error('--url must be the Notion page URL');
-  const m = manifest(ref);
-  workflow.notion = {pageId: page, url, dataSourceId: NOTION.dataSourceId, accountPageId: NOTION.accountPageId, bodyMarker: m.bodyMarker, approvedRevision: m.approvedRevision, orderedAssetHashes: m.assets.map(a => a.sha256), ...(uploaded ? {uploadedAssetHashes: uploaded.split(','), assetsMatchBuild: uploaded === m.assets.map(a => a.sha256).join(',')} : {assetsMatchBuild: true}), exportedAt: at ? new Date(at).toISOString() : new Date().toISOString(), recordedAt: new Date().toISOString()};
+/** Step 8 end to end. Returns the receipt written to workflow.json. */
+export async function exportPost(ref, opts = {}) {
+  const m = manifest(ref), {paths, workflow} = loadPost(ref), api = opts.api || client(opts);
+  writeJSON(path.join(paths.out, 'notion-manifest.json'), m);
+  const hits = await findByMarker(api, m.bodyMarker);
+  if (hits.length > 1) throw Error(`${hits.length} pages carry ${m.bodyMarker}: ${hits.map(h => h.id).join(', ')}. Trash the duplicates in Notion first.`);
+  const ups = await upload(api, m), props = properties(m, ups);
+  let pageId, action;
+  if (hits.length) {
+    pageId = hits[0].id; action = 'updated';
+    await api.call('PATCH', 'pages/' + pageId, {properties: props});
+    await replaceBody(api, pageId, m);
+  } else {
+    // Not retried: a lost create must be found by its marker on the next run, never repeated blindly.
+    const blocks = bodyBlocks(m);
+    const page = await api.call('POST', 'pages', {parent: {type: 'data_source_id', data_source_id: NOTION.dataSourceId}, properties: props, children: blocks.slice(0, 100)}, {retry: false});
+    pageId = page.id; action = 'created';
+    await appendBlocks(api, pageId, blocks.slice(100));
+  }
+  const {page, hashes, assetsMatchBuild} = await verify(api, pageId, m), at = new Date().toISOString();
+  workflow.notion = {pageId, url: page.url, action, dataSourceId: NOTION.dataSourceId, databaseId: NOTION.databaseId, apiVersion: NOTION.version, contentId: m.contentId, bodyMarker: m.bodyMarker, approvedRevision: m.approvedRevision,
+    orderedAssetHashes: m.assets.map(a => a.sha256), uploadedAssetHashes: hashes, assetsMatchBuild, exportedAt: at, exportedAtWIB: wib(at)};
   workflow.stage = 'notion-delivered';
-  workflow.history.push({event: 'notion-recorded', pageId: page, at: workflow.notion.recordedAt});
+  workflow.history.push({event: 'notion-' + action, pageId, at});
   saveWorkflow(paths, workflow);
   return workflow.notion;
 }
 
+/** Optional git-ignored .env.local (KEY=value lines); the real environment wins. */
+export function loadEnvLocal(file = path.join(ROOT, '.env.local')) {
+  if (!fs.existsSync(file)) return;
+  for (const line of fs.readFileSync(file, 'utf8').split('\n')) { const m = line.match(/^\s*(?:export\s+)?([A-Z_]+)\s*=\s*['"]?(.*?)['"]?\s*$/); if (m && !process.env[m[1]]) process.env[m[1]] = m[2]; }
+}
+
 if (isMain(import.meta.url)) try {
-  const a = parseArgs(undefined, ['dry-run', 'attach', 'record']), slug = a._[0];
-  if (a.record) { const n = record(slug, a); console.log(`✓ Notion receipt recorded: ${n.url} (${wib(n.exportedAt)})`); }
-  else {
-    const m = manifest(slug), {paths} = loadPost(slug), out = path.join(paths.out, 'notion-manifest.json');
-    writeJSON(out, m); console.log(`✓ ${rel(out)} — ${m.assets.length} assets, title "${m.properties.Post}"`);
-    if (a.attach) console.log('✓ Assets attached in order: ' + (await attach(m, a.page)).join(', '));
-    else if (!a['dry-run']) console.log('  (manifest only; create/update the page with the Notion connector, then --attach and --record)');
-  }
+  loadEnvLocal();
+  const a = parseArgs(undefined, ['dry-run']), slug = a.post || a._[0];
+  if (a['dry-run']) { const m = manifest(slug), {paths} = loadPost(slug), out = path.join(paths.out, 'notion-manifest.json'); writeJSON(out, m); console.log(`✓ ${rel(out)} — ${m.assets.length} assets, title "${m.properties.Post}" (dry run, no network)`); }
+  else { const n = await exportPost(slug); console.log(`✓ Notion page ${n.action}: ${n.url}\n  ${n.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${n.exportedAtWIB})`); }
 } catch (e) { fail(e); }

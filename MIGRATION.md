@@ -19,8 +19,8 @@ The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbati
 | `brand/legacy/*` (2026-10-24 tokens/typography snapshot) | dropped | superseded by the current tokens; history noted in docs/decisions.md |
 | `docs/decisions.md`, `archive/history/2026-10-27-docs-decisions.md` | `docs/decisions.md` | verbatim below the new 2026-10-28 rewrite entry |
 | `docs/workflow.md` §§ gates, research, copy, design, delivery | `docs/workflow.md` + `AGENTS.md` | rewritten for the 8 steps. Gate rules kept: separate selected/copy/final decisions, verbatim evidence, no implicit approval, edits make approvals stale, Notion ≠ publish |
-| `docs/workflow.md` §§ 5–6 (Postiz handoff, 24 h / 7 d scorecard) | `docs/workflow.md` § Outside this repo | verbatim (OPEN-QUESTIONS 6) |
-| `docs/integrations.md` (Notion destination, marker dedup, preserving human notes, no credentials in repo, Instagram separation) | `docs/workflow.md` § 8 + `AGENTS.md` rules | restated; the notion-custom preference is OPEN-QUESTIONS 1. Figma/computer-use notes dropped (HTML only) |
+| `docs/workflow.md` §§ 5–6 (Postiz handoff, 24 h / 7 d scorecard) | `docs/workflow.md` § Outside this repo | verbatim (step 9 kept out, decision t50u) |
+| `docs/integrations.md` (Notion destination, marker dedup, preserving human notes, no credentials in repo, Instagram separation) | `docs/workflow.md` § 8 + `AGENTS.md` rules | restated; notion-custom not restored (decision t50u: one-command REST export). Figma/computer-use notes dropped (HTML only) |
 | `docs/notion-content-schema.json` | `docs/notion-schema.json` | byte-exact |
 | `editorial.config.json` (Notion IDs, property names) | `scripts/export.mjs` `NOTION` + manifest property names | same IDs |
 | `docs/editor.md` (live editor, Export button, SQLite journal) | `docs/workflow.md` §§ 4–5 | replaced by the single-file editor + Simpan + `copy:record` |
@@ -43,8 +43,8 @@ The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbati
 | `build-editorial-html.mjs`, `render-editorial-html.mjs` (`inspectLayout`), `render-export-snapshot.mjs`, `render-news-png.mjs`, `render-news-batch.py` | `scripts/design-build.mjs` + `scripts/design-check.mjs` (same geometry checks and overflow guard) |
 | `content/posts/2026-10-28-kimi-k3-1-pro/assets/blue_ink.py` | `scripts/blue-ink.mjs` (same stops/curve/texture; seeded JS grain) |
 | `prepare-notion-handoff.mjs` | `scripts/export.mjs --dry-run` (manifest with the same properties, body sections and marker) |
-| `/home/box/tools/notion_attach_assets.py` (box only, never in the repo) | `scripts/export.mjs --attach` (fetch, token from env) |
-| `sync-export-to-notion.mjs`, `notion-export-client.mjs` (notion-custom) | dropped. The connector does the page and `--attach` the files (OPEN-QUESTIONS 1) |
+| `/home/box/tools/notion_attach_assets.py` (box only, never in the repo) | `scripts/export.mjs` (REST: lookup, create/update, upload, verify; token from env) |
+| `sync-export-to-notion.mjs`, `notion-export-client.mjs` (notion-custom) | dropped. `npm run export` does page and files over the REST API (decision t50u) |
 | `editorial-doctor.mjs`, `check-repository.mjs` | `scripts/doctor.mjs` |
 | `build-figma-review.mjs`, `check-figma-import-guards.mjs` | dropped (HTML only) |
 | `tests/*` (8 files, 47 tests) | `tests/{gates,diff,quality,render}.test.mjs` (19 tests) |

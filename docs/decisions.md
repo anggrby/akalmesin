@@ -2,12 +2,17 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-10-28 — Notion route and step 9 resolved (t50u, 14:01 WIB)
+
+- **Notion: one command over the REST API.** Owner: "1 Yes" to "make `export` do both parts with one command on your Mac, using your Notion token and Notion's own API … keep the connector route as a fallback". `npm run export -- <slug>` now finds the page by body marker (`POST /v1/data_sources/<id>/query`, `Notion-Version: 2025-09-03`), creates or updates it, uploads the PNGs (file_uploads), reads it back with SHA-256 checks and writes the receipt. `--attach`/`--record` are removed; the connector is a documented fallback only. notion-custom does not come back. Evidence: live throwaway test 2026-10-28 14:03–14:04 WIB (page created, second run updated the same page, then trashed; the Kimi, Anthropic and Terra rows were only read). Pages made earlier by the connector lack the `akalmesin-managed-end` line, so export refuses to update them automatically.
+- **Step 9 stays out of the repo.** Owner: "5 Yes, keep step 9 out". Postiz scheduling and the 24-hour / 7-day Insights scorecards remain with the separate akalmesin Publisher; their rules stay under "Outside this repo" in docs/workflow.md for reference only.
+
 ## 2026-10-28 — Owner answers to open questions (t49u, ~13:56 WIB)
 
 - **Caption length: 100–160 words, warning only.** Owner: "Not necessary for now, 100-160 is not including the hashtag and the Source. So it just pure the copy text". Reason: his guide said about 100–150; he decided 100–160 counted on the pure copy text, i.e. the 3 body paragraphs only, excluding hashtags, the `Sumber: … / Foto: …` footer and `Ilustrasi slide N:` lines. Not a hard gate. `brand/editorial-policy.json` max 150 → 160; design:check, the copy editor counter and copy-review read it. Kimi caption recounted with this rule: 185 words, so it is still a warning. Older entries mentioning 100–150 are kept as history.
 - **Alt text does not need owner approval.** Owner answered "No" to "Should alt text need your approval like copy?". Alt text stays outside the copy gate; the agent may fix it and logs the change in `edits.log.md` (as done for the Kimi Main alt text).
 - **Notion `Post` title follows the Main headline** whenever the headline is edited. Owner: "Yes". Current behaviour kept, now owner-confirmed.
-- Still open: Notion route (connector vs notion-custom) and step 9 (publishing/scorecards); owner asked clarifying questions, defaults unchanged.
+- Still open at the time: Notion route and step 9 (resolved in t50u, entry above).
 
 ## 2026-10-28 — Rewrite the repo from scratch
 
@@ -17,7 +22,7 @@ What changed:
 - One post = one folder; `post.json` is the single source of truth for copy, caption, slides, credits, alt text, image sources and sources. `workflow.json` holds gates and approval evidence; `edits.log.md` holds sentence/word diffs.
 - Text-only review is the same slide HTML with grey image placeholders (`copy:review`).
 - Blue ink is a build step (`scripts/blue-ink.mjs`, a Node/sharp port of the Kimi `blue_ink.py`, same colour stops). The noise grain uses a seeded JS PRNG, so pixels differ slightly from the Python output; tone, texture and colours match.
-- Notion: the plain Notion connector creates/updates the row (as actually done for Terra and Kimi) and `npm run export -- --attach` uploads the ordered PNGs (port of notion_attach_assets.py). The notion-custom MCP Export stack, SQLite editor journal, batches, fingerprints/snapshots/receipts, Figma and Python renderer paths were dropped. This supersedes the old "do not use the standard Notion plugin" line in the archived workflow (practice since Terra used it; see OPEN-QUESTIONS.md).
+- Notion: the plain Notion connector creates/updates the row (as actually done for Terra and Kimi) and `npm run export -- --attach` uploads the ordered PNGs (port of notion_attach_assets.py). The notion-custom MCP Export stack, SQLite editor journal, batches, fingerprints/snapshots/receipts, Figma and Python renderer paths were dropped. This supersedes the old "do not use the standard Notion plugin" line in the archived workflow (practice since Terra used it). Superseded by the t50u one-command REST export (entry above).
 - Docs merged without changing rule text: brand-guide + editorial-style → brand/voice.md; DESIGN + typography + photo-treatment → brand/design.md; workflow/REPOSITORY/editor/integrations/status/SKILL/READMEs → AGENTS.md + docs/workflow.md. MIGRATION.md maps every old file.
 - Terra example PNGs kept byte-exact (their SHA-256 hashes are cited), so the repo is ~5 MB plus the Kimi fixture rather than strictly under 5 MB. Visual reference images were downscaled to JPEG.
 - Structure deviations from the brief: layout metrics kept as `templates/html/layout-tokens.json` (was review-tokens.json) because the renderer needs them; fonts live in `brand/fonts/`; blue ink is its own module `scripts/blue-ink.mjs` so tests can call it.
