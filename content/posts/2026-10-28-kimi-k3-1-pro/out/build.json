@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-kimi-k3-1-pro",
+  "copyRevision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
+  "designRevision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+  "builtAt": "2026-10-28T05:23:30.879Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/01-main.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/01-01-main.png",
+      "pngHash": "4c36ba1a33ebb1af30f07002a91e75c4740c48657b0cb2f6b28c406e5bf1db70",
+      "imageHash": "d36874f66f34ac12cfbb6dc1bf53ea0c9d8701a95f0c38c1952aeff6da8fa0e4",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 582,
+          "width": 1080,
+          "height": 768,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-benchmark",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/02-benchmark.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/02-02-benchmark.png",
+      "pngHash": "0ceffef7c7f5c850a04970085e1334742e4ed75108e788dff8180d89312676a5",
+      "imageHash": "efacda7315956a4ab4803321640abaf7b5d9fb191cfbac80e9fb1e0e5cc046d9",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 600,
+          "width": 1080,
+          "height": 750,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-3d-game-web",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/03-3d-game-web.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/03-03-3d-game-web.png",
+      "pngHash": "31602d4a338a194b5d61d6e8202a69370059cf337b6cd62a1c6b237079535e09",
+      "imageHash": "ec9f57e9d9af448604c423c5e8dde8354e96ad7683fe83dc086143a390ab4cee",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 600,
+          "width": 1080,
+          "height": 750,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-halusinasi",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/04-halusinasi.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/04-04-halusinasi.png",
+      "pngHash": "5fca7ffd3681cd4df0ddcd857bfc9bbd8f71af194a605a1d830c7443877f84af",
+      "imageHash": "01791a6badf6fba10fc3f2b28f63b5db6fac5d0e315a9928542419e9407803d6",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 600,
+          "width": 1080,
+          "height": 750,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-ketersediaan",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/05-ketersediaan.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/05-05-ketersediaan.png",
+      "pngHash": "5bd1cdc4e621bb8a007d4909f3188f8491d9210f781b0ea8316d785392952162",
+      "imageHash": "7f55b9a0dfee069c740c6abb0b89bd9808be50cb3e5fef1c9a88c670cbcb4be6",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 780,
+          "width": 1080,
+          "height": 570,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "violations": []
+      }
+    }
+  ]
+}

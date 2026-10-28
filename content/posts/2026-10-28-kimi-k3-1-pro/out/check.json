@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-kimi-k3-1-pro",
+  "designRevision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+  "copyRevision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
+  "checkedAt": "2026-10-28T05:23:32.072Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [
+    "Caption sekitar 185 kata; panduan 100–150 kata."
+  ],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9810938845822567,
+        "meanDistance": 2.046002202916537,
+        "inkPixels": 0.27202842377260983
+      },
+      "gap": 54,
+      "photoHeight": 768
+    },
+    {
+      "id": "02-benchmark",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/02-02-benchmark.png",
+      "ink": {
+        "onRamp": 0.9765327029156816,
+        "meanDistance": 1.8152580791963078,
+        "inkPixels": 0.024806934594168637
+      },
+      "gap": 54,
+      "photoHeight": 750
+    },
+    {
+      "id": "03-3d-game-web",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/03-03-3d-game-web.png",
+      "ink": {
+        "onRamp": 0.9618421052631579,
+        "meanDistance": 3.748427411615048,
+        "inkPixels": 0.957041910331384
+      },
+      "gap": 54,
+      "photoHeight": 750
+    },
+    {
+      "id": "04-halusinasi",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/04-04-halusinasi.png",
+      "ink": {
+        "onRamp": 0.9763120567375887,
+        "meanDistance": 2.026080070016424,
+        "inkPixels": 0.02201733648542159
+      },
+      "gap": 54,
+      "photoHeight": 750
+    },
+    {
+      "id": "05-ketersediaan",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/05-05-ketersediaan.png",
+      "ink": {
+        "onRamp": 0.9997377908882333,
+        "meanDistance": 0.7437796033152824,
+        "inkPixels": 0.8666666666666667
+      },
+      "gap": 54,
+      "photoHeight": 570
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-kimi-k3-1-pro",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2022-06-28"
+  },
+  "approvedRevision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+  "approval": {
+    "gate": "final",
+    "words": "Approved. Export that into notion",
+    "source": "chat t45u",
+    "context": "Owner approved the v2 post (his edited copy as is, previewed as a contact sheet with his edits applied) and instructed Notion export. Only non-owner change: Main alt text (see edits.log.md). Does not authorize Instagram publishing or scheduling.",
+    "at": "2026-10-28T04:27:45.000Z",
+    "atWIB": "2026-10-28 11:27 WIB",
+    "revision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+    "recordedAt": "2026-10-28T05:23:55.281Z"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-10-28-kimi-k3-1-pro\". Never match by title alone.",
+  "properties": {
+    "Post": "Moonshot AI rilis Kimi K3.1 Pro!",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Open weight Model AI yang bisa diunduh bebas biasanya selalu tertinggal selangkah dari model AI tertutup. Namun, jarak keduanya kini makin tipis. Perusahaan asal Tiongkok, Moonshot AI, baru saja merilis Kimi K3.1 Pro pada 23 Oktober 2026. Model dengan 3 triliun parameter ini dibekali context window hingga 1 juta token. Moonshot mengklaim skornya di Terminal-Bench 4.0 menembus 65,7%—melampaui GPT-6 Astra dan nyaris menyamai Claude Opus 5.5.\n\nTak hanya jago coding, K3.1 Pro diklaim mampu merancang model 3D, game, dan website interaktif dari perintah teks atau gambar, sekaligus menangani analisis keuangan. Hadir pula versi Highspeed yang 2–3 kali lebih ngebut. Keduanya sudah bisa diakses di Kimi.ai, aplikasi Kimi, dan API. Jika bobot modelnya benar-benar dibuka sesuai janji, berbagai perusahaan nantinya bisa menjalankan AI ini langsung di server mereka sendiri.\n\nMemang, sebagian besar klaim performa di atas masih berasal dari pengujian internal Moonshot, meski Artificial Analysis mencatat skor Terminal-Bench yang kurang lebih sama. Bobot model lengkapnya baru akan dirilis paling lambat 4 November nanti, dan detail lisensinya pun masih belum jelas. Menurutmu, apakah model AI terbuka saat ini sudah cukup tangguh untuk menggantikan AI berbayar?\n\nSumber: Moonshot AI, Artificial Analysis / Foto: Moonshot AI\n\n#akalmesin #Kimi #MoonshotAI #AIOpenSource #KecerdasanBuatan",
+    "Topic": "AI",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-benchmark.png",
+      "03-03-3d-game-web.png",
+      "04-04-halusinasi.png",
+      "05-05-ketersediaan.png"
+    ]
+  },
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-kimi-k3-1-pro",
+  "body": "# Approved copy\n\n## 01-main\n\nMoonshot AI rilis Kimi K3.1 Pro!\n\nModelnya akan dirilis secara terbuka (open-weights) paling lambat 4 November.\n\n## 02-benchmark\n\nMoonshot mengklaim K3.1 Pro meraih skor 65,7% di benchmark Terminal-Bench 4.0—**mengungguli GPT-6 Astra (58,2%)** dan **hanya terpaut 0,7 poin** dari Claude Opus 5.5 (66,4%). Artificial Analysis juga mencatat hasil serupa, yakni sekitar 67% dalam pengujian mereka sendiri.\n\n## 03-3d-game-web\n\nCukup bermodalkan teks, sketsa, atau gambar referensi, K3.1 Pro bisa menulis skrip untuk Blender dan software CAD guna **membuat model 3D, game, hingga website interaktif**. Fitur 3D Make untuk mengedit dan mengunduh model 3D ini sudah bisa dicoba di Kimi.ai dan aplikasi Kimi.\n\n## 04-halusinasi\n\nDalam uji internal tingkat tinggi yang dirancang khusus oleh Kimi, tingkat halusinasi (klaim keliru) berhasil ditekan **dari 23,4% di versi K3 menjadi 8,3%**. Meski begitu, Moonshot menegaskan bahwa angka ini bukanlah benchmark tingkat kesalahan untuk pemakaian sehari-hari.\n\n## 05-ketersediaan\n\nK3.1 Pro beserta versi Highspeed-nya (yang 2–3 kali lebih cepat) sudah tersedia di Kimi.ai, aplikasi Kimi, dan lewat API. Bobot model (weight) penuhnya dijanjikan rilis publik **paling lambat 4 November 2026**, meski pantauan per 26 Oktober menunjukkan file-nya belum tersedia di Hugging Face. Moonshot juga menghapus data terkait keamanan siber dari materi pelatihannya untuk mencegah risiko penyalahgunaan.\n\n# Caption\n\nOpen weight Model AI yang bisa diunduh bebas biasanya selalu tertinggal selangkah dari model AI tertutup. Namun, jarak keduanya kini makin tipis. Perusahaan asal Tiongkok, Moonshot AI, baru saja merilis Kimi K3.1 Pro pada 23 Oktober 2026. Model dengan 3 triliun parameter ini dibekali context window hingga 1 juta token. Moonshot mengklaim skornya di Terminal-Bench 4.0 menembus 65,7%—melampaui GPT-6 Astra dan nyaris menyamai Claude Opus 5.5.\n\nTak hanya jago coding, K3.1 Pro diklaim mampu merancang model 3D, game, dan website interaktif dari perintah teks atau gambar, sekaligus menangani analisis keuangan. Hadir pula versi Highspeed yang 2–3 kali lebih ngebut. Keduanya sudah bisa diakses di Kimi.ai, aplikasi Kimi, dan API. Jika bobot modelnya benar-benar dibuka sesuai janji, berbagai perusahaan nantinya bisa menjalankan AI ini langsung di server mereka sendiri.\n\nMemang, sebagian besar klaim performa di atas masih berasal dari pengujian internal Moonshot, meski Artificial Analysis mencatat skor Terminal-Bench yang kurang lebih sama. Bobot model lengkapnya baru akan dirilis paling lambat 4 November nanti, dan detail lisensinya pun masih belum jelas. Menurutmu, apakah model AI terbuka saat ini sudah cukup tangguh untuk menggantikan AI berbayar?\n\nSumber: Moonshot AI, Artificial Analysis / Foto: Moonshot AI\n\n#akalmesin #Kimi #MoonshotAI #AIOpenSource #KecerdasanBuatan\n\n# Sources\n\n- [Moonshot AI — Kimi K3.1 Pro blog](https://www.kimi.ai/blog/kimi-k3-1-pro)\n- [VentureBeat — Kimi K3.1 Pro](https://venturebeat.com/technology/moonshots-kimi-k3-1-pro-flirts-with-open-weights-leadership-amid-paid-influencer-scandal-allegations)\n- [The Agentic Weekly — open weights status](https://theagenticweekly.com/guides/kimi-k3-1-pro-open-weights)\n- [The Next Web](https://thenextweb.com/news/moonshot-kimi-k3-1-pro-open-weight-cyber)\n\n# Alt text and photo credits\n\n01-main: Judul rilis Kimi K3.1 Pro dari Moonshot AI dan janji bobot model terbuka (open-weights) paling lambat 4 November. Gambar tinta biru memperlihatkan model 3D mesin jet turbofan yang terurai, contoh hasil Kimi K3.1 Pro di FreeCAD.\n\nFOTO: MODEL 3D BUATAN KIMI K3.1 PRO / MOONSHOT AI\n\n02-benchmark: Detail skor Terminal-Bench 4.0. Grafik batang resmi Moonshot dalam tinta biru: Opus 5.5 66,4, Kimi K3.1 Pro 65,7, GPT-6 Astra 58,2, Fable 5.1 57,9, DS-V4.1-Flash 42,3, GLM-5.3 41,8.\n\nFOTO: BENCHMARK TERMINAL-BENCH 4.0 / MOONSHOT AI\n\n03-3d-game-web: Detail kemampuan membuat model 3D, game, dan website. Gambar tinta biru menampilkan cuplikan game petualangan 3D di Godot buatan K3.1 Pro: karakter berjubah menghadapi bos Amethyst Guardian di dekat danau.\n\nFOTO: GAME BUATAN KIMI K3.1 PRO / MOONSHOT AI\n\n04-halusinasi: Detail penurunan tingkat halusinasi. Grafik resmi Kimi Hallu Bench Hard dengan tools dalam tinta biru, lebih rendah lebih baik: GPT-6 Astra 5,5, Kimi K3.1 Pro 8,3, Opus 5.5 15,0, GLM-5.3 22,6.\n\nFOTO: KIMI HALLU BENCH / MOONSHOT AI\n\n05-ketersediaan: Detail ketersediaan dan janji rilis bobot model. Gambar peluncuran resmi tinta biru: tulisan K3.1 di atas pegunungan yang tertutup awan.\n\nFOTO: KIMI K3.1 / MOONSHOT AI\n\n# Approval\n\n\"Approved. Export that into notion\" — chat t45u, 2026-10-28 11:27 WIB\n\nApproved design revision: 76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f\n\n# Source ledger\n\n# Sources — Kimi K3.1 Pro (retrieved 2026-10-28 WIB)\n\n## Verification table\n\n| Claim (reference caption) | Status | Source |\n|---|---|---|\n| Released 23 Oct 2026, Kimi.ai/apps/Kimi Work/Kimi Code/API | Confirmed | https://www.kimi.ai/blog/kimi-k3-1-pro ; https://thenextweb.com/news/moonshot-kimi-k3-1-pro-open-weight-cyber |\n| \"Open-weight\", 3T-class, 1M-token context | Confirmed as Moonshot claim; weights not yet published as of 26 Oct (no HF repo, no licence seen) -> HEDGED | Kimi blog; https://theagenticweekly.com/guides/kimi-k3-1-pro-open-weights ; notebookcheck |\n| Terminal-Bench 4.0: 65.7% vs GPT-6 Astra 58.2%, Claude Opus 5.5 66.4% | Confirmed (vendor figure; competitor scores = max of their own blog or leaderboard). Independent cross-check: Artificial Analysis ~67% | Kimi blog footnote 1; https://venturebeat.com/technology/moonshots-kimi-k3-1-pro-flirts-with-open-weights-leadership-amid-paid-influencer-scandal-allegations |\n| 3D / CAD / websites / games from text or images | Confirmed (text brief, sketch or reference image; scripts for Blender/CAD; BenchCAD 92.7% vs Opus 5.5 96.2%) | Kimi blog |\n| Finance improvements | Confirmed (OfficeQA Pro v2 64.4; internal finance benches +7.2/+11.6 pts) | Kimi blog |\n| Hallucination 23.4% -> 8.3% | Confirmed but QUALIFIED: claim-level rate on internal Kimi Hallu Bench Hard stress test; Moonshot says not daily-use error rate | Kimi blog |\n| Highspeed 2-3x faster | Confirmed (vendor claim) | Kimi blog |\n| Both available now; full weights by Nov 4 | Confirmed as a promise; not delivered yet | Kimi blog; Agentic Weekly |\n| \"Rivals OpenAI and Anthropic\" | Secondary framing; replaced by specific benchmark numbers | - |\n| Extra (not in reference): cyber-related training data removed; xdev-bench-hard 90.5% -> 81.0% | Confirmed (vendor) | Kimi blog |\n| Context: VentureBeat reports paid-influencer allegations around the launch | Not used; unverified | VentureBeat headline |\n\nNo quotations used.\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-10-28-kimi-k3-1-pro\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/01-01-main.png",
+      "sha256": "4c36ba1a33ebb1af30f07002a91e75c4740c48657b0cb2f6b28c406e5bf1db70",
+      "bytes": 1052300
+    },
+    {
+      "slideId": "02-benchmark",
+      "file": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/02-02-benchmark.png",
+      "sha256": "0ceffef7c7f5c850a04970085e1334742e4ed75108e788dff8180d89312676a5",
+      "bytes": 779267
+    },
+    {
+      "slideId": "03-3d-game-web",
+      "file": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/03-03-3d-game-web.png",
+      "sha256": "31602d4a338a194b5d61d6e8202a69370059cf337b6cd62a1c6b237079535e09",
+      "bytes": 1412108
+    },
+    {
+      "slideId": "04-halusinasi",
+      "file": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/04-04-halusinasi.png",
+      "sha256": "5fca7ffd3681cd4df0ddcd857bfc9bbd8f71af194a605a1d830c7443877f84af",
+      "bytes": 900351
+    },
+    {
+      "slideId": "05-ketersediaan",
+      "file": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/05-05-ketersediaan.png",
+      "sha256": "5bd1cdc4e621bb8a007d4909f3188f8491d9210f781b0ea8316d785392952162",
+      "bytes": 847461
+    }
+  ],
+  "generatedAt": "2026-10-28T05:23:55.441Z"
+}
