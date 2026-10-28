@@ -2,22 +2,7 @@
 // Step 5: applies the editor's Simpan file to post.json and logs a sentence/word diff.
 // Refuses edits made against an older revision. Clears copy/final approvals that no longer match.
 import fs from 'node:fs';
-import {
-  loadPost,
-  parseArgs,
-  readJSON,
-  writeJSON,
-  saveWorkflow,
-  appendLog,
-  copyRevision,
-  editableFields,
-  sentenceDiff,
-  formatDiff,
-  invalidate,
-  wib,
-  isMain,
-  fail
-} from './core.mjs';
+import {loadPost, parseArgs, readJSON, writeJSON, saveWorkflow, appendLog, copyRevision, legacyCopyRevision, creditsRevision, editableFields, sentenceDiff, formatDiff, invalidate, wib, isMain, fail} from './core.mjs';
 
 export function applyEdits(post, edits) {
   const next = structuredClone(post),
@@ -69,16 +54,16 @@ export function recordEdits(ref, editsFile, {who = 'owner', now = new Date()} = 
   const base = edits.schemaVersion === 2 ? workflow.legacyRevisions[edits.sourceRevisions?.[post.slug]] : edits.baseRevision;
   const current = copyRevision(post);
   if (!base) throw Error('Edits carry no base revision this post knows about; regenerate the editor with npm run copy:review.');
-  if (base !== current)
-    throw Error(
-      `Edits were made on revision ${base.slice(0, 12)}, but the copy is now ${current.slice(0, 12)}. Ask for a fresh review instead of overwriting newer text.`
-    );
+  // Editors generated before the t65u hash rule carry the old-rule revision; accept it only if nothing changed since.
+  if (base !== current && base !== legacyCopyRevision(post)) throw Error(`Edits were made on revision ${base.slice(0, 12)}, but the copy is now ${current.slice(0, 12)}. Ask for a fresh review instead of overwriting newer text.`);
   const {next, changes} = applyEdits(post, edits);
   if (!changes.length) return {changes, revision: current};
   const revision = copyRevision(next),
     mode = edits.mode || 'copy';
   writeJSON(paths.post, next);
-  invalidate(workflow, ['copy', 'final'], `copy edited (${who}) → ${revision.slice(0, 12)}`, now);
+  // Credit-only edits leave the copy revision unchanged: copy approval stays, final (design) is reset.
+  const copyChanged = revision !== current;
+  invalidate(workflow, copyChanged ? ['copy', 'final'] : ['final'], copyChanged ? `copy edited (${who}) → ${revision.slice(0, 12)}` : `credits edited (${who}) → credits ${creditsRevision(next).slice(0, 12)}`, now);
   if (mode === 'design') workflow.designStale = true;
   workflow.stage = 'copy-review';
   workflow.history.push({event: 'copy-recorded', who, mode, from: current, to: revision, file: editsFile.split(/[\\/]/).pop(), at: now.toISOString()});
@@ -87,19 +72,11 @@ export function recordEdits(ref, editsFile, {who = 'owner', now = new Date()} = 
     `Who: ${who} · mode: ${mode} · file: \`${editsFile.split(/[\\/]/).pop()}\`${edits.savedAt ? ' · saved ' + wib(edits.savedAt) : ''}\nRevision ${current.slice(0, 12)} → ${revision.slice(0, 12)}\n\n` +
     changes.map(c => `### ${c.where}\n\n\`\`\`diff\n${formatDiff(c.items) || '(whitespace / line-break change)'}\n\`\`\``).join('\n\n');
   appendLog(paths.log, `${wib(now)} — ${who} edits (${mode})`, body);
-  return {changes, revision};
+  return {changes, revision, copyChanged};
 }
 
-if (isMain(import.meta.url))
-  try {
-    const a = parseArgs();
-    const r = recordEdits(a._[0], a._[1], {who: a.who});
-    console.log(
-      r.changes.length
-        ? `✓ ${r.changes.length} field(s) changed → ${r.revision.slice(0, 12)}; diff in edits.log.md. Copy and final approvals cleared.`
-        : '✓ no changes'
-    );
-    for (const c of r.changes) console.log('  · ' + c.where);
-  } catch (e) {
-    fail(e);
-  }
+if (isMain(import.meta.url)) try {
+  const a = parseArgs(); const r = recordEdits(a._[0], a._[1], {who: a.who});
+  console.log(r.changes.length ? `✓ ${r.changes.length} field(s) changed → ${r.revision.slice(0, 12)}; diff in edits.log.md. ${r.copyChanged ? "Copy and final approvals cleared." : "Credits only: copy approval kept, final cleared."}` : '✓ no changes');
+  for (const c of r.changes) console.log('  · ' + c.where);
+} catch (e) { fail(e); }

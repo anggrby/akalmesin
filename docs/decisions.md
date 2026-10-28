@@ -277,3 +277,7 @@ Three stories with three slides each were researched and delivered at Figma boar
 The owner approved and ran the network-free local importer after the MCP Starter limit and desktop failures. The nine editable slides were verified. Do not rerun it or ask for the same approval; its duplicate guard and old reference protect that historical batch. Preserve its outputs and the owner's revisions. It is not the template for new work.
 
 Older green/two-blue palettes, exploratory avatar, casual profile copy, and series names are historical proposals. The 25 October update changes local guidance; it does not claim that the old drafts, renderer, Figma file or Notion guide were rewritten during this update.
+
+## 2026-10-28 — Photo credits out of the copy hash
+
+Credit edits after copy approval were forcing a copy re-approval (OpenAI post, t64u). Owner approved the fix (t65u, "Yes"): credits move out of `copyRevision` into `creditsRevision`; final approval still covers them via `designRevision`. Strict line patterns plus the `credit_fragment` check stop copy being smuggled into credit text. Old approvals are honoured through `legacyCopyRevision` only for unchanged content; new approvals store `copyRule: 2`.

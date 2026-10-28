@@ -8,23 +8,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import {
-  ROOT,
-  TOPICS,
-  loadPost,
-  parseArgs,
-  readJSON,
-  writeJSON,
-  saveWorkflow,
-  copyRevision,
-  designRevision,
-  requireApproval,
-  fileHash,
-  wib,
-  isMain,
-  fail,
-  rel
-} from './core.mjs';
+import {ROOT, TOPICS, loadPost, parseArgs, readJSON, writeJSON, saveWorkflow, copyRevision, designRevision, requireApproval, requireCopyApproval, fileHash, wib, isMain, fail, rel} from './core.mjs';
 
 export const NOTION = {
   dataSourceId: '405f909f-26a5-8029-8e7a-000b3f2a28a4',
@@ -59,7 +43,7 @@ export function topicFor(category) {
 
 export function manifest(ref) {
   const {paths, post, workflow} = loadPost(ref);
-  requireApproval(workflow, 'copy', copyRevision(post));
+  requireCopyApproval(workflow, post);
   const final = requireApproval(workflow, 'final', designRevision(post, paths.dir));
   const build = readJSON(path.join(paths.out, 'build.json'));
   const assets = build.slides.map(s => {

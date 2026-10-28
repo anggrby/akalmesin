@@ -1,7 +1,7 @@
 // npm run doctor — checks this machine can run the workflow. Prints no secrets.
 import fs from 'node:fs';
 import path from 'node:path';
-import {ROOT, readJSON, launchBrowser, loadPost, copyRevision, designRevision} from './core.mjs';
+import {ROOT, readJSON, launchBrowser, loadPost, copyRevision, copyApprovalCurrent, designRevision} from './core.mjs';
 
 const rows = [];
 const ok = (name, pass, info = '') => rows.push({name, pass, info});
@@ -35,9 +35,8 @@ ok('NOTION_UPLOAD_TOKEN set (needed for npm run export)', true, process.env.NOTI
 const posts = path.join(ROOT, 'content/posts');
 for (const slug of fs.existsSync(posts) ? fs.readdirSync(posts).filter(d => fs.existsSync(path.join(posts, d, 'post.json'))) : []) {
   try {
-    const {paths, post, workflow} = loadPost(slug),
-      a = workflow.approvals;
-    const copy = a.copy ? (a.copy.revision === copyRevision(post) ? 'current' : 'STALE') : '—';
+    const {paths, post, workflow} = loadPost(slug), a = workflow.approvals;
+    const copy = a.copy ? (copyApprovalCurrent(a.copy, post) ? 'current' : 'STALE') : '—';
     const fin = a.final ? (a.final.revision === designRevision(post, paths.dir) ? 'current' : 'STALE') : '—';
     ok('post ' + slug, true, `stage ${workflow.stage} · copy ${copy} · final ${fin} · notion ${workflow.notion ? 'recorded' : '—'}`);
   } catch (e) {

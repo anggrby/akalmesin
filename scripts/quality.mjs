@@ -3,10 +3,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {ROOT, readJSON, captionBody, countWords, isDetail} from './core.mjs';
+import {ROOT, readJSON, captionBody, countWords, isDetail, splitCaptionCredits, ILLUSTRATION_LINE} from './core.mjs';
 
 export const loadPolicy = (root = ROOT) => readJSON(path.join(root, 'brand/editorial-policy.json'));
 const CREDIT = /^(FOTO|ILUSTRASI AI): .+ \/ .+/;
+const CREDIT_MAX = 100, CREDIT_MAX_WORDS = 14, CREDIT_PREFIX = /^(FOTO|ILUSTRASI AI): /;
 /** Person-name comparison: case-, diacritic- and spacing-insensitive, exact otherwise. */
 export const normName = s =>
   String(s ?? '')
@@ -36,6 +37,12 @@ export function checkPost(post, policy = loadPolicy(), {dir} = {}) {
     .map(l => /^\s*Sumber\s*:\s*(.+?)\s*\/\s*Foto\s*:\s*(.+?)\s*$/i.exec(l))
     .find(Boolean);
   if (!footer) add('caption_footer', 'Tambahkan footer Sumber: … / Foto: … di caption.');
+  // Credit fragments are outside the copy revision (t65u), so they must stay short credits, never sentences.
+  const badCredit = t => t.length > CREDIT_MAX || countWords(t) > CREDIT_MAX_WORDS || /[.!?;](\s|$)|[—–]|\b(?:Sumber|Foto)\s*:/i.test(t);
+  for (const frag of splitCaptionCredits(paragraphs).fragments.filter(x => /^Foto:/.test(x)))
+    if (badCredit(frag.replace(/^Foto:\s*/, ''))) add('credit_fragment', `Bagian "Foto:" di footer harus kredit singkat (≤${CREDIT_MAX} karakter, ≤${CREDIT_MAX_WORDS} kata, tanpa kalimat): "${frag}".`);
+  for (const line of caption.split(/\r?\n/)) if (/^\s*Ilustrasi\s+slide\b/i.test(line) && !ILLUSTRATION_LINE.test(line))
+    add('credit_fragment', `Baris ilustrasi harus persis "Ilustrasi slide N: AI / akalmesin": "${line.trim()}".`);
   const tags = [...caption.matchAll(/#[\p{L}\p{N}_]+/gu)].length;
   if (tags > rules.maxHashtags) add('hashtag_limit', `Maksimal ${rules.maxHashtags} hashtag; ditemukan ${tags}.`);
   const allText = [caption, post.title];
@@ -61,6 +68,7 @@ export function checkPost(post, policy = loadPolicy(), {dir} = {}) {
           add('quote_provenance', `Slide ${slide.id}: assets/PROVENANCE.md harus mencatat ${src.subject}.`);
       }
     } else if (!CREDIT.test(slide.credit || '')) add('credit_format', `Slide ${slide.id}: kredit harus "FOTO: SUBJEK / SUMBER".`);
+    else if (badCredit(slide.credit.replace(CREDIT_PREFIX, ''))) add('credit_fragment', `Slide ${slide.id}: kredit harus singkat (≤${CREDIT_MAX} karakter, ≤${CREDIT_MAX_WORDS} kata, tanpa kalimat).`);
     if (!slide.alt?.trim()) add('alt_missing', `Slide ${slide.id}: alt text kosong.`);
     if (slide.imageSource?.kind === 'ai-illustration' && !new RegExp(`Ilustrasi\\s+slide\\s+${i + 1}\\s*:\\s*AI\\s*\\/\\s*akalmesin`, 'i').test(caption))
       add('illustration_disclosure', `Tambahkan Ilustrasi slide ${i + 1}: AI / akalmesin pada caption.`);

@@ -118,14 +118,46 @@ export function editableFields(slide) {
   return {...Object.fromEntries((slide.paragraphs || []).map((p, i) => ['paragraph-' + i, p])), credit: slide.credit};
 }
 
-/** Hash of everything the owner reviews as copy (text + credits + caption). */
-export const copyRevision = post =>
-  sha256({
-    title: post.title,
-    category: post.category,
-    caption: post.caption,
-    slides: post.slides.map(s => ({id: s.id, layout: s.layout, fields: editableFields(s)}))
-  });
+// Photo credits are chosen after copy approval (decision 2026-10-28, t65u), so they are not copy:
+// slide `credit`, the "/ Foto: …" half of the caption footer and "Ilustrasi slide N: AI / akalmesin"
+// lines are kept out of copyRevision and covered by creditsRevision + final approval (designRevision
+// hashes the whole post). Only lines that match these patterns exactly are split; anything else stays copy.
+export const FOOTER_LINE = /^(\s*Sumber\s*:\s*.+?)\s*\/\s*Foto\s*:\s*(.+?)\s*$/i;
+export const ILLUSTRATION_LINE = /^\s*Ilustrasi\s+slide\s+\d+\s*:\s*AI\s*\/\s*akalmesin\s*$/i;
+export const COPY_RULE = 2;
+
+/** Caption with the credit fragments removed, plus the removed fragments (in order). */
+export function splitCaptionCredits(caption = []) {
+  const fragments = [];
+  const text = caption.map(para => String(para).split('\n').flatMap(line => {
+    if (ILLUSTRATION_LINE.test(line)) { fragments.push(line.trim()); return []; }
+    const m = FOOTER_LINE.exec(line);
+    if (m) { fragments.push('Foto: ' + m[2]); return [m[1].trimEnd()]; }
+    return [line];
+  }).join('\n'));
+  return {text, fragments};
+}
+
+/** Hash of what the owner reviews as copy: title, category, caption without credit fragments, slide text without credits. */
+export const copyRevision = post => sha256({rule: COPY_RULE, title: post.title, category: post.category, caption: splitCaptionCredits(post.caption).text,
+  slides: post.slides.map(s => { const {credit, ...fields} = editableFields(s); return {id: s.id, layout: s.layout, fields}; })});
+/** Pre-t65u rule (credits + full caption). Only used to honour approvals recorded under it while the content is unchanged. */
+export const legacyCopyRevision = post => sha256({title: post.title, category: post.category, caption: post.caption, slides: post.slides.map(s => ({id: s.id, layout: s.layout, fields: editableFields(s)}))});
+/** Hash of the photo credits and the caption credit fragments (recorded in build.json; final approval covers them). */
+export const creditsRevision = post => sha256({slides: post.slides.map(s => ({id: s.id, credit: s.credit ?? null})), fragments: splitCaptionCredits(post.caption).fragments});
+
+/** True when the copy approval matches the current copy. Approvals recorded before COPY_RULE (no copyRule) count only
+ * if the post is byte-for-byte unchanged under the old rule (so nothing becomes valid that the owner didn't see). */
+export function copyApprovalCurrent(approval, post) {
+  if (!approval?.revision) return false;
+  if (approval.revision === copyRevision(post)) return true;
+  return approval.copyRule !== COPY_RULE && approval.revision === legacyCopyRevision(post);
+}
+export function requireCopyApproval(workflow, post) {
+  const a = workflow.approvals?.copy;
+  if (a && !copyApprovalCurrent(a, post)) throw Error(`Gate "copy" approval is stale: it approved revision ${a.revision.slice(0, 12)}, current is ${copyRevision(post).slice(0, 12)}. Get a new approval.`);
+  return requireApproval(workflow, 'copy');
+}
 
 /** Hash of the whole post plus the processed images: what "final" approves. */
 export const processedImage = (dir, slide) => path.join(dir, 'assets/processed', slide.id + '-blue-ink.png');

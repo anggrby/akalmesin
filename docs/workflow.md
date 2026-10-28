@@ -128,3 +128,7 @@ After a real publication, save its permalink, actual publication timestamp/timez
 | Growth           | Attributed follows if available; otherwise clearly labeled account-level net growth |
 
 Normalize by unique reach/viewers when both values exist. Do not equate shares with private sends, views with unique viewers, or account growth with one post's attributable follows. Do not assume slide-by-slide completion is available. Unapproved strategy proposals do not establish brand, cadence, or publishing rules.
+
+## Credits are not copy (copy rule 2, 2026-10-28)
+
+`copyRevision` hashes title, category, slide text and the caption, **without** photo credits: slide `credit`, the `/ Foto: …` half of the `Sumber: … / Foto: …` footer, and lines that are exactly `Ilustrasi slide N: AI / akalmesin`. The `Sumber:` half, paragraphs and hashtags stay in the hash. Credits are covered by `creditsRevision` (in `build.json`) and by final approval (`designRevision` hashes the whole post). A credit-only `copy:record` keeps copy approval and clears final. Quality check `credit_fragment` rejects credit fragments that are long (>100 chars / 14 words) or contain sentences (`. ! ? ;`, dashes, inner `Sumber:`/`Foto:`). Copy approvals recorded before rule 2 (no `copyRule`) remain valid only while `legacyCopyRevision(post)` still matches, i.e. nothing at all changed.

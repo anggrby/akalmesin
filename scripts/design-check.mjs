@@ -4,21 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import sharp from 'sharp';
-import {
-  ROOT,
-  loadPost,
-  parseArgs,
-  readJSON,
-  writeJSON,
-  copyRevision,
-  designRevision,
-  processedImage,
-  fileHash,
-  launchBrowser,
-  isMain,
-  fail,
-  imageGaps
-} from './core.mjs';
+import {ROOT, loadPost, parseArgs, readJSON, writeJSON, copyRevision, copyApprovalCurrent, designRevision, processedImage, fileHash, launchBrowser, isMain, fail, imageGaps} from './core.mjs';
 import {checkPost} from './quality.mjs';
 import {inkStats, looksInked} from './blue-ink.mjs';
 import {inspectLayout} from './design-build.mjs';
@@ -33,8 +19,7 @@ export async function designCheck(ref) {
   const build = readJSON(buildFile),
     revision = designRevision(post, paths.dir);
   if (build.designRevision !== revision) add('Build is stale: post.json or images changed after design:build');
-  const approvedCopy = workflow.approvals.copy?.revision;
-  if (approvedCopy !== copyRevision(post)) add('Copy approval missing or stale');
+  if (!copyApprovalCurrent(workflow.approvals.copy, post)) add('Copy approval missing or stale');
   if (workflow.designStale) add('Text was edited in design review; rebuild');
   const q = checkPost(post, undefined, {dir: paths.dir});
   q.errors.forEach(e => add('Editorial: ' + e.message));
