@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "caption": {
+    "bodyParagraphs": 3,
+    "suggestedWordMinimum": 100,
+    "suggestedWordMaximum": 150,
+    "maxHashtags": 5,
+    "closingQuestionCount": 1
+  },
+  "detail": {
+    "maxEmphasisPhrases": 1,
+    "benchmarkMaxEmphasisPhrases": 2
+  },
+  "wording": {
+    "avoid": "tolok ukur",
+    "prefer": "benchmark"
+  }
+}

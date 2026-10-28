@@ -1,0 +1,21 @@
+{
+  "name": "akalmesin",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "post:new": "node scripts/post-new.mjs",
+    "copy:review": "node scripts/copy-review.mjs",
+    "copy:record": "node scripts/copy-record.mjs",
+    "approve": "node scripts/approve.mjs",
+    "design:build": "node scripts/design-build.mjs",
+    "design:check": "node scripts/design-check.mjs",
+    "export": "node scripts/export.mjs",
+    "test": "node --test tests/",
+    "doctor": "node scripts/doctor.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.62.1",
+    "sharp": "0.35.5"
+  }
+}

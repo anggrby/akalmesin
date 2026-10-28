@@ -1,0 +1,292 @@
+[
+  {
+    "slug": "2026-10-24-claude-verifikasi",
+    "topic": "AI",
+    "title": "Claude bantu buktikan keamanan kode.",
+    "label": "VERIFIKASI FORMAL",
+    "headline": [
+      "Claude bantu buktikan",
+      "keamanan kode."
+    ],
+    "subtitle": [
+      "Riset pada 123 pustaka open-source,",
+      "dengan jaminan yang punya batas."
+    ],
+    "credit": "ARSIP: ANTHROPIC",
+    "photo": "original-dario.webp",
+    "data": {
+      "kicker": "RISET ANTHROPIC × THEOREM",
+      "number": "123",
+      "unit": "pustaka open-source",
+      "intro": [
+        "Claude menulis bukti matematis.",
+        "Rocq memeriksa bukti tersebut."
+      ],
+      "columns": [
+        {
+          "label": "TES",
+          "body": [
+            "Mencoba input",
+            "untuk mencari bug."
+          ]
+        },
+        {
+          "label": "BUKTI",
+          "body": [
+            "Memastikan aturan",
+            "berlaku dalam model."
+          ]
+        }
+      ]
+    },
+    "detail": {
+      "kicker": "BATAS RISET",
+      "headline": [
+        "Belum berarti",
+        "bebas bug."
+      ],
+      "blocks": [
+        {
+          "label": "SPESIFIKASI",
+          "body": [
+            "Terbukti untuk aturan tertentu,",
+            "bukan semua jenis kesalahan."
+          ]
+        },
+        {
+          "label": "LINGKUNGAN",
+          "body": [
+            "RISC-V/Linux, satu thread,",
+            "memori tetap, input <64 MB."
+          ]
+        },
+        {
+          "label": "ARTINYA",
+          "body": [
+            "AI bisa membantu pemeriksaan.",
+            "Jaminannya tetap bersyarat."
+          ]
+        }
+      ]
+    },
+    "footer": "SUMBER: ANTHROPIC / THEOREM",
+    "primary": [
+      [
+        "Anthropic — Formal verification",
+        "https://www.anthropic.com/research/formal-verification",
+        "2026-10-22"
+      ],
+      [
+        "Theorem — OSS Verify",
+        "https://theorem.dev/oss-verify/",
+        "undated; retrieved 2026-10-24"
+      ]
+    ],
+    "image_page": "https://www.anthropic.com/company/leadership",
+    "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/b9f2de42abe07215bc6f3e1498765fa0d3d58eaf-640x800.webp?fm=webp",
+    "image_credit": "Anthropic",
+    "image_description": "Archival official portrait of Dario Amodei, not a photograph of the research or its authors.",
+    "rights": "Official company website portrait; no blanket reuse license confirmed. Review draft only; confirm editorial permission or replace before publishing.",
+    "angle": "AI-assisted verification, explained through what a proof can and cannot guarantee.",
+    "caption": "Claude ikut menulis bukti matematis tentang sifat keamanan kode. Riset Anthropic bersama Theorem mencakup 123 pustaka open-source; pemeriksaan buktinya memakai Rocq.\n\nJaminan berlaku pada aturan dan lingkungan yang ditentukan. Ini belum berarti seluruh perangkat lunak bebas bug.\n\nMenurut kami, ini arah penting untuk memeriksa kode buatan manusia maupun AI.\n\nFoto arsip: Dario Amodei / Anthropic; ditata ulang dan diberi perlakuan blue ink dengan AI. Bukan dokumentasi pelaksanaan riset.\n\n#akalmesin #AI #KeamananSiber #OpenSource",
+    "alt": [
+      "Sampul off-white dengan judul Claude bantu buktikan keamanan kode. Foto arsip Dario Amodei berwarna tinta biru di bagian bawah.",
+      "Slide hitam dengan angka 123, keterangan pustaka open-source, alur Claude menulis bukti dan Rocq memeriksa, serta perbedaan tes dan bukti.",
+      "Slide off-white menjelaskan batas spesifikasi dan lingkungan RISC-V/Linux, satu thread, memori tetap, input di bawah 64 MB."
+    ]
+  },
+  {
+    "slug": "2026-10-24-robogym",
+    "topic": "ROBOTIKA",
+    "title": "Robot juga perlu tempat latihan.",
+    "label": "PHYSICAL AI",
+    "headline": [
+      "Robot juga perlu",
+      "tempat latihan."
+    ],
+    "subtitle": [
+      "NEURA dan TUM membuka",
+      "RoboGym di Munich."
+    ],
+    "credit": "FOTO: A. HEDDERGOTT / TUM",
+    "photo": "original-robogym.jpg",
+    "data": {
+      "kicker": "TUM ROBOGYM",
+      "number": "48",
+      "unit": "sel latihan · sekitar 100 robot",
+      "intro": [
+        "Data latihan datang dari",
+        "tiga jalur yang saling melengkapi."
+      ],
+      "columns": [
+        {
+          "label": "01 / DUNIA NYATA",
+          "body": [
+            "Robot mencoba",
+            "tugas langsung."
+          ]
+        },
+        {
+          "label": "02 / MANUSIA",
+          "body": [
+            "Gerakan manusia",
+            "jadi demonstrasi."
+          ]
+        },
+        {
+          "label": "03 / SIMULASI",
+          "body": [
+            "Variasi virtual",
+            "diuji di robot."
+          ]
+        }
+      ]
+    },
+    "detail": {
+      "kicker": "MENGAPA INI PENTING",
+      "headline": [
+        "Latihan spesifik.",
+        "Bukan serba bisa."
+      ],
+      "blocks": [
+        {
+          "label": "TUGAS NYATA",
+          "body": [
+            "Contohnya menangani kardus,",
+            "mengisi botol, dan memuat kayu."
+          ]
+        },
+        {
+          "label": "DATA FISIK",
+          "body": [
+            "Gerak, kontak, dan hasil tindakan",
+            "menjadi bahan belajar robot."
+          ]
+        },
+        {
+          "label": "BATASNYA",
+          "body": [
+            "Pusat latihan ini belum membuktikan",
+            "robot andal untuk semua pekerjaan."
+          ]
+        }
+      ]
+    },
+    "footer": "SUMBER: TUM MIRMI / NEURA",
+    "primary": [
+      [
+        "TUM MIRMI — RoboGym FAQ",
+        "https://www.mirmi.tum.de/mirmi/aktuelles/article/fragen-und-antworten-zum-tum-robogym-powered-by-neura/",
+        "2026-10-22"
+      ],
+      [
+        "NEURA — RoboGym opening",
+        "https://neura-robotics.com/tum-robogym-munich-4ne1-gen4-launch/",
+        "2026-10-22"
+      ],
+      [
+        "TUM — Official opening and photos",
+        "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/tum-eroeffnet-convergence-center-und-tum-robogym-powered-by-neura",
+        "2026-10-22"
+      ]
+    ],
+    "image_page": "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/tum-eroeffnet-convergence-center-und-tum-robogym-powered-by-neura",
+    "image_url": "https://www.tum.de/fileadmin/_processed_/f/c/csm_20261022_RoboGym_AH_1034068_01_f14d636ed7.jpg",
+    "image_credit": "Andreas Heddergott / TUM",
+    "image_description": "Official event photograph with three people and two humanoid robots.",
+    "rights": "Official university press photograph with named credit. No general reuse license captured; confirm press-image terms and treatment permission before publishing.",
+    "angle": "The less glamorous infrastructure behind physical AI: task practice and real interaction data.",
+    "caption": "Robot juga perlu latihan, bukan cuma demo yang mulus.\n\nPada 22 Oktober, TUM dan NEURA membuka RoboGym di dekat Bandara Munich. TUM menyebut fasilitasnya memiliki 48 sel latihan dengan sekitar 100 robot.\n\nLatihannya menggabungkan interaksi fisik, demonstrasi manusia, dan simulasi. Targetnya mengembangkan kemampuan untuk tugas konkret; pembukaan fasilitas bukan bukti robot sudah bisa semua pekerjaan.\n\nFoto: Andreas Heddergott / TUM. Perlakuan blue ink dibantu AI; lihat sumber asli pada catatan riset.\n\n#akalmesin #Robotika #PhysicalAI #Teknologi",
+    "alt": [
+      "Sampul off-white berjudul Robot juga perlu tempat latihan. Foto pembukaan TUM RoboGym dengan tiga pria dan dua robot diberi warna tinta biru.",
+      "Slide hitam menonjolkan 48 sel latihan dan sekitar 100 robot, lalu tiga sumber data: dunia nyata, demonstrasi manusia, dan simulasi.",
+      "Slide off-white menyebut contoh tugas kardus, botol, dan kayu, fungsi data fisik, serta batas bahwa fasilitas ini tidak membuktikan kemampuan universal."
+    ]
+  },
+  {
+    "slug": "2026-10-24-pc-shipment",
+    "topic": "KOMPUTASI",
+    "title": "Pengiriman PC anjlok 21%.",
+    "label": "DATA AWAL COUNTERPOINT",
+    "headline": [
+      "Pengiriman PC",
+      "anjlok 21%."
+    ],
+    "subtitle": [
+      "Global, kuartal III 2026.",
+      "Dibanding periode yang sama 2025."
+    ],
+    "credit": "FOTO ILUSTRASI: FOTIS FOTOPOULOS",
+    "photo": "original-pc.jpg",
+    "data": {
+      "kicker": "PENGIRIMAN PC GLOBAL / Q3 2026",
+      "number": "57",
+      "unit": "juta unit",
+      "intro": [
+        "Turun 21% dibanding Q3 2025.",
+        "Data awal Counterpoint Research."
+      ],
+      "bars": [
+        {
+          "label": "Q3 2025",
+          "value": 100
+        },
+        {
+          "label": "Q3 2026",
+          "value": 79
+        }
+      ],
+      "chart_note": "INDEKS: Q3 2025 = 100"
+    },
+    "detail": {
+      "kicker": "MEMBACA ANGKA",
+      "headline": [
+        "Turun pengiriman.",
+        "Belum tentu murah."
+      ],
+      "blocks": [
+        {
+          "label": "BIAYA NAIK",
+          "body": [
+            "Counterpoint menyoroti mahalnya",
+            "memori dan komponen lain."
+          ]
+        },
+        {
+          "label": "BEDA UKURAN",
+          "body": [
+            "Pengiriman bukan jumlah PC",
+            "yang dibeli pengguna akhir."
+          ]
+        },
+        {
+          "label": "KONTEKS LOKAL",
+          "body": [
+            "Angka global ini bukan patokan",
+            "harga PC di Indonesia."
+          ]
+        }
+      ]
+    },
+    "footer": "SUMBER: COUNTERPOINT RESEARCH",
+    "primary": [
+      [
+        "Counterpoint — Preliminary Q3 2026 PC shipment report",
+        "https://counterpointresearch.com/en/insights/global-pc-shipments-plunge-21-percent-in-q3-2026",
+        "2026-10-22"
+      ]
+    ],
+    "image_page": "https://unsplash.com/photos/smartphone-and-computer-monitors-with-code-6sAl6aQ4OWI",
+    "image_url": "https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=max&w=2200&q=90",
+    "image_credit": "Fotis Fotopoulos / Unsplash",
+    "image_description": "Archival workstation photo, published 14 November 2020; illustrative, not a depiction of shipment data.",
+    "rights": "Photo page explicitly says free under the Unsplash License: https://unsplash.com/license . No endorsement implied.",
+    "angle": "Separate declining shipment volumes from consumer price assumptions.",
+    "caption": "Pengiriman PC global turun 21% secara tahunan menjadi 57 juta unit pada kuartal III 2026, menurut data awal Counterpoint Research yang diterbitkan 22 Oktober.\n\nLembaga itu menyoroti kenaikan biaya memori dan komponen yang menekan permintaan. Pengiriman yang turun tidak otomatis berarti harga ritel ikut turun.\n\nAngka ini mengukur pasar global, bukan penjualan ke pengguna akhir atau harga PC Indonesia. Grafik memakai indeks Q3 2025 = 100; Q3 2026 = 79.\n\nFoto ilustrasi: Fotis Fotopoulos / Unsplash. Perlakuan blue ink dibantu AI.\n\n#akalmesin #Komputasi #PC #Teknologi",
+    "alt": [
+      "Sampul off-white berjudul Pengiriman PC anjlok 21 persen, dengan foto ilustrasi monitor, ponsel, dan meja kerja dalam tinta biru.",
+      "Slide hitam menampilkan 57 juta unit. Grafik indeks memperlihatkan Q3 2025 sebesar 100 dan Q3 2026 sebesar 79, setara penurunan 21 persen.",
+      "Slide off-white membedakan biaya komponen, pengiriman dan pembelian pengguna akhir, serta data global dan harga PC Indonesia."
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+node_modules/
+content/posts/*/out/
+!content/posts/*/out/final/
+.DS_Store
+*.tmp
+__pycache__/

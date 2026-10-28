@@ -1,0 +1,9 @@
+Bayangkan AI yang bisa membaca isi layar dan menjalankan tugas di berbagai aplikasi, dengan harga yang lebih murah. Itulah yang dijanjikan GPT-6.1 Terra, model baru yang diluncurkan OpenAI pada 26 Oktober 2026 waktu AS. Menurut OpenAI, model ini lebih baik daripada GPT-5.6 Terra dalam penggunaan komputer, penalaran visual, dan penulisan.
+
+Terra dirancang untuk menyeimbangkan biaya dan kemampuan. Harga API standarnya US$1 per 1 juta token input dan US$5 per 1 juta token output, separuh harga GPT-6.1 Sol. Dibandingkan GPT-5.6 Terra, harga input turun 50% dan output sekitar 58%. Model ini tersedia bagi pengguna Plus, Pro, Enterprise, dan Edu di ChatGPT Work dan Codex, serta lewat API.
+
+Ada batasnya. Angka benchmark-nya berasal dari pengujian OpenAI sendiri dan belum diverifikasi secara independen. OpenAI pun tetap menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk riset mendalam dan pemrograman kompleks. Menurutmu, mana yang lebih penting saat memilih model AI: harga atau kemampuan?
+
+Sumber: OpenAI / Foto: OpenAI Ilustrasi slide 5: AI / akalmesin
+
+#akalmesin #OpenAI #GPT61 #ChatGPT #KecerdasanBuatan

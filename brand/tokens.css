@@ -1,0 +1,41 @@
+/* See ../DESIGN.md for the full visual system and semantic token inventory.
+   Confirmed 25 October 2026 foundations, not a complete layout implementation.
+   Preserve current Figma type settings; exact new numerical metrics await a direct read.
+   Pending tokens in JSON intentionally have no guessed CSS value.
+   Old measured sizes and geometry are archived in legacy/2026-10-24-tokens.*.
+   The active HTML renderer reads confirmed JSON values plus separate review-tokens.json.
+   The 24 October renderer remains historical. */
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope.ttf') format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --akalmesin-ink: #000000;
+  --akalmesin-paper: #EEEEEE;
+  --akalmesin-accent: #4E4FEB;
+  --photo-credit-color: #FFFFFF;
+  --photo-credit-align: left;
+  --quote-text-color: #FFFFFF;
+  --post-width: 1080px;
+  --post-height: 1350px;
+  --corner-radius: 0;
+  --text-margin: 64px;
+  --text-to-photo-gap: 54px;
+  --font-sans: 'Manrope', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --wordmark-weight: 700;
+  --headline-weight: 700;
+  --body-weight: 400;
+  --metadata-weight: 400;
+}
+/* Standard layouts: measure the gap from the final text frame/block to the image.
+   Main image fills remaining height to canvas bottom; credit overlays image.
+   Credit alignment is left/right per photo. Quote is a separate portrait overlay. */
