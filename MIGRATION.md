@@ -10,7 +10,7 @@ The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbati
 | `brand/editorial-style.md` (includes "relaxed, not stiff" from PR #4) | `brand/voice.md` § Editorial style | verbatim, with a quick-rules index on top |
 | `brand/style-feedback-log.md` (includes the Kimi entries) | `brand/style-feedback-log.md` | verbatim |
 | `brand/editorial-policy.json` | `brand/editorial-policy.json` | identical; enforced by `scripts/quality.mjs` + the editor's live warnings |
-| `DESIGN.md`, `brand/typography.md`, `brand/photo-treatment.md`, `design/README.md`, `design/references/2026-10-25/README.md`, `assets/README.md` | `brand/design.md` | verbatim, with a photo quick-rules index on top |
+| `DESIGN.md`, `brand/typography.md`, `brand/photo-treatment.md`, `design/references/2026-10-25/README.md`, `assets/README.md` | `brand/design.md` | verbatim, with a photo quick-rules index on top |
 | `brand/tokens.css`, `brand/tokens.json` | same paths | font URLs → `brand/fonts/` |
 | `brand/Logo.jpg`, `brand/logo-wordmark.png` | `brand/logos/` | byte-exact |
 | `assets/fonts/*` (Manrope, IBM Plex Mono + OFL) | `brand/fonts/` | byte-exact |
@@ -24,7 +24,7 @@ The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbati
 | `docs/notion-content-schema.json` | `docs/notion-schema.json` | byte-exact |
 | `editorial.config.json` (Notion IDs, property names) | `scripts/export.mjs` `NOTION` + manifest property names | same IDs |
 | `docs/editor.md` (live editor, Export button, SQLite journal) | `docs/workflow.md` §§ 4–5 | replaced by the single-file editor + Simpan + `copy:record` |
-| `docs/REPOSITORY.md`, `docs/status.md`, `README.md`, `AGENTS.md`, `archive/AGENTS.md`, `archive/README.md`, `scripts/README.md`, `templates/html/README.md`, `templates/html/editorial/README.md`, `content/posts/README.md`, `manifest/README.md` | `AGENTS.md` (map + setup) + `docs/workflow.md` | merged. Open items from status.md → OPEN-QUESTIONS 7, 9, 10 |
+| `docs/REPOSITORY.md`, `docs/status.md`, `design/README.md` (index only), `README.md`, `AGENTS.md`, `archive/AGENTS.md`, `archive/README.md`, `scripts/README.md`, `templates/html/README.md`, `templates/html/editorial/README.md`, `content/posts/README.md`, `manifest/README.md` | `AGENTS.md` (map + setup) + `docs/workflow.md` | merged. Open items from status.md → OPEN-QUESTIONS 7, 9, 10 |
 | `.agents/skills/akalmesin-editorial/SKILL.md` + `agents/openai.yaml` | `AGENTS.md` | the task routing table became the 8-step table |
 | `templates/editorial-copy.md` | `templates/copy.md` | same fields, shortened, pointing at the new commands |
 | `research/README.md`, `research/strategy/*`, `research/news/2026-10-24/*` | `research/` | byte-exact |
