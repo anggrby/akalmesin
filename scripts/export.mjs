@@ -2,6 +2,8 @@
 // npm run export -- <slug>             → one command, Notion REST API (token: NOTION_UPLOAD_TOKEN):
 //   find page by body marker → create or update it → upload PNGs in order → read back + SHA-256
 //   check → receipt in workflow.json. Re-running updates the same page; it never makes a second one.
+// npm run export -- <slug> --adopt-legacy [--force-blocks id,id] [--dry-run]
+//   → take over an older connector-made page (marker, no end line); see docs/workflow.md step 8.
 // `--post <slug>` works too. Step 8. Requires a current final approval. Never publishes or schedules.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -114,9 +116,10 @@ export async function findByMarker(api, marker) {
   for (const p of pages.filter(p => !p.in_trash && !p.archived)) if ((await children(api, p.id)).some(b => plain(b).trim() === marker)) hits.push(p);
   return hits;
 }
-export function properties(m, fileUploads) {
+/** On create: Status "Ready to Publish", empty Publish date. On update: Status and Publish date are the owner's and are left alone. */
+export function properties(m, fileUploads, {update = false} = {}) {
   const P = m.properties;
-  return {Post: {title: richText(P.Post)}, Status: {status: {name: P.Status}}, Format: {select: {name: P.Format}}, Caption: {rich_text: richText(P.Caption)}, Topic: {select: {name: P.Topic}}, 'Publish date': {date: null},
+  return {Post: {title: richText(P.Post)}, ...(update ? {} : {Status: {status: {name: P.Status}}, 'Publish date': {date: null}}), Format: {select: {name: P.Format}}, Caption: {rich_text: richText(P.Caption)}, Topic: {select: {name: P.Topic}},
     Assets: {files: fileUploads.map(u => ({name: u.name, type: 'file_upload', file_upload: {id: u.id}}))}};
 }
 async function upload(api, m) {
@@ -140,17 +143,34 @@ async function replaceBody(api, pageId, m) {
   for (const b of kids.slice(s, e + 1)) await api.call('DELETE', 'blocks/' + b.id);
   await appendBlocks(api, pageId, bodyBlocks(m));
 }
+const norm = t => String(t).split('\n').map(l => l.trimEnd()).join('\n').trim();
+/** Plain texts the older connector export would have written: from the recorded payload `notion-legacy-body.json`. */
+export function legacyTexts(dir) {
+  const f = path.join(dir, 'notion-legacy-body.json');
+  if (!fs.existsSync(f)) throw Error(`${rel(f)} is missing: adoption needs the exact body the old export sent, to tell generated blocks from human notes.`);
+  return readJSON(f).children.map(b => norm(plain(b)));
+}
+/** Read-only plan for a legacy page: which blocks are generated (to delete) and which are not (foreign). */
+export async function adoptPlan(api, pageId, m, known) {
+  const kids = await children(api, pageId), current = new Set(bodyBlocks(m).map(b => norm(plain(b)))), legacy = new Set(known);
+  if (!kids.some(b => norm(plain(b)) === m.bodyMarker)) throw Error(`Page ${pageId} does not carry ${m.bodyMarker}; nothing to adopt.`);
+  if (kids.some(b => norm(plain(b)) === END)) return {pageId, alreadyManaged: true, generated: [], foreign: []}; // adopted before: a normal update
+  const row = b => ({id: b.id, type: b.type, chars: plain(b).length, preview: plain(b).slice(0, 80).replace(/\n/g, ' ')});
+  const generated = [], foreign = [];
+  for (const b of kids) (!b.has_children && (legacy.has(norm(plain(b))) || current.has(norm(plain(b)))) ? generated : foreign).push(row(b));
+  return {pageId, generated, foreign};
+}
 const sha = buf => crypto.createHash('sha256').update(buf).digest('hex');
 /** Read the page back: properties, marker, asset order and the SHA-256 of every downloaded file. */
-export async function verify(api, pageId, m) {
+export async function verify(api, pageId, m, {owner} = {}) {
   const page = await api.call('GET', 'pages/' + pageId), P = page.properties, txt = x => x.map(t => t.plain_text ?? t.text.content).join('');
   const want = m.properties, errs = [];
   if (txt(P.Post.title) !== want.Post) errs.push('Post title');
-  if (P.Status.status?.name !== want.Status) errs.push('Status');
+  if (P.Status.status?.name !== (owner ? owner.Status : want.Status)) errs.push('Status');
   if (P.Format.select?.name !== want.Format) errs.push('Format');
   if (P.Topic.select?.name !== want.Topic) errs.push('Topic');
   if (txt(P.Caption.rich_text) !== want.Caption) errs.push('Caption');
-  if (P['Publish date'].date) errs.push('Publish date is set');
+  if (JSON.stringify(P['Publish date'].date ?? null) !== JSON.stringify(owner ? owner.publishDate : null)) errs.push(owner ? 'Publish date changed' : 'Publish date is set');
   if (page.parent?.data_source_id && page.parent.data_source_id.replace(/-/g, '') !== NOTION.dataSourceId.replace(/-/g, '')) errs.push('wrong data source');
   if (!(await children(api, pageId)).some(b => plain(b).trim() === m.bodyMarker)) errs.push('body marker');
   const files = P.Assets.files, names = files.map(f => f.name);
@@ -163,18 +183,39 @@ export async function verify(api, pageId, m) {
   return {page, hashes, assetsMatchBuild};
 }
 
-/** Step 8 end to end. Returns the receipt written to workflow.json. */
+/** Step 8 end to end. Returns the receipt written to workflow.json (or the plan, for an adopt dry run). */
 export async function exportPost(ref, opts = {}) {
   const m = manifest(ref), {paths, workflow} = loadPost(ref), api = opts.api || client(opts);
   writeJSON(path.join(paths.out, 'notion-manifest.json'), m);
   const hits = await findByMarker(api, m.bodyMarker);
   if (hits.length > 1) throw Error(`${hits.length} pages carry ${m.bodyMarker}: ${hits.map(h => h.id).join(', ')}. Trash the duplicates in Notion first.`);
-  const ups = await upload(api, m), props = properties(m, ups);
+  let plan, owner, previousAssets;
+  if (opts.adoptLegacy) {
+    if (!hits.length) throw Error(`No page carries ${m.bodyMarker}; --adopt-legacy only takes over an existing page.`);
+    plan = await adoptPlan(api, hits[0].id, m, legacyTexts(paths.dir));
+    if (plan.alreadyManaged) { if (opts.dryRun) return plan; plan = null; }
+  }
+  if (plan) {
+    const allowed = new Set(opts.forceBlocks || []), unlisted = plan.foreign.filter(b => !allowed.has(b.id));
+    if (unlisted.length) throw Error(`Refusing to adopt ${plan.pageId}: ${unlisted.length} block(s) are not generated content and may be human notes:\n` + unlisted.map(b => `  ${b.id} ${b.type}: "${b.preview}"`).join('\n') + `\nMove them out by hand, or list them with --force-blocks ${unlisted.map(b => b.id).join(',')} to delete them.`);
+    const page = await api.call('GET', 'pages/' + plan.pageId);
+    owner = {Status: page.properties.Status?.status?.name ?? null, publishDate: page.properties['Publish date']?.date ?? null};
+    previousAssets = (page.properties.Assets?.files || []).map(f => f.name);
+    plan = {...plan, deleteBlocks: [...plan.generated, ...plan.foreign], keepProperties: owner, replaceAssets: {from: previousAssets, to: m.assets.map(a => path.basename(a.file))}};
+    if (opts.dryRun) return plan;
+  }
+  if (hits.length && !plan) { // check the body shape before any write, so a legacy page is never half-updated
+    const kids = await children(api, hits[0].id);
+    if (!kids.some(b => plain(b).trim() === END)) throw Error(`Page ${hits[0].id} has the marker but no "${END}" line (older connector-made page). Run \`npm run export -- ${m.slug} --adopt-legacy --dry-run\` to see what adoption would change; export will not guess what to delete.`);
+  }
+  const ups = await upload(api, m), props = properties(m, ups, {update: hits.length > 0});
   let pageId, action;
   if (hits.length) {
-    pageId = hits[0].id; action = 'updated';
+    pageId = hits[0].id; action = plan ? 'adopted' : 'updated';
+    if (!owner) { const p = (await api.call('GET', 'pages/' + pageId)).properties; owner = {Status: p.Status?.status?.name ?? null, publishDate: p['Publish date']?.date ?? null}; }
     await api.call('PATCH', 'pages/' + pageId, {properties: props});
-    await replaceBody(api, pageId, m);
+    if (plan) { for (const b of plan.deleteBlocks) await api.call('DELETE', 'blocks/' + b.id); await appendBlocks(api, pageId, bodyBlocks(m)); }
+    else await replaceBody(api, pageId, m);
   } else {
     // Not retried: a lost create must be found by its marker on the next run, never repeated blindly.
     const blocks = bodyBlocks(m);
@@ -182,8 +223,9 @@ export async function exportPost(ref, opts = {}) {
     pageId = page.id; action = 'created';
     await appendBlocks(api, pageId, blocks.slice(100));
   }
-  const {page, hashes, assetsMatchBuild} = await verify(api, pageId, m), at = new Date().toISOString();
+  const {page, hashes, assetsMatchBuild} = await verify(api, pageId, m, {owner}), at = new Date().toISOString();
   workflow.notion = {pageId, url: page.url, action, dataSourceId: NOTION.dataSourceId, databaseId: NOTION.databaseId, apiVersion: NOTION.version, contentId: m.contentId, bodyMarker: m.bodyMarker, approvedRevision: m.approvedRevision,
+    ...(owner ? {ownerManaged: owner} : {}), ...(plan ? {adoptedLegacy: {deletedBlocks: plan.deleteBlocks.map(b => b.id), forcedBlocks: plan.foreign.map(b => b.id), previousAssets}} : {}),
     orderedAssetHashes: m.assets.map(a => a.sha256), uploadedAssetHashes: hashes, assetsMatchBuild, exportedAt: at, exportedAtWIB: wib(at)};
   workflow.stage = 'notion-delivered';
   workflow.history.push({event: 'notion-' + action, pageId, at});
@@ -199,7 +241,10 @@ export function loadEnvLocal(file = path.join(ROOT, '.env.local')) {
 
 if (isMain(import.meta.url)) try {
   loadEnvLocal();
-  const a = parseArgs(undefined, ['dry-run']), slug = a.post || a._[0];
-  if (a['dry-run']) { const m = manifest(slug), {paths} = loadPost(slug), out = path.join(paths.out, 'notion-manifest.json'); writeJSON(out, m); console.log(`✓ ${rel(out)} — ${m.assets.length} assets, title "${m.properties.Post}" (dry run, no network)`); }
+  const a = parseArgs(undefined, ['dry-run', 'adopt-legacy']), slug = a.post || a._[0];
+  if (a['adopt-legacy']) {
+    const r = await exportPost(slug, {adoptLegacy: true, dryRun: !!a['dry-run'], forceBlocks: a['force-blocks'] ? String(a['force-blocks']).split(',') : []});
+    console.log(a['dry-run'] ? JSON.stringify(r, null, 2) : `✓ Notion page ${r.action}: ${r.url}\n  ${r.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${r.exportedAtWIB})`);
+  } else if (a['dry-run']) { const m = manifest(slug), {paths} = loadPost(slug), out = path.join(paths.out, 'notion-manifest.json'); writeJSON(out, m); console.log(`✓ ${rel(out)} — ${m.assets.length} assets, title "${m.properties.Post}" (dry run, no network)`); }
   else { const n = await exportPost(slug); console.log(`✓ Notion page ${n.action}: ${n.url}\n  ${n.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${n.exportedAtWIB})`); }
 } catch (e) { fail(e); }

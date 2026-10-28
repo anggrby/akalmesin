@@ -2,6 +2,13 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-10-28 — Adopt the connector-made Kimi row instead of making a new one (t56u)
+
+- Owner (t56u): "Yes approved for kimi" (final, revision 7bfb0d4853cd…), then "Yes, replace the images on the existing Kimi row in Notion".
+- `export --adopt-legacy` takes over an older page that has the marker but no end line. It deletes only blocks whose text matches the recorded old body (`notion-legacy-body.json`) and refuses on anything else unless the block ids are listed with `--force-blocks`. Dry run first.
+- Status and Publish date are owner-managed on every update (the Kimi row is already `Published`, 28 Oct 12:00 WIB); export sets them only when it creates a page. Normal export now refuses a legacy page before uploading or patching anything (it used to patch properties first, then refuse).
+- Read-only check of the real row (box, 28 Oct ~15:20 WIB): 3 body blocks, all generated, no foreign blocks; 5 old PNGs in Assets; no image blocks in the body.
+
 ## 2026-10-28 — Light quote mark, image follows the copy, Quote slide only for real quotes (t55u)
 
 - Owner (t55u): "Good catch. Use light. The quote slide is not required for every post, it just for the post that contain important quote from the person in that news and it should use that person photo, not the other object. It should start where the copy ends, The image should adjust their height automatically relative to the copy. The check are deterministic, correct? it should".

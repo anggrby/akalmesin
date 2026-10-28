@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {ROOT, readJSON, writeJSON, designRevision} from '../scripts/core.mjs';
-import {exportPost, richText, topicFor, client, manifest, bodyBlocks} from '../scripts/export.mjs';
+import {exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
 import {KIMI, tmpPost} from './helpers.mjs';
 
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -36,7 +36,7 @@ function fakeNotion({pages = [], failOnce = {}} = {}) {
     if ((m = p.match(/^file_uploads\/(.+)\/send$/))) { store.uploads.get(m[1]).bytes = Buffer.from(await body.get('file').arrayBuffer()); return json({}); }
     const toProps = props => ({...props, Assets: {files: props.Assets.files.map(f => ({name: f.name, type: 'file', file: {url: 'https://files.test/' + f.file_upload.id}}))}});
     if (method === 'POST' && p === 'pages') { const b = JSON.parse(body), id = 'page-' + store.n++; store.pages.set(id, {id, url: 'https://www.notion.so/' + id, parent: b.parent, properties: toProps(b.properties), blocks: b.children.map(x => ({...x, id: 'b' + store.n++}))}); return json({id}); }
-    if ((m = p.match(/^pages\/(.+)$/))) { const pg = store.pages.get(m[1]); if (method === 'PATCH') pg.properties = toProps(JSON.parse(body).properties); const {blocks, ...x} = pg; return json(x); }
+    if ((m = p.match(/^pages\/(.+)$/))) { const pg = store.pages.get(m[1]); if (method === 'PATCH') pg.properties = {...pg.properties, ...toProps(JSON.parse(body).properties)}; const {blocks, ...x} = pg; return json(x); }
     return json({message: 'unexpected ' + key}, 400);
   };
   return store;
@@ -92,4 +92,54 @@ test('client needs a token and never puts it in errors', async () => {
   assert.throws(() => client({token: ''}), /NOTION_UPLOAD_TOKEN/);
   const api = client({token: 'secret-xyz', fetch: async () => ({ok: false, status: 400, json: async () => ({message: 'bad'})}), sleep: async () => {}});
   await assert.rejects(api.call('GET', 'pages/x'), e => !e.message.includes('secret-xyz') && /HTTP 400/.test(e.message));
+});
+
+// ---------- --adopt-legacy (t56u) ----------
+const text = b => b[b.type].rich_text.map(t => t.plain_text ?? t.text.content).join('');
+/** A page shaped like the real connector-made Kimi row: legacy blocks, no end line, owner set Published + date, old files. */
+function legacyPage(dir, extra = []) {
+  const legacy = readJSON(path.join(dir, 'notion-legacy-body.json')).children.map((b, i) => ({...b, id: 'legacy' + i, has_children: false}));
+  return {id: 'legacy-page', url: 'https://www.notion.so/legacy-page', parent: {data_source_id: '405f909f-26a5-8029-8e7a-000b3f2a28a4'}, blocks: [...legacy, ...extra],
+    properties: {Status: {status: {name: 'Published'}}, 'Publish date': {date: {start: '2026-10-28T12:00:00.000+07:00', end: null, time_zone: null}}, Assets: {files: [{name: '01-main.png', type: 'file', file: {url: 'https://files.test/old'}}]}}};
+}
+const note = {id: 'human', type: 'paragraph', has_children: false, paragraph: {rich_text: [{text: {content: 'catatan Angger: ganti jam tayang'}}]}};
+
+test('adopt-legacy takes over a connector-made page: managed body, new ordered assets, owner Status/date kept; rerun is a plain update', async () => {
+  const dir = approvedPost(), s = fakeNotion({pages: [legacyPage(dir)]}), m = manifest(dir);
+  assert.equal(legacyTexts(dir).length, 3);
+  await assert.rejects(exportPost(dir, opts(s)), /no "akalmesin-managed-end" line/, 'normal export still refuses');
+  assert.ok(!s.calls.some(c => /^(PATCH|DELETE)|file_uploads/.test(c)), 'and refuses before writing anything');
+  const plan = await exportPost(dir, {...opts(s), adoptLegacy: true, dryRun: true});
+  assert.deepEqual(plan.foreign, []); assert.equal(plan.deleteBlocks.length, 3); assert.deepEqual(plan.replaceAssets.from, ['01-main.png']);
+  assert.ok(!s.calls.some(c => /^(PATCH|DELETE)|file_uploads/.test(c)), 'dry run writes nothing');
+  const r = await exportPost(dir, {...opts(s), adoptLegacy: true});
+  const pg = s.pages.get('legacy-page');
+  assert.equal(r.action, 'adopted'); assert.equal(s.pages.size, 1);
+  assert.deepEqual(pg.blocks.map(text), bodyBlocks(m).map(text));
+  assert.deepEqual(pg.properties.Assets.files.map(f => f.name), m.assets.map(a => path.basename(a.file)));
+  assert.equal(pg.properties.Status.status.name, 'Published'); assert.equal(pg.properties['Publish date'].date.start, '2026-10-28T12:00:00.000+07:00');
+  assert.equal(r.assetsMatchBuild, true); assert.deepEqual(r.adoptedLegacy.deletedBlocks, ['legacy0', 'legacy1', 'legacy2']);
+  const again = await exportPost(dir, {...opts(s), adoptLegacy: true});
+  assert.equal(again.action, 'updated'); assert.deepEqual(s.pages.get('legacy-page').blocks.map(text), bodyBlocks(m).map(text));
+});
+test('adopt-legacy refuses a page with a foreign block (no writes) unless that block is listed in --force-blocks', async () => {
+  const dir = approvedPost(), s = fakeNotion({pages: [legacyPage(dir, [note])]});
+  await assert.rejects(exportPost(dir, {...opts(s), adoptLegacy: true}), e => /Refusing to adopt/.test(e.message) && /human .*catatan Angger/.test(e.message));
+  await assert.rejects(exportPost(dir, {...opts(s), adoptLegacy: true, forceBlocks: ['other']}), /Refusing to adopt/);
+  assert.ok(!s.calls.some(c => /^(PATCH|DELETE)|file_uploads/.test(c)), 'refusal happens before any write or upload');
+  assert.ok(s.pages.get('legacy-page').blocks.some(b => b.id === 'human'));
+  const edited = legacyPage(dir); edited.blocks[1] = {...edited.blocks[1], paragraph: {rich_text: [{text: {content: text(edited.blocks[1]) + ' (diedit)'}}]}};
+  await assert.rejects(exportPost(dir, {...opts(fakeNotion({pages: [edited]})), adoptLegacy: true}), /legacy1/, 'an edited generated block counts as foreign');
+  const r = await exportPost(dir, {...opts(s), adoptLegacy: true, forceBlocks: ['human']});
+  assert.equal(r.action, 'adopted'); assert.deepEqual(r.adoptedLegacy.forcedBlocks, ['human']);
+  assert.ok(!s.pages.get('legacy-page').blocks.some(b => b.id === 'human'));
+});
+test('normal pages are unaffected by adopt-legacy, and updates keep the owner Status / Publish date', async () => {
+  const dir = approvedPost(), s = fakeNotion(), {pageId} = await exportPost(dir, opts(s));
+  const pg = s.pages.get(pageId); pg.properties.Status = {status: {name: 'Published'}}; pg.properties['Publish date'] = {date: {start: '2026-11-01'}};
+  const before = pg.blocks.map(text);
+  const r = await exportPost(dir, {...opts(s), adoptLegacy: true});
+  assert.equal(r.action, 'updated'); assert.deepEqual(s.pages.get(pageId).blocks.map(text), before);
+  assert.equal(s.pages.get(pageId).properties.Status.status.name, 'Published'); assert.equal(s.pages.get(pageId).properties['Publish date'].date.start, '2026-11-01');
+  await assert.rejects(exportPost(approvedPost(), {...opts(fakeNotion()), adoptLegacy: true}), /only takes over an existing page/);
 });
