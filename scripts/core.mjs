@@ -74,8 +74,9 @@ export function editableFields(slide) {
 export const copyRevision = post => sha256({title: post.title, category: post.category, caption: post.caption, slides: post.slides.map(s => ({id: s.id, layout: s.layout, fields: editableFields(s)}))});
 
 /** Hash of the whole post plus the processed images: what "final" approves. */
+export const processedImage = (dir, slide) => path.join(dir, 'assets/processed', slide.id + '-blue-ink.png');
 export function designRevision(post, dir) {
-  const images = post.slides.map(s => { const f = path.join(dir, s.image || ''); return fs.existsSync(f) && s.image ? fileHash(f) : null; });
+  const images = post.slides.map(s => { const f = processedImage(dir, s); return fs.existsSync(f) ? fileHash(f) : null; });
   return sha256({post, images});
 }
 
@@ -196,5 +197,14 @@ export async function launchBrowser() {
   if (!fs.existsSync(executablePath)) throw Error('Chromium not found. Run: npx playwright-core install chromium (or set AKALMESIN_CHROME_PATH).');
   return chromium.launch({headless: true, executablePath});
 }
+
+/** Append a dated section to edits.log.md. */
+export function appendLog(file, heading, body) {
+  const head = fs.existsSync(file) ? '' : '# Edit log\n\nEvery change to copy or design, newest last. Times are WIB.\n';
+  fs.mkdirSync(path.dirname(file), {recursive: true});
+  fs.appendFileSync(file, head + `\n## ${heading}\n\n${body.trim()}\n`);
+}
+export const saveWorkflow = (paths, wf) => writeJSON(paths.workflow, wf);
+export const rel = file => path.relative(ROOT, file).split(path.sep).join('/');
 
 export function fail(error) { console.error('✗ ' + (error?.message || error)); process.exitCode = 1; }

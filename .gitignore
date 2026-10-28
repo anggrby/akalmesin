@@ -1,6 +1,8 @@
 node_modules/
-content/posts/*/out/
-!content/posts/*/out/final/
+content/posts/*/out/*
+!content/posts/*/out/build.json
+!content/posts/*/out/check.json
+!content/posts/*/out/notion-manifest.json
 .DS_Store
 *.tmp
 __pycache__/
