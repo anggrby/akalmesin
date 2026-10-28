@@ -281,3 +281,7 @@ Older green/two-blue palettes, exploratory avatar, casual profile copy, and seri
 ## 2026-10-28 — Photo credits out of the copy hash
 
 Credit edits after copy approval were forcing a copy re-approval (OpenAI post, t64u). Owner approved the fix (t65u, "Yes"): credits move out of `copyRevision` into `creditsRevision`; final approval still covers them via `designRevision`. Strict line patterns plus the `credit_fragment` check stop copy being smuggled into credit text. Old approvals are honoured through `legacyCopyRevision` only for unchanged content; new approvals store `copyRule: 2`.
+
+## 2026-10-28 — Single-pass review; Save is the approval
+
+Owner (t67u–t69u, authorised t69u: "…only the copy that still my attention. You can make change now"): one review HTML with real slides and editable copy. A Save applied by `review:apply` with every check green counts as both the copy and final approval. A Save with zero changes is an approval. A failed check means no approval. Design rule 2 removes slide alt text from `designRevision` (alt stays in the export). Old final approvals without `designRule` are checked against `legacyDesignRevision`. The `selected` gate is no longer required. The placeholder copy editor and `approve --gate` remain available as fallbacks.

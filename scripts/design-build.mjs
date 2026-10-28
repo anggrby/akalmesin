@@ -17,6 +17,7 @@ import {
   creditsRevision,
   requireCopyApproval,
   designRevision,
+  finalApprovalCurrent,
   processedImage,
   requireApproval,
   fileHash,
@@ -32,8 +33,10 @@ import {renderSlidePage} from '../templates/html/post.mjs';
 import {pageCSS, editorHTML} from './copy-review.mjs';
 
 /** Runs inside the page: geometry rules from brand/design.md. */
-export function inspectLayout(gaps = {}) {
-  const post = document.querySelector('.post'),
+export function inspectLayout(gaps = {}, scope = null) {
+  // scope: one .post element (the review editor measures each slide in an unscaled copy); default = the page's slide.
+  const post = scope || document.querySelector('.post'),
+    $q = s => post.querySelector(s),
     b = post.getBoundingClientRect(),
     v = [];
   const rect = el => {
@@ -41,7 +44,7 @@ export function inspectLayout(gaps = {}) {
     return {x: r.x, y: r.y, width: r.width, height: r.height, bottom: r.bottom, right: r.right};
   };
   if (b.width !== 1080 || b.height !== 1350) v.push('Canvas dimensions');
-  for (const el of document.querySelectorAll('[data-edit], .wordmark, .category')) {
+  for (const el of post.querySelectorAll('[data-edit], .wordmark, .category')) {
     const r = el.getBoundingClientRect(),
       st = getComputedStyle(el);
     if (r.left < b.left - 0.5 || r.right > b.right + 0.5 || r.top < b.top - 0.5 || r.bottom > b.bottom + 0.5)
@@ -49,22 +52,22 @@ export function inspectLayout(gaps = {}) {
     if (el.scrollWidth > el.clientWidth + 1 || (st.overflowY === 'hidden' && el.scrollHeight > el.clientHeight + 1))
       v.push('Text overflow: ' + (el.dataset.edit || el.className));
   }
-  const credit = document.querySelector('.credit'),
+  const credit = $q('.credit'),
     cs = credit && getComputedStyle(credit),
-    photo = document.querySelector('.photo');
+    photo = $q('.photo');
   let quote = null;
   if (post.classList.contains('post-quote')) {
     const q = gaps.quote || {},
-      block = document.querySelector('.quote-block').getBoundingClientRect(),
-      text = document.querySelector('.quote-text').getBoundingClientRect();
-    if (document.querySelector('.masthead')) v.push('Quote must have no masthead');
+      block = $q('.quote-block').getBoundingClientRect(),
+      text = $q('.quote-text').getBoundingClientRect();
+    if ($q('.masthead')) v.push('Quote must have no masthead');
     if (credit) v.push('Quote must have no photo credit');
     const lines = Math.round(text.height / q.lineHeight);
     if (lines > q.maxLines) v.push(`Text overflow: quote is ${lines} lines (max ${q.maxLines})`);
     if (Math.abs(b.bottom - block.bottom - q.bottom) > 0.5) v.push('Quote block bottom is not ' + q.bottom + ' px from the edge');
     if (block.left - b.left < q.side - 0.5 || b.right - block.right < q.side - 0.5) v.push('Quote outside its side insets');
     if (block.top < b.top) v.push('Text outside canvas: quote');
-    quote = {block: rect(document.querySelector('.quote-block')), text: rect(document.querySelector('.quote-text')), lines};
+    quote = {block: rect($q('.quote-block')), text: rect($q('.quote-text')), lines};
   } else if (!credit) v.push('Photo credit missing');
   else {
     if (cs.color !== 'rgb(255, 255, 255)') v.push('Credit must be white');
@@ -73,7 +76,7 @@ export function inspectLayout(gaps = {}) {
   let gap = null,
     pr = null;
   if (photo) {
-    gap = photo.getBoundingClientRect().top - document.querySelector('.copy').getBoundingClientRect().bottom;
+    gap = photo.getBoundingClientRect().top - $q('.copy').getBoundingClientRect().bottom;
     pr = rect(photo);
     const want = gaps[post.className.match(/post-(\w+)/)?.[1]];
     if (want != null && Math.abs(gap - want) > 0.1) v.push(`Text/photo gap is ${gap}, tokens say ${want}`);
@@ -84,11 +87,17 @@ export function inspectLayout(gaps = {}) {
       if (c.top < pr.y || c.bottom > pr.bottom) v.push('Credit outside photo');
     }
   }
-  if ([...document.images].some(i => !i.complete || !i.naturalWidth)) v.push('Image not loaded');
-  if (document.querySelector('[data-placeholder]')) v.push('Placeholder still present');
+  if ([...post.querySelectorAll('img')].some(i => !i.complete || !i.naturalWidth)) v.push('Image not loaded');
+  if ($q('[data-placeholder]')) v.push('Placeholder still present');
   const faces = [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family);
   if (!faces.includes('Manrope') || (!post.classList.contains('post-quote') && !faces.includes('IBM Plex Mono'))) v.push('Bundled fonts not loaded');
   return {canvas: rect(post), photo: pr, textPhotoGap: gap, quote, violations: v};
+}
+
+/** 1080-px JPEG data URL for the review HTML. q80 + 4:4:4 chroma keeps the blue-ink ramp clean at ~1/3 the size of q88. */
+export const EMBED_JPEG = {quality: 80, chromaSubsampling: '4:4:4', mozjpeg: true};
+export async function embedJPEG(file, opts = EMBED_JPEG) {
+  return 'data:image/jpeg;base64,' + (await sharp(file).resize({width: 1080, withoutEnlargement: true}).jpeg(opts).toBuffer()).toString('base64');
 }
 
 async function contactSheet(files, target, cols = 3) {
@@ -110,9 +119,10 @@ async function contactSheet(files, target, cols = 3) {
     .toFile(target);
 }
 
-export async function designBuild(ref) {
+/** opts.review: single-pass flow (review:build / review:apply) — the build comes before the one approval, so no copy gate. */
+export async function designBuild(ref, {review = false} = {}) {
   const {paths, post, workflow} = loadPost(ref);
-  requireCopyApproval(workflow, post);
+  if (!review) requireCopyApproval(workflow, post);
   const slidesDir = path.join(paths.out, 'slides'),
     pngDir = path.join(paths.out, 'png');
   fs.rmSync(slidesDir, {recursive: true, force: true});
@@ -157,12 +167,10 @@ export async function designBuild(ref) {
   }
   const pngs = slides.map(s => path.join(ROOT, s.png));
   await contactSheet(pngs, path.join(paths.out, 'contact-sheet.png'));
-  // Final HTML: one file, images embedded as 1080-px JPEG so it opens anywhere.
+  // Review HTML (also the final HTML): one file, the real slides with images embedded as 1080-px JPEG, text editable in place.
   const embedded = {};
-  for (const [i, s] of post.slides.entries())
-    embedded[s.id] =
-      'data:image/jpeg;base64,' + (await sharp(images[i]).resize({width: 1080, withoutEnlargement: true}).jpeg({quality: 88}).toBuffer()).toString('base64');
-  writeFile(path.join(paths.out, `${post.slug}.html`), editorHTML(post, 'design', embedded));
+  for (const [i, s] of post.slides.entries()) embedded[s.id] = await embedJPEG(images[i]);
+  writeFile(path.join(paths.out, `${post.slug}.html`), editorHTML(post, 'review', embedded, {designRevision: designRevision(post, paths.dir)}));
   const build = {
     schemaVersion: 1,
     slug: post.slug,
@@ -175,7 +183,7 @@ export async function designBuild(ref) {
   writeJSON(path.join(paths.out, 'build.json'), build);
   workflow.designStale = false;
   workflow.stage = 'design-check';
-  if (workflow.approvals.final && workflow.approvals.final.revision !== build.designRevision) {
+  if (workflow.approvals.final && !finalApprovalCurrent(workflow.approvals.final, post, paths.dir)) {
     workflow.history.push({event: 'approval-invalidated', gate: 'final', reason: 'design rebuilt', at: build.builtAt, approval: workflow.approvals.final});
     workflow.approvals.final = null;
   }

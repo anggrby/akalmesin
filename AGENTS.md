@@ -17,6 +17,7 @@ This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news a
 
 ## Rules that are not negotiable
 
+- **Default flow is single-pass review:** `npm run review:build -- <slug>` → send him `out/<slug>.html` → `npm run review:apply -- <slug> <edits.json>`. A passing apply records his Save as copy + final approval; see docs/workflow.md.
 - **Approvals are his verbatim words.** Record them with `npm run approve -- <slug> --gate … --words "…" --source "chat tNNu"`. Positive feedback ("so far so good") is not an approval, and neither is a draft that already exists. Never paraphrase his words.
 - Any copy change clears the copy and final approvals (`copy:record` handles this). Any design change, including a token or post.css change, makes final stale (the hashes catch it).
 - Write the copy in his voice: [brand/voice.md](brand/voice.md). Before writing, read the [Terra example](brand/examples/terra/README.md) and the [feedback log](brand/style-feedback-log.md). Visual rules live in [brand/design.md](brand/design.md); every design value comes from [brand/tokens.json](brand/tokens.json), transcribed from his measured sheets in `brand/references/design-values-*.png`. Never guess a value that is not on a sheet; add it under `unmeasured`. Slide layouts: `main`, `detail1`, `detail2`, `quote` (optional, only for an important quote from a person in the news, with that person's own photo; no masthead, no photo credit; see brand/design.md). Main/Detail images start where the copy ends and their height follows the copy. All checks are deterministic code.

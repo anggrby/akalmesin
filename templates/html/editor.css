@@ -107,3 +107,59 @@ body.editor {
 #warnings:empty {
   display: none;
 }
+/* Review mode: photo list beside the slides; an off-screen unscaled copy of each slide for the layout check. */
+.review-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.review-body .slides {
+  flex: 1;
+}
+.photo-panel {
+  width: 340px;
+  flex: none;
+  margin-right: 16px;
+  background: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.photo-panel h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+.photo-panel li {
+  margin-bottom: 10px;
+}
+.photo-panel .meta {
+  color: #555;
+}
+@media (max-width: 900px) {
+  .review-body {
+    flex-direction: column;
+  }
+  .photo-panel {
+    width: auto;
+    margin: 0 16px;
+  }
+}
+#measure {
+  position: absolute;
+  left: -20000px;
+  top: 0;
+  width: 1080px;
+  pointer-events: none;
+}
+#measure .post {
+  margin-bottom: 20px;
+}
+.toolbar button:disabled {
+  background: #777;
+  cursor: not-allowed;
+}
+.post.overflowing {
+  outline: 6px solid #b00020;
+}

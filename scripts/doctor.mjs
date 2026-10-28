@@ -1,7 +1,7 @@
 // npm run doctor — checks this machine can run the workflow. Prints no secrets.
 import fs from 'node:fs';
 import path from 'node:path';
-import {ROOT, readJSON, launchBrowser, loadPost, copyRevision, copyApprovalCurrent, designRevision} from './core.mjs';
+import {ROOT, readJSON, launchBrowser, loadPost, copyRevision, copyApprovalCurrent, finalApprovalCurrent} from './core.mjs';
 
 const rows = [];
 const ok = (name, pass, info = '') => rows.push({name, pass, info});
@@ -38,7 +38,7 @@ for (const slug of fs.existsSync(posts) ? fs.readdirSync(posts).filter(d => fs.e
     const {paths, post, workflow} = loadPost(slug),
       a = workflow.approvals;
     const copy = a.copy ? (copyApprovalCurrent(a.copy, post) ? 'current' : 'STALE') : '—';
-    const fin = a.final ? (a.final.revision === designRevision(post, paths.dir) ? 'current' : 'STALE') : '—';
+    const fin = a.final ? (finalApprovalCurrent(a.final, post, paths.dir) ? 'current' : 'STALE') : '—';
     ok('post ' + slug, true, `stage ${workflow.stage} · copy ${copy} · final ${fin} · notion ${workflow.notion ? 'recorded' : '—'}`);
   } catch (e) {
     ok('post ' + slug, false, e.message);

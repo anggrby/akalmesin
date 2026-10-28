@@ -13,6 +13,7 @@ import {
   copyRevision,
   copyApprovalCurrent,
   designRevision,
+  buildCurrent,
   processedImage,
   fileHash,
   launchBrowser,
@@ -24,7 +25,8 @@ import {checkPost} from './quality.mjs';
 import {inkStats, looksInked} from './blue-ink.mjs';
 import {inspectLayout} from './design-build.mjs';
 
-export async function designCheck(ref) {
+/** opts.review: checked before the single review approval, so a missing copy approval is not a problem. */
+export async function designCheck(ref, {review = false} = {}) {
   const {paths, post, workflow} = loadPost(ref);
   const problems = [],
     add = m => problems.push(m),
@@ -33,8 +35,8 @@ export async function designCheck(ref) {
   if (!fs.existsSync(buildFile)) throw Error('No build; run npm run design:build -- ' + post.slug);
   const build = readJSON(buildFile),
     revision = designRevision(post, paths.dir);
-  if (build.designRevision !== revision) add('Build is stale: post.json or images changed after design:build');
-  if (!copyApprovalCurrent(workflow.approvals.copy, post)) add('Copy approval missing or stale');
+  if (!buildCurrent(build, post, paths.dir)) add('Build is stale: post.json or images changed after design:build');
+  if (!review && !copyApprovalCurrent(workflow.approvals.copy, post)) add('Copy approval missing or stale');
   if (workflow.designStale) add('Text was edited in design review; rebuild');
   const q = checkPost(post, undefined, {dir: paths.dir});
   q.errors.forEach(e => add('Editorial: ' + e.message));
@@ -68,7 +70,7 @@ export async function designCheck(ref) {
     await page.goto(pathToFileURL(path.join(ROOT, build.slides[0].html)).href);
     await page.evaluate(async () => {
       await document.fonts.ready;
-      document.querySelector('.headline-line').textContent = 'Headline terlalu panjang '.repeat(20);
+      document.querySelector('.headline-line, .quote-text').textContent = 'Headline terlalu panjang '.repeat(20);
     });
     const stress = await page.evaluate(inspectLayout, imageGaps());
     if (!stress.violations.some(v => v.startsWith('Text overflow'))) add('Overflow guard did not fire');

@@ -19,6 +19,7 @@ import {
   copyRevision,
   designRevision,
   requireApproval,
+  requireFinalApproval,
   requireCopyApproval,
   fileHash,
   wib,
@@ -61,7 +62,7 @@ export function topicFor(category) {
 export function manifest(ref) {
   const {paths, post, workflow} = loadPost(ref);
   requireCopyApproval(workflow, post);
-  const final = requireApproval(workflow, 'final', designRevision(post, paths.dir));
+  const final = requireFinalApproval(workflow, post, paths.dir);
   const build = readJSON(path.join(paths.out, 'build.json'));
   const assets = build.slides.map(s => {
     const file = path.join(ROOT, s.png),

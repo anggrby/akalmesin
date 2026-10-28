@@ -189,17 +189,43 @@ export function requireCopyApproval(workflow, post) {
   return requireApproval(workflow, 'copy');
 }
 
-/** Hash of the whole post plus the processed images: what "final" approves. */
 export const processedImage = (dir, slide) => path.join(dir, 'assets/processed', slide.id + '-blue-ink.png');
-/** Includes the design tokens and slide CSS, so a token change resets final approval. */
-export function designRevision(post, dir, root = ROOT) {
-  const images = post.slides.map(s => {
+// Design rule 2 (t67u–t69u): alt text is not approved, so it is left out of the design revision (it still goes to Notion).
+export const DESIGN_RULE = 2;
+const designInputs = (post, dir, root) => ({
+  images: post.slides.map(s => {
     const f = processedImage(dir, s);
     return fs.existsSync(f) ? fileHash(f) : null;
-  });
-  const design = ['brand/tokens.json', 'templates/html/post.css'].map(f => fileHash(path.join(root, f)));
+  }),
+  design: ['brand/tokens.json', 'templates/html/post.css'].map(f => fileHash(path.join(root, f)))
+});
+/** Hash of the post (minus alt text) plus the processed images, tokens and slide CSS: what "final" approves. */
+export function designRevision(post, dir, root = ROOT) {
+  const {images, design} = designInputs(post, dir, root);
+  return sha256({rule: DESIGN_RULE, post: {...post, slides: post.slides.map(({alt, ...s}) => s)}, images, design});
+}
+/** Pre-rule-2 hash (whole post incl. alt). Only used to honour final approvals and builds recorded under it. */
+export function legacyDesignRevision(post, dir, root = ROOT) {
+  const {images, design} = designInputs(post, dir, root);
   return sha256({post, images, design});
 }
+/** Final approval matches the current design. Approvals without designRule count only while the legacy hash still matches. */
+export function finalApprovalCurrent(approval, post, dir, root = ROOT) {
+  if (!approval?.revision) return false;
+  if (approval.revision === designRevision(post, dir, root)) return true;
+  return approval.designRule !== DESIGN_RULE && approval.revision === legacyDesignRevision(post, dir, root);
+}
+export function requireFinalApproval(workflow, post, dir) {
+  const a = requireApproval(workflow, 'final');
+  if (!finalApprovalCurrent(a, post, dir))
+    throw Error(
+      `Gate "final" approval is stale: it approved revision ${a.revision.slice(0, 12)}, current is ${designRevision(post, dir).slice(0, 12)}. Get a new approval.`
+    );
+  return a;
+}
+/** A build.json is current if it was made for this design under either rule. */
+export const buildCurrent = (build, post, dir) =>
+  build?.designRevision === designRevision(post, dir) || build?.designRevision === legacyDesignRevision(post, dir);
 
 export function captionText(post) {
   return post.caption.join('\n\n');

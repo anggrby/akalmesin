@@ -1,4 +1,4 @@
-// Copy-review editor embeds only small subset fonts (owner t61u); design/final HTML keep the full brand fonts.
+// Copy-review editor embeds only small subset fonts (owner t61u); review HTML too (t67u); the PNG renders keep the full brand fonts.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -30,6 +30,8 @@ test('a character outside the subset falls back to the full fonts', () => {
   assert.deepEqual(f.missing, [ch]);
   assert.equal(f.css, fontCSS());
 });
-test('design-mode (final) HTML still embeds the full brand fonts', () => {
-  assert.ok(editorHTML(post, 'design').includes(fontCSS()));
+test('review HTML (t67u) uses the slim fonts too; PNG renders keep the full brand fonts', () => {
+  const html = editorHTML(post, 'review');
+  assert.ok(!html.includes('font/ttf'));
+  assert.equal((html.match(/font\/woff2/g) || []).length, 2);
 });

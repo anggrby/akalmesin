@@ -17,9 +17,11 @@ import {
   launchBrowser,
   isMain,
   fail,
-  rel
+  rel,
+  imageGaps
 } from './core.mjs';
-import {checkPost, loadPolicy} from './quality.mjs';
+import {checkPost, loadPolicy, badCreditText} from './quality.mjs';
+import {inspectLayout} from './design-build.mjs';
 import {renderEditor} from '../templates/html/post.mjs';
 
 const T = f => fs.readFileSync(path.join(ROOT, 'templates/html', f), 'utf8');
@@ -43,12 +45,17 @@ export function editorFontCSS(post) {
   return {css: face('Manrope', cov.weights.Manrope) + face('IBM Plex Mono', cov.weights['IBM Plex Mono']), slim: true, missing};
 }
 
-export function editorHTML(post, mode, images = {}) {
-  const fonts = mode === 'copy' ? editorFontCSS(post).css : fontCSS();
+/** mode "copy" = text only, placeholders (legacy two-gate flow); "review" = real slides, the single-pass review/approval editor. */
+export function editorHTML(post, mode, images = {}, {designRevision = null} = {}) {
+  const fonts = editorFontCSS(post).css;
   return renderEditor({
     post,
     mode,
     baseRevision: copyRevision(post),
+    designRevision,
+    gaps: imageGaps(),
+    inspectSource: mode === 'review' ? inspectLayout.toString() : null,
+    creditSource: badCreditText.toString(),
     images,
     css: pageCSS(fonts),
     editorCSS: T('editor.css'),

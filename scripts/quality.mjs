@@ -7,6 +7,11 @@ import {ROOT, readJSON, captionBody, countWords, isDetail, splitCaptionCredits, 
 
 export const loadPolicy = (root = ROOT) => readJSON(path.join(root, 'brand/editorial-policy.json'));
 const CREDIT = /^(FOTO|ILUSTRASI AI): .+ \/ .+/;
+/** credit_fragment rule for one credit text (prefix removed). Self-contained: the review editor embeds this exact function. */
+export function badCreditText(t, max = 100, maxWords = 14) {
+  const words = (String(t).match(/[\p{L}\p{N}]+(?:[.,'’\-][\p{L}\p{N}]+)*/gu) || []).length;
+  return t.length > max || words > maxWords || /[.!?;](\s|$)|[—–]|\b(?:Sumber|Foto)\s*:/i.test(t);
+}
 const CREDIT_MAX = 100,
   CREDIT_MAX_WORDS = 14,
   CREDIT_PREFIX = /^(FOTO|ILUSTRASI AI): /;
@@ -40,7 +45,7 @@ export function checkPost(post, policy = loadPolicy(), {dir} = {}) {
     .find(Boolean);
   if (!footer) add('caption_footer', 'Tambahkan footer Sumber: … / Foto: … di caption.');
   // Credit fragments are outside the copy revision (t65u), so they must stay short credits, never sentences.
-  const badCredit = t => t.length > CREDIT_MAX || countWords(t) > CREDIT_MAX_WORDS || /[.!?;](\s|$)|[—–]|\b(?:Sumber|Foto)\s*:/i.test(t);
+  const badCredit = badCreditText;
   for (const frag of splitCaptionCredits(paragraphs).fragments.filter(x => /^Foto:/.test(x)))
     if (badCredit(frag.replace(/^Foto:\s*/, '')))
       add('credit_fragment', `Bagian "Foto:" di footer harus kredit singkat (≤${CREDIT_MAX} karakter, ≤${CREDIT_MAX_WORDS} kata, tanpa kalimat): "${frag}".`);

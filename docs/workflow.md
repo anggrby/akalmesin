@@ -132,3 +132,14 @@ Normalize by unique reach/viewers when both values exist. Do not equate shares w
 ## Credits are not copy (copy rule 2, 2026-10-28)
 
 `copyRevision` hashes title, category, slide text and the caption, **without** photo credits: slide `credit`, the `/ Foto: …` half of the `Sumber: … / Foto: …` footer, and lines that are exactly `Ilustrasi slide N: AI / akalmesin`. The `Sumber:` half, paragraphs and hashtags stay in the hash. Credits are covered by `creditsRevision` (in `build.json`) and by final approval (`designRevision` hashes the whole post). A credit-only `copy:record` keeps copy approval and clears final. Quality check `credit_fragment` rejects credit fragments that are long (>100 chars / 14 words) or contain sentences (`. ! ? ;`, dashes, inner `Sumber:`/`Foto:`). Copy approvals recorded before rule 2 (no `copyRule`) remain valid only while `legacyCopyRevision(post)` still matches, i.e. nothing at all changed.
+
+## Single-pass review (default since 2026-10-28, t67u–t69u)
+
+The agent proposes the copy and the design (real photos, blue ink) together. There is no grey-placeholder round and no separate `selected` gate.
+
+1. `npm run review:build -- <slug>` renders the PNGs and writes `out/<slug>.html`. That file shows the real slides (1080 px JPEGs, slim woff2 fonts, ~0.9 MB) with the text editable in place, the caption, and a photo list (subject, supplier, licence, URL, credit). It records **no** approval.
+2. He edits in place and presses **Simpan**. The editor warns live about text overflow (the same `inspectLayout` that design-check uses), caption length, and credit format (`credit_fragment`). Simpan stays disabled, with the reason shown, while any slide overflows.
+3. `npm run review:apply -- <slug> <edits.json>` checks that the file matches the current design revision. It logs only the changed sentences, applies the edits, then runs `design:build`, `design:check` and the quality checks. If everything passes, that Save is his approval for both copy and final: words `Saved in review editor <savedAt>`, source `<file> sha256:<hash>`. A Save with no changes is an approval too. If anything fails, nothing is approved and the report lists why.
+4. `npm run export -- <slug>` as before.
+
+Alt text is not part of `designRevision` (design rule 2), so alt fixes never reset approval. Alt text still goes to Notion. Approvals recorded before rule 2 (e.g. Kimi) stay valid through `legacyDesignRevision` while their content is unchanged.

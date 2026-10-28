@@ -13,6 +13,7 @@ import {
   requireApproval,
   requireCopyApproval,
   COPY_RULE,
+  DESIGN_RULE,
   wib,
   isMain,
   fail
@@ -51,6 +52,7 @@ export function approve(ref, {gate, words, 'words-file': wordsFile, source, at, 
     atWIB: wib(when),
     revision,
     ...(gate === 'copy' ? {copyRule: COPY_RULE} : {}),
+    ...(gate === 'final' ? {designRule: DESIGN_RULE} : {}),
     recordedAt: new Date().toISOString()
   };
   if (workflow.approvals[gate]) workflow.history.push({event: 'approval-replaced', gate, approval: workflow.approvals[gate], at: approval.recordedAt});
