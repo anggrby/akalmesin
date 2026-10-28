@@ -6,11 +6,11 @@ This file owns the steps, the gates, and the Notion recipe. Writing rules live i
 
 There are three separate decisions, each recorded with Angger's **verbatim** words, the chat id, and the message time:
 
-| Gate | Approves | Revision it is bound to | Cleared by |
-|---|---|---|---|
-| `selected` | the story and angle | — | — |
-| `copy` | every visible word: headline, summary, details, credits, caption, plus the title | `copyRevision` (hash of the editable fields + caption + title) | any `copy:record` that changes text |
-| `final` | the complete post: copy, images, crops, alt text, layout | `designRevision` (hash of post.json + processed images) | any change to post.json or the images; a rebuild with a different result |
+| Gate       | Approves                                                                         | Revision it is bound to                                        | Cleared by                                                               |
+| ---------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `selected` | the story and angle                                                              | —                                                              | —                                                                        |
+| `copy`     | every visible word: headline, summary, details, credits, caption, plus the title | `copyRevision` (hash of the editable fields + caption + title) | any `copy:record` that changes text                                      |
+| `final`    | the complete post: copy, images, crops, alt text, layout                         | `designRevision` (hash of post.json + processed images)        | any change to post.json or the images; a rebuild with a different result |
 
 General praise is not an approval. Neither is an existing draft, nor an edit file. "Approved. Export that into notion" is both a final approval and an instruction to export; it never covers publishing or scheduling. Every approval, invalidation, build and record is appended to `workflow.json → history`.
 
@@ -87,6 +87,7 @@ npm run export -- <slug>             # or --post <slug>
 429 and 5xx are retried with backoff. The page create is never retried blindly: re-running looks the page up by its marker first, so a second run updates and never duplicates. Pages made by the connector before this change (Terra, Anthropic, Kimi) have no `akalmesin-managed-end` line; `export` refuses to update them rather than guess, before writing anything.
 
 **Adopting a connector-made page (`--adopt-legacy`).** Only with the owner's go-ahead for that page. Needs `notion-legacy-body.json` in the post folder: the exact blocks the old export wrote (Kimi has it).
+
 1. `npm run export -- <slug> --adopt-legacy --dry-run` reads the page (no writes, no uploads) and prints the plan: blocks recognised as generated (plain text equal to a block in `notion-legacy-body.json` or in the new body), **foreign** blocks (anything else, edited generated text, or blocks with children), the Assets it replaces, and the owner-managed Status / Publish date it keeps.
 2. If any block is foreign, adoption refuses and lists them. Move a human note out by hand, or, with the owner's OK to delete it, list the exact ids: `--force-blocks id1,id2` (every foreign block must be listed).
 3. `npm run export -- <slug> --adopt-legacy` deletes the generated (and listed) blocks, writes marker + body + `akalmesin-managed-end`, replaces Assets with the new ordered uploads, updates the properties except Status / Publish date, reads back and SHA-256-checks like a normal export, and writes the receipt (`action: adopted`, deleted block ids, previous asset names). Running it again is a normal update. The old files are detached from the row, not kept on it.
@@ -115,13 +116,13 @@ If the owner changes approved copy or assets, the publisher draft is stale until
 
 After a real publication, save its permalink, actual publication timestamp/timezone, and scorecards at **24 hours** and **seven days** in the story's `review.md`. When a matching verified local Export exists, [compare later Notion edits](editor.md#compare-later-notion-edits) to propose observed differences for owner/context review; do not turn them into general rules automatically. Record observed Insights only; mark unavailable data as unavailable. Compare similar formats at similar ages and treat causal explanations as hypotheses.
 
-| Measure | Record when available |
-|---|---|
-| Discovery | Non-follower reach or viewers |
-| Reel attention | Average watch time and displayed retention |
-| Sharing | Sends if shown separately; otherwise shares |
-| Return value | Saves |
-| Account interest | Profile visits |
-| Growth | Attributed follows if available; otherwise clearly labeled account-level net growth |
+| Measure          | Record when available                                                               |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Discovery        | Non-follower reach or viewers                                                       |
+| Reel attention   | Average watch time and displayed retention                                          |
+| Sharing          | Sends if shown separately; otherwise shares                                         |
+| Return value     | Saves                                                                               |
+| Account interest | Profile visits                                                                      |
+| Growth           | Attributed follows if available; otherwise clearly labeled account-level net growth |
 
 Normalize by unique reach/viewers when both values exist. Do not equate shares with private sends, views with unique viewers, or account growth with one post's attributable follows. Do not assume slide-by-slide completion is available. Unapproved strategy proposals do not establish brand, cadence, or publishing rules.

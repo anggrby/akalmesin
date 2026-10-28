@@ -4,16 +4,16 @@ This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news a
 
 ## The flow (details in [docs/workflow.md](docs/workflow.md))
 
-| # | Step | Command | Gate |
-|---|---|---|---|
-| 1 | Angger asks for a post | `npm run post:new -- <slug> --category AI` | — |
-| 2 | Research: fill `sources.md` and `post.json` | — | `approve --gate selected` with his words |
-| 3 | Propose copy (text only) | `npm run copy:review -- <slug>` → paste `out/copy-proposal.md` | — |
-| 4 | He edits in `out/copy-review.html` (grey placeholders) and presses **Simpan** | — | — |
-| 5 | Record his file: applies it and logs a sentence/word diff | `npm run copy:record -- <slug> edits.json` | `approve --gate copy` with his words |
-| 6 | Design: blue ink + render | `npm run design:build -- <slug>` | needs current copy approval |
-| 7 | Check, then look at `out/contact-sheet.png` | `npm run design:check -- <slug>` | must pass |
-| 8 | Send him `out/<slug>.html` plus the contact sheet | `approve --gate final`, then `npm run export -- <slug>` (one command: Notion REST API) | needs current final approval |
+| #   | Step                                                                          | Command                                                                                | Gate                                     |
+| --- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------- |
+| 1   | Angger asks for a post                                                        | `npm run post:new -- <slug> --category AI`                                             | —                                        |
+| 2   | Research: fill `sources.md` and `post.json`                                   | —                                                                                      | `approve --gate selected` with his words |
+| 3   | Propose copy (text only)                                                      | `npm run copy:review -- <slug>` → paste `out/copy-proposal.md`                         | —                                        |
+| 4   | He edits in `out/copy-review.html` (grey placeholders) and presses **Simpan** | —                                                                                      | —                                        |
+| 5   | Record his file: applies it and logs a sentence/word diff                     | `npm run copy:record -- <slug> edits.json`                                             | `approve --gate copy` with his words     |
+| 6   | Design: blue ink + render                                                     | `npm run design:build -- <slug>`                                                       | needs current copy approval              |
+| 7   | Check, then look at `out/contact-sheet.png`                                   | `npm run design:check -- <slug>`                                                       | must pass                                |
+| 8   | Send him `out/<slug>.html` plus the contact sheet                             | `approve --gate final`, then `npm run export -- <slug>` (one command: Notion REST API) | needs current final approval             |
 
 ## Rules that are not negotiable
 
@@ -33,6 +33,7 @@ npm ci
 npx playwright-core install chromium   # same Chromium build the renderer expects
 npm run doctor                          # Node, deps, Chromium, fonts, every post's gate status
 npm test
+npm run format:check               # Prettier; npm run format fixes everything
 # Notion export token (once): put it in your shell profile or in .env.local (git-ignored)
 #   echo 'NOTION_UPLOAD_TOKEN=<your token>' > .env.local && chmod 600 .env.local
 ```

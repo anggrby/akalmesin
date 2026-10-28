@@ -4,83 +4,48 @@
     "topic": "AI",
     "title": "Claude bantu buktikan keamanan kode.",
     "label": "VERIFIKASI FORMAL",
-    "headline": [
-      "Claude bantu buktikan",
-      "keamanan kode."
-    ],
-    "subtitle": [
-      "Riset pada 123 pustaka open-source,",
-      "dengan jaminan yang punya batas."
-    ],
+    "headline": ["Claude bantu buktikan", "keamanan kode."],
+    "subtitle": ["Riset pada 123 pustaka open-source,", "dengan jaminan yang punya batas."],
     "credit": "ARSIP: ANTHROPIC",
     "photo": "original-dario.webp",
     "data": {
       "kicker": "RISET ANTHROPIC × THEOREM",
       "number": "123",
       "unit": "pustaka open-source",
-      "intro": [
-        "Claude menulis bukti matematis.",
-        "Rocq memeriksa bukti tersebut."
-      ],
+      "intro": ["Claude menulis bukti matematis.", "Rocq memeriksa bukti tersebut."],
       "columns": [
         {
           "label": "TES",
-          "body": [
-            "Mencoba input",
-            "untuk mencari bug."
-          ]
+          "body": ["Mencoba input", "untuk mencari bug."]
         },
         {
           "label": "BUKTI",
-          "body": [
-            "Memastikan aturan",
-            "berlaku dalam model."
-          ]
+          "body": ["Memastikan aturan", "berlaku dalam model."]
         }
       ]
     },
     "detail": {
       "kicker": "BATAS RISET",
-      "headline": [
-        "Belum berarti",
-        "bebas bug."
-      ],
+      "headline": ["Belum berarti", "bebas bug."],
       "blocks": [
         {
           "label": "SPESIFIKASI",
-          "body": [
-            "Terbukti untuk aturan tertentu,",
-            "bukan semua jenis kesalahan."
-          ]
+          "body": ["Terbukti untuk aturan tertentu,", "bukan semua jenis kesalahan."]
         },
         {
           "label": "LINGKUNGAN",
-          "body": [
-            "RISC-V/Linux, satu thread,",
-            "memori tetap, input <64 MB."
-          ]
+          "body": ["RISC-V/Linux, satu thread,", "memori tetap, input <64 MB."]
         },
         {
           "label": "ARTINYA",
-          "body": [
-            "AI bisa membantu pemeriksaan.",
-            "Jaminannya tetap bersyarat."
-          ]
+          "body": ["AI bisa membantu pemeriksaan.", "Jaminannya tetap bersyarat."]
         }
       ]
     },
     "footer": "SUMBER: ANTHROPIC / THEOREM",
     "primary": [
-      [
-        "Anthropic — Formal verification",
-        "https://www.anthropic.com/research/formal-verification",
-        "2026-10-22"
-      ],
-      [
-        "Theorem — OSS Verify",
-        "https://theorem.dev/oss-verify/",
-        "undated; retrieved 2026-10-24"
-      ]
+      ["Anthropic — Formal verification", "https://www.anthropic.com/research/formal-verification", "2026-10-22"],
+      ["Theorem — OSS Verify", "https://theorem.dev/oss-verify/", "undated; retrieved 2026-10-24"]
     ],
     "image_page": "https://www.anthropic.com/company/leadership",
     "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/b9f2de42abe07215bc6f3e1498765fa0d3d58eaf-640x800.webp?fm=webp",
@@ -100,90 +65,52 @@
     "topic": "ROBOTIKA",
     "title": "Robot juga perlu tempat latihan.",
     "label": "PHYSICAL AI",
-    "headline": [
-      "Robot juga perlu",
-      "tempat latihan."
-    ],
-    "subtitle": [
-      "NEURA dan TUM membuka",
-      "RoboGym di Munich."
-    ],
+    "headline": ["Robot juga perlu", "tempat latihan."],
+    "subtitle": ["NEURA dan TUM membuka", "RoboGym di Munich."],
     "credit": "FOTO: A. HEDDERGOTT / TUM",
     "photo": "original-robogym.jpg",
     "data": {
       "kicker": "TUM ROBOGYM",
       "number": "48",
       "unit": "sel latihan · sekitar 100 robot",
-      "intro": [
-        "Data latihan datang dari",
-        "tiga jalur yang saling melengkapi."
-      ],
+      "intro": ["Data latihan datang dari", "tiga jalur yang saling melengkapi."],
       "columns": [
         {
           "label": "01 / DUNIA NYATA",
-          "body": [
-            "Robot mencoba",
-            "tugas langsung."
-          ]
+          "body": ["Robot mencoba", "tugas langsung."]
         },
         {
           "label": "02 / MANUSIA",
-          "body": [
-            "Gerakan manusia",
-            "jadi demonstrasi."
-          ]
+          "body": ["Gerakan manusia", "jadi demonstrasi."]
         },
         {
           "label": "03 / SIMULASI",
-          "body": [
-            "Variasi virtual",
-            "diuji di robot."
-          ]
+          "body": ["Variasi virtual", "diuji di robot."]
         }
       ]
     },
     "detail": {
       "kicker": "MENGAPA INI PENTING",
-      "headline": [
-        "Latihan spesifik.",
-        "Bukan serba bisa."
-      ],
+      "headline": ["Latihan spesifik.", "Bukan serba bisa."],
       "blocks": [
         {
           "label": "TUGAS NYATA",
-          "body": [
-            "Contohnya menangani kardus,",
-            "mengisi botol, dan memuat kayu."
-          ]
+          "body": ["Contohnya menangani kardus,", "mengisi botol, dan memuat kayu."]
         },
         {
           "label": "DATA FISIK",
-          "body": [
-            "Gerak, kontak, dan hasil tindakan",
-            "menjadi bahan belajar robot."
-          ]
+          "body": ["Gerak, kontak, dan hasil tindakan", "menjadi bahan belajar robot."]
         },
         {
           "label": "BATASNYA",
-          "body": [
-            "Pusat latihan ini belum membuktikan",
-            "robot andal untuk semua pekerjaan."
-          ]
+          "body": ["Pusat latihan ini belum membuktikan", "robot andal untuk semua pekerjaan."]
         }
       ]
     },
     "footer": "SUMBER: TUM MIRMI / NEURA",
     "primary": [
-      [
-        "TUM MIRMI — RoboGym FAQ",
-        "https://www.mirmi.tum.de/mirmi/aktuelles/article/fragen-und-antworten-zum-tum-robogym-powered-by-neura/",
-        "2026-10-22"
-      ],
-      [
-        "NEURA — RoboGym opening",
-        "https://neura-robotics.com/tum-robogym-munich-4ne1-gen4-launch/",
-        "2026-10-22"
-      ],
+      ["TUM MIRMI — RoboGym FAQ", "https://www.mirmi.tum.de/mirmi/aktuelles/article/fragen-und-antworten-zum-tum-robogym-powered-by-neura/", "2026-10-22"],
+      ["NEURA — RoboGym opening", "https://neura-robotics.com/tum-robogym-munich-4ne1-gen4-launch/", "2026-10-22"],
       [
         "TUM — Official opening and photos",
         "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/tum-eroeffnet-convergence-center-und-tum-robogym-powered-by-neura",
@@ -208,24 +135,15 @@
     "topic": "KOMPUTASI",
     "title": "Pengiriman PC anjlok 21%.",
     "label": "DATA AWAL COUNTERPOINT",
-    "headline": [
-      "Pengiriman PC",
-      "anjlok 21%."
-    ],
-    "subtitle": [
-      "Global, kuartal III 2026.",
-      "Dibanding periode yang sama 2025."
-    ],
+    "headline": ["Pengiriman PC", "anjlok 21%."],
+    "subtitle": ["Global, kuartal III 2026.", "Dibanding periode yang sama 2025."],
     "credit": "FOTO ILUSTRASI: FOTIS FOTOPOULOS",
     "photo": "original-pc.jpg",
     "data": {
       "kicker": "PENGIRIMAN PC GLOBAL / Q3 2026",
       "number": "57",
       "unit": "juta unit",
-      "intro": [
-        "Turun 21% dibanding Q3 2025.",
-        "Data awal Counterpoint Research."
-      ],
+      "intro": ["Turun 21% dibanding Q3 2025.", "Data awal Counterpoint Research."],
       "bars": [
         {
           "label": "Q3 2025",
@@ -240,31 +158,19 @@
     },
     "detail": {
       "kicker": "MEMBACA ANGKA",
-      "headline": [
-        "Turun pengiriman.",
-        "Belum tentu murah."
-      ],
+      "headline": ["Turun pengiriman.", "Belum tentu murah."],
       "blocks": [
         {
           "label": "BIAYA NAIK",
-          "body": [
-            "Counterpoint menyoroti mahalnya",
-            "memori dan komponen lain."
-          ]
+          "body": ["Counterpoint menyoroti mahalnya", "memori dan komponen lain."]
         },
         {
           "label": "BEDA UKURAN",
-          "body": [
-            "Pengiriman bukan jumlah PC",
-            "yang dibeli pengguna akhir."
-          ]
+          "body": ["Pengiriman bukan jumlah PC", "yang dibeli pengguna akhir."]
         },
         {
           "label": "KONTEKS LOKAL",
-          "body": [
-            "Angka global ini bukan patokan",
-            "harga PC di Indonesia."
-          ]
+          "body": ["Angka global ini bukan patokan", "harga PC di Indonesia."]
         }
       ]
     },

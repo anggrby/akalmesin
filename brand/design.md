@@ -14,36 +14,36 @@
 
 ### Type
 
-| Token | Font | Size / line height / tracking | Used for |
-|---|---|---|---|
-| type.main-headline | Manrope Bold 700 | 86 / 100 / −4% | Main headline |
-| type.quote | Manrope Bold 700 | 78 / 100 / −4% | Quote statement |
-| type.wordmark | Manrope Bold 700 | 44 / auto / 0% | `akalmesin` header, all designs |
-| type.author | Manrope Bold 700 | 40 / 60 / 0% | Quote author |
-| type.main-summary | Manrope Regular 400 | 37 / 55 / 0% | Main summary |
-| type.detail-body | Manrope Regular 400 | 40 / 60 / 0% | Detail text |
-| type.author-role | Manrope Light 300 | 40 / 60 / 0% | Quote author role |
-| type.metadata | IBM Plex Mono Regular 400 | 21 / auto / +10% | Category, photo credit |
+| Token              | Font                      | Size / line height / tracking | Used for                        |
+| ------------------ | ------------------------- | ----------------------------- | ------------------------------- |
+| type.main-headline | Manrope Bold 700          | 86 / 100 / −4%                | Main headline                   |
+| type.quote         | Manrope Bold 700          | 78 / 100 / −4%                | Quote statement                 |
+| type.wordmark      | Manrope Bold 700          | 44 / auto / 0%                | `akalmesin` header, all designs |
+| type.author        | Manrope Bold 700          | 40 / 60 / 0%                  | Quote author                    |
+| type.main-summary  | Manrope Regular 400       | 37 / 55 / 0%                  | Main summary                    |
+| type.detail-body   | Manrope Regular 400       | 40 / 60 / 0%                  | Detail text                     |
+| type.author-role   | Manrope Light 300         | 40 / 60 / 0%                  | Quote author role               |
+| type.metadata      | IBM Plex Mono Regular 400 | 21 / auto / +10%              | Category, photo credit          |
 
 ### Colour and edges
 
-| Token | Value | Used for |
-|---|---|---|
-| color.ink | #000000 | Primary text, header divider, Quote header |
-| color.editorial-gray | #EEEEEE | Main/Detail background, quote statement and quote mark |
-| color.reversed-text | #FFFFFF | Author, author role, photo credit |
-| overlay.quote | linear, top → bottom, 100% opacity: #D9D9D9 at 0% alpha → #000000 at 100% alpha | Quote photo |
-| stroke.divider | 1 px #000000 | Header divider |
-| radius.editorial | 0 | Everything; no shadows, no effects |
+| Token                | Value                                                                           | Used for                                               |
+| -------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| color.ink            | #000000                                                                         | Primary text, header divider, Quote header             |
+| color.editorial-gray | #EEEEEE                                                                         | Main/Detail background, quote statement and quote mark |
+| color.reversed-text  | #FFFFFF                                                                         | Author, author role, photo credit                      |
+| overlay.quote        | linear, top → bottom, 100% opacity: #D9D9D9 at 0% alpha → #000000 at 100% alpha | Quote photo                                            |
+| stroke.divider       | 1 px #000000                                                                    | Header divider                                         |
+| radius.editorial     | 0                                                                               | Everything; no shadows, no effects                     |
 
 ### Layout
 
-| Layout | Values |
-|---|---|
-| Main | 64 sides (header 952 wide); header top 50; divider y130; divider → content 57 (content y187, frame 948 wide); headline may run to 971 wide; headline → summary 32; summary → image 64; image to the bottom edge (702 tall in the sample, from y648) |
-| Detail-1 / Detail-2 | 64 sides (952 wide); header top 50; wordmark row → divider 20 (divider y130); divider → body 44 (body y174); body → image 54; image to the bottom edge (702 tall in the sample). Detail-2 has no sheet and uses Detail-1 |
-| Quote | No masthead. 56 left/right (column 968); content box bottom at y1294 (56 from the bottom; sample box x56 y782 968 × 512); 40 between quote mark → statement → attribution; 8 author → role; photo crop intentionally oversized; overlay over the whole frame |
-| Quote mark (from his example) | Manrope Bold 700 `“` at 400 px, ink 116 × 103 at x482 y782 (centred), 104 px box, colour `color.editorial-gray` #EEEEEE (light, owner t55u) |
+| Layout                        | Values                                                                                                                                                                                                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Main                          | 64 sides (header 952 wide); header top 50; divider y130; divider → content 57 (content y187, frame 948 wide); headline may run to 971 wide; headline → summary 32; summary → image 64; image to the bottom edge (702 tall in the sample, from y648)          |
+| Detail-1 / Detail-2           | 64 sides (952 wide); header top 50; wordmark row → divider 20 (divider y130); divider → body 44 (body y174); body → image 54; image to the bottom edge (702 tall in the sample). Detail-2 has no sheet and uses Detail-1                                     |
+| Quote                         | No masthead. 56 left/right (column 968); content box bottom at y1294 (56 from the bottom; sample box x56 y782 968 × 512); 40 between quote mark → statement → attribution; 8 author → role; photo crop intentionally oversized; overlay over the whole frame |
+| Quote mark (from his example) | Manrope Bold 700 `“` at 400 px, ink 116 × 103 at x482 y782 (centred), 104 px box, colour `color.editorial-gray` #EEEEEE (light, owner t55u)                                                                                                                  |
 
 ### Not on the sheets yet (`unmeasured` in tokens.json)
 
@@ -113,8 +113,6 @@ Edit the FIRST reference image only: the authentic photograph of a Meta data cen
 The SECOND and THIRD references are STYLE references only. Use their blue ink photographic treatment, pale paper highlights and fine controlled print texture. Do not include their eagle, statue, text, red color, graphic shapes or compositions.
 
 Create a refined editorial blue duotone suitable for a minimalist technology news brand. The signature ink hue is #4E4FEB. Use rich violet-blue ink shadows, clear middle-tone separation, and luminous neutral off-white highlights. Maintain detailed readable racks and wires, with natural photographic depth. Introduce a very delicate engraved/halftone line texture following tonal detail, inspired especially by the third reference, plus extremely subtle fine paper grain. Texture should be fine and elegant at Instagram scale, not coarse scan lines, obvious dots, moiré, or uniform static noise. Keep the ceiling highlights and floor restrained, the center aisle clear and the edges deep. Balanced contrast, no crushed detail, no foggy blue veil, no cyan, no neon lighting, no glow. Overall polished tactile ink-on-paper editorial photography rather than a simple color overlay. High quality and sharp architecture. Preserve the documentary content of the source photograph.
-
-
 
 ## Reference images
 

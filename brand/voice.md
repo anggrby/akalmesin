@@ -14,7 +14,6 @@ All writing rules in one file. The machine-checked numbers live in [editorial-po
 - Relaxed, natural voice — not stiff/kaku (owner-confirmed 2026-10-28).
 - Before drafting: read the [Terra example](examples/terra/README.md) and [style-feedback-log.md](style-feedback-log.md).
 
-
 <!-- verbatim from old repo: brand/brand-guide.md (only link targets rewritten) -->
 
 ## akalmesin identity and positioning
@@ -44,7 +43,6 @@ The visual character is minimalist, photographic and editorial. [design.md](desi
 Follow [the production workflow](../docs/workflow.md) and use [the local HTML editor](../docs/workflow.md) for the current review and Export route. [Current status](../docs/workflow.md) identifies active work; examples and previous batches are not approvals for another story.
 
 Tagline, bio, avatar and posting cadence remain open. Suggested profile copy, pinned posts, series names and a first-month plan are [growth proposals](../research/strategy/growth-proposals.md), not adopted brand or cadence decisions. Newsletter and sponsorship plans remain a future commercial direction.
-
 
 <!-- verbatim from old repo: brand/editorial-style.md (only link targets rewritten) -->
 
@@ -82,12 +80,12 @@ A company announcement is source material, not the finished post. The akalmesin 
 
 Use this test: **if the akalmesin contribution disappeared, would readers still learn almost the same thing?** If yes, add explanation, reporting, or perspective.
 
-| Weak | Stronger contribution |
-|---|---|
-| A screenshot of a company's pricing chart | An explanation of what the price change means for different users |
-| A reposted robot demonstration | What was autonomous, remote-operated, or only a controlled test, and what evidence is missing |
-| A translated launch announcement | Indonesian availability, practical use, cost, and limits |
-| A vendor benchmark with a new headline | What the benchmark does and does not prove |
+| Weak                                      | Stronger contribution                                                                         |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------- |
+| A screenshot of a company's pricing chart | An explanation of what the price change means for different users                             |
+| A reposted robot demonstration            | What was autonomous, remote-operated, or only a controlled test, and what evidence is missing |
+| A translated launch announcement          | Indonesian availability, practical use, cost, and limits                                      |
+| A vendor benchmark with a new headline    | What the benchmark does and does not prove                                                    |
 
 Editing a source does not by itself give permission to use it. Keep provenance and any reuse limits in the story package.
 

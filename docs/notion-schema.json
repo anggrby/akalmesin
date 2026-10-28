@@ -59,27 +59,19 @@
             "id": "bd485a24-520f-478b-94ee-5506797e7a8f",
             "name": "To-do",
             "color": "gray",
-            "option_ids": [
-              "a0492c91-a425-41de-a844-53c2acb7b05b"
-            ]
+            "option_ids": ["a0492c91-a425-41de-a844-53c2acb7b05b"]
           },
           {
             "id": "53c4c391-4333-42ad-8683-ca22fb10d88b",
             "name": "In progress",
             "color": "blue",
-            "option_ids": [
-              "403c6598-59da-46ab-8dea-6dcc1df4d650",
-              "f9e7706f-052c-4abe-b82d-15751ed3d3ca"
-            ]
+            "option_ids": ["403c6598-59da-46ab-8dea-6dcc1df4d650", "f9e7706f-052c-4abe-b82d-15751ed3d3ca"]
           },
           {
             "id": "f0231921-af11-4c9a-9c6a-a21f5a4c4766",
             "name": "Complete",
             "color": "green",
-            "option_ids": [
-              "213e80db-9767-441d-9ad3-beda33fd2199",
-              "ac88e874-d447-4709-a756-cddcfd657bdc"
-            ]
+            "option_ids": ["213e80db-9767-441d-9ad3-beda33fd2199", "ac88e874-d447-4709-a756-cddcfd657bdc"]
           }
         ],
         "default_option": "Draft"

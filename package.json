@@ -2,7 +2,9 @@
   "name": "akalmesin",
   "private": true,
   "type": "module",
-  "engines": {"node": ">=20"},
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "post:new": "node scripts/post-new.mjs",
     "copy:review": "node scripts/copy-review.mjs",
@@ -12,10 +14,13 @@
     "design:check": "node scripts/design-check.mjs",
     "export": "node scripts/export.mjs",
     "test": "node --test tests/*.test.mjs",
-    "doctor": "node scripts/doctor.mjs"
+    "doctor": "node scripts/doctor.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "playwright-core": "1.62.1",
+    "prettier": "3.9.10",
     "sharp": "0.35.5"
   }
 }

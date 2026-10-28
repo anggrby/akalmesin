@@ -1,0 +1,14 @@
+# Dependencies and build output
+node_modules/
+content/posts/*/out/
+# Written by scripts (JSON.stringify), formatting them would flip-flop on every run
+content/posts/**/*.json
+content/posts/**/edits.log.md
+tests/fixtures/**/*.json
+# Binary / vendored / lockfile
+package-lock.json
+brand/fonts/
+# Byte-hashed into the design revision (scripts/core.mjs designRevision). Reformatting them would
+# reset final design approval without any visual change, so they are kept as they are.
+brand/tokens.json
+templates/html/post.css

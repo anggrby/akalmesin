@@ -2,11 +2,11 @@
 
 Audience: Indonesian-speaking readers in Indonesia. Mix: AI, robotics, computing. Research date: 24 October 2026, Asia/Jakarta. Each selected announcement/report was published on 22 October; the PC figures cover Q3, not a single-day event.
 
-| Topic | Chosen angle | Primary verification |
-|---|---|---|
-| AI | Claude-assisted formal verification and its conditional guarantees | Anthropic + Theorem |
-| Robotics | Physical training infrastructure behind robot skills | TUM MIRMI + TUM + NEURA |
-| Computing | Global PC shipment contraction and how to read it | Counterpoint preliminary data |
+| Topic     | Chosen angle                                                       | Primary verification          |
+| --------- | ------------------------------------------------------------------ | ----------------------------- |
+| AI        | Claude-assisted formal verification and its conditional guarantees | Anthropic + Theorem           |
+| Robotics  | Physical training infrastructure behind robot skills               | TUM MIRMI + TUM + NEURA       |
+| Computing | Global PC shipment contraction and how to read it                  | Counterpoint preliminary data |
 
 Rundown’s accessible news index and AI industry roundups were used to discover and compare stories; final claims come from the primary links in each post package. This is a curated current-news mix, not a claim to reproduce Rundown’s latest Instagram sequence.
 
