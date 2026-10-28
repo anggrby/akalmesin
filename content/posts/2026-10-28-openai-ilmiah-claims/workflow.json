@@ -78,6 +78,48 @@
       "event": "copy-review",
       "revision": "2d59c2eed1aa88fadb4a9462747753a2482c28ca910545d39251b75ac44bb134",
       "at": "2026-10-28T10:00:52.151Z"
+    },
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "chat t63u",
+      "revision": "2d59c2eed1aa88fadb4a9462747753a2482c28ca910545d39251b75ac44bb134",
+      "at": "2026-10-28T10:09:00.000Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "copy",
+      "reason": "copy edited (Grok Bot (photo credits after image selection; owner re-approval needed)) → e16397db8fb1",
+      "at": "2026-10-28T10:13:44.158Z",
+      "approval": {
+        "gate": "copy",
+        "words": "Yes approved, i acknowledge that",
+        "source": "chat t63u",
+        "context": "Copy revision 2d59c2eed1aa; owner acknowledged keeping 'tim pakar independen' and 'diverifikasi secara otomatis'",
+        "at": "2026-10-28T10:09:00.000Z",
+        "atWIB": "2026-10-28 17:09 WIB",
+        "revision": "2d59c2eed1aa88fadb4a9462747753a2482c28ca910545d39251b75ac44bb134",
+        "recordedAt": "2026-10-28T10:10:20.094Z"
+      }
+    },
+    {
+      "event": "copy-recorded",
+      "who": "Grok Bot (photo credits after image selection; owner re-approval needed)",
+      "mode": "copy",
+      "from": "2d59c2eed1aa88fadb4a9462747753a2482c28ca910545d39251b75ac44bb134",
+      "to": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+      "file": "openai-photo-credit-edits.json",
+      "at": "2026-10-28T10:13:44.158Z"
+    },
+    {
+      "event": "copy-review",
+      "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+      "at": "2026-10-28T10:13:52.767Z"
+    },
+    {
+      "event": "copy-review",
+      "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+      "at": "2026-10-28T10:17:17.389Z"
     }
   ]
 }
