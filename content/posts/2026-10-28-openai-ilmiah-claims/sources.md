@@ -1,0 +1,28 @@
+# Sources — OpenAI: tiga klaim ilmiah (retrieved 2026-10-28 16:20 WIB)
+
+Primary: OpenAI, "Working with academic communities to build scientific understanding", 26 Oct 2026 — https://openai.com/index/building-scientific-understanding-with-academic-communities/ (OP)
+Secondary: Scientific American, 27 Oct 2026 — https://www.scientificamerican.com/article/dueling-proofs-from-openai-and-anthropic-astound-scientists/ (SA) · The Next Web, 26 Oct 2026 — https://thenextweb.com/news/openai-exponential-time-hypothesis-false-kakeya-yang-mills (TNW)
+All three pages re-read 2026-10-28 ~16:20 WIB. "Claim" = stated by OpenAI only; nothing below is independently verified yet.
+
+| Claim | Status | Source |
+|---|---|---|
+| Announced 26 Oct 2026: three results (math, CS, physics) from OpenAI's internal models | Confirmed (announcement); results are OpenAI **claims**. "Belum dirilis" = internal model, not released (OP says "internal models"; SA: model "remains proprietary") | OP; SA |
+| ETH is false (disproof found 16 Oct, Lean 17 Oct) | OpenAI **claim**; not independently verified. SA: OpenAI's algorithm is "a tiny bit faster than exponential time" | OP; SA; TNW |
+| ETH from 1999, about 3-SAT | Confirmed (background) | SA |
+| ETH "used in hundreds of papers" | Confirmed as OpenAI wording → copy "ratusan makalah" | OP; TNW |
+| Review group: Impagliazzo & Paturi (UCSD, original ETH proposers with Zane) + Ryan Williams (MIT) | Confirmed | OP; TNW |
+| Group: involvement is not certification | Confirmed (group's open letter) | TNW |
+| Quote "If the claim is correct, it will change an important part of theoretical computer science" | Now found in TNW, attributed to Impagliazzo/Paturi/Williams' letter, NOT OpenAI. Still dropped per prior verdict (letter itself not read) | TNW |
+| Local smoothing conjecture (Sogge, 1991) proved in every dimension → Kakeya + Stein restriction in all dimensions; Lean 19 Oct | OpenAI **claim**; AI output + Lean proof public on GitHub; not independently verified | OP; TNW |
+| Kakeya proved in 3D in 2025 (Wang & Zahl); local smoothing 2D 2019 | Confirmed (background) | OP; SA |
+| "35 tahun" (caption) | Derived: 1991 → 2026 | OP |
+| Existence proof for 4D QFTs incl. QCD; includes existence of pure Yang–Mills, part of a Clay Millennium Prize problem | OpenAI **claim**; proof not public | OP; SA |
+| Mass gap not addressed; prize not won | Confirmed: SA — problem has two parts, existence + mass gap; mass gap "remains open". OP does not mention the mass gap or claim the prize. "Hadiah belum bisa diklaim" is our inference from the Clay rules (both parts required, per SA) | SA |
+| US$1 juta prize | Confirmed ("million-dollar") | SA |
+| David Gross (Nobel Physics 2004) leads the PHYSICS group (with Douglas, Jaffe, Klebanov, Nekrasov) — not the ETH review | Confirmed | OP; TNW |
+| Main proofs checked in Lean (ETH 17 Oct, local smoothing 19 Oct, Yang–Mills existence 16 Oct; QCD not stated) | Confirmed as OpenAI statement → copy "bukti utama" | OP |
+| Physics materials not released; group writes it up | Confirmed (SA: AGMAI asked OpenAI to release it) | OP; SA |
+| No academic credit sought | Confirmed (principle 2) | OP |
+| Raw data of the ETH result made public; OpenAI funds a conference | Confirmed | OP; TNW |
+| Follows 6 Oct release of AI math papers ("722") | 6 Oct release confirmed; 722 only in TNW → not used (SA: "hundreds") | OP; TNW; SA |
+| Extra, not in copy: Anthropic posted its own ETH disproof hours later; AGMAI criticised the release process | Reported by SA only | SA |

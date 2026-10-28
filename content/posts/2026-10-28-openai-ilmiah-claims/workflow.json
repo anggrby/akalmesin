@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-openai-ilmiah-claims",
+  "stage": "copy-review",
+  "approvals": {
+    "selected": {
+      "gate": "selected",
+      "words": "let's continue. Reproduce these news using our repo pipeline",
+      "source": "chat t41u",
+      "context": "Story 2 of 4: https://www.instagram.com/therundownai/p/DfAE6UFiIri/ (OpenAI: three science claims)",
+      "at": "2026-10-28T03:29:00.000Z",
+      "atWIB": "2026-10-28 10:29 WIB",
+      "revision": null,
+      "recordedAt": "2026-10-28T09:20:40.478Z"
+    },
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "approved",
+      "gate": "selected",
+      "source": "chat t41u",
+      "revision": null,
+      "at": "2026-10-28T03:29:00.000Z"
+    },
+    {
+      "event": "copy-review",
+      "revision": "ba5f459e8a438adcca7d451850664ad1a15a310d8be93029f46fd9d86a343ef8",
+      "at": "2026-10-28T09:20:40.601Z"
+    },
+    {
+      "event": "copy-review",
+      "revision": "68d50f4e2aea5409ba9b8db930216212ae378ae796550e6cafeacafb2825e1ab",
+      "at": "2026-10-28T09:20:59.277Z"
+    }
+  ]
+}

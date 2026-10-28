@@ -1,0 +1,116 @@
+{
+  "slug": "2026-10-28-openai-ilmiah-claims",
+  "category": "AI",
+  "title": "OpenAI: tiga klaim ilmiah",
+  "format": "in-depth",
+  "formatReason": "In-depth: Main + four detail slides (ilmu komputer, matematika, fisika, batasan/verifikasi); three separate claims each need their own caveat.",
+  "eventDate": "2026-10-26",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "OpenAI klaim AI-nya",
+        "pecahkan tiga soal ilmiah"
+      ],
+      "summary": "Model internalnya yang belum dirilis diklaim membereskan soal di ilmu komputer, matematika, dan fisika—kini para ahli dari luar sedang mengeceknya.",
+      "plannedImage": "kartu resmi pengumuman OpenAI (\"Working with academic communities to build scientific understanding\") atau foto berita asli",
+      "credit": "FOTO: KARTU PENGUMUMAN / OPENAI",
+      "alt": "Judul klaim OpenAI soal tiga temuan ilmiah. (Draf) Kartu resmi pengumuman OpenAI tentang kerja sama dengan komunitas akademik.",
+      "imagePosition": "50% 50%",
+      "imageSource": null
+    },
+    {
+      "id": "02-ilmu-komputer",
+      "layout": "detail1",
+      "paragraphs": [
+        "Yang paling bikin heboh: OpenAI mengklaim modelnya membuktikan Exponential Time Hypothesis (ETH) keliru. Dugaan dari 1999 ini bilang soal 3-SAT tak bisa dipecahkan lebih cepat dari waktu eksponensial, dan sudah **jadi pegangan ratusan makalah**. Uniknya, dua pencetusnya—Russell Impagliazzo dan Ramamohan Paturi—kini ikut memimpin pemeriksaan bersama Ryan Williams dari MIT."
+      ],
+      "plannedImage": "foto asli Russell Impagliazzo dan/atau Ramamohan Paturi (UC San Diego), atau ilustrasi rumus 3-SAT",
+      "credit": "FOTO: SUBJEK / SUMBER (BELUM DIPILIH)",
+      "alt": "Detail klaim bantahan Exponential Time Hypothesis. (Draf) Foto para pencetus ETH dari UC San Diego atau ilustrasi rumus logika 3-SAT.",
+      "imagePosition": "50% 50%",
+      "imageSource": null
+    },
+    {
+      "id": "03-matematika",
+      "layout": "detail2",
+      "paragraphs": [
+        "Di matematika, model OpenAI diklaim membuktikan konjektur local smoothing dari Christopher Sogge (1991)—soal seberapa lama gelombang bisa terfokus secara ekstrem. Kalau benar, **konjektur Kakeya dan restriksi Stein ikut terbukti di semua dimensi**. Sebelumnya, matematikawan baru bisa membuktikan Kakeya untuk tiga dimensi pada 2025."
+      ],
+      "plannedImage": "ilustrasi gelombang yang memusat / jarum Kakeya yang berputar",
+      "credit": "FOTO: SUBJEK / SUMBER (BELUM DIPILIH)",
+      "alt": "Detail klaim bukti konjektur local smoothing. (Draf) Ilustrasi gelombang yang memusat ke satu titik.",
+      "imagePosition": "50% 50%",
+      "imageSource": null
+    },
+    {
+      "id": "04-fisika",
+      "layout": "detail1",
+      "paragraphs": [
+        "Di fisika, OpenAI mengklaim punya bukti matematis bahwa teori kuantum seperti kromodinamika kuantum (QCD) benar-benar \"ada\" dalam empat dimensi. Ini menyentuh **sebagian soal Hadiah Milenium Yang–Mills** senilai US$1 juta—tapi bagian \"mass gap\"-nya belum terjawab, jadi hadiahnya belum bisa diklaim. Pemeriksaannya dipimpin peraih Nobel Fisika David Gross."
+      ],
+      "plannedImage": "foto potret David Gross (fisikawan, Nobel 2004)",
+      "credit": "FOTO: DAVID GROSS / SUMBER (BELUM DIPILIH)",
+      "alt": "Detail klaim bukti keberadaan teori Yang–Mills. (Draf) Foto fisikawan peraih Nobel David Gross.",
+      "imagePosition": "50% 50%",
+      "imageSource": null
+    },
+    {
+      "id": "05-batasan",
+      "layout": "detail2",
+      "paragraphs": [
+        "Bukti utamanya memang sudah dicek pakai Lean, software pemeriksa bukti matematika, tapi **belum diverifikasi secara independen** oleh komunitas ilmiah. Bukti fisikanya pun belum dibuka ke publik. OpenAI bilang tidak mencari kredit akademis, dan data mentah hasil ETH dibuka supaya siapa pun bisa ikut mengecek."
+      ],
+      "plannedImage": "tangkapan layar bukti Lean di repositori GitHub OpenAI",
+      "credit": "FOTO: BUKTI LEAN DI GITHUB / OPENAI",
+      "alt": "Detail status verifikasi dan kredit akademis. (Draf) Tangkapan layar kode bukti Lean di GitHub OpenAI.",
+      "imagePosition": "50% 50%",
+      "imageSource": null
+    }
+  ],
+  "caption": [
+    "Bayangkan, dugaan yang jadi pegangan ratusan makalah ilmu komputer tiba-tiba dibantah oleh AI. Itulah yang diklaim OpenAI pada 26 Oktober 2026. Model internalnya yang belum dirilis diklaim menemukan tiga hasil baru sekaligus: membantah Exponential Time Hypothesis, membuktikan konjektur gelombang berusia 35 tahun, dan memecahkan sebagian soal Hadiah Milenium di fisika.",
+    "Menariknya, OpenAI tidak menilai klaimnya sendiri. Tiap hasil diserahkan ke kelompok ahli dari luar—dua pencetus ETH ikut memeriksa bantahan atas hipotesis mereka sendiri, sementara peraih Nobel David Gross memimpin kelompok fisika. Bukti utamanya juga sudah dicek otomatis pakai Lean, software pemeriksa bukti matematika.",
+    "Tapi ingat, semua ini masih klaim yang belum diverifikasi secara independen. Bagian \"mass gap\" soal Yang–Mills juga belum terjawab, jadi hadiah US$1 juta belum bisa diklaim. Menurutmu, kalau AI yang memecahkan soal ilmiah besar, siapa yang pantas disebut penemunya?",
+    "Sumber: OpenAI, Scientific American, The Next Web / Foto: -\n\n#akalmesin #OpenAI #Matematika #Fisika #KecerdasanBuatan"
+  ],
+  "sources": [
+    {
+      "title": "OpenAI — Working with academic communities to build scientific understanding",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "published": "2026-10-26",
+      "supports": [
+        "three results from internal models",
+        "ETH false, hundreds of papers, Lean 17 Oct",
+        "Impagliazzo/Paturi/Williams group",
+        "local smoothing (Sogge 1991), Kakeya + Stein all dimensions, Lean",
+        "QCD/Yang–Mills existence, Gross group",
+        "no academic credit",
+        "ETH raw data public; physics materials held back",
+        "Oct 6 release"
+      ]
+    },
+    {
+      "title": "Scientific American — Dueling proofs from OpenAI and Anthropic astound scientists",
+      "url": "https://www.scientificamerican.com/article/dueling-proofs-from-openai-and-anthropic-astound-scientists/",
+      "published": "2026-10-27",
+      "supports": [
+        "ETH first suggested 1999, 3-SAT",
+        "Yang–Mills = existence + mass gap; mass gap still open",
+        "Kakeya 3D proved 2025 (Wang & Zahl)",
+        "physics paper not public"
+      ]
+    },
+    {
+      "title": "The Next Web — OpenAI says its AI model has disproved the Exponential Time Hypothesis",
+      "url": "https://thenextweb.com/news/openai-exponential-time-hypothesis-false-kakeya-yang-mills",
+      "published": "2026-10-26",
+      "supports": [
+        "group's letter: involvement is not certification",
+        "raw data + conference agreed",
+        "722 maths papers on 6 Oct (not used; copy says ratusan)"
+      ]
+    }
+  ]
+}
