@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-openai-ilmiah-claims",
+  "designRevision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
+  "copyRevision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+  "checkedAt": "2026-10-28T10:23:48.804Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [
+    "Caption sekitar 161 kata; panduan 100–160 kata."
+  ],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9532651072124756,
+        "meanDistance": 2.9750000024675702,
+        "inkPixels": 0.9633771929824562
+      },
+      "gap": 64,
+      "photoHeight": 702
+    },
+    {
+      "id": "02-ilmu-komputer",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/02-02-ilmu-komputer.png",
+      "ink": {
+        "onRamp": 0.9971658615136876,
+        "meanDistance": 1.3565354411993615,
+        "inkPixels": 0.9798711755233495
+      },
+      "gap": 54,
+      "photoHeight": 522
+    },
+    {
+      "id": "03-matematika",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/03-03-matematika.png",
+      "ink": {
+        "onRamp": 0.9965152344462689,
+        "meanDistance": 1.6107995478067783,
+        "inkPixels": 0.9920634920634921
+      },
+      "gap": 54,
+      "photoHeight": 582
+    },
+    {
+      "id": "04-fisika",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/04-04-fisika.png",
+      "ink": {
+        "onRamp": 0.9991152263374485,
+        "meanDistance": 0.715327350060017,
+        "inkPixels": 0.9352674897119342
+      },
+      "gap": 54,
+      "photoHeight": 522
+    },
+    {
+      "id": "05-batasan",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/05-05-batasan.png",
+      "ink": {
+        "onRamp": 0.9656023839931885,
+        "meanDistance": 2.809894330033502,
+        "inkPixels": 0.9957854406130269
+      },
+      "gap": 54,
+      "photoHeight": 642
+    }
+  ]
+}

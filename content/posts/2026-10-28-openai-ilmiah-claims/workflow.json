@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-openai-ilmiah-claims",
-  "stage": "copy-review",
+  "stage": "design-check",
   "approvals": {
     "selected": {
       "gate": "selected",
@@ -13,7 +13,16 @@
       "revision": null,
       "recordedAt": "2026-10-28T09:20:40.478Z"
     },
-    "copy": null,
+    "copy": {
+      "gate": "copy",
+      "words": "Good! approved!",
+      "source": "chat t64u",
+      "context": "Re-approves the photo credit lines (02/03/04) and caption Foto footer + 'Ilustrasi slide 3' line changed after photo selection; copy revision e16397db8fb1. Not final approval.",
+      "at": "2026-10-28T10:23:00.000Z",
+      "atWIB": "2026-10-28 17:23 WIB",
+      "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+      "recordedAt": "2026-10-28T10:23:42.479Z"
+    },
     "final": null
   },
   "designStale": false,
@@ -120,6 +129,18 @@
       "event": "copy-review",
       "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
       "at": "2026-10-28T10:17:17.389Z"
+    },
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "chat t64u",
+      "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+      "at": "2026-10-28T10:23:00.000Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
+      "at": "2026-10-28T10:23:47.518Z"
     }
   ]
 }

@@ -210,3 +210,7 @@ Images chosen after copy approval t63u; full provenance in assets/PROVENANCE.md.
 - 04-fisika: David Gross, Wikimedia Commons (NextEinstein, CC BY-SA 2.0), 1024×683 original.
 - 05-batasan: screenshot of LocalSmoothing.lean in github.com/openai/math @7ef5c0cc (Apache-2.0), GitHub dark theme (light theme failed the ink check), crop [640,370,1120,720], `imagePosition: 0% 0%`.
 The matching credit/caption-footer changes are the copy entry above (revision e16397db8fb1) and need the owner's copy approval again before `design:build`.
+
+## 2026-10-28 17:23 WIB — design build
+
+Design revision 53f738afe64a · 5 PNGs · blue ink from originals (crop/pad in post.json).

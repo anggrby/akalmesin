@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-openai-ilmiah-claims",
+  "copyRevision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+  "designRevision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
+  "builtAt": "2026-10-28T10:23:47.518Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/01-main.html",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/01-01-main.png",
+      "pngHash": "741e0a5ea4e243d3ac0a97046dff2acf667a1e7410f1b885c64452951a236895",
+      "imageHash": "3f6624105d3f296e81029a65787d86a4f3efb802f3f1a1fbbb07690e9e57179c",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-ilmu-komputer",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/02-ilmu-komputer.html",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/02-02-ilmu-komputer.png",
+      "pngHash": "8baec0f442bb0f65c464a69361844204deb8d1304d8b2f49c76492aef2171eb5",
+      "imageHash": "772129516852029dbe82230e4a258d3e8ef434b0db06ca1afae76abad906c8fa",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-matematika",
+      "layout": "detail2",
+      "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/03-matematika.html",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/03-03-matematika.png",
+      "pngHash": "2ae2bf50760a3e747f423d4d188a18522b64e179035c9ee69fba4a00decd266d",
+      "imageHash": "31b4c8a80024fb509b4d521860d9bb0d2db3341840b71eeec81641a4cdb190c4",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 768,
+          "width": 1080,
+          "height": 582,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-fisika",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/04-fisika.html",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/04-04-fisika.png",
+      "pngHash": "9c5e8ebd18c565415d97fe81d4924d9635bd66efafe27a86838fbd7b9998ef42",
+      "imageHash": "7c6a656e46791891246e1dfca0d72f794e1dc5fedc469cee014b34fbf3004769",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-batasan",
+      "layout": "detail2",
+      "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/05-batasan.html",
+      "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/05-05-batasan.png",
+      "pngHash": "774d3345dada1e59f4e063dbf2a64bd35dc9fd599a60d3ef2983e356a3109c21",
+      "imageHash": "b9be4719d893287b59b2eb4cb56ce7553d262dfdbc9af970128c6004be4b0d0a",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 708,
+          "width": 1080,
+          "height": 642,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}
