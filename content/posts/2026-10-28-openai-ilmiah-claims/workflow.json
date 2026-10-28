@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-openai-ilmiah-claims",
-  "stage": "design-check",
+  "stage": "export",
   "approvals": {
     "selected": {
       "gate": "selected",
@@ -23,7 +23,16 @@
       "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
       "recordedAt": "2026-10-28T10:23:42.479Z"
     },
-    "final": null
+    "final": {
+      "gate": "final",
+      "words": "Yeah all good. just reviewed",
+      "source": "chat t66u",
+      "context": "",
+      "at": "2026-10-28T13:14:00.000Z",
+      "atWIB": "2026-10-28 20:14 WIB",
+      "revision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
+      "recordedAt": "2026-10-28T13:15:58.065Z"
+    }
   },
   "designStale": false,
   "notion": null,
@@ -141,6 +150,18 @@
       "event": "design-built",
       "designRevision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
       "at": "2026-10-28T10:23:47.518Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
+      "at": "2026-10-28T13:15:48.715Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t66u",
+      "revision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
+      "at": "2026-10-28T13:14:00.000Z"
     }
   ]
 }

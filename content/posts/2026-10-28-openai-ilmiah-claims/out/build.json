@@ -1,9 +1,10 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-openai-ilmiah-claims",
-  "copyRevision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+  "copyRevision": "4a03e0998ba97fcc4d290773ea3bbc4240f7841471ca8fcfb433983c182aa895",
+  "creditsRevision": "76be1415d2c688ab3047740566647e4dd9c813c7461e35184b9a45fb662ed280",
   "designRevision": "53f738afe64a8bde6923f81bf44faa97539e0ce802ce15c0de94c3511f093054",
-  "builtAt": "2026-10-28T10:23:47.518Z",
+  "builtAt": "2026-10-28T13:15:48.715Z",
   "slides": [
     {
       "id": "01-main",
