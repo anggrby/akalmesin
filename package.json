@@ -11,7 +11,7 @@
     "design:build": "node scripts/design-build.mjs",
     "design:check": "node scripts/design-check.mjs",
     "export": "node scripts/export.mjs",
-    "test": "node --test tests/",
+    "test": "node --test tests/*.test.mjs",
     "doctor": "node scripts/doctor.mjs"
   },
   "devDependencies": {
