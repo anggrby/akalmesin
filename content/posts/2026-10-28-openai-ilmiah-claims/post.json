@@ -1,7 +1,7 @@
 {
   "slug": "2026-10-28-openai-ilmiah-claims",
   "category": "AI",
-  "title": "OpenAI klaim AI-nya pecahkan tiga masalah ilmiah",
+  "title": "OpenAI klaim AI-nya pecahkan tiga soal ilmiah",
   "format": "in-depth",
   "formatReason": "In-depth: Main + four detail slides (ilmu komputer, matematika, fisika, batasan/verifikasi); three separate claims each need their own caveat.",
   "eventDate": "2026-10-26",
@@ -11,7 +11,7 @@
       "layout": "main",
       "headline": [
         "OpenAI klaim AI-nya",
-        "pecahkan tiga masalah ilmiah"
+        "pecahkan tiga soal ilmiah"
       ],
       "summary": "Model internalnya yang belum dirilis diklaim membereskan soal di ilmu komputer, matematika, dan fisika—kini para ahli dari luar sedang mengeceknya.",
       "plannedImage": "kartu resmi pengumuman OpenAI (\"Working with academic communities to build scientific understanding\") atau foto berita asli",
