@@ -1,7 +1,7 @@
 {
   "slug": "2026-10-28-openai-ilmiah-claims",
   "category": "AI",
-  "title": "OpenAI klaim AI-nya pecahkan tiga soal ilmiah",
+  "title": "OpenAI klaim AI-nya pecahkan tiga masalah ilmiah",
   "format": "in-depth",
   "formatReason": "In-depth: Main + four detail slides (ilmu komputer, matematika, fisika, batasan/verifikasi); three separate claims each need their own caveat.",
   "eventDate": "2026-10-26",
@@ -11,7 +11,7 @@
       "layout": "main",
       "headline": [
         "OpenAI klaim AI-nya",
-        "pecahkan tiga soal ilmiah"
+        "pecahkan tiga masalah ilmiah"
       ],
       "summary": "Model internalnya yang belum dirilis diklaim membereskan soal di ilmu komputer, matematika, dan fisika—kini para ahli dari luar sedang mengeceknya.",
       "plannedImage": "kartu resmi pengumuman OpenAI (\"Working with academic communities to build scientific understanding\") atau foto berita asli",
@@ -48,7 +48,7 @@
       "id": "04-fisika",
       "layout": "detail1",
       "paragraphs": [
-        "Di bidang fisika, OpenAI mengklaim punya bukti matematis bahwa teori kuantum seperti kromodinamika kuantum (QCD) secara matematis valid dalam ruang empat dimensi. Temuan ini menjawab **sebagian masalah Millennium Prize Yang–Mills yang berhadiah US$1 juta**—namun bagian \"mass gap\"-nya belum terpecahkan, sehingga hadiahnya belum bisa dibawa pulang. Tim pengujinya dipimpin langsung oleh peraih Nobel Fisika, David Gross."
+        "Di bidang fisika, OpenAI mengklaim punya bukti matematis bahwa teori kuantum seperti kromodinamika kuantum (QCD) terdefinisi dengan baik secara matematis dalam ruang empat dimensi. Temuan ini menjawab **sebagian masalah Millennium Prize Yang–Mills yang berhadiah US$1 juta**—namun bagian \"mass gap\"-nya belum terpecahkan, sehingga hadiahnya belum bisa dibawa pulang. Tim pengujinya dipimpin langsung oleh peraih Nobel Fisika, David Gross."
       ],
       "plannedImage": "foto potret David Gross (fisikawan, Nobel 2004)",
       "credit": "FOTO: DAVID GROSS / SUMBER (BELUM DIPILIH)",

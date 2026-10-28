@@ -112,3 +112,32 @@ Revision 68d50f4e2aea → 38ac4ded4305
 + Menurutmu, kalau AI benar-benar berhasil memecahkan teka-teki ilmiah sebesar ini, siapa yang paling pantas menyandang gelar penemunya?
   words: −"yang" +"benar-benar berhasil" · −"soal" +"teka-teki" · −"besar," +"sebesar ini," · +"paling" · −"disebut" +"menyandang gelar"
 ```
+
+## 2026-10-28 16:58 WIB — owner (pilihan di chat 2026-10-28) edits (copy)
+
+Who: owner (pilihan di chat 2026-10-28) · mode: copy · file: `openai-owner-edits2.json` · saved 2026-10-28 16:58 WIB
+Revision 38ac4ded4305 → 0e3d0261e034
+
+### 01-main · headline
+
+```diff
+- pecahkan tiga soal ilmiah
++ pecahkan tiga masalah ilmiah
+  words: −"soal" +"masalah"
+```
+
+### title
+
+```diff
+- OpenAI klaim AI-nya pecahkan tiga soal ilmiah
++ OpenAI klaim AI-nya pecahkan tiga masalah ilmiah
+  words: −"soal" +"masalah"
+```
+
+### 04-fisika · paragraph-0
+
+```diff
+- Di bidang fisika, OpenAI mengklaim punya bukti matematis bahwa teori kuantum seperti kromodinamika kuantum (QCD) secara matematis valid dalam ruang empat dimensi.
++ Di bidang fisika, OpenAI mengklaim punya bukti matematis bahwa teori kuantum seperti kromodinamika kuantum (QCD) terdefinisi dengan baik secara matematis dalam ruang empat dimensi.
+  words: +"terdefinisi dengan baik" · −"valid"
+```
