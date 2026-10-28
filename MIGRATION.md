@@ -1,0 +1,58 @@
+# Migration from the old repo
+
+The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbatim" means the rule text was copied unchanged and only link targets were rewritten.
+
+## Rules and docs
+
+| Old file | Now lives in | How |
+|---|---|---|
+| `brand/brand-guide.md` | `brand/voice.md` § Brand guide | verbatim |
+| `brand/editorial-style.md` (includes "relaxed, not stiff" from PR #4) | `brand/voice.md` § Editorial style | verbatim, with a quick-rules index on top |
+| `brand/style-feedback-log.md` (includes the Kimi entries) | `brand/style-feedback-log.md` | verbatim |
+| `brand/editorial-policy.json` | `brand/editorial-policy.json` | identical; enforced by `scripts/quality.mjs` + the editor's live warnings |
+| `DESIGN.md`, `brand/typography.md`, `brand/photo-treatment.md`, `design/README.md`, `design/references/2026-10-25/README.md`, `assets/README.md` | `brand/design.md` | verbatim, with a photo quick-rules index on top |
+| `brand/tokens.css`, `brand/tokens.json` | same paths | font URLs → `brand/fonts/` |
+| `brand/Logo.jpg`, `brand/logo-wordmark.png` | `brand/logos/` | byte-exact |
+| `assets/fonts/*` (Manrope, IBM Plex Mono + OFL) | `brand/fonts/` | byte-exact |
+| `brand/examples/2026-10-27-gpt-6-1-terra/*` | `brand/examples/terra/` | byte-exact (PNG hashes match its README) |
+| `assets/references/*`, `design/references/*.png/jpg`, `assets/photos/processed/meta-prometheus-blue-ink.png` | `brand/references/` (4 JPEGs) | downscaled. The unused Meta originals and the before-text-adjustment variant were dropped |
+| `brand/legacy/*` (2026-10-24 tokens/typography snapshot) | dropped | superseded by the current tokens; history noted in docs/decisions.md |
+| `docs/decisions.md`, `archive/history/2026-10-27-docs-decisions.md` | `docs/decisions.md` | verbatim below the new 2026-10-28 rewrite entry |
+| `docs/workflow.md` §§ gates, research, copy, design, delivery | `docs/workflow.md` + `AGENTS.md` | rewritten for the 8 steps. Gate rules kept: separate selected/copy/final decisions, verbatim evidence, no implicit approval, edits make approvals stale, Notion ≠ publish |
+| `docs/workflow.md` §§ 5–6 (Postiz handoff, 24 h / 7 d scorecard) | `docs/workflow.md` § Outside this repo | verbatim (OPEN-QUESTIONS 6) |
+| `docs/integrations.md` (Notion destination, marker dedup, preserving human notes, no credentials in repo, Instagram separation) | `docs/workflow.md` § 8 + `AGENTS.md` rules | restated; the notion-custom preference is OPEN-QUESTIONS 1. Figma/computer-use notes dropped (HTML only) |
+| `docs/notion-content-schema.json` | `docs/notion-schema.json` | byte-exact |
+| `editorial.config.json` (Notion IDs, property names) | `scripts/export.mjs` `NOTION` + manifest property names | same IDs |
+| `docs/editor.md` (live editor, Export button, SQLite journal) | `docs/workflow.md` §§ 4–5 | replaced by the single-file editor + Simpan + `copy:record` |
+| `docs/REPOSITORY.md`, `docs/status.md`, `README.md`, `AGENTS.md`, `archive/AGENTS.md`, `archive/README.md`, `scripts/README.md`, `templates/html/README.md`, `templates/html/editorial/README.md`, `content/posts/README.md`, `manifest/README.md` | `AGENTS.md` (map + setup) + `docs/workflow.md` | merged. Open items from status.md → OPEN-QUESTIONS 7, 9, 10 |
+| `.agents/skills/akalmesin-editorial/SKILL.md` + `agents/openai.yaml` | `AGENTS.md` | the task routing table became the 8-step table |
+| `templates/editorial-copy.md` | `templates/copy.md` | same fields, shortened, pointing at the new commands |
+| `research/README.md`, `research/strategy/*`, `research/news/2026-10-24/*` | `research/` | byte-exact |
+| `research/competitors/2026-10-24/*`, `content/briefs/2026-10-24-three-posts.md` | not carried | remains in the old repo (OPEN-QUESTIONS 7) |
+
+## Code
+
+| Old | New |
+|---|---|
+| `editorial-core.mjs`, `editorial-runtime.mjs`, `editorial-approval.mjs` | `scripts/core.mjs` (hashes, gates, invalidation, sentence/word diff, rendering assets, browser launch) + `scripts/approve.mjs` |
+| `editorial-quality.mjs` | `scripts/quality.mjs` (same rules, plus credit format, alt present, Main first) |
+| `create-editorial-batch.mjs` | `scripts/post-new.mjs` (one post, no batches) |
+| `import-editorial-edits.mjs`, `collect-editorial-feedback.mjs` | `scripts/copy-record.mjs` (reads schemaVersion 2 legacy files through `workflow.legacyRevisions`) |
+| `templates/html/editorial/{post.mjs,post.css,review-tokens.json}` | `templates/html/{post.mjs,post.css,layout-tokens.json}` (post.css verbatim + `.placeholder`) |
+| `templates/html/editorial/{editor.mjs,editor-client.js,review*.{mjs,css,js}}`, `serve-editorial-editor.mjs`, `package-editorial-review.mjs` | `templates/html/{editor-client.js,editor.css}` + `renderEditor` (no server; Simpan downloads JSON) |
+| `build-editorial-html.mjs`, `render-editorial-html.mjs` (`inspectLayout`), `render-export-snapshot.mjs`, `render-news-png.mjs`, `render-news-batch.py` | `scripts/design-build.mjs` + `scripts/design-check.mjs` (same geometry checks and overflow guard) |
+| `content/posts/2026-10-28-kimi-k3-1-pro/assets/blue_ink.py` | `scripts/blue-ink.mjs` (same stops/curve/texture; seeded JS grain) |
+| `prepare-notion-handoff.mjs` | `scripts/export.mjs --dry-run` (manifest with the same properties, body sections and marker) |
+| `/home/box/tools/notion_attach_assets.py` (box only, never in the repo) | `scripts/export.mjs --attach` (fetch, token from env) |
+| `sync-export-to-notion.mjs`, `notion-export-client.mjs` (notion-custom) | dropped. The connector does the page and `--attach` the files (OPEN-QUESTIONS 1) |
+| `editorial-doctor.mjs`, `check-repository.mjs` | `scripts/doctor.mjs` |
+| `build-figma-review.mjs`, `check-figma-import-guards.mjs` | dropped (HTML only) |
+| `tests/*` (8 files, 47 tests) | `tests/{gates,diff,quality,render}.test.mjs` (19 tests) |
+
+## Content
+
+| Old | New |
+|---|---|
+| `content/posts/2026-10-28-kimi-k3-1-pro/` (`post.json`, `copy.md`, `caption.md`, `brief.md`, `review.md`, `revisions/`, `approvals/*.md`, `workflow.json`) | the same folder. post.json was rebuilt from the v1 revision and replayed through the new commands. Approvals are in `workflow.json` with the verbatim t41u/t42u/t45u words; the diff is in `edits.log.md`; the owner file is in `edits/owner-edits-v1.json`; `sources.md` and the originals are byte-exact |
+| `content/posts/2026-10-24-*`, `2026-10-26-*-html` (legacy drafts, no approvals) | not carried (OPEN-QUESTIONS 7) |
+| `design/batches/*`, `archive/exports/*`, `archive/legacy-builders/*`, `archive/packages/*.zip`, `archive/variants/*`, `archive/architecture/*`, `manifest/imports.json` | dropped (generated or historical; still in the old repo) |

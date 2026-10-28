@@ -15,6 +15,9 @@ What changed:
 - Terra example PNGs kept byte-exact (their SHA-256 hashes are cited), so the repo is ~5 MB plus the Kimi fixture rather than strictly under 5 MB. Visual reference images were downscaled to JPEG.
 - Structure deviations from the brief: layout metrics kept as `templates/html/layout-tokens.json` (was review-tokens.json) because the renderer needs them; fonts live in `brand/fonts/`; blue ink is its own module `scripts/blue-ink.mjs` so tests can call it.
 
+- Additional rules from building it: the Notion `Post` title follows the Main headline (that is how Kimi's final title came out); `edits/` keeps the owner's Simpan files; only `build.json`, `check.json` and `notion-manifest.json` under `out/` are tracked. The PNGs and the HTML are regenerated from originals + post.json.
+- Kimi pilot (same day): the new build's text area is pixel-identical to the approved renders. Photo areas differ only by grain, plus a shift of a few pixels in the two cropped charts, because the exact old crop coordinates were never recorded and were re-derived by template matching. The Notion page still holds the old-repo PNGs; its receipt records those hashes (`assetsMatchBuild: false`). It was not re-uploaded.
+
 
 <!-- verbatim from old repo: docs/decisions.md (only link targets rewritten) -->
 

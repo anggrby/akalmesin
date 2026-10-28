@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-26",
+  "timezone": "Asia/Jakarta",
+  "verifiedVia": "Configured notion-custom MCP; explicit guarded schema migration followed by independent get_data_source and query_data_source readback.",
+  "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+  "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+  "databaseTitle": "Akal Mesin Content Schedule",
+  "url": "https://app.notion.com/p/405f909f26a58057ad0ae9562fe9c915",
+  "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+  "properties": {
+    "Post": {
+      "id": "title",
+      "name": "Post",
+      "description": null,
+      "type": "title",
+      "title": {}
+    },
+    "Status": {
+      "id": "T%5B%3D%3B",
+      "name": "Status",
+      "description": "Publishing state. Exported posts begin Ready to Publish; later manual publishing decisions are preserved.",
+      "type": "status",
+      "status": {
+        "options": [
+          {
+            "id": "a0492c91-a425-41de-a844-53c2acb7b05b",
+            "name": "Draft",
+            "color": "gray",
+            "description": null
+          },
+          {
+            "id": "403c6598-59da-46ab-8dea-6dcc1df4d650",
+            "name": "Ready to Publish",
+            "color": "purple",
+            "description": null
+          },
+          {
+            "id": "f9e7706f-052c-4abe-b82d-15751ed3d3ca",
+            "name": "Scheduled",
+            "color": "blue",
+            "description": null
+          },
+          {
+            "id": "213e80db-9767-441d-9ad3-beda33fd2199",
+            "name": "Published",
+            "color": "green",
+            "description": null
+          },
+          {
+            "id": "ac88e874-d447-4709-a756-cddcfd657bdc",
+            "name": "Archived",
+            "color": "default",
+            "description": null
+          }
+        ],
+        "groups": [
+          {
+            "id": "bd485a24-520f-478b-94ee-5506797e7a8f",
+            "name": "To-do",
+            "color": "gray",
+            "option_ids": [
+              "a0492c91-a425-41de-a844-53c2acb7b05b"
+            ]
+          },
+          {
+            "id": "53c4c391-4333-42ad-8683-ca22fb10d88b",
+            "name": "In progress",
+            "color": "blue",
+            "option_ids": [
+              "403c6598-59da-46ab-8dea-6dcc1df4d650",
+              "f9e7706f-052c-4abe-b82d-15751ed3d3ca"
+            ]
+          },
+          {
+            "id": "f0231921-af11-4c9a-9c6a-a21f5a4c4766",
+            "name": "Complete",
+            "color": "green",
+            "option_ids": [
+              "213e80db-9767-441d-9ad3-beda33fd2199",
+              "ac88e874-d447-4709-a756-cddcfd657bdc"
+            ]
+          }
+        ],
+        "default_option": "Draft"
+      }
+    },
+    "Format": {
+      "id": "_Ln~",
+      "name": "Format",
+      "description": "Publishing format, separate from editorial depth.",
+      "type": "select",
+      "select": {
+        "options": [
+          {
+            "id": "a77e7d0d-4650-4528-8840-8d6199b4b573",
+            "name": "Single image",
+            "color": "blue",
+            "description": null
+          },
+          {
+            "id": "af672de3-7739-4482-9994-d84ca1175426",
+            "name": "Carousel",
+            "color": "pink",
+            "description": null
+          },
+          {
+            "id": "ba3d34be-a9e9-4116-8764-fbda58d89b62",
+            "name": "Reel / video",
+            "color": "purple",
+            "description": null
+          },
+          {
+            "id": "87006d76-76ae-4155-bc4f-f8992f4ac24a",
+            "name": "Story",
+            "color": "orange",
+            "description": null
+          }
+        ]
+      }
+    },
+    "Topic": {
+      "id": "Qw%7BJ",
+      "name": "Topic",
+      "description": "Technology topics covered by the report.",
+      "type": "select",
+      "select": {
+        "options": [
+          {
+            "id": "33c3e0ad-5322-4968-ae86-e122c0c1819d",
+            "name": "AI",
+            "color": "purple",
+            "description": null
+          },
+          {
+            "id": "ae0eb870-5bb2-4958-b134-5c7f993b30ab",
+            "name": "Robotika",
+            "color": "blue",
+            "description": null
+          },
+          {
+            "id": "253b711b-241d-49dd-a78e-f66f5c7487ff",
+            "name": "Komputasi",
+            "color": "gray",
+            "description": null
+          },
+          {
+            "id": "bf59b991-e66d-4966-9aea-c92c9c29757a",
+            "name": "Chip",
+            "color": "orange",
+            "description": null
+          },
+          {
+            "id": "b761cad1-d9f0-48f7-b59b-d1abf0ab33f9",
+            "name": "Software",
+            "color": "green",
+            "description": null
+          }
+        ]
+      }
+    },
+    "Caption": {
+      "id": "Ke%5BT",
+      "name": "Caption",
+      "description": "Complete approved caption, including source/photo/AI-illustration disclosures where applicable.",
+      "type": "rich_text",
+      "rich_text": {}
+    },
+    "Assets": {
+      "id": "TK~f",
+      "name": "Assets",
+      "description": "Ordered final exported post images or video. Export replaces this set; put unrelated manual attachments in the page body.",
+      "type": "files",
+      "files": {}
+    },
+    "Publish date": {
+      "id": "kmyB",
+      "name": "Publish date",
+      "description": "Owner-controlled publishing date; later exports preserve it.",
+      "type": "date",
+      "date": {}
+    }
+  },
+  "notes": [
+    "Owner simplified the initial schema to seven columns; Topic is single-select.",
+    "Nine removed metadata properties were empty across the one existing draft; no values needed migration and the draft was preserved.",
+    "All retained property IDs and unrelated definitions are unchanged. Notion regenerated Topic option IDs during type conversion; the names/colors/order remain unchanged and this snapshot stores the new IDs.",
+    "Sources, depth, photo credits, publishing URL, account context and export identity/revision/hash/time belong in each post body; no hidden identity column."
+  ]
+}
