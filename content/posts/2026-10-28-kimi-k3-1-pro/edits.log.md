@@ -92,3 +92,7 @@ Design revision 1692467a35a4 · 5 PNGs · blue ink from originals (crop/pad in p
 ## 2026-10-28 14:31 WIB — design tokens from owner sheets (t52u)
 
 Owner (t52u): "Are you able to translate this into the design token. We don't need figma at all. Just use this as source of truth". brand/tokens.json now comes from his three measured sheets. Visual changes on this post: header divider #7B7B7B → #000000 and 1 px lower (y129 → y130); Main: headline/summary 1 px lower (y186 → y187), image 11 px lower (y582 → y593; summary → image 54 → 64), photo 11 px shorter. Detail slides: divider → body 57 → 44, so body text starts 12 px higher (y186 → y174) and the image starts 12 px higher and is 12 px taller (02–04: y600 → y588; 05: y780 → y768). No copy, image source, crop or treatment changed; no quote slide in this post. The final approval (t45u) was invalidated by the rebuild: the post is back in design review and needs a new final approval. Notion was not touched (it still holds the old renders).
+
+## 2026-10-28 14:50 WIB — design build
+
+Design revision 7bfb0d4853cd · 5 PNGs · blue ink from originals (crop/pad in post.json).

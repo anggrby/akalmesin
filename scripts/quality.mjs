@@ -22,7 +22,12 @@ export function checkPost(post, policy = loadPolicy()) {
   const allText = [caption, post.title];
   for (const [i, slide] of (post.slides || []).entries()) {
     allText.push(...(slide.headline || []), slide.summary || '', ...(slide.paragraphs || []), slide.alt || '');
-    if (!CREDIT.test(slide.credit || '')) add('credit_format', `Slide ${slide.id}: kredit harus "FOTO: SUBJEK / SUMBER".`);
+    if (slide.layout === 'quote') {
+      allText.push(slide.quote || '', slide.author || '', slide.role || '');
+      if (!slide.quote?.trim() || !slide.author?.trim() || !slide.role?.trim()) add('quote_fields', `Slide ${slide.id}: quote perlu teks kutipan, nama, dan jabatan.`);
+      if (slide.credit) add('quote_credit', `Slide ${slide.id}: slide kutipan tidak memakai kredit foto; catat di sources/PROVENANCE.`);
+      if (!slide.quoteSource?.trim()) add('quote_source', `Slide ${slide.id}: simpan sumber asli kutipan di quoteSource.`);
+    } else if (!CREDIT.test(slide.credit || '')) add('credit_format', `Slide ${slide.id}: kredit harus "FOTO: SUBJEK / SUMBER".`);
     if (!slide.alt?.trim()) add('alt_missing', `Slide ${slide.id}: alt text kosong.`);
     if (slide.imageSource?.kind === 'ai-illustration' && !new RegExp(`Ilustrasi\\s+slide\\s+${i + 1}\\s*:\\s*AI\\s*\\/\\s*akalmesin`, 'i').test(caption))
       add('illustration_disclosure', `Tambahkan Ilustrasi slide ${i + 1}: AI / akalmesin pada caption.`);

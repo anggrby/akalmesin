@@ -70,9 +70,13 @@ body { color: var(--color-ink); font-family: 'Manrope', sans-serif; }
   position: absolute; left: var(--quote-side); right: var(--quote-side); bottom: var(--quote-bottom);
   margin: 0; text-align: center; display: flex; flex-direction: column; gap: var(--quote-stack-gap);
 }
-.quote-mark { color: var(--color-editorial-gray); margin: 0; }
+.quote-mark {
+  margin: 0; color: var(--quote-mark-color); height: var(--quote-mark-box); overflow: visible;
+  font: var(--quote-mark-weight) var(--quote-mark-size)/var(--quote-mark-box) var(--type-quote-family), sans-serif;
+  position: relative; top: var(--quote-mark-offset);
+}
 .quote-text {
-  margin: 0; color: var(--color-editorial-gray);
+  margin: 0; color: var(--color-editorial-gray); white-space: pre-line;
   font: var(--type-quote-weight) var(--type-quote-size)/var(--type-quote-line-height) var(--type-quote-family), sans-serif;
   letter-spacing: var(--type-quote-tracking);
 }

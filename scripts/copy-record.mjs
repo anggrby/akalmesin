@@ -19,6 +19,7 @@ export function applyEdits(post, edits) {
       if (k === 'headline') slide.headline = value.split('\n').map(l => l.trim()).filter(Boolean);
       else if (k === 'summary') slide.summary = value;
       else if (k === 'credit') slide.credit = value;
+      else if (['quote', 'author', 'role'].includes(k)) slide[k] = value;
       else slide.paragraphs[Number(k.slice(10))] = value;
     }
     // The Notion "Post" title mirrors the Main headline (decision 2026-10-28).

@@ -21,7 +21,18 @@ export function inspectLayout(gaps = {}) {
     if (el.scrollWidth > el.clientWidth + 1 || (st.overflowY === 'hidden' && el.scrollHeight > el.clientHeight + 1)) v.push('Text overflow: ' + (el.dataset.edit || el.className));
   }
   const credit = document.querySelector('.credit'), cs = credit && getComputedStyle(credit), photo = document.querySelector('.photo');
-  if (!credit) v.push('Photo credit missing');
+  let quote = null;
+  if (post.classList.contains('post-quote')) {
+    const q = gaps.quote || {}, block = document.querySelector('.quote-block').getBoundingClientRect(), text = document.querySelector('.quote-text').getBoundingClientRect();
+    if (document.querySelector('.masthead')) v.push('Quote must have no masthead');
+    if (credit) v.push('Quote must have no photo credit');
+    const lines = Math.round(text.height / q.lineHeight);
+    if (lines > q.maxLines) v.push(`Text overflow: quote is ${lines} lines (max ${q.maxLines})`);
+    if (Math.abs(b.bottom - block.bottom - q.bottom) > .5) v.push('Quote block bottom is not ' + q.bottom + ' px from the edge');
+    if (block.left - b.left < q.side - .5 || b.right - block.right < q.side - .5) v.push('Quote outside its side insets');
+    if (block.top < b.top) v.push('Text outside canvas: quote');
+    quote = {block: rect(document.querySelector('.quote-block')), text: rect(document.querySelector('.quote-text')), lines};
+  } else if (!credit) v.push('Photo credit missing');
   else { if (cs.color !== 'rgb(255, 255, 255)') v.push('Credit must be white'); if (cs.textAlign !== 'left') v.push('Credit must be left-aligned'); }
   let gap = null, pr = null;
   if (photo) {
@@ -35,8 +46,8 @@ export function inspectLayout(gaps = {}) {
   if ([...document.images].some(i => !i.complete || !i.naturalWidth)) v.push('Image not loaded');
   if (document.querySelector('[data-placeholder]')) v.push('Placeholder still present');
   const faces = [...document.fonts].filter(f => f.status === 'loaded').map(f => f.family);
-  if (!faces.includes('Manrope') || !faces.includes('IBM Plex Mono')) v.push('Bundled fonts not loaded');
-  return {canvas: rect(post), photo: pr, textPhotoGap: gap, violations: v};
+  if (!faces.includes('Manrope') || (!post.classList.contains('post-quote') && !faces.includes('IBM Plex Mono'))) v.push('Bundled fonts not loaded');
+  return {canvas: rect(post), photo: pr, textPhotoGap: gap, quote, violations: v};
 }
 
 async function contactSheet(files, target, cols = 3) {

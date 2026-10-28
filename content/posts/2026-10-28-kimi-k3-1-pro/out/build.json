@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "slug": "2026-10-28-kimi-k3-1-pro",
   "copyRevision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
-  "designRevision": "1692467a35a439eb1d49c8021156d45c969707345b4ad6566f91ecdaf0cced4c",
-  "builtAt": "2026-10-28T07:29:47.728Z",
+  "designRevision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+  "builtAt": "2026-10-28T07:50:22.238Z",
   "slides": [
     {
       "id": "01-main",
@@ -30,6 +30,7 @@
           "right": 1080
         },
         "textPhotoGap": 64,
+        "quote": null,
         "violations": []
       }
     },
@@ -58,6 +59,7 @@
           "right": 1080
         },
         "textPhotoGap": 54,
+        "quote": null,
         "violations": []
       }
     },
@@ -86,6 +88,7 @@
           "right": 1080
         },
         "textPhotoGap": 54,
+        "quote": null,
         "violations": []
       }
     },
@@ -114,6 +117,7 @@
           "right": 1080
         },
         "textPhotoGap": 54,
+        "quote": null,
         "violations": []
       }
     },
@@ -142,6 +146,7 @@
           "right": 1080
         },
         "textPhotoGap": 54,
+        "quote": null,
         "violations": []
       }
     }

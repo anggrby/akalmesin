@@ -1,0 +1,21 @@
+{
+  "slug": "2099-01-01-quote-fixture",
+  "category": "AI",
+  "title": "ZZ quote fixture (test only)",
+  "slides": [
+    {
+      "id": "01-quote",
+      "layout": "quote",
+      "quote": "Artinya, kita perlu\nbertindak secara berbeda.",
+      "author": "Dario Amodei",
+      "role": "CEO Anthropic",
+      "quoteSource": "Owner's Quote layout example, 2026-10-28 (test text only)",
+      "alt": "Test fixture: Meta server room in blue ink with a quotation.",
+      "imagePosition": "50% 50%",
+      "imageScale": 1.1,
+      "imageSource": {"id": "fixture-meta", "kind": "source-photo", "originalFile": "assets/originals/meta.jpg", "subject": "Meta server room, approved blue-ink sample (test only)", "supplier": "owner style reference", "treatment": "blue-ink", "process": {"maxWidth": 2160}}
+    }
+  ],
+  "caption": [],
+  "sources": []
+}

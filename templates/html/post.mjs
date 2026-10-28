@@ -12,6 +12,7 @@ export function renderEmphasis(value) {
 
 /** One 1080×1350 <article>. imageURL null → grey placeholder labelled with the planned image + credit. */
 export function renderSlide({post, slide, imageURL = null}) {
+  if (slide.layout === 'quote') return renderQuote({slide, imageURL});
   const header = `<header class="masthead"><div class="masthead-row"><div class="wordmark">akalmesin</div><div class="category">${e(post.category)}</div></div></header>`;
   const copy = slide.layout === 'main'
     ? `<h1 class="headline" data-edit="headline">${slide.headline.map(l => `<span class="headline-line">${e(l)}</span>`).join('')}</h1><p class="summary" data-edit="summary">${e(slide.summary)}</p>`
@@ -20,6 +21,15 @@ export function renderSlide({post, slide, imageURL = null}) {
     ? `<img src="${e(imageURL)}" alt="${e(slide.alt)}" draggable="false">`
     : `<div class="placeholder" data-placeholder>GAMBAR: ${e(slide.plannedImage || slide.imageSource?.subject || 'belum dipilih')} — ${e(slide.credit)}</div>`;
   return `<article class="post post-${e(slide.layout)}" data-slide="${e(slide.id)}" style="--image-position:${e(slide.imagePosition || '50% 50%')}" aria-label="${e(slide.alt)}">${header}<div class="copy">${copy}</div><figure class="photo">${media}<p class="credit" data-edit="credit">${e(slide.credit)}</p></figure></article>`;
+}
+
+/** Quote: full-bleed photo, quote overlay, mark + statement + author/role. No masthead, no photo credit. */
+function renderQuote({slide, imageURL}) {
+  const media = imageURL
+    ? `<img class="quote-photo" src="${e(imageURL)}" alt="${e(slide.alt)}" draggable="false">`
+    : `<div class="placeholder" data-placeholder>GAMBAR: ${e(slide.plannedImage || slide.imageSource?.subject || 'belum dipilih')}</div>`;
+  const style = `--image-position:${e(slide.imagePosition || '50% 25%')};--image-scale:${Number(slide.imageScale) || 1}`;
+  return `<article class="post post-quote" data-slide="${e(slide.id)}" style="${style}" aria-label="${e(slide.alt)}">${media}<div class="quote-shade"></div><div class="quote-block"><p class="quote-mark" aria-hidden="true">\u201C</p><p class="quote-text" data-edit="quote">${e(slide.quote)}</p><div class="quote-attribution"><p class="quote-speaker" data-edit="author">${e(slide.author)}</p><p class="quote-role" data-edit="role">${e(slide.role)}</p></div></div></article>`;
 }
 
 /** Standalone page with one slide, used for PNG screenshots. */

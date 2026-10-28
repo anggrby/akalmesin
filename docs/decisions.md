@@ -2,6 +2,13 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-10-28 — Quote layout: no masthead (t54u)
+
+- Owner (t54u): "Yes, it should have no masthead." He also sent a finished Quote example (`brand/references/quote-example-2026-10-28.png`, Dario Amodei).
+- The Quote slide is now rendered: full-bleed blue-inked photo, `overlay.quote` over the whole frame, centred mark → statement → author / role in the sheet's 56 px box ending at y1294, no masthead, no photo credit (provenance in sources/PROVENANCE).
+- From his example (values the sheets lack): quote mark = Manrope Bold 700 `“` at 400 px (ink 116 × 103 at x482 y782), statement line break as he wrote it (`\n` in `quote`). Sheet values win where they overlap: the example shows the statement ≈#DCDAD6 and role ≈#E8E6E3 (sheet: #EEEEEE / #FFFFFF) and the mark dark #222426 (sheet: #EEEEEE); the sheet colours are used and the mark colour is an open question.
+- Agent rule: a statement is at most 3 lines; longer fails the build instead of shrinking.
+
 ## 2026-10-28 — Owner sheets are the design source of truth, Figma dropped (t52u)
 
 - Owner (t52u): "Are you able to translate this into the design token. We don't need figma at all. Just use this as source of truth", with three measured sheets (now `brand/references/design-values-{1-typography,2-color-treatment,3-spacing-layout}.png`).

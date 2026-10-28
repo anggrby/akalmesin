@@ -66,6 +66,7 @@ export const isDetail = s => ['detail1', 'detail2'].includes(s.layout);
 
 /** Fields the owner can edit in the HTML editor, keyed like owner-edits-v1.json. */
 export function editableFields(slide) {
+  if (slide.layout === 'quote') return {quote: slide.quote, author: slide.author, role: slide.role};
   if (slide.layout === 'main') return {headline: slide.headline.join('\n'), summary: slide.summary, credit: slide.credit};
   return {...Object.fromEntries((slide.paragraphs || []).map((p, i) => ['paragraph-' + i, p])), credit: slide.credit};
 }
@@ -193,6 +194,7 @@ export function tokenVars(root = ROOT) {
     'main-headline-to-summary': px(M.headlineToSummary), 'main-summary-to-image': px(M.summaryToImage),
     'detail-side': px(D.side), 'detail-header-top': px(D.headerTop), 'detail-row-to-divider': px(D.wordmarkRowToDivider),
     'detail-divider-to-body': px(D.dividerToBody - dw), 'detail-content-width': px(D.contentWidth), 'detail-body-to-image': px(D.bodyToImage),
+    'quote-mark-size': px(Q.mark.size), 'quote-mark-weight': Q.mark.weight, 'quote-mark-box': px(Q.mark.boxHeight), 'quote-mark-offset': px(Q.mark.inkOffsetY), 'quote-mark-color': T.color[Q.mark.color].value,
     'quote-side': px(Q.side), 'quote-bottom': px(Q.bottom), 'quote-stack-gap': px(Q.stackGap), 'quote-author-to-role': px(Q.authorToRole),
     'credit-inset-x': px(U.creditInsetX), 'credit-inset-bottom': px(U.creditInsetBottom), 'credit-gradient-height': px(U.creditGradient.height),
     'credit-gradient-opacity': U.creditGradient.bottomOpacity, 'category-align': U.categoryAlign, 'detail-paragraph-gap': px(U.detailParagraphGap)
@@ -202,7 +204,8 @@ export function tokenVars(root = ROOT) {
 /** Image-to-copy gap per layout, from the tokens (used by the geometry check). */
 export function imageGaps(root = ROOT) {
   const L = readJSON(path.join(root, 'brand/tokens.json')).layout;
-  return {main: L.main.summaryToImage, detail1: L.detail.bodyToImage, detail2: L.detail.bodyToImage};
+  return {main: L.main.summaryToImage, detail1: L.detail.bodyToImage, detail2: L.detail.bodyToImage,
+    quote: {side: L.quote.side, bottom: L.quote.bottom, lineHeight: readJSON(path.join(root, 'brand/tokens.json')).type.quote.lineHeight, maxLines: L.quote.statementMaxLines}};
 }
 export const slideTokensCSS = (root = ROOT) => ':root{' + Object.entries(tokenVars(root)).map(([k, v]) => `--${k}:${v}`).join(';') + '}';
 export function fontCSS(root = ROOT) {
