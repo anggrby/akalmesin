@@ -2,6 +2,13 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-10-28 — Owner answers to open questions (t49u, ~13:56 WIB)
+
+- **Caption length: 100–160 words, warning only.** Owner: "Not necessary for now, 100-160 is not including the hashtag and the Source. So it just pure the copy text". Reason: his guide said about 100–150; he decided 100–160 counted on the pure copy text, i.e. the 3 body paragraphs only, excluding hashtags, the `Sumber: … / Foto: …` footer and `Ilustrasi slide N:` lines. Not a hard gate. `brand/editorial-policy.json` max 150 → 160; design:check, the copy editor counter and copy-review read it. Kimi caption recounted with this rule: 185 words, so it is still a warning. Older entries mentioning 100–150 are kept as history.
+- **Alt text does not need owner approval.** Owner answered "No" to "Should alt text need your approval like copy?". Alt text stays outside the copy gate; the agent may fix it and logs the change in `edits.log.md` (as done for the Kimi Main alt text).
+- **Notion `Post` title follows the Main headline** whenever the headline is edited. Owner: "Yes". Current behaviour kept, now owner-confirmed.
+- Still open: Notion route (connector vs notion-custom) and step 9 (publishing/scorecards); owner asked clarifying questions, defaults unchanged.
+
 ## 2026-10-28 — Rewrite the repo from scratch
 
 Owner (t47u, 2026-10-28): "I'd rather create new repo in local /Users/anggrby/Code/temp. Let's rewrite this from scratch." Reason: the audit found ~230 MB working tree, one post's state in 5 places, 9+ overlapping docs, an unused notion-custom export stack, no text-only review stage, no sentence-level diff, and blue ink outside the pipeline. The owner's 8-step flow (t46u) is the only thing the repo serves.

@@ -5,7 +5,7 @@ All writing rules in one file. The machine-checked numbers live in [editorial-po
 ## Owner quick rules (index; the verbatim sections below are authoritative)
 
 - Hook in the first 1–2 lines of the caption.
-- Caption: exactly 3 body paragraphs, about 100–150 words, one closing question.
+- Caption: exactly 3 body paragraphs, about 100–160 words (body paragraphs only; a warning, not a gate), one closing question.
 - Footer: `Sumber: X / Foto: Y`. Max 5 hashtags.
 - kamu/kita allowed when natural.
 - Bold one key phrase per detail slide; two on a benchmark slide.
@@ -105,7 +105,7 @@ Owner's earlier headline example: **“Riset soroti peran Claude dalam keamanan 
 
 Instagram shows about the first one or two lines before **selengkapnya**. Open there, in plain words, so a tech-curious reader is not met with a stiff official name.
 
-Use **three paragraphs of about 100–150 words**. Count the paragraphs only, not the footer, the illustration line, or the hashtags.
+Use **three paragraphs of about 100–160 words** (owner, 28 Oct 2026; was ~100–150). Count the paragraphs only, not the footer, the illustration line, or the hashtags.
 
 1. **Hook and what is new.** A short observation or analogy grounded in the source, then the news: what happened, when, who, and the key numbers, with attribution. The hook names the question the post will answer. Do not open with vague suspense.
 2. **Why it matters and how it works.** Plain language: what it is, what it costs or who can use it, and the concrete mechanism.

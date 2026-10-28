@@ -157,3 +157,7 @@ Two layers: (1) the owner rewrote the AI copy draft before design, saying "I thi
 | Credits, hashtags, footer | — | unchanged | accepted as built | observed |
 
 Open points reported to the owner (not changed): caption ~185 words vs 100–150; "Open weight Model AI" capitalization; "independen" qualifier removed from both places; Main summary states the open release as fact ("akan dirilis") while slide 5 says "dijanjikan"; slide 1 alt text still mentions the GPT-6 Astra claim.
+
+## Owner decision: caption length (28 Oktober 2026, t49u ~13:56 WIB)
+
+Owner: "Not necessary for now, 100-160 is not including the hashtag and the Source. So it just pure the copy text". The caption guide is now **100–160 words**, counting only the 3 body paragraphs (no hashtags, `Sumber/Foto` footer or `Ilustrasi` lines), and it is a warning, not a hard gate. This supersedes the 100–150 figure in the entries above, which are kept as history. Kimi caption under the new rule: 185 words (still a warning). Status: **owner rule**.

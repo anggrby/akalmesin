@@ -33,3 +33,8 @@ test('wording, emphasis and credit rules', () => {
   const c = post(); c.slides[1].credit = 'Moonshot AI';
   assert.ok(codes(c).includes('credit_format'));
 });
+test('caption guide is 100–160 body words, warning only', () => {
+  const p = readJSON(new URL('../brand/editorial-policy.json', import.meta.url).pathname);
+  assert.equal(p.caption.suggestedWordMinimum, 100); assert.equal(p.caption.suggestedWordMaximum, 160);
+  assert.deepEqual(captionBody(['a b', 'c', 'd?\n\nSumber: X / Foto: Y\nIlustrasi slide 2: AI / akalmesin\n\n#akalmesin #x']), ['a b', 'c', 'd?']);
+});
