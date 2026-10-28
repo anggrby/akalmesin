@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-openai-ilmiah-claims",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": {
       "gate": "selected",
@@ -15,18 +15,56 @@
     },
     "copy": {
       "gate": "copy",
-      "words": "Good! approved!",
-      "source": "chat t64u",
-      "context": "Re-approves the photo credit lines (02/03/04) and caption Foto footer + 'Ilustrasi slide 3' line changed after photo selection; copy revision e16397db8fb1. Not final approval.",
-      "at": "2026-10-28T10:23:00.000Z",
-      "atWIB": "2026-10-28 17:23 WIB",
-      "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
-      "recordedAt": "2026-10-28T10:23:42.479Z"
+      "words": "Nothing to change, i just approved. I don't want get stucked on this post forever.",
+      "source": "chat t70u",
+      "context": "Owner approved in chat after reviewing /workspace/openai-review.html (design b1063cbb7086); no edits file, no Save pressed.",
+      "at": "2026-10-28T14:36:00.000Z",
+      "atWIB": "2026-10-28 21:36 WIB",
+      "revision": "4a03e0998ba97fcc4d290773ea3bbc4240f7841471ca8fcfb433983c182aa895",
+      "copyRule": 2,
+      "recordedAt": "2026-10-28T14:36:51.601Z"
     },
-    "final": null
+    "final": {
+      "gate": "final",
+      "words": "Nothing to change, i just approved. I don't want get stucked on this post forever.",
+      "source": "chat t70u",
+      "context": "Owner approved in chat after reviewing /workspace/openai-review.html (design b1063cbb7086); no edits file, no Save pressed.",
+      "at": "2026-10-28T14:36:00.000Z",
+      "atWIB": "2026-10-28 21:36 WIB",
+      "revision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+      "designRule": 2,
+      "recordedAt": "2026-10-28T14:36:51.751Z"
+    }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "407f909f-26a5-8174-b694-fdaf55e44e20",
+    "url": "https://app.notion.com/p/OpenAI-klaim-AI-nya-pecahkan-tiga-soal-ilmiah-407f909f26a58174b694fdaf55e44e20",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-28-openai-ilmiah-claims",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-openai-ilmiah-claims",
+    "approvedRevision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+    "orderedAssetHashes": [
+      "741e0a5ea4e243d3ac0a97046dff2acf667a1e7410f1b885c64452951a236895",
+      "8baec0f442bb0f65c464a69361844204deb8d1304d8b2f49c76492aef2171eb5",
+      "2ae2bf50760a3e747f423d4d188a18522b64e179035c9ee69fba4a00decd266d",
+      "9c5e8ebd18c565415d97fe81d4924d9635bd66efafe27a86838fbd7b9998ef42",
+      "774d3345dada1e59f4e063dbf2a64bd35dc9fd599a60d3ef2983e356a3109c21"
+    ],
+    "uploadedAssetHashes": [
+      "741e0a5ea4e243d3ac0a97046dff2acf667a1e7410f1b885c64452951a236895",
+      "8baec0f442bb0f65c464a69361844204deb8d1304d8b2f49c76492aef2171eb5",
+      "2ae2bf50760a3e747f423d4d188a18522b64e179035c9ee69fba4a00decd266d",
+      "9c5e8ebd18c565415d97fe81d4924d9635bd66efafe27a86838fbd7b9998ef42",
+      "774d3345dada1e59f4e063dbf2a64bd35dc9fd599a60d3ef2983e356a3109c21"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-28T14:37:28.641Z",
+    "exportedAtWIB": "2026-10-28 21:37 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -184,6 +222,45 @@
       "event": "design-built",
       "designRevision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
       "at": "2026-10-28T14:17:00.285Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+      "at": "2026-10-28T14:36:50.150Z"
+    },
+    {
+      "event": "approval-replaced",
+      "gate": "copy",
+      "approval": {
+        "gate": "copy",
+        "words": "Good! approved!",
+        "source": "chat t64u",
+        "context": "Re-approves the photo credit lines (02/03/04) and caption Foto footer + 'Ilustrasi slide 3' line changed after photo selection; copy revision e16397db8fb1. Not final approval.",
+        "at": "2026-10-28T10:23:00.000Z",
+        "atWIB": "2026-10-28 17:23 WIB",
+        "revision": "e16397db8fb189a1db8ba16b3452a99aa900b1c70e1518f15d50d10be45e0bc6",
+        "recordedAt": "2026-10-28T10:23:42.479Z"
+      },
+      "at": "2026-10-28T14:36:51.601Z"
+    },
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "chat t70u",
+      "revision": "4a03e0998ba97fcc4d290773ea3bbc4240f7841471ca8fcfb433983c182aa895",
+      "at": "2026-10-28T14:36:00.000Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t70u",
+      "revision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+      "at": "2026-10-28T14:36:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "407f909f-26a5-8174-b694-fdaf55e44e20",
+      "at": "2026-10-28T14:37:28.641Z"
     }
   ]
 }
