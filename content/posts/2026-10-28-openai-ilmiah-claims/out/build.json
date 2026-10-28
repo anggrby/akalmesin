@@ -3,15 +3,15 @@
   "slug": "2026-10-28-openai-ilmiah-claims",
   "copyRevision": "4a03e0998ba97fcc4d290773ea3bbc4240f7841471ca8fcfb433983c182aa895",
   "creditsRevision": "76be1415d2c688ab3047740566647e4dd9c813c7461e35184b9a45fb662ed280",
-  "designRevision": "b85c0da0aa52a55fb644fc2ee9e51507c5b61ef0ff6a5ddd1229b25f8fc88490",
-  "builtAt": "2026-10-28T13:27:26.289Z",
+  "designRevision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+  "builtAt": "2026-10-28T14:17:00.285Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/01-main.html",
       "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/01-01-main.png",
-      "pngHash": "78755f3864daeffe2402570f818ead519d2bdc7766e5a4dcb51a34d41996453a",
+      "pngHash": "741e0a5ea4e243d3ac0a97046dff2acf667a1e7410f1b885c64452951a236895",
       "imageHash": "3f6624105d3f296e81029a65787d86a4f3efb802f3f1a1fbbb07690e9e57179c",
       "geometry": {
         "canvas": {
@@ -40,7 +40,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/02-ilmu-komputer.html",
       "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/02-02-ilmu-komputer.png",
-      "pngHash": "62747a4225a5b5c3a0e1d0ce03b539a2b87ec822c866b3c0f1c3c8089521c0ea",
+      "pngHash": "8baec0f442bb0f65c464a69361844204deb8d1304d8b2f49c76492aef2171eb5",
       "imageHash": "772129516852029dbe82230e4a258d3e8ef434b0db06ca1afae76abad906c8fa",
       "geometry": {
         "canvas": {
@@ -69,7 +69,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/03-matematika.html",
       "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/03-03-matematika.png",
-      "pngHash": "83f30d295d030e1412c0f8706367b9dd8a68360c419c09915f55675e9ee9c6d4",
+      "pngHash": "2ae2bf50760a3e747f423d4d188a18522b64e179035c9ee69fba4a00decd266d",
       "imageHash": "31b4c8a80024fb509b4d521860d9bb0d2db3341840b71eeec81641a4cdb190c4",
       "geometry": {
         "canvas": {
@@ -98,7 +98,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/04-fisika.html",
       "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/04-04-fisika.png",
-      "pngHash": "36b307a2a112ceac6d5544c4a55b2334baa9cca11f3e07cac58aada3616793cd",
+      "pngHash": "9c5e8ebd18c565415d97fe81d4924d9635bd66efafe27a86838fbd7b9998ef42",
       "imageHash": "7c6a656e46791891246e1dfca0d72f794e1dc5fedc469cee014b34fbf3004769",
       "geometry": {
         "canvas": {
@@ -127,7 +127,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-28-openai-ilmiah-claims/out/slides/05-batasan.html",
       "png": "content/posts/2026-10-28-openai-ilmiah-claims/out/png/05-05-batasan.png",
-      "pngHash": "6ac1781b442511a380ff929e52a61f8a53e789f7f8f11b4ea7d6a5b2def0455b",
+      "pngHash": "774d3345dada1e59f4e063dbf2a64bd35dc9fd599a60d3ef2983e356a3109c21",
       "imageHash": "b9be4719d893287b59b2eb4cb56ce7553d262dfdbc9af970128c6004be4b0d0a",
       "geometry": {
         "canvas": {
