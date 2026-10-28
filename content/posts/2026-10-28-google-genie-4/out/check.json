@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-google-genie-4",
+  "designRevision": "6ef8849126013bd6c1282f1eb79761def0ba02cc13380d6e239e966f5ba0deef",
+  "copyRevision": "54542d62ce91f60c623fb246985e71c4fc15795d4f3b9573c467a356ce719a0d",
+  "checkedAt": "2026-10-28T15:55:46.235Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-10-28-google-genie-4/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9853801169590644,
+        "meanDistance": 2.1569772994183842,
+        "inkPixels": 0.9402046783625732
+      },
+      "gap": 64,
+      "photoHeight": 757
+    },
+    {
+      "id": "02-kendali",
+      "png": "content/posts/2026-10-28-google-genie-4/out/png/02-02-kendali.png",
+      "ink": {
+        "onRamp": 0.9685428849902534,
+        "meanDistance": 2.7783746389278163,
+        "inkPixels": 0.6925682261208577
+      },
+      "gap": 54,
+      "photoHeight": 642
+    },
+    {
+      "id": "03-audio",
+      "png": "content/posts/2026-10-28-google-genie-4/out/png/03-03-audio.png",
+      "ink": {
+        "onRamp": 0.9690058479532164,
+        "meanDistance": 2.793844324881985,
+        "inkPixels": 0.7385721247563353
+      },
+      "gap": 54,
+      "photoHeight": 822
+    },
+    {
+      "id": "04-gemini",
+      "png": "content/posts/2026-10-28-google-genie-4/out/png/04-04-gemini.png",
+      "ink": {
+        "onRamp": 0.9903508771929824,
+        "meanDistance": 1.7070307621255276,
+        "inkPixels": 0.9492933723196881
+      },
+      "gap": 54,
+      "photoHeight": 642
+    },
+    {
+      "id": "05-ketersediaan",
+      "png": "content/posts/2026-10-28-google-genie-4/out/png/05-05-ketersediaan.png",
+      "ink": {
+        "onRamp": 0.9799451303155007,
+        "meanDistance": 2.242452631563341,
+        "inkPixels": 0.9774211248285323
+      },
+      "gap": 54,
+      "photoHeight": 702
+    }
+  ]
+}

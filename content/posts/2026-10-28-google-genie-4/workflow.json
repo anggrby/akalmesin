@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-google-genie-4",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "ba7738e273ce6d42fb70d49e08943c75ebab54dff9e9c1e8b55e8cc693580aa5",
+      "at": "2026-10-28T15:53:53.522Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "8942ada72fc82cc7f838418b4e033a3d5ee162ca2ac19d5ee4a86c252ccc7e04",
+      "at": "2026-10-28T15:54:11.718Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "0b358514f138962859a8f729bc6184e2693f7ae77893532892457cd981af1344",
+      "at": "2026-10-28T15:54:21.044Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "3436105da0a9286aa7201cf60a8b4d36cac93817df06fee2cd023682073aa3ff",
+      "at": "2026-10-28T15:54:37.137Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "6ef8849126013bd6c1282f1eb79761def0ba02cc13380d6e239e966f5ba0deef",
+      "at": "2026-10-28T15:54:56.615Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "6ef8849126013bd6c1282f1eb79761def0ba02cc13380d6e239e966f5ba0deef",
+      "at": "2026-10-28T15:55:45.257Z"
+    }
+  ]
+}
