@@ -3,14 +3,14 @@
   "slug": "2026-10-28-kimi-k3-1-pro",
   "copyRevision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
   "designRevision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
-  "builtAt": "2026-10-28T07:50:22.238Z",
+  "builtAt": "2026-10-28T08:07:22.330Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/01-main.html",
       "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/01-01-main.png",
-      "pngHash": "a300127d25205bd10cd2afd17e4ab7d45801936266e385275ab1fc5b3bf291c1",
+      "pngHash": "0321fa994745d9713852004d8e1f1df6e1ed893dceae77202446510f8df2b166",
       "imageHash": "d36874f66f34ac12cfbb6dc1bf53ea0c9d8701a95f0c38c1952aeff6da8fa0e4",
       "geometry": {
         "canvas": {
@@ -39,7 +39,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/02-benchmark.html",
       "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/02-02-benchmark.png",
-      "pngHash": "9704e04d8789d9ba271b1e03aff7a15f7096cb82b8f7c787e36dd99155dc6b72",
+      "pngHash": "c34e16c6392eb3e8b763dd2658c038f247f1325a221be2b340a0a5935ca1740b",
       "imageHash": "efacda7315956a4ab4803321640abaf7b5d9fb191cfbac80e9fb1e0e5cc046d9",
       "geometry": {
         "canvas": {
@@ -68,7 +68,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/03-3d-game-web.html",
       "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/03-03-3d-game-web.png",
-      "pngHash": "1f705416ac5d2e2a3cb538c17838341a92b77bfb764c51cee4cd0cb617d73c30",
+      "pngHash": "aaf716b6497f39d9f801390721b515bedd3b464e359880785192eea710ab351b",
       "imageHash": "ec9f57e9d9af448604c423c5e8dde8354e96ad7683fe83dc086143a390ab4cee",
       "geometry": {
         "canvas": {
@@ -97,7 +97,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/04-halusinasi.html",
       "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/04-04-halusinasi.png",
-      "pngHash": "8f910e0bff6971f5c149be80fc582fa2aa9face9efe5f70385c94024f5119fb2",
+      "pngHash": "475507366729c1449b7e2b1c086338722fdf9d61a78e25351dc79376d9c67474",
       "imageHash": "01791a6badf6fba10fc3f2b28f63b5db6fac5d0e315a9928542419e9407803d6",
       "geometry": {
         "canvas": {
@@ -126,7 +126,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/05-ketersediaan.html",
       "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/05-05-ketersediaan.png",
-      "pngHash": "53e5d02a1c937b2a35a5c7ea3ad62a507759749919662acba627b732f4b3a926",
+      "pngHash": "1d7ce1320357dd53e1b52ae3496532d12d53e11826c57cc6c84beb8f8be73db0",
       "imageHash": "7f55b9a0dfee069c740c6abb0b89bd9808be50cb3e5fef1c9a88c670cbcb4be6",
       "geometry": {
         "canvas": {

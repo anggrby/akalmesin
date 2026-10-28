@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-kimi-k3-1-pro",
-  "stage": "design-check",
+  "stage": "export",
   "approvals": {
     "selected": {
       "gate": "selected",
@@ -23,7 +23,16 @@
       "revision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
       "recordedAt": "2026-10-28T05:23:17.483Z"
     },
-    "final": null
+    "final": {
+      "gate": "final",
+      "words": "Yes approved for kimi",
+      "source": "chat t56u",
+      "context": "Owner approval of the Kimi design rebuilt with the owner's measured token sheets (t52u). Does not authorize Notion re-upload, Instagram publishing or scheduling.",
+      "at": "2026-10-28T08:07:23.609Z",
+      "atWIB": "2026-10-28 15:07 WIB",
+      "revision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+      "recordedAt": "2026-10-28T08:07:23.623Z"
+    }
   },
   "designStale": false,
   "notion": {
@@ -153,6 +162,18 @@
       "event": "design-built",
       "designRevision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
       "at": "2026-10-28T07:50:22.238Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+      "at": "2026-10-28T08:07:22.330Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t56u",
+      "revision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+      "at": "2026-10-28T08:07:23.609Z"
     }
   ]
 }
