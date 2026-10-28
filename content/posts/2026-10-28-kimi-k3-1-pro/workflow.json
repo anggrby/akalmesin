@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-kimi-k3-1-pro",
-  "stage": "export",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": {
       "gate": "selected",
@@ -38,27 +38,53 @@
   "notion": {
     "pageId": "407f909f-26a5-811f-a344-e2d6a1ab9208",
     "url": "https://app.notion.com/p/Moonshot-AI-rilis-Kimi-K3-1-Pro-407f909f26a5811fa344e2d6a1ab9208",
+    "action": "adopted",
     "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
-    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-28-kimi-k3-1-pro",
     "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-kimi-k3-1-pro",
-    "approvedRevision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+    "approvedRevision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+    "ownerManaged": {
+      "Status": "Published",
+      "publishDate": {
+        "start": "2026-10-28T12:00:00.000+07:00",
+        "end": null,
+        "time_zone": null
+      }
+    },
+    "adoptedLegacy": {
+      "deletedBlocks": [
+        "407f909f-26a5-8134-a5c3-d5fcc30b24fa",
+        "407f909f-26a5-81bf-bc28-f5943d4957d1",
+        "407f909f-26a5-8165-87bf-f35af7a6ab6e"
+      ],
+      "forcedBlocks": [],
+      "previousAssets": [
+        "01-main.png",
+        "02-benchmark.png",
+        "03-3d-game-web.png",
+        "04-halusinasi.png",
+        "05-ketersediaan.png"
+      ]
+    },
     "orderedAssetHashes": [
-      "4c36ba1a33ebb1af30f07002a91e75c4740c48657b0cb2f6b28c406e5bf1db70",
-      "0ceffef7c7f5c850a04970085e1334742e4ed75108e788dff8180d89312676a5",
-      "31602d4a338a194b5d61d6e8202a69370059cf337b6cd62a1c6b237079535e09",
-      "5fca7ffd3681cd4df0ddcd857bfc9bbd8f71af194a605a1d830c7443877f84af",
-      "5bd1cdc4e621bb8a007d4909f3188f8491d9210f781b0ea8316d785392952162"
+      "0321fa994745d9713852004d8e1f1df6e1ed893dceae77202446510f8df2b166",
+      "c34e16c6392eb3e8b763dd2658c038f247f1325a221be2b340a0a5935ca1740b",
+      "aaf716b6497f39d9f801390721b515bedd3b464e359880785192eea710ab351b",
+      "475507366729c1449b7e2b1c086338722fdf9d61a78e25351dc79376d9c67474",
+      "1d7ce1320357dd53e1b52ae3496532d12d53e11826c57cc6c84beb8f8be73db0"
     ],
     "uploadedAssetHashes": [
-      "f94c39fab28228e258624df4807d5239d7ff0648ccc01b3beb2ed255594c1738",
-      "22ffe5bf17d394b1f6fb1f1da0a9ba9efb484ce4b323fbc675520650c271d77f",
-      "1aaeaffc6731701509cb0cab061007117955358c9862ed2dda94996f9c9c126a",
-      "75425fbc3d9a374b65df9cc84b65865e52cb3b2aa3203dd8f7d4a781362ff4fa",
-      "b303cb27a6e1e2586f4d8bbd302333330865a5bd36f19d12c21ef73298e2b42e"
+      "0321fa994745d9713852004d8e1f1df6e1ed893dceae77202446510f8df2b166",
+      "c34e16c6392eb3e8b763dd2658c038f247f1325a221be2b340a0a5935ca1740b",
+      "aaf716b6497f39d9f801390721b515bedd3b464e359880785192eea710ab351b",
+      "475507366729c1449b7e2b1c086338722fdf9d61a78e25351dc79376d9c67474",
+      "1d7ce1320357dd53e1b52ae3496532d12d53e11826c57cc6c84beb8f8be73db0"
     ],
-    "assetsMatchBuild": false,
-    "exportedAt": "2026-10-28T04:29:43.000Z",
-    "recordedAt": "2026-10-28T05:24:10.880Z"
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-28T09:02:19.654Z",
+    "exportedAtWIB": "2026-10-28 16:02 WIB"
   },
   "legacyRevisions": {
     "537cefb2d753e8a2e1bb4e52a4eaf48772630a3ebe8e1954439b4239a896bd02": "0fc8f2d47d5cac52e3a7fb1c495062a74b98a41e6ea20371ee9757bf8f8fe6e7"
@@ -174,6 +200,11 @@
       "source": "chat t56u",
       "revision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
       "at": "2026-10-28T08:07:23.609Z"
+    },
+    {
+      "event": "notion-adopted",
+      "pageId": "407f909f-26a5-811f-a344-e2d6a1ab9208",
+      "at": "2026-10-28T09:02:19.654Z"
     }
   ]
 }
