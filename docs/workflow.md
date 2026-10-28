@@ -30,6 +30,8 @@ Draft with [templates/copy.md](../templates/copy.md), then put it in `post.json`
 
 Send him `out/copy-review.html`. It is a single file with no server: open it, click any text to edit, press Ctrl/⌘+B for bold (detail paragraphs only, saved as `**…**`), Enter in the headline for a line break, and paste comes in as plain text. Drafts autosave in the browser. The word count and the warnings follow the same rules as `design:check`. **Simpan** downloads `<slug>-edits-<time>.json`, which he sends back.
 
+To keep it small (~80 KB instead of ~430 KB, owner t61u) the editor embeds subset fonts from `templates/html/fonts/` (Manrope 300–700 and IBM Plex Mono 400, Latin + Latin-1 + Latin Extended-A + punctuation, woff2), made by `python3 scripts/fonts-subset.py` from `brand/fonts/`. If the copy uses a character the full Manrope has but the subset lacks, `copy:review` warns and embeds the full fonts. The design build, PNGs and the final HTML always use the full fonts.
+
 ## 5. Record his edits
 
 Save his file to `edits/` and run `npm run copy:record -- <slug> content/posts/<slug>/edits/<file>.json --who "Angger"`.

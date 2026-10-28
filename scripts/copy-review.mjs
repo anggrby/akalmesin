@@ -23,19 +23,27 @@ import {checkPost, loadPolicy} from './quality.mjs';
 import {renderEditor} from '../templates/html/post.mjs';
 
 const T = f => fs.readFileSync(path.join(ROOT, 'templates/html', f), 'utf8');
-export const pageCSS = () => fontCSS() + slideTokensCSS() + T('post.css');
+export const pageCSS = (fonts = fontCSS()) => fonts + slideTokensCSS() + T('post.css');
+
+const FONTS = path.join(ROOT, 'templates/html/fonts');
+/** Every character the editor will show for this post (copy + UI strings). */
+const editorChars = post => new Set([...JSON.stringify(post) + T('editor-client.js') + T('editor.css')]);
+/**
+ * Small fonts for the copy-review editor only (scripts/fonts-subset.py: Manrope 300–700 and Plex Mono 400,
+ * Latin + punctuation, woff2). Falls back to the full brand fonts if the post uses a character outside the subset.
+ * The design build and the final HTML always use the full fonts.
+ */
+export function editorFontCSS(post) {
+  const cov = JSON.parse(fs.readFileSync(path.join(FONTS, 'coverage.json'), 'utf8')), dropped = new Set([...cov.droppedFromManrope]);
+  const missing = [...editorChars(post)].filter(c => dropped.has(c)); // chars the full font draws but the subset lacks
+  if (missing.length) return {css: fontCSS(), slim: false, missing};
+  const face = (family, weight) => `@font-face{font-family:'${family}';src:url(data:font/woff2;base64,${fs.readFileSync(path.join(FONTS, cov.files[family])).toString('base64')}) format('woff2');font-weight:${weight};font-display:block}`;
+  return {css: face('Manrope', cov.weights.Manrope) + face('IBM Plex Mono', cov.weights['IBM Plex Mono']), slim: true, missing};
+}
 
 export function editorHTML(post, mode, images = {}) {
-  return renderEditor({
-    post,
-    mode,
-    baseRevision: copyRevision(post),
-    images,
-    css: pageCSS(),
-    editorCSS: T('editor.css'),
-    clientJS: T('editor-client.js'),
-    policy: loadPolicy()
-  });
+  const fonts = mode === 'copy' ? editorFontCSS(post).css : fontCSS();
+  return renderEditor({post, mode, baseRevision: copyRevision(post), images, css: pageCSS(fonts), editorCSS: T('editor.css'), clientJS: T('editor-client.js'), policy: loadPolicy()});
 }
 
 export function proposalMarkdown(post, report) {
@@ -71,6 +79,8 @@ export async function copyReview(ref, {shot} = {}) {
   const report = checkPost(post);
   writeFile(path.join(paths.out, 'copy-proposal.md'), proposalMarkdown(post, report));
   const html = path.join(paths.out, 'copy-review.html');
+  const f = editorFontCSS(post);
+  if (!f.slim) console.warn(`⚠ Full fonts embedded: the copy uses characters outside the editor subset (${f.missing.join(' ')}). Add them to scripts/fonts-subset.py if they recur.`);
   writeFile(html, editorHTML(post, 'copy'));
   workflow.stage = 'copy-review';
   workflow.history.push({event: 'copy-review', revision: copyRevision(post), at: new Date().toISOString()});
