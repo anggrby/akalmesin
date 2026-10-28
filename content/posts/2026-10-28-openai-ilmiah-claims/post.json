@@ -15,7 +15,7 @@
       ],
       "summary": "Model internalnya yang belum dirilis diklaim membereskan soal di ilmu komputer, matematika, dan fisika—kini para ahli dari luar sedang mengeceknya.",
       "credit": "FOTO: KARTU PENGUMUMAN / OPENAI",
-      "alt": "Judul klaim OpenAI soal tiga temuan ilmiah. (Draf) Kartu resmi pengumuman OpenAI tentang kerja sama dengan komunitas akademik.",
+      "alt": "Kartu pengumuman resmi OpenAI tentang kerja sama dengan komunitas akademik.",
       "imagePosition": "50% 50%",
       "imageSource": {
         "retrieved": "2026-10-28",
@@ -39,7 +39,7 @@
         "Yang paling bikin heboh: OpenAI mengklaim modelnya berhasil mematahkan Exponential Time Hypothesis (ETH). Hipotesis tahun 1999 ini menyatakan bahwa masalah 3-SAT tak bisa dipecahkan lebih cepat dari waktu eksponensial, dan sudah **jadi fondasi ratusan makalah ilmiah**. Uniknya, dua pencetus ETH sendiri—Russell Impagliazzo dan Ramamohan Paturi—kini ikut memimpin proses verifikasinya bersama Ryan Williams dari MIT."
       ],
       "credit": "FOTO: RUSSELL IMPAGLIAZZO / BÖHMMARTIN (CC BY-SA 4.0)",
-      "alt": "Detail klaim bantahan Exponential Time Hypothesis. (Draf) Foto para pencetus ETH dari UC San Diego atau ilustrasi rumus logika 3-SAT.",
+      "alt": "Foto Russell Impagliazzo, salah satu pencetus Exponential Time Hypothesis.",
       "imagePosition": "50% 15%",
       "imageSource": {
         "retrieved": "2026-10-28",
@@ -61,7 +61,7 @@
         "Di bidang matematika, model OpenAI diklaim berhasil membuktikan konjektur local smoothing dari Christopher Sogge (1991)—tentang seberapa lama gelombang bisa terfokus secara ekstrem. Jika terbukti benar, **konjektur Kakeya dan restriksi Stein otomatis ikut terbukti untuk semua dimensi**. Padahal sebelumnya, para matematikawan baru berhasil membuktikan konjektur Kakeya untuk tiga dimensi pada 2025 lalu."
       ],
       "credit": "ILUSTRASI AI: GELOMBANG MEMUSAT / AKALMESIN",
-      "alt": "Detail klaim bukti konjektur local smoothing. (Draf) Ilustrasi gelombang yang memusat ke satu titik.",
+      "alt": "Ilustrasi AI: gelombang yang memusat ke satu titik.",
       "imagePosition": "50% 50%",
       "imageSource": {
         "retrieved": "2026-10-28",
@@ -81,7 +81,7 @@
         "Di bidang fisika, OpenAI mengklaim punya bukti matematis bahwa teori kuantum seperti kromodinamika kuantum (QCD) terdefinisi dengan baik secara matematis dalam ruang empat dimensi. Temuan ini menjawab **sebagian masalah Millennium Prize Yang–Mills yang berhadiah US$1 juta**—namun bagian \"mass gap\"-nya belum terpecahkan, sehingga hadiahnya belum bisa dibawa pulang. Tim pengujinya dipimpin langsung oleh peraih Nobel Fisika, David Gross."
       ],
       "credit": "FOTO: DAVID GROSS / NEXTEINSTEIN (CC BY-SA 2.0)",
-      "alt": "Detail klaim bukti keberadaan teori Yang–Mills. (Draf) Foto fisikawan peraih Nobel David Gross.",
+      "alt": "Foto fisikawan peraih Nobel David Gross.",
       "imagePosition": "50% 50%",
       "imageSource": {
         "retrieved": "2026-10-28",
@@ -103,7 +103,7 @@
         "Kerangka bukti utamanya memang sudah lolos uji Lean (software pemeriksa bukti matematika), **tetapi belum diverifikasi secara independen** oleh komunitas ilmiah. Bukti di bidang fisika pun belum dibuka ke publik. OpenAI menegaskan tidak mengincar kredit akademis, dan telah membuka data mentah terkait ETH agar siapa saja bisa ikut mengujinya."
       ],
       "credit": "FOTO: BUKTI LEAN DI GITHUB / OPENAI",
-      "alt": "Detail status verifikasi dan kredit akademis. (Draf) Tangkapan layar kode bukti Lean di GitHub OpenAI.",
+      "alt": "Tangkapan layar kode bukti Lean di GitHub OpenAI.",
       "imagePosition": "0% 0%",
       "imageSource": {
         "retrieved": "2026-10-28",
