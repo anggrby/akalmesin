@@ -75,9 +75,11 @@ export const copyRevision = post => sha256({title: post.title, category: post.ca
 
 /** Hash of the whole post plus the processed images: what "final" approves. */
 export const processedImage = (dir, slide) => path.join(dir, 'assets/processed', slide.id + '-blue-ink.png');
-export function designRevision(post, dir) {
+/** Includes the design tokens and slide CSS, so a token change resets final approval. */
+export function designRevision(post, dir, root = ROOT) {
   const images = post.slides.map(s => { const f = processedImage(dir, s); return fs.existsSync(f) ? fileHash(f) : null; });
-  return sha256({post, images});
+  const design = ['brand/tokens.json', 'templates/html/post.css'].map(f => fileHash(path.join(root, f)));
+  return sha256({post, images, design});
 }
 
 export function captionText(post) { return post.caption.join('\n\n'); }
@@ -170,21 +172,39 @@ export function formatDiff(items) {
 }
 
 // ---- rendering assets ----------------------------------------------------
-export function slideTokensCSS(root = ROOT) {
-  const brand = readJSON(path.join(root, 'brand/tokens.json'));
-  const layout = readJSON(path.join(root, 'templates/html/layout-tokens.json'));
-  const t = {
-    'akalmesin-ink': brand.colors.ink, 'akalmesin-paper': brand.colors.paper, 'akalmesin-accent': brand.colors.accent,
-    'photo-credit-color': brand.colors.photoCredit, 'photo-credit-align': brand.photo.credit.align, 'quote-text-color': brand.colors.quoteText,
-    'post-width': brand.canvas.width + 'px', 'post-height': brand.canvas.height + 'px',
-    'text-margin': brand.spacing.textMarginPx + 'px', 'text-to-photo-gap': brand.spacing.textToPhotoGapPx + 'px'
+/** Flat map of CSS custom properties, generated from brand/tokens.json (the only token source). */
+export function tokenVars(root = ROOT) {
+  const T = readJSON(path.join(root, 'brand/tokens.json')), U = T.unmeasured, px = v => v + 'px';
+  const rgba = s => { const [r, g, b] = [1, 3, 5].map(i => parseInt(s.color.slice(i, i + 2), 16)); return `rgb(${r} ${g} ${b} / ${s.alpha}) ${s.position * 100}%`; };
+  const v = {
+    'color-ink': T.color.ink.value, 'color-editorial-gray': T.color['editorial-gray'].value, 'color-reversed-text': T.color['reversed-text'].value,
+    'overlay-quote': `linear-gradient(${T.overlay.quote.direction}, ${T.overlay.quote.stops.map(rgba).join(', ')})`, 'overlay-quote-opacity': T.overlay.quote.opacity,
+    'canvas-width': px(T.canvas.width), 'canvas-height': px(T.canvas.height), 'radius-editorial': px(T.radius.editorial),
+    'divider-width': px(T.stroke.divider.width), 'divider-color': T.stroke.divider.color
   };
-  for (const [k, v] of Object.entries(layout.values)) {
-    const name = k.replace(/Em$/, '').replace(/[A-Z]/g, c => '-' + c.toLowerCase());
-    t[name] = typeof v === 'string' ? v : v + (k.endsWith('Em') ? 'em' : k.endsWith('Opacity') ? '' : 'px');
+  for (const [role, t] of Object.entries(T.type)) {
+    const lh = t.lineHeight === 'auto' ? (role === 'wordmark' ? U.wordmarkRowHeight.value : U.metadataLineHeight.value) : t.lineHeight;
+    Object.assign(v, {[`type-${role}-family`]: `'${t.family}'`, [`type-${role}-weight`]: t.weight, [`type-${role}-size`]: px(t.size), [`type-${role}-line-height`]: px(lh), [`type-${role}-tracking`]: t.tracking + 'em'});
   }
-  return ':root{' + Object.entries(t).map(([k, v]) => `--${k}:${v}`).join(';') + '}';
+  const M = T.layout.main, D = T.layout.detail, Q = T.layout.quote, dw = T.stroke.divider.width;
+  Object.assign(v, {
+    'main-side': px(M.side), 'main-header-top': px(M.headerTop), 'main-row-to-divider': px(M.wordmarkRowToDivider),
+    'main-divider-to-content': px(M.dividerToContent - dw), 'main-content-width': px(M.contentWidth), 'main-headline-max-width': px(M.headlineMaxWidth),
+    'main-headline-to-summary': px(M.headlineToSummary), 'main-summary-to-image': px(M.summaryToImage),
+    'detail-side': px(D.side), 'detail-header-top': px(D.headerTop), 'detail-row-to-divider': px(D.wordmarkRowToDivider),
+    'detail-divider-to-body': px(D.dividerToBody - dw), 'detail-content-width': px(D.contentWidth), 'detail-body-to-image': px(D.bodyToImage),
+    'quote-side': px(Q.side), 'quote-bottom': px(Q.bottom), 'quote-stack-gap': px(Q.stackGap), 'quote-author-to-role': px(Q.authorToRole),
+    'credit-inset-x': px(U.creditInsetX), 'credit-inset-bottom': px(U.creditInsetBottom), 'credit-gradient-height': px(U.creditGradient.height),
+    'credit-gradient-opacity': U.creditGradient.bottomOpacity, 'category-align': U.categoryAlign, 'detail-paragraph-gap': px(U.detailParagraphGap)
+  });
+  return v;
 }
+/** Image-to-copy gap per layout, from the tokens (used by the geometry check). */
+export function imageGaps(root = ROOT) {
+  const L = readJSON(path.join(root, 'brand/tokens.json')).layout;
+  return {main: L.main.summaryToImage, detail1: L.detail.bodyToImage, detail2: L.detail.bodyToImage};
+}
+export const slideTokensCSS = (root = ROOT) => ':root{' + Object.entries(tokenVars(root)).map(([k, v]) => `--${k}:${v}`).join(';') + '}';
 export function fontCSS(root = ROOT) {
   const b64 = f => fs.readFileSync(path.join(root, 'brand/fonts', f)).toString('base64');
   return `@font-face{font-family:'Manrope';src:url(data:font/ttf;base64,${b64('Manrope.ttf')}) format('truetype');font-weight:200 800;font-display:block}@font-face{font-family:'IBM Plex Mono';src:url(data:font/ttf;base64,${b64('IBMPlexMono-Regular.ttf')}) format('truetype');font-weight:400;font-display:block}`;

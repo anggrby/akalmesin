@@ -11,7 +11,7 @@ The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbati
 | `brand/style-feedback-log.md` (includes the Kimi entries) | `brand/style-feedback-log.md` | verbatim |
 | `brand/editorial-policy.json` | `brand/editorial-policy.json` | identical; enforced by `scripts/quality.mjs` + the editor's live warnings |
 | `DESIGN.md`, `brand/typography.md`, `brand/photo-treatment.md`, `design/references/2026-10-25/README.md`, `assets/README.md` | `brand/design.md` | verbatim, with a photo quick-rules index on top |
-| `brand/tokens.css`, `brand/tokens.json` | same paths | font URLs → `brand/fonts/` |
+| `brand/tokens.css`, `brand/tokens.json` | `brand/tokens.json` only | rewritten 28 Oct (t52u) from the owner's measured sheets; CSS is generated at build time |
 | `brand/Logo.jpg`, `brand/logo-wordmark.png` | `brand/logos/` | byte-exact |
 | `assets/fonts/*` (Manrope, IBM Plex Mono + OFL) | `brand/fonts/` | byte-exact |
 | `brand/examples/2026-10-27-gpt-6-1-terra/*` | `brand/examples/terra/` | byte-exact (PNG hashes match its README) |
@@ -38,7 +38,7 @@ The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbati
 | `editorial-quality.mjs` | `scripts/quality.mjs` (same rules, plus credit format, alt present, Main first) |
 | `create-editorial-batch.mjs` | `scripts/post-new.mjs` (one post, no batches) |
 | `import-editorial-edits.mjs`, `collect-editorial-feedback.mjs` | `scripts/copy-record.mjs` (reads schemaVersion 2 legacy files through `workflow.legacyRevisions`) |
-| `templates/html/editorial/{post.mjs,post.css,review-tokens.json}` | `templates/html/{post.mjs,post.css,layout-tokens.json}` (post.css verbatim + `.placeholder`) |
+| `templates/html/editorial/{post.mjs,post.css,review-tokens.json}` | `templates/html/{post.mjs,post.css}` (layout values folded into `brand/tokens.json` on 28 Oct) |
 | `templates/html/editorial/{editor.mjs,editor-client.js,review*.{mjs,css,js}}`, `serve-editorial-editor.mjs`, `package-editorial-review.mjs` | `templates/html/{editor-client.js,editor.css}` + `renderEditor` (no server; Simpan downloads JSON) |
 | `build-editorial-html.mjs`, `render-editorial-html.mjs` (`inspectLayout`), `render-export-snapshot.mjs`, `render-news-png.mjs`, `render-news-batch.py` | `scripts/design-build.mjs` + `scripts/design-check.mjs` (same geometry checks and overflow guard) |
 | `content/posts/2026-10-28-kimi-k3-1-pro/assets/blue_ink.py` | `scripts/blue-ink.mjs` (same stops/curve/texture; seeded JS grain) |
@@ -46,7 +46,7 @@ The old repo is `akalmesin` main, including PR #4. It was not modified. "Verbati
 | `/home/box/tools/notion_attach_assets.py` (box only, never in the repo) | `scripts/export.mjs` (REST: lookup, create/update, upload, verify; token from env) |
 | `sync-export-to-notion.mjs`, `notion-export-client.mjs` (notion-custom) | dropped. `npm run export` does page and files over the REST API (decision t50u) |
 | `editorial-doctor.mjs`, `check-repository.mjs` | `scripts/doctor.mjs` |
-| `build-figma-review.mjs`, `check-figma-import-guards.mjs` | dropped (HTML only) |
+| the old design-tool import scripts | dropped (HTML only; owner sheets are the source of truth) |
 | `tests/*` (8 files, 47 tests) | `tests/{gates,diff,quality,render}.test.mjs` (19 tests) |
 
 ## Content

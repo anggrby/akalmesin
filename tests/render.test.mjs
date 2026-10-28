@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
-import {readJSON, launchBrowser, writeFile, loadPost} from '../scripts/core.mjs';
+import {readJSON, launchBrowser, writeFile, loadPost, imageGaps} from '../scripts/core.mjs';
 import {renderSlidePage} from '../templates/html/post.mjs';
 import {pageCSS, editorHTML} from '../scripts/copy-review.mjs';
 import {inspectLayout} from '../scripts/design-build.mjs';
@@ -21,7 +21,7 @@ async function layoutOf(slide, imageURL, mutate) {
   const page = await browser.newPage({viewport: {width: 1080, height: 1350}});
   await page.goto(pathToFileURL(html).href); await page.evaluate(async () => { await document.fonts.ready; });
   if (mutate) await page.evaluate(mutate);
-  const r = await page.evaluate(inspectLayout); await page.close(); return r;
+  const r = await page.evaluate(inspectLayout, imageGaps()); await page.close(); return r;
 }
 
 test('every Kimi slide meets geometry rules with its processed image', async () => {
@@ -29,7 +29,7 @@ test('every Kimi slide meets geometry rules with its processed image', async () 
     const img = pathToFileURL(path.join(KIMI, 'assets/processed', s.id + '-blue-ink.png')).href;
     const r = await layoutOf(s, img);
     assert.deepEqual(r.violations, [], s.id);
-    assert.equal(r.canvas.width, 1080); assert.equal(r.canvas.height, 1350); assert.equal(r.textPhotoGap, 54);
+    assert.equal(r.canvas.width, 1080); assert.equal(r.canvas.height, 1350); assert.equal(r.textPhotoGap, imageGaps()[s.layout]);
   }
 });
 test('placeholder is flagged so it can never reach a final build', async () => {

@@ -3,18 +3,20 @@ import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import {ROOT, readJSON, writeJSON} from '../scripts/core.mjs';
+import {ROOT, readJSON, writeJSON, designRevision} from '../scripts/core.mjs';
 import {exportPost, richText, topicFor, client, manifest, bodyBlocks} from '../scripts/export.mjs';
 import {KIMI, tmpPost} from './helpers.mjs';
 
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
-/** Kimi fixture with its real approvals and a build.json pointing at small fake PNGs (no render, no network). */
+/** Kimi fixture with its real copy approval, a test final approval of the current design, and a build.json pointing at small fake PNGs (no render, no network). */
 function approvedPost() {
   const dir = tmpPost({fresh: false}), out = path.join(dir, 'out'), build = readJSON(path.join(KIMI, 'out/build.json'));
   fs.mkdirSync(path.join(out, 'png'), {recursive: true});
   build.slides = build.slides.map((s, i) => { const f = path.join(out, 'png', `${s.id}.png`), b = Buffer.from('png-' + i); fs.writeFileSync(f, b); return {...s, png: path.relative(ROOT, f), pngHash: sha(b)}; });
   writeJSON(path.join(out, 'build.json'), build);
-  const wf = readJSON(path.join(dir, 'workflow.json')); wf.notion = null; writeJSON(path.join(dir, 'workflow.json'), wf);
+  const wf = readJSON(path.join(dir, 'workflow.json')); wf.notion = null;
+  wf.approvals.final = {gate: 'final', words: 'test fixture', source: 'test', revision: designRevision(readJSON(path.join(dir, 'post.json')), dir)};
+  writeJSON(path.join(dir, 'workflow.json'), wf);
   return dir;
 }
 /** In-memory Notion: pages, blocks, file uploads. Records every call. */

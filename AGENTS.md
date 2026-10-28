@@ -18,8 +18,8 @@ This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news a
 ## Rules that are not negotiable
 
 - **Approvals are his verbatim words.** Record them with `npm run approve -- <slug> --gate … --words "…" --source "chat tNNu"`. Positive feedback ("so far so good") is not an approval, and neither is a draft that already exists. Never paraphrase his words.
-- Any copy change clears the copy and final approvals (`copy:record` handles this). Any design change makes final stale (the hashes catch it).
-- Write the copy in his voice: [brand/voice.md](brand/voice.md). Before writing, read the [Terra example](brand/examples/terra/README.md) and the [feedback log](brand/style-feedback-log.md). Visual rules live in [brand/design.md](brand/design.md).
+- Any copy change clears the copy and final approvals (`copy:record` handles this). Any design change, including a token or post.css change, makes final stale (the hashes catch it).
+- Write the copy in his voice: [brand/voice.md](brand/voice.md). Before writing, read the [Terra example](brand/examples/terra/README.md) and the [feedback log](brand/style-feedback-log.md). Visual rules live in [brand/design.md](brand/design.md); every design value comes from [brand/tokens.json](brand/tokens.json), transcribed from his measured sheets in `brand/references/design-values-*.png`. Never guess a value that is not on a sheet; add it under `unmeasured`.
 - Notion: `npm run export -- <slug>` finds the page by its body marker, creates or updates it, uploads the PNGs, verifies them by SHA-256 and writes the receipt. Re-running never makes a second page. The connector route is only a fallback (docs/workflow.md). Post only to the akalmesin database.
 - Never publish, schedule, push to a remote, or message anyone without his explicit instruction. Neither Export nor Notion grants that.
 - Secrets live only in the environment (`NOTION_UPLOAD_TOKEN`) or in the git-ignored `.env.local`. Never print them, paste them into chat, or put them in a tracked file.
@@ -41,4 +41,4 @@ To use a Chrome you already have, set `AKALMESIN_CHROME_PATH`, for example `/App
 
 ## Layout
 
-`brand/` covers voice, design, tokens, fonts, logos, the policy numbers and the Terra example. `templates/` holds `copy.md` plus the HTML slide, CSS and editor. `scripts/` has one file per command, plus `core.mjs` (shared), `quality.mjs` (editorial checks) and `blue-ink.mjs` (the treatment). `content/posts/DATE-slug/` holds `post.json`, `sources.md`, `workflow.json`, `edits.log.md`, `edits/` (his Simpan files), `assets/{originals,processed,PROVENANCE.md}` and `out/` (generated; only build/check/manifest JSON is tracked). `research/news/` holds the shortlists.
+`brand/` covers voice, design, tokens (`tokens.json`, the single source), fonts, logos, the policy numbers and the Terra example. `templates/` holds `copy.md` plus the HTML slide, CSS and editor. `scripts/` has one file per command, plus `core.mjs` (shared), `quality.mjs` (editorial checks) and `blue-ink.mjs` (the treatment). `content/posts/DATE-slug/` holds `post.json`, `sources.md`, `workflow.json`, `edits.log.md`, `edits/` (his Simpan files), `assets/{originals,processed,PROVENANCE.md}` and `out/` (generated; only build/check/manifest JSON is tracked). `research/news/` holds the shortlists.

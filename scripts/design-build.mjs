@@ -5,13 +5,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import sharp from 'sharp';
-import {ROOT, loadPost, parseArgs, writeFile, writeJSON, saveWorkflow, appendLog, copyRevision, designRevision, processedImage, requireApproval, fileHash, launchBrowser, wib, isMain, fail, rel} from './core.mjs';
+import {ROOT, loadPost, parseArgs, writeFile, writeJSON, saveWorkflow, appendLog, copyRevision, designRevision, processedImage, requireApproval, fileHash, launchBrowser, wib, isMain, fail, rel, imageGaps} from './core.mjs';
 import {blueInk} from './blue-ink.mjs';
 import {renderSlidePage} from '../templates/html/post.mjs';
 import {pageCSS, editorHTML} from './copy-review.mjs';
 
 /** Runs inside the page: geometry rules from brand/design.md. */
-export function inspectLayout() {
+export function inspectLayout(gaps = {}) {
   const post = document.querySelector('.post'), b = post.getBoundingClientRect(), v = [];
   const rect = el => { const r = el.getBoundingClientRect(); return {x: r.x, y: r.y, width: r.width, height: r.height, bottom: r.bottom, right: r.right}; };
   if (b.width !== 1080 || b.height !== 1350) v.push('Canvas dimensions');
@@ -26,7 +26,8 @@ export function inspectLayout() {
   let gap = null, pr = null;
   if (photo) {
     gap = photo.getBoundingClientRect().top - document.querySelector('.copy').getBoundingClientRect().bottom; pr = rect(photo);
-    if (Math.abs(gap - 54) > .1) v.push('Text/photo gap is ' + gap);
+    const want = gaps[post.className.match(/post-(\w+)/)?.[1]];
+    if (want != null && Math.abs(gap - want) > .1) v.push(`Text/photo gap is ${gap}, tokens say ${want}`);
     if (pr.height < 360) v.push('Photo too short for useful crop');
     if (Math.abs(pr.bottom - b.bottom) > .1) v.push('Photo does not reach canvas bottom');
     if (credit) { const c = credit.getBoundingClientRect(); if (c.top < pr.y || c.bottom > pr.bottom) v.push('Credit outside photo'); }
@@ -67,7 +68,7 @@ export async function designBuild(ref) {
       writeFile(html, renderSlidePage({post, slide: s, imageURL: pathToFileURL(images[i]).href, css}));
       await page.goto(pathToFileURL(html).href, {waitUntil: 'load'});
       await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(i => i.decode())); });
-      const layout = await page.evaluate(inspectLayout);
+      const layout = await page.evaluate(inspectLayout, imageGaps());
       if (layout.violations.length) throw Error(`${s.id}: ${layout.violations.join('; ')}`);
       fs.mkdirSync(pngDir, {recursive: true});
       await page.locator('.post').screenshot({path: png, type: 'png', animations: 'disabled'});

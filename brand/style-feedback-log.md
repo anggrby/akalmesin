@@ -89,7 +89,7 @@ Only the caption conflict (including hashtags) was resolved by the owner when th
 | Voice | Knowledgeable friend; kamu/kita when natural; wit through analogy | Friend/wit direction "superseded for news copy"; avoid casual kamu/kita (AGENTS.md:17, brand-guide.md:17) — resolved for captions only, open for slides |
 | Footer/hashtags | `Sumber: … / Foto: …`; guide says 8–10 hashtags | No footer format; source references in the caption; no hashtag rule — **resolved: Sumber/Foto footer, max 5 hashtags (owner's research overrides the guide's 8–10)** |
 | Layout items | Article label, footer row with navigation arrow, photo window 1080×584 at y 648 | Article kicker and footer/arrow row superseded; photo runs to the bottom edge; 54 px text-to-photo gap — **later confirmed by the published Terra post; the guide's label, arrow, and 1080×584 window are not adopted** |
-| Type sizes | Figma values: headline 86/100 px −4%, supporting 37 px, labels 20–21 px | 24 Oct snapshot; **kept provisional until the current Figma frames are read** |
+| Type sizes | Headline 86/100 px −4%, supporting 37 px, labels 20–21 px (24 Oct snapshot) | **Superseded 28 Oct:** the owner's measured sheets are the source of truth; see brand/tokens.json |
 | Headline formula | ~4–6-word headline + 6–9-word supporting line, 2 lines each | **Later adopted as a soft guideline, not a hard cap** |
 
 ## Per-post log

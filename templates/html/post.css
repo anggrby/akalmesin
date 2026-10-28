@@ -1,44 +1,51 @@
+/* Every value comes from brand/tokens.json via slideTokensCSS() (scripts/core.mjs). No literals here. */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { color: var(--akalmesin-ink); font-family: 'Manrope', sans-serif; }
+body { color: var(--color-ink); font-family: 'Manrope', sans-serif; }
 .post {
-  width: var(--post-width); height: var(--post-height); overflow: hidden;
+  --side: var(--main-side); --header-top: var(--main-header-top); --row-to-divider: var(--main-row-to-divider);
+  --divider-to-content: var(--main-divider-to-content); --content-width: var(--main-content-width); --copy-to-image: var(--main-summary-to-image);
+  width: var(--canvas-width); height: var(--canvas-height); overflow: hidden;
   display: flex; flex-direction: column; position: relative;
-  background: var(--akalmesin-paper); border-radius: 0;
+  background: var(--color-editorial-gray); border-radius: var(--radius-editorial);
   -webkit-font-smoothing: antialiased;
 }
+.post-detail1, .post-detail2 {
+  --side: var(--detail-side); --header-top: var(--detail-header-top); --row-to-divider: var(--detail-row-to-divider);
+  --divider-to-content: var(--detail-divider-to-body); --content-width: var(--detail-content-width); --copy-to-image: var(--detail-body-to-image);
+}
 .masthead {
-  flex: none; margin: 0 var(--text-margin); padding-top: var(--header-top-inset);
-  padding-bottom: var(--header-to-divider);
-  border-bottom: var(--divider-thickness) solid var(--divider-color);
+  flex: none; margin: 0 var(--side); padding-top: var(--header-top);
+  padding-bottom: var(--row-to-divider);
+  border-bottom: var(--divider-width) solid var(--divider-color);
 }
 .masthead-row { display: flex; align-items: center; justify-content: space-between; }
 .wordmark {
-  font-size: var(--wordmark-size); line-height: var(--wordmark-line-height);
-  font-weight: 700; letter-spacing: 0; white-space: nowrap;
+  font: var(--type-wordmark-weight) var(--type-wordmark-size)/var(--type-wordmark-line-height) var(--type-wordmark-family), sans-serif;
+  letter-spacing: var(--type-wordmark-tracking); white-space: nowrap;
 }
 .category {
-  font: 400 var(--category-size)/var(--metadata-line-height) 'IBM Plex Mono', monospace;
-  letter-spacing: var(--metadata-tracking); text-align: right; white-space: nowrap;
+  font: var(--type-metadata-weight) var(--type-metadata-size)/var(--type-metadata-line-height) var(--type-metadata-family), monospace;
+  letter-spacing: var(--type-metadata-tracking); text-align: var(--category-align); white-space: nowrap;
 }
-.copy { flex: none; margin: var(--divider-to-content) var(--text-margin) 0; }
+.copy { flex: none; margin: var(--divider-to-content) var(--side) 0; width: var(--content-width); }
 .headline {
-  font-size: var(--headline-size); line-height: var(--headline-line-height);
-  letter-spacing: var(--headline-tracking); font-weight: 700; margin: 0;
+  font: var(--type-main-headline-weight) var(--type-main-headline-size)/var(--type-main-headline-line-height) var(--type-main-headline-family), sans-serif;
+  letter-spacing: var(--type-main-headline-tracking); margin: 0; width: var(--main-headline-max-width);
 }
 .headline-line { display: block; white-space: pre; }
 .summary {
-  font-size: var(--body-size); line-height: var(--body-line-height); font-weight: 400;
-  letter-spacing: 0; margin: var(--headline-to-body) 0 0;
+  font: var(--type-main-summary-weight) var(--type-main-summary-size)/var(--type-main-summary-line-height) var(--type-main-summary-family), sans-serif;
+  letter-spacing: var(--type-main-summary-tracking); margin: var(--main-headline-to-summary) 0 0;
 }
 .detail-copy {
-  font-size: var(--detail-size); line-height: var(--detail-line-height);
-  letter-spacing: 0; font-weight: 400; margin: 0;
+  font: var(--type-detail-body-weight) var(--type-detail-body-size)/var(--type-detail-body-line-height) var(--type-detail-body-family), sans-serif;
+  letter-spacing: var(--type-detail-body-tracking); margin: 0;
 }
-.detail-copy + .detail-copy { margin-top: 24px; }
+.detail-copy + .detail-copy { margin-top: var(--detail-paragraph-gap); }
 .photo {
   position: relative; flex: 1 1 0; min-height: 0; overflow: hidden;
-  margin: var(--text-to-photo-gap) 0 0;
+  margin: var(--copy-to-image) 0 0;
 }
 .photo img, .quote-photo {
   display: block; width: 100%; height: 100%; object-fit: cover;
@@ -46,39 +53,42 @@ body { color: var(--akalmesin-ink); font-family: 'Manrope', sans-serif; }
 }
 .photo::after {
   content: ''; position: absolute; inset: auto 0 0; height: var(--credit-gradient-height);
-  background: linear-gradient(to top, rgb(0 0 0 / var(--credit-gradient-bottom-opacity)), transparent);
+  background: linear-gradient(to top, rgb(0 0 0 / var(--credit-gradient-opacity)), transparent);
   pointer-events: none;
 }
 .credit {
-  position: absolute; z-index: 2; bottom: var(--photo-credit-inset-bottom);
-  left: var(--photo-credit-inset-x); right: var(--photo-credit-inset-x);
-  margin: 0; color: var(--photo-credit-color); white-space: nowrap;
-  font: 400 var(--photo-credit-size)/var(--metadata-line-height) 'IBM Plex Mono', monospace;
-  letter-spacing: var(--metadata-tracking); text-align: var(--photo-credit-align);
+  position: absolute; z-index: 2; bottom: var(--credit-inset-bottom);
+  left: var(--credit-inset-x); right: var(--credit-inset-x);
+  margin: 0; color: var(--color-reversed-text); white-space: nowrap;
+  font: var(--type-metadata-weight) var(--type-metadata-size)/var(--type-metadata-line-height) var(--type-metadata-family), monospace;
+  letter-spacing: var(--type-metadata-tracking); text-align: left;
 }
-.post-quote { color: var(--quote-text-color); }
+/* Quote: sheet 3 (56 px insets, 40 px stack gaps, 8 px author -> role), sheet 2 overlay. */
 .quote-photo { position: absolute; inset: 0; transform: scale(var(--image-scale, 1)); transform-origin: 50% 25%; }
-.quote-shade {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 15%, rgb(0 0 0 / .18) 37%, rgb(0 0 0 / .80) 76%, rgb(0 0 0 / .90));
-}
+.quote-shade { position: absolute; inset: 0; background: var(--overlay-quote); opacity: var(--overlay-quote-opacity); }
 .quote-block {
-  position: absolute; left: var(--quote-inset-x); right: var(--quote-inset-x);
-  bottom: var(--quote-inset-bottom); margin: 0; text-align: center;
+  position: absolute; left: var(--quote-side); right: var(--quote-side); bottom: var(--quote-bottom);
+  margin: 0; text-align: center; display: flex; flex-direction: column; gap: var(--quote-stack-gap);
 }
+.quote-mark { color: var(--color-editorial-gray); margin: 0; }
 .quote-text {
-  margin: 0; font-size: var(--quote-size); line-height: var(--quote-line-height);
-  font-weight: 400; letter-spacing: var(--quote-tracking);
+  margin: 0; color: var(--color-editorial-gray);
+  font: var(--type-quote-weight) var(--type-quote-size)/var(--type-quote-line-height) var(--type-quote-family), sans-serif;
+  letter-spacing: var(--type-quote-tracking);
 }
+.quote-attribution { display: flex; flex-direction: column; gap: var(--quote-author-to-role); }
 .quote-speaker {
-  margin: var(--quote-to-speaker) 0 0; font-weight: 700;
-  font-size: var(--speaker-size); line-height: var(--speaker-line-height);
+  margin: 0; color: var(--color-reversed-text);
+  font: var(--type-author-weight) var(--type-author-size)/var(--type-author-line-height) var(--type-author-family), sans-serif;
+  letter-spacing: var(--type-author-tracking);
 }
 .quote-role {
-  margin: var(--speaker-to-role) 0 0;
-  font: 400 var(--speaker-role-size)/var(--speaker-role-line-height) 'IBM Plex Mono', monospace;
+  margin: 0; color: var(--color-reversed-text);
+  font: var(--type-author-role-weight) var(--type-author-role-size)/var(--type-author-role-line-height) var(--type-author-role-family), sans-serif;
+  letter-spacing: var(--type-author-role-tracking);
 }
-[contenteditable='true']:focus { outline: 2px dashed var(--akalmesin-accent); outline-offset: 6px; }
+/* Editor UI only (not part of the slide design). */
+[contenteditable='true']:focus { outline: 2px dashed #4E4FEB; outline-offset: 6px; }
 @media print { .post { break-after: page; } }
 
 /* ---- copy-review placeholder (no real image yet) ---- */

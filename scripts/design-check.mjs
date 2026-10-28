@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import sharp from 'sharp';
-import {ROOT, loadPost, parseArgs, readJSON, writeJSON, copyRevision, designRevision, processedImage, fileHash, launchBrowser, isMain, fail} from './core.mjs';
+import {ROOT, loadPost, parseArgs, readJSON, writeJSON, copyRevision, designRevision, processedImage, fileHash, launchBrowser, isMain, fail, imageGaps} from './core.mjs';
 import {checkPost} from './quality.mjs';
 import {inkStats, looksInked} from './blue-ink.mjs';
 import {inspectLayout} from './design-build.mjs';
@@ -35,14 +35,14 @@ export async function designCheck(ref) {
       const ink = await inkStats(processedImage(paths.dir, s));
       if (s.imageSource?.treatment !== 'none' && !looksInked(ink)) add(`${s.id}: image does not look blue-inked (${JSON.stringify(ink)})`);
       await page.goto(pathToFileURL(path.join(ROOT, b.html)).href); await page.evaluate(async () => { await document.fonts.ready; });
-      const geo = await page.evaluate(inspectLayout);
+      const geo = await page.evaluate(inspectLayout, imageGaps());
       geo.violations.forEach(v => add(`${s.id}: ${v}`));
       result.slides.push({id: s.id, png: b.png, ink, gap: geo.textPhotoGap, photoHeight: geo.photo?.height});
     }
     // Negative control: an overlong headline must be caught, never silently shrunk.
     await page.goto(pathToFileURL(path.join(ROOT, build.slides[0].html)).href);
     await page.evaluate(async () => { await document.fonts.ready; document.querySelector('.headline-line').textContent = 'Headline terlalu panjang '.repeat(20); });
-    const stress = await page.evaluate(inspectLayout);
+    const stress = await page.evaluate(inspectLayout, imageGaps());
     if (!stress.violations.some(v => v.startsWith('Text overflow'))) add('Overflow guard did not fire');
   } finally { await browser.close(); }
   const finalHTML = path.join(paths.out, post.slug + '.html');

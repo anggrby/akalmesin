@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-kimi-k3-1-pro",
-  "designRevision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+  "designRevision": "1692467a35a439eb1d49c8021156d45c969707345b4ad6566f91ecdaf0cced4c",
   "copyRevision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
-  "checkedAt": "2026-10-28T06:57:10.408Z",
+  "checkedAt": "2026-10-28T07:29:49.001Z",
   "passed": true,
   "problems": [],
   "warnings": [
@@ -18,8 +18,8 @@
         "meanDistance": 2.046002202916537,
         "inkPixels": 0.27202842377260983
       },
-      "gap": 54,
-      "photoHeight": 768
+      "gap": 64,
+      "photoHeight": 757
     },
     {
       "id": "02-benchmark",
@@ -30,7 +30,7 @@
         "inkPixels": 0.024806934594168637
       },
       "gap": 54,
-      "photoHeight": 750
+      "photoHeight": 762
     },
     {
       "id": "03-3d-game-web",
@@ -41,7 +41,7 @@
         "inkPixels": 0.957041910331384
       },
       "gap": 54,
-      "photoHeight": 750
+      "photoHeight": 762
     },
     {
       "id": "04-halusinasi",
@@ -52,7 +52,7 @@
         "inkPixels": 0.02201733648542159
       },
       "gap": 54,
-      "photoHeight": 750
+      "photoHeight": 762
     },
     {
       "id": "05-ketersediaan",
@@ -63,7 +63,7 @@
         "inkPixels": 0.8666666666666667
       },
       "gap": 54,
-      "photoHeight": 570
+      "photoHeight": 582
     }
   ]
 }

@@ -2,6 +2,14 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-10-28 — Owner sheets are the design source of truth, Figma dropped (t52u)
+
+- Owner (t52u): "Are you able to translate this into the design token. We don't need figma at all. Just use this as source of truth", with three measured sheets (now `brand/references/design-values-{1-typography,2-color-treatment,3-spacing-layout}.png`).
+- `brand/tokens.json` was rewritten from the sheets and is the only token file; `templates/html/layout-tokens.json` and `brand/tokens.css` were deleted. CSS variables are generated at build time. Values the sheets do not give are listed under `unmeasured`.
+- Renderer changes from the sheets: divider #7B7B7B → #000000; header row → divider 19 → 20 (content moves down 1 px); Main summary → image 54 → 64; quote 60/80/−3% regular → 78/100/−4% bold in #EEEEEE; author 28/40 → 40/60 white; author role IBM Plex Mono 20/30 → Manrope Light 300 40/60 white; quote insets 88/170 → 56/56; quote gradient → #D9D9D9 0% → #000000 100%.
+- `designRevision` now hashes `brand/tokens.json` and `post.css`, so a token change resets final approval. Kimi's final approval was reset by this change (design review again).
+- Old questions 9 (Figma) and 10 (unmeasured type metrics) are closed. Figma-era entries below are history.
+
 ## 2026-10-28 — Notion route and step 9 resolved (t50u, 14:01 WIB)
 
 - **Notion: one command over the REST API.** Owner: "1 Yes" to "make `export` do both parts with one command on your Mac, using your Notion token and Notion's own API … keep the connector route as a fallback". `npm run export -- <slug>` now finds the page by body marker (`POST /v1/data_sources/<id>/query`, `Notion-Version: 2025-09-03`), creates or updates it, uploads the PNGs (file_uploads), reads it back with SHA-256 checks and writes the receipt. `--attach`/`--record` are removed; the connector is a documented fallback only. notion-custom does not come back. Evidence: live throwaway test 2026-10-28 14:03–14:04 WIB (page created, second run updated the same page, then trashed; the Kimi, Anthropic and Terra rows were only read). Pages made earlier by the connector lack the `akalmesin-managed-end` line, so export refuses to update them automatically.

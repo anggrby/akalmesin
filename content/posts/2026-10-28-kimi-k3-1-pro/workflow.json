@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-kimi-k3-1-pro",
-  "stage": "notion-delivered",
+  "stage": "design-check",
   "approvals": {
     "selected": {
       "gate": "selected",
@@ -23,16 +23,7 @@
       "revision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
       "recordedAt": "2026-10-28T05:23:17.483Z"
     },
-    "final": {
-      "gate": "final",
-      "words": "Approved. Export that into notion",
-      "source": "chat t45u",
-      "context": "Owner approved the v2 post (his edited copy as is, previewed as a contact sheet with his edits applied) and instructed Notion export. Only non-owner change: Main alt text (see edits.log.md). Does not authorize Instagram publishing or scheduling.",
-      "at": "2026-10-28T04:27:45.000Z",
-      "atWIB": "2026-10-28 11:27 WIB",
-      "revision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
-      "recordedAt": "2026-10-28T05:23:55.281Z"
-    }
+    "final": null
   },
   "designStale": false,
   "notion": {
@@ -136,6 +127,27 @@
       "event": "notion-recorded",
       "pageId": "407f909f-26a5-811f-a344-e2d6a1ab9208",
       "at": "2026-10-28T05:24:10.880Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "final",
+      "reason": "design rebuilt",
+      "at": "2026-10-28T07:29:47.728Z",
+      "approval": {
+        "gate": "final",
+        "words": "Approved. Export that into notion",
+        "source": "chat t45u",
+        "context": "Owner approved the v2 post (his edited copy as is, previewed as a contact sheet with his edits applied) and instructed Notion export. Only non-owner change: Main alt text (see edits.log.md). Does not authorize Instagram publishing or scheduling.",
+        "at": "2026-10-28T04:27:45.000Z",
+        "atWIB": "2026-10-28 11:27 WIB",
+        "revision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+        "recordedAt": "2026-10-28T05:23:55.281Z"
+      }
+    },
+    {
+      "event": "design-built",
+      "designRevision": "1692467a35a439eb1d49c8021156d45c969707345b4ad6566f91ecdaf0cced4c",
+      "at": "2026-10-28T07:29:47.728Z"
     }
   ]
 }

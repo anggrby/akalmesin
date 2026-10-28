@@ -37,7 +37,7 @@ Smart and approachable: clear, natural journalistic Indonesian with the judgment
 
 **The Rundown AI** is the editorial discovery/reference account. Verify a discovered story against original sources and write an original explanation for akalmesin readers. **Evolving AI** provides commercial inspiration through newsletters and sponsorships; this is not evidence of either account's revenue or a forecast for akalmesin.
 
-The visual character is minimalist, photographic and editorial. [DESIGN.md](design.md) owns the complete visual specification. The [photo production guide](design.md) owns sourcing, treatment and provenance procedures; [typography evidence](design.md) explains which measurements are confirmed or still pending.
+The visual character is minimalist, photographic and editorial. [design.md](design.md) owns the complete visual specification. The [photo production guide](design.md) owns sourcing, treatment and provenance procedures; [typography evidence](design.md) explains which measurements are confirmed or still pending.
 
 ### Production and open decisions
 

@@ -2,6 +2,7 @@
 // blue_ink.py used for Kimi K3.1 Pro (2026-10-28): tonal gradient map with #4E4FEB ink,
 // pale off-white highlights, fine 45° engraved line texture + subtle paper grain.
 // No flat overlay: every pixel is remapped from its own luminance, so detail is preserved.
+// #4E4FEB is a photo-treatment parameter (brand/tokens.json → photoTreatment.inkHex), not a colour token.
 import sharp from 'sharp';
 
 const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
