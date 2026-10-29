@@ -92,7 +92,8 @@
           "fact": "demi data center"
         }
       ],
-      "narration": "Google menebang sekitar 330 hektare hutan di Finlandia demi data center, sebelum kajian lingkungan selesai."
+      "narration": "Google menebang sekitar 330 hektare hutan di Finlandia demi data center, sebelum kajian lingkungan selesai.",
+      "mark": "white"
     },
     {
       "id": "b2-muhos",
@@ -114,7 +115,8 @@
         }
       ],
       "source": "Sumber: Yle, The Guardian",
-      "narration": "Lokasinya di Muhos. Diperkirakan 250.000 pohon hilang."
+      "narration": "Lokasinya di Muhos. Diperkirakan 250.000 pohon hilang.",
+      "mark": "white"
     },
     {
       "id": "b3-aturan",
@@ -132,7 +134,8 @@
         }
       ],
       "source": "Sumber: hukum AMDAL Finlandia via Yle",
-      "narration": "Padahal, tebangan permanen di atas 200 hektare wajib dikaji dulu."
+      "narration": "Padahal, tebangan permanen di atas 200 hektare wajib dikaji dulu.",
+      "mark": "white"
     },
     {
       "id": "b4-lvv",
@@ -149,7 +152,8 @@
         }
       ],
       "source": "Sumber: LVV",
-      "narration": "Pada 6 Oktober, otoritas LVV memerintahkan pekerjaan dihentikan."
+      "narration": "Pada 6 Oktober, otoritas LVV memerintahkan pekerjaan dihentikan.",
+      "mark": "black"
     },
     {
       "id": "b5-google",
@@ -166,7 +170,8 @@
         }
       ],
       "source": "Sumber: Yle, 13 Okt 2026",
-      "narration": "Bos Google Finlandia meminta maaf, tapi mengaku mengikuti pemahaman terbaiknya atas aturan."
+      "narration": "Bos Google Finlandia meminta maaf, tapi mengaku mengikuti pemahaman terbaiknya atas aturan.",
+      "mark": "white"
     },
     {
       "id": "b6-warga",
@@ -183,7 +188,8 @@
         }
       ],
       "source": "Sumber: Kansalaisaloite.fi, 29 Okt 2026",
-      "narration": "Kini sekitar 98.000 warga mendukung inisiatif aturan yang lebih ketat."
+      "narration": "Kini sekitar 98.000 warga mendukung inisiatif aturan yang lebih ketat.",
+      "mark": "white"
     },
     {
       "id": "b7-tanya",
@@ -200,23 +206,16 @@
         }
       ],
       "source": "Sumber: Yle, The Guardian",
-      "narration": "Polisi masih menyelidiki. Dengan 145 data center lain direncanakan, siapa yang mengawasi?"
+      "narration": "Polisi masih menyelidiki. Dengan 145 data center lain direncanakan, siapa yang mengawasi?",
+      "mark": "black"
     }
   ],
   "captions": {
     "cps": 14,
     "minCue": 1.3,
     "beatPad": 0.4,
-    "maxChars": 34
+    "maxChars": 44
   },
-  "music": {
-    "file": "reel/media/commons-satie-gnossienne-1-la-pianista-48s.m4a",
-    "start": 0,
-    "fadeIn": 1.5,
-    "fadeOut": 2.5,
-    "lufs": -18,
-    "credit": "Erik Satie, Gnossienne No. 1 (perf. La Pianista, 2010), public domain, Wikimedia Commons",
-    "attributionRequired": false
-  },
-  "outro": true
+  "outro": true,
+  "mood": "serious-news"
 }

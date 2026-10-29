@@ -7,6 +7,14 @@ import {execFileSync} from 'node:child_process';
 import {ROOT, launchBrowser, readJSON, writeJSON, writeFile, fileHash} from '../core.mjs';
 import {SAFE} from './visuals.mjs';
 import {OUTRO, renderOutro} from './outro.mjs';
+export const MUSIC = readJSON(path.join(ROOT, 'scripts/reel/music.json'));
+// Bottom text mark: colour chosen per beat from the background luminance inside MARK_BOX.
+export const MARK_BOX = {x: 60, y: 1405, w: 900, h: 90};
+const relLum = ([r, g, b]) => {
+  const f = c => ((c /= 255) <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+  return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+};
+export const contrast = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
 
 // ffmpeg filters allowed on media: geometry/timing only. check.mjs re-verifies the recorded graphs.
 export const ALLOWED_MEDIA_FILTERS = ['scale', 'crop', 'fps', 'setsar', 'format', 'trim', 'setpts'];
@@ -122,13 +130,42 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
     outroInfo = await renderOutro(path.join(bgDir, 'outro.mp4'));
     bgFiles.push(path.join(bgDir, 'outro.mp4'));
   }
+  // Text-mark colour per beat: sample 5 frames of the background clip inside MARK_BOX, take min/max relative
+  // luminance, pick white or black by worst-case contrast. reel.json beat.mark (fixed per beat) overrides.
+  const marks = timeline.map((b, i) => {
+    const D = b.end - b.start,
+      B = MARK_BOX;
+    const L = [0.1, 0.3, 0.5, 0.7, 0.9].map(f => {
+      const raw = execFileSync('ffmpeg', [
+        '-v',
+        'error',
+        '-ss',
+        (D * f).toFixed(3),
+        '-i',
+        path.join(bgDir, `${i}.mp4`),
+        '-frames:v',
+        '1',
+        '-vf',
+        `crop=${B.w}:${B.h}:${B.x}:${B.y},scale=1:1:flags=area,format=rgb24`,
+        '-f',
+        'rawvideo',
+        '-'
+      ]);
+      return relLum([...raw.subarray(0, 3)]);
+    });
+    const lo = Math.min(...L),
+      hi = Math.max(...L);
+    const white = contrast(1, hi),
+      black = contrast(0, lo);
+    const auto = white >= black ? 'white' : 'black';
+    const chosen = spec.beats[i].mark || auto;
+    return {beat: b.id, Lmin: +lo.toFixed(4), Lmax: +hi.toFixed(4), auto, chosen, contrast: +(chosen === 'white' ? white : black).toFixed(2)};
+  });
   writeFile(path.join(bgDir, 'list.txt'), bgFiles.map(f => `file '${f}'`).join('\n') + '\n');
 
   // 2) Transparent overlay frames, one per subtitle cue (+ counter animation sub-frames).
   const font = (f, n) => `@font-face{font-family:${n};src:url(data:font/ttf;base64,${b64(path.join(ROOT, 'brand/fonts', f))})}`;
   const head = `<!doctype html><style>${font('Manrope.ttf', 'Manrope')}${font('IBMPlexMono-Regular.ttf', 'Plex')}${CSS}</style>`;
-  const wordmark = 'data:image/png;base64,' + b64(path.join(ROOT, 'brand/logos/logo-wordmark.png'));
-  const logo = 'data:image/jpeg;base64,' + b64(path.join(ROOT, 'brand/logos/Logo.jpg'));
   const geo = readJSON(path.join(ROOT, 'scripts/reel/data/finland.geo.json'));
   const browser = await launchBrowser();
   const page = await browser.newPage({viewport: {width: 1080, height: 1920}});
@@ -141,7 +178,7 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
       const reveal = Math.max(1, Math.ceil(((ci + 1) / b.cues.length) * beat.onScreen.length));
       const steps = beat.overlay === 'counter' && ci === 0 ? 12 : 1;
       for (let k = 1; k <= steps; k++) {
-        const html = overlay({beat, m, reveal, sub: cue.text, progress: k / steps, wordmark, logo, geo, spec});
+        const html = overlay({beat, m, reveal, sub: cue.text, progress: k / steps, mark: marks[bi].chosen, geo, spec});
         if (process.env.REEL_DEBUG) console.error('frame', shots.length, beat.id, ci, k);
         await page.setContent(head + html);
         await page.evaluate(() => document.fonts.ready);
@@ -164,7 +201,12 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
               creditBox: r(q('#credit')),
               location: q('#loc')?.textContent || null,
               locationBox: r(q('#loc')),
-              watermark: r(q('#wm'))
+              mark: r(q('#mark')),
+              markText: q('#mark')?.textContent,
+              images: document.querySelectorAll('img').length,
+              blocks: [...document.querySelectorAll('.card,.hl,.lt,#loc,#credit,#mark')].map(e => ({id: e.id || e.className, box: r(e)})),
+              subLines: Math.round(q('#sub').getBoundingClientRect().height / parseFloat(getComputedStyle(q('#sub')).lineHeight)),
+              subFontPx: parseFloat(getComputedStyle(q('#sub')).fontSize)
             };
           });
           manifest.push({file: path.relative(paths.dir, file), ...cue, media: beat.media, ...meas});
@@ -189,7 +231,9 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
   let wav;
   if (silent) {
     // Music bed: trim to length, fade in/out, loudness-normalise (music-only target ~-18 LUFS, TP -1.5).
-    const mu = spec.music,
+    const mood = MUSIC.moods[spec.mood];
+    if (!mood) throw Error(`reel.json mood "${spec.mood}" not in scripts/reel/music.json`);
+    const mu = {...mood, ...(spec.musicOverrides || {})},
       fin = mu.fadeIn ?? 1.5,
       fout = mu.fadeOut ?? 2.5;
     wav = path.join(work, 'music.wav');
@@ -202,7 +246,7 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
       '-t',
       full.toFixed(3),
       '-i',
-      path.join(paths.dir, mu.file),
+      path.join(ROOT, mu.file),
       '-af',
       `loudnorm=I=${mu.lufs ?? -18}:TP=-1.5:LRA=11,afade=t=in:d=${fin},afade=t=out:st=${(full - fout).toFixed(3)}:d=${fout},aresample=48000`,
       '-ac',
@@ -314,7 +358,8 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
     total: full,
     contentEnd: total,
     narration: !silent,
-    music: silent ? spec.music.file : null,
+    music: silent ? {mood: spec.mood, file: MUSIC.moods[spec.mood].file} : null,
+    marks,
     outro: withOutro ? {start: total, end: full, ...outroInfo} : null,
     safe: SAFE,
     allowedMediaFilters: ALLOWED_MEDIA_FILTERS,
@@ -333,7 +378,7 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
       `# Reel script: ${spec.title}`,
       '',
       silent
-        ? `Layout: news explainer, captions only (no voiceover), reading speed ≤ ${spec.captions?.cps ?? 14} chars/s. Music: ${spec.music.credit}.${withOutro ? ` Outro: ${outroLen.toFixed(1)} s akalmesin logo (${OUTRO.follow} / ${OUTRO.share}).` : ''}`
+        ? `Layout: news explainer, captions only (no voiceover), reading speed ≤ ${spec.captions?.cps ?? 14} chars/s. Music (mood ${spec.mood}): ${MUSIC.moods[spec.mood].title} by ${MUSIC.moods[spec.mood].author}, ${MUSIC.moods[spec.mood].licence}.${withOutro ? ` Outro: ${outroLen.toFixed(1)} s akalmesin text mark (${OUTRO.follow} / ${OUTRO.share}).` : ''}`
         : `Layout: news explainer. Voice: ${spec.voice.engine} ${spec.voice.voice} (${spec.voice.rate}), AI-generated. ${spec.aiDisclosure}`,
       `Length ${full.toFixed(1)} s, ${spec.format.width}×${spec.format.height}, ${spec.format.fps} fps. Media filter: ${spec.mediaFilter} (as-is). ${spec.footage}`,
       '',
@@ -346,7 +391,7 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
       }),
       ...(withOutro
         ? [
-            `| ${timeline.length + 1} | ${fmt(total)}–${fmt(full)} | (no caption) | akalmesin logo reveal · ${OUTRO.follow} · ${OUTRO.share} | Outro module scripts/reel/outro.mjs, brand wordmark ${OUTRO.wordmark} |`
+            `| ${timeline.length + 1} | ${fmt(total)}–${fmt(full)} | (no caption) | text mark "akalmesin" reveal · ${OUTRO.follow} · ${OUTRO.share} | Outro module scripts/reel/outro.mjs (text only, ${OUTRO.theme} theme) |`
           ]
         : []),
       '',
@@ -358,20 +403,20 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
 }
 
 const CSS = `*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:transparent;font-family:Manrope;position:relative;overflow:hidden}
-#wm{position:absolute;right:130px;top:236px;width:190px;opacity:.9;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
+#mark{position:absolute;left:60px;width:900px;top:1420px;text-align:center;font:800 46px/56px Manrope;letter-spacing:-.01em}
 #loc{position:absolute;left:80px;top:232px;font:500 26px Plex;color:${WHITE};background:rgba(0,0,0,.72);padding:8px 14px 8px 12px;display:flex;align-items:center;gap:10px}
 #loc i{width:14px;height:14px;border-radius:50%;background:${BLUE};box-shadow:0 0 0 3px ${WHITE}}
 #credit{position:absolute;left:80px;top:290px;max-width:820px;font:500 19px Plex;color:${WHITE};background:rgba(0,0,0,.55);padding:5px 10px}
-#sub{position:absolute;left:80px;width:860px;top:1352px;text-align:center;font:700 38px/1.45 Manrope;color:${WHITE}}
-#sub span{background:rgba(0,0,0,.66);padding:6px 14px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.hl{position:absolute;left:80px;top:820px;width:860px}
+#sub{position:absolute;left:80px;width:860px;bottom:530px;text-align:center;font:800 64px/84px Manrope;color:${WHITE}}
+#sub span{background:rgba(0,0,0,.78);padding:4px 18px;border-radius:8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl{position:absolute;left:80px;top:560px;width:860px}
 .kick{display:inline-block;font:500 24px Plex;color:${WHITE};background:${BLUE};padding:6px 12px;margin-bottom:18px;letter-spacing:.06em}
 .hl h1{font:800 84px/1.22 Manrope;letter-spacing:-.01em}
 .hl h1 span{background:${WHITE};color:${INK};padding:2px 16px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .card{position:absolute;left:80px;width:860px;background:rgba(238,238,238,.94);color:${INK};padding:26px 30px;border-left:10px solid ${BLUE}}
 .card .big{font:800 64px/1.1 Manrope}.card .mid{font:700 40px/1.2 Manrope;margin-top:10px}
 .src{font:500 19px Plex;color:#333;margin-top:16px}
-.lt{position:absolute;left:80px;top:1130px}
+.lt{position:absolute;left:80px;top:900px}
 .lt .n{display:inline-block;font:800 46px Manrope;color:${WHITE};background:${INK};padding:10px 20px;border-left:10px solid ${BLUE}}
 .lt .r{display:block;width:fit-content;font:500 26px Plex;color:${INK};background:${WHITE};padding:8px 20px;margin-top:0}
 .lt .src{color:${WHITE};background:rgba(0,0,0,.55);display:inline-block;padding:3px 8px;margin-top:8px}
@@ -403,7 +448,7 @@ function mapSVG(geo, onScreen, reveal) {
 <text x="${+mx - 18}" y="${+my - 22}" font-family="Manrope" font-weight="800" font-size="34" text-anchor="end" data-fact="0">${esc(onScreen[0].text)}</text></svg>`;
 }
 
-function overlay({beat, m, reveal, sub, progress, wordmark, logo, geo, spec}) {
+function overlay({beat, m, reveal, sub, progress, mark, geo, spec}) {
   const o = beat.onScreen;
   const vis = i => `style="opacity:${i < reveal ? 1 : 0}"`;
   const src = beat.source ? `<div class="src">${esc(beat.source)}</div>` : '';
@@ -414,19 +459,19 @@ function overlay({beat, m, reveal, sub, progress, wordmark, logo, geo, spec}) {
     body = `<div class="card" style="top:400px;display:flex;gap:16px;align-items:flex-end;padding:20px">${mapSVG(geo, o, reveal)}<div style="padding-bottom:20px">
 <div class="mid" data-fact="1" ${vis(1)}>${esc(o[1].text)}</div><div class="mid" style="color:${BLUE};opacity:${reveal > 2 ? 1 : 0}" data-fact="2">${esc(o[2].text)}</div>${src}</div></div>`;
   else if (beat.overlay === 'threshold')
-    body = `<div class="card" style="top:880px">
+    body = `<div class="card" style="top:700px">
 <div class="lab" data-fact="0">${esc(o[0].text)}</div><div class="bar"><b style="width:${(200 / 330) * 100}%;background:${INK}"></b></div>
 <div class="lab" data-fact="1" ${vis(1)}>${esc(o[1].text)}</div><div class="bar" ${vis(1)}><b style="width:100%;background:${BLUE}"></b><b style="left:${(200 / 330) * 100}%;width:4px;top:-8px;bottom:-8px;background:${INK}"></b></div>${src}</div>`;
   else if (beat.overlay === 'card')
-    body = `<div class="card" style="top:960px"><div class="big" data-fact="0">${esc(o[0].text)}</div><div class="mid" data-fact="1" ${vis(1)}>${esc(o[1].text)}</div>${src}</div>`;
+    body = `<div class="card" style="top:760px"><div class="big" data-fact="0">${esc(o[0].text)}</div><div class="mid" data-fact="1" ${vis(1)}>${esc(o[1].text)}</div>${src}</div>`;
   else if (beat.overlay === 'lowerthird')
     body = `<div class="lt"><div class="n" data-fact="0">${esc(o[0].text)}</div><div class="r" data-fact="1" ${vis(1)}>${esc(o[1].text)}</div>${src}</div>`;
   else if (beat.overlay === 'counter') {
     const n = Number(o[0].text.replace(/\D/g, ''));
     const shown = progress < 1 ? '±' + Math.round(n * progress).toLocaleString('id-ID') : o[0].text;
-    body = `<div class="card" style="top:900px"><div class="big" style="font-size:110px;color:${BLUE}" ${progress < 1 ? '' : 'data-fact="0"'}>${esc(shown)}</div><div class="mid" data-fact="1">${esc(o[1].text)}</div>${src}</div>`;
+    body = `<div class="card" style="top:680px"><div class="big" style="font-size:110px;color:${BLUE}" ${progress < 1 ? '' : 'data-fact="0"'}>${esc(shown)}</div><div class="mid" data-fact="1">${esc(o[1].text)}</div>${src}</div>`;
   } else if (beat.overlay === 'endcard')
-    body = `<div class="card" style="top:700px"><div class="mid" data-fact="0">${esc(o[0].text)}</div><div class="mid" style="color:${BLUE}" data-fact="1" ${vis(1)}>${esc(o[1].text)}</div>
-<div class="src">${esc(spec.sourcesText)}</div><img src="${logo}" style="width:120px;margin-top:18px;display:block"></div>`;
-  return `<img id="wm" src="${wordmark}"><div id="loc"><i></i>${esc(m.location)}</div><div id="credit">${esc(m.tag)}</div>${body}<div id="sub"><span>${esc(sub)}</span></div>`;
+    body = `<div class="card" style="top:560px"><div class="mid" data-fact="0">${esc(o[0].text)}</div><div class="mid" style="color:${BLUE}" data-fact="1" ${vis(1)}>${esc(o[1].text)}</div>
+<div class="src">${esc(spec.sourcesText)}</div></div>`;
+  return `<div id="mark" style="color:${mark === 'white' ? WHITE : INK}">akalmesin</div><div id="loc"><i></i>${esc(m.location)}</div><div id="credit">${esc(m.tag)}</div>${body}<div id="sub"><span>${esc(sub)}</span></div>`;
 }

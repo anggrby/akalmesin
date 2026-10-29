@@ -1,4 +1,4 @@
-// Reusable 2 s akalmesin logo outro (config: scripts/reel/outro.json).
+// Reusable 2 s akalmesin text-mark outro (no logo image) (config: scripts/reel/outro.json).
 // News-layout reels append it automatically unless reel.json sets "outro": false.
 // Standalone: node scripts/reel/outro.mjs <out.mp4>
 import fs from 'node:fs';
@@ -26,7 +26,14 @@ const sendIcon = c =>
 
 export function outroHTML(t, cfg = OUTRO) {
   const font = (f, n) => `@font-face{font-family:${n};src:url(data:font/ttf;base64,${b64(path.join(ROOT, 'brand/fonts', f))})}`;
-  const wm = 'data:image/png;base64,' + b64(path.join(ROOT, cfg.wordmark));
+  const dark = cfg.theme !== 'white';
+  const bg = dark ? INK : WHITE,
+    fg = dark ? WHITE : INK,
+    line = dark ? GRAY : INK;
+  const letters = [...cfg.text].map((c, i) => {
+    const k = seg(t, 0.05 + i * 0.04, 0.45 + i * 0.04);
+    return `<span style="display:inline-block;opacity:${k.toFixed(3)};transform:translateY(${((1 - k) * 60).toFixed(1)}px)">${c}</span>`;
+  });
   const reveal = seg(t, 0.05, 0.6); // mask wipe
   const scale = 1.08 - 0.08 * seg(t, 0.05, 0.85); // scale settle
   const bar = seg(t, 0.35, 0.8);
@@ -35,15 +42,15 @@ export function outroHTML(t, cfg = OUTRO) {
   const nudge = Math.sin(clamp((t - 1.15) / 0.5) * Math.PI) * 10; // send-arrow nudge
   const pop = 1 + 0.12 * Math.sin(clamp((t - 0.95) / 0.35) * Math.PI); // follow icon pop
   return `<!doctype html><style>${font('Manrope.ttf', 'Manrope')}${font('IBMPlexMono-Regular.ttf', 'Plex')}
-*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:${INK};position:relative;overflow:hidden;font-family:Manrope}
-#logo{position:absolute;left:190px;top:700px;width:700px;transform:scale(${scale.toFixed(4)});transform-origin:50% 50%;clip-path:inset(0 ${((1 - reveal) * 100).toFixed(2)}% 0 0)}
-#bar{position:absolute;left:190px;top:930px;height:8px;width:${(700 * bar).toFixed(1)}px;background:${BLUE}}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:${bg};position:relative;overflow:hidden;font-family:Manrope}
+#mark{position:absolute;left:60px;width:900px;top:760px;text-align:center;color:${fg};font:800 150px/170px Manrope;letter-spacing:-.03em;transform:scale(${scale.toFixed(4)});transform-origin:50% 50%;clip-path:inset(0 ${((1 - reveal) * 100).toFixed(2)}% 0 0)}
+#bar{position:absolute;left:190px;top:950px;height:8px;width:${(700 * bar).toFixed(1)}px;background:${BLUE}}
 .row{position:absolute;left:190px;width:700px;display:flex;align-items:center;gap:18px;padding:18px 26px;border-radius:999px}
-#follow{top:1040px;background:${WHITE};color:${INK};font:800 44px Manrope;opacity:${f1.toFixed(3)};transform:translateY(${((1 - f1) * 40).toFixed(1)}px)}
-#share{top:1160px;border:3px solid ${GRAY};color:${WHITE};font:600 40px Manrope;opacity:${f2.toFixed(3)};transform:translateY(${((1 - f2) * 40).toFixed(1)}px)}
-</style><img id="logo" src="${wm}"><div id="bar"></div>
+#follow{top:1040px;background:${fg};color:${bg};font:800 44px Manrope;opacity:${f1.toFixed(3)};transform:translateY(${((1 - f1) * 40).toFixed(1)}px)}
+#share{top:1160px;border:3px solid ${line};color:${fg};font:600 40px Manrope;opacity:${f2.toFixed(3)};transform:translateY(${((1 - f2) * 40).toFixed(1)}px)}
+</style><div id="mark">${letters.join('')}</div><div id="bar"></div>
 <div class="row" id="follow"><span style="display:inline-flex;transform:scale(${pop.toFixed(3)})">${followIcon(BLUE)}</span><span id="followText">${cfg.follow}</span></div>
-<div class="row" id="share"><span style="display:inline-flex;transform:translateX(${nudge.toFixed(1)}px)">${sendIcon(WHITE)}</span><span id="shareText">${cfg.share}</span></div>`;
+<div class="row" id="share"><span style="display:inline-flex;transform:translateX(${nudge.toFixed(1)}px)">${sendIcon(fg)}</span><span id="shareText">${cfg.share}</span></div>`;
 }
 
 // Renders exactly seconds*fps frames to an mp4 (yuv420p, 30 fps). Returns layout boxes of the last frame.
@@ -61,7 +68,9 @@ export async function renderOutro(out, cfg = OUTRO) {
       meas = await page.evaluate(() => {
         const r = s => (({x, y, width, height}) => ({x, y, w: width, h: height}))(document.querySelector(s).getBoundingClientRect());
         return {
-          logo: r('#logo'),
+          mark: r('#mark'),
+          markText: document.querySelector('#mark').textContent,
+          images: document.querySelectorAll('img').length,
           follow: r('#follow'),
           share: r('#share'),
           followText: document.querySelector('#followText').textContent,

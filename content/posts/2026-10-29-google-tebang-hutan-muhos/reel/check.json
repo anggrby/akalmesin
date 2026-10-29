@@ -5,7 +5,7 @@
     {
       "name": "duration",
       "ok": true,
-      "detail": "43.90 s"
+      "detail": "43.80 s"
     },
     {
       "name": "resolution",
@@ -35,7 +35,7 @@
     {
       "name": "subtitles in safe area",
       "ok": true,
-      "detail": "21 cues inside {\"x0\":60,\"y0\":220,\"x1\":960,\"y1\":1500}"
+      "detail": "18 cues inside {\"x0\":60,\"y0\":220,\"x1\":960,\"y1\":1500}"
     },
     {
       "name": "on-screen text in safe area",
@@ -50,7 +50,7 @@
     {
       "name": "cue timing",
       "ok": true,
-      "detail": "21 cues"
+      "detail": "18 cues"
     },
     {
       "name": "on-screen facts in verified carousel copy",
@@ -78,7 +78,27 @@
       "detail": "ok"
     },
     {
-      "name": "watermark in safe area",
+      "name": "text mark at bottom, no logo image",
+      "ok": true,
+      "detail": "akalmesin text, 0 <img>, inside safe area"
+    },
+    {
+      "name": "text mark colour fixed per beat, contrast >= 3:1",
+      "ok": true,
+      "detail": "b1-hook:white 8.36:1, b2-muhos:white 10.46:1, b3-aturan:white 10.28:1, b4-lvv:black 6.26:1, b5-google:white 4.17:1, b6-warga:white 4.38:1, b7-tanya:black 12.1:1"
+    },
+    {
+      "name": "captions big (>=60 px), <= 3 lines, in safe area",
+      "ok": true,
+      "detail": "64 px, max 3 lines"
+    },
+    {
+      "name": "captions overlap nothing",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "text mark overlaps nothing",
       "ok": true,
       "detail": "ok"
     },
@@ -98,9 +118,9 @@
       "detail": "voice.engine=none"
     },
     {
-      "name": "music track present + provenance hash",
+      "name": "music mood set, track present + provenance hash",
       "ok": true,
-      "detail": "reel/media/commons-satie-gnossienne-1-la-pianista-48s.m4a"
+      "detail": "serious-news → scripts/reel/music/serious-news_satie-gnossienne-1-la-pianista_48s.m4a"
     },
     {
       "name": "music loudness sane (-24..-14 LUFS)",
@@ -120,7 +140,7 @@
     {
       "name": "outro = last 2.0 s",
       "ok": true,
-      "detail": "41.900–43.900 s, 60 frames, video 43.900 s"
+      "detail": "41.800–43.800 s, 60 frames, video 43.800 s"
     },
     {
       "name": "outro handle text",
@@ -130,7 +150,12 @@
     {
       "name": "outro in safe area",
       "ok": true,
-      "detail": "logo, follow, share boxes"
+      "detail": "mark, follow, share boxes"
+    },
+    {
+      "name": "outro text only (no logo image)",
+      "ok": true,
+      "detail": "\"akalmesin\", black bg"
     },
     {
       "name": "no captions over outro",
@@ -140,7 +165,7 @@
     {
       "name": "hook within 2 s",
       "ok": true,
-      "detail": "first text at 0.0 s, first cue \"Google menebang sekitar 330\""
+      "detail": "first text at 0.0 s, first cue \"Google menebang sekitar 330 hektare hutan di\""
     }
   ]
 }

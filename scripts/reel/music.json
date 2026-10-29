@@ -1,0 +1,37 @@
+{
+  "note": "Mood -> licensed music bed. Only CC0 / public domain (no attribution needed). Provenance: scripts/reel/music/PROVENANCE.md. Clips are 48 s; build trims, loudnorms and fades.",
+  "moods": {
+    "serious-news": {
+      "use": "hard news, environment, policy, legal, accidents",
+      "file": "scripts/reel/music/serious-news_satie-gnossienne-1-la-pianista_48s.m4a",
+      "title": "Gnossienne No. 1",
+      "author": "Erik Satie (comp.), La Pianista (perf.)",
+      "licence": "Public domain",
+      "lufs": -18
+    },
+    "tech-upbeat": {
+      "use": "product / AI model launches, hardware reveals",
+      "file": "scripts/reel/music/tech-upbeat_loyalty-freak-high-technologic-beat-explosion_48s.m4a",
+      "title": "High Technologic Beat Explosion",
+      "author": "Loyalty Freak Music",
+      "licence": "CC0 1.0",
+      "lufs": -17
+    },
+    "explainer-light": {
+      "use": "how-it-works explainers, research curiosities",
+      "file": "scripts/reel/music/explainer-light_komiku-chocolate-valley_48s.m4a",
+      "title": "Chocolate Valley",
+      "author": "Komiku",
+      "licence": "CC0 1.0",
+      "lufs": -18
+    },
+    "investigative-tense": {
+      "use": "investigations, security breaches, lawsuits, scandals",
+      "file": "scripts/reel/music/investigative-tense_komiku-tension_48s.m4a",
+      "title": "Tension",
+      "author": "Komiku",
+      "licence": "CC0 1.0",
+      "lufs": -18
+    }
+  }
+}

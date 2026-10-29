@@ -3,8 +3,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
-import {loadPost, parseArgs, readJSON, writeJSON, fileHash} from '../core.mjs';
+import {ROOT, loadPost, parseArgs, readJSON, writeJSON, fileHash} from '../core.mjs';
 import {OUTRO} from './outro.mjs';
+const MUSIC = readJSON(path.join(ROOT, 'scripts/reel/music.json'));
+const hit = (p, q) => p && q && p.x < q.x + q.w && q.x < p.x + p.w && p.y < q.y + q.h && q.y < p.y + p.h;
 
 const {
   _: [slug],
@@ -62,8 +64,28 @@ if (spec.layout === 'news') {
   gate('every media item used and licensed', !unused.length && !noLic.length, [...unused, ...noLic.map(([k]) => k)].join(', ') || 'ok');
   const badLoc = man.frames.filter(f => !f.location || !inside(f.locationBox));
   gate('location tag on screen', !badLoc.length, badLoc.map(f => f.file).join(', ') || 'ok');
-  const badWm = man.frames.filter(f => !inside(f.watermark));
-  gate('watermark in safe area', !badWm.length, badWm.map(f => f.file).join(', ') || 'ok');
+  // Text mark "akalmesin" (no logo image), bottom of frame, inside safe area (clear of IG bottom UI), black/white per beat.
+  const badMark = man.frames.filter(f => f.markText !== 'akalmesin' || !inside(f.mark) || f.mark.y < 1300 || f.images > 0);
+  gate('text mark at bottom, no logo image', !badMark.length, badMark.map(f => f.file).join(', ') || 'akalmesin text, 0 <img>, inside safe area');
+  const badCol = (man.marks || []).filter(
+    m => !['white', 'black'].includes(m.chosen) || m.contrast < 3 || m.chosen !== (spec.beats.find(b => b.id === m.beat)?.mark ?? m.auto)
+  );
+  gate(
+    'text mark colour fixed per beat, contrast >= 3:1',
+    man.marks?.length === spec.beats.length && !badCol.length,
+    (man.marks || []).map(m => `${m.beat}:${m.chosen} ${m.contrast}:1`).join(', ')
+  );
+  // Captions: big, inside safe area, never over cards / headline / lower third / tags / mark (measured rendered boxes).
+  const badSub = man.frames.filter(f => f.subFontPx < 60 || !inside(f.sub) || f.subLines > 3);
+  gate(
+    'captions big (>=60 px), <= 3 lines, in safe area',
+    !badSub.length,
+    badSub.map(f => f.file).join(', ') || `${Math.min(...man.frames.map(f => f.subFontPx))} px, max ${Math.max(...man.frames.map(f => f.subLines))} lines`
+  );
+  const over = man.frames.flatMap(f => f.blocks.filter(b => hit(f.sub, b.box)).map(b => `${f.file}:${b.id}`));
+  gate('captions overlap nothing', !over.length, over.join(', ') || 'ok');
+  const scr = man.frames.flatMap(f => f.blocks.filter(b => b.id !== 'mark' && hit(f.mark, b.box)).map(b => `${f.file}:${b.id}`));
+  gate('text mark overlaps nothing', !scr.length, scr.join(', ') || 'ok');
   const allowed = new Set(man.allowedMediaFilters);
   const used = man.mediaGraphs.flatMap(g => g.graph.split(',').map(x => x.split('=')[0]));
   const bad = used.filter(f => !allowed.has(f));
@@ -76,7 +98,7 @@ if (spec.layout === 'news') {
       ? `bad filters: ${bad.join(',')} flagged: ${flagged.map(([k]) => k).join(',')}`
       : `only ${[...new Set(used)].join(', ')} (geometry/timing)`
   );
-  const hashes = [...Object.values(spec.media), ...(spec.music ? [spec.music] : [])].filter(
+  const hashes = Object.values(spec.media).filter(
     m => !fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8').includes(fileHash(path.join(paths.dir, m.file)))
   );
   gate('provenance SHA-256 for every media file', !hashes.length, hashes.map(m => m.file).join(', ') || 'all hashes listed');
@@ -90,9 +112,14 @@ if (spec.layout === 'news') {
 if (spec.layout === 'news' && man.narration === false) {
   // Captions-only reel: no voice, music bed, reading speed, outro.
   gate('no AI narration', spec.voice?.engine === 'none', `voice.engine=${spec.voice?.engine}`);
-  const prov = fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8');
-  const mf = path.join(paths.dir, spec.music.file);
-  gate('music track present + provenance hash', fs.existsSync(mf) && prov.includes(fileHash(mf)), spec.music.file);
+  const mood = MUSIC.moods[spec.mood];
+  const mprov = fs.readFileSync(path.join(ROOT, 'scripts/reel/music/PROVENANCE.md'), 'utf8');
+  const mf = mood && path.join(ROOT, mood.file);
+  gate(
+    'music mood set, track present + provenance hash',
+    !!mood && Object.keys(MUSIC.moods).length >= 4 && fs.existsSync(mf) && mprov.includes(fileHash(mf)) && man.music?.file === mood.file,
+    mood ? `${spec.mood} → ${mood.file}` : `mood "${spec.mood}" missing`
+  );
   const ebu = execFileSync('sh', ['-c', `ffmpeg -hide_banner -nostats -i "${mp4}" -vn -af ebur128=peak=true -f null - 2>&1 | tail -14`]).toString();
   const I = Number(ebu.match(/I:\s+(-?[\d.]+) LUFS/)?.[1]),
     TP = Number(ebu.match(/Peak:\s+(-?[\d.]+) dBFS/)?.[1]);
@@ -114,8 +141,13 @@ if (spec.layout === 'news' && man.narration === false) {
       o?.followText === `Ikuti ${OUTRO.handle}` && OUTRO.handle === '@akalmesin' && o?.shareText === OUTRO.share,
       `"${o?.followText}" / "${o?.shareText}"`
     );
-    const outIn = o && ['logo', 'follow', 'share'].every(k => inside(o[k]));
-    gate('outro in safe area', outIn, 'logo, follow, share boxes');
+    const outIn = o && ['mark', 'follow', 'share'].every(k => inside(o[k]));
+    gate('outro in safe area', outIn, 'mark, follow, share boxes');
+    gate(
+      'outro text only (no logo image)',
+      o?.markText === OUTRO.text && o?.images === 0 && ['black', 'white'].includes(OUTRO.theme),
+      `"${o?.markText}", ${OUTRO.theme} bg`
+    );
     const late = man.frames.filter(f => f.end > o.start + 1e-6);
     gate('no captions over outro', !late.length, late.map(f => f.file).join(', ') || 'ok');
   }
