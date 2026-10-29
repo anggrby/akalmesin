@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
-  "copyRevision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
+  "copyRevision": "bc16a363aa4aef29dd2e46ffada6330840b5139ba0a16a92f23654852f0a1585",
   "creditsRevision": "3223baf5e0b6db0d4f5dfcd5c1aea8dc463d5e359b1f4654fbb0f03865cdb8d7",
-  "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
-  "builtAt": "2026-10-29T09:17:04.988Z",
+  "designRevision": "dea9364007b65400cc4676e959607dcb779e8d93c62b9462f18c0794f6f046df",
+  "builtAt": "2026-10-29T12:02:28.482Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/slides/01-main.html",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/01-01-main.png",
-      "pngHash": "2bb6248cba0fff5d056de1b26fbb1e8da1b38d035a984b277b2003849980e943",
+      "pngHash": "732cee7ce1ca9728624d9615e3be05ec335197df4baaad24bf47c80240ebea0f",
       "imageHash": "4c921a457ddfb03aaeedd3491f1fc1b480b7d60067bad8538ff321b77c8e74f5",
       "geometry": {
         "canvas": {
@@ -40,7 +40,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/slides/02-baru.html",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/02-02-baru.png",
-      "pngHash": "f465e024aca04943e8b10cb972ca73712bf74cc3c4f45c1eea6f16aa7cf68b90",
+      "pngHash": "b46cdf26c6d4a0aa0fb4be2f010da933036f70112877f611f37935a3612aa526",
       "imageHash": "e90a0ee2c6ce68c87dc33ee88bb53132554c2aed5d6fd0d08dfadb3eccff3b71",
       "geometry": {
         "canvas": {
@@ -69,7 +69,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/slides/03-jobs.html",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/03-03-jobs.png",
-      "pngHash": "435313461a5252b07f74a985ec8b77cac8ba59f5ff125325a8f1490e21c31edd",
+      "pngHash": "bb8620bbb04c37696edd3eb7c172fdd0a5420654146c70928420b6f230ae871e",
       "imageHash": "fa9b60b857f1ffbdd9e5755058a5e0011cf44e4777366edc5426182c54560f46",
       "geometry": {
         "canvas": {
@@ -98,7 +98,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/slides/04-harga.html",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/04-04-harga.png",
-      "pngHash": "bed6fc5fb60b5dd42a5475c16f20da0962c0dc32c14fc0c6926a2eee24e891b7",
+      "pngHash": "894ed96910a6881775377338a0d5e433c38125e8809c30370b119f96b255ea84",
       "imageHash": "da818561ff3ea39926f3cced7feeace238d9c7d288ef3d3e62d048ae4363ce15",
       "geometry": {
         "canvas": {
@@ -127,7 +127,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/slides/05-catatan.html",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/05-05-catatan.png",
-      "pngHash": "ef8ebbf4e52833dd5ae15febf9a1807f86a2c3bdb48a0aa59076304b0ecdf614",
+      "pngHash": "cb226477b6cb026670379f0e788835362cddff73df6e478cdeb1083116e45bfd",
       "imageHash": "9c64c1fe38f923cf31c8d4111b96380fab2ef935182b8a907bac7d48269a9db4",
       "geometry": {
         "canvas": {

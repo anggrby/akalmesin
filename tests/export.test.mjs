@@ -161,9 +161,14 @@ test('rich_text is chunked at 2000 characters and rejoins exactly', () => {
 });
 test('topic mapping accepts the five topics and fails loudly otherwise', () => {
   assert.equal(topicFor('AI'), 'AI');
-  assert.equal(topicFor('robotics'), 'Robotika');
-  assert.equal(topicFor('Chip'), 'Chip');
-  assert.throws(() => topicFor('Sains'), /no Notion Topic/);
+  assert.equal(topicFor('ROBOTIKA'), 'Robotika');
+  assert.equal(topicFor('TUTORIAL AI'), 'TUTORIAL AI');
+  assert.equal(topicFor('PROGRAMMING'), 'PROGRAMMING');
+  assert.equal(topicFor('KOMPUTER'), 'KOMPUTER');
+  assert.equal(topicFor('TEKNOLOGI'), 'TEKNOLOGI');
+  assert.equal(topicFor('SAINS'), 'SAINS');
+  assert.throws(() => topicFor('Software'), /no Notion Topic/);
+  assert.throws(() => topicFor('ai'), /no Notion Topic/);
   assert.throws(() => topicFor(undefined), /no Notion Topic/);
 });
 test('client needs a token and never puts it in errors', async () => {

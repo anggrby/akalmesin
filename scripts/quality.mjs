@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {ROOT, readJSON, captionBody, countWords, isDetail, splitCaptionCredits, ILLUSTRATION_LINE} from './core.mjs';
+import {ROOT, TOPICS, readJSON, captionBody, countWords, isDetail, splitCaptionCredits, ILLUSTRATION_LINE} from './core.mjs';
 
 export const loadPolicy = (root = ROOT) => readJSON(path.join(root, 'brand/editorial-policy.json'));
 const CREDIT = /^(FOTO|ILUSTRASI AI): .+ \/ .+/;
@@ -30,6 +30,7 @@ export function checkPost(post, policy = loadPolicy(), {dir} = {}) {
   const {caption: rules, detail, wording} = policy,
     issues = [];
   const add = (code, message, severity = 'error') => issues.push({code, severity, message});
+  if (!TOPICS.includes(post.category)) add('category', `Kategori "${post.category}" tidak dikenal; pakai salah satu: ${TOPICS.join(', ')}.`);
   const paragraphs = Array.isArray(post.caption) ? post.caption : [];
   const caption = paragraphs.join('\n\n'),
     body = captionBody(paragraphs);

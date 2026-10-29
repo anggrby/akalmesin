@@ -26,44 +26,48 @@
     },
     "final": {
       "gate": "final",
-      "words": "Nothing to change, i just approved. I don't want get stucked on this post forever.",
-      "source": "chat t70u",
-      "context": "Owner approved in chat after reviewing /workspace/openai-review.html (design b1063cbb7086); no edits file, no Save pressed.",
-      "at": "2026-10-28T14:36:00.000Z",
-      "atWIB": "2026-10-28 21:36 WIB",
-      "revision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+      "words": "Good! commit to use the blue of our color. Create new option in notion. Replace all old post with this new posts format. Once you done, tell the @akalmesin Publisher to publish the posts, tonight is 2 posts, then next day and everyday will be 3 posts. Clear?",
+      "source": "chat t96u",
+      "context": "owner approved the dark format (t94u/t95u/t96u) and asked to replace the old posts with it; copy unchanged",
+      "at": "2026-10-29T11:58:00.000Z",
+      "atWIB": "2026-10-29 18:58 WIB",
+      "revision": "3829263aed828e01f225ba110feeea898b59f7b685ec4e2c0b51e18d1c787dfd",
       "designRule": 2,
-      "recordedAt": "2026-10-28T14:36:51.751Z"
+      "recordedAt": "2026-10-29T12:06:09.270Z"
     }
   },
   "designStale": false,
   "notion": {
     "pageId": "407f909f-26a5-8174-b694-fdaf55e44e20",
     "url": "https://app.notion.com/p/OpenAI-klaim-AI-nya-pecahkan-tiga-soal-ilmiah-407f909f26a58174b694fdaf55e44e20",
-    "action": "created",
+    "action": "updated",
     "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
     "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
     "apiVersion": "2025-09-03",
     "contentId": "akalmesin:2026-10-28-openai-ilmiah-claims",
     "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-openai-ilmiah-claims",
-    "approvedRevision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+    "approvedRevision": "3829263aed828e01f225ba110feeea898b59f7b685ec4e2c0b51e18d1c787dfd",
+    "ownerManaged": {
+      "Status": "Ready to Publish",
+      "publishDate": null
+    },
     "orderedAssetHashes": [
-      "741e0a5ea4e243d3ac0a97046dff2acf667a1e7410f1b885c64452951a236895",
-      "8baec0f442bb0f65c464a69361844204deb8d1304d8b2f49c76492aef2171eb5",
-      "2ae2bf50760a3e747f423d4d188a18522b64e179035c9ee69fba4a00decd266d",
-      "9c5e8ebd18c565415d97fe81d4924d9635bd66efafe27a86838fbd7b9998ef42",
-      "774d3345dada1e59f4e063dbf2a64bd35dc9fd599a60d3ef2983e356a3109c21"
+      "03c7598aee7ed8ab38ad9f5eead7474d9feab244f748367638b5bb62f287557a",
+      "99e9a751a0d76c93b066a0785b2aea8e5b93e1504a0c81857d1f579eea798493",
+      "cb01584ce5707be7ef7e84a7be3dc360acc2170d6085846ca1d4a6bcee641c10",
+      "c01639db1b430b55a3ebc38358a68348094923bee4cadcbe2b1b9a7d682f4e41",
+      "a4ea94cebb06169006f73a80a98b12ba6b577f44a22a8fedf3c1cbfe22bfc87e"
     ],
     "uploadedAssetHashes": [
-      "741e0a5ea4e243d3ac0a97046dff2acf667a1e7410f1b885c64452951a236895",
-      "8baec0f442bb0f65c464a69361844204deb8d1304d8b2f49c76492aef2171eb5",
-      "2ae2bf50760a3e747f423d4d188a18522b64e179035c9ee69fba4a00decd266d",
-      "9c5e8ebd18c565415d97fe81d4924d9635bd66efafe27a86838fbd7b9998ef42",
-      "774d3345dada1e59f4e063dbf2a64bd35dc9fd599a60d3ef2983e356a3109c21"
+      "03c7598aee7ed8ab38ad9f5eead7474d9feab244f748367638b5bb62f287557a",
+      "99e9a751a0d76c93b066a0785b2aea8e5b93e1504a0c81857d1f579eea798493",
+      "cb01584ce5707be7ef7e84a7be3dc360acc2170d6085846ca1d4a6bcee641c10",
+      "c01639db1b430b55a3ebc38358a68348094923bee4cadcbe2b1b9a7d682f4e41",
+      "a4ea94cebb06169006f73a80a98b12ba6b577f44a22a8fedf3c1cbfe22bfc87e"
     ],
     "assetsMatchBuild": true,
-    "exportedAt": "2026-10-28T14:37:28.641Z",
-    "exportedAtWIB": "2026-10-28 21:37 WIB"
+    "exportedAt": "2026-10-29T12:08:43.880Z",
+    "exportedAtWIB": "2026-10-29 19:08 WIB"
   },
   "legacyRevisions": {},
   "history": [
@@ -261,6 +265,40 @@
       "event": "notion-created",
       "pageId": "407f909f-26a5-8174-b694-fdaf55e44e20",
       "at": "2026-10-28T14:37:28.641Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "final",
+      "reason": "design rebuilt",
+      "at": "2026-10-29T12:02:21.988Z",
+      "approval": {
+        "gate": "final",
+        "words": "Nothing to change, i just approved. I don't want get stucked on this post forever.",
+        "source": "chat t70u",
+        "context": "Owner approved in chat after reviewing /workspace/openai-review.html (design b1063cbb7086); no edits file, no Save pressed.",
+        "at": "2026-10-28T14:36:00.000Z",
+        "atWIB": "2026-10-28 21:36 WIB",
+        "revision": "b1063cbb70867b8e29a47e5de8f92fe1b5b15ad16005117313f73fbf56e4ff85",
+        "designRule": 2,
+        "recordedAt": "2026-10-28T14:36:51.751Z"
+      }
+    },
+    {
+      "event": "design-built",
+      "designRevision": "3829263aed828e01f225ba110feeea898b59f7b685ec4e2c0b51e18d1c787dfd",
+      "at": "2026-10-29T12:02:21.988Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t96u",
+      "revision": "3829263aed828e01f225ba110feeea898b59f7b685ec4e2c0b51e18d1c787dfd",
+      "at": "2026-10-29T11:58:00.000Z"
+    },
+    {
+      "event": "notion-updated",
+      "pageId": "407f909f-26a5-8174-b694-fdaf55e44e20",
+      "at": "2026-10-29T12:08:43.880Z"
     }
   ]
 }

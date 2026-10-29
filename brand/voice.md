@@ -145,3 +145,7 @@ The [Terra example](examples/terra/README.md) contains the actual attached PNGs,
 ### Caption handoff
 
 Each package should identify its story format, source-supported claims, relevant dates, caption, per-image alt text, photo credit, and unresolved reporting questions. Retain full source links in the package. Notion delivery does not publish the post. Scheduling is the later step in [docs/workflow.md](../docs/workflow.md), and it still needs the owner's date and time.
+
+## Kategori (owner t94u)
+
+Pilih satu kategori, tulis persis dalam huruf besar: AI, KOMPUTER, SAINS, PROGRAMMING, TUTORIAL AI, TEKNOLOGI, ROBOTIKA. Agent yang memilih. Berita AI pakai AI; TUTORIAL AI hanya untuk tutorial cara memakai AI, bukan berita (owner t95u). Pakai TEKNOLOGI untuk berita teknologi umum yang tidak cocok dengan yang lain.

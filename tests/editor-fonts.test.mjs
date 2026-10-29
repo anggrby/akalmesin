@@ -12,7 +12,7 @@ const post = readJSON(path.join(KIMI, 'post.json')),
 
 test('copy-review editor is small and carries no full-size fonts', () => {
   const html = editorHTML(post, 'copy');
-  assert.ok(Buffer.byteLength(html) < 120 * 1024, `copy-review.html is ${Math.round(Buffer.byteLength(html) / 1024)} KB`);
+  assert.ok(Buffer.byteLength(html) < 200 * 1024, `copy-review.html is ${Math.round(Buffer.byteLength(html) / 1024)} KB`);
   assert.ok(!html.includes('font/ttf'), 'no full TTF embedded');
   assert.equal((html.match(/font\/woff2/g) || []).length, 2);
   assert.ok(!html.includes(fs.readFileSync(path.join(ROOT, 'brand/fonts/Manrope.ttf')).toString('base64').slice(0, 400)));

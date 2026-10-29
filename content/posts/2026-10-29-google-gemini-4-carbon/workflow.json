@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-google-gemini-4-carbon",
-  "stage": "notion-delivered",
+  "stage": "export",
   "approvals": {
     "selected": null,
     "copy": {
@@ -21,18 +21,14 @@
     },
     "final": {
       "gate": "final",
-      "words": "Saved in review editor 2026-10-29T03:52:59.044Z",
-      "source": "carbon-owner-edits.json sha256:92124524535f39df35a8b2f48fb2a56e63e9669385f21631ce024595607b0600",
-      "context": "8 field(s) changed",
-      "at": "2026-10-29T03:52:59.044Z",
-      "atWIB": "2026-10-29 10:52 WIB",
-      "via": "review-save",
-      "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
-      "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
-      "copyRule": 2,
+      "words": "Good! commit to use the blue of our color. Create new option in notion. Replace all old post with this new posts format. Once you done, tell the @akalmesin Publisher to publish the posts, tonight is 2 posts, then next day and everyday will be 3 posts. Clear?",
+      "source": "chat t96u",
+      "context": "owner approved the dark format (t94u/t95u/t96u) and asked to replace the old posts with it; copy unchanged",
+      "at": "2026-10-29T11:58:00.000Z",
+      "atWIB": "2026-10-29 18:58 WIB",
+      "revision": "d2cdba73b7836930c65caa7975dc40a1ee3ad2db4412bffca8ca2def9f2cfccc",
       "designRule": 2,
-      "recordedAt": "2026-10-29T03:59:22.974Z",
-      "revision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1"
+      "recordedAt": "2026-10-29T12:06:09.581Z"
     }
   },
   "designStale": false,
@@ -102,6 +98,39 @@
       "event": "notion-created",
       "pageId": "408f909f-26a5-8187-9282-cc205dfc7204",
       "at": "2026-10-29T03:59:40.409Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "final",
+      "reason": "design rebuilt",
+      "at": "2026-10-29T12:02:34.402Z",
+      "approval": {
+        "gate": "final",
+        "words": "Saved in review editor 2026-10-29T03:52:59.044Z",
+        "source": "carbon-owner-edits.json sha256:92124524535f39df35a8b2f48fb2a56e63e9669385f21631ce024595607b0600",
+        "context": "8 field(s) changed",
+        "at": "2026-10-29T03:52:59.044Z",
+        "atWIB": "2026-10-29 10:52 WIB",
+        "via": "review-save",
+        "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
+        "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+        "copyRule": 2,
+        "designRule": 2,
+        "recordedAt": "2026-10-29T03:59:22.974Z",
+        "revision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1"
+      }
+    },
+    {
+      "event": "design-built",
+      "designRevision": "d2cdba73b7836930c65caa7975dc40a1ee3ad2db4412bffca8ca2def9f2cfccc",
+      "at": "2026-10-29T12:02:34.402Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t96u",
+      "revision": "d2cdba73b7836930c65caa7975dc40a1ee3ad2db4412bffca8ca2def9f2cfccc",
+      "at": "2026-10-29T11:58:00.000Z"
     }
   ]
 }

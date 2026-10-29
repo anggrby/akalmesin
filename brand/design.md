@@ -14,27 +14,27 @@
 
 ### Type
 
-| Token              | Font                      | Size / line height / tracking | Used for                        |
-| ------------------ | ------------------------- | ----------------------------- | ------------------------------- |
-| type.main-headline | Manrope Bold 700          | 86 / 100 / −4%                | Main headline                   |
-| type.quote         | Manrope Bold 700          | 78 / 100 / −4%                | Quote statement                 |
-| type.wordmark      | Manrope Bold 700          | 44 / auto / 0%                | `akalmesin` header, all designs |
-| type.author        | Manrope Bold 700          | 40 / 60 / 0%                  | Quote author                    |
-| type.main-summary  | Manrope Regular 400       | 37 / 55 / 0%                  | Main summary                    |
-| type.detail-body   | Manrope Regular 400       | 40 / 60 / 0%                  | Detail text                     |
-| type.author-role   | Manrope Light 300         | 40 / 60 / 0%                  | Quote author role               |
-| type.metadata      | IBM Plex Mono Regular 400 | 21 / auto / +10%              | Category, photo credit          |
+| Token              | Font                      | Size / line height / tracking | Used for                                                                   |
+| ------------------ | ------------------------- | ----------------------------- | -------------------------------------------------------------------------- |
+| type.main-headline | Manrope Bold 700          | 86 / 100 / −4%                | Main headline                                                              |
+| type.quote         | Manrope Bold 700          | 78 / 100 / −4%                | Quote statement                                                            |
+| type.wordmark      | Manrope Bold 700          | 44 / auto / 0%                | legacy text wordmark; the masthead now uses the logo image (see Dark mode) |
+| type.author        | Manrope Bold 700          | 40 / 60 / 0%                  | Quote author                                                               |
+| type.main-summary  | Manrope Regular 400       | 37 / 55 / 0%                  | Main summary                                                               |
+| type.detail-body   | Manrope Regular 400       | 40 / 60 / 0%                  | Detail text                                                                |
+| type.author-role   | Manrope Light 300         | 40 / 60 / 0%                  | Quote author role                                                          |
+| type.metadata      | IBM Plex Mono Regular 400 | 21 / auto / +10%              | Category, photo credit                                                     |
 
 ### Colour and edges
 
-| Token                | Value                                                                           | Used for                                               |
-| -------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| color.ink            | #000000                                                                         | Primary text, header divider, Quote header             |
-| color.editorial-gray | #EEEEEE                                                                         | Main/Detail background, quote statement and quote mark |
-| color.reversed-text  | #FFFFFF                                                                         | Author, author role, photo credit                      |
-| overlay.quote        | linear, top → bottom, 100% opacity: #D9D9D9 at 0% alpha → #000000 at 100% alpha | Quote photo                                            |
-| stroke.divider       | 1 px #000000                                                                    | Header divider                                         |
-| radius.editorial     | 0                                                                               | Everything; no shadows, no effects                     |
+| Token                | Value                                                                           | Used for                                            |
+| -------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------- |
+| color.ink            | #000000                                                                         | legacy (light mode); not used by Main/Detail now    |
+| color.editorial-gray | #EEEEEE                                                                         | Quote statement and quote mark (light on the photo) |
+| color.reversed-text  | #FFFFFF                                                                         | Author, author role, photo credit                   |
+| overlay.quote        | linear, top → bottom, 100% opacity: #D9D9D9 at 0% alpha → #000000 at 100% alpha | Quote photo                                         |
+| stroke.divider       | 1 px rgba(255,255,255,0.5)                                                      | Header divider                                      |
+| radius.editorial     | 0                                                                               | Everything; no shadows, no effects                  |
 
 ### Layout
 
@@ -117,3 +117,27 @@ Create a refined editorial blue duotone suitable for a minimalist technology new
 ## Reference images
 
 [references/](references/) holds the three token sheets, the approved blue-ink sample (`approved-blue-ink-meta-prometheus.jpg`), the owner's ink/print style references (`photo-style-eagle.jpg`, `photo-style-classical-bust.jpg`) and his 25 October Main export (`owner-main-2026-10-25.jpg`, SHA-256 `14b340a0fe311b67a5ff0cc3f144d06d6687661e30aab825e93e42a2aeaa9ab4`; it shows `FOTO: ANTHROPIC / ANTHROPIC`, but the subject/source rule wins). Font licences do not grant rights to third-party photographs; keep provenance with each use.
+
+## Dark mode (owner t92u–t94u, 29 Oktober 2026) — current design
+
+Main, Detail-1 and Detail-2 are dark. Tokens in [tokens.json](tokens.json):
+
+| Token                | Value                                       | Use                                                                  |
+| -------------------- | ------------------------------------------- | -------------------------------------------------------------------- |
+| color.page-bg        | #0A0A0F                                     | Main/Detail background                                               |
+| color.text-primary   | #F2F2F5                                     | Headline, detail body                                                |
+| color.text-secondary | #B4B4BE                                     | Main summary, masthead category                                      |
+| stroke.divider       | 1 px rgba(255,255,255,0.5) (white 50%)      | Masthead divider (owner t95u)                                        |
+| color.photo-hairline | 1 px rgba(255,255,255,0.12)                 | Top edge of the photo, so a dark photo still separates from the page |
+| logo                 | brand/logos/logo-wordmark.png, 213 × 60 box | Masthead wordmark                                                    |
+
+- **Masthead logo.** The `akalmesin` text is replaced by the wordmark logo image, fitted (contain, left) into a 213 × 60 box at the same left x, vertically centred in the 60 px wordmark row; the divider stays at y130. Main, Detail-1, Detail-2. Quote has no masthead. The logo file is part of the design hash, so changing it resets final approval.
+- **Bold phrase** in the detail body: `color.bold-gradient`, 90° #F2F2F5 → #4E4FEB via `background-clip: text`, `box-decoration-break: clone` (each wrapped line gets the full gradient). Owner t96u chose the brand blue end. The text is 40 px bold (large text); contrast on #0A0A0F is 17.68:1 at the start and 3.43:1 at the blue end, so it passes only the 3:1 large-text bar. The Main headline has no bold emphasis.
+- **Quote** is unchanged: full-bleed photo, dark gradient, light statement (#EEEEEE) and white author text.
+- Photos keep the blue-ink treatment.
+
+## Categories (owner t94u)
+
+The masthead category is ALL UPPERCASE and must be exactly one of:
+`AI`, `KOMPUTER`, `SAINS`, `PROGRAMMING`, `TUTORIAL AI`, `TEKNOLOGI`, `ROBOTIKA`.
+The agent picks the topic. AI news uses `AI`; `TUTORIAL AI` is only for how-to-use-AI tutorials, never for news (owner t95u). `TEKNOLOGI` is the general-tech fallback. `post:new --category` and the quality check reject anything else. The longest values (`TUTORIAL AI`, `PROGRAMMING`) fit the right-aligned mono slot (checked in the dark render).

@@ -141,15 +141,12 @@ test('alt text is not approved: changing it invalidates nothing', async () => {
   assert.match(JSON.stringify(manifest(dir).body), /Alt text baru yang lebih deskriptif/, 'alt still goes to Notion');
 });
 
-test('Kimi stays valid under the legacy design rule (7bfb0d4853cd); legacy holds only while unchanged', () => {
+test("a design change (dark mode, t94u) makes the fixture's old light-mode final approval stale; copy approval survives", () => {
   const {post, paths, workflow} = loadPost(KIMI);
-  assert.equal(legacyDesignRevision(post, paths.dir).slice(0, 12), '7bfb0d4853cd');
-  assert.equal(workflow.approvals.final.revision.slice(0, 12), '7bfb0d4853cd');
-  assert.ok(finalApprovalCurrent(workflow.approvals.final, post, paths.dir));
+  assert.equal(workflow.approvals.final.revision.slice(0, 12), '7bfb0d4853cd', 'recorded under the light design');
+  assert.notEqual(legacyDesignRevision(post, paths.dir).slice(0, 12), '7bfb0d4853cd', 'tokens/post.css/logo are hashed');
+  assert.equal(finalApprovalCurrent(workflow.approvals.final, post, paths.dir), false);
   assert.ok(copyApprovalCurrent(workflow.approvals.copy, post));
-  const changed = structuredClone(post);
-  changed.slides[0].summary += ' x';
-  assert.equal(finalApprovalCurrent(workflow.approvals.final, changed, paths.dir), false);
   assert.equal(
     finalApprovalCurrent({...workflow.approvals.final, designRule: DESIGN_RULE}, post, paths.dir),
     false,

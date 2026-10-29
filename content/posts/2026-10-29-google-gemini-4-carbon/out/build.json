@@ -3,15 +3,15 @@
   "slug": "2026-10-29-google-gemini-4-carbon",
   "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
   "creditsRevision": "e59f8fde0ee60a3ecf9ed51452dac5c8f3d9e678fb80555dee2ad4e646863fa7",
-  "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
-  "builtAt": "2026-10-29T03:59:22.293Z",
+  "designRevision": "d2cdba73b7836930c65caa7975dc40a1ee3ad2db4412bffca8ca2def9f2cfccc",
+  "builtAt": "2026-10-29T12:02:34.402Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/01-main.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/01-01-main.png",
-      "pngHash": "7d7a5c14b891e6fc19e152f9ba8b5ea7dc8592d2a47daf35f268df5fe5eb4a8c",
+      "pngHash": "4891ca34da03ed198d03196c23949fd04f1cad83c63a01ea335c0ea6e485bbc6",
       "imageHash": "c52e0d17b41b9769ee954c74696e7485fa99ad9d50f3aaf6ae7a2527e8f008d6",
       "geometry": {
         "canvas": {
@@ -40,7 +40,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/02-benchmark.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/02-02-benchmark.png",
-      "pngHash": "11760c7e9ba2b8d0c318d4cf7b1f178f03b7c21bfb35544fc7cd4aee0804e378",
+      "pngHash": "076a4d8aa32eeb2a453f9effa44be8cc586c8414139be4af84f6df6e66bfa00e",
       "imageHash": "1e7ba4821e5812a92e190b03708409863af864dfd0de9ee1f35504374644d914",
       "geometry": {
         "canvas": {
@@ -69,7 +69,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/03-keamanan.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/03-03-keamanan.png",
-      "pngHash": "31419441a4417b524d21dadf803402658ebdc089ab11b7a8bfcc7a6578518f91",
+      "pngHash": "3285d40f09e7c6ca8b1f1bdb99ea1e4a8ca791dcdac2790984a3a715226e660e",
       "imageHash": "5bdef1f441617645464c45668f09118898643c3598fdc0d59b11024ff623aa76",
       "geometry": {
         "canvas": {
@@ -98,7 +98,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/04-tugas-panjang.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/04-04-tugas-panjang.png",
-      "pngHash": "b02d62b25f00058ae3901e3e04f7a9b12cba09599b9386da6141eaa73f7c7df0",
+      "pngHash": "1049cd37df3575b592a5d6a47e308d23ed86ce55eccd2e40f9cc60d2c602acf1",
       "imageHash": "f823ad9950c18f1922a86a1d0bc38fecaa5a653623f094fe6f5d1e72c53f333f",
       "geometry": {
         "canvas": {
@@ -127,7 +127,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/05-akses.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/05-05-akses.png",
-      "pngHash": "61a3c9bfa2851467474b743400d0c65ffb69cae5e52254dbb7cd9e83b06bdcfb",
+      "pngHash": "6e1a5035f8ab4b2333e69e48a1991b4bd2ef02ae3d63e70645323994b2711357",
       "imageHash": "6ebb2b4e3b1c9f88aab89944d6ffe3d490c477ee345d04db571994c8948d7e46",
       "geometry": {
         "canvas": {

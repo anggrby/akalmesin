@@ -19,7 +19,7 @@ export function renderEmphasis(value) {
 /** One 1080×1350 <article>. imageURL null → grey placeholder labelled with the planned image + credit. */
 export function renderSlide({post, slide, imageURL = null}) {
   if (slide.layout === 'quote') return renderQuote({slide, imageURL});
-  const header = `<header class="masthead"><div class="masthead-row"><div class="wordmark">akalmesin</div><div class="category">${e(post.category)}</div></div></header>`;
+  const header = `<header class="masthead"><div class="masthead-row"><div class="wordmark wordmark-logo" role="img" aria-label="akalmesin"></div><div class="category">${e(post.category)}</div></div></header>`;
   const copy =
     slide.layout === 'main'
       ? `<h1 class="headline" data-edit="headline">${slide.headline.map(l => `<span class="headline-line">${e(l)}</span>`).join('')}</h1><p class="summary" data-edit="summary">${e(slide.summary)}</p>`

@@ -5,6 +5,7 @@ content/posts/*/out/
 content/posts/**/*.json
 content/posts/**/edits.log.md
 tests/fixtures/**/*.json
+tests/fixtures/**/*.md
 # Binary / vendored / lockfile
 package-lock.json
 brand/fonts/

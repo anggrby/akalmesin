@@ -14,6 +14,7 @@ import {
   countWords,
   slideTokensCSS,
   fontCSS,
+  logoCSS,
   launchBrowser,
   isMain,
   fail,
@@ -25,7 +26,7 @@ import {inspectLayout} from './design-build.mjs';
 import {renderEditor} from '../templates/html/post.mjs';
 
 const T = f => fs.readFileSync(path.join(ROOT, 'templates/html', f), 'utf8');
-export const pageCSS = (fonts = fontCSS()) => fonts + slideTokensCSS() + T('post.css');
+export const pageCSS = (fonts = fontCSS()) => fonts + slideTokensCSS() + logoCSS() + T('post.css');
 
 const FONTS = path.join(ROOT, 'templates/html/fonts');
 /** Every character the editor will show for this post (copy + UI strings). */

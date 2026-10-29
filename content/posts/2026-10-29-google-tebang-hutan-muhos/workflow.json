@@ -6,65 +6,59 @@
     "selected": null,
     "copy": {
       "gate": "copy",
-      "words": "Saved in review editor 2026-10-29T07:23:12.099Z",
-      "source": "muhos-review-approval.json sha256:6744c60c33d4398931265408b9c70f8f5807f4b9dcc150113edafd0ed3f89080",
-      "context": "no changes",
-      "at": "2026-10-29T07:23:12.099Z",
-      "atWIB": "2026-10-29 14:23 WIB",
-      "via": "review-save",
-      "copyRevision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
-      "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+      "words": "Good! commit to use the blue of our color. Create new option in notion. Replace all old post with this new posts format. Once you done, tell the @akalmesin Publisher to publish the posts, tonight is 2 posts, then next day and everyday will be 3 posts. Clear?",
+      "source": "chat t96u",
+      "context": "category-only change to the t94u/t95u uppercase list; copy text unchanged",
+      "at": "2026-10-29T11:58:00.000Z",
+      "atWIB": "2026-10-29 18:58 WIB",
+      "revision": "a53bf7ec0f043ad2dbec138596c9c5affb52d5c4b414ec27adbbedcb44a760d7",
       "copyRule": 2,
-      "designRule": 2,
-      "recordedAt": "2026-10-29T07:23:19.924Z",
-      "revision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
-      "chatApproval": "Owner approved in chat: t86u \"Yeah I like that. We can export this into notion. Well done\"; t87u \"if i say approved here means it is approved. Can run the save yourself?\". No text changes; the review save (muhos-review-approval.json) was run by Grok Bot at his request."
+      "recordedAt": "2026-10-29T12:02:08.310Z"
     },
     "final": {
       "gate": "final",
-      "words": "Saved in review editor 2026-10-29T07:23:12.099Z",
-      "source": "muhos-review-approval.json sha256:6744c60c33d4398931265408b9c70f8f5807f4b9dcc150113edafd0ed3f89080",
-      "context": "no changes",
-      "at": "2026-10-29T07:23:12.099Z",
-      "atWIB": "2026-10-29 14:23 WIB",
-      "via": "review-save",
-      "copyRevision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
-      "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
-      "copyRule": 2,
+      "words": "Good! commit to use the blue of our color. Create new option in notion. Replace all old post with this new posts format. Once you done, tell the @akalmesin Publisher to publish the posts, tonight is 2 posts, then next day and everyday will be 3 posts. Clear?",
+      "source": "chat t96u",
+      "context": "owner approved the dark format (t94u/t95u/t96u) and asked to replace the old posts with it; copy unchanged",
+      "at": "2026-10-29T11:58:00.000Z",
+      "atWIB": "2026-10-29 18:58 WIB",
+      "revision": "7597f5898d32e67c1409b12ffa3a99268000f31e8f97f3125b979f5c06064f7e",
       "designRule": 2,
-      "recordedAt": "2026-10-29T07:23:19.924Z",
-      "revision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
-      "chatApproval": "Owner approved in chat: t86u \"Yeah I like that. We can export this into notion. Well done\"; t87u \"if i say approved here means it is approved. Can run the save yourself?\". No text changes; the review save (muhos-review-approval.json) was run by Grok Bot at his request."
+      "recordedAt": "2026-10-29T12:06:09.722Z"
     }
   },
   "designStale": false,
   "notion": {
     "pageId": "408f909f-26a5-8141-b0fc-fb162908599d",
     "url": "https://app.notion.com/p/Google-tebang-hutan-Finlandia-demi-data-center-408f909f26a58141b0fcfb162908599d",
-    "action": "created",
+    "action": "updated",
     "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
     "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
     "apiVersion": "2025-09-03",
     "contentId": "akalmesin:2026-10-29-google-tebang-hutan-muhos",
     "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-29-google-tebang-hutan-muhos",
-    "approvedRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+    "approvedRevision": "7597f5898d32e67c1409b12ffa3a99268000f31e8f97f3125b979f5c06064f7e",
+    "ownerManaged": {
+      "Status": "Ready to Publish",
+      "publishDate": null
+    },
     "orderedAssetHashes": [
-      "f0832fd504b568591800b83292ddde7f6c0d5b87e815ec42252b1daf05ed226a",
-      "1876a55050fcfb61930ad36f7ea9b47f5b9c2c7daa6d682434cfd8f241b05354",
-      "31e9a024254fcabbf3f1ca56c74cb6e1bdc4a34f8c345f2d5aa56fc70e16ebae",
-      "2a7a46dbc8bbca1223be4632382488a3b68f0bbb5713bf458f4396af98eb9203",
-      "506d2bb4470410e5ea4951b385548a5e200f549033478105cc972db11c911cde"
+      "a8508d7d683ae476366b696fe39b330a55bfe319547a65d2cdb6a9af1dba77dc",
+      "b667a56c381076ec3379d3286bf6544f9333e549b8afea4cc5638448fe96cd7b",
+      "b141c40904c13a29b977b265a9f8e8548cdae7808ba47cd02cfbe1c4340a2847",
+      "265a7d2e7049b16bfd6f40363564c5e09b2caec66ad4b1d6577a944f09540ab0",
+      "80e0eb099a8932d993e27e669a63db68cd9a4c0ee15976d8463b266658deda82"
     ],
     "uploadedAssetHashes": [
-      "f0832fd504b568591800b83292ddde7f6c0d5b87e815ec42252b1daf05ed226a",
-      "1876a55050fcfb61930ad36f7ea9b47f5b9c2c7daa6d682434cfd8f241b05354",
-      "31e9a024254fcabbf3f1ca56c74cb6e1bdc4a34f8c345f2d5aa56fc70e16ebae",
-      "2a7a46dbc8bbca1223be4632382488a3b68f0bbb5713bf458f4396af98eb9203",
-      "506d2bb4470410e5ea4951b385548a5e200f549033478105cc972db11c911cde"
+      "a8508d7d683ae476366b696fe39b330a55bfe319547a65d2cdb6a9af1dba77dc",
+      "b667a56c381076ec3379d3286bf6544f9333e549b8afea4cc5638448fe96cd7b",
+      "b141c40904c13a29b977b265a9f8e8548cdae7808ba47cd02cfbe1c4340a2847",
+      "265a7d2e7049b16bfd6f40363564c5e09b2caec66ad4b1d6577a944f09540ab0",
+      "80e0eb099a8932d993e27e669a63db68cd9a4c0ee15976d8463b266658deda82"
     ],
     "assetsMatchBuild": true,
-    "exportedAt": "2026-10-29T07:24:06.797Z",
-    "exportedAtWIB": "2026-10-29 14:24 WIB"
+    "exportedAt": "2026-10-29T12:09:25.215Z",
+    "exportedAtWIB": "2026-10-29 19:09 WIB"
   },
   "legacyRevisions": {},
   "history": [
@@ -135,6 +129,73 @@
       "event": "notion-reel-attached",
       "note": "Reel MP4 (sha256 b4bda60bbb88…) uploaded as a video block in the page body after the managed-end marker, with reel script, footage/music provenance and 'Instagram AI label NOT needed' note. Format stays Carousel (single select; 'Reel / video' option exists but the post is a carousel).",
       "at": "2026-10-29T07:26:00.000Z"
+    },
+    {
+      "event": "approval-replaced",
+      "gate": "copy",
+      "approval": {
+        "gate": "copy",
+        "words": "Saved in review editor 2026-10-29T07:23:12.099Z",
+        "source": "muhos-review-approval.json sha256:6744c60c33d4398931265408b9c70f8f5807f4b9dcc150113edafd0ed3f89080",
+        "context": "no changes",
+        "at": "2026-10-29T07:23:12.099Z",
+        "atWIB": "2026-10-29 14:23 WIB",
+        "via": "review-save",
+        "copyRevision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
+        "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+        "copyRule": 2,
+        "designRule": 2,
+        "recordedAt": "2026-10-29T07:23:19.924Z",
+        "revision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
+        "chatApproval": "Owner approved in chat: t86u \"Yeah I like that. We can export this into notion. Well done\"; t87u \"if i say approved here means it is approved. Can run the save yourself?\". No text changes; the review save (muhos-review-approval.json) was run by Grok Bot at his request."
+      },
+      "at": "2026-10-29T12:02:08.310Z"
+    },
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "chat t96u",
+      "revision": "a53bf7ec0f043ad2dbec138596c9c5affb52d5c4b414ec27adbbedcb44a760d7",
+      "at": "2026-10-29T11:58:00.000Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "final",
+      "reason": "design rebuilt",
+      "at": "2026-10-29T12:02:41.167Z",
+      "approval": {
+        "gate": "final",
+        "words": "Saved in review editor 2026-10-29T07:23:12.099Z",
+        "source": "muhos-review-approval.json sha256:6744c60c33d4398931265408b9c70f8f5807f4b9dcc150113edafd0ed3f89080",
+        "context": "no changes",
+        "at": "2026-10-29T07:23:12.099Z",
+        "atWIB": "2026-10-29 14:23 WIB",
+        "via": "review-save",
+        "copyRevision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
+        "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+        "copyRule": 2,
+        "designRule": 2,
+        "recordedAt": "2026-10-29T07:23:19.924Z",
+        "revision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+        "chatApproval": "Owner approved in chat: t86u \"Yeah I like that. We can export this into notion. Well done\"; t87u \"if i say approved here means it is approved. Can run the save yourself?\". No text changes; the review save (muhos-review-approval.json) was run by Grok Bot at his request."
+      }
+    },
+    {
+      "event": "design-built",
+      "designRevision": "7597f5898d32e67c1409b12ffa3a99268000f31e8f97f3125b979f5c06064f7e",
+      "at": "2026-10-29T12:02:41.167Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t96u",
+      "revision": "7597f5898d32e67c1409b12ffa3a99268000f31e8f97f3125b979f5c06064f7e",
+      "at": "2026-10-29T11:58:00.000Z"
+    },
+    {
+      "event": "notion-updated",
+      "pageId": "408f909f-26a5-8141-b0fc-fb162908599d",
+      "at": "2026-10-29T12:09:25.215Z"
     }
   ]
 }

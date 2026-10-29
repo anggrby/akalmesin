@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-google-genie-4",
-  "stage": "notion-delivered",
+  "stage": "export",
   "approvals": {
     "selected": null,
     "copy": {
@@ -21,18 +21,14 @@
     },
     "final": {
       "gate": "final",
-      "words": "Saved in review editor 2026-10-29T03:53:00.000Z",
-      "source": "genie4-owner-edits-v2.json sha256:863b0c1beecebf576f66c36ac8ce071a655338a946a6bf80d42376b322633155",
-      "context": "1 field(s) changed",
-      "at": "2026-10-29T03:53:00.000Z",
-      "atWIB": "2026-10-29 10:53 WIB",
-      "via": "review-save",
-      "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
-      "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
-      "copyRule": 2,
+      "words": "Good! commit to use the blue of our color. Create new option in notion. Replace all old post with this new posts format. Once you done, tell the @akalmesin Publisher to publish the posts, tonight is 2 posts, then next day and everyday will be 3 posts. Clear?",
+      "source": "chat t96u",
+      "context": "owner approved the dark format (t94u/t95u/t96u) and asked to replace the old posts with it; copy unchanged",
+      "at": "2026-10-29T11:58:00.000Z",
+      "atWIB": "2026-10-29 18:58 WIB",
+      "revision": "9d92cf0c7fb774f3d4eee3e86ffaf6fa564d911dd35ede28eeaa6aaffe48fe41",
       "designRule": 2,
-      "recordedAt": "2026-10-29T03:54:42.428Z",
-      "revision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4"
+      "recordedAt": "2026-10-29T12:06:09.116Z"
     }
   },
   "designStale": false,
@@ -145,6 +141,39 @@
       "event": "notion-created",
       "pageId": "408f909f-26a5-81e4-81e4-f89a5728b457",
       "at": "2026-10-29T03:55:06.332Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "final",
+      "reason": "design rebuilt",
+      "at": "2026-10-29T12:02:16.518Z",
+      "approval": {
+        "gate": "final",
+        "words": "Saved in review editor 2026-10-29T03:53:00.000Z",
+        "source": "genie4-owner-edits-v2.json sha256:863b0c1beecebf576f66c36ac8ce071a655338a946a6bf80d42376b322633155",
+        "context": "1 field(s) changed",
+        "at": "2026-10-29T03:53:00.000Z",
+        "atWIB": "2026-10-29 10:53 WIB",
+        "via": "review-save",
+        "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
+        "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+        "copyRule": 2,
+        "designRule": 2,
+        "recordedAt": "2026-10-29T03:54:42.428Z",
+        "revision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4"
+      }
+    },
+    {
+      "event": "design-built",
+      "designRevision": "9d92cf0c7fb774f3d4eee3e86ffaf6fa564d911dd35ede28eeaa6aaffe48fe41",
+      "at": "2026-10-29T12:02:16.518Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t96u",
+      "revision": "9d92cf0c7fb774f3d4eee3e86ffaf6fa564d911dd35ede28eeaa6aaffe48fe41",
+      "at": "2026-10-29T11:58:00.000Z"
     }
   ]
 }

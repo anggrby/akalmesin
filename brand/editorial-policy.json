@@ -14,5 +14,16 @@
   "wording": {
     "avoid": "tolok ukur",
     "prefer": "benchmark"
+  },
+  "category": {
+    "values": ["AI", "KOMPUTER", "SAINS", "PROGRAMMING", "TUTORIAL AI", "TEKNOLOGI", "ROBOTIKA"],
+    "case": "uppercase, exact",
+    "chooser": "agent",
+    "fallback": "TEKNOLOGI (general tech)",
+    "source": "owner t94u",
+    "rules": {
+      "AI": "AI news (default for AI stories)",
+      "TUTORIAL AI": "only tutorials on how to use AI; never news (owner t95u)"
+    }
   }
 }

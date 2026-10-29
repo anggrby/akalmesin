@@ -3,15 +3,15 @@
   "slug": "2026-10-28-google-genie-4",
   "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
   "creditsRevision": "1857fb9492432e5ddcb7af132ef5aab28c4fa2bb11d2044448c07b7038ab029c",
-  "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
-  "builtAt": "2026-10-29T03:54:41.486Z",
+  "designRevision": "9d92cf0c7fb774f3d4eee3e86ffaf6fa564d911dd35ede28eeaa6aaffe48fe41",
+  "builtAt": "2026-10-29T12:02:16.518Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/01-main.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/01-01-main.png",
-      "pngHash": "d80deea54817a273c18ef07172557c8862ad0b5b6525302d3d2afce3b6c4bc8d",
+      "pngHash": "da1c4753cbdcd47dc61ab97f9687673901accefaa8b18e05cd9b0c1e3f647adc",
       "imageHash": "4947e71b69e08ff32ce4b633f775589df538e571565d7bcca6ad2218dcefc337",
       "geometry": {
         "canvas": {
@@ -40,7 +40,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/02-kendali.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/02-02-kendali.png",
-      "pngHash": "a271969c7268b1fdfdc5e6757a482a6a49ce319fb55e3a5235e77ec3e19ae27e",
+      "pngHash": "958b92594f70cbde8ad2cb975a9cd03b29ba57462cb29c3132596496dcea9654",
       "imageHash": "3184b92fe7a0ea9eb05c133b5749b001e6107c88f8df995ca3607ce22139f7b6",
       "geometry": {
         "canvas": {
@@ -69,7 +69,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/03-audio.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/03-03-audio.png",
-      "pngHash": "254e6ffa6c79f49ee216d26f5ca88cf148186b129798d4c412e7f413810c035b",
+      "pngHash": "0e03c1ccae0fe33fec7f4b80f142ad50711616c4609f1cb18574f38cbd443785",
       "imageHash": "78a9cb89540bbed28d8385fc7f9bb17e3bb53f7be4b449676ba15b10701fd2e3",
       "geometry": {
         "canvas": {
@@ -98,7 +98,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/04-gemini.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/04-04-gemini.png",
-      "pngHash": "63f617fb460a2abc7b80a90914d54e702e7ba288c53cfaf7e6cac9d8015771e1",
+      "pngHash": "67f04d6c72003fcba7f02650cfffd6325dccc9e97d65d52555bcd68402eebca1",
       "imageHash": "12ffa204009f50b44755d01375a9fbb4d9baacd5e4b66cf046d8a254c135b30d",
       "geometry": {
         "canvas": {
@@ -127,7 +127,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/05-ketersediaan.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/05-05-ketersediaan.png",
-      "pngHash": "6bd2e955ebf013981f9f1ea1721a939c3bf2f3dbe6d1ecd07146878e322fdfb1",
+      "pngHash": "1e4ff069653f6f5e52910195d824b5b9d970c46e49df816154b556e5d0bec4f9",
       "imageHash": "04fa183ce03c26043337da8326f9b5d0a18bff5bb7f62ee884abbe8defa0ffd9",
       "geometry": {
         "canvas": {

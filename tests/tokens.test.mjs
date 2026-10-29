@@ -21,10 +21,13 @@ test('tokens.json has every sheet role with numeric size, line height and tracki
   for (const s of T.source.sheets) assert.ok(fs.existsSync(path.join(ROOT, s)), s);
   assert.equal(T.type['author-role'].weight, 300);
   assert.equal(T.type['author-role'].family, 'Manrope');
-  assert.equal(T.stroke.divider.color, '#000000');
+  assert.equal(T.stroke.divider.color, 'rgba(255,255,255,0.5)');
+  assert.equal(T.color['bold-gradient'].to, '#4E4FEB');
+  assert.equal(T.logo.file, 'brand/logos/logo-wordmark.png');
+  assert.ok(fs.existsSync(path.join(ROOT, T.logo.file)));
   assert.deepEqual(
     Object.values(T.color).map(c => c.value),
-    ['#000000', '#EEEEEE', '#FFFFFF']
+    ['#000000', '#EEEEEE', '#FFFFFF', '#0A0A0F', '#F2F2F5', '#B4B4BE', 'rgba(255,255,255,0.12)', 'linear-gradient(90deg, #F2F2F5, #4E4FEB)']
   );
 });
 test('rendered CSS variables come from tokens.json', () => {

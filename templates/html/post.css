@@ -1,13 +1,13 @@
 /* Every value comes from brand/tokens.json via slideTokensCSS() (scripts/core.mjs). No literals here. */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { color: var(--color-ink); font-family: 'Manrope', sans-serif; }
+body { color: var(--color-text-primary); font-family: 'Manrope', sans-serif; }
 .post {
   --side: var(--main-side); --header-top: var(--main-header-top); --row-to-divider: var(--main-row-to-divider);
   --divider-to-content: var(--main-divider-to-content); --content-width: var(--main-content-width); --copy-to-image: var(--main-summary-to-image);
   width: var(--canvas-width); height: var(--canvas-height); overflow: hidden;
   display: flex; flex-direction: column; position: relative;
-  background: var(--color-editorial-gray); border-radius: var(--radius-editorial);
+  background: var(--color-page-bg); border-radius: var(--radius-editorial);
   -webkit-font-smoothing: antialiased;
 }
 .post-detail1, .post-detail2 {
@@ -24,9 +24,11 @@ body { color: var(--color-ink); font-family: 'Manrope', sans-serif; }
   font: var(--type-wordmark-weight) var(--type-wordmark-size)/var(--type-wordmark-line-height) var(--type-wordmark-family), sans-serif;
   letter-spacing: var(--type-wordmark-tracking); white-space: nowrap;
 }
+.wordmark-logo { width: var(--logo-width); height: var(--logo-height); flex: none; }
 .category {
   font: var(--type-metadata-weight) var(--type-metadata-size)/var(--type-metadata-line-height) var(--type-metadata-family), monospace;
   letter-spacing: var(--type-metadata-tracking); text-align: var(--category-align); white-space: nowrap;
+  color: var(--color-text-secondary); text-transform: uppercase;
 }
 .copy { flex: none; margin: var(--divider-to-content) var(--side) 0; width: var(--content-width); }
 .headline {
@@ -36,11 +38,16 @@ body { color: var(--color-ink); font-family: 'Manrope', sans-serif; }
 .headline-line { display: block; white-space: pre; }
 .summary {
   font: var(--type-main-summary-weight) var(--type-main-summary-size)/var(--type-main-summary-line-height) var(--type-main-summary-family), sans-serif;
+  color: var(--color-text-secondary);
   letter-spacing: var(--type-main-summary-tracking); margin: var(--main-headline-to-summary) 0 0;
 }
 .detail-copy {
   font: var(--type-detail-body-weight) var(--type-detail-body-size)/var(--type-detail-body-line-height) var(--type-detail-body-family), sans-serif;
   letter-spacing: var(--type-detail-body-tracking); margin: 0;
+}
+.detail-copy strong {
+  background: var(--bold-gradient); -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 .detail-copy + .detail-copy { margin-top: var(--detail-paragraph-gap); }
 .photo {
@@ -50,6 +57,10 @@ body { color: var(--color-ink); font-family: 'Manrope', sans-serif; }
 .photo img, .quote-photo {
   display: block; width: 100%; height: 100%; object-fit: cover;
   object-position: var(--image-position, 50% 50%); filter: none;
+}
+.photo::before {
+  content: ''; position: absolute; z-index: 1; inset: 0 0 auto; height: var(--photo-hairline-width);
+  background: var(--photo-hairline-color); pointer-events: none;
 }
 .photo::after {
   content: ''; position: absolute; inset: auto 0 0; height: var(--credit-gradient-height);

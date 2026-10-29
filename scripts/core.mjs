@@ -6,7 +6,14 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const GATES = ['selected', 'copy', 'final'];
-export const TOPICS = ['AI', 'Robotika', 'Komputasi', 'Chip', 'Software'];
+/** Masthead categories (owner t94u). Always uppercase; TEKNOLOGI is the general-tech fallback. */
+export const TOPICS = ['AI', 'KOMPUTER', 'SAINS', 'PROGRAMMING', 'TUTORIAL AI', 'TEKNOLOGI', 'ROBOTIKA'];
+/** Throws a clear error unless category is exactly one of TOPICS. */
+export function checkCategory(category) {
+  if (!TOPICS.includes(category))
+    throw Error(`category "${category}" is not allowed; use exactly one of: ${TOPICS.join(', ')} (uppercase; TEKNOLOGI for general tech)`);
+  return category;
+}
 
 export const isMain = url => process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === url;
 export const readJSON = file => JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -192,12 +199,13 @@ export function requireCopyApproval(workflow, post) {
 export const processedImage = (dir, slide) => path.join(dir, 'assets/processed', slide.id + '-blue-ink.png');
 // Design rule 2 (t67u–t69u): alt text is not approved, so it is left out of the design revision (it still goes to Notion).
 export const DESIGN_RULE = 2;
+export const LOGO_FILE = 'brand/logos/logo-wordmark.png';
 const designInputs = (post, dir, root) => ({
   images: post.slides.map(s => {
     const f = processedImage(dir, s);
     return fs.existsSync(f) ? fileHash(f) : null;
   }),
-  design: ['brand/tokens.json', 'templates/html/post.css'].map(f => fileHash(path.join(root, f)))
+  design: ['brand/tokens.json', 'templates/html/post.css', LOGO_FILE].map(f => fileHash(path.join(root, f)))
 });
 /** Hash of the post (minus alt text) plus the processed images, tokens and slide CSS: what "final" approves. */
 export function designRevision(post, dir, root = ROOT) {
@@ -362,6 +370,14 @@ export function tokenVars(root = ROOT) {
     'color-ink': T.color.ink.value,
     'color-editorial-gray': T.color['editorial-gray'].value,
     'color-reversed-text': T.color['reversed-text'].value,
+    'bold-gradient': T.color['bold-gradient'].value,
+    'color-page-bg': T.color['page-bg'].value,
+    'color-text-primary': T.color['text-primary'].value,
+    'color-text-secondary': T.color['text-secondary'].value,
+    'photo-hairline-color': T.color['photo-hairline'].value,
+    'photo-hairline-width': px(T.color['photo-hairline'].width),
+    'logo-width': px(T.logo.width),
+    'logo-height': px(T.logo.height),
     'overlay-quote': `linear-gradient(${T.overlay.quote.direction}, ${T.overlay.quote.stops.map(rgba).join(', ')})`,
     'overlay-quote-opacity': T.overlay.quote.opacity,
     'canvas-width': px(T.canvas.width),
@@ -438,6 +454,11 @@ export const slideTokensCSS = (root = ROOT) =>
     .map(([k, v]) => `--${k}:${v}`)
     .join(';') +
   '}';
+/** Masthead logo as an embedded data URL, so rendered pages need no file access. */
+export function logoCSS(root = ROOT) {
+  const b64 = fs.readFileSync(path.join(root, LOGO_FILE)).toString('base64');
+  return `.wordmark-logo{background:url(data:image/png;base64,${b64}) left center/contain no-repeat}`;
+}
 export function fontCSS(root = ROOT) {
   const b64 = f => fs.readFileSync(path.join(root, 'brand/fonts', f)).toString('base64');
   return `@font-face{font-family:'Manrope';src:url(data:font/ttf;base64,${b64('Manrope.ttf')}) format('truetype');font-weight:200 800;font-display:block}@font-face{font-family:'IBM Plex Mono';src:url(data:font/ttf;base64,${b64('IBMPlexMono-Regular.ttf')}) format('truetype');font-weight:400;font-display:block}`;

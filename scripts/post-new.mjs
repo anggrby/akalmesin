@@ -2,12 +2,12 @@
 // Creates content/posts/DATE-slug/ with an empty post.json skeleton for the agent to fill.
 import fs from 'node:fs';
 import path from 'node:path';
-import {ROOT, TOPICS, parseArgs, writeJSON, writeFile, newWorkflow, isMain, fail, wib} from './core.mjs';
+import {ROOT, checkCategory, parseArgs, writeJSON, writeFile, newWorkflow, isMain, fail, wib} from './core.mjs';
 
 export function createPost({name, date = wib().slice(0, 10), category = 'AI', title = '', root = ROOT}) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name || '')) throw Error('Slug must be lowercase-kebab, e.g. kimi-k3-1-pro');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw Error('--date must be YYYY-MM-DD');
-  if (!TOPICS.includes(category)) throw Error('--category must be one of ' + TOPICS.join(', '));
+  checkCategory(category);
   const slug = `${date}-${name}`,
     dir = path.join(root, 'content/posts', slug);
   if (fs.existsSync(dir)) throw Error('Already exists: ' + dir);

@@ -37,3 +37,7 @@ Saved in review editor 2026-10-29T09:16:57.464Z · macbook-review-approval.json 
 ## 2026-10-29 16:16 WIB — approval source
 
 Owner approved in chat: t89u media/design decisions (Apple footage with source credit, tweet-style card, real MacBook touch media); t90u "Good improvements…"; t91u "Good. The zoom is too slow, But i think this is enough."; per t87u, saying approved in chat = approved and the bot runs the save. No text changes; the review save (macbook-review-approval.json) was run by Grok Bot at his request.
+
+## 2026-10-29 19:02 WIB — design build
+
+Design revision dea9364007b6 · 5 PNGs · blue ink from originals (crop/pad in post.json).

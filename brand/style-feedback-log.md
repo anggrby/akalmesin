@@ -177,3 +177,23 @@ Open points reported to the owner (not changed): caption ~185 words vs 100–150
 ## Owner decision: caption length (28 Oktober 2026, t49u ~13:56 WIB)
 
 Owner: "Not necessary for now, 100-160 is not including the hashtag and the Source. So it just pure the copy text". The caption guide is now **100–160 words**, counting only the 3 body paragraphs (no hashtags, `Sumber/Foto` footer or `Ilustrasi` lines), and it is a warning, not a hard gate. This supersedes the 100–150 figure in the entries above, which are kept as history. Kimi caption under the new rule: 185 words (still a warning). Status: **owner rule**.
+
+## Owner decision: dark mode, logo masthead, category list (29 Oktober 2026, t92u–t94u)
+
+- t92u: "I am thinking to make the post in dark mode instead of white…" → 3×3 dark grid mockup.
+- t93u: "Ohh i love the dark mode so much! can you use akalmesin wordmark logo instead of using text in masthead?" → logo masthead mock.
+- t94u (relayed brief): adopt dark mode as the real design (bg #0A0A0F, headline #F2F2F5, summary/category #B4B4BE, divider #4E4FEB, logo in the masthead), category ALL UPPERCASE from AI, KOMPUTER, SAINS, PROGRAMMING, TUTORIAL AI, TEKNOLOGI, ROBOTIKA, and remove all existing posts from the repo.
+
+Agent addition: a 1 px rgba(255,255,255,0.12) hairline on the photo's top edge, because in the mock dark photo tops blended into the page (1.23:1 on Genie). Status: **owner rule** (hairline: agent choice, reported).
+
+## Owner decision: TUTORIAL AI scope (29 Oktober 2026, t95u)
+
+Owner: "Don't use Tutorial AI for that category, Tutorial AI is for tutorial how to use AI, for news like that just use AI." News about AI uses `AI`; `TUTORIAL AI` only for how-to-use-AI tutorials. Status: **owner rule**.
+
+## Owner decision: masthead divider (29 Oktober 2026, t95u)
+
+Owner: "Use white divider in masthead with 50% transparancy". `stroke.divider` is now 1 px rgba(255,255,255,0.5), replacing #4E4FEB. Status: **owner rule**.
+
+## Owner decision: gradient bold (29 Oktober 2026, t96u)
+
+Owner: "commit to use the blue of our color." Bold phrases in Detail slides use a 90° gradient #F2F2F5 → #4E4FEB (token `color.bold-gradient`), clone per wrapped line. 40 px bold; min contrast 3.43:1 at the blue end (large-text bar only). Status: **owner rule**.

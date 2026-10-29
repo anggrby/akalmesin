@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-google-gemini-4-carbon",
-  "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+  "designRevision": "d2cdba73b7836930c65caa7975dc40a1ee3ad2db4412bffca8ca2def9f2cfccc",
   "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
-  "checkedAt": "2026-10-29T03:59:22.962Z",
+  "checkedAt": "2026-10-29T12:02:51.194Z",
   "passed": true,
   "problems": [],
   "warnings": [],

@@ -10,7 +10,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   ROOT,
-  TOPICS,
   loadPost,
   parseArgs,
   readJSON,
@@ -36,26 +35,20 @@ export const NOTION = {
 };
 const PAGE_ID = /^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/i;
 
-/** Post category → Notion Topic select. Unknown categories fail loudly (no silent default). */
-const TOPIC_ALIASES = {
-  ai: 'AI',
-  robotika: 'Robotika',
-  robotics: 'Robotika',
-  komputasi: 'Komputasi',
-  computing: 'Komputasi',
-  chip: 'Chip',
-  chips: 'Chip',
-  semiconductor: 'Chip',
-  software: 'Software'
+/** Masthead category → Notion Topic select, 1:1 (owner t96u added the uppercase options). Notion matches select
+ * names case-insensitively, so ROBOTIKA uses the existing "Robotika" option (same option, older spelling). */
+const TOPIC_MAP = {
+  AI: 'AI',
+  KOMPUTER: 'KOMPUTER',
+  SAINS: 'SAINS',
+  PROGRAMMING: 'PROGRAMMING',
+  'TUTORIAL AI': 'TUTORIAL AI',
+  TEKNOLOGI: 'TEKNOLOGI',
+  ROBOTIKA: 'Robotika'
 };
 export function topicFor(category) {
-  const t =
-    TOPIC_ALIASES[
-      String(category || '')
-        .trim()
-        .toLowerCase()
-    ];
-  if (!t || !TOPICS.includes(t)) throw Error(`category "${category}" has no Notion Topic; use one of ${TOPICS.join(', ')}`);
+  const t = TOPIC_MAP[String(category || '').trim()];
+  if (!t) throw Error(`category "${category}" has no Notion Topic; use one of: ${Object.keys(TOPIC_MAP).join(', ')}`);
   return t;
 }
 

@@ -179,3 +179,7 @@ Design revision 9d7eb559dd72 · 5 PNGs · blue ink from originals (crop/pad in p
 
 Saved in review editor 2026-10-29T03:53:00.000Z · genie4-owner-edits-v2.json · copy 82f2c94a1f75 · design 9d7eb559dd72
 - Warning (not an error): Caption sekitar 161 kata; panduan 100–160 kata. Accepted: the owner instructed this exact wording; the range is a warning only.
+
+## 2026-10-29 19:02 WIB — design build
+
+Design revision 9d92cf0c7fb7 · 5 PNGs · blue ink from originals (crop/pad in post.json).
