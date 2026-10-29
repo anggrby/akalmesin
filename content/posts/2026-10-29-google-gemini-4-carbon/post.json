@@ -1,0 +1,173 @@
+{
+  "slug": "2026-10-29-google-gemini-4-carbon",
+  "category": "AI",
+  "title": "Google umumkan Gemini 4 Carbon",
+  "format": "in-depth",
+  "formatReason": "In-depth: Main + four detail slides (benchmark umum, keamanan siber, tugas panjang/keandalan, akses dan harga); benchmark claims and limited access each need their own slide.",
+  "eventDate": "2026-10-28",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Google umumkan",
+        "Gemini 4 Carbon"
+      ],
+      "summary": "Google menyebutnya model terkuatnya sejauh ini, dengan lompatan besar di bidang keamanan siber—tetapi aksesnya masih sangat terbatas.",
+      "credit": "FOTO: SUNDAR PICHAI / MAURIZIO PESCE (CC BY 2.0)",
+      "alt": "Foto CEO Google Sundar Pichai berbicara di panggung Google I/O 2015.",
+      "imagePosition": "50% 35%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-sundar-pichai-google-io-2015",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Sundar_Pichai_at_Google_IO_2015.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/7/78/Sundar_Pichai_at_Google_IO_2015.jpg",
+        "originalFile": "assets/originals/commons-sundar-pichai-io-2015.jpg",
+        "subject": "Sundar Pichai at the Google I/O conference, May 2015",
+        "supplier": "Maurizio Pesce / Wikimedia Commons",
+        "license": "CC BY 2.0"
+      }
+    },
+    {
+      "id": "02-benchmark",
+      "layout": "detail1",
+      "paragraphs": [
+        "Google mengklaim Gemini 4 Carbon kini menempati **peringkat pertama Artificial Analysis Intelligence Index v5.0** dengan skor 59, di atas Claude Opus 5.5 dan GPT-6 Astra. Model ini diumumkan hanya dua minggu setelah Gemini 4 Argon, dengan peningkatan di bidang coding, tugas agentik, sains, hingga pengembangan web."
+      ],
+      "credit": "FOTO: GRAFIK SEC-BENCH PRO / GOOGLE",
+      "alt": "Grafik batang resmi Google: skor SEC-bench Pro, Gemini 4 Carbon di posisi teratas dengan 88,2 persen.",
+      "imagePosition": "0% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "google-carbon-chart-secbench-pro",
+        "kind": "source-photo",
+        "sourceURL": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "originalURL": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_secbench-pro.original.png",
+        "originalFile": "assets/originals/google-carbon-secbench-pro.png",
+        "subject": "Official Google bar chart: SEC-bench Pro scores (Gemini 4 Carbon 88.2%)",
+        "supplier": "Google",
+        "process": {
+          "maxWidth": 900
+        }
+      }
+    },
+    {
+      "id": "03-keamanan",
+      "layout": "detail2",
+      "paragraphs": [
+        "Fokus utamanya adalah keamanan siber. Menurut Google, Carbon unggul di SEC-bench Pro (88,2%) untuk menemukan celah, ExploitGym (54,8%) untuk menguji apakah celah bisa dieksploitasi, dan CWE-bench (71,0%) untuk menambalnya—**dari mendeteksi hingga memperbaiki bug**."
+      ],
+      "credit": "FOTO: GRAFIK EXPLOITGYM / GOOGLE",
+      "alt": "Grafik batang resmi Google: skor ExploitGym, Gemini 4 Carbon di posisi teratas dengan 54,8 persen.",
+      "imagePosition": "0% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "google-carbon-chart-exploitgym",
+        "kind": "source-photo",
+        "sourceURL": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "originalURL": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_exploitgym.original.png",
+        "originalFile": "assets/originals/google-carbon-exploitgym.png",
+        "subject": "Official Google bar chart: ExploitGym scores (Gemini 4 Carbon 54.8%)",
+        "supplier": "Google",
+        "process": {
+          "maxWidth": 900
+        }
+      }
+    },
+    {
+      "id": "04-tugas-panjang",
+      "layout": "detail1",
+      "paragraphs": [
+        "Carbon juga dirancang untuk tugas rekayasa software yang panjang. Google mengaku timnya pernah melihat model ini **bekerja berhari-hari** untuk melacak dan menambal bug rumit di codebase besar. Google juga mengklaim Carbon memangkas klaim tanpa dasar sekitar dua kali lipat dibanding Argon, dan percobaan curang di Terminal-Bench 4.0 turun menjadi 0,4%."
+      ],
+      "credit": "FOTO: GRAFIK CWE-BENCH / GOOGLE",
+      "alt": "Grafik batang resmi Google: skor CWE-bench, Gemini 4 Carbon di posisi teratas dengan 71,0 persen.",
+      "imagePosition": "0% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "google-carbon-chart-cwe-bench",
+        "kind": "source-photo",
+        "sourceURL": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "originalURL": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_cwe-bench.original.png",
+        "originalFile": "assets/originals/google-carbon-cwe-bench.png",
+        "subject": "Official Google bar chart: CWE-bench scores (Gemini 4 Carbon 71.0%)",
+        "supplier": "Google",
+        "process": {
+          "maxWidth": 900
+        }
+      }
+    },
+    {
+      "id": "05-akses",
+      "layout": "detail2",
+      "paragraphs": [
+        "Untuk saat ini, Carbon baru dibuka bagi sebagian tim pertahanan siber lewat Fairwind Program. Harga perkenalannya US$2 per sejuta token input dan US$10 per sejuta token output, lalu naik menjadi US$4 dan US$20—**belum ada tanggal pasti kapan dibuka untuk umum**."
+      ],
+      "credit": "FOTO: GAMBAR RESMI GEMINI 4 CARBON / GOOGLE",
+      "alt": "Gambar resmi Google untuk Gemini 4 Carbon: kristal biru dan tulisan Gemini 4 Carbon.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "google-carbon-social-share",
+        "kind": "source-photo",
+        "sourceURL": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "originalURL": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_carbon_102726_social_share.width-1300.png",
+        "originalFile": "assets/originals/google-carbon-social-share.png",
+        "subject": "Official Gemini 4 Carbon social-share key art (blue crystal + wordmark), og:image of the announcement",
+        "supplier": "Google"
+      }
+    }
+  ],
+  "caption": [
+    "Belum genap dua minggu setelah merilis Gemini 4 Argon, Google kembali mengumumkan model baru. Gemini 4 Carbon diumumkan pada 28 Oktober 2026 dan disebut Google sebagai model terkuatnya sejauh ini, dengan fokus pada keamanan siber, coding, dan tugas panjang yang kompleks. Jarak rilis sedekat ini menunjukkan betapa cepatnya persaingan model AI saat ini.",
+    "Google mengklaim Carbon menempati peringkat pertama Artificial Analysis Intelligence Index v5.0 dan unggul di sejumlah benchmark keamanan siber, mulai dari menemukan celah hingga menambalnya. Di internal Google, model ini juga disebut mampu bekerja berhari-hari untuk menyelesaikan tugas rekayasa software yang rumit.",
+    "Meski begitu, Carbon belum bisa dicoba publik. Aksesnya baru diberikan kepada sebagian tim pertahanan siber lewat Fairwind Program, sementara developer dan pengguna umum masih harus menunggu tanpa tanggal pasti. Menurutmu, apakah model AI sekuat ini memang sebaiknya dibuka secara bertahap?",
+    "Sumber: Google, The Verge, Reuters / Foto: Maurizio Pesce via Wikimedia Commons (CC BY 2.0), Google\n\n#akalmesin #Google #Gemini #KeamananSiber #KecerdasanBuatan"
+  ],
+  "sources": [
+    {
+      "title": "Google — Gemini 4 Carbon: our next frontier model",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+      "published": "2026-10-28",
+      "supports": [
+        "strongest model",
+        "AA Intelligence Index v5.0 #1 at 59",
+        "SEC-bench Pro 88.2, ExploitGym 54.8, CWE-bench 71.0",
+        "two weeks after Argon",
+        "coding, agentic, scientific, web dev",
+        "runs for days",
+        "unsupported claims ~2x fewer; Terminal-Bench 4.0 cheating 0.0%, attempts 0.4%",
+        "subset of cyber defenders, Fairwind Program",
+        "$2/$10 intro, $4/$20 after; cached 95% off",
+        "charts and key art"
+      ]
+    },
+    {
+      "title": "The Verge — Google launches Gemini 4 Carbon with a 'significant leap' in cybersecurity",
+      "url": "https://www.theverge.com/tech/1021339/google-gemini-4-carbon-cybersecurity-frontier",
+      "published": "2026-10-28",
+      "supports": [
+        "AA index: ahead of Claude Opus 5.5 and GPT-6 Astra",
+        "select cybersecurity defense companies",
+        "price"
+      ]
+    },
+    {
+      "title": "Reuters (via Investing.com) — Google launches Gemini 4 Carbon AI model with cybersecurity focus",
+      "url": "https://www.investing.com/news/stock-market-news/google-launches-gemini-4-carbon-ai-model-with-cybersecurity-focus-4980426",
+      "published": "2026-10-28",
+      "supports": [
+        "unveiled Wednesday 28 Oct",
+        "two weeks after Argon",
+        "Fairwind first",
+        "price"
+      ]
+    }
+  ]
+}

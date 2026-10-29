@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-google-gemini-4-carbon",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "6ddef8d69e39341af719a44e0181c929401f6467bd3b3cb3d8c611f1c000b559",
+      "at": "2026-10-29T02:21:58.042Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "ec7e15d132ff30e0b6740ea3b076927617735f834da917f4a2f777b5cdfc1cd1",
+      "at": "2026-10-29T02:22:35.802Z"
+    }
+  ]
+}
