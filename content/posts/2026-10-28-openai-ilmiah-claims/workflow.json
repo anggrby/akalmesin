@@ -38,19 +38,15 @@
   },
   "designStale": false,
   "notion": {
-    "pageId": "407f909f-26a5-8174-b694-fdaf55e44e20",
-    "url": "https://app.notion.com/p/OpenAI-klaim-AI-nya-pecahkan-tiga-soal-ilmiah-407f909f26a58174b694fdaf55e44e20",
-    "action": "updated",
+    "pageId": "408f909f-26a5-8122-910e-dbb26a0a61ec",
+    "url": "https://app.notion.com/p/OpenAI-klaim-AI-nya-pecahkan-tiga-soal-ilmiah-408f909f26a58122910edbb26a0a61ec",
+    "action": "created",
     "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
     "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
     "apiVersion": "2025-09-03",
     "contentId": "akalmesin:2026-10-28-openai-ilmiah-claims",
     "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-openai-ilmiah-claims",
     "approvedRevision": "3829263aed828e01f225ba110feeea898b59f7b685ec4e2c0b51e18d1c787dfd",
-    "ownerManaged": {
-      "Status": "Ready to Publish",
-      "publishDate": null
-    },
     "orderedAssetHashes": [
       "03c7598aee7ed8ab38ad9f5eead7474d9feab244f748367638b5bb62f287557a",
       "99e9a751a0d76c93b066a0785b2aea8e5b93e1504a0c81857d1f579eea798493",
@@ -66,8 +62,8 @@
       "a4ea94cebb06169006f73a80a98b12ba6b577f44a22a8fedf3c1cbfe22bfc87e"
     ],
     "assetsMatchBuild": true,
-    "exportedAt": "2026-10-29T12:08:43.880Z",
-    "exportedAtWIB": "2026-10-29 19:08 WIB"
+    "exportedAt": "2026-10-29T13:10:08.904Z",
+    "exportedAtWIB": "2026-10-29 20:10 WIB"
   },
   "legacyRevisions": {},
   "history": [
@@ -299,6 +295,11 @@
       "event": "notion-updated",
       "pageId": "407f909f-26a5-8174-b694-fdaf55e44e20",
       "at": "2026-10-29T12:08:43.880Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-8122-910e-dbb26a0a61ec",
+      "at": "2026-10-29T13:10:08.904Z"
     }
   ]
 }
