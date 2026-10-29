@@ -1,7 +1,7 @@
 {
   "slug": "2026-10-28-google-genie-4",
   "category": "AI",
-  "title": "Google rilis Genie 4, pembuat dunia virtual",
+  "title": "Google rilis Genie 4, AI pencipta dunia virtual",
   "format": "in-depth",
   "formatReason": "In-depth: Main + four detail slides (kendali, audio, peran Gemini, ketersediaan/batasan); each capability needs its own explanation and the availability caveat needs a slide.",
   "eventDate": "2026-10-27",
@@ -11,9 +11,9 @@
       "layout": "main",
       "headline": [
         "Google rilis Genie 4,",
-        "pembuat dunia virtual"
+        "AI pencipta dunia virtual"
       ],
-      "summary": "Dunia simulasi buatan AI ini bisa dijelajahi, didengar, dan diubah lewat perintah teks secara real-time.",
+      "summary": "Dunia simulasi buatan AI ini bisa dijelajahi, didengar, dan dimodifikasi lewat perintah teks secara real-time.",
       "credit": "FOTO: SIMULASI STASIUN KERETA / GOOGLE DEEPMIND",
       "alt": "Cuplikan simulasi Genie 4 dari Google DeepMind: petugas stasiun berdiri di peron dengan kereta merah di belakangnya, adegan buatan AI.",
       "imagePosition": "50% 50%",
@@ -33,7 +33,7 @@
       "id": "02-kendali",
       "layout": "detail1",
       "paragraphs": [
-        "Genie 4 adalah model dunia (world model) terbaru Google DeepMind. Pengguna bisa menjelajahi dunia simulasinya dengan kontrol keyboard, lalu mengetik perintah untuk **mengubah cuaca, menggeser kamera, atau memunculkan orang dan objek baru** saat simulasi berjalan. Menurut TechCrunch, satu adegan kini bisa tetap konsisten hingga dua menit, dua kali lipat batas Genie 3."
+        "Genie 4 adalah world model (model dunia) terbaru dari Google DeepMind. Pengguna bisa menjelajahi dunia simulasinya menggunakan kontrol keyboard, sambil mengetik perintah untuk **mengubah cuaca, menggeser sudut kamera, atau memunculkan karakter dan objek baru **saat simulasi tengah berjalan. Menurut TechCrunch, satu adegan kini bisa terjaga konsistensinya hingga dua menit—dua kali lipat lebih lama dari batas Genie 3."
       ],
       "credit": "FOTO: SIMULASI BALON UDARA / GOOGLE DEEPMIND",
       "alt": "Cuplikan simulasi Genie 4: pemandangan es Antarktika dari keranjang balon udara, dengan panel langkah dan kontrol keyboard di layar.",
@@ -54,7 +54,7 @@
       "id": "03-audio",
       "layout": "detail2",
       "paragraphs": [
-        "Genie 4 juga menjadi model dunia real-time pertama Google DeepMind yang **menghasilkan suara langsung bersama gambarnya**—mulai dari suara angin dan ombak, musik, hingga dialog karakter yang bisa bereaksi terhadap pengguna."
+        "Genie 4 juga menjadi world model real-time pertama dari Google DeepMind yang mampu **menghasilkan audio langsung seiring visualnya**—mulai dari deru angin dan debur ombak, musik latar, hingga dialog karakter yang bisa merespons tindakan pengguna."
       ],
       "credit": "FOTO: SIMULASI PEMAIN SAKSOFON / GOOGLE DEEPMIND",
       "alt": "Cuplikan simulasi Genie 4: pria bermain saksofon di pulau kecil di tengah danau berkabut, adegan buatan AI.",
@@ -75,7 +75,7 @@
       "id": "04-gemini",
       "layout": "detail1",
       "paragraphs": [
-        "Di balik layar, Genie 4 dibantu keluarga model Gemini. Gemini Omni menjaga tampilan dan perilaku dunia tetap realistis, sementara Gemini 3.8 Flash bertugas seperti sutradara yang **memecah tujuan menjadi langkah-langkah dan memeriksa setiap frame**. Google menyebut kegunaannya mulai dari melatih robot, membuat prototipe game, hingga pravisualisasi film."
+        "Di balik layar, Genie 4 ditenagai oleh jajaran model Gemini. Gemini Omni menjaga agar visual dan hukum fisika di dunia simulasi tetap realistis, sementara Gemini 3.8 Flash berperan layaknya sutradara yang **memecah instruksi menjadi langkah-langkah terperinci sekaligus mengecek setiap frame.** Google menyebut teknologi ini bisa dimanfaatkan untuk melatih robot, membuat prototipe game, hingga pravisualisasi film."
       ],
       "credit": "FOTO: SIMULASI LENGAN ROBOT / GOOGLE DEEPMIND",
       "alt": "Cuplikan simulasi Genie 4: lengan robot meneteskan cairan ke pelat laboratorium, dengan panel langkah Gemini di layar.",
@@ -96,7 +96,7 @@
       "id": "05-ketersediaan",
       "layout": "detail2",
       "paragraphs": [
-        "Untuk sekarang, Genie 4 baru dibuka sebagai pratinjau riset (research preview) bagi penguji terpilih. Pelanggan Google AI Ultra dan mitra developer dijanjikan menyusul, tetapi **belum ada harga maupun tanggal pasti**. Google juga mengakui detail dan objek bisa bergeser makin lama simulasi berjalan."
+        "Saat ini, Genie 4 baru dibuka terbatas sebagai pratinjau riset (research preview) untuk sejumlah penguji terpilih. Akses untuk pelanggan Google AI Ultra dan mitra developer dijanjikan bakal menyusul, namun **belum ada informasi harga maupun jadwal rilis pastinya**. Google juga mengakui bahwa konsistensi detail dan objek masih bisa memudar (drift) jika simulasi berjalan terlalu lama."
       ],
       "credit": "FOTO: GAMBAR RESMI GENIE 4 / GOOGLE DEEPMIND",
       "alt": "Gambar resmi Genie 4 dari Google DeepMind: perempuan di dalam mobil melintasi jalan kota bercahaya neon, adegan buatan AI.",
@@ -115,9 +115,9 @@
     }
   ],
   "caption": [
-    "Selama ini, video buatan AI hanya bisa kita tonton. Lewat Genie 4, Google DeepMind ingin kita bisa masuk ke dalamnya. Model dunia (world model) yang diumumkan pada 27 Oktober 2026 ini membuat lingkungan fotorealistis yang bisa dijelajahi dengan keyboard secara real-time, lengkap dengan suara, dan bisa diubah lewat perintah teks saat simulasi berjalan.",
-    "Misalnya, kamu bisa mengganti cuaca atau memunculkan karakter baru, lalu Gemini akan menyesuaikan perintah itu dengan adegan di sekitarnya. Genie 4 juga mensimulasikan fisika seperti tabrakan, serta gerak dan percakapan manusia yang lebih alami. Google menyebut kegunaannya mulai dari melatih robot, membuat prototipe game, hingga pravisualisasi film.",
-    "Meski begitu, Genie 4 baru tersedia sebagai pratinjau riset untuk penguji terpilih, tanpa harga maupun tanggal rilis yang pasti. Google juga mengakui detail dunianya bisa bergeser jika simulasi berjalan lama. Menurutmu, bidang apa yang paling cepat berubah karena teknologi seperti ini?",
+    "Selama ini, video buatan AI cuma bisa kita tonton. Lewat Genie 4, Google DeepMind ingin kita bisa \"masuk\" dan menjelajahinya secara langsung. World model (model dunia) yang baru diumumkan pada 27 Oktober 2026 ini mampu menciptakan lingkungan fotorealistis secara real-time. Hebatnya, kamu bisa menjelajahi dunia itu pakai keyboard, lengkap dengan audio bawaan, dan mengubah kondisinya lewat perintah teks langsung saat simulasi berjalan",
+    "Ingin mengubah cuaca atau memunculkan karakter baru? Ketik saja, dan jajaran model Gemini akan menyesuaikan adegan di sekitarnya secara instan. Genie 4 juga menyimulasikan hukum fisika (seperti tabrakan) serta gerak-gerik dan obrolan manusia dengan lebih alami. Google menyebut teknologi ini bisa dipakai untuk melatih robot, bikin prototipe game, hingga pravisualisasi film.",
+    "Tapi untuk sekarang, Genie 4 baru tersedia dalam pratinjau riset terbatas bagi penguji terpilih, tanpa informasi harga atau jadwal rilis pasti. Google juga mengakui kalau visualnya masih bisa memudar (drift) jika simulasi berjalan terlalu lama. Menurutmu, industri apa yang bakal paling cepat berubah karena teknologi seperti ini?",
     "Sumber: Google DeepMind, Google, TechCrunch / Foto: cuplikan simulasi Genie 4 / Google DeepMind\n\n#akalmesin #Google #Genie4 #WorldModel #KecerdasanBuatan"
   ],
   "sources": [

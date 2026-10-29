@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-google-genie-4",
-  "copyRevision": "54542d62ce91f60c623fb246985e71c4fc15795d4f3b9573c467a356ce719a0d",
+  "copyRevision": "c0c628655c53a6d42a8b8f77c0c9d23280e34febe6f0af9d5b98c2eddfde6a86",
   "creditsRevision": "1857fb9492432e5ddcb7af132ef5aab28c4fa2bb11d2044448c07b7038ab029c",
-  "designRevision": "6ef8849126013bd6c1282f1eb79761def0ba02cc13380d6e239e966f5ba0deef",
-  "builtAt": "2026-10-28T15:55:45.257Z",
+  "designRevision": "013e9906f88aaf366422b040e2697460b0c8de08f3c52bb2161ddb60157efe98",
+  "builtAt": "2026-10-29T03:46:38.488Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/01-main.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/01-01-main.png",
-      "pngHash": "8603b2ffe37b8dfeca97008a73053e643c9d070654e7f8d426980a37bd03d14d",
+      "pngHash": "d80deea54817a273c18ef07172557c8862ad0b5b6525302d3d2afce3b6c4bc8d",
       "imageHash": "4947e71b69e08ff32ce4b633f775589df538e571565d7bcca6ad2218dcefc337",
       "geometry": {
         "canvas": {
@@ -40,7 +40,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/02-kendali.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/02-02-kendali.png",
-      "pngHash": "0f6631a7c9107464f058c1296ac07cd4ae0ad707e2b92342d50fd6026cd5e7bd",
+      "pngHash": "a271969c7268b1fdfdc5e6757a482a6a49ce319fb55e3a5235e77ec3e19ae27e",
       "imageHash": "3184b92fe7a0ea9eb05c133b5749b001e6107c88f8df995ca3607ce22139f7b6",
       "geometry": {
         "canvas": {
@@ -53,9 +53,9 @@
         },
         "photo": {
           "x": 0,
-          "y": 708,
+          "y": 768,
           "width": 1080,
-          "height": 642,
+          "height": 582,
           "bottom": 1350,
           "right": 1080
         },
@@ -69,7 +69,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/03-audio.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/03-03-audio.png",
-      "pngHash": "3dd928260c00b1963a3d2410c1c5c7a7de8030114066a83b880cf5ca65f740c9",
+      "pngHash": "254e6ffa6c79f49ee216d26f5ca88cf148186b129798d4c412e7f413810c035b",
       "imageHash": "78a9cb89540bbed28d8385fc7f9bb17e3bb53f7be4b449676ba15b10701fd2e3",
       "geometry": {
         "canvas": {
@@ -98,8 +98,37 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-28-google-genie-4/out/slides/04-gemini.html",
       "png": "content/posts/2026-10-28-google-genie-4/out/png/04-04-gemini.png",
-      "pngHash": "21360afe160fd967a354f685e669f49ce1b1fb247baf257122afa559b30a42ed",
+      "pngHash": "63f617fb460a2abc7b80a90914d54e702e7ba288c53cfaf7e6cac9d8015771e1",
       "imageHash": "12ffa204009f50b44755d01375a9fbb4d9baacd5e4b66cf046d8a254c135b30d",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 768,
+          "width": 1080,
+          "height": 582,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-ketersediaan",
+      "layout": "detail2",
+      "html": "content/posts/2026-10-28-google-genie-4/out/slides/05-ketersediaan.html",
+      "png": "content/posts/2026-10-28-google-genie-4/out/png/05-05-ketersediaan.png",
+      "pngHash": "6bd2e955ebf013981f9f1ea1721a939c3bf2f3dbe6d1ecd07146878e322fdfb1",
+      "imageHash": "04fa183ce03c26043337da8326f9b5d0a18bff5bb7f62ee884abbe8defa0ffd9",
       "geometry": {
         "canvas": {
           "x": 0,
@@ -114,35 +143,6 @@
           "y": 708,
           "width": 1080,
           "height": 642,
-          "bottom": 1350,
-          "right": 1080
-        },
-        "textPhotoGap": 54,
-        "quote": null,
-        "violations": []
-      }
-    },
-    {
-      "id": "05-ketersediaan",
-      "layout": "detail2",
-      "html": "content/posts/2026-10-28-google-genie-4/out/slides/05-ketersediaan.html",
-      "png": "content/posts/2026-10-28-google-genie-4/out/png/05-05-ketersediaan.png",
-      "pngHash": "0e022da621c6a5bef7cfb6e182a627ee016df703093990eca46c899c632679f2",
-      "imageHash": "04fa183ce03c26043337da8326f9b5d0a18bff5bb7f62ee884abbe8defa0ffd9",
-      "geometry": {
-        "canvas": {
-          "x": 0,
-          "y": 0,
-          "width": 1080,
-          "height": 1350,
-          "bottom": 1350,
-          "right": 1080
-        },
-        "photo": {
-          "x": 0,
-          "y": 648,
-          "width": 1080,
-          "height": 702,
           "bottom": 1350,
           "right": 1080
         },

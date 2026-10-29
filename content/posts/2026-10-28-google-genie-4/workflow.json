@@ -40,6 +40,29 @@
       "event": "design-built",
       "designRevision": "6ef8849126013bd6c1282f1eb79761def0ba02cc13380d6e239e966f5ba0deef",
       "at": "2026-10-28T15:55:45.257Z"
+    },
+    {
+      "event": "copy-recorded",
+      "who": "owner",
+      "mode": "review",
+      "from": "54542d62ce91f60c623fb246985e71c4fc15795d4f3b9573c467a356ce719a0d",
+      "to": "c0c628655c53a6d42a8b8f77c0c9d23280e34febe6f0af9d5b98c2eddfde6a86",
+      "file": "genie4-owner-edits.json",
+      "at": "2026-10-29T03:46:27.588Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "013e9906f88aaf366422b040e2697460b0c8de08f3c52bb2161ddb60157efe98",
+      "at": "2026-10-29T03:46:38.488Z"
+    },
+    {
+      "event": "review-apply-failed",
+      "file": "genie4-owner-edits.json",
+      "sha256": "ce066e21f4625e0b5c019af6d6b2955766b6329fd712541673d6d785324fd222",
+      "problems": [
+        "Editorial: Caption perlu satu pertanyaan di akhir paragraf terakhir."
+      ],
+      "at": "2026-10-29T03:46:27.588Z"
     }
   ]
 }

@@ -1,11 +1,13 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-google-genie-4",
-  "designRevision": "6ef8849126013bd6c1282f1eb79761def0ba02cc13380d6e239e966f5ba0deef",
-  "copyRevision": "54542d62ce91f60c623fb246985e71c4fc15795d4f3b9573c467a356ce719a0d",
-  "checkedAt": "2026-10-28T15:55:46.235Z",
-  "passed": true,
-  "problems": [],
+  "designRevision": "013e9906f88aaf366422b040e2697460b0c8de08f3c52bb2161ddb60157efe98",
+  "copyRevision": "c0c628655c53a6d42a8b8f77c0c9d23280e34febe6f0af9d5b98c2eddfde6a86",
+  "checkedAt": "2026-10-29T03:46:39.559Z",
+  "passed": false,
+  "problems": [
+    "Editorial: Caption perlu satu pertanyaan di akhir paragraf terakhir."
+  ],
   "warnings": [],
   "slides": [
     {
@@ -28,7 +30,7 @@
         "inkPixels": 0.6925682261208577
       },
       "gap": 54,
-      "photoHeight": 642
+      "photoHeight": 582
     },
     {
       "id": "03-audio",
@@ -50,7 +52,7 @@
         "inkPixels": 0.9492933723196881
       },
       "gap": 54,
-      "photoHeight": 642
+      "photoHeight": 582
     },
     {
       "id": "05-ketersediaan",
@@ -61,7 +63,7 @@
         "inkPixels": 0.9774211248285323
       },
       "gap": 54,
-      "photoHeight": 702
+      "photoHeight": 642
     }
   ]
 }
