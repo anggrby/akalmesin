@@ -24,6 +24,11 @@ const sh = (cmd, args) => execFileSync(cmd, args, {stdio: ['ignore', 'pipe', 'pi
 const probeDur = f => Number(sh('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]));
 
 let words;
+if (spec.layout === 'card') {
+  const {renderCard} = await import('./card.mjs');
+  console.log(JSON.stringify(await renderCard({spec, post, paths, reelDir, work, tts, frames, outArg, flags, sh, probeDur})));
+  process.exit(0);
+}
 if (spec.layout !== 'news') {
   if (!flags['reuse-tts'] || !fs.existsSync(path.join(tts, 'words.json')))
     sh('python3', [path.join(ROOT, 'scripts/reel/tts.py'), path.join(reelDir, 'reel.json'), tts]);

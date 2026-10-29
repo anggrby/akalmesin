@@ -28,6 +28,18 @@ const inside = b => b && b.x >= S.x0 && b.y >= S.y0 && b.x + b.w <= S.x1 && b.y 
 const results = [];
 const gate = (name, ok, detail = '') => results.push({name, ok: !!ok, detail});
 
+if (spec.layout === 'card') {
+  const {checkCard} = await import('./card.mjs');
+  gate('duration', dur >= F.minSeconds && dur <= F.maxSeconds, `${dur.toFixed(2)} s`);
+  gate('resolution', v.width === F.width && v.height === F.height, `${v.width}x${v.height}`);
+  gate('fps', v.r_frame_rate === `${F.fps}/1`, v.r_frame_rate);
+  gate('codecs', v.codec_name === 'h264' && a?.codec_name === 'aac', `${v.codec_name}+${a?.codec_name}`);
+  checkCard({spec, man, gate, inside, hit, paths, mp4, dur, carousel, norm});
+  const errors = results.filter(r => !r.ok);
+  writeJSON(path.join(paths.dir, 'reel/check.json'), {mp4: path.basename(mp4), passed: !errors.length, results});
+  for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.name}: ${r.detail}`);
+  process.exit(errors.length ? 1 : 0);
+}
 gate('duration', dur >= F.minSeconds && dur <= F.maxSeconds, `${dur.toFixed(2)} s`);
 gate('resolution', v.width === F.width && v.height === F.height, `${v.width}x${v.height}`);
 gate('fps', v.r_frame_rate === `${F.fps}/1`, v.r_frame_rate);

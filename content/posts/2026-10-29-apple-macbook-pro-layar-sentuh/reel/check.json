@@ -1,0 +1,131 @@
+{
+  "mp4": "reel.mp4",
+  "passed": true,
+  "results": [
+    {
+      "name": "duration",
+      "ok": true,
+      "detail": "24.50 s"
+    },
+    {
+      "name": "resolution",
+      "ok": true,
+      "detail": "1080x1920"
+    },
+    {
+      "name": "fps",
+      "ok": true,
+      "detail": "30/1"
+    },
+    {
+      "name": "codecs",
+      "ok": true,
+      "detail": "h264+aac"
+    },
+    {
+      "name": "card text fits safe area (no overflow, <= 4 lines)",
+      "ok": true,
+      "detail": "hook:3 lines, fakta:3 lines, catatan:3 lines, tanya:2 lines"
+    },
+    {
+      "name": "card above clip, no overlap",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "clip within frame and safe area",
+      "ok": true,
+      "detail": "{\"x\":60,\"y\":690,\"w\":900,\"h\":676}"
+    },
+    {
+      "name": "clip ~4:3",
+      "ok": true,
+      "detail": "1.331"
+    },
+    {
+      "name": "card facts in verified carousel copy",
+      "ok": true,
+      "detail": "all facts found"
+    },
+    {
+      "name": "card numbers in carousel copy",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "media credit under clip (every beat)",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "every media item used and free-licensed (no Apple press media)",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "provenance SHA-256 + source URL for every media file",
+      "ok": true,
+      "detail": "all listed"
+    },
+    {
+      "name": "no-filter (media as-is)",
+      "ok": true,
+      "detail": "only scale, crop, pad, fps, setsar, format"
+    },
+    {
+      "name": "text mark at bottom on black, no logo image",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "text mark colour contrast >= 4.5:1",
+      "ok": true,
+      "detail": "hook:white 21:1, fakta:white 21:1, catatan:white 21:1, tanya:white 21:1"
+    },
+    {
+      "name": "captions only where set, in safe area, not over card",
+      "ok": true,
+      "detail": "0 beats with caption"
+    },
+    {
+      "name": "music mood set, track present + provenance hash",
+      "ok": true,
+      "detail": "tech-upbeat → scripts/reel/music/tech-upbeat_loyalty-freak-high-technologic-beat-explosion_48s.m4a"
+    },
+    {
+      "name": "no AI narration",
+      "ok": true,
+      "detail": "voice.engine=none"
+    },
+    {
+      "name": "music loudness sane (-24..-14 LUFS)",
+      "ok": true,
+      "detail": "-16.2 LUFS"
+    },
+    {
+      "name": "no clipping (true peak <= -1 dBTP)",
+      "ok": true,
+      "detail": "-1.7 dBTP"
+    },
+    {
+      "name": "card reading time <= 15 chars/s",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "outro = last 2.0 s",
+      "ok": true,
+      "detail": "22.50–24.50 s"
+    },
+    {
+      "name": "outro text",
+      "ok": true,
+      "detail": "\"Ikuti @akalmesin\" / \"Bagikan ke temanmu\""
+    },
+    {
+      "name": "hook card at 0 s",
+      "ok": true,
+      "detail": "16 tahun setelah Steve Jobs menolaknya, MacBook Pro akhirnya bisa disentuh."
+    }
+  ]
+}

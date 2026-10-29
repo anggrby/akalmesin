@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "kind": "reel",
+  "layout": "card",
+  "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
+  "title": "MacBook Pro akhirnya bisa disentuh",
+  "mechanism": "Card format (owner pt88u reference): curiosity hook on the card, then key fact, then the catch, then the question",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "minSeconds": 15,
+    "maxSeconds": 26
+  },
+  "voice": {
+    "engine": "none"
+  },
+  "mood": "tech-upbeat",
+  "cardMeta": "Berita teknologi · 28 Okt 2026",
+  "footage": "No free-licensed photo or video of the new touchscreen MacBook Pro exists yet, and Apple's press media forbid alteration and commercial use. Uses the carousel's Wikimedia Commons originals as-is (slow pan only).",
+  "mediaFilter": "none",
+  "media": {
+    "jobs": {
+      "kind": "photo",
+      "file": "assets/originals/commons-steve-jobs-2010.jpg",
+      "location": "Steve Jobs, WWDC 2010",
+      "tag": "Foto: Matthew Yohe · CC BY-SA 3.0 · Wikimedia Commons",
+      "sourceURL": "https://commons.wikimedia.org/wiki/File:Steve_Jobs_Headshot_2010-CROP.jpg",
+      "focusX": 0.5,
+      "focusY": 0.35,
+      "filter": "none"
+    },
+    "mbp": {
+      "kind": "photo",
+      "file": "assets/originals/commons-macbook-pro-16-m4-pro.jpg",
+      "location": "MacBook Pro M4, model lama (ilustrasi)",
+      "tag": "Foto: AzureSaturn · CC0 · Wikimedia Commons",
+      "sourceURL": "https://commons.wikimedia.org/wiki/File:MacBook_Pro_(16-inch,_M4_Pro,_Silver).jpg",
+      "focusX": 0.5,
+      "focusY": 0.5,
+      "filter": "none"
+    },
+    "touchbar": {
+      "kind": "photo",
+      "file": "assets/originals/commons-touch-bar-15in-macbook-pro.jpg",
+      "location": "Touch Bar, 2016–2023",
+      "tag": "Foto: IM3847 · CC BY-SA 4.0 · Wikimedia Commons",
+      "sourceURL": "https://commons.wikimedia.org/wiki/File:Touch_bar_of_15%22_MacBook_pro.jpg",
+      "focusX": 0.5,
+      "focusY": 0.5,
+      "filter": "none"
+    },
+    "store": {
+      "kind": "photo",
+      "file": "assets/originals/commons-apple-marina-bay-sands.jpg",
+      "location": "Apple Store Singapura",
+      "tag": "Foto: Moheen Reeyad · CC BY-SA 4.0 · Wikimedia Commons",
+      "sourceURL": "https://commons.wikimedia.org/wiki/File:Apple_Marina_Bay_Sands_(202139).jpg",
+      "focusX": 0.5,
+      "focusY": 0.5,
+      "filter": "none"
+    }
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "seconds": 6,
+      "media": "jobs",
+      "source": "Sumber: Apple Newsroom",
+      "onScreen": [
+        {
+          "text": "16 tahun setelah Steve Jobs menolaknya,",
+          "fact": "16 tahun setelah Steve Jobs"
+        },
+        {
+          "text": "MacBook Pro akhirnya bisa disentuh.",
+          "fact": "MacBook Pro pertama berlayar sentuh"
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "seconds": 6,
+      "media": "mbp",
+      "source": "Sumber: Apple Newsroom",
+      "onScreen": [
+        {
+          "text": "Layarnya OLED dengan sensor sentuh di panel.",
+          "fact": "OLED tandem dengan sensor sentuh"
+        },
+        {
+          "text": "Mulai US$2.899, US$400 di atas model biasa.",
+          "fact": "US$400 di atas model biasa"
+        }
+      ]
+    },
+    {
+      "id": "catatan",
+      "seconds": 6,
+      "media": "touchbar",
+      "source": "Sumber: Gizmodo, The Verge, Apple Newsroom",
+      "onScreen": [
+        {
+          "text": "Catatannya: tidak mendukung Apple Pencil,",
+          "fact": "tidak mendukung Apple Pencil"
+        },
+        {
+          "text": "dan di Indonesia belum ada harga resmi.",
+          "fact": "tanpa harga resmi"
+        }
+      ]
+    },
+    {
+      "id": "tanya",
+      "seconds": 4.5,
+      "media": "store",
+      "onScreen": [
+        {
+          "text": "Laptop perlu layar sentuh,",
+          "fact": "laptop memang perlu layar sentuh"
+        },
+        {
+          "text": "atau trackpad sudah cukup?",
+          "fact": "trackpad sudah cukup"
+        }
+      ]
+    }
+  ]
+}
