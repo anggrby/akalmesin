@@ -5,48 +5,218 @@
   "slug": "2026-10-29-google-tebang-hutan-muhos",
   "title": "Google tebang hutan Finlandia demi data center",
   "mechanism": "News explainer: what Google cleared at Muhos, which rule applies, who ordered the stop, and what is still open",
-  "format": {"width": 1080, "height": 1920, "fps": 30, "minSeconds": 30, "maxSeconds": 45},
-  "voice": {"engine": "edge-tts", "voice": "id-ID-GadisNeural", "rate": "+28%"},
-  "aiDisclosure": "AI voiceover: turn on Instagram's AI label when posting.",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "minSeconds": 30,
+    "maxSeconds": 45
+  },
+  "voice": {
+    "engine": "none"
+  },
+  "aiDisclosure": "No AI voice. Captions narrate; music is a public-domain recording.",
   "footage": "No licensed footage of the Muhos site exists. Uses licensed Wikimedia Commons footage of a Finnish forest and a harvester (illustrative), the carousel's Commons photos as-is with slow pan, and self-made map, bar and counter graphics.",
   "mediaFilter": "none",
   "sourcesText": "Sumber: LVV · Yle · Helsingin Sanomat · The Guardian · Kansalaisaloite.fi",
   "media": {
-    "main": {"kind": "photo", "file": "assets/originals/commons-clearcutting-southern-finland.jpg", "tag": "Foto: Tero Laakso · CC BY 2.0 · Wikimedia Commons", "location": "Finlandia selatan (ilustrasi)", "focusX": 0.5, "filter": "none"},
-    "drone": {"kind": "video", "file": "reel/media/commons-fpv-drone-forest-finland-clip.mp4", "tag": "Video: anotherview · CC BY 3.0 · Wikimedia Commons", "location": "Hutan Finlandia (ilustrasi)", "focusX": 0.5, "filter": "none"},
-    "harvester": {"kind": "video", "file": "reel/media/commons-komatsu-941-harvester-clip.mp4", "tag": "Video: Work With Sounds / P. Vuorela · CC BY 3.0 · Wikimedia Commons", "location": "Mesin penebang (ilustrasi)", "focusX": 0.4, "filter": "none"},
-    "townhall": {"kind": "photo", "file": "assets/originals/commons-muhos-town-hall-2026.jpg", "tag": "Foto: Estormiz · CC0 · Wikimedia Commons", "location": "Muhos, Finlandia", "focusX": 0.5, "filter": "none"},
-    "turku": {"kind": "photo", "file": "assets/originals/commons-clearcut-turku-2011.jpg", "tag": "Foto: LPfi · CC BY-SA 3.0 · Wikimedia Commons", "location": "Turku, Finlandia (ilustrasi)", "focusX": 0.5, "filter": "none"},
-    "pyhakoski": {"kind": "photo", "file": "assets/originals/commons-pyhakoski-power-plant-muhos-2006.jpg", "tag": "Foto: Estormiz · Domain publik · Wikimedia Commons", "location": "Sungai Oulujoki, Muhos", "focusX": 0.5, "filter": "none"},
-    "lapland": {"kind": "photo", "file": "assets/originals/commons-forwarder-clearcut-lapland.jpg", "tag": "Foto: Greenpeace Finland · CC BY 2.0 · Wikimedia Commons", "location": "Salla, Lapland (ilustrasi)", "focusX": 0.5, "filter": "none"}
+    "main": {
+      "kind": "photo",
+      "file": "assets/originals/commons-clearcutting-southern-finland.jpg",
+      "tag": "Foto: Tero Laakso · CC BY 2.0 · Wikimedia Commons",
+      "location": "Finlandia selatan (ilustrasi)",
+      "focusX": 0.5,
+      "filter": "none"
+    },
+    "drone": {
+      "kind": "video",
+      "file": "reel/media/commons-fpv-drone-forest-finland-clip.mp4",
+      "tag": "Video: anotherview · CC BY 3.0 · Wikimedia Commons",
+      "location": "Hutan Finlandia (ilustrasi)",
+      "focusX": 0.5,
+      "filter": "none"
+    },
+    "harvester": {
+      "kind": "video",
+      "file": "reel/media/commons-komatsu-941-harvester-clip.mp4",
+      "tag": "Video: Work With Sounds / P. Vuorela · CC BY 3.0 · Wikimedia Commons",
+      "location": "Mesin penebang (ilustrasi)",
+      "focusX": 0.4,
+      "filter": "none"
+    },
+    "townhall": {
+      "kind": "photo",
+      "file": "assets/originals/commons-muhos-town-hall-2026.jpg",
+      "tag": "Foto: Estormiz · CC0 · Wikimedia Commons",
+      "location": "Muhos, Finlandia",
+      "focusX": 0.5,
+      "filter": "none"
+    },
+    "turku": {
+      "kind": "photo",
+      "file": "assets/originals/commons-clearcut-turku-2011.jpg",
+      "tag": "Foto: LPfi · CC BY-SA 3.0 · Wikimedia Commons",
+      "location": "Turku, Finlandia (ilustrasi)",
+      "focusX": 0.5,
+      "filter": "none"
+    },
+    "pyhakoski": {
+      "kind": "photo",
+      "file": "assets/originals/commons-pyhakoski-power-plant-muhos-2006.jpg",
+      "tag": "Foto: Estormiz · Domain publik · Wikimedia Commons",
+      "location": "Sungai Oulujoki, Muhos",
+      "focusX": 0.5,
+      "filter": "none"
+    },
+    "lapland": {
+      "kind": "photo",
+      "file": "assets/originals/commons-forwarder-clearcut-lapland.jpg",
+      "tag": "Foto: Greenpeace Finland · CC BY 2.0 · Wikimedia Commons",
+      "location": "Salla, Lapland (ilustrasi)",
+      "focusX": 0.5,
+      "filter": "none"
+    }
   },
   "beats": [
-    {"id": "b1-hook", "media": "main", "overlay": "headline",
-     "onScreen": [{"text": "Google tebang hutan", "fact": "Google tebang hutan"}, {"text": "demi data center", "fact": "demi data center"}],
-     "narration": "Google menebang sekitar 330 hektare hutan di Finlandia demi data center, sebelum kajian lingkungan wajib selesai."},
-    {"id": "b2-muhos", "media": "drone", "videoStart": 0, "overlay": "map",
-     "onScreen": [{"text": "Muhos", "fact": "Muhos"}, {"text": "±330 ha ditebang", "fact": "sekitar 330 hektare"}, {"text": "±250.000 pohon (perkiraan)", "fact": "sekitar 250.000 pohon"}],
-     "source": "Sumber: Yle, The Guardian",
-     "narration": "Lokasinya di Muhos. Perkiraannya, sekitar 250.000 pohon hilang."},
-    {"id": "b3-aturan", "media": "harvester", "videoStart": 0.5, "overlay": "threshold",
-     "onScreen": [{"text": "Wajib kajian: > 200 ha", "fact": "lebih dari 200 hektare"}, {"text": "Muhos: ±330 ha", "fact": "sekitar 330 hektare"}],
-     "source": "Sumber: hukum AMDAL Finlandia via Yle",
-     "narration": "Padahal, penebangan permanen di atas 200 hektare wajib dikaji dulu."},
-    {"id": "b4-lvv", "media": "townhall", "overlay": "card",
-     "onScreen": [{"text": "6 Oktober 2026", "fact": "6 Oktober 2026"}, {"text": "LVV: hentikan pekerjaan persiapan", "fact": "menghentikan pekerjaan persiapan"}],
-     "source": "Sumber: LVV",
-     "narration": "Pada 6 Oktober, otoritas LVV memerintahkan pekerjaan dihentikan."},
-    {"id": "b5-google", "media": "turku", "overlay": "lowerthird",
-     "onScreen": [{"text": "Antti Järvinen", "fact": "Antti Järvinen"}, {"text": "Country Manager Google Finlandia", "fact": "Country Manager Google Finlandia"}],
-     "source": "Sumber: Yle, 13 Okt 2026",
-     "narration": "Bos Google Finlandia, Antti Järvinen, meminta maaf, tapi mengaku mengikuti pemahaman terbaiknya atas aturan."},
-    {"id": "b6-warga", "media": "pyhakoski", "overlay": "counter",
-     "onScreen": [{"text": "±98.000", "fact": "sekitar 98.000 orang"}, {"text": "pendukung inisiatif warga", "fact": "Inisiatif warga"}],
-     "source": "Sumber: Kansalaisaloite.fi, 29 Okt 2026",
-     "narration": "Kini sekitar 98.000 warga mendukung inisiatif aturan data center yang lebih ketat."},
-    {"id": "b7-tanya", "media": "lapland", "overlay": "endcard",
-     "onScreen": [{"text": "Penyelidikan polisi: hasil belum diumumkan", "fact": "hasilnya belum diumumkan"}, {"text": "145 data center baru direncanakan", "fact": "145 data center baru sedang direncanakan"}],
-     "source": "Sumber: Yle, The Guardian",
-     "narration": "Penyelidikan polisi belum selesai. Dengan 145 data center lain sedang direncanakan, siapa yang mengawasinya?"}
-  ]
+    {
+      "id": "b1-hook",
+      "media": "main",
+      "overlay": "headline",
+      "onScreen": [
+        {
+          "text": "Google tebang hutan",
+          "fact": "Google tebang hutan"
+        },
+        {
+          "text": "demi data center",
+          "fact": "demi data center"
+        }
+      ],
+      "narration": "Google menebang sekitar 330 hektare hutan di Finlandia demi data center, sebelum kajian lingkungan selesai."
+    },
+    {
+      "id": "b2-muhos",
+      "media": "drone",
+      "videoStart": 0,
+      "overlay": "map",
+      "onScreen": [
+        {
+          "text": "Muhos",
+          "fact": "Muhos"
+        },
+        {
+          "text": "±330 ha ditebang",
+          "fact": "sekitar 330 hektare"
+        },
+        {
+          "text": "±250.000 pohon (perkiraan)",
+          "fact": "sekitar 250.000 pohon"
+        }
+      ],
+      "source": "Sumber: Yle, The Guardian",
+      "narration": "Lokasinya di Muhos. Diperkirakan 250.000 pohon hilang."
+    },
+    {
+      "id": "b3-aturan",
+      "media": "harvester",
+      "videoStart": 0.5,
+      "overlay": "threshold",
+      "onScreen": [
+        {
+          "text": "Wajib kajian: > 200 ha",
+          "fact": "lebih dari 200 hektare"
+        },
+        {
+          "text": "Muhos: ±330 ha",
+          "fact": "sekitar 330 hektare"
+        }
+      ],
+      "source": "Sumber: hukum AMDAL Finlandia via Yle",
+      "narration": "Padahal, tebangan permanen di atas 200 hektare wajib dikaji dulu."
+    },
+    {
+      "id": "b4-lvv",
+      "media": "townhall",
+      "overlay": "card",
+      "onScreen": [
+        {
+          "text": "6 Oktober 2026",
+          "fact": "6 Oktober 2026"
+        },
+        {
+          "text": "LVV: hentikan pekerjaan persiapan",
+          "fact": "menghentikan pekerjaan persiapan"
+        }
+      ],
+      "source": "Sumber: LVV",
+      "narration": "Pada 6 Oktober, otoritas LVV memerintahkan pekerjaan dihentikan."
+    },
+    {
+      "id": "b5-google",
+      "media": "turku",
+      "overlay": "lowerthird",
+      "onScreen": [
+        {
+          "text": "Antti Järvinen",
+          "fact": "Antti Järvinen"
+        },
+        {
+          "text": "Country Manager Google Finlandia",
+          "fact": "Country Manager Google Finlandia"
+        }
+      ],
+      "source": "Sumber: Yle, 13 Okt 2026",
+      "narration": "Bos Google Finlandia meminta maaf, tapi mengaku mengikuti pemahaman terbaiknya atas aturan."
+    },
+    {
+      "id": "b6-warga",
+      "media": "pyhakoski",
+      "overlay": "counter",
+      "onScreen": [
+        {
+          "text": "±98.000",
+          "fact": "sekitar 98.000 orang"
+        },
+        {
+          "text": "pendukung inisiatif warga",
+          "fact": "Inisiatif warga"
+        }
+      ],
+      "source": "Sumber: Kansalaisaloite.fi, 29 Okt 2026",
+      "narration": "Kini sekitar 98.000 warga mendukung inisiatif aturan yang lebih ketat."
+    },
+    {
+      "id": "b7-tanya",
+      "media": "lapland",
+      "overlay": "endcard",
+      "onScreen": [
+        {
+          "text": "Penyelidikan polisi: hasil belum diumumkan",
+          "fact": "hasilnya belum diumumkan"
+        },
+        {
+          "text": "145 data center baru direncanakan",
+          "fact": "145 data center baru sedang direncanakan"
+        }
+      ],
+      "source": "Sumber: Yle, The Guardian",
+      "narration": "Polisi masih menyelidiki. Dengan 145 data center lain direncanakan, siapa yang mengawasi?"
+    }
+  ],
+  "captions": {
+    "cps": 14,
+    "minCue": 1.3,
+    "beatPad": 0.4,
+    "maxChars": 34
+  },
+  "music": {
+    "file": "reel/media/commons-satie-gnossienne-1-la-pianista-48s.m4a",
+    "start": 0,
+    "fadeIn": 1.5,
+    "fadeOut": 2.5,
+    "lufs": -18,
+    "credit": "Erik Satie, Gnossienne No. 1 (perf. La Pianista, 2010), public domain, Wikimedia Commons",
+    "attributionRequired": false
+  },
+  "outro": true
 }

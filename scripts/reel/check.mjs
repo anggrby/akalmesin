@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {loadPost, parseArgs, readJSON, writeJSON, fileHash} from '../core.mjs';
+import {OUTRO} from './outro.mjs';
 
 const {
   _: [slug],
@@ -75,7 +76,7 @@ if (spec.layout === 'news') {
       ? `bad filters: ${bad.join(',')} flagged: ${flagged.map(([k]) => k).join(',')}`
       : `only ${[...new Set(used)].join(', ')} (geometry/timing)`
   );
-  const hashes = Object.values(spec.media).filter(
+  const hashes = [...Object.values(spec.media), ...(spec.music ? [spec.music] : [])].filter(
     m => !fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8').includes(fileHash(path.join(paths.dir, m.file)))
   );
   gate('provenance SHA-256 for every media file', !hashes.length, hashes.map(m => m.file).join(', ') || 'all hashes listed');
@@ -85,6 +86,39 @@ if (spec.layout === 'news') {
     f => photoBeats.includes(f.beat) && f.credit !== post.slides.find(s => s.id === spec.beats.find(b => b.id === f.beat).photo).credit
   );
   gate('footage credits shown', !noCredit.length, noCredit.map(f => f.file).join(', ') || `${photoBeats.length} photo beats credited`);
+}
+if (spec.layout === 'news' && man.narration === false) {
+  // Captions-only reel: no voice, music bed, reading speed, outro.
+  gate('no AI narration', spec.voice?.engine === 'none', `voice.engine=${spec.voice?.engine}`);
+  const prov = fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8');
+  const mf = path.join(paths.dir, spec.music.file);
+  gate('music track present + provenance hash', fs.existsSync(mf) && prov.includes(fileHash(mf)), spec.music.file);
+  const ebu = execFileSync('sh', ['-c', `ffmpeg -hide_banner -nostats -i "${mp4}" -vn -af ebur128=peak=true -f null - 2>&1 | tail -14`]).toString();
+  const I = Number(ebu.match(/I:\s+(-?[\d.]+) LUFS/)?.[1]),
+    TP = Number(ebu.match(/Peak:\s+(-?[\d.]+) dBFS/)?.[1]);
+  gate('music loudness sane (-24..-14 LUFS)', I >= -24 && I <= -14, `${I} LUFS integrated`);
+  gate('no clipping (true peak <= -1 dBTP)', TP <= -1, `${TP} dBTP`);
+  const fast = man.frames.filter(f => f.subText.length / (f.end - f.start) > 15);
+  gate(
+    'caption reading speed <= 15 chars/s',
+    !fast.length,
+    fast.map(f => `${f.subText} (${(f.subText.length / (f.end - f.start)).toFixed(1)})`).join('; ') ||
+      `max ${Math.max(...man.frames.map(f => f.subText.length / (f.end - f.start))).toFixed(1)} chars/s`
+  );
+  if (spec.outro !== false) {
+    const o = man.outro;
+    const ok = o && Math.abs(o.end - o.start - OUTRO.seconds) < 1e-6 && Math.abs(o.end - dur) <= 1 / 30 + 0.01 && o.frames === OUTRO.seconds * OUTRO.fps;
+    gate('outro = last 2.0 s', ok, o ? `${o.start.toFixed(3)}–${o.end.toFixed(3)} s, ${o.frames} frames, video ${dur.toFixed(3)} s` : 'missing');
+    gate(
+      'outro handle text',
+      o?.followText === `Ikuti ${OUTRO.handle}` && OUTRO.handle === '@akalmesin' && o?.shareText === OUTRO.share,
+      `"${o?.followText}" / "${o?.shareText}"`
+    );
+    const outIn = o && ['logo', 'follow', 'share'].every(k => inside(o[k]));
+    gate('outro in safe area', outIn, 'logo, follow, share boxes');
+    const late = man.frames.filter(f => f.end > o.start + 1e-6);
+    gate('no captions over outro', !late.length, late.map(f => f.file).join(', ') || 'ok');
+  }
 }
 const hook = man.frames[0];
 gate('hook within 2 s', hook.start === 0 && hook.onScreen.length > 0, `first text at 0.0 s, first cue "${hook.subText}"`);

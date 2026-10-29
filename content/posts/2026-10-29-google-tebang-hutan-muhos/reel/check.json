@@ -5,7 +5,7 @@
     {
       "name": "duration",
       "ok": true,
-      "detail": "43.34 s"
+      "detail": "43.90 s"
     },
     {
       "name": "resolution",
@@ -30,12 +30,12 @@
     {
       "name": "audio not silent",
       "ok": true,
-      "detail": "mean_volume: -20.5 dB"
+      "detail": "mean_volume: -21.3 dB"
     },
     {
       "name": "subtitles in safe area",
       "ok": true,
-      "detail": "28 cues inside {\"x0\":60,\"y0\":220,\"x1\":960,\"y1\":1500}"
+      "detail": "21 cues inside {\"x0\":60,\"y0\":220,\"x1\":960,\"y1\":1500}"
     },
     {
       "name": "on-screen text in safe area",
@@ -45,12 +45,12 @@
     {
       "name": "subtitles == narration script",
       "ok": true,
-      "detail": "82 words"
+      "detail": "74 words"
     },
     {
       "name": "cue timing",
       "ok": true,
-      "detail": "28 cues"
+      "detail": "21 cues"
     },
     {
       "name": "on-screen facts in verified carousel copy",
@@ -91,6 +91,51 @@
       "name": "provenance SHA-256 for every media file",
       "ok": true,
       "detail": "all hashes listed"
+    },
+    {
+      "name": "no AI narration",
+      "ok": true,
+      "detail": "voice.engine=none"
+    },
+    {
+      "name": "music track present + provenance hash",
+      "ok": true,
+      "detail": "reel/media/commons-satie-gnossienne-1-la-pianista-48s.m4a"
+    },
+    {
+      "name": "music loudness sane (-24..-14 LUFS)",
+      "ok": true,
+      "detail": "-18.8 LUFS integrated"
+    },
+    {
+      "name": "no clipping (true peak <= -1 dBTP)",
+      "ok": true,
+      "detail": "-1.5 dBTP"
+    },
+    {
+      "name": "caption reading speed <= 15 chars/s",
+      "ok": true,
+      "detail": "max 14.1 chars/s"
+    },
+    {
+      "name": "outro = last 2.0 s",
+      "ok": true,
+      "detail": "41.900–43.900 s, 60 frames, video 43.900 s"
+    },
+    {
+      "name": "outro handle text",
+      "ok": true,
+      "detail": "\"Ikuti @akalmesin\" / \"Bagikan ke temanmu\""
+    },
+    {
+      "name": "outro in safe area",
+      "ok": true,
+      "detail": "logo, follow, share boxes"
+    },
+    {
+      "name": "no captions over outro",
+      "ok": true,
+      "detail": "ok"
     },
     {
       "name": "hook within 2 s",

@@ -6,6 +6,7 @@ import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {ROOT, launchBrowser, readJSON, writeJSON, writeFile, fileHash} from '../core.mjs';
 import {SAFE} from './visuals.mjs';
+import {OUTRO, renderOutro} from './outro.mjs';
 
 // ffmpeg filters allowed on media: geometry/timing only. check.mjs re-verifies the recorded graphs.
 export const ALLOWED_MEDIA_FILTERS = ['scale', 'crop', 'fps', 'setsar', 'format', 'trim', 'setpts'];
@@ -18,17 +19,47 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', 
 const b64 = f => fs.readFileSync(f).toString('base64');
 
 export async function renderNews({spec, post, paths, reelDir, work, tts, frames, outArg, flags, cuesFor, sh, probeDur}) {
-  if (!flags['reuse-tts'] || !fs.existsSync(path.join(tts, 'words.json')))
-    sh('python3', [path.join(ROOT, 'scripts/reel/tts.py'), path.join(reelDir, 'reel.json'), tts]);
-  const words = readJSON(path.join(tts, 'words.json'));
+  // Captions-only mode (voice.engine "none"): no TTS; cue timing from reading speed (captions.cps chars/s).
+  const silent = spec.voice?.engine === 'none';
+  let words = null;
+  if (!silent) {
+    if (!flags['reuse-tts'] || !fs.existsSync(path.join(tts, 'words.json')))
+      sh('python3', [path.join(ROOT, 'scripts/reel/tts.py'), path.join(reelDir, 'reel.json'), tts]);
+    words = readJSON(path.join(tts, 'words.json'));
+  }
+  const F = 1 / 30,
+    snap = x => Math.round(x * 30) / 30; // frame-accurate
+  function captionCues(beat, start) {
+    const {cps = 14, minCue = 1.4, beatPad = 0.4, maxChars = 30} = spec.captions || {};
+    const toks = beat.narration.split(' ');
+    const groups = [];
+    let g = [];
+    toks.forEach((w, k) => {
+      g.push(w);
+      const len = g.join(' ').length,
+        next = toks[k + 1];
+      if (!next || (/[.,:?!]$/.test(w) && len > 8) || (g.join(' ') + ' ' + next).length > maxChars) (groups.push(g.join(' ')), (g = []));
+    });
+    let t0 = start;
+    const cues = groups.map((text, k) => {
+      const d = Math.max(minCue, text.length / cps) + (k === groups.length - 1 ? beatPad : 0);
+      const c = {beat: beat.id, text, start: snap(t0), end: snap(t0 + d)};
+      t0 = c.end;
+      return c;
+    });
+    return {end: t0 - start, cues};
+  }
   let t = 0;
   const timeline = spec.beats.map(beat => {
-    const {end, cues} = cuesFor(words, beat, t);
-    const b = {id: beat.id, start: t, end: t + end, audio: path.join(tts, `${beat.id}.mp3`), cues};
+    const {end, cues} = silent ? captionCues(beat, t) : cuesFor(words, beat, t);
+    const b = {id: beat.id, start: t, end: t + end, audio: silent ? null : path.join(tts, `${beat.id}.mp3`), cues};
     t += end;
     return b;
   });
   const total = t;
+  const withOutro = spec.outro !== false;
+  const outroLen = withOutro ? Math.round(OUTRO.seconds * OUTRO.fps) / OUTRO.fps : 0;
+  const full = total + outroLen;
 
   // 1) Background clips per beat, media as-is.
   const bgDir = path.join(work, 'bg');
@@ -85,7 +116,13 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
       path.join(bgDir, `${i}.mp4`)
     ]);
   }
-  writeFile(path.join(bgDir, 'list.txt'), timeline.map((_, i) => `file '${path.join(bgDir, `${i}.mp4`)}'`).join('\n') + '\n');
+  let outroInfo = null;
+  const bgFiles = timeline.map((_, i) => path.join(bgDir, `${i}.mp4`));
+  if (withOutro) {
+    outroInfo = await renderOutro(path.join(bgDir, 'outro.mp4'));
+    bgFiles.push(path.join(bgDir, 'outro.mp4'));
+  }
+  writeFile(path.join(bgDir, 'list.txt'), bgFiles.map(f => `file '${f}'`).join('\n') + '\n');
 
   // 2) Transparent overlay frames, one per subtitle cue (+ counter animation sub-frames).
   const font = (f, n) => `@font-face{font-family:${n};src:url(data:font/ttf;base64,${b64(path.join(ROOT, 'brand/fonts', f))})}`;
@@ -138,19 +175,50 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
   if (process.env.REEL_DEBUG) console.error('closing');
   await Promise.race([browser.close(), new Promise(r => setTimeout(r, 5000))]);
   if (process.env.REEL_DEBUG) console.error('closed');
+  if (withOutro) {
+    // fully transparent overlay during the outro
+    const blank = path.join(frames, 'blank.png');
+    sh('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', 'color=c=black@0.0:s=1080x1920,format=rgba', '-frames:v', '1', blank]);
+    shots.push({file: blank, dur: outroLen});
+  }
   const list = shots.map(s => `file '${s.file}'\nduration ${s.dur.toFixed(3)}`).join('\n') + `\nfile '${shots.at(-1).file}'\n`;
   writeFile(path.join(work, 'frames.txt'), list);
 
   // 3) Compose + narration.
   // Audio first (mixing it in the same graph as the concat video stalls ffmpeg), then video + mux.
-  const aIn = timeline.flatMap(b => ['-i', b.audio]);
-  const aF =
-    timeline.map((b, i) => `[${i}:a]aresample=48000,apad,atrim=0:${(b.end - b.start).toFixed(3)}[a${i}]`).join(';') +
-    ';' +
-    timeline.map((_, i) => `[a${i}]`).join('') +
-    `concat=n=${timeline.length}:v=0:a=1[a]`;
-  const wav = path.join(work, 'narration.wav');
-  sh('ffmpeg', ['-y', '-v', 'error', ...aIn, '-filter_complex', aF, '-map', '[a]', '-ac', '1', wav]);
+  let wav;
+  if (silent) {
+    // Music bed: trim to length, fade in/out, loudness-normalise (music-only target ~-18 LUFS, TP -1.5).
+    const mu = spec.music,
+      fin = mu.fadeIn ?? 1.5,
+      fout = mu.fadeOut ?? 2.5;
+    wav = path.join(work, 'music.wav');
+    sh('ffmpeg', [
+      '-y',
+      '-v',
+      'error',
+      '-ss',
+      String(mu.start || 0),
+      '-t',
+      full.toFixed(3),
+      '-i',
+      path.join(paths.dir, mu.file),
+      '-af',
+      `loudnorm=I=${mu.lufs ?? -18}:TP=-1.5:LRA=11,afade=t=in:d=${fin},afade=t=out:st=${(full - fout).toFixed(3)}:d=${fout},aresample=48000`,
+      '-ac',
+      '2',
+      wav
+    ]);
+  } else {
+    const aIn = timeline.flatMap(b => ['-i', b.audio]);
+    const aF =
+      timeline.map((b, i) => `[${i}:a]aresample=48000,apad,atrim=0:${(b.end - b.start).toFixed(3)}[a${i}]`).join(';') +
+      ';' +
+      timeline.map((_, i) => `[a${i}]`).join('') +
+      `concat=n=${timeline.length}:v=0:a=1[a]`;
+    wav = path.join(work, 'narration.wav');
+    sh('ffmpeg', ['-y', '-v', 'error', ...aIn, '-filter_complex', aF, '-map', '[a]', '-ac', '1', wav]);
+  }
   const out = path.resolve(outArg || path.join(work, 'reel.mp4'));
   // Overlay track as its own alpha video, then frame-indexed timestamps on both tracks so they stay in sync.
   const ov = path.join(work, 'overlay.mov');
@@ -169,7 +237,7 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
     '-c:v',
     'png',
     '-t',
-    total.toFixed(3),
+    full.toFixed(3),
     ov
   ]);
   sh('ffmpeg', [
@@ -213,7 +281,7 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
     '-movflags',
     '+faststart',
     '-t',
-    total.toFixed(3),
+    full.toFixed(3),
     out
   ]);
 
@@ -221,20 +289,38 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
   const sheetDir = path.join(work, 'sheet');
   fs.rmSync(sheetDir, {recursive: true, force: true});
   fs.mkdirSync(sheetDir, {recursive: true});
-  const times = [0.05, ...timeline.map(b => b.end - 0.6)];
+  const times = [0.05, ...timeline.map(b => b.end - 0.6), ...(withOutro ? [total + 0.3, total + 0.9, full - 0.05] : [])];
   times.forEach((s, i) =>
     sh('ffmpeg', ['-y', '-v', 'error', '-ss', s.toFixed(2), '-i', out, '-frames:v', '1', '-vf', 'scale=270:480', path.join(sheetDir, `k${i}.png`)])
   );
   const sheet = path.join(reelDir, 'keyframes.png');
-  sh('ffmpeg', ['-y', '-v', 'error', '-i', path.join(sheetDir, 'k%d.png'), '-vf', 'tile=4x2:padding=8:color=white', '-frames:v', '1', '-update', '1', sheet]);
+  sh('ffmpeg', [
+    '-y',
+    '-v',
+    'error',
+    '-i',
+    path.join(sheetDir, 'k%d.png'),
+    '-vf',
+    `tile=${Math.min(times.length, 6)}x${Math.ceil(times.length / 6)}:padding=8:color=white`,
+    '-frames:v',
+    '1',
+    '-update',
+    '1',
+    sheet
+  ]);
 
   writeJSON(path.join(work, 'manifest.json'), {
     layout: 'news',
-    total,
+    total: full,
+    contentEnd: total,
+    narration: !silent,
+    music: silent ? spec.music.file : null,
+    outro: withOutro ? {start: total, end: full, ...outroInfo} : null,
     safe: SAFE,
     allowedMediaFilters: ALLOWED_MEDIA_FILTERS,
     mediaGraphs: graphs,
     timeline: timeline.map(({audio, ...b}) => b),
+    readingSpeed: silent ? (spec.captions?.cps ?? 14) : null,
     frames: manifest,
     mp4: out,
     mp4Sha256: fileHash(out)
@@ -246,22 +332,29 @@ export async function renderNews({spec, post, paths, reelDir, work, tts, frames,
     [
       `# Reel script: ${spec.title}`,
       '',
-      `Layout: news explainer. Voice: ${spec.voice.engine} ${spec.voice.voice} (${spec.voice.rate}), AI-generated. ${spec.aiDisclosure}`,
-      `Length ${total.toFixed(1)} s, ${spec.format.width}×${spec.format.height}, ${spec.format.fps} fps. Media filter: ${spec.mediaFilter} (as-is). ${spec.footage}`,
+      silent
+        ? `Layout: news explainer, captions only (no voiceover), reading speed ≤ ${spec.captions?.cps ?? 14} chars/s. Music: ${spec.music.credit}.${withOutro ? ` Outro: ${outroLen.toFixed(1)} s akalmesin logo (${OUTRO.follow} / ${OUTRO.share}).` : ''}`
+        : `Layout: news explainer. Voice: ${spec.voice.engine} ${spec.voice.voice} (${spec.voice.rate}), AI-generated. ${spec.aiDisclosure}`,
+      `Length ${full.toFixed(1)} s, ${spec.format.width}×${spec.format.height}, ${spec.format.fps} fps. Media filter: ${spec.mediaFilter} (as-is). ${spec.footage}`,
       '',
-      '| # | Time | Narration (= burned-in subtitles) | On-screen text | Media (as-is) · location tag · credit tag |',
+      `| # | Time | ${silent ? 'Caption text (narrates; = burned-in subtitles)' : 'Narration (= burned-in subtitles)'} | On-screen text | Media (as-is) · location tag · credit tag |`,
       '|---|---|---|---|---|',
       ...timeline.map((b, i) => {
         const beat = spec.beats[i],
           m = spec.media[beat.media];
         return `| ${i + 1} | ${fmt(b.start)}–${fmt(b.end)} | ${beat.narration} | ${beat.onScreen.map(o => o.text).join(' · ')}${beat.source ? ` · ${beat.source}` : ''} | ${m.kind} \`${m.file}\` · ${m.location} · ${m.tag} |`;
       }),
+      ...(withOutro
+        ? [
+            `| ${timeline.length + 1} | ${fmt(total)}–${fmt(full)} | (no caption) | akalmesin logo reveal · ${OUTRO.follow} · ${OUTRO.share} | Outro module scripts/reel/outro.mjs, brand wordmark ${OUTRO.wordmark} |`
+          ]
+        : []),
       '',
       'To edit: change `narration` or `onScreen[].text` in reel.json and rerun `npm run reel:build -- <slug>`, then `npm run reel:check -- <slug>`.',
       ''
     ].join('\n')
   );
-  return {total: +total.toFixed(2), frames: manifest.length, out, sheet};
+  return {total: +full.toFixed(2), frames: manifest.length, out, sheet};
 }
 
 const CSS = `*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:transparent;font-family:Manrope;position:relative;overflow:hidden}
