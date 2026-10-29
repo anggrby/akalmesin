@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import {ROOT, readJSON, writeJSON, designRevision} from '../scripts/core.mjs';
-import {exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
+import {notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
 import {KIMI, tmpPost} from './helpers.mjs';
 
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -254,4 +255,22 @@ test('normal pages are unaffected by adopt-legacy, and updates keep the owner St
   assert.equal(s.pages.get(pageId).properties.Status.status.name, 'Published');
   assert.equal(s.pages.get(pageId).properties['Publish date'].date.start, '2026-11-01');
   await assert.rejects(exportPost(approvedPost(), {...opts(fakeNotion()), adoptLegacy: true}), /only takes over an existing page/);
+});
+
+test('notionFormat: reel-only reel.json → Reel / video; else Carousel / Single image', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'akal-fmt-'));
+  try {
+    const post = {slides: [{}, {}]};
+    assert.equal(notionFormat(post, dir), 'Carousel');
+    assert.equal(notionFormat({slides: [{}]}, dir), 'Single image');
+    fs.mkdirSync(path.join(dir, 'reel'));
+    fs.writeFileSync(path.join(dir, 'reel/reel.json'), '{}');
+    assert.equal(notionFormat(post, dir), 'Carousel');
+    fs.writeFileSync(path.join(dir, 'reel/reel.json'), JSON.stringify({publishAs: 'reel-only'}));
+    assert.equal(notionFormat(post, dir), 'Reel / video');
+    fs.writeFileSync(path.join(dir, 'reel/reel.json'), JSON.stringify({publishAs: 'both'}));
+    assert.throws(() => notionFormat(post, dir), /publishAs/);
+  } finally {
+    fs.rmSync(dir, {recursive: true, force: true});
+  }
 });

@@ -217,5 +217,6 @@
     "maxChars": 44
   },
   "outro": true,
-  "mood": "serious-news"
+  "mood": "serious-news",
+  "publishAs": "reel-only"
 }

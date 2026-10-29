@@ -52,6 +52,18 @@ export function topicFor(category) {
   return t;
 }
 
+/** Notion Format: "Reel / video" when reel/reel.json has "publishAs": "reel-only" (one format per story, owner t100u);
+ * otherwise Single image for one slide, else Carousel. */
+export const REEL_FORMAT = 'Reel / video';
+export function notionFormat(post, dir) {
+  const f = path.join(dir, 'reel/reel.json');
+  if (fs.existsSync(f)) {
+    const p = readJSON(f).publishAs;
+    if (p === 'reel-only') return REEL_FORMAT;
+    if (p !== undefined) throw Error(`reel/reel.json publishAs must be "reel-only" or absent, got ${JSON.stringify(p)}`);
+  }
+  return post.slides.length === 1 ? 'Single image' : 'Carousel';
+}
 export function manifest(ref) {
   const {paths, post, workflow} = loadPost(ref);
   requireCopyApproval(workflow, post);
@@ -95,7 +107,7 @@ export function manifest(ref) {
     properties: {
       Post: post.title,
       Status: 'Ready to Publish',
-      Format: post.slides.length === 1 ? 'Single image' : 'Carousel',
+      Format: notionFormat(post, paths.dir),
       Caption: post.caption.join('\n\n'),
       Topic: topic,
       'Publish date': null,
