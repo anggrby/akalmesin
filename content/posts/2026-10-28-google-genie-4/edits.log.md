@@ -156,3 +156,26 @@ Design revision 013e9906f88a · 5 PNGs · blue ink from originals (crop/pad in p
 ## 2026-10-29 10:46 WIB — review save NOT approved
 
 - Editorial: Caption perlu satu pertanyaan di akhir paragraf terakhir.
+
+## 2026-10-29 10:54 WIB — owner edits (review)
+
+Who: owner · mode: review · file: `genie4-owner-edits-v2.json` · saved 2026-10-29 10:53 WIB
+Revision c0c628655c53 → 82f2c94a1f75
+
+### caption ¶2
+
+```diff
+- Ingin mengubah cuaca atau memunculkan karakter baru?
++ Mau mengubah cuaca atau memunculkan karakter baru, cukup ketik saja, dan jajaran model Gemini akan menyesuaikan adegan di sekitarnya secara instan.
+  words: −"Ingin" +"Mau" · −"baru?" +"baru, cukup ketik saja, dan jajaran model Gemini akan menyesuaikan adegan di sekitarnya secara instan."
+- Ketik saja, dan jajaran model Gemini akan menyesuaikan adegan di sekitarnya secara instan.
+```
+
+## 2026-10-29 10:54 WIB — design build
+
+Design revision 9d7eb559dd72 · 5 PNGs · blue ink from originals (crop/pad in post.json).
+
+## 2026-10-29 10:54 WIB — review save approved
+
+Saved in review editor 2026-10-29T03:53:00.000Z · genie4-owner-edits-v2.json · copy 82f2c94a1f75 · design 9d7eb559dd72
+- Warning (not an error): Caption sekitar 161 kata; panduan 100–160 kata. Accepted: the owner instructed this exact wording; the range is a warning only.

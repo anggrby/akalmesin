@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-google-genie-4",
-  "copyRevision": "c0c628655c53a6d42a8b8f77c0c9d23280e34febe6f0af9d5b98c2eddfde6a86",
+  "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
   "creditsRevision": "1857fb9492432e5ddcb7af132ef5aab28c4fa2bb11d2044448c07b7038ab029c",
-  "designRevision": "013e9906f88aaf366422b040e2697460b0c8de08f3c52bb2161ddb60157efe98",
-  "builtAt": "2026-10-29T03:46:38.488Z",
+  "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+  "builtAt": "2026-10-29T03:54:41.486Z",
   "slides": [
     {
       "id": "01-main",

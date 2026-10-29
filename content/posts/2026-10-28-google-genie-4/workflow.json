@@ -1,14 +1,69 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-google-genie-4",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-10-29T03:53:00.000Z",
+      "source": "genie4-owner-edits-v2.json sha256:863b0c1beecebf576f66c36ac8ce071a655338a946a6bf80d42376b322633155",
+      "context": "1 field(s) changed",
+      "at": "2026-10-29T03:53:00.000Z",
+      "atWIB": "2026-10-29 10:53 WIB",
+      "via": "review-save",
+      "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
+      "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-10-29T03:54:42.428Z",
+      "revision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-10-29T03:53:00.000Z",
+      "source": "genie4-owner-edits-v2.json sha256:863b0c1beecebf576f66c36ac8ce071a655338a946a6bf80d42376b322633155",
+      "context": "1 field(s) changed",
+      "at": "2026-10-29T03:53:00.000Z",
+      "atWIB": "2026-10-29 10:53 WIB",
+      "via": "review-save",
+      "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
+      "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-10-29T03:54:42.428Z",
+      "revision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4"
+    }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "408f909f-26a5-81e4-81e4-f89a5728b457",
+    "url": "https://app.notion.com/p/Google-rilis-Genie-4-AI-pencipta-dunia-virtual-408f909f26a581e481e4f89a5728b457",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-28-google-genie-4",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-google-genie-4",
+    "approvedRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+    "orderedAssetHashes": [
+      "d80deea54817a273c18ef07172557c8862ad0b5b6525302d3d2afce3b6c4bc8d",
+      "a271969c7268b1fdfdc5e6757a482a6a49ce319fb55e3a5235e77ec3e19ae27e",
+      "254e6ffa6c79f49ee216d26f5ca88cf148186b129798d4c412e7f413810c035b",
+      "63f617fb460a2abc7b80a90914d54e702e7ba288c53cfaf7e6cac9d8015771e1",
+      "6bd2e955ebf013981f9f1ea1721a939c3bf2f3dbe6d1ecd07146878e322fdfb1"
+    ],
+    "uploadedAssetHashes": [
+      "d80deea54817a273c18ef07172557c8862ad0b5b6525302d3d2afce3b6c4bc8d",
+      "a271969c7268b1fdfdc5e6757a482a6a49ce319fb55e3a5235e77ec3e19ae27e",
+      "254e6ffa6c79f49ee216d26f5ca88cf148186b129798d4c412e7f413810c035b",
+      "63f617fb460a2abc7b80a90914d54e702e7ba288c53cfaf7e6cac9d8015771e1",
+      "6bd2e955ebf013981f9f1ea1721a939c3bf2f3dbe6d1ecd07146878e322fdfb1"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-29T03:55:06.332Z",
+    "exportedAtWIB": "2026-10-29 10:55 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -63,6 +118,33 @@
         "Editorial: Caption perlu satu pertanyaan di akhir paragraf terakhir."
       ],
       "at": "2026-10-29T03:46:27.588Z"
+    },
+    {
+      "event": "copy-recorded",
+      "who": "owner",
+      "mode": "review",
+      "from": "c0c628655c53a6d42a8b8f77c0c9d23280e34febe6f0af9d5b98c2eddfde6a86",
+      "to": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
+      "file": "genie4-owner-edits-v2.json",
+      "at": "2026-10-29T03:54:33.921Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+      "at": "2026-10-29T03:54:41.486Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "genie4-owner-edits-v2.json sha256:863b0c1beecebf576f66c36ac8ce071a655338a946a6bf80d42376b322633155",
+      "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
+      "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+      "at": "2026-10-29T03:53:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-81e4-81e4-f89a5728b457",
+      "at": "2026-10-29T03:55:06.332Z"
     }
   ]
 }

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-google-genie-4",
-  "designRevision": "013e9906f88aaf366422b040e2697460b0c8de08f3c52bb2161ddb60157efe98",
-  "copyRevision": "c0c628655c53a6d42a8b8f77c0c9d23280e34febe6f0af9d5b98c2eddfde6a86",
-  "checkedAt": "2026-10-29T03:46:39.559Z",
-  "passed": false,
-  "problems": [
-    "Editorial: Caption perlu satu pertanyaan di akhir paragraf terakhir."
+  "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+  "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
+  "checkedAt": "2026-10-29T03:54:42.399Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [
+    "Caption sekitar 161 kata; panduan 100–160 kata."
   ],
-  "warnings": [],
   "slides": [
     {
       "id": "01-main",

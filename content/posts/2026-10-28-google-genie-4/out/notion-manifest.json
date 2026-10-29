@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-google-genie-4",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-10-29T03:53:00.000Z",
+    "source": "genie4-owner-edits-v2.json sha256:863b0c1beecebf576f66c36ac8ce071a655338a946a6bf80d42376b322633155",
+    "context": "1 field(s) changed",
+    "at": "2026-10-29T03:53:00.000Z",
+    "atWIB": "2026-10-29 10:53 WIB",
+    "via": "review-save",
+    "copyRevision": "82f2c94a1f754d8072ace7f8072b47030921c3798deefd334e4673fd6adea454",
+    "designRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-10-29T03:54:42.428Z",
+    "revision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-10-28-google-genie-4\". Never match by title alone.",
+  "properties": {
+    "Post": "Google rilis Genie 4, AI pencipta dunia virtual",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Selama ini, video buatan AI cuma bisa kita tonton. Lewat Genie 4, Google DeepMind ingin kita bisa \"masuk\" dan menjelajahinya secara langsung. World model (model dunia) yang baru diumumkan pada 27 Oktober 2026 ini mampu menciptakan lingkungan fotorealistis secara real-time. Hebatnya, kamu bisa menjelajahi dunia itu pakai keyboard, lengkap dengan audio bawaan, dan mengubah kondisinya lewat perintah teks langsung saat simulasi berjalan\n\nMau mengubah cuaca atau memunculkan karakter baru, cukup ketik saja, dan jajaran model Gemini akan menyesuaikan adegan di sekitarnya secara instan. Genie 4 juga menyimulasikan hukum fisika (seperti tabrakan) serta gerak-gerik dan obrolan manusia dengan lebih alami. Google menyebut teknologi ini bisa dipakai untuk melatih robot, bikin prototipe game, hingga pravisualisasi film.\n\nTapi untuk sekarang, Genie 4 baru tersedia dalam pratinjau riset terbatas bagi penguji terpilih, tanpa informasi harga atau jadwal rilis pasti. Google juga mengakui kalau visualnya masih bisa memudar (drift) jika simulasi berjalan terlalu lama. Menurutmu, industri apa yang bakal paling cepat berubah karena teknologi seperti ini?\n\nSumber: Google DeepMind, Google, TechCrunch / Foto: cuplikan simulasi Genie 4 / Google DeepMind\n\n#akalmesin #Google #Genie4 #WorldModel #KecerdasanBuatan",
+    "Topic": "AI",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-kendali.png",
+      "03-03-audio.png",
+      "04-04-gemini.png",
+      "05-05-ketersediaan.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-10-28-google-genie-4",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-google-genie-4",
+  "body": "# Approved copy\n\n## 01-main\n\nGoogle rilis Genie 4, AI pencipta dunia virtual\n\nDunia simulasi buatan AI ini bisa dijelajahi, didengar, dan dimodifikasi lewat perintah teks secara real-time.\n\n## 02-kendali\n\nGenie 4 adalah world model (model dunia) terbaru dari Google DeepMind. Pengguna bisa menjelajahi dunia simulasinya menggunakan kontrol keyboard, sambil mengetik perintah untuk **mengubah cuaca, menggeser sudut kamera, atau memunculkan karakter dan objek baru **saat simulasi tengah berjalan. Menurut TechCrunch, satu adegan kini bisa terjaga konsistensinya hingga dua menit—dua kali lipat lebih lama dari batas Genie 3.\n\n## 03-audio\n\nGenie 4 juga menjadi world model real-time pertama dari Google DeepMind yang mampu **menghasilkan audio langsung seiring visualnya**—mulai dari deru angin dan debur ombak, musik latar, hingga dialog karakter yang bisa merespons tindakan pengguna.\n\n## 04-gemini\n\nDi balik layar, Genie 4 ditenagai oleh jajaran model Gemini. Gemini Omni menjaga agar visual dan hukum fisika di dunia simulasi tetap realistis, sementara Gemini 3.8 Flash berperan layaknya sutradara yang **memecah instruksi menjadi langkah-langkah terperinci sekaligus mengecek setiap frame.** Google menyebut teknologi ini bisa dimanfaatkan untuk melatih robot, membuat prototipe game, hingga pravisualisasi film.\n\n## 05-ketersediaan\n\nSaat ini, Genie 4 baru dibuka terbatas sebagai pratinjau riset (research preview) untuk sejumlah penguji terpilih. Akses untuk pelanggan Google AI Ultra dan mitra developer dijanjikan bakal menyusul, namun **belum ada informasi harga maupun jadwal rilis pastinya**. Google juga mengakui bahwa konsistensi detail dan objek masih bisa memudar (drift) jika simulasi berjalan terlalu lama.\n\n# Caption\n\nSelama ini, video buatan AI cuma bisa kita tonton. Lewat Genie 4, Google DeepMind ingin kita bisa \"masuk\" dan menjelajahinya secara langsung. World model (model dunia) yang baru diumumkan pada 27 Oktober 2026 ini mampu menciptakan lingkungan fotorealistis secara real-time. Hebatnya, kamu bisa menjelajahi dunia itu pakai keyboard, lengkap dengan audio bawaan, dan mengubah kondisinya lewat perintah teks langsung saat simulasi berjalan\n\nMau mengubah cuaca atau memunculkan karakter baru, cukup ketik saja, dan jajaran model Gemini akan menyesuaikan adegan di sekitarnya secara instan. Genie 4 juga menyimulasikan hukum fisika (seperti tabrakan) serta gerak-gerik dan obrolan manusia dengan lebih alami. Google menyebut teknologi ini bisa dipakai untuk melatih robot, bikin prototipe game, hingga pravisualisasi film.\n\nTapi untuk sekarang, Genie 4 baru tersedia dalam pratinjau riset terbatas bagi penguji terpilih, tanpa informasi harga atau jadwal rilis pasti. Google juga mengakui kalau visualnya masih bisa memudar (drift) jika simulasi berjalan terlalu lama. Menurutmu, industri apa yang bakal paling cepat berubah karena teknologi seperti ini?\n\nSumber: Google DeepMind, Google, TechCrunch / Foto: cuplikan simulasi Genie 4 / Google DeepMind\n\n#akalmesin #Google #Genie4 #WorldModel #KecerdasanBuatan\n\n# Sources\n\n- [Google DeepMind — Genie 4: A new generation of world simulation](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)\n- [Google — We're announcing Genie 4](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/)\n- [TechCrunch — Google's Genie 4 world model adds audio, more realistic worlds, and real-time steering](https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/)\n\n# Alt text and photo credits\n\n01-main: Cuplikan simulasi Genie 4 dari Google DeepMind: petugas stasiun berdiri di peron dengan kereta merah di belakangnya, adegan buatan AI.\n\nFOTO: SIMULASI STASIUN KERETA / GOOGLE DEEPMIND\n\n02-kendali: Cuplikan simulasi Genie 4: pemandangan es Antarktika dari keranjang balon udara, dengan panel langkah dan kontrol keyboard di layar.\n\nFOTO: SIMULASI BALON UDARA / GOOGLE DEEPMIND\n\n03-audio: Cuplikan simulasi Genie 4: pria bermain saksofon di pulau kecil di tengah danau berkabut, adegan buatan AI.\n\nFOTO: SIMULASI PEMAIN SAKSOFON / GOOGLE DEEPMIND\n\n04-gemini: Cuplikan simulasi Genie 4: lengan robot meneteskan cairan ke pelat laboratorium, dengan panel langkah Gemini di layar.\n\nFOTO: SIMULASI LENGAN ROBOT / GOOGLE DEEPMIND\n\n05-ketersediaan: Gambar resmi Genie 4 dari Google DeepMind: perempuan di dalam mobil melintasi jalan kota bercahaya neon, adegan buatan AI.\n\nFOTO: GAMBAR RESMI GENIE 4 / GOOGLE DEEPMIND\n\n# Approval\n\n\"Saved in review editor 2026-10-29T03:53:00.000Z\" — genie4-owner-edits-v2.json sha256:863b0c1beecebf576f66c36ac8ce071a655338a946a6bf80d42376b322633155, 2026-10-29 10:53 WIB\n\nApproved design revision: 9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4\n\n# Source ledger\n\n# Sources — Google rilis Genie 4, pembuat dunia virtual (retrieved 2026-10-28 22:52 WIB)\n\nPrimary: Google DeepMind, \"Genie 4: A new generation of world simulation\" (27 Oct 2026), https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/ (DM). Google blog, \"We're announcing Genie 4\" (27 Oct 2026), https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/ (GB). Coverage: TechCrunch, Rebecca Bellan (27 Oct 2026), https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering/ (TC). All three were re-read on 2026-10-28. The old draft was used as input only.\n\n\"Verified\" = stated by Google itself (for Google's own product facts) or by Google plus coverage. \"Claim\" = Google's description of its own model, not tested independently. \"Press only\" = TC only.\n\n| Claim (copy)                                                                                                                                                                         | Status                                                                                                                | Source     |\n| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ---------- |\n| Announced 27 Oct 2026 as a new world model                                                                                                                                           | Verified                                                                                                              | DM; GB; TC |\n| Released as a research preview for trusted testers (\"pratinjau riset … penguji terpilih\")                                                                                            | Verified                                                                                                              | DM; GB; TC |\n| Coming to Google AI Ultra (Project Genie) and Gemini API / AI Studio early-access partners; no date or price                                                                         | Verified (\"coming soon\"; TC: \"in the coming weeks\"). No price is stated anywhere                                      | DM; GB; TC |\n| Keyboard navigation; text prompts change weather, camera, add people/objects in real time                                                                                            | Verified (Google demo description)                                                                                    | DM; GB; TC |\n| First real-time world model from Google DeepMind with native audio: ambient, music, interactive dialogue                                                                             | Claim by Google (\"our first … to generate audio natively\"); \"angin dan ombak\" are DM's own examples                   | DM         |\n| Physics: collisions (and aerodynamics); more natural people                                                                                                                          | Claim by Google                                                                                                       | DM; TC     |\n| Gemini Omni anchors realism; Gemini 3.8 Flash plans steps and checks frames (\"seperti sutradara\")                                                                                    | Verified as Google's description; \"director\" wording from TC                                                          | DM; TC     |\n| Uses: training robots, game prototypes, film pre-visualisation                                                                                                                       | Verified (DM: robots/agents, filmmakers' pre-vis, game developers; GB: filmmaking, journalism, gaming, manufacturing) | DM; GB; TC |\n| A scene stays consistent up to two minutes, double Genie 3                                                                                                                           | **Press only** (TC; not in Google's text), attributed in copy (\"Menurut TechCrunch\")                                  | TC         |\n| Limitation: details and objects drift the longer a simulation runs                                                                                                                   | Verified (Google's own admission)                                                                                     | DM; TC     |\n| \"Fotorealistis\" / \"lebih alami\"                                                                                                                                                      | Google's own characterisation (claim)                                                                                 | DM         |\n| Not used: SynthID watermark on all output; Gemini 4 Argon + Apptronik Apollo checkers demo; Tejas Kulkarni \"hybrid world models\" quote (no licensed photo of him, so no quote slide) | Verified, left out for length                                                                                         | DM; TC     |\n| Dropped from the old draft: \"education\" as a stated use                                                                                                                              | DM lists education only among trusted-tester cohorts, so it was not used as a use case                                | DM         |\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-10-28-google-genie-4\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-10-28-google-genie-4/out/png/01-01-main.png",
+      "sha256": "d80deea54817a273c18ef07172557c8862ad0b5b6525302d3d2afce3b6c4bc8d",
+      "bytes": 1209536
+    },
+    {
+      "slideId": "02-kendali",
+      "file": "content/posts/2026-10-28-google-genie-4/out/png/02-02-kendali.png",
+      "sha256": "a271969c7268b1fdfdc5e6757a482a6a49ce319fb55e3a5235e77ec3e19ae27e",
+      "bytes": 1007648
+    },
+    {
+      "slideId": "03-audio",
+      "file": "content/posts/2026-10-28-google-genie-4/out/png/03-03-audio.png",
+      "sha256": "254e6ffa6c79f49ee216d26f5ca88cf148186b129798d4c412e7f413810c035b",
+      "bytes": 1386731
+    },
+    {
+      "slideId": "04-gemini",
+      "file": "content/posts/2026-10-28-google-genie-4/out/png/04-04-gemini.png",
+      "sha256": "63f617fb460a2abc7b80a90914d54e702e7ba288c53cfaf7e6cac9d8015771e1",
+      "bytes": 1002091
+    },
+    {
+      "slideId": "05-ketersediaan",
+      "file": "content/posts/2026-10-28-google-genie-4/out/png/05-05-ketersediaan.png",
+      "sha256": "6bd2e955ebf013981f9f1ea1721a939c3bf2f3dbe6d1ecd07146878e322fdfb1",
+      "bytes": 1067260
+    }
+  ],
+  "generatedAt": "2026-10-29T03:54:59.532Z"
+}
