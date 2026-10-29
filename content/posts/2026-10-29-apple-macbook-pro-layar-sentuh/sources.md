@@ -23,4 +23,23 @@
 | Touch Bar introduced 2016, dropped 2023 | Verified | The Verge |
 | Third-party touch-optimised apps (Notion, Canva, Office, …) "later this year" | Vendor claim | Apple Newsroom |
 
-Uncertain or open: Indonesian price and launch date; real-world battery life and touch latency (no full reviews yet, only hands-ons); durability of the hinge/screen under daily touch. Photos are older/generic MacBook Pro and Apple Store photos, **not** the new model (see assets/PROVENANCE.md for why Apple's own press images are not used).
+Uncertain or open: Indonesian price and launch date; real-world battery life and touch latency (no full reviews yet, only hands-ons); durability of the hinge/screen under daily touch.
+
+## Media (owner decision t89u, 29 Oct 2026)
+
+All photos (carousel) and video/photos (reel) are Apple Newsroom press media of the new MacBook Pro with PROLED XDR Display, from https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/ . URLs and SHA-256 per file: assets/PROVENANCE.md and reel/PROVENANCE.md.
+
+- Apple's terms (LEGAL_NOTICE.rtf shipped in each press zip, copy at assets/APPLE_LEGAL_NOTICE.rtf): use is for personal or editorial and non-commercial purposes only; media may not be altered or modified without Apple's express permission.
+- No licence or permission from Apple has been obtained.
+- Used by owner decision t89u ("some big ig account just use the footage … as long as we include the source credit"). Known risk: Apple or Instagram may remove the post, or the account may receive a copyright strike.
+- Reel: Apple media shown unaltered (scaled to fit with black letterbox, trimmed only). Carousel: blue-ink treatment is an alteration, which departs from Apple's no-alteration term.
+- Credited on every slide ("FOTO: … / APPLE"), in the reel under every clip ("Video: Apple" / "Foto: Apple · Sumber: Apple Newsroom"), and in the caption ("Foto: Apple").
+
+## Article URLs
+
+- Reuters (Stephen Nellis), republished: https://www.globalbankingandfinance.com/apple-shows-first-touchscreen-laptops-amid-product-blitz/ (AFP, same event: https://www.straitstimes.com/world/united-states/apple-shows-pricey-touchscreen-laptops-a-first-for-the-iphone-maker)
+- The Verge: https://www.theverge.com/tech/1020549/macbook-studio-touchscreen-hands-on ; https://www.theverge.com/gadgets/1019554/apple-touchscreen-macbook-pro-and-tell
+- Gizmodo: https://gizmodo.com/macbook-pro-with-proled-xdr-display-hands-on-2000831735
+- CNBC: https://www.cnbc.com/2026/10/28/apple-touchscreen-macbook-pro-hands-on.html
+- 9to5Mac: https://9to5mac.com/2026/10/28/apple-announces-redesigned-macbook-pro-its-first-touchscreen-mac/
+- Business Insider: https://www.businessinsider.com/steve-jobs-touch-screen-mac-2010-10 ; Wired: https://www.wired.com/2010/10/gorilla-arm-multitouch/

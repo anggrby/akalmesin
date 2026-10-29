@@ -1,20 +1,22 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
-  "designRevision": "24097160ca79af3073d6661e0ab3f448ba89b66f71439d1b858d55a93272a69b",
+  "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
   "copyRevision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
-  "checkedAt": "2026-10-29T08:00:48.928Z",
-  "passed": true,
-  "problems": [],
+  "checkedAt": "2026-10-29T08:39:16.890Z",
+  "passed": false,
+  "problems": [
+    "Copy approval missing or stale"
+  ],
   "warnings": [],
   "slides": [
     {
       "id": "01-main",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/01-01-main.png",
       "ink": {
-        "onRamp": 0.982028826856413,
-        "meanDistance": 2.1614258411718117,
-        "inkPixels": 0.8565772669220945
+        "onRamp": 0.9928600823045267,
+        "meanDistance": 1.3157180275146707,
+        "inkPixels": 0.947962962962963
       },
       "gap": 64,
       "photoHeight": 702
@@ -23,9 +25,9 @@
       "id": "02-baru",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/02-02-baru.png",
       "ink": {
-        "onRamp": 0.99826673964605,
-        "meanDistance": 0.6564272311941369,
-        "inkPixels": 0.9686735997080824
+        "onRamp": 0.9504385964912281,
+        "meanDistance": 4.64399700540003,
+        "inkPixels": 0.8025828460038986
       },
       "gap": 54,
       "photoHeight": 702
@@ -34,9 +36,9 @@
       "id": "03-jobs",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/03-03-jobs.png",
       "ink": {
-        "onRamp": 0.996366177498253,
-        "meanDistance": 0.9385123799492,
-        "inkPixels": 0.9362124388539483
+        "onRamp": 0.9514478114478114,
+        "meanDistance": 4.125223651584201,
+        "inkPixels": 0.4855218855218855
       },
       "gap": 54,
       "photoHeight": 702
@@ -45,9 +47,9 @@
       "id": "04-harga",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/04-04-harga.png",
       "ink": {
-        "onRamp": 0.9875243664717349,
-        "meanDistance": 1.9232220163745353,
-        "inkPixels": 0.8858918128654971
+        "onRamp": 0.9760699588477366,
+        "meanDistance": 2.6033490291528367,
+        "inkPixels": 0.8056995884773662
       },
       "gap": 54,
       "photoHeight": 702
@@ -56,9 +58,9 @@
       "id": "05-catatan",
       "png": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/05-05-catatan.png",
       "ink": {
-        "onRamp": 0.977798353909465,
-        "meanDistance": 1.8810524617076476,
-        "inkPixels": 0.9782716049382716
+        "onRamp": 0.9895711500974659,
+        "meanDistance": 1.4335976007439328,
+        "inkPixels": 0.9783138401559455
       },
       "gap": 54,
       "photoHeight": 702

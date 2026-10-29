@@ -5,7 +5,7 @@
     {
       "name": "duration",
       "ok": true,
-      "detail": "24.50 s"
+      "detail": "23.50 s"
     },
     {
       "name": "resolution",
@@ -25,7 +25,7 @@
     {
       "name": "card text fits safe area (no overflow, <= 4 lines)",
       "ok": true,
-      "detail": "hook:3 lines, fakta:3 lines, catatan:3 lines, tanya:2 lines"
+      "detail": "hook:2 lines, fakta:3 lines, catatan:3 lines, tanya:2 lines"
     },
     {
       "name": "card above clip, no overlap",
@@ -58,7 +58,7 @@
       "detail": "ok"
     },
     {
-      "name": "every media item used and free-licensed (no Apple press media)",
+      "name": "every media item used and licensed (CC/PD, or Apple media under owner decision t89u with terms + risk in provenance)",
       "ok": true,
       "detail": "ok"
     },
@@ -70,10 +70,25 @@
     {
       "name": "no-filter (media as-is)",
       "ok": true,
-      "detail": "only scale, crop, pad, fps, setsar, format"
+      "detail": "only scale, pad, fps, setsar, format"
     },
     {
-      "name": "text mark at bottom on black, no logo image",
+      "name": "Apple media unaltered: contain-fit in clip box, aspect kept, no crop/zoom/pan/colour",
+      "ok": true,
+      "detail": "hook:2880x1620→900x506, fakta:1920x1920→676x676, catatan:3840x2560→900x600, tanya:3840x2560→900x600 (contain: scale = min(boxW/w, boxH/h), letterbox, no crop)"
+    },
+    {
+      "name": "Apple credit shown (\"Video/Foto: Apple\") on every Apple clip",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "tweet card: round logo avatar only image, no tick/platform logo",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "text mark at bottom on black",
       "ok": true,
       "detail": "ok"
     },
@@ -115,7 +130,7 @@
     {
       "name": "outro = last 2.0 s",
       "ok": true,
-      "detail": "22.50–24.50 s"
+      "detail": "21.50–23.50 s"
     },
     {
       "name": "outro text",

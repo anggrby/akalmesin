@@ -1,10 +1,15 @@
-# Reel provenance — MacBook Pro akhirnya bisa disentuh
+# Reel provenance — MacBook Pro akhirnya bisa disentuh (retrieved 2026-10-29 WIB)
 
-All media are the carousel's unmodified Wikimedia Commons originals (no blue ink, no colour filter). Apple Newsroom images/videos are **not** used: their LEGAL_NOTICE says personal/editorial non-commercial use only and no alteration without Apple's permission. Music: tech-upbeat (High Technologic Beat Explosion, Loyalty Freak Music, CC0 1.0; see scripts/reel/music/PROVENANCE.md).
+All media are Apple Newsroom press media of the new MacBook Pro with PROLED XDR Display (article: https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/).
 
-| Key | File | SHA-256 | Source page | Credit on screen | Processing |
+- Apple's terms (LEGAL_NOTICE.rtf in each press zip; copy at assets/APPLE_LEGAL_NOTICE.rtf): personal or editorial and non-commercial use only; media may not be altered or modified without Apple's express permission. No permission has been obtained from Apple.
+- Used under owner decision t89u (29 Oct 2026), with the known risk: Apple or Instagram may take the reel down, or the account may receive a copyright strike.
+- Shown unaltered: no filter, no colour change, no crop, zoom or pan. Each file is scaled to fit inside the 900×676 clip box (scale = min(900/w, 676/h)) with black letterbox; videos are trimmed to an excerpt. Credit under every clip.
+- Music: tech-upbeat (High Technologic Beat Explosion, Loyalty Freak Music, CC0 1.0; see scripts/reel/music/PROVENANCE.md).
+
+| Key | File | SHA-256 | Source URL | Credit on screen | Use |
 |---|---|---|---|---|---|
-| jobs | assets/originals/commons-steve-jobs-2010.jpg | 186bc30b4a4c21e49e5269694e5c24294add8139b28f9aa9eb30feb629516e04 | https://commons.wikimedia.org/wiki/File:Steve_Jobs_Headshot_2010-CROP.jpg | Foto: Matthew Yohe · CC BY-SA 3.0 · Wikimedia Commons | as-is: scale + crop (slow pan) + pad |
-| mbp | assets/originals/commons-macbook-pro-16-m4-pro.jpg | c312316db0f16f2010db87bd9708ec212d950b684e7a4429870db0d1d9b7d596 | https://commons.wikimedia.org/wiki/File:MacBook_Pro_(16-inch,_M4_Pro,_Silver).jpg | Foto: AzureSaturn · CC0 · Wikimedia Commons | as-is: scale + crop (slow pan) + pad |
-| touchbar | assets/originals/commons-touch-bar-15in-macbook-pro.jpg | fb3f25fde840dd9db0e2859ad80c6f4a9a3e3210264fafaa42f9fe7c0cceea1e | https://commons.wikimedia.org/wiki/File:Touch_bar_of_15%22_MacBook_pro.jpg | Foto: IM3847 · CC BY-SA 4.0 · Wikimedia Commons | as-is: scale + crop (slow pan) + pad |
-| store | assets/originals/commons-apple-marina-bay-sands.jpg | f2a516a844d7c8cb7c97a10d42f63f65972d367cd24515beacf4f8ada0f08bbf | https://commons.wikimedia.org/wiki/File:Apple_Marina_Bay_Sands_(202139).jpg | Foto: Moheen Reeyad · CC BY-SA 4.0 · Wikimedia Commons | as-is: scale + crop (slow pan) + pad |
+| touch | reel/media/apple-touch-261028.mp4 | e8f4a54b7ed1b08e775645af42c91b19073e87a804c47e393bcf932590aae681 | https://www.apple.com/newsroom/videos/2026/autoplay/10/macbook-pro-with-proled-xdr-display-touch/large_2x.mp4 | Video: Apple · Sumber: Apple Newsroom | 0.0–5.0 s, fit 2880×1620 → 900×506 |
+| oled | reel/media/apple-oled-technology-261028.mp4 | 60751731522e9e5cc6223ccd87412cb6184d2568eab451aa4a7e607413724b2f | https://www.apple.com/newsroom/videos/2026/autoplay/10/macbook-pro-with-proled-xdr-display-technology/large_2x.mp4 | Video: Apple · Sumber: Apple Newsroom | 0.5–6.5 s, fit 1920×1920 → 676×676 |
+| office | assets/originals/apple-lifestyle-office.jpg | b7e7850913072e75ba698bc7288032e43f15f28b4a0de5e45a9e2f2619a2ab29 | https://www.apple.com/newsroom/images/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/article/Apple-MacBook-Pro-with-PROLED-XDR-Display-lifestyle-office-261028.zip | Foto: Apple · Sumber: Apple Newsroom | still, static, fit 3840×2560 → 900×600 |
+| remote | assets/originals/apple-lifestyle-remote-work.jpg | 23d1dc8e5e6040ab8d5e790a27a7b4321465aad223d55a663e1b618e563d51e8 | https://www.apple.com/newsroom/images/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/article/Apple-MacBook-Pro-with-PROLED-XDR-Display-lifestyle-remote-work-261028.zip | Foto: Apple · Sumber: Apple Newsroom | still, static, fit 3840×2560 → 900×600 |

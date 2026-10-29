@@ -4,7 +4,7 @@
   "layout": "card",
   "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
   "title": "MacBook Pro akhirnya bisa disentuh",
-  "mechanism": "Card format (owner pt88u reference): curiosity hook on the card, then key fact, then the catch, then the question",
+  "mechanism": "Card format, tweet-style screenshot card (owner t89u): hook on touch, key fact + price, the catch, the question",
   "format": {
     "width": 1080,
     "height": 1920,
@@ -16,56 +16,51 @@
     "engine": "none"
   },
   "mood": "tech-upbeat",
-  "cardMeta": "Berita teknologi · 28 Okt 2026",
-  "footage": "No free-licensed photo or video of the new touchscreen MacBook Pro exists yet, and Apple's press media forbid alteration and commercial use. Uses the carousel's Wikimedia Commons originals as-is (slow pan only).",
+  "footage": "Apple Newsroom launch video and press photos of the new MacBook Pro, shown unaltered (fit with letterbox, trimmed only), used by owner decision t89u; see reel/PROVENANCE.md.",
   "mediaFilter": "none",
   "media": {
-    "jobs": {
-      "kind": "photo",
-      "file": "assets/originals/commons-steve-jobs-2010.jpg",
-      "location": "Steve Jobs, WWDC 2010",
-      "tag": "Foto: Matthew Yohe · CC BY-SA 3.0 · Wikimedia Commons",
-      "sourceURL": "https://commons.wikimedia.org/wiki/File:Steve_Jobs_Headshot_2010-CROP.jpg",
-      "focusX": 0.5,
-      "focusY": 0.35,
+    "touch": {
+      "kind": "video",
+      "file": "reel/media/apple-touch-261028.mp4",
+      "location": "MacBook Pro dengan layar sentuh",
+      "tag": "Video: Apple · Sumber: Apple Newsroom",
+      "sourceURL": "https://www.apple.com/newsroom/videos/2026/autoplay/10/macbook-pro-with-proled-xdr-display-touch/large_2x.mp4",
+      "rights": "apple-t89u",
       "filter": "none"
     },
-    "mbp": {
-      "kind": "photo",
-      "file": "assets/originals/commons-macbook-pro-16-m4-pro.jpg",
-      "location": "MacBook Pro M4, model lama (ilustrasi)",
-      "tag": "Foto: AzureSaturn · CC0 · Wikimedia Commons",
-      "sourceURL": "https://commons.wikimedia.org/wiki/File:MacBook_Pro_(16-inch,_M4_Pro,_Silver).jpg",
-      "focusX": 0.5,
-      "focusY": 0.5,
+    "oled": {
+      "kind": "video",
+      "file": "reel/media/apple-oled-technology-261028.mp4",
+      "location": "Layar PROLED XDR",
+      "tag": "Video: Apple · Sumber: Apple Newsroom",
+      "sourceURL": "https://www.apple.com/newsroom/videos/2026/autoplay/10/macbook-pro-with-proled-xdr-display-technology/large_2x.mp4",
+      "rights": "apple-t89u",
       "filter": "none"
     },
-    "touchbar": {
+    "office": {
       "kind": "photo",
-      "file": "assets/originals/commons-touch-bar-15in-macbook-pro.jpg",
-      "location": "Touch Bar, 2016–2023",
-      "tag": "Foto: IM3847 · CC BY-SA 4.0 · Wikimedia Commons",
-      "sourceURL": "https://commons.wikimedia.org/wiki/File:Touch_bar_of_15%22_MacBook_pro.jpg",
-      "focusX": 0.5,
-      "focusY": 0.5,
+      "file": "assets/originals/apple-lifestyle-office.jpg",
+      "location": "MacBook Pro baru",
+      "tag": "Foto: Apple · Sumber: Apple Newsroom",
+      "sourceURL": "https://www.apple.com/newsroom/images/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/article/Apple-MacBook-Pro-with-PROLED-XDR-Display-lifestyle-office-261028.zip",
+      "rights": "apple-t89u",
       "filter": "none"
     },
-    "store": {
+    "remote": {
       "kind": "photo",
-      "file": "assets/originals/commons-apple-marina-bay-sands.jpg",
-      "location": "Apple Store Singapura",
-      "tag": "Foto: Moheen Reeyad · CC BY-SA 4.0 · Wikimedia Commons",
-      "sourceURL": "https://commons.wikimedia.org/wiki/File:Apple_Marina_Bay_Sands_(202139).jpg",
-      "focusX": 0.5,
-      "focusY": 0.5,
+      "file": "assets/originals/apple-lifestyle-remote-work.jpg",
+      "location": "MacBook Pro baru",
+      "tag": "Foto: Apple · Sumber: Apple Newsroom",
+      "sourceURL": "https://www.apple.com/newsroom/images/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/article/Apple-MacBook-Pro-with-PROLED-XDR-Display-lifestyle-remote-work-261028.zip",
+      "rights": "apple-t89u",
       "filter": "none"
     }
   },
   "beats": [
     {
       "id": "hook",
-      "seconds": 6,
-      "media": "jobs",
+      "seconds": 5,
+      "media": "touch",
       "source": "Sumber: Apple Newsroom",
       "onScreen": [
         {
@@ -76,12 +71,13 @@
           "text": "MacBook Pro akhirnya bisa disentuh.",
           "fact": "MacBook Pro pertama berlayar sentuh"
         }
-      ]
+      ],
+      "videoStart": 0
     },
     {
       "id": "fakta",
       "seconds": 6,
-      "media": "mbp",
+      "media": "oled",
       "source": "Sumber: Apple Newsroom",
       "onScreen": [
         {
@@ -92,12 +88,13 @@
           "text": "Mulai US$2.899, US$400 di atas model biasa.",
           "fact": "US$400 di atas model biasa"
         }
-      ]
+      ],
+      "videoStart": 0.5
     },
     {
       "id": "catatan",
       "seconds": 6,
-      "media": "touchbar",
+      "media": "office",
       "source": "Sumber: Gizmodo, The Verge, Apple Newsroom",
       "onScreen": [
         {
@@ -113,7 +110,7 @@
     {
       "id": "tanya",
       "seconds": 4.5,
-      "media": "store",
+      "media": "remote",
       "onScreen": [
         {
           "text": "Laptop perlu layar sentuh,",
@@ -125,5 +122,6 @@
         }
       ]
     }
-  ]
+  ],
+  "cardDate": "28 Okt 2026"
 }

@@ -1,6 +1,8 @@
 // "Card" reel layout (reel.json "layout": "card"), after the owner's reference format (pt88u):
-// plain black 9:16, our own akalmesin news card at the top (no imitation of another account / X post),
-// one licensed media clip below it (photo with slow pan or video, as-is: geometry/timing filters only),
+// plain black 9:16, a tweet-style screenshot card at the top (owner t89u: round akalmesin logo avatar, name + @handle,
+// date; no verification tick, no X/platform logo), one media clip below it. Media with "rights": "apple-t89u" are shown
+// unaltered: scaled to fit (contain) inside the clip box with black letterbox, never cropped/zoomed/panned, trim only.
+// Other photos: slow pan; other video: cover crop. Geometry/timing filters only.
 // card text updates per beat, no burned-in captions unless beat.caption is set, bottom text mark,
 // music bed by mood, standard 2 s text outro. Called from render.mjs; checked by checkCard() from check.mjs.
 import fs from 'node:fs';
@@ -18,6 +20,7 @@ const WHITE = tokens.color['reversed-text'].value,
   GRAY = tokens.color['editorial-gray'].value;
 const BLUE = JSON.stringify(tokens).match(/"inkHex":"(#[0-9A-Fa-f]{6})"/)[1];
 const BG = '#000000';
+const AVATAR = fs.readFileSync(path.join(ROOT, 'brand/logos/Logo.jpg')).toString('base64');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})[c]);
 const b64 = f => fs.readFileSync(f).toString('base64');
 const relLum = ([r, g, b]) => {
@@ -29,9 +32,9 @@ const hexRGB = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
 const CSS = `*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:transparent;font-family:Manrope;position:relative;overflow:hidden}
 #card{position:absolute;left:60px;top:250px;width:900px;color:${WHITE}}
 #head{display:flex;align-items:center;gap:18px}
-#av{width:76px;height:76px;border-radius:50%;background:${BLUE};color:${WHITE};font:800 44px/76px Manrope;text-align:center}
-#name{font:800 36px/1.1 Manrope}#meta{font:500 24px Plex;color:${GRAY};margin-top:4px}
-#hl{font:700 50px/1.24 Manrope;margin-top:26px;letter-spacing:-.005em}
+#av{width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;outline:2px solid #2f3336}
+#name{font:800 34px/1.15 Manrope}#handle{font:500 28px/1.2 Manrope;color:${GRAY};margin-top:2px}
+#hl{font:500 46px/1.3 Manrope;margin-top:24px;text-align:left}#date{font:500 26px Manrope;color:${GRAY};margin-top:18px}
 #src{font:500 22px Plex;color:${GRAY};margin-top:16px}
 #credit{position:absolute;left:60px;top:${CLIP.y + CLIP.h + 14}px;max-width:900px;font:500 20px/24px Plex;color:${GRAY}}
 #sub{position:absolute;left:60px;width:900px;top:${CLIP.y + CLIP.h - 200}px;text-align:center;font:800 64px/84px Manrope;color:${WHITE}}
@@ -40,8 +43,8 @@ const CSS = `*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;ba
 
 function overlay(beat, m, spec, mark) {
   const hl = beat.onScreen.map((o, i) => `<span data-fact="${i}">${esc(o.text)}</span>`).join(' ');
-  return `<div id="card"><div id="head"><div id="av">a</div><div><div id="name">akalmesin</div><div id="meta">${esc(spec.cardMeta || 'Berita teknologi')}</div></div></div>
-<div id="hl">${hl}</div>${beat.source ? `<div id="src">${esc(beat.source)}</div>` : ''}</div>
+  return `<div id="card"><div id="head"><img id="av" src="data:image/jpeg;base64,${AVATAR}"><div><div id="name">akalmesin</div><div id="handle">@akalmesin</div></div></div>
+<div id="hl">${hl}</div><div id="date">${esc(spec.cardDate || '')}${beat.source ? ` · ${esc(beat.source)}` : ''}</div></div>
 <div id="clipbox" style="position:absolute;left:${CLIP.x}px;top:${CLIP.y}px;width:${CLIP.w}px;height:${CLIP.h}px"></div>
 <div id="credit">${esc(m.location)} · ${esc(m.tag)}</div>${beat.caption ? `<div id="sub"><span>${esc(beat.caption)}</span></div>` : ''}
 <div id="mark" style="color:${mark === 'white' ? WHITE : '#000'}">akalmesin</div>`;
@@ -98,6 +101,10 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
         sub: r(q('#sub')),
         subText: q('#sub')?.textContent || null,
         images: document.querySelectorAll('img').length,
+        avatar: (({width, height}) => ({w: width, h: height, round: getComputedStyle(document.querySelector('#av')).borderRadius}))(
+          document.querySelector('#av').getBoundingClientRect()
+        ),
+        tick: !!document.querySelector('[data-verified],svg'),
         hlLines: Math.round(hl.getBoundingClientRect().height / parseFloat(getComputedStyle(hl).lineHeight)),
         hlOverflow: hl.scrollWidth > hl.clientWidth,
         onScreen: [...document.querySelectorAll('[data-fact]')].map(e => ({text: e.textContent}))
@@ -109,8 +116,24 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
       .trim()
       .split(',')
       .map(Number);
-    let vf, input;
-    if (m.kind === 'photo') {
+    let vf,
+      input,
+      fit = null;
+    if (m.rights === 'apple-t89u') {
+      // As-is: contain-fit, black letterbox, no crop/zoom/pan.
+      const s = Math.min(CLIP.w / w, CLIP.h / h);
+      const W = Math.round((w * s) / 2) * 2,
+        H = Math.round((h * s) / 2) * 2;
+      const px = CLIP.x + Math.round((CLIP.w - W) / 4) * 2,
+        py = CLIP.y + Math.round((CLIP.h - H) / 4) * 2;
+      fit = {rule: 'contain: scale = min(boxW/w, boxH/h), letterbox, no crop', src: [w, h], scaled: [W, H], at: [px, py]};
+      vf = `scale=${W}:${H},pad=1080:1920:${px}:${py}:black,fps=30,setsar=1,format=yuv420p`;
+      if (m.kind === 'photo') input = ['-loop', '1', '-framerate', '30', '-t', D, '-i', src];
+      else {
+        input = ['-ss', String(beat.videoStart || 0), '-t', D, '-i', src];
+        if (probeDur(src) < Number(D) + (beat.videoStart || 0)) throw Error(`${m.file} too short for ${beat.id}`);
+      }
+    } else if (m.kind === 'photo') {
       const pan = 60,
         s = Math.max((CLIP.h * 1.08) / h, (CLIP.w + 2 * pan) / w);
       const W = Math.round((w * s) / 2) * 2,
@@ -128,7 +151,7 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
       input = ['-ss', String(beat.videoStart || 0), '-t', D, '-i', src];
       if (probeDur(src) < Number(D) + (beat.videoStart || 0)) throw Error(`${m.file} too short for ${beat.id}`);
     }
-    graphs.push({beat: beat.id, media: beat.media, graph: vf});
+    graphs.push({beat: beat.id, media: beat.media, rights: m.rights || null, fit, videoStart: beat.videoStart || 0, graph: vf});
     sh('ffmpeg', [
       '-y',
       '-v',
@@ -280,7 +303,7 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
     [
       `# Reel script: ${spec.title}`,
       '',
-      `Layout: card (black 9:16, akalmesin news card on top, one licensed clip below, no voiceover). Music (mood ${spec.mood}): ${mood.title} by ${mood.author}, ${mood.licence}.${withOutro ? ` Outro: ${outroLen.toFixed(1)} s (${OUTRO.follow} / ${OUTRO.share}).` : ''}`,
+      `Layout: card (black 9:16, tweet-style akalmesin card on top, one clip below, no voiceover). Music (mood ${spec.mood}): ${mood.title} by ${mood.author}, ${mood.licence}.${withOutro ? ` Outro: ${outroLen.toFixed(1)} s (${OUTRO.follow} / ${OUTRO.share}).` : ''}`,
       `Length ${full.toFixed(1)} s, 1080×1920, 30 fps. ${spec.footage}`,
       '',
       '| # | Time | Card text | Caption | Clip (as-is) · credit |',
@@ -325,13 +348,14 @@ export function checkCard({spec, man, gate, inside, hit, paths, mp4, dur, carous
   );
   gate('media credit under clip (every beat)', !badTag.length, badTag.map(f => f.beat).join(', ') || 'ok');
   const unused = Object.keys(spec.media).filter(k => !spec.beats.some(b => b.media === k));
-  const noLic = Object.entries(spec.media).filter(([, m]) => !/(CC BY|CC0|Domain publik)/.test(m.tag) || /apple\.com/.test(m.sourceURL || ''));
+  const prov = fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8');
+  const appleOK = m => m.rights === 'apple-t89u' && /Apple/.test(m.tag) && /t89u/.test(prov) && /LEGAL_NOTICE/.test(prov) && /(takedown|strike)/i.test(prov);
+  const noLic = Object.entries(spec.media).filter(([, m]) => !appleOK(m) && (!/(CC BY|CC0|Domain publik)/.test(m.tag) || /apple\.com/.test(m.sourceURL || '')));
   gate(
-    'every media item used and free-licensed (no Apple press media)',
+    'every media item used and licensed (CC/PD, or Apple media under owner decision t89u with terms + risk in provenance)',
     !unused.length && !noLic.length,
     [...unused, ...noLic.map(([k]) => k)].join(', ') || 'ok'
   );
-  const prov = fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8');
   const noHash = Object.values(spec.media).filter(m => !prov.includes(fileHash(path.join(paths.dir, m.file))) || !prov.includes(m.sourceURL));
   gate('provenance SHA-256 + source URL for every media file', !noHash.length, noHash.map(m => m.file).join(', ') || 'all listed');
   const allowed = new Set(man.allowedMediaFilters);
@@ -342,8 +366,26 @@ export function checkCard({spec, man, gate, inside, hit, paths, mp4, dur, carous
     spec.mediaFilter === 'none' && !bad.length && !man.mediaGraphs.some(g => /processed|blue-ink/.test(g.graph)),
     bad.join(',') || `only ${[...new Set(used)].join(', ')}`
   );
-  const badMark = man.frames.filter(f => f.markText !== 'akalmesin' || !inside(f.mark) || f.mark.y < C.y + C.h || f.images > 0 || hit(f.mark, f.creditBox));
-  gate('text mark at bottom on black, no logo image', !badMark.length, badMark.map(f => f.beat).join(', ') || 'ok');
+  const apple = man.mediaGraphs.filter(g => g.rights === 'apple-t89u');
+  const badFit = apple.filter(g => {
+    const f = g.fit;
+    if (!f || /crop|zoompan|rotate|eq|hue|curves|colorchannel/.test(g.graph)) return true;
+    const [w, h] = f.src,
+      [W, H] = f.scaled;
+    return W > C.w || H > C.h || (Math.abs(W - C.w) > 2 && Math.abs(H - C.h) > 2) || Math.abs(W / H - w / h) > 0.01 || f.at[0] < C.x || f.at[1] < C.y;
+  });
+  gate(
+    'Apple media unaltered: contain-fit in clip box, aspect kept, no crop/zoom/pan/colour',
+    !badFit.length,
+    badFit.map(g => g.beat).join(', ') ||
+      apple.map(g => `${g.beat}:${g.fit.src.join('x')}→${g.fit.scaled.join('x')}`).join(', ') + ` (${apple[0]?.fit.rule || 'no Apple media'})`
+  );
+  const noCred = man.frames.filter(f => spec.media[f.media].rights === 'apple-t89u' && !/(Video|Foto): Apple/.test(f.credit));
+  gate('Apple credit shown ("Video/Foto: Apple") on every Apple clip', !noCred.length, noCred.map(f => f.beat).join(', ') || 'ok');
+  const badAv = man.frames.filter(f => f.images !== 1 || f.avatar.w !== f.avatar.h || f.avatar.round !== '50%' || f.tick);
+  gate('tweet card: round logo avatar only image, no tick/platform logo', !badAv.length, badAv.map(f => f.beat).join(', ') || 'ok');
+  const badMark = man.frames.filter(f => f.markText !== 'akalmesin' || !inside(f.mark) || f.mark.y < C.y + C.h || hit(f.mark, f.creditBox));
+  gate('text mark at bottom on black', !badMark.length, badMark.map(f => f.beat).join(', ') || 'ok');
   gate(
     'text mark colour contrast >= 4.5:1',
     man.marks.length === spec.beats.length && man.marks.every(m => m.contrast >= 4.5),
