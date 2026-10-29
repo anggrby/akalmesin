@@ -3,7 +3,8 @@
 // date; no verification tick, no X/platform logo), one media clip below it. Media with "rights": "apple-t89u" are shown
 // unaltered: scaled to fit (contain) inside the clip box with black letterbox, never cropped/zoomed/panned, trim only.
 // Other photos: slow pan; other video: cover crop. Geometry/timing filters only.
-// card text updates per beat, no burned-in captions unless beat.caption is set, bottom text mark,
+// card text updates per beat, no burned-in captions unless beat.caption is set, no bottom text mark (owner t90u),
+// Apple STILLS get a gentle eased Ken Burns (cover-fill, zoom 100%->108% + slight pan, never reveals edges; owner t90u),
 // music bed by mood, standard 2 s text outro. Called from render.mjs; checked by checkCard() from check.mjs.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -13,7 +14,7 @@ import {SAFE} from './visuals.mjs';
 import {OUTRO, renderOutro} from './outro.mjs';
 import {MUSIC, contrast} from './news.mjs';
 
-export const CARD_FILTERS = ['scale', 'crop', 'pad', 'fps', 'setsar', 'format', 'trim', 'setpts'];
+export const CARD_FILTERS = ['scale', 'crop', 'zoompan', 'pad', 'fps', 'setsar', 'format', 'trim', 'setpts'];
 export const CLIP = {x: 60, y: 690, w: 900, h: 676}; // ~4:3 inside the safe area
 const tokens = readJSON(path.join(ROOT, 'brand/tokens.json'));
 const WHITE = tokens.color['reversed-text'].value,
@@ -34,7 +35,7 @@ const CSS = `*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;ba
 #head{display:flex;align-items:center;gap:18px}
 #av{width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;outline:2px solid #2f3336}
 #name{font:800 34px/1.15 Manrope}#handle{font:500 28px/1.2 Manrope;color:${GRAY};margin-top:2px}
-#hl{font:500 46px/1.3 Manrope;margin-top:24px;text-align:left}#date{font:500 26px Manrope;color:${GRAY};margin-top:18px}
+#hl{font:500 46px/1.3 Manrope;margin-top:48px;text-align:left}#date{font:500 26px Manrope;color:${GRAY};margin-top:18px}
 #src{font:500 22px Plex;color:${GRAY};margin-top:16px}
 #credit{position:absolute;left:60px;top:${CLIP.y + CLIP.h + 14}px;max-width:900px;font:500 20px/24px Plex;color:${GRAY}}
 #sub{position:absolute;left:60px;width:900px;top:${CLIP.y + CLIP.h - 200}px;text-align:center;font:800 64px/84px Manrope;color:${WHITE}}
@@ -46,8 +47,7 @@ function overlay(beat, m, spec, mark) {
   return `<div id="card"><div id="head"><img id="av" src="data:image/jpeg;base64,${AVATAR}"><div><div id="name">akalmesin</div><div id="handle">@akalmesin</div></div></div>
 <div id="hl">${hl}</div><div id="date">${esc(spec.cardDate || '')}${beat.source ? ` · ${esc(beat.source)}` : ''}</div></div>
 <div id="clipbox" style="position:absolute;left:${CLIP.x}px;top:${CLIP.y}px;width:${CLIP.w}px;height:${CLIP.h}px"></div>
-<div id="credit">${esc(m.location)} · ${esc(m.tag)}</div>${beat.caption ? `<div id="sub"><span>${esc(beat.caption)}</span></div>` : ''}
-<div id="mark" style="color:${mark === 'white' ? WHITE : '#000'}">akalmesin</div>`;
+<div id="credit">${esc(m.location)} · ${esc(m.tag)}</div>${beat.caption ? `<div id="sub"><span>${esc(beat.caption)}</span></div>` : ''}`;
 }
 
 export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh, probeDur}) {
@@ -97,7 +97,9 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
         credit: q('#credit').textContent,
         creditBox: r(q('#credit')),
         mark: r(q('#mark')),
-        markText: q('#mark').textContent,
+        markText: q('#mark')?.textContent || null,
+        headBox: r(q('#head')),
+        hlBox: r(q('#hl')),
         sub: r(q('#sub')),
         subText: q('#sub')?.textContent || null,
         images: document.querySelectorAll('img').length,
@@ -119,7 +121,29 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
     let vf,
       input,
       fit = null;
-    if (m.rights === 'apple-t89u') {
+    if (m.rights === 'apple-t89u' && m.kind === 'photo') {
+      // Ken Burns (owner t90u exception for stills): cover-crop to the 4:3 box, then eased zoom + slight pan inside it.
+      const Z = 1.08,
+        PAN = 0.3,
+        SS = 3,
+        N = Math.round(Number(D) * 30);
+      const s0 = Math.max(CLIP.w / w, CLIP.h / h);
+      const W = Math.ceil((w * s0) / 2) * 2,
+        H = Math.ceil((h * s0) / 2) * 2;
+      const dir = i % 2 ? -1 : 1;
+      const e = `(0.5-0.5*cos(PI*on/${N - 1}))`;
+      fit = {
+        rule: 'kenburns: cover-fill box, eased (cosine) zoom, pan window kept inside image',
+        src: [w, h],
+        cover: [W, H],
+        zoomMax: Z,
+        pan: PAN * dir,
+        frames: N,
+        ss: SS
+      };
+      vf = `scale=${W}:${H},crop=${CLIP.w}:${CLIP.h},scale=${CLIP.w * SS}:${CLIP.h * SS},zoompan=z='1+${Z - 1}*${e}':x='(iw-iw/zoom)*(0.5+${PAN * dir}*(${e}-0.5))':y='(ih-ih/zoom)/2':d=1:s=${CLIP.w}x${CLIP.h}:fps=30,pad=1080:1920:${CLIP.x}:${CLIP.y}:black,fps=30,setsar=1,format=yuv420p`;
+      input = ['-loop', '1', '-framerate', '30', '-t', D, '-i', src];
+    } else if (m.rights === 'apple-t89u') {
       // As-is: contain-fit, black letterbox, no crop/zoom/pan.
       const s = Math.min(CLIP.w / w, CLIP.h / h);
       const W = Math.round((w * s) / 2) * 2,
@@ -151,7 +175,7 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
       input = ['-ss', String(beat.videoStart || 0), '-t', D, '-i', src];
       if (probeDur(src) < Number(D) + (beat.videoStart || 0)) throw Error(`${m.file} too short for ${beat.id}`);
     }
-    graphs.push({beat: beat.id, media: beat.media, rights: m.rights || null, fit, videoStart: beat.videoStart || 0, graph: vf});
+    graphs.push({beat: beat.id, media: beat.media, kind: m.kind, rights: m.rights || null, fit, videoStart: beat.videoStart || 0, graph: vf});
     sh('ffmpeg', [
       '-y',
       '-v',
@@ -369,27 +393,45 @@ export function checkCard({spec, man, gate, inside, hit, paths, mp4, dur, carous
   const apple = man.mediaGraphs.filter(g => g.rights === 'apple-t89u');
   const badFit = apple.filter(g => {
     const f = g.fit;
-    if (!f || /crop|zoompan|rotate|eq|hue|curves|colorchannel/.test(g.graph)) return true;
+    if (/rotate|eq=|hue|curves|colorchannel/.test(g.graph)) return true;
+    if (g.kind === 'photo') {
+      // Ken Burns: bounded zoom, cosine easing (zero velocity at ends), window always inside the image.
+      if (!f || f.zoomMax > 1.15 || f.zoomMax < 1 || !/cos\(PI\*on/.test(g.graph) || Math.abs(f.pan) > 0.5) return true;
+      if (f.cover[0] < C.w || f.cover[1] < C.h) return true;
+      for (let k = 0; k < f.frames; k++) {
+        const e = 0.5 - 0.5 * Math.cos((Math.PI * k) / (f.frames - 1)),
+          z = 1 + (f.zoomMax - 1) * e;
+        const iw = C.w * f.ss,
+          ww = iw / z,
+          x = (iw - ww) * (0.5 + f.pan * (e - 0.5));
+        if (x < -1e-6 || x + ww > iw + 1e-6) return true;
+      }
+      return false;
+    }
+    if (!f || /crop|zoompan/.test(g.graph)) return true;
     const [w, h] = f.src,
       [W, H] = f.scaled;
     return W > C.w || H > C.h || (Math.abs(W - C.w) > 2 && Math.abs(H - C.h) > 2) || Math.abs(W / H - w / h) > 0.01 || f.at[0] < C.x || f.at[1] < C.y;
   });
   gate(
-    'Apple media unaltered: contain-fit in clip box, aspect kept, no crop/zoom/pan/colour',
+    'Apple video unaltered (contain-fit, no crop/zoom/pan/colour); Apple stills: smooth Ken Burns <=115%, no edges (t90u)',
     !badFit.length,
     badFit.map(g => g.beat).join(', ') ||
-      apple.map(g => `${g.beat}:${g.fit.src.join('x')}→${g.fit.scaled.join('x')}`).join(', ') + ` (${apple[0]?.fit.rule || 'no Apple media'})`
+      apple
+        .map(g => (g.kind === 'photo' ? `${g.beat}:kenburns ${g.fit.zoomMax}x pan ${g.fit.pan}` : `${g.beat}:${g.fit.src.join('x')}→${g.fit.scaled.join('x')}`))
+        .join(', ')
   );
   const noCred = man.frames.filter(f => spec.media[f.media].rights === 'apple-t89u' && !/(Video|Foto): Apple/.test(f.credit));
   gate('Apple credit shown ("Video/Foto: Apple") on every Apple clip', !noCred.length, noCred.map(f => f.beat).join(', ') || 'ok');
   const badAv = man.frames.filter(f => f.images !== 1 || f.avatar.w !== f.avatar.h || f.avatar.round !== '50%' || f.tick);
   gate('tweet card: round logo avatar only image, no tick/platform logo', !badAv.length, badAv.map(f => f.beat).join(', ') || 'ok');
-  const badMark = man.frames.filter(f => f.markText !== 'akalmesin' || !inside(f.mark) || f.mark.y < C.y + C.h || hit(f.mark, f.creditBox));
-  gate('text mark at bottom on black', !badMark.length, badMark.map(f => f.beat).join(', ') || 'ok');
+  const withMark = man.frames.filter(f => f.mark || f.markText);
+  gate('no bottom text mark in card layout (owner t90u)', !withMark.length, withMark.map(f => f.beat).join(', ') || 'ok');
+  const gaps = man.frames.map(f => Math.round(f.hlBox.y - (f.headBox.y + f.headBox.h)));
   gate(
-    'text mark colour contrast >= 4.5:1',
-    man.marks.length === spec.beats.length && man.marks.every(m => m.contrast >= 4.5),
-    man.marks.map(m => `${m.beat}:${m.chosen} ${m.contrast}:1`).join(', ')
+    'handle-to-copy gap airy (>= 44 px)',
+    gaps.every(g => g >= 44),
+    gaps.join(', ') + ' px'
   );
   const caps = man.frames.filter(f => f.subText);
   gate(

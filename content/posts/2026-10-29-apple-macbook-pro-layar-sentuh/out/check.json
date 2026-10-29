@@ -3,11 +3,9 @@
   "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
   "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
   "copyRevision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
-  "checkedAt": "2026-10-29T08:39:16.890Z",
-  "passed": false,
-  "problems": [
-    "Copy approval missing or stale"
-  ],
+  "checkedAt": "2026-10-29T08:57:46.951Z",
+  "passed": true,
+  "problems": [],
   "warnings": [],
   "slides": [
     {

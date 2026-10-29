@@ -70,12 +70,12 @@
     {
       "name": "no-filter (media as-is)",
       "ok": true,
-      "detail": "only scale, pad, fps, setsar, format"
+      "detail": "only scale, pad, fps, setsar, format, crop, zoompan"
     },
     {
-      "name": "Apple media unaltered: contain-fit in clip box, aspect kept, no crop/zoom/pan/colour",
+      "name": "Apple video unaltered (contain-fit, no crop/zoom/pan/colour); Apple stills: smooth Ken Burns <=115%, no edges (t90u)",
       "ok": true,
-      "detail": "hook:2880x1620→900x506, fakta:1920x1920→676x676, catatan:3840x2560→900x600, tanya:3840x2560→900x600 (contain: scale = min(boxW/w, boxH/h), letterbox, no crop)"
+      "detail": "hook:2880x1620→900x506, fakta:1920x1920→676x676, catatan:kenburns 1.08x pan 0.3, tanya:kenburns 1.08x pan -0.3"
     },
     {
       "name": "Apple credit shown (\"Video/Foto: Apple\") on every Apple clip",
@@ -88,14 +88,14 @@
       "detail": "ok"
     },
     {
-      "name": "text mark at bottom on black",
+      "name": "no bottom text mark in card layout (owner t90u)",
       "ok": true,
       "detail": "ok"
     },
     {
-      "name": "text mark colour contrast >= 4.5:1",
+      "name": "handle-to-copy gap airy (>= 44 px)",
       "ok": true,
-      "detail": "hook:white 21:1, fakta:white 21:1, catatan:white 21:1, tanya:white 21:1"
+      "detail": "48, 48, 48, 48 px"
     },
     {
       "name": "captions only where set, in safe area, not over card",
