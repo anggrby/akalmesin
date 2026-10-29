@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-anthropic-ipo",
+  "stage": "notion-delivered",
+  "approvals": {
+    "selected": null,
+    "copy": {
+      "gate": "copy",
+      "words": "I said you to re-create all of those posts in dark mode isn't",
+      "source": "previously published owner-approved text (Notion row + Postiz schedule 2026-10-28) + chat t103u",
+      "context": "NOT a new chat copy approval. Slide copy verbatim from /workspace/tmp/anthropic-ipo/final/final.html (matches the published PNGs), caption verbatim from the old Notion row. Category changed BISNIS -> TEKNOLOGI per the enum mapping; alt text newly written (none was recorded). Owner t103u asked to re-create the post in dark mode.",
+      "at": "2026-10-29T13:00:00.000Z",
+      "atWIB": "2026-10-29 20:00 WIB",
+      "revision": "718442c77938d4af08b9c1da982be19ebd3ab34ef265d9fefe960808720a4d86",
+      "copyRule": 2,
+      "recordedAt": "2026-10-29T13:20:08.491Z"
+    },
+    "final": {
+      "gate": "final",
+      "words": "I said you to re-create all of those posts in dark mode isn't",
+      "source": "chat t103u (design direction: chat t96u)",
+      "context": "Owner t103u: re-create all posts in dark mode; dark format with brand-blue gradient approved in t96u ('Replace all old post with this new posts format'). Does not authorize Instagram publishing or scheduling.",
+      "at": "2026-10-29T13:00:00.000Z",
+      "atWIB": "2026-10-29 20:00 WIB",
+      "revision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+      "designRule": 2,
+      "recordedAt": "2026-10-29T13:25:05.245Z"
+    }
+  },
+  "designStale": false,
+  "notion": {
+    "pageId": "408f909f-26a5-8194-8b60-d945a35f9dde",
+    "url": "https://app.notion.com/p/Anthropic-resmi-ajukan-IPO-408f909f26a581948b60d945a35f9dde",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-28-anthropic-ipo:dark-2026-10-29",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-anthropic-ipo:dark-2026-10-29",
+    "approvedRevision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+    "orderedAssetHashes": [
+      "4b1a28242862b72a7fd94cfbc5b7c8245b81bd3df4776a91daa2064d58d81108",
+      "30e95a88268775bb2592874b488cfaefb214583d5a051b06e16cf4300f9d949e",
+      "d3763e582ac1737035867f95bc4b923941cedd1e82e876a32e0f870f0ee90249",
+      "85541badae40f4c0dba3a0336a25190a2fb052dfd91a62d3a4fc87db752edea6",
+      "0cb3ed93deecb0320195d072d04a441ae0ae101d2a1d3dc6de748d3a31a298c8"
+    ],
+    "uploadedAssetHashes": [
+      "4b1a28242862b72a7fd94cfbc5b7c8245b81bd3df4776a91daa2064d58d81108",
+      "30e95a88268775bb2592874b488cfaefb214583d5a051b06e16cf4300f9d949e",
+      "d3763e582ac1737035867f95bc4b923941cedd1e82e876a32e0f870f0ee90249",
+      "85541badae40f4c0dba3a0336a25190a2fb052dfd91a62d3a4fc87db752edea6",
+      "0cb3ed93deecb0320195d072d04a441ae0ae101d2a1d3dc6de748d3a31a298c8"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-29T13:27:35.161Z",
+    "exportedAtWIB": "2026-10-29 20:27 WIB"
+  },
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "previously published owner-approved text (Notion row + Postiz schedule 2026-10-28) + chat t103u",
+      "revision": "718442c77938d4af08b9c1da982be19ebd3ab34ef265d9fefe960808720a4d86",
+      "at": "2026-10-29T13:00:00.000Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "16b8ae6f185ec6a20886a53604792a5daf9bd2eb4f8ab8ebf21c60b34d02584d",
+      "at": "2026-10-29T13:20:24.490Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "2206bcc3873adf35e951936b177d74ce34dcde0fb1420fcf0cbe2f4fb01e823b",
+      "at": "2026-10-29T13:21:20.235Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "27d84cba6b6d2b4231ac245f25f6201d397be26dfefd4d0e882d70f84b1a93f0",
+      "at": "2026-10-29T13:21:39.216Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "374bbf0f296bf2cc2680a981365f56ccd5bddeca5f4d973ea4db1d1a803db124",
+      "at": "2026-10-29T13:22:10.245Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "f93a2ce1a39bb6b6ebb32070bfb7e2f6707ba83cce90d5bcd322f33d9201f8ec",
+      "at": "2026-10-29T13:22:43.794Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "63bd9c5844d0d0b01d629d17d51117d205e4af1f19e02ba8521b32dc4dce6ad5",
+      "at": "2026-10-29T13:23:06.007Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+      "at": "2026-10-29T13:24:51.595Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t103u (design direction: chat t96u)",
+      "revision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+      "at": "2026-10-29T13:00:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-8194-8b60-d945a35f9dde",
+      "at": "2026-10-29T13:27:35.161Z"
+    }
+  ]
+}

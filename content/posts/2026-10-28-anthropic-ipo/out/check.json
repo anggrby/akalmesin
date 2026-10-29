@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-anthropic-ipo",
+  "designRevision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+  "copyRevision": "718442c77938d4af08b9c1da982be19ebd3ab34ef265d9fefe960808720a4d86",
+  "checkedAt": "2026-10-29T13:27:08.184Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9929218106995885,
+        "meanDistance": 1.0927344881563512,
+        "inkPixels": 0.8649588477366256
+      },
+      "gap": 64,
+      "photoHeight": 757
+    },
+    {
+      "id": "02-pendaftaran",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/02-02-pendaftaran.png",
+      "ink": {
+        "onRamp": 0.9775405947819741,
+        "meanDistance": 2.7553748967762504,
+        "inkPixels": 0.09948914431673052
+      },
+      "gap": 54,
+      "photoHeight": 822
+    },
+    {
+      "id": "03-pendapatan",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/03-03-pendapatan.png",
+      "ink": {
+        "onRamp": 0.9523105674481821,
+        "meanDistance": 3.0631466697183534,
+        "inkPixels": 0.02799864084267754
+      },
+      "gap": 54,
+      "photoHeight": 882
+    },
+    {
+      "id": "04-rugi",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/04-04-rugi.png",
+      "ink": {
+        "onRamp": 0.9965001698946653,
+        "meanDistance": 1.916843107522251,
+        "inkPixels": 0.07940876656472987
+      },
+      "gap": 54,
+      "photoHeight": 882
+    },
+    {
+      "id": "05-penjamin-emisi",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/05-05-penjamin-emisi.png",
+      "ink": {
+        "onRamp": 0.966465973362525,
+        "meanDistance": 2.2907591983938755,
+        "inkPixels": 0.0150519978106185
+      },
+      "gap": 54,
+      "photoHeight": 822
+    }
+  ]
+}

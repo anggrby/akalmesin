@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-28-google-genie-4",
-  "stage": "export",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
     "copy": {
@@ -33,32 +33,32 @@
   },
   "designStale": false,
   "notion": {
-    "pageId": "408f909f-26a5-81e4-81e4-f89a5728b457",
-    "url": "https://app.notion.com/p/Google-rilis-Genie-4-AI-pencipta-dunia-virtual-408f909f26a581e481e4f89a5728b457",
+    "pageId": "408f909f-26a5-8165-a542-c5d9c58fe75f",
+    "url": "https://app.notion.com/p/Google-rilis-Genie-4-AI-pencipta-dunia-virtual-408f909f26a58165a542c5d9c58fe75f",
     "action": "created",
     "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
     "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
     "apiVersion": "2025-09-03",
     "contentId": "akalmesin:2026-10-28-google-genie-4",
     "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-google-genie-4",
-    "approvedRevision": "9d7eb559dd72cd0c16641caa58b6d3efe323cbeeafe527325ea78a75117e32a4",
+    "approvedRevision": "9d92cf0c7fb774f3d4eee3e86ffaf6fa564d911dd35ede28eeaa6aaffe48fe41",
     "orderedAssetHashes": [
-      "d80deea54817a273c18ef07172557c8862ad0b5b6525302d3d2afce3b6c4bc8d",
-      "a271969c7268b1fdfdc5e6757a482a6a49ce319fb55e3a5235e77ec3e19ae27e",
-      "254e6ffa6c79f49ee216d26f5ca88cf148186b129798d4c412e7f413810c035b",
-      "63f617fb460a2abc7b80a90914d54e702e7ba288c53cfaf7e6cac9d8015771e1",
-      "6bd2e955ebf013981f9f1ea1721a939c3bf2f3dbe6d1ecd07146878e322fdfb1"
+      "da1c4753cbdcd47dc61ab97f9687673901accefaa8b18e05cd9b0c1e3f647adc",
+      "958b92594f70cbde8ad2cb975a9cd03b29ba57462cb29c3132596496dcea9654",
+      "0e03c1ccae0fe33fec7f4b80f142ad50711616c4609f1cb18574f38cbd443785",
+      "67f04d6c72003fcba7f02650cfffd6325dccc9e97d65d52555bcd68402eebca1",
+      "1e4ff069653f6f5e52910195d824b5b9d970c46e49df816154b556e5d0bec4f9"
     ],
     "uploadedAssetHashes": [
-      "d80deea54817a273c18ef07172557c8862ad0b5b6525302d3d2afce3b6c4bc8d",
-      "a271969c7268b1fdfdc5e6757a482a6a49ce319fb55e3a5235e77ec3e19ae27e",
-      "254e6ffa6c79f49ee216d26f5ca88cf148186b129798d4c412e7f413810c035b",
-      "63f617fb460a2abc7b80a90914d54e702e7ba288c53cfaf7e6cac9d8015771e1",
-      "6bd2e955ebf013981f9f1ea1721a939c3bf2f3dbe6d1ecd07146878e322fdfb1"
+      "da1c4753cbdcd47dc61ab97f9687673901accefaa8b18e05cd9b0c1e3f647adc",
+      "958b92594f70cbde8ad2cb975a9cd03b29ba57462cb29c3132596496dcea9654",
+      "0e03c1ccae0fe33fec7f4b80f142ad50711616c4609f1cb18574f38cbd443785",
+      "67f04d6c72003fcba7f02650cfffd6325dccc9e97d65d52555bcd68402eebca1",
+      "1e4ff069653f6f5e52910195d824b5b9d970c46e49df816154b556e5d0bec4f9"
     ],
     "assetsMatchBuild": true,
-    "exportedAt": "2026-10-29T03:55:06.332Z",
-    "exportedAtWIB": "2026-10-29 10:55 WIB"
+    "exportedAt": "2026-10-29T13:17:56.980Z",
+    "exportedAtWIB": "2026-10-29 20:17 WIB"
   },
   "legacyRevisions": {},
   "history": [
@@ -174,6 +174,11 @@
       "source": "chat t96u",
       "revision": "9d92cf0c7fb774f3d4eee3e86ffaf6fa564d911dd35ede28eeaa6aaffe48fe41",
       "at": "2026-10-29T11:58:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-8165-a542-c5d9c58fe75f",
+      "at": "2026-10-29T13:17:56.980Z"
     }
   ]
 }

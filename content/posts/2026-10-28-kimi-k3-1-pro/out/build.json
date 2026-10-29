@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-kimi-k3-1-pro",
+  "copyRevision": "9021e805195e038ee35d632945ecd488490fafba9cd4d4392c9c1d0e010a69ec",
+  "creditsRevision": "48425af5662f4e552ca2d9f0edf566252a558920d0d9a7a12992b44826c591ec",
+  "designRevision": "c063d808bf8b5fa0f0d5adb0c3ba7b280698e34156a8e9d0f5c46ab32e6b40d1",
+  "builtAt": "2026-10-29T13:18:19.172Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/01-main.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/01-01-main.png",
+      "pngHash": "ea54f10e030f52e88550e489b475a8d0311ec9d5459c670a0d877b99f4c670fc",
+      "imageHash": "d36874f66f34ac12cfbb6dc1bf53ea0c9d8701a95f0c38c1952aeff6da8fa0e4",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 593,
+          "width": 1080,
+          "height": 757,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-benchmark",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/02-benchmark.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/02-02-benchmark.png",
+      "pngHash": "cb7346357d60c35d4df174df32ea1dbbc6ad2932de5a4e83227aaf1e6ed2cad4",
+      "imageHash": "efacda7315956a4ab4803321640abaf7b5d9fb191cfbac80e9fb1e0e5cc046d9",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 588,
+          "width": 1080,
+          "height": 762,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-3d-game-web",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/03-3d-game-web.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/03-03-3d-game-web.png",
+      "pngHash": "1909fe5132b9e0f39e0b059054102f93c9d41413f5bca77056e5eb9032f16bf8",
+      "imageHash": "ec9f57e9d9af448604c423c5e8dde8354e96ad7683fe83dc086143a390ab4cee",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 588,
+          "width": 1080,
+          "height": 762,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-halusinasi",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/04-halusinasi.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/04-04-halusinasi.png",
+      "pngHash": "1db7de0a575034047e1d3bf0db07303826ea4d3c2a10ead8275e48ded7e8f527",
+      "imageHash": "01791a6badf6fba10fc3f2b28f63b5db6fac5d0e315a9928542419e9407803d6",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 588,
+          "width": 1080,
+          "height": 762,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-ketersediaan",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-kimi-k3-1-pro/out/slides/05-ketersediaan.html",
+      "png": "content/posts/2026-10-28-kimi-k3-1-pro/out/png/05-05-ketersediaan.png",
+      "pngHash": "4755aab00902ac9edb16b75eb2a7d1846ac3c50a6d635d0a76fcc41a1c71487b",
+      "imageHash": "7f55b9a0dfee069c740c6abb0b89bd9808be50cb3e5fef1c9a88c670cbcb4be6",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 768,
+          "width": 1080,
+          "height": 582,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

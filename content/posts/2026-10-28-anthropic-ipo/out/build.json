@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-anthropic-ipo",
+  "copyRevision": "718442c77938d4af08b9c1da982be19ebd3ab34ef265d9fefe960808720a4d86",
+  "creditsRevision": "b9da8cc2fd86dc0376bd26bac853a8c0278340ebf7c49f27724702eb7e517e00",
+  "designRevision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+  "builtAt": "2026-10-29T13:24:51.595Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-10-28-anthropic-ipo/out/slides/01-main.html",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/01-01-main.png",
+      "pngHash": "4b1a28242862b72a7fd94cfbc5b7c8245b81bd3df4776a91daa2064d58d81108",
+      "imageHash": "64a4a96b90e5450035305c0194d570134c6e784396ab701da8060d8e88069ed8",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 593,
+          "width": 1080,
+          "height": 757,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-pendaftaran",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-anthropic-ipo/out/slides/02-pendaftaran.html",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/02-02-pendaftaran.png",
+      "pngHash": "30e95a88268775bb2592874b488cfaefb214583d5a051b06e16cf4300f9d949e",
+      "imageHash": "bdbd30e52b68a1ceb3ae329c21218be6ec4507d34b90005662c8f69df6f73662",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 528,
+          "width": 1080,
+          "height": 822,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-pendapatan",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-anthropic-ipo/out/slides/03-pendapatan.html",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/03-03-pendapatan.png",
+      "pngHash": "d3763e582ac1737035867f95bc4b923941cedd1e82e876a32e0f870f0ee90249",
+      "imageHash": "876683512489a7618dd9a4eaa5875a929f42be5b8cad593779218d875424bee1",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 468,
+          "width": 1080,
+          "height": 882,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-rugi",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-anthropic-ipo/out/slides/04-rugi.html",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/04-04-rugi.png",
+      "pngHash": "85541badae40f4c0dba3a0336a25190a2fb052dfd91a62d3a4fc87db752edea6",
+      "imageHash": "b24747381e07f550a182c76ad66e851cf6ee5511338e8db8e2cc69dde2febe4e",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 468,
+          "width": 1080,
+          "height": 882,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-penjamin-emisi",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-28-anthropic-ipo/out/slides/05-penjamin-emisi.html",
+      "png": "content/posts/2026-10-28-anthropic-ipo/out/png/05-05-penjamin-emisi.png",
+      "pngHash": "0cb3ed93deecb0320195d072d04a441ae0ae101d2a1d3dc6de748d3a31a298c8",
+      "imageHash": "da73e504ceb58b3155b9c8e15e0628a9d259cc5228b4bdc9bc99c643b539d6f0",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 528,
+          "width": 1080,
+          "height": 822,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

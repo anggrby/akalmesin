@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-gpt-6-1-terra",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "e66cf3c5c0a806a63445f3ee07dd135ffd70309903fc54699ea26c5e8f4c773b",
+  "approval": {
+    "gate": "final",
+    "words": "I said you to re-create all of those posts in dark mode isn't",
+    "source": "chat t103u (design direction: chat t96u)",
+    "context": "Owner t103u: re-create all posts in dark mode; dark format with brand-blue gradient approved in t96u ('Replace all old post with this new posts format'). Does not authorize Instagram publishing or scheduling.",
+    "at": "2026-10-29T13:00:00.000Z",
+    "atWIB": "2026-10-29 20:00 WIB",
+    "revision": "e66cf3c5c0a806a63445f3ee07dd135ffd70309903fc54699ea26c5e8f4c773b",
+    "designRule": 2,
+    "recordedAt": "2026-10-29T13:25:05.092Z"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-10-28-gpt-6-1-terra:dark-2026-10-29\". Never match by title alone.",
+  "properties": {
+    "Post": "OpenAI luncurkan GPT-6.1 Terra dengan harga API lebih rendah",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Bayangkan AI yang bisa membaca isi layar dan menjalankan tugas di berbagai aplikasi, dengan harga yang lebih murah. Itulah yang dijanjikan GPT-6.1 Terra, model baru yang diluncurkan OpenAI pada 26 Oktober 2026 waktu AS. Menurut OpenAI, model ini lebih baik daripada GPT-5.6 Terra dalam penggunaan komputer, penalaran visual, dan penulisan.\n\nTerra dirancang untuk menyeimbangkan biaya dan kemampuan. Harga API standarnya US$1 per 1 juta token input dan US$5 per 1 juta token output, separuh harga GPT-6.1 Sol. Dibandingkan GPT-5.6 Terra, harga input turun 50% dan output sekitar 58%. Model ini tersedia bagi pengguna Plus, Pro, Enterprise, dan Edu di ChatGPT Work dan Codex, serta lewat API.\n\nAda batasnya. Angka benchmark-nya berasal dari pengujian OpenAI sendiri dan belum diverifikasi secara independen. OpenAI pun tetap menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk riset mendalam dan pemrograman kompleks. Menurutmu, mana yang lebih penting saat memilih model AI: harga atau kemampuan?\n\nSumber: OpenAI / Foto: OpenAI\nIlustrasi slide 5: AI / akalmesin\n\n#akalmesin #OpenAI #GPT61 #ChatGPT #KecerdasanBuatan",
+    "Topic": "AI",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-harga.png",
+      "03-03-ketersediaan.png",
+      "04-04-hasil-uji.png",
+      "05-05-keamanan.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-10-28-gpt-6-1-terra:dark-2026-10-29",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-gpt-6-1-terra:dark-2026-10-29",
+  "body": "# Approved copy\n\n## 01-main\n\nOpenAI luncurkan GPT-6.1 Terra dengan harga API lebih rendah\n\nDiklaim melampaui GPT-5.6 Terra untuk urusan kendali komputer, pengolahan visual, dan penulisan—dengan tarif separuh dari model Sol.\n\n## 02-harga\n\nHarga API standar GPT-6.1 Terra adalah US$1 per 1 juta token input, US$0,05 untuk input yang di-cache, dan US$5 untuk output. GPT-6.1 Sol dipatok US$2/US$0,10/US$10, GPT-6 Astra US$10/US$1/US$50, dan GPT-6 Luna US$0,10/US$0,01/US$0,50. Dibandingkan GPT-5.6 Terra (US$2/US$0,20/US$12), harga input Terra baru **50% lebih rendah dan harga output sekitar 58% lebih rendah**. Tarif ini berlaku hingga 272 ribu token input.\n\n## 03-ketersediaan\n\nOpenAI menyatakan GPT-6.1 Terra tersedia bagi seluruh pengguna **Plus, Pro, Enterprise, dan Edu** di ChatGPT Work dan Codex, serta melalui API dengan ID gpt-6.1-terra. Menurut OpenAI, kuota penggunaan di ChatGPT Work dan Codex menjangkau lebih banyak tugas dibandingkan GPT-5.6 Terra, dan jauh lebih banyak dibandingkan GPT-6.1 Sol atau GPT-6 Astra.\n\n## 04-hasil-uji\n\nPada benchmark Agents' Last Exam, OpenAI melaporkan skor GPT-6.1 Terra **15 poin persentase di atas GPT-5.6 Terra** **dengan biaya sekitar sepertiganya**, setara GPT-6 Astra dengan harga per token sepersepuluhnya. Pada Terminal-Bench 4.0, model ini menyelesaikan 50,3% tugas, dibandingkan 21,5% untuk GPT-5.6 Terra. Angka-angka ini berasal dari pengujian OpenAI dan belum diverifikasi secara independen.\n\n## 05-keamanan\n\nOpenAI menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk **riset mendalam dan pemrograman kompleks**. Perusahaan juga menilai GPT-6.1 Terra memenuhi ambang \"Critical\" bidang keamanan siber dalam Preparedness Framework-nya, sehingga perlindungan yang dikembangkan untuk GPT-6 Astra tetap diterapkan.\n\n# Caption\n\nBayangkan AI yang bisa membaca isi layar dan menjalankan tugas di berbagai aplikasi, dengan harga yang lebih murah. Itulah yang dijanjikan GPT-6.1 Terra, model baru yang diluncurkan OpenAI pada 26 Oktober 2026 waktu AS. Menurut OpenAI, model ini lebih baik daripada GPT-5.6 Terra dalam penggunaan komputer, penalaran visual, dan penulisan.\n\nTerra dirancang untuk menyeimbangkan biaya dan kemampuan. Harga API standarnya US$1 per 1 juta token input dan US$5 per 1 juta token output, separuh harga GPT-6.1 Sol. Dibandingkan GPT-5.6 Terra, harga input turun 50% dan output sekitar 58%. Model ini tersedia bagi pengguna Plus, Pro, Enterprise, dan Edu di ChatGPT Work dan Codex, serta lewat API.\n\nAda batasnya. Angka benchmark-nya berasal dari pengujian OpenAI sendiri dan belum diverifikasi secara independen. OpenAI pun tetap menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk riset mendalam dan pemrograman kompleks. Menurutmu, mana yang lebih penting saat memilih model AI: harga atau kemampuan?\n\nSumber: OpenAI / Foto: OpenAI\nIlustrasi slide 5: AI / akalmesin\n\n#akalmesin #OpenAI #GPT61 #ChatGPT #KecerdasanBuatan\n\n# Sources\n\n- [OpenAI — Introducing GPT-6.1 Terra](https://openai.com/index/introducing-gpt-6-1-terra)\n- [OpenAI API model docs — gpt-6.1-terra](https://developers.openai.com/api/docs/models/gpt-6.1-terra)\n- [OpenAI Deployment Safety Hub — GPT-6.1 Terra](https://deploymentsafety.openai.com/gpt-6-1-terra)\n- [OpenAI API pricing](https://developers.openai.com/api/docs/pricing)\n- [OpenAI on X (X1–X4)](https://x.com/OpenAI/status/2114780711664398349)\n\n# Alt text and photo credits\n\n01-main: Judul peluncuran GPT-6.1 Terra oleh OpenAI dengan ringkasan harga. Gambar resmi OpenAI menampilkan ilustrasi Bumi untuk model Terra.\n\nFOTO: GPT-6.1 TERRA / OPENAI\n\n02-harga: Detail harga API per 1 juta token untuk GPT-6.1 Terra, GPT-6.1 Sol, GPT-6 Astra, GPT-6 Luna, dan GPT-5.6 Terra. Grafik OpenAI menampilkan empat kartu model bergambar galaksi, matahari, Bumi, dan bulan beserta harganya.\n\nFOTO: MODEL GPT-6 / OPENAI\n\n03-ketersediaan: Detail ketersediaan di ChatGPT Work, Codex, dan API. Cuplikan video peluncuran OpenAI.\n\nFOTO: GPT-6.1 TERRA / OPENAI\n\n04-hasil-uji: Detail hasil benchmark internal OpenAI. Grafik OpenAI tentang hasil Agents' Last Exam.\n\nFOTO: AGENTS' LAST EXAM / OPENAI\n\n05-keamanan: Detail rekomendasi model untuk tugas kompleks dan status keamanan siber. Ilustrasi AI berwarna tinta biru menampilkan perisai di atas deretan server.\n\nILUSTRASI AI: KEAMANAN SIBER / AKALMESIN\n\n# Approval\n\n\"I said you to re-create all of those posts in dark mode isn't\" — chat t103u (design direction: chat t96u), 2026-10-29 20:00 WIB\n\nApproved design revision: e66cf3c5c0a806a63445f3ee07dd135ffd70309903fc54699ea26c5e8f4c773b\n\n# Source ledger\n\n# Sources — OpenAI luncurkan GPT-6.1 Terra dengan harga API lebih rendah (re-created 2026-10-29 WIB)\n\nCopy is the previously published, owner-approved text; sources not re-read on 2026-10-29.\n\n| Claim                                                             | Status                                        | Source                                                      |\n| ----------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------- |\n| launch, availability, benchmarks, recommendation                  | Previously published claim (re-used verbatim) | https://openai.com/index/introducing-gpt-6-1-terra          |\n| API ID                                                            | Previously published claim (re-used verbatim) | https://developers.openai.com/api/docs/models/gpt-6.1-terra |\n| Critical cybersecurity threshold                                  | Previously published claim (re-used verbatim) | https://deploymentsafety.openai.com/gpt-6-1-terra           |\n| prices, 272K input tier                                           | Previously published claim (re-used verbatim) | https://developers.openai.com/api/docs/pricing              |\n| launch video, pricing card, Agents' Last Exam chart, availability | Previously published claim (re-used verbatim) | https://x.com/OpenAI/status/2114780711664398349             |\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-10-28-gpt-6-1-terra:dark-2026-10-29\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-10-28-gpt-6-1-terra/out/png/01-01-main.png",
+      "sha256": "b599a1f13018b376df21f70c7ca40ee00e7a9331dd070747402b104173a7e070",
+      "bytes": 968533
+    },
+    {
+      "slideId": "02-harga",
+      "file": "content/posts/2026-10-28-gpt-6-1-terra/out/png/02-02-harga.png",
+      "sha256": "b5a8880abeccf7928d9de8627b81e3ef41ca332dae78cb708512cc533906c3b1",
+      "bytes": 946899
+    },
+    {
+      "slideId": "03-ketersediaan",
+      "file": "content/posts/2026-10-28-gpt-6-1-terra/out/png/03-03-ketersediaan.png",
+      "sha256": "9f72b709942784b5ebb16447dd1871a84eb56a0c0fdbe121e7a42691b5de4643",
+      "bytes": 1141238
+    },
+    {
+      "slideId": "04-hasil-uji",
+      "file": "content/posts/2026-10-28-gpt-6-1-terra/out/png/04-04-hasil-uji.png",
+      "sha256": "878fdc339a1ce17808bb13f763936eeb4570e9e87fcf4ecc3153eedf4de45b25",
+      "bytes": 856320
+    },
+    {
+      "slideId": "05-keamanan",
+      "file": "content/posts/2026-10-28-gpt-6-1-terra/out/png/05-05-keamanan.png",
+      "sha256": "1052ca71194f0fdd5ea4899c5e835ee272010089270fff2b35b9ccc16a758577",
+      "bytes": 1162227
+    }
+  ],
+  "generatedAt": "2026-10-29T13:27:24.061Z"
+}

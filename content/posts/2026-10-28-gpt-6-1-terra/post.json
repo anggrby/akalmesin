@@ -1,0 +1,169 @@
+{
+  "slug": "2026-10-28-gpt-6-1-terra",
+  "contentId": "akalmesin:2026-10-28-gpt-6-1-terra:dark-2026-10-29",
+  "category": "AI",
+  "title": "OpenAI luncurkan GPT-6.1 Terra dengan harga API lebih rendah",
+  "format": "in-depth",
+  "formatReason": "In-depth: Main + four detail slides (harga, ketersediaan, hasil uji OpenAI, batas penggunaan dan keamanan). Re-created in the dark format from the previously published owner-approved copy (Notion 406f909f26a581dea134cfd58a365f2f).",
+  "eventDate": "2026-10-26",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "OpenAI luncurkan",
+        "GPT-6.1 Terra dengan",
+        "harga API lebih rendah"
+      ],
+      "summary": "Diklaim melampaui GPT-5.6 Terra untuk urusan kendali komputer, pengolahan visual, dan penulisan—dengan tarif separuh dari model Sol.",
+      "credit": "FOTO: GPT-6.1 TERRA / OPENAI",
+      "alt": "Judul peluncuran GPT-6.1 Terra oleh OpenAI dengan ringkasan harga. Gambar resmi OpenAI menampilkan ilustrasi Bumi untuk model Terra.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-27",
+        "treatment": "blue-ink",
+        "id": "openai-blog-terra-art-card",
+        "kind": "source-photo",
+        "sourceURL": "https://openai.com/index/introducing-gpt-6-1-terra",
+        "originalURL": null,
+        "originalFile": "assets/originals/openai-blog-terra-art-card.png",
+        "subject": "Official OpenAI blog card art for GPT-6.1 Terra (Earth illustration)",
+        "supplier": "OpenAI",
+        "process": {
+          "maxWidth": 1200
+        }
+      }
+    },
+    {
+      "id": "02-harga",
+      "layout": "detail1",
+      "paragraphs": [
+        "Harga API standar GPT-6.1 Terra adalah US$1 per 1 juta token input, US$0,05 untuk input yang di-cache, dan US$5 untuk output. GPT-6.1 Sol dipatok US$2/US$0,10/US$10, GPT-6 Astra US$10/US$1/US$50, dan GPT-6 Luna US$0,10/US$0,01/US$0,50. Dibandingkan GPT-5.6 Terra (US$2/US$0,20/US$12), harga input Terra baru **50% lebih rendah dan harga output sekitar 58% lebih rendah**. Tarif ini berlaku hingga 272 ribu token input."
+      ],
+      "credit": "FOTO: MODEL GPT-6 / OPENAI",
+      "alt": "Detail harga API per 1 juta token untuk GPT-6.1 Terra, GPT-6.1 Sol, GPT-6 Astra, GPT-6 Luna, dan GPT-5.6 Terra. Grafik OpenAI menampilkan empat kartu model bergambar galaksi, matahari, Bumi, dan bulan beserta harganya.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-27",
+        "treatment": "blue-ink",
+        "id": "x-2114780715-pricing-video-thumb",
+        "kind": "source-photo",
+        "sourceURL": "https://x.com/OpenAI/status/2114780715086754261",
+        "originalURL": null,
+        "originalFile": "assets/originals/x-2114780715-pricing-video-thumb.jpg",
+        "subject": "Four-model card frame (Astra, Sol, Terra, Luna) from OpenAI's X pricing video",
+        "supplier": "OpenAI (X)"
+      }
+    },
+    {
+      "id": "03-ketersediaan",
+      "layout": "detail1",
+      "paragraphs": [
+        "OpenAI menyatakan GPT-6.1 Terra tersedia bagi seluruh pengguna **Plus, Pro, Enterprise, dan Edu** di ChatGPT Work dan Codex, serta melalui API dengan ID gpt-6.1-terra. Menurut OpenAI, kuota penggunaan di ChatGPT Work dan Codex menjangkau lebih banyak tugas dibandingkan GPT-5.6 Terra, dan jauh lebih banyak dibandingkan GPT-6.1 Sol atau GPT-6 Astra."
+      ],
+      "credit": "FOTO: GPT-6.1 TERRA / OPENAI",
+      "alt": "Detail ketersediaan di ChatGPT Work, Codex, dan API. Cuplikan video peluncuran OpenAI.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-27",
+        "treatment": "blue-ink",
+        "id": "x-2114780711-launch-video-thumb",
+        "kind": "source-photo",
+        "sourceURL": "https://x.com/OpenAI/status/2114780711664398349",
+        "originalURL": null,
+        "originalFile": "assets/originals/x-2114780711-launch-video-thumb.jpg",
+        "subject": "Launch video frame from OpenAI's X announcement",
+        "supplier": "OpenAI (X)"
+      }
+    },
+    {
+      "id": "04-hasil-uji",
+      "layout": "detail1",
+      "paragraphs": [
+        "Pada benchmark Agents' Last Exam, OpenAI melaporkan skor GPT-6.1 Terra **15 poin persentase di atas GPT-5.6 Terra** **dengan biaya sekitar sepertiganya**, setara GPT-6 Astra dengan harga per token sepersepuluhnya. Pada Terminal-Bench 4.0, model ini menyelesaikan 50,3% tugas, dibandingkan 21,5% untuk GPT-5.6 Terra. Angka-angka ini berasal dari pengujian OpenAI dan belum diverifikasi secara independen."
+      ],
+      "credit": "FOTO: AGENTS' LAST EXAM / OPENAI",
+      "alt": "Detail hasil benchmark internal OpenAI. Grafik OpenAI tentang hasil Agents' Last Exam.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-27",
+        "treatment": "blue-ink",
+        "id": "x-2114780717-agents-last-exam",
+        "kind": "source-photo",
+        "sourceURL": "https://x.com/OpenAI/status/2114780717188272382",
+        "originalURL": null,
+        "originalFile": "assets/originals/x-2114780717-agents-last-exam.png",
+        "subject": "OpenAI chart of Agents' Last Exam results",
+        "supplier": "OpenAI (X)"
+      }
+    },
+    {
+      "id": "05-keamanan",
+      "layout": "detail1",
+      "paragraphs": [
+        "OpenAI menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk **riset mendalam dan pemrograman kompleks**. Perusahaan juga menilai GPT-6.1 Terra memenuhi ambang \"Critical\" bidang keamanan siber dalam Preparedness Framework-nya, sehingga perlindungan yang dikembangkan untuk GPT-6 Astra tetap diterapkan."
+      ],
+      "credit": "ILUSTRASI AI: KEAMANAN SIBER / AKALMESIN",
+      "alt": "Detail rekomendasi model untuk tugas kompleks dan status keamanan siber. Ilustrasi AI berwarna tinta biru menampilkan perisai di atas deretan server.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-27",
+        "treatment": "blue-ink",
+        "id": "ai-illustration-keamanan-siber",
+        "kind": "ai-illustration",
+        "originalFile": "assets/originals/ai-illustration-keamanan-siber.jpg",
+        "subject": "AI illustration: shield over server racks (no real people)",
+        "supplier": "akalmesin (generated 2026-10-27)",
+        "process": {
+          "maxWidth": 600
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Bayangkan AI yang bisa membaca isi layar dan menjalankan tugas di berbagai aplikasi, dengan harga yang lebih murah. Itulah yang dijanjikan GPT-6.1 Terra, model baru yang diluncurkan OpenAI pada 26 Oktober 2026 waktu AS. Menurut OpenAI, model ini lebih baik daripada GPT-5.6 Terra dalam penggunaan komputer, penalaran visual, dan penulisan.",
+    "Terra dirancang untuk menyeimbangkan biaya dan kemampuan. Harga API standarnya US$1 per 1 juta token input dan US$5 per 1 juta token output, separuh harga GPT-6.1 Sol. Dibandingkan GPT-5.6 Terra, harga input turun 50% dan output sekitar 58%. Model ini tersedia bagi pengguna Plus, Pro, Enterprise, dan Edu di ChatGPT Work dan Codex, serta lewat API.",
+    "Ada batasnya. Angka benchmark-nya berasal dari pengujian OpenAI sendiri dan belum diverifikasi secara independen. OpenAI pun tetap menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk riset mendalam dan pemrograman kompleks. Menurutmu, mana yang lebih penting saat memilih model AI: harga atau kemampuan?",
+    "Sumber: OpenAI / Foto: OpenAI\nIlustrasi slide 5: AI / akalmesin\n\n#akalmesin #OpenAI #GPT61 #ChatGPT #KecerdasanBuatan"
+  ],
+  "sources": [
+    {
+      "title": "OpenAI — Introducing GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "published": "2026-10-26",
+      "supports": [
+        "launch, availability, benchmarks, recommendation"
+      ]
+    },
+    {
+      "title": "OpenAI API model docs — gpt-6.1-terra",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+      "supports": [
+        "API ID"
+      ]
+    },
+    {
+      "title": "OpenAI Deployment Safety Hub — GPT-6.1 Terra",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-terra",
+      "published": "2026-10-26",
+      "supports": [
+        "Critical cybersecurity threshold"
+      ]
+    },
+    {
+      "title": "OpenAI API pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "supports": [
+        "prices, 272K input tier"
+      ]
+    },
+    {
+      "title": "OpenAI on X (X1–X4)",
+      "url": "https://x.com/OpenAI/status/2114780711664398349",
+      "published": "2026-10-26",
+      "supports": [
+        "launch video, pricing card, Agents' Last Exam chart, availability"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-anthropic-ipo",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+  "approval": {
+    "gate": "final",
+    "words": "I said you to re-create all of those posts in dark mode isn't",
+    "source": "chat t103u (design direction: chat t96u)",
+    "context": "Owner t103u: re-create all posts in dark mode; dark format with brand-blue gradient approved in t96u ('Replace all old post with this new posts format'). Does not authorize Instagram publishing or scheduling.",
+    "at": "2026-10-29T13:00:00.000Z",
+    "atWIB": "2026-10-29 20:00 WIB",
+    "revision": "2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4",
+    "designRule": 2,
+    "recordedAt": "2026-10-29T13:25:05.245Z"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-10-28-anthropic-ipo:dark-2026-10-29\". Never match by title alone.",
+  "properties": {
+    "Post": "Anthropic resmi ajukan IPO",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Anthropic, perusahaan di balik Claude, resmi mengajukan rencana penawaran saham perdana (IPO) ke Komisi Sekuritas dan Bursa AS (SEC) pada 26 Oktober 2026 waktu AS. Sahamnya direncanakan tercatat di Nasdaq dengan kode \"ANT\". Jumlah saham dan harga belum ditentukan, dan pendaftaran masih menunggu berlaku efektif.\n\nDokumen S-1 menunjukkan pendapatan US$16,3 miliar pada semester pertama 2026, dengan pertumbuhan 1.368% secara tahunan pada kuartal kedua. Lebih dari separuh perusahaan Fortune 500 kini menjadi pelanggan dengan belanja minimal US$100.000 per tahun. Namun, rugi bersihnya US$80,7 miliar, sebagian besar karena biaya akuntansi atas instrumen pendanaan, bukan biaya operasional.\n\nReuters melaporkan Anthropic mengincar hingga US$100 miliar, yang bisa menjadikannya IPO terbesar dalam sejarah. Angka ini belum dikonfirmasi dalam dokumen resmi. Menurutmu, apakah investor siap menanam modal di perusahaan AI yang masih merugi?\n\nSumber: Anthropic, SEC, Reuters / Foto: Dario Amodei oleh TechCrunch (CC BY 2.0, via Wikimedia Commons), dokumen S-1 SEC\n\n#akalmesin #Anthropic #Claude #IPO #KecerdasanBuatan",
+    "Topic": "TEKNOLOGI",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-pendaftaran.png",
+      "03-03-pendapatan.png",
+      "04-04-rugi.png",
+      "05-05-penjamin-emisi.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-10-28-anthropic-ipo:dark-2026-10-29",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-anthropic-ipo:dark-2026-10-29",
+  "body": "# Approved copy\n\n## 01-main\n\nAnthropic resmi ajukan IPO\n\nPerusahaan pembuat Claude ini berencana melantai di Nasdaq dengan kode saham \"ANT\".\n\n## 02-pendaftaran\n\nAnthropic menyerahkan dokumen pendaftaran Form S-1 ke Komisi Sekuritas dan Bursa AS (SEC) pada 26 Oktober 2026. Jumlah saham dan kisaran harganya **belum ditentukan**, dan pendaftaran ini belum berlaku efektif.\n\n## 03-pendapatan\n\nMenurut dokumen S-1, pendapatan Anthropic pada semester pertama 2026 mencapai **US$16,3 miliar**, naik dari US$1,2 miliar pada periode yang sama tahun lalu.\n\n## 04-rugi\n\nPada periode yang sama, Anthropic mencatat rugi bersih US$80,7 miliar. Sebagian besar berasal dari **biaya akuntansi atas instrumen pendanaan**, sementara rugi operasionalnya US$693 juta.\n\n## 05-penjamin-emisi\n\nReuters melaporkan Anthropic **mengincar dana hingga US$100 miliar**, berpotensi menjadi IPO terbesar sepanjang sejarah. Angka ini belum tercantum di S-1. Goldman Sachs dan Morgan Stanley menjadi penjamin emisi.\n\n# Caption\n\nAnthropic, perusahaan di balik Claude, resmi mengajukan rencana penawaran saham perdana (IPO) ke Komisi Sekuritas dan Bursa AS (SEC) pada 26 Oktober 2026 waktu AS. Sahamnya direncanakan tercatat di Nasdaq dengan kode \"ANT\". Jumlah saham dan harga belum ditentukan, dan pendaftaran masih menunggu berlaku efektif.\n\nDokumen S-1 menunjukkan pendapatan US$16,3 miliar pada semester pertama 2026, dengan pertumbuhan 1.368% secara tahunan pada kuartal kedua. Lebih dari separuh perusahaan Fortune 500 kini menjadi pelanggan dengan belanja minimal US$100.000 per tahun. Namun, rugi bersihnya US$80,7 miliar, sebagian besar karena biaya akuntansi atas instrumen pendanaan, bukan biaya operasional.\n\nReuters melaporkan Anthropic mengincar hingga US$100 miliar, yang bisa menjadikannya IPO terbesar dalam sejarah. Angka ini belum dikonfirmasi dalam dokumen resmi. Menurutmu, apakah investor siap menanam modal di perusahaan AI yang masih merugi?\n\nSumber: Anthropic, SEC, Reuters / Foto: Dario Amodei oleh TechCrunch (CC BY 2.0, via Wikimedia Commons), dokumen S-1 SEC\n\n#akalmesin #Anthropic #Claude #IPO #KecerdasanBuatan\n\n# Sources\n\n- [SEC EDGAR — Anthropic PBC Form S-1](https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm)\n- [Anthropic — S-1 announcement](https://www.anthropic.com/news/s1-sec)\n- [Reuters — Nvidia in talks to invest in Anthropic's mega IPO](https://www.reuters.com/legal/transactional/nvidia-talks-invest-anthropics-mega-ipo-sources-say-2026-09-11/)\n- [Investing.com (Reuters factbox)](https://www.investing.com/news/stock-market-news/factboxanthropic-moves-closer-to-blockbuster-listing-with-us-ipo-filing-4972888)\n- [CNBC live updates](https://www.cnbc.com/2026/10/26/anthropic-ipo-live-updates-ai-s-1-filing.html)\n\n# Alt text and photo credits\n\n01-main: Foto arsip CEO Anthropic Dario Amodei berbicara di panggung TechCrunch Disrupt 2023.\n\nFOTO: DARIO AMODEI / TECHCRUNCH\n\n02-pendaftaran: Potongan halaman sampul Form S-1 Anthropic, PBC di SEC.\n\nFOTO: DOKUMEN S-1 / SEC\n\n03-pendapatan: Potongan tabel laporan operasi konsolidasi di Form S-1 Anthropic.\n\nFOTO: DOKUMEN S-1 / SEC\n\n04-rugi: Potongan tabel rugi bersih dan rugi operasional di Form S-1 Anthropic.\n\nFOTO: DOKUMEN S-1 / SEC\n\n05-penjamin-emisi: Potongan daftar penjamin emisi di Form S-1, termasuk Goldman Sachs dan Morgan Stanley.\n\nFOTO: DOKUMEN S-1 / SEC\n\n# Approval\n\n\"I said you to re-create all of those posts in dark mode isn't\" — chat t103u (design direction: chat t96u), 2026-10-29 20:00 WIB\n\nApproved design revision: 2207b9fc073d2d584ae7e08ab6feb93cb1d152df8c597b2d64ed3d455d29c9c4\n\n# Source ledger\n\n# Sources — Anthropic resmi ajukan IPO (re-created 2026-10-29 WIB)\n\nCopy is the previously published, owner-approved text; sources not re-read on 2026-10-29.\n\n| Claim                                                                                              | Status                                        | Source                                                                                                                           |\n| -------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |\n| filing date, Nasdaq ANT, shares/price TBD, H1 2026 revenue, net loss, operating loss, underwriters | Previously published claim (re-used verbatim) | https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm                                          |\n| filing announcement                                                                                | Previously published claim (re-used verbatim) | https://www.anthropic.com/news/s1-sec                                                                                            |\n| up to US$100B (sources; not in S-1)                                                                | Previously published claim (re-used verbatim) | https://www.reuters.com/legal/transactional/nvidia-talks-invest-anthropics-mega-ipo-sources-say-2026-09-11/                      |\n| US$100B repeated                                                                                   | Previously published claim (re-used verbatim) | https://www.investing.com/news/stock-market-news/factboxanthropic-moves-closer-to-blockbuster-listing-with-us-ipo-filing-4972888 |\n| context                                                                                            | Previously published claim (re-used verbatim) | https://www.cnbc.com/2026/10/26/anthropic-ipo-live-updates-ai-s-1-filing.html                                                    |\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-10-28-anthropic-ipo:dark-2026-10-29\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-10-28-anthropic-ipo/out/png/01-01-main.png",
+      "sha256": "4b1a28242862b72a7fd94cfbc5b7c8245b81bd3df4776a91daa2064d58d81108",
+      "bytes": 1168044
+    },
+    {
+      "slideId": "02-pendaftaran",
+      "file": "content/posts/2026-10-28-anthropic-ipo/out/png/02-02-pendaftaran.png",
+      "sha256": "30e95a88268775bb2592874b488cfaefb214583d5a051b06e16cf4300f9d949e",
+      "bytes": 965344
+    },
+    {
+      "slideId": "03-pendapatan",
+      "file": "content/posts/2026-10-28-anthropic-ipo/out/png/03-03-pendapatan.png",
+      "sha256": "d3763e582ac1737035867f95bc4b923941cedd1e82e876a32e0f870f0ee90249",
+      "bytes": 948400
+    },
+    {
+      "slideId": "04-rugi",
+      "file": "content/posts/2026-10-28-anthropic-ipo/out/png/04-04-rugi.png",
+      "sha256": "85541badae40f4c0dba3a0336a25190a2fb052dfd91a62d3a4fc87db752edea6",
+      "bytes": 1076482
+    },
+    {
+      "slideId": "05-penjamin-emisi",
+      "file": "content/posts/2026-10-28-anthropic-ipo/out/png/05-05-penjamin-emisi.png",
+      "sha256": "0cb3ed93deecb0320195d072d04a441ae0ae101d2a1d3dc6de748d3a31a298c8",
+      "bytes": 849159
+    }
+  ],
+  "generatedAt": "2026-10-29T13:27:29.170Z"
+}

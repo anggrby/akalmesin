@@ -1,0 +1,177 @@
+{
+  "slug": "2026-10-28-anthropic-ipo",
+  "contentId": "akalmesin:2026-10-28-anthropic-ipo:dark-2026-10-29",
+  "category": "TEKNOLOGI",
+  "title": "Anthropic resmi ajukan IPO",
+  "format": "in-depth",
+  "formatReason": "In-depth: Main + four detail slides (pendaftaran, pendapatan, rugi, penjamin emisi). Re-created in the dark format from the previously published owner-approved copy (old category BISNIS, now TEKNOLOGI).",
+  "eventDate": "2026-10-26",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Anthropic resmi",
+        "ajukan IPO"
+      ],
+      "summary": "Perusahaan pembuat Claude ini berencana melantai di Nasdaq dengan kode saham \"ANT\".",
+      "credit": "FOTO: DARIO AMODEI / TECHCRUNCH",
+      "alt": "Foto arsip CEO Anthropic Dario Amodei berbicara di panggung TechCrunch Disrupt 2023.",
+      "imagePosition": "50% 30%",
+      "imageSource": {
+        "retrieved": "2026-10-28",
+        "treatment": "blue-ink",
+        "id": "commons-dario-amodei-techcrunch-disrupt-2023",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Dario_Amodei_at_TechCrunch_Disrupt_2023_01.jpg",
+        "originalURL": "https://www.flickr.com/photos/techcrunch/53202070940/",
+        "originalFile": "assets/originals/commons-dario-amodei-techcrunch-disrupt-2023.jpg",
+        "subject": "Dario Amodei, CEO Anthropic, TechCrunch Disrupt 2023, San Francisco, 20 Sep 2023 (archive photo)",
+        "supplier": "TechCrunch / Wikimedia Commons",
+        "license": "CC BY 2.0"
+      }
+    },
+    {
+      "id": "02-pendaftaran",
+      "layout": "detail1",
+      "paragraphs": [
+        "Anthropic menyerahkan dokumen pendaftaran Form S-1 ke Komisi Sekuritas dan Bursa AS (SEC) pada 26 Oktober 2026. Jumlah saham dan kisaran harganya **belum ditentukan**, dan pendaftaran ini belum berlaku efektif."
+      ],
+      "credit": "FOTO: DOKUMEN S-1 / SEC",
+      "alt": "Potongan halaman sampul Form S-1 Anthropic, PBC di SEC.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-28",
+        "treatment": "blue-ink",
+        "id": "sec-s1-crop-p02",
+        "kind": "document",
+        "sourceURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalFile": "assets/originals/sec-s1-crop-p02.png",
+        "subject": "Form S-1 cover page crop",
+        "supplier": "SEC EDGAR (Anthropic PBC Form S-1)",
+        "license": "Public US government filing record",
+        "process": {
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "03-pendapatan",
+      "layout": "detail1",
+      "paragraphs": [
+        "Menurut dokumen S-1, pendapatan Anthropic pada semester pertama 2026 mencapai **US$16,3 miliar**, naik dari US$1,2 miliar pada periode yang sama tahun lalu."
+      ],
+      "credit": "FOTO: DOKUMEN S-1 / SEC",
+      "alt": "Potongan tabel laporan operasi konsolidasi di Form S-1 Anthropic.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-28",
+        "treatment": "blue-ink",
+        "id": "sec-s1-crop-p03",
+        "kind": "document",
+        "sourceURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalFile": "assets/originals/sec-s1-crop-p03.png",
+        "subject": "Consolidated statements of operations table crop (revenue)",
+        "supplier": "SEC EDGAR (Anthropic PBC Form S-1)",
+        "license": "Public US government filing record"
+      }
+    },
+    {
+      "id": "04-rugi",
+      "layout": "detail1",
+      "paragraphs": [
+        "Pada periode yang sama, Anthropic mencatat rugi bersih US$80,7 miliar. Sebagian besar berasal dari **biaya akuntansi atas instrumen pendanaan**, sementara rugi operasionalnya US$693 juta."
+      ],
+      "credit": "FOTO: DOKUMEN S-1 / SEC",
+      "alt": "Potongan tabel rugi bersih dan rugi operasional di Form S-1 Anthropic.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-28",
+        "treatment": "blue-ink",
+        "id": "sec-s1-crop-p04",
+        "kind": "document",
+        "sourceURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalFile": "assets/originals/sec-s1-crop-p04.png",
+        "subject": "Consolidated statements of operations table crop (net loss)",
+        "supplier": "SEC EDGAR (Anthropic PBC Form S-1)",
+        "license": "Public US government filing record",
+        "process": {
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "05-penjamin-emisi",
+      "layout": "detail1",
+      "paragraphs": [
+        "Reuters melaporkan Anthropic **mengincar dana hingga US$100 miliar**, berpotensi menjadi IPO terbesar sepanjang sejarah. Angka ini belum tercantum di S-1. Goldman Sachs dan Morgan Stanley menjadi penjamin emisi."
+      ],
+      "credit": "FOTO: DOKUMEN S-1 / SEC",
+      "alt": "Potongan daftar penjamin emisi di Form S-1, termasuk Goldman Sachs dan Morgan Stanley.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-28",
+        "treatment": "blue-ink",
+        "id": "sec-s1-crop-p05",
+        "kind": "document",
+        "sourceURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalURL": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+        "originalFile": "assets/originals/sec-s1-crop-p05.png",
+        "subject": "Underwriters list crop (Goldman Sachs, Morgan Stanley)",
+        "supplier": "SEC EDGAR (Anthropic PBC Form S-1)",
+        "license": "Public US government filing record"
+      }
+    }
+  ],
+  "caption": [
+    "Anthropic, perusahaan di balik Claude, resmi mengajukan rencana penawaran saham perdana (IPO) ke Komisi Sekuritas dan Bursa AS (SEC) pada 26 Oktober 2026 waktu AS. Sahamnya direncanakan tercatat di Nasdaq dengan kode \"ANT\". Jumlah saham dan harga belum ditentukan, dan pendaftaran masih menunggu berlaku efektif.",
+    "Dokumen S-1 menunjukkan pendapatan US$16,3 miliar pada semester pertama 2026, dengan pertumbuhan 1.368% secara tahunan pada kuartal kedua. Lebih dari separuh perusahaan Fortune 500 kini menjadi pelanggan dengan belanja minimal US$100.000 per tahun. Namun, rugi bersihnya US$80,7 miliar, sebagian besar karena biaya akuntansi atas instrumen pendanaan, bukan biaya operasional.",
+    "Reuters melaporkan Anthropic mengincar hingga US$100 miliar, yang bisa menjadikannya IPO terbesar dalam sejarah. Angka ini belum dikonfirmasi dalam dokumen resmi. Menurutmu, apakah investor siap menanam modal di perusahaan AI yang masih merugi?",
+    "Sumber: Anthropic, SEC, Reuters / Foto: Dario Amodei oleh TechCrunch (CC BY 2.0, via Wikimedia Commons), dokumen S-1 SEC\n\n#akalmesin #Anthropic #Claude #IPO #KecerdasanBuatan"
+  ],
+  "sources": [
+    {
+      "title": "SEC EDGAR — Anthropic PBC Form S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+      "published": "2026-10-26",
+      "supports": [
+        "filing date, Nasdaq ANT, shares/price TBD, H1 2026 revenue, net loss, operating loss, underwriters"
+      ]
+    },
+    {
+      "title": "Anthropic — S-1 announcement",
+      "url": "https://www.anthropic.com/news/s1-sec",
+      "published": "2026-10-26",
+      "supports": [
+        "filing announcement"
+      ]
+    },
+    {
+      "title": "Reuters — Nvidia in talks to invest in Anthropic's mega IPO",
+      "url": "https://www.reuters.com/legal/transactional/nvidia-talks-invest-anthropics-mega-ipo-sources-say-2026-09-11/",
+      "published": "2026-09-11",
+      "supports": [
+        "up to US$100B (sources; not in S-1)"
+      ]
+    },
+    {
+      "title": "Investing.com (Reuters factbox)",
+      "url": "https://www.investing.com/news/stock-market-news/factboxanthropic-moves-closer-to-blockbuster-listing-with-us-ipo-filing-4972888",
+      "published": "2026-10-26",
+      "supports": [
+        "US$100B repeated"
+      ]
+    },
+    {
+      "title": "CNBC live updates",
+      "url": "https://www.cnbc.com/2026/10/26/anthropic-ipo-live-updates-ai-s-1-filing.html",
+      "published": "2026-10-26",
+      "supports": [
+        "context"
+      ]
+    }
+  ]
+}

@@ -32,6 +32,8 @@ function gaussian(rand) {
  * @param {string} src original image
  * @param {string} dst output PNG
  * @param {object} o  crop:[left,top,width,height]  pad:{aspect, bg:'#RRGGBB', marginX}  maxWidth  seed
+ *   minTone (0–0.5): lifts the darkest tone for text-heavy document scans, so anti-aliased
+ *   type lands on the #4E4FEB part of the ramp instead of mixing navy with paper white.
  */
 export async function blueInk(src, dst, o = {}) {
   let img = sharp(src).removeAlpha().toColourspace('srgb');
@@ -75,6 +77,7 @@ export async function blueInk(src, dst, o = {}) {
     for (let x = 0; x < w; x++, i++) {
       let l = Math.min(1, Math.max(0, (L[i] - lo) / span));
       l = l * l * (3 - 2 * l) * 0.35 + l * 0.65; // gentle S-curve
+      if (o.minTone) l = o.minTone + l * (1 - o.minTone);
       const dark = 1 - l,
         lines = 0.5 + 0.5 * Math.sin(((x + y) * 2 * Math.PI) / period / 1.414);
       if (dark > 0.08) l -= 0.07 * dark * (lines - 0.5); // texture follows tone

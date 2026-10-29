@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-kimi-k3-1-pro",
+  "stage": "notion-delivered",
+  "approvals": {
+    "selected": {
+      "gate": "selected",
+      "words": "let's continue. Reproduce these news using our repo pipeline",
+      "source": "chat t41u",
+      "context": "Story 1 of 4: https://www.instagram.com/therundownai/p/De2MuWskiiF/ (Moonshot AI Kimi K3.1 Pro)",
+      "at": "2026-10-28T03:29:00.000Z",
+      "atWIB": "2026-10-28 10:29 WIB",
+      "revision": null,
+      "recordedAt": "2026-10-28T05:23:16.139Z"
+    },
+    "copy": {
+      "gate": "copy",
+      "words": "Approved. Export that into notion",
+      "source": "chat t45u",
+      "context": "Reply to the agent's list of 5 copy conflicts on the owner-edited v2 copy and the question 'Which of these should I apply, and do you approve the copy so I can rebuild the design? You can also say keep as is'. No conflict fix requested; v2 copy approved as is. Does not authorize Instagram publishing or scheduling.",
+      "at": "2026-10-28T04:27:10.000Z",
+      "atWIB": "2026-10-28 11:27 WIB",
+      "revision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
+      "recordedAt": "2026-10-28T05:23:17.483Z"
+    },
+    "final": {
+      "gate": "final",
+      "words": "I said you to re-create all of those posts in dark mode isn't",
+      "source": "chat t103u (design direction: chat t96u)",
+      "context": "Owner t103u: re-create all posts in dark mode; dark format with brand-blue gradient approved in t96u ('Replace all old post with this new posts format'). Does not authorize Instagram publishing or scheduling.",
+      "at": "2026-10-29T13:00:00.000Z",
+      "atWIB": "2026-10-29 20:00 WIB",
+      "revision": "c063d808bf8b5fa0f0d5adb0c3ba7b280698e34156a8e9d0f5c46ab32e6b40d1",
+      "designRule": 2,
+      "recordedAt": "2026-10-29T13:25:04.953Z"
+    }
+  },
+  "designStale": false,
+  "notion": {
+    "pageId": "408f909f-26a5-8152-b6c2-ca1fe95f542f",
+    "url": "https://app.notion.com/p/Moonshot-AI-rilis-Kimi-K3-1-Pro-408f909f26a58152b6c2ca1fe95f542f",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-28-kimi-k3-1-pro:dark-2026-10-29",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-kimi-k3-1-pro:dark-2026-10-29",
+    "approvedRevision": "c063d808bf8b5fa0f0d5adb0c3ba7b280698e34156a8e9d0f5c46ab32e6b40d1",
+    "orderedAssetHashes": [
+      "ea54f10e030f52e88550e489b475a8d0311ec9d5459c670a0d877b99f4c670fc",
+      "cb7346357d60c35d4df174df32ea1dbbc6ad2932de5a4e83227aaf1e6ed2cad4",
+      "1909fe5132b9e0f39e0b059054102f93c9d41413f5bca77056e5eb9032f16bf8",
+      "1db7de0a575034047e1d3bf0db07303826ea4d3c2a10ead8275e48ded7e8f527",
+      "4755aab00902ac9edb16b75eb2a7d1846ac3c50a6d635d0a76fcc41a1c71487b"
+    ],
+    "uploadedAssetHashes": [
+      "ea54f10e030f52e88550e489b475a8d0311ec9d5459c670a0d877b99f4c670fc",
+      "cb7346357d60c35d4df174df32ea1dbbc6ad2932de5a4e83227aaf1e6ed2cad4",
+      "1909fe5132b9e0f39e0b059054102f93c9d41413f5bca77056e5eb9032f16bf8",
+      "1db7de0a575034047e1d3bf0db07303826ea4d3c2a10ead8275e48ded7e8f527",
+      "4755aab00902ac9edb16b75eb2a7d1846ac3c50a6d635d0a76fcc41a1c71487b"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-29T13:27:23.903Z",
+    "exportedAtWIB": "2026-10-29 20:27 WIB"
+  },
+  "legacyRevisions": {
+    "537cefb2d753e8a2e1bb4e52a4eaf48772630a3ebe8e1954439b4239a896bd02": "0fc8f2d47d5cac52e3a7fb1c495062a74b98a41e6ea20371ee9757bf8f8fe6e7"
+  },
+  "history": [
+    {
+      "event": "approved",
+      "gate": "selected",
+      "source": "chat t41u",
+      "revision": null,
+      "at": "2026-10-28T03:29:00.000Z"
+    },
+    {
+      "event": "copy-review",
+      "revision": "0fc8f2d47d5cac52e3a7fb1c495062a74b98a41e6ea20371ee9757bf8f8fe6e7",
+      "at": "2026-10-28T05:23:16.263Z"
+    },
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "chat t42u",
+      "revision": "0fc8f2d47d5cac52e3a7fb1c495062a74b98a41e6ea20371ee9757bf8f8fe6e7",
+      "at": "2026-10-28T04:03:17.000Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "copy",
+      "reason": "copy edited (Angger (owner-edits-v1.json from the review editor)) → 7bb96af55d89",
+      "at": "2026-10-28T05:23:17.336Z",
+      "approval": {
+        "gate": "copy",
+        "words": "I think your copy is too kaku and unnatural. We working on the Kimi post first\n\n---\nMain: Moonshot AI rilis Kimi K3.1! Pro diklaim mengalahkan GPT-6 Astra. Modelnya akan dirilis secara terbuka (open-weights) paling lambat 4 November.\nSlide 2: Moonshot mengklaim K3.1 Pro meraih skor 65,7% di benchmark Terminal-Bench 4.0—mengungguli GPT-6 Astra (58,2%) dan hanya terpaut 0,7 poin dari Claude Opus 5.5 (66,4%). Lembaga independen Artificial Analysis juga mencatat hasil serupa, yakni sekitar 67% dalam pengujian mereka sendiri.\nSlide 3: Cukup bermodalkan teks, sketsa, atau gambar referensi, K3.1 Pro bisa menulis skrip untuk Blender dan software CAD guna membuat model 3D, game, hingga website interaktif. Fitur 3D Make untuk mengedit dan mengunduh model 3D ini sudah bisa dicoba di Kimi.ai dan aplikasi Kimi.\nSlide 4: Dalam uji internal tingkat tinggi yang dirancang khusus oleh Kimi, tingkat halusinasi (klaim keliru) berhasil ditekan dari 23,4% di versi K3 menjadi 8,3%. Meski begitu, Moonshot menegaskan bahwa angka ini bukanlah tolok ukur tingkat kesalahan untuk pemakaian sehari-hari.\nSlide 5: K3.1 Pro beserta versi Highspeed-nya (yang 2–3 kali lebih cepat) sudah tersedia di Kimi.ai, aplikasi Kimi, dan lewat API. Bobot model penuhnya dijanjikan rilis publik paling lambat 4 November 2026, meski pantauan per 26 Oktober menunjukkan file-nya belum tersedia di Hugging Face. Moonshot juga menghapus data terkait keamanan siber dari materi pelatihannya untuk mencegah risiko penyalahgunaan.\nCaption:\nModel AI terbuka yang bisa diunduh bebas biasanya selalu tertinggal selangkah dari model AI tertutup. Namun, jarak keduanya kini makin tipis. Perusahaan asal Tiongkok, Moonshot AI, baru saja merilis Kimi K3.1 Pro pada 23 Oktober 2026. Model raksasa berkapasitas 3 triliun parameter ini dibekali context window hingga 1 juta token. Moonshot mengklaim skornya di Terminal-Bench 4.0 menembus 65,7%—melampaui GPT-6 Astra dan nyaris menyamai Claude Opus 5.5.\n\nTak hanya jago coding, K3.1 Pro diklaim mampu merancang model 3D, game, dan website interaktif dari perintah teks atau gambar, sekaligus menangani analisis keuangan. Hadir pula versi Highspeed yang 2–3 kali lebih ngebut. Keduanya sudah bisa diakses di Kimi.ai, aplikasi Kimi, dan API. Jika bobot modelnya benar-benar dibuka sesuai janji, berbagai perusahaan nantinya bisa menjalankan AI ini langsung di server mereka sendiri.\n\nMemang, sebagian besar klaim performa di atas masih berasal dari pengujian internal Moonshot, meski lembaga independen Artificial Analysis mencatat skor Terminal-Bench yang kurang lebih sama. Bobot model lengkapnya baru akan dibuka paling lambat 4 November nanti, dan detail lisensinya pun masih belum jelas. Menurutmu, apakah model AI terbuka saat ini sudah cukup tangguh untuk menggantikan AI berbayar?\n\nSumber: Moonshot AI, Artificial Analysis / Foto: Moonshot AI\n\n#akalmesin #Kimi #MoonshotAI #AIOpenSource #KecerdasanBuatan\n---",
+        "source": "chat t42u",
+        "context": "Owner supplied his own copy. Only change applied: 'tolok ukur' -> 'benchmark' (standing rule); Main headline line-broken 'Moonshot AI rilis / Kimi K3.1!'. --at is the old repo's record time; the message time was not captured.",
+        "at": "2026-10-28T04:03:17.000Z",
+        "atWIB": "2026-10-28 11:03 WIB",
+        "revision": "0fc8f2d47d5cac52e3a7fb1c495062a74b98a41e6ea20371ee9757bf8f8fe6e7",
+        "recordedAt": "2026-10-28T05:23:17.224Z"
+      }
+    },
+    {
+      "event": "copy-recorded",
+      "who": "Angger (owner-edits-v1.json from the review editor)",
+      "mode": "copy",
+      "from": "0fc8f2d47d5cac52e3a7fb1c495062a74b98a41e6ea20371ee9757bf8f8fe6e7",
+      "to": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
+      "file": "owner-edits-v1.json",
+      "at": "2026-10-28T05:23:17.336Z"
+    },
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "chat t45u",
+      "revision": "7bb96af55d89c01797e956f1f494e23fdb0062fba79ac014b1e7211cd55e2559",
+      "at": "2026-10-28T04:27:10.000Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+      "at": "2026-10-28T05:23:30.879Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t45u",
+      "revision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+      "at": "2026-10-28T04:27:45.000Z"
+    },
+    {
+      "event": "notion-recorded",
+      "pageId": "407f909f-26a5-811f-a344-e2d6a1ab9208",
+      "at": "2026-10-28T05:23:55.582Z"
+    },
+    {
+      "event": "notion-recorded",
+      "pageId": "407f909f-26a5-811f-a344-e2d6a1ab9208",
+      "at": "2026-10-28T05:24:10.880Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "final",
+      "reason": "design rebuilt",
+      "at": "2026-10-28T07:29:47.728Z",
+      "approval": {
+        "gate": "final",
+        "words": "Approved. Export that into notion",
+        "source": "chat t45u",
+        "context": "Owner approved the v2 post (his edited copy as is, previewed as a contact sheet with his edits applied) and instructed Notion export. Only non-owner change: Main alt text (see edits.log.md). Does not authorize Instagram publishing or scheduling.",
+        "at": "2026-10-28T04:27:45.000Z",
+        "atWIB": "2026-10-28 11:27 WIB",
+        "revision": "76410b25636b0697ac31bf218dcb13fc5a7c7c15b8a4be9fbd91f0423ba0f96f",
+        "recordedAt": "2026-10-28T05:23:55.281Z"
+      }
+    },
+    {
+      "event": "design-built",
+      "designRevision": "1692467a35a439eb1d49c8021156d45c969707345b4ad6566f91ecdaf0cced4c",
+      "at": "2026-10-28T07:29:47.728Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+      "at": "2026-10-28T07:50:22.238Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+      "at": "2026-10-28T08:07:22.330Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t56u",
+      "revision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+      "at": "2026-10-28T08:07:23.609Z"
+    },
+    {
+      "event": "notion-adopted",
+      "pageId": "407f909f-26a5-811f-a344-e2d6a1ab9208",
+      "at": "2026-10-28T09:02:19.654Z"
+    },
+    {
+      "event": "approval-invalidated",
+      "gate": "final",
+      "reason": "design rebuilt",
+      "at": "2026-10-29T13:18:19.172Z",
+      "approval": {
+        "gate": "final",
+        "words": "Yes approved for kimi",
+        "source": "chat t56u",
+        "context": "Owner approval of the Kimi design rebuilt with the owner's measured token sheets (t52u). Does not authorize Notion re-upload, Instagram publishing or scheduling.",
+        "at": "2026-10-28T08:07:23.609Z",
+        "atWIB": "2026-10-28 15:07 WIB",
+        "revision": "7bfb0d4853cdb2d7de52f0eb4608ab1d7c9d0e220bbb3374516654a3c7fa66d4",
+        "recordedAt": "2026-10-28T08:07:23.623Z"
+      }
+    },
+    {
+      "event": "design-built",
+      "designRevision": "c063d808bf8b5fa0f0d5adb0c3ba7b280698e34156a8e9d0f5c46ab32e6b40d1",
+      "at": "2026-10-29T13:18:19.172Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t103u (design direction: chat t96u)",
+      "revision": "c063d808bf8b5fa0f0d5adb0c3ba7b280698e34156a8e9d0f5c46ab32e6b40d1",
+      "at": "2026-10-29T13:00:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-8152-b6c2-ca1fe95f542f",
+      "at": "2026-10-29T13:27:23.903Z"
+    }
+  ]
+}

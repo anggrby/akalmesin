@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-28-gpt-6-1-terra",
+  "stage": "notion-delivered",
+  "approvals": {
+    "selected": null,
+    "copy": {
+      "gate": "copy",
+      "words": "I said you to re-create all of those posts in dark mode isn't",
+      "source": "previously published owner-approved text (Notion 406f909f26a581dea134cfd58a365f2f) + chat t103u",
+      "context": "NOT a new chat copy approval. Copy reused verbatim from the previously published, owner-approved Terra post (brand/examples/terra); headline line breaks match the published Main slide. Only changes: [A]-[X] citation tags and 'Harga./Ketersediaan./...' editor labels dropped (they were not on the published slides), Ilustrasi line moved to its own caption line, schema fields added. Owner t103u asked to re-create the post in dark mode.",
+      "at": "2026-10-29T13:00:00.000Z",
+      "atWIB": "2026-10-29 20:00 WIB",
+      "revision": "ee9f603045295a743ee66a2913729307d0f4100900f41b0f5275840a7009b895",
+      "copyRule": 2,
+      "recordedAt": "2026-10-29T13:20:53.813Z"
+    },
+    "final": {
+      "gate": "final",
+      "words": "I said you to re-create all of those posts in dark mode isn't",
+      "source": "chat t103u (design direction: chat t96u)",
+      "context": "Owner t103u: re-create all posts in dark mode; dark format with brand-blue gradient approved in t96u ('Replace all old post with this new posts format'). Does not authorize Instagram publishing or scheduling.",
+      "at": "2026-10-29T13:00:00.000Z",
+      "atWIB": "2026-10-29 20:00 WIB",
+      "revision": "e66cf3c5c0a806a63445f3ee07dd135ffd70309903fc54699ea26c5e8f4c773b",
+      "designRule": 2,
+      "recordedAt": "2026-10-29T13:25:05.092Z"
+    }
+  },
+  "designStale": false,
+  "notion": {
+    "pageId": "408f909f-26a5-8192-913f-e43a20f593ba",
+    "url": "https://app.notion.com/p/OpenAI-luncurkan-GPT-6-1-Terra-dengan-harga-API-lebih-rendah-408f909f26a58192913fe43a20f593ba",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-28-gpt-6-1-terra:dark-2026-10-29",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-28-gpt-6-1-terra:dark-2026-10-29",
+    "approvedRevision": "e66cf3c5c0a806a63445f3ee07dd135ffd70309903fc54699ea26c5e8f4c773b",
+    "orderedAssetHashes": [
+      "b599a1f13018b376df21f70c7ca40ee00e7a9331dd070747402b104173a7e070",
+      "b5a8880abeccf7928d9de8627b81e3ef41ca332dae78cb708512cc533906c3b1",
+      "9f72b709942784b5ebb16447dd1871a84eb56a0c0fdbe121e7a42691b5de4643",
+      "878fdc339a1ce17808bb13f763936eeb4570e9e87fcf4ecc3153eedf4de45b25",
+      "1052ca71194f0fdd5ea4899c5e835ee272010089270fff2b35b9ccc16a758577"
+    ],
+    "uploadedAssetHashes": [
+      "b599a1f13018b376df21f70c7ca40ee00e7a9331dd070747402b104173a7e070",
+      "b5a8880abeccf7928d9de8627b81e3ef41ca332dae78cb708512cc533906c3b1",
+      "9f72b709942784b5ebb16447dd1871a84eb56a0c0fdbe121e7a42691b5de4643",
+      "878fdc339a1ce17808bb13f763936eeb4570e9e87fcf4ecc3153eedf4de45b25",
+      "1052ca71194f0fdd5ea4899c5e835ee272010089270fff2b35b9ccc16a758577"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-29T13:27:29.001Z",
+    "exportedAtWIB": "2026-10-29 20:27 WIB"
+  },
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "previously published owner-approved text (Notion 406f909f26a581dea134cfd58a365f2f) + chat t103u",
+      "revision": "ad2d89ec89fb3a045c547d9ef028ac71a151aef336dde544558ea518ab700960",
+      "at": "2026-10-29T13:00:00.000Z"
+    },
+    {
+      "event": "approval-replaced",
+      "gate": "copy",
+      "approval": {
+        "gate": "copy",
+        "words": "I said you to re-create all of those posts in dark mode isn't",
+        "source": "previously published owner-approved text (Notion 406f909f26a581dea134cfd58a365f2f) + chat t103u",
+        "context": "NOT a new chat copy approval. Copy reused verbatim from the previously published, owner-approved Terra post (brand/examples/terra). Only changes: [A]-[X] citation tags and 'Harga./Ketersediaan./...' editor labels dropped (they were not on the published slides), headline split in two lines, Ilustrasi line moved to its own caption line, schema fields added. Owner t103u asked to re-create the post in dark mode.",
+        "at": "2026-10-29T13:00:00.000Z",
+        "atWIB": "2026-10-29 20:00 WIB",
+        "revision": "ad2d89ec89fb3a045c547d9ef028ac71a151aef336dde544558ea518ab700960",
+        "copyRule": 2,
+        "recordedAt": "2026-10-29T13:20:08.339Z"
+      },
+      "at": "2026-10-29T13:20:53.813Z"
+    },
+    {
+      "event": "approved",
+      "gate": "copy",
+      "source": "previously published owner-approved text (Notion 406f909f26a581dea134cfd58a365f2f) + chat t103u",
+      "revision": "ee9f603045295a743ee66a2913729307d0f4100900f41b0f5275840a7009b895",
+      "at": "2026-10-29T13:00:00.000Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "1802b8141413637d6406e5dc7a0b35769f1693858d3d8bb775670e07ecb6f91d",
+      "at": "2026-10-29T13:20:59.288Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "ca5b263067b4389884ee20464a93eb7329540cc81a96560eec2c7cf32e61b162",
+      "at": "2026-10-29T13:21:27.254Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "e66cf3c5c0a806a63445f3ee07dd135ffd70309903fc54699ea26c5e8f4c773b",
+      "at": "2026-10-29T13:21:46.161Z"
+    },
+    {
+      "event": "approved",
+      "gate": "final",
+      "source": "chat t103u (design direction: chat t96u)",
+      "revision": "e66cf3c5c0a806a63445f3ee07dd135ffd70309903fc54699ea26c5e8f4c773b",
+      "at": "2026-10-29T13:00:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-8192-913f-e43a20f593ba",
+      "at": "2026-10-29T13:27:29.001Z"
+    }
+  ]
+}

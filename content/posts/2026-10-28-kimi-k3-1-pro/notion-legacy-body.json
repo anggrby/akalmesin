@@ -1,0 +1,194 @@
+{
+ "note": "Exact body blocks the older connector export wrote to the Kimi Notion row (2026-10-28 ~11:29 WIB, page 407f909f-26a5-811f-a344-e2d6a1ab9208). Used only by `export --adopt-legacy` to recognise generated blocks; anything else on the page counts as a possible human note.",
+ "children": [
+  {
+   "type": "paragraph",
+   "paragraph": {
+    "rich_text": [
+     {
+      "type": "text",
+      "text": {
+       "content": "akalmesin-content-id:akalmesin:2026-10-28-kimi-k3-1-pro\n"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "paragraph",
+   "paragraph": {
+    "rich_text": [
+     {
+      "type": "text",
+      "text": {
+       "content": "akalmesin managed section (do not edit)\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Story: 2026-10-28-kimi-k3-1-pro | Approved fingerprint: ff163949655479550023d72f2c1abae22e02f2454902e2857c380b4ec82f144b | Review revision: a5138350dfe2c04e409292e48155e0dbb985ef6abd3076fca547d3331bba3e93 | Final approval: 2026-10-28T04:27:45.017Z (owner t45u: \"Approved. Export that into notion\")\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Format: brief (5 slides). Not published or scheduled; Publish date intentionally empty.\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Approved slide copy\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "01-main: Moonshot AI rilis Kimi K3.1 Pro!\n\nModelnya akan dirilis secara terbuka (open-weights) paling lambat 4 November.\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "02-benchmark: Moonshot mengklaim K3.1 Pro meraih skor 65,7% di benchmark Terminal-Bench 4.0—mengungguli GPT-6 Astra (58,2%) dan hanya terpaut 0,7 poin dari Claude Opus 5.5 (66,4%). Artificial Analysis juga mencatat hasil serupa, yakni sekitar 67% dalam pengujian mereka sendiri.\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "03-3d-game-web: Cukup bermodalkan teks, sketsa, atau gambar referensi, K3.1 Pro bisa menulis skrip untuk Blender dan software CAD guna membuat model 3D, game, hingga website interaktif. Fitur 3D Make untuk mengedit dan mengunduh model 3D ini sudah bisa dicoba di Kimi.ai dan aplikasi Kimi.\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "04-halusinasi: Dalam uji internal tingkat tinggi yang dirancang khusus oleh Kimi, tingkat halusinasi (klaim keliru) berhasil ditekan dari 23,4% di versi K3 menjadi 8,3%. Meski begitu, Moonshot menegaskan bahwa angka ini bukanlah benchmark tingkat kesalahan untuk pemakaian sehari-hari.\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "05-ketersediaan: K3.1 Pro beserta versi Highspeed-nya (yang 2–3 kali lebih cepat) sudah tersedia di Kimi.ai, aplikasi Kimi, dan lewat API. Bobot model (weight) penuhnya dijanjikan rilis publik paling lambat 4 November 2026, meski pantauan per 26 Oktober menunjukkan file-nya belum tersedia di Hugging Face. Moonshot juga menghapus data terkait keamanan siber dari materi pelatihannya untuk mencegah risiko penyalahgunaan.\n"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "paragraph",
+   "paragraph": {
+    "rich_text": [
+     {
+      "type": "text",
+      "text": {
+       "content": "Slides: credits and alt text\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "01-main | FOTO: MODEL 3D BUATAN KIMI K3.1 PRO / MOONSHOT AI | Alt: Judul rilis Kimi K3.1 Pro dari Moonshot AI dan janji bobot model terbuka (open-weights) paling lambat 4 November. Gambar tinta biru memperlihatkan model 3D mesin jet turbofan yang terurai, contoh hasil Kimi K3.1 Pro di FreeCAD. | sha256 f94c39fab28228e2\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "02-benchmark | FOTO: BENCHMARK TERMINAL-BENCH 4.0 / MOONSHOT AI | Alt: Detail skor Terminal-Bench 4.0. Grafik batang resmi Moonshot dalam tinta biru: Opus 5.5 66,4, Kimi K3.1 Pro 65,7, GPT-6 Astra 58,2, Fable 5.1 57,9, DS-V4.1-Flash 42,3, GLM-5.3 41,8. | sha256 22ffe5bf17d394b1\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "03-3d-game-web | FOTO: GAME BUATAN KIMI K3.1 PRO / MOONSHOT AI | Alt: Detail kemampuan membuat model 3D, game, dan website. Gambar tinta biru menampilkan cuplikan game petualangan 3D di Godot buatan K3.1 Pro: karakter berjubah menghadapi bos Amethyst Guardian di dekat danau. | sha256 1aaeaffc67317015\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "04-halusinasi | FOTO: KIMI HALLU BENCH / MOONSHOT AI | Alt: Detail penurunan tingkat halusinasi. Grafik resmi Kimi Hallu Bench Hard dengan tools dalam tinta biru, lebih rendah lebih baik: GPT-6 Astra 5,5, Kimi K3.1 Pro 8,3, Opus 5.5 15,0, GLM-5.3 22,6. | sha256 75425fbc3d9a374b\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "05-ketersediaan | FOTO: KIMI K3.1 / MOONSHOT AI | Alt: Detail ketersediaan dan janji rilis bobot model. Gambar peluncuran resmi tinta biru: tulisan K3.1 di atas pegunungan yang tertutup awan. | sha256 b303cb27a6e1e258\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Sources\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Released 23 Oct 2026, Kimi.ai/apps/Kimi Work/Kimi Code/API | Confirmed | https://www.kimi.ai/blog/kimi-k3-1-pro ; https://thenextweb.com/news/moonshot-kimi-k3-1-pro-open-weight-cyber\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "\"Open-weight\", 3T-class, 1M-token context | Confirmed as Moonshot claim; weights not yet published as of 26 Oct (no HF repo, no licence seen) -> HEDGED | Kimi blog; https://theagenticweekly.com/guides/kimi-k3-1-pro-open-weights ; notebookcheck\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Terminal-Bench 4.0: 65.7% vs GPT-6 Astra 58.2%, Claude Opus 5.5 66.4% | Confirmed (vendor figure; competitor scores = max of their own blog or leaderboard). Independent cross-check: Artificial Analysis ~67% | Kimi blog footnote 1; https://venturebeat.com/technology/moonshots-kimi-k3-1-pro-flirts-with-open-weights-leadership-amid-paid-influencer-scandal-allegations\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "3D / CAD / websites / games from text or images | Confirmed (text brief, sketch or reference image; scripts for Blender/CAD; BenchCAD 92.7% vs Opus 5.5 96.2%) | Kimi blog\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Finance improvements | Confirmed (OfficeQA Pro v2 64.4; internal finance benches +7.2/+11.6 pts) | Kimi blog\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Hallucination 23.4% -> 8.3% | Confirmed but QUALIFIED: claim-level rate on internal Kimi Hallu Bench Hard stress test; Moonshot says not daily-use error rate | Kimi blog\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Highspeed 2-3x faster | Confirmed (vendor claim) | Kimi blog\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Both available now; full weights by Nov 4 | Confirmed as a promise; not delivered yet | Kimi blog; Agentic Weekly\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "\"Rivals OpenAI and Anthropic\" | Secondary framing; replaced by specific benchmark numbers | -\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Extra (not in reference): cyber-related training data removed; xdev-bench-hard 90.5% -> 81.0% | Confirmed (vendor) | Kimi blog\n"
+      }
+     },
+     {
+      "type": "text",
+      "text": {
+       "content": "Context: VentureBeat reports paid-influencer allegations around the launch | Not used; unverified | VentureBeat headline\n"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}
