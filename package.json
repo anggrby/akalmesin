@@ -18,7 +18,9 @@
     "test": "node --test tests/*.test.mjs",
     "doctor": "node scripts/doctor.mjs",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "reel:build": "node scripts/reel/render.mjs",
+    "reel:check": "node scripts/reel/check.mjs"
   },
   "devDependencies": {
     "playwright-core": "1.62.1",

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-finlandia-antrean-listrik-data-center",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "97221dc1a1ef3afd48687a9fc3e9061f8f87cdcac96c3603d49e3ec0a62aaa71",
+      "at": "2026-10-29T04:38:50.968Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "310fa8d216b1364904fe58fbd9d56aa5f07804437a26f04d40a8285e585ff793",
+      "at": "2026-10-29T04:39:17.917Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "efb3e5502dee05c31e96201ae6bf2879c776433cfdb50029e56b014e1c72a043",
+      "at": "2026-10-29T04:39:53.088Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "dbf9ec58bc08bea160bb8404df6060d6f9ed5776bc918464c8d0e1cf8e37002c",
+      "at": "2026-10-29T04:40:45.456Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "39f2c23128e7f2a1fef5af7734cf53dc5a4ddd0dac73be701678554e216aeeb4",
+      "at": "2026-10-29T04:41:11.546Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "bc071bc2c56aaf10179a6d362a6817987c0ec384a91860dc41ca9919a8bee2d4",
+      "at": "2026-10-29T04:47:09.226Z"
+    }
+  ]
+}

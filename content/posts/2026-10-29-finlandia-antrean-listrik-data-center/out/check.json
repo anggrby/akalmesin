@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-finlandia-antrean-listrik-data-center",
+  "designRevision": "bc071bc2c56aaf10179a6d362a6817987c0ec384a91860dc41ca9919a8bee2d4",
+  "copyRevision": "f46c92a48966063e6472b11dc92f2fea4e4a80327ecbcfb362aa22021589e749",
+  "checkedAt": "2026-10-29T04:47:10.007Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-10-29-finlandia-antrean-listrik-data-center/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9941043083900227,
+        "meanDistance": 1.0784663390047442,
+        "inkPixels": 0.9929705215419501
+      },
+      "gap": 64,
+      "photoHeight": 702
+    },
+    {
+      "id": "02-fingrid",
+      "png": "content/posts/2026-10-29-finlandia-antrean-listrik-data-center/out/png/02-02-fingrid.png",
+      "ink": {
+        "onRamp": 0.9967105263157895,
+        "meanDistance": 0.8028601692581637,
+        "inkPixels": 0.7410331384015595
+      },
+      "gap": 54,
+      "photoHeight": 702
+    },
+    {
+      "id": "03-aturan",
+      "png": "content/posts/2026-10-29-finlandia-antrean-listrik-data-center/out/png/03-03-aturan.png",
+      "ink": {
+        "onRamp": 0.9622778848212374,
+        "meanDistance": 2.920811224852906,
+        "inkPixels": 0.9855919503318348
+      },
+      "gap": 54,
+      "photoHeight": 582
+    },
+    {
+      "id": "04-skala",
+      "png": "content/posts/2026-10-29-finlandia-antrean-listrik-data-center/out/png/04-04-skala.png",
+      "ink": {
+        "onRamp": 0.9974691358024691,
+        "meanDistance": 0.8886982409308258,
+        "inkPixels": 0.6071810699588477
+      },
+      "gap": 54,
+      "photoHeight": 762
+    },
+    {
+      "id": "05-status",
+      "png": "content/posts/2026-10-29-finlandia-antrean-listrik-data-center/out/png/05-05-status.png",
+      "ink": {
+        "onRamp": 0.9864440795475278,
+        "meanDistance": 1.842865451702094,
+        "inkPixels": 0.6689655172413793
+      },
+      "gap": 54,
+      "photoHeight": 762
+    }
+  ]
+}
