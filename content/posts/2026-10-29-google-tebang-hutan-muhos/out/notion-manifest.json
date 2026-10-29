@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-google-tebang-hutan-muhos",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-10-29T07:23:12.099Z",
+    "source": "muhos-review-approval.json sha256:6744c60c33d4398931265408b9c70f8f5807f4b9dcc150113edafd0ed3f89080",
+    "context": "no changes",
+    "at": "2026-10-29T07:23:12.099Z",
+    "atWIB": "2026-10-29 14:23 WIB",
+    "via": "review-save",
+    "copyRevision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
+    "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-10-29T07:23:19.924Z",
+    "revision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+    "chatApproval": "Owner approved in chat: t86u \"Yeah I like that. We can export this into notion. Well done\"; t87u \"if i say approved here means it is approved. Can run the save yourself?\". No text changes; the review save (muhos-review-approval.json) was run by Grok Bot at his request."
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-10-29-google-tebang-hutan-muhos\". Never match by title alone.",
+  "properties": {
+    "Post": "Google tebang hutan Finlandia demi data center",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Sekitar 330 hektare hutan di Muhos, Finlandia utara, kini rata dengan tanah demi data center Google. Masalahnya, penebangan itu dilakukan sebelum kajian dampak lingkungan yang diwajibkan hukum selesai. Pada 6 Oktober 2026, otoritas LVV memerintahkan pekerjaan persiapan di Muhos dan Kajaani dihentikan.\n\nHukum Finlandia mewajibkan kajian tersebut untuk penebangan permanen di atas 200 hektare. Country Manager Google Finlandia, Antti Järvinen, sudah meminta maaf, tetapi menyebut perusahaan bertindak sesuai pemahaman terbaiknya atas aturan saat itu. Menurut perkiraan yang dikutip The Guardian, sekitar 250.000 pohon hilang di lokasi ini.\n\nKasus ini memicu perdebatan nasional soal ledakan data center di Finlandia, dengan 145 proyek baru dalam tahap perencanaan. Polisi masih melakukan penyelidikan awal, dan kajian lingkungannya belum rampung. Menurutmu, perlukah aturan yang lebih ketat sebelum data center boleh membuka lahan?\n\nSumber: LVV, Yle, Helsingin Sanomat, The Guardian, Kansalaisaloite.fi / Foto: Tero Laakso, Estormiz, LPfi, Greenpeace Finland via Wikimedia Commons\n\n#akalmesin #DataCenter #Google #Finlandia #Lingkungan",
+    "Topic": "Komputasi",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-lvv.png",
+      "03-03-aturan.png",
+      "04-04-google.png",
+      "05-05-reaksi.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-10-29-google-tebang-hutan-muhos",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-29-google-tebang-hutan-muhos",
+  "body": "# Approved copy\n\n## 01-main\n\nGoogle tebang hutan demi data center\n\nGoogle menebang sekitar 330 hektare hutan di Muhos, Finlandia, sebelum kajian dampak lingkungan yang wajib dilakukan selesai.\n\n## 02-lvv\n\nPada 6 Oktober 2026, otoritas perizinan dan pengawasan Finlandia (LVV) memerintahkan anak usaha Google, Tuike Finland, menghentikan pekerjaan persiapan di Muhos dan Kajaani. Menurut LVV, pohon sudah ditebang, lapisan tanah atas dikupas, dan jalan proyek dibangun, padahal **kajian dampak lingkungan belum selesai**.\n\n## 03-aturan\n\nHukum Finlandia mewajibkan kajian dampak lingkungan jika hutan dihilangkan secara permanen di area lebih dari 200 hektare. Di Muhos, Google sendiri mengonfirmasi luas tebangan sekitar 330 hektare, **jauh di atas ambang batas**. Helsingin Sanomat melaporkan LVV sudah menegaskan kewajiban ini kepada Tuike Finland sejak Mei.\n\n## 04-google\n\nPada 13 Oktober, Country Manager Google Finlandia, Antti Järvinen, **meminta maaf secara terbuka**. Ia menyebut semua keputusan diambil berdasarkan pemahaman terbaik perusahaan atas aturan saat itu. Google juga berencana menanam pohon di lahan seluas 130 hektare, angka yang dinilai terlalu kecil oleh kelompok konservasi.\n\n## 05-reaksi\n\nKasus ini memicu kemarahan nasional. Inisiatif warga yang menuntut aturan data center lebih ketat kini didukung sekitar 98.000 orang, sementara The Guardian mencatat 145 data center baru sedang direncanakan di Finlandia. Polisi juga melakukan penyelidikan awal, dan **hasilnya belum diumumkan**.\n\n# Caption\n\nSekitar 330 hektare hutan di Muhos, Finlandia utara, kini rata dengan tanah demi data center Google. Masalahnya, penebangan itu dilakukan sebelum kajian dampak lingkungan yang diwajibkan hukum selesai. Pada 6 Oktober 2026, otoritas LVV memerintahkan pekerjaan persiapan di Muhos dan Kajaani dihentikan.\n\nHukum Finlandia mewajibkan kajian tersebut untuk penebangan permanen di atas 200 hektare. Country Manager Google Finlandia, Antti Järvinen, sudah meminta maaf, tetapi menyebut perusahaan bertindak sesuai pemahaman terbaiknya atas aturan saat itu. Menurut perkiraan yang dikutip The Guardian, sekitar 250.000 pohon hilang di lokasi ini.\n\nKasus ini memicu perdebatan nasional soal ledakan data center di Finlandia, dengan 145 proyek baru dalam tahap perencanaan. Polisi masih melakukan penyelidikan awal, dan kajian lingkungannya belum rampung. Menurutmu, perlukah aturan yang lebih ketat sebelum data center boleh membuka lahan?\n\nSumber: LVV, Yle, Helsingin Sanomat, The Guardian, Kansalaisaloite.fi / Foto: Tero Laakso, Estormiz, LPfi, Greenpeace Finland via Wikimedia Commons\n\n#akalmesin #DataCenter #Google #Finlandia #Lingkungan\n\n# Sources\n\n- [Yle — LVV laittoi datakeskustyömaat jäihin Muhoksella ja Kajaanissa](https://yle.fi/a/74-20250109)\n- [BBC — Finland orders halt to work on two Google data centres](https://www.bbc.com/news/articles/cvj6jkx6g1r0o)\n- [Helsingin Sanomat — Google ei saanut poikkeuslupaa, mutta hakkasi silti](https://www.hs.fi/politiikka/art-2000012304991.html)\n- [Yle News — Google Finland head apologises for forest clearances](https://yle.fi/a/74-20251367)\n- [Yle News — police probe suspected illegal logging](https://yle.fi/a/74-20250446)\n- [The Guardian — 'Pure arrogance': Google illegally fells 250,000 trees](https://www.theguardian.com/environment/ng-interactive/2026/oct/22/finland-google-felling-trees-datacentre)\n- [Kansalaisaloite.fi — Datakeskukset kuriin](https://www.kansalaisaloite.fi/fi/aloite/17997)\n\n# Alt text and photo credits\n\n01-main: Foto ilustrasi area hutan yang ditebang habis di Finlandia selatan, dengan tunggul dan sisa ranting di tanah.\n\nFOTO: HUTAN TEBANG HABIS, FINLANDIA / TERO LAAKSO (CC BY 2.0)\n\n02-lvv: Foto gedung kantor pemerintah kota Muhos bertuliskan Muhoksen kunta saat musim dingin.\n\nFOTO: KANTOR PEMERINTAH MUHOS / ESTORMIZ (CC0)\n\n03-aturan: Foto ilustrasi bekas tebangan hutan pinus di Turku, Finlandia, dengan tanah yang sudah digarap.\n\nFOTO: BEKAS TEBANGAN DI TURKU / LPFI (CC BY-SA 3.0)\n\n04-google: Foto ilustrasi forwarder kehutanan bekerja di area tebang habis bersalju di Salla, Lapland.\n\nFOTO: TEBANG HABIS DI LAPLAND / GREENPEACE FINLAND (CC BY 2.0)\n\n05-reaksi: Foto gedung PLTA Pyhäkoski di tepi Sungai Oulujoki, Muhos, Finlandia.\n\nFOTO: PLTA PYHÄKOSKI DI SUNGAI OULUJOKI, MUHOS / ESTORMIZ (PD)\n\n# Approval\n\n\"Saved in review editor 2026-10-29T07:23:12.099Z\" — muhos-review-approval.json sha256:6744c60c33d4398931265408b9c70f8f5807f4b9dcc150113edafd0ed3f89080, 2026-10-29 14:23 WIB\n\nApproved design revision: 0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f\n\n# Source ledger\n\n# Sources — 2026-10-29-google-tebang-hutan-muhos (retrieved 2026-10-29 12:10 WIB)\n\n| Claim                                                                                                                                                                                                  | Status                           | Source                                               |\n| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------- | ---------------------------------------------------- |\n| LVV ordered Tuike Finland (Google subsidiary) on 6 Oct 2026 to stop environmentally significant preparatory work in Muhos and Kajaani until the EIA is complete (immediately, by 23 Oct at the latest) | Verified                         | LVV press release; Yle 74-20250109; BBC; NordiskPost |\n| Work already done: trees felled, topsoil stripped, site roads and storage areas built                                                                                                                  | Verified                         | LVV via Yle 74-20250109                              |\n| Finnish law requires an EIA for permanent forest removal over 200 ha                                                                                                                                   | Verified                         | Yle; LVV                                             |\n| ~330 ha cleared at Muhos (Kajaani just under 200 ha), confirmed by Google's Sondre Ronander                                                                                                            | Verified (Google's own figure)   | Yle                                                  |\n| LVV told Tuike in its 22 May letter that the EIA applies                                                                                                                                               | Reported                         | Helsingin Sanomat, 28 Sep 2026                       |\n| Antti Järvinen, Country Manager Google Finland, apologised on 13 Oct; said decisions followed \"best understanding we had of the legislation at the time\"                                               | Verified                         | Yle 74-20251367; MTV Uutiset                         |\n| Plan to plant trees on 130 ha; conservationists call it too little                                                                                                                                     | Verified                         | Yle; The Guardian                                    |\n| ~250,000 trees felled                                                                                                                                                                                  | **Estimate**, attributed in copy | The Guardian (Miranda Bryant), 22 Oct 2026           |\n| 145 new data centres at various planning stages in Finland                                                                                                                                             | Reported, attributed             | The Guardian, 22 Oct 2026                            |\n| Citizens' initiative \"Datakeskukset kuriin\": 98,006 supports on 29 Oct 2026 (started 15 Sep, before the scandal broke)                                                                                 | Verified (live count)            | https://www.kansalaisaloite.fi                       |\n| Police preliminary inquiry into Muhos clearing; outcome not public                                                                                                                                     | Verified                         | Iltalehti via Yle 74-20250446                        |\n| Google says authorities were aware and disputes intent                                                                                                                                                 | Google's position                | Yle; The Guardian                                    |\n\nUncertain or open: the tree count is an estimate, the police outcome is unknown, the EIA is unfinished, and the initiative was not triggered by the clear-cut alone. The Guardian's facts are reported with attribution. Its wording and photos are not reused.\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-10-29-google-tebang-hutan-muhos\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/01-01-main.png",
+      "sha256": "f0832fd504b568591800b83292ddde7f6c0d5b87e815ec42252b1daf05ed226a",
+      "bytes": 1328223
+    },
+    {
+      "slideId": "02-lvv",
+      "file": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/02-02-lvv.png",
+      "sha256": "1876a55050fcfb61930ad36f7ea9b47f5b9c2c7daa6d682434cfd8f241b05354",
+      "bytes": 1202730
+    },
+    {
+      "slideId": "03-aturan",
+      "file": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/03-03-aturan.png",
+      "sha256": "31e9a024254fcabbf3f1ca56c74cb6e1bdc4a34f8c345f2d5aa56fc70e16ebae",
+      "bytes": 1537732
+    },
+    {
+      "slideId": "04-google",
+      "file": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/04-04-google.png",
+      "sha256": "2a7a46dbc8bbca1223be4632382488a3b68f0bbb5713bf458f4396af98eb9203",
+      "bytes": 1306277
+    },
+    {
+      "slideId": "05-reaksi",
+      "file": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/05-05-reaksi.png",
+      "sha256": "506d2bb4470410e5ea4951b385548a5e200f549033478105cc972db11c911cde",
+      "bytes": 1223262
+    }
+  ],
+  "generatedAt": "2026-10-29T07:24:01.813Z"
+}
