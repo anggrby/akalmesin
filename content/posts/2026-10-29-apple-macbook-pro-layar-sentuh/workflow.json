@@ -1,14 +1,71 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-10-29T09:16:57.464Z",
+      "source": "macbook-review-approval.json sha256:b232e3848dc27c205a249fe06872eaa7ed374cd2c5767f38f86f7d3cba864d66",
+      "context": "no changes",
+      "at": "2026-10-29T09:16:57.464Z",
+      "atWIB": "2026-10-29 16:16 WIB",
+      "via": "review-save",
+      "copyRevision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
+      "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-10-29T09:17:05.824Z",
+      "revision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
+      "chatApproval": "Owner approved in chat: t89u media/design decisions (Apple footage with source credit, tweet-style card, real MacBook touch media); t90u \"Good improvements…\"; t91u \"Good. The zoom is too slow, But i think this is enough.\"; per t87u, saying approved in chat = approved and the bot runs the save. No text changes; the review save (macbook-review-approval.json) was run by Grok Bot at his request."
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-10-29T09:16:57.464Z",
+      "source": "macbook-review-approval.json sha256:b232e3848dc27c205a249fe06872eaa7ed374cd2c5767f38f86f7d3cba864d66",
+      "context": "no changes",
+      "at": "2026-10-29T09:16:57.464Z",
+      "atWIB": "2026-10-29 16:16 WIB",
+      "via": "review-save",
+      "copyRevision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
+      "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-10-29T09:17:05.824Z",
+      "revision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+      "chatApproval": "Owner approved in chat: t89u media/design decisions (Apple footage with source credit, tweet-style card, real MacBook touch media); t90u \"Good improvements…\"; t91u \"Good. The zoom is too slow, But i think this is enough.\"; per t87u, saying approved in chat = approved and the bot runs the save. No text changes; the review save (macbook-review-approval.json) was run by Grok Bot at his request."
+    }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "408f909f-26a5-81a0-b955-db170af4cf12",
+    "url": "https://app.notion.com/p/MacBook-Pro-akhirnya-bisa-disentuh-408f909f26a581a0b955db170af4cf12",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-29-apple-macbook-pro-layar-sentuh",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-29-apple-macbook-pro-layar-sentuh",
+    "approvedRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+    "orderedAssetHashes": [
+      "2bb6248cba0fff5d056de1b26fbb1e8da1b38d035a984b277b2003849980e943",
+      "f465e024aca04943e8b10cb972ca73712bf74cc3c4f45c1eea6f16aa7cf68b90",
+      "435313461a5252b07f74a985ec8b77cac8ba59f5ff125325a8f1490e21c31edd",
+      "bed6fc5fb60b5dd42a5475c16f20da0962c0dc32c14fc0c6926a2eee24e891b7",
+      "ef8ebbf4e52833dd5ae15febf9a1807f86a2c3bdb48a0aa59076304b0ecdf614"
+    ],
+    "uploadedAssetHashes": [
+      "2bb6248cba0fff5d056de1b26fbb1e8da1b38d035a984b277b2003849980e943",
+      "f465e024aca04943e8b10cb972ca73712bf74cc3c4f45c1eea6f16aa7cf68b90",
+      "435313461a5252b07f74a985ec8b77cac8ba59f5ff125325a8f1490e21c31edd",
+      "bed6fc5fb60b5dd42a5475c16f20da0962c0dc32c14fc0c6926a2eee24e891b7",
+      "ef8ebbf4e52833dd5ae15febf9a1807f86a2c3bdb48a0aa59076304b0ecdf614"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-29T09:17:32.468Z",
+    "exportedAtWIB": "2026-10-29 16:17 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -35,6 +92,24 @@
       "event": "design-built",
       "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
       "at": "2026-10-29T08:57:46.212Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+      "at": "2026-10-29T09:17:04.988Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "macbook-review-approval.json sha256:b232e3848dc27c205a249fe06872eaa7ed374cd2c5767f38f86f7d3cba864d66",
+      "copyRevision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
+      "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+      "at": "2026-10-29T09:16:57.464Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-81a0-b955-db170af4cf12",
+      "at": "2026-10-29T09:17:32.468Z"
     }
   ]
 }

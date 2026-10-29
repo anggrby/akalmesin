@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-10-29T09:16:57.464Z",
+    "source": "macbook-review-approval.json sha256:b232e3848dc27c205a249fe06872eaa7ed374cd2c5767f38f86f7d3cba864d66",
+    "context": "no changes",
+    "at": "2026-10-29T09:16:57.464Z",
+    "atWIB": "2026-10-29 16:16 WIB",
+    "via": "review-save",
+    "copyRevision": "03ffeda1a88a333424464d7c6be9d9ec5d9a742bcdaf75d8d32a979495bf2fed",
+    "designRevision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-10-29T09:17:05.824Z",
+    "revision": "39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2",
+    "chatApproval": "Owner approved in chat: t89u media/design decisions (Apple footage with source credit, tweet-style card, real MacBook touch media); t90u \"Good improvements…\"; t91u \"Good. The zoom is too slow, But i think this is enough.\"; per t87u, saying approved in chat = approved and the bot runs the save. No text changes; the review save (macbook-review-approval.json) was run by Grok Bot at his request."
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-10-29-apple-macbook-pro-layar-sentuh\". Never match by title alone.",
+  "properties": {
+    "Post": "MacBook Pro akhirnya bisa disentuh",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Enam belas tahun lalu, Steve Jobs bilang layar sentuh di laptop itu buruk secara ergonomis. Pada 28 Oktober 2026, Apple justru memperkenalkan MacBook Pro pertama yang layarnya bisa disentuh, lengkap dengan layar OLED dan Dynamic Island.\n\nHarganya mulai US$2.899 untuk versi 14 inci, US$400 di atas model biasa. Pemesanan sudah dibuka di 30 negara dan pengiriman mulai 6 November. Di Indonesia, Apple baru menyebut akan segera hadir, tanpa harga resmi. Angka rupiah yang beredar sejauh ini hanya hasil konversi kurs.\n\nCatatannya: tidak ada dukungan Apple Pencil, layarnya tidak bisa dilipat penuh, dan aplikasi pihak ketiga baru menyesuaikan diri akhir tahun ini. Menurutmu, laptop memang perlu layar sentuh, atau trackpad sudah cukup?\n\nSumber: Apple Newsroom, Reuters, The Verge, Gizmodo, CNBC, Business Insider / Foto: Apple\n\n#akalmesin #Apple #MacBookPro #LayarSentuh #Laptop",
+    "Topic": "Komputasi",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-baru.png",
+      "03-03-jobs.png",
+      "04-04-harga.png",
+      "05-05-catatan.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-10-29-apple-macbook-pro-layar-sentuh",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-29-apple-macbook-pro-layar-sentuh",
+  "body": "# Approved copy\n\n## 01-main\n\nMacBook Pro akhirnya bisa disentuh\n\nApple resmi memperkenalkan MacBook Pro pertama berlayar sentuh, 16 tahun setelah Steve Jobs menyebut layar sentuh di laptop tidak cocok.\n\n## 02-baru\n\nModel barunya bernama MacBook Pro with PROLED XDR Display, tersedia dalam ukuran 14 dan 16 inci. Layarnya kini OLED tandem dengan sensor sentuh yang tertanam langsung di panel. Di macOS 27, kamu bisa menggeser, mencubit, dan mengetuk dua kali, sementara tombol kecil seperti menu **otomatis membesar saat disentuh**.\n\n## 03-jobs\n\nPada Oktober 2010, Steve Jobs menolak ide laptop layar sentuh. Menurutnya, layar sentuh yang tegak membuat lengan cepat pegal dan **secara ergonomis buruk sekali**. Apple sempat mencoba jalan tengah lewat Touch Bar pada 2016, lalu menghapusnya pada 2023. Dalam presentasi kali ini, Apple sama sekali tidak menyebut Jobs.\n\n## 04-harga\n\nHarganya mulai US$2.899 untuk versi 14 inci dengan M5 Pro, US$400 lebih mahal dari model tanpa layar sentuh. Ini harga awal MacBook Pro termahal yang pernah ada. Pemesanan sudah dibuka di 30 negara dan barang tiba 6 November. Untuk Indonesia, Apple baru menyebut **akan segera hadir**, tanpa harga resmi.\n\n## 05-catatan\n\nAda beberapa catatan dari hands-on awal. Laptop ini **tidak mendukung Apple Pencil**, dan layarnya tidak bisa dilipat 180 derajat seperti tablet. The Verge melaporkan layarnya sedikit bergoyang saat diketuk keras, meski ada engsel baru. Menurut CNBC, fitur sentuh ini kemungkinan tidak akan mengubah cara kebanyakan orang memakai laptop.\n\n# Caption\n\nEnam belas tahun lalu, Steve Jobs bilang layar sentuh di laptop itu buruk secara ergonomis. Pada 28 Oktober 2026, Apple justru memperkenalkan MacBook Pro pertama yang layarnya bisa disentuh, lengkap dengan layar OLED dan Dynamic Island.\n\nHarganya mulai US$2.899 untuk versi 14 inci, US$400 di atas model biasa. Pemesanan sudah dibuka di 30 negara dan pengiriman mulai 6 November. Di Indonesia, Apple baru menyebut akan segera hadir, tanpa harga resmi. Angka rupiah yang beredar sejauh ini hanya hasil konversi kurs.\n\nCatatannya: tidak ada dukungan Apple Pencil, layarnya tidak bisa dilipat penuh, dan aplikasi pihak ketiga baru menyesuaikan diri akhir tahun ini. Menurutmu, laptop memang perlu layar sentuh, atau trackpad sudah cukup?\n\nSumber: Apple Newsroom, Reuters, The Verge, Gizmodo, CNBC, Business Insider / Foto: Apple\n\n#akalmesin #Apple #MacBookPro #LayarSentuh #Laptop\n\n# Sources\n\n- [Apple Newsroom — Apple unveils groundbreaking MacBook Pro with PROLED XDR Display](https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/)\n- [Apple Newsroom Indonesia](https://www.apple.com/id/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/)\n- [Reuters — Apple shows first touchscreen laptops amid product blitz (Stephen Nellis; via Global Banking & Finance republication)](https://www.globalbankingandfinance.com/apple-shows-first-touchscreen-laptops-amid-product-blitz/)\n- [The Verge — Hands-on with Apple's touchscreen MacBook Pro](https://www.theverge.com/tech/1020549/macbook-studio-touchscreen-hands-on)\n- [Gizmodo — MacBook Pro With PROLED XDR Display Hands-On](https://gizmodo.com/macbook-pro-with-proled-xdr-display-hands-on-2000831735)\n- [CNBC — Hands-on with Apple's first touchscreen laptop](https://www.cnbc.com/2026/10/28/apple-touchscreen-macbook-pro-hands-on.html)\n- [Business Insider — Steve Jobs: Touchscreen Laptops Don't Work](https://www.businessinsider.com/steve-jobs-touch-screen-mac-2010-10)\n- [Wired — Why 'Gorilla Arm Syndrome' Rules Out Multitouch Notebook Displays](https://www.wired.com/2010/10/gorilla-arm-multitouch/)\n- [The Verge — Apple announces its first touchscreen MacBook Pro](https://www.theverge.com/gadgets/1019554/apple-touchscreen-macbook-pro-and-tell)\n\n# Alt text and photo credits\n\n01-main: Foto resmi Apple: seorang pria menyentuh layar MacBook Pro baru dengan jarinya di sebuah kafe.\n\nFOTO: MACBOOK PRO LAYAR SENTUH / APPLE\n\n02-baru: Foto resmi Apple: layar MacBook Pro baru dengan Dynamic Island menampilkan kontrol Apple Music.\n\nFOTO: DYNAMIC ISLAND DI MACBOOK PRO / APPLE\n\n03-jobs: Foto resmi Apple: MacBook Pro baru ukuran 14 dan 16 inci berdiri berdampingan.\n\nFOTO: MACBOOK PRO 14 DAN 16 INCI / APPLE\n\n04-harga: Foto resmi Apple: seorang perempuan menyentuh layar MacBook Pro baru di meja kantor.\n\nFOTO: MACBOOK PRO DI KANTOR / APPLE\n\n05-catatan: Foto resmi Apple: tangan menyentuh layar MacBook Pro baru, diambil dari video fitur sentuh.\n\nFOTO: FITUR SENTUH MACBOOK PRO / APPLE\n\n# Approval\n\n\"Saved in review editor 2026-10-29T09:16:57.464Z\" — macbook-review-approval.json sha256:b232e3848dc27c205a249fe06872eaa7ed374cd2c5767f38f86f7d3cba864d66, 2026-10-29 16:16 WIB\n\nApproved design revision: 39212ce278285b587c47c2e82707a3c9fdaa28dcd52b245a6807e91475a117b2\n\n# Source ledger\n\n# Sources — 2026-10-29-apple-macbook-pro-layar-sentuh (retrieved 2026-10-29 WIB)\n\n| Claim | Status | Source |\n|---|---|---|\n| Announced 28 Oct 2026, \"MacBook Pro with PROLED XDR Display\", 14 and 16 inch | Verified | Apple Newsroom https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/ ; Reuters |\n| \"Pro and tell\" event in Los Angeles, presented by CEO John Ternus | Verified (Reuters); Ternus CEO since early Sept per sindonews | Reuters; sindonews |\n| Tandem OLED, touch sensor built into the panel (Apple: lower latency) | Verified (vendor claim on latency) | Apple Newsroom |\n| macOS 27 gestures: swipe, pinch, drag, double-tap; small controls magnify on touch | Verified (vendor description; hands-ons confirm magnify) | Apple Newsroom; The Verge |\n| 2000 nits peak HDR, 10,000,000:1, ProMotion 10–120 Hz, P3 + Adobe RGB | Verified (vendor spec) | Apple Newsroom |\n| Dynamic Island replaces notch; M5 Pro/M5 Max, up to 128 GB / 16 TB; up to 24 h battery | Verified (battery = Apple's own test) | Apple Newsroom |\n| From US$2,899 (14\" M5 Pro); $3,399 / $4,499 / $4,799 other models | Verified | Apple Newsroom |\n| US$400 more than comparable non-touch 14\" M5 Pro ($2,499) | Verified | Apple Newsroom; The Verge |\n| Highest MacBook Pro starting price ever (beats 2006 17\" at $2,799) | Reported, not independently checked against every past model | telset |\n| Pre-order 28 Oct in 30 countries, available 6 Nov | Verified | Apple Newsroom |\n| Indonesia: \"akan segera hadir\", no price/date | Verified | Apple Newsroom Indonesia |\n| Rupiah prices (≈Rp51,9–52,2 juta) | Uncertain: currency conversions only, not used in copy | detik; sindonews |\n| No Apple Pencil support | Verified (Apple told Gizmodo; Tom's Guide) | Gizmodo; Tom's Guide |\n| Screen does not fold 180° | Verified (hands-ons) | The Verge; Gizmodo |\n| Screen wobbles under firm taps despite new hinge | Reported (one outlet's hands-on) | The Verge |\n| Touch \"won't change the way most people use their laptops\" | Opinion, attributed | CNBC |\n| Apple did not mention Jobs in its presentation | Reported | Gizmodo |\n| Jobs, 20 Oct 2010 \"Back to the Mac\": touch surfaces vertical \"ergonomically terrible … your arm wants to fall off\" | Verified (event video transcript) | Business Insider; Wired |\n| Touch Bar introduced 2016, dropped 2023 | Verified | The Verge |\n| Third-party touch-optimised apps (Notion, Canva, Office, …) \"later this year\" | Vendor claim | Apple Newsroom |\n\nUncertain or open: Indonesian price and launch date; real-world battery life and touch latency (no full reviews yet, only hands-ons); durability of the hinge/screen under daily touch.\n\n## Media (owner decision t89u, 29 Oct 2026)\n\nAll photos (carousel) and video/photos (reel) are Apple Newsroom press media of the new MacBook Pro with PROLED XDR Display, from https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/ . URLs and SHA-256 per file: assets/PROVENANCE.md and reel/PROVENANCE.md.\n\n- Apple's terms (LEGAL_NOTICE.rtf shipped in each press zip, copy at assets/APPLE_LEGAL_NOTICE.rtf): use is for personal or editorial and non-commercial purposes only; media may not be altered or modified without Apple's express permission.\n- No licence or permission from Apple has been obtained.\n- Used by owner decision t89u (\"some big ig account just use the footage … as long as we include the source credit\"). Known risk: Apple or Instagram may remove the post, or the account may receive a copyright strike.\n- Reel: Apple media shown unaltered (scaled to fit with black letterbox, trimmed only). Carousel: blue-ink treatment is an alteration, which departs from Apple's no-alteration term.\n- Credited on every slide (\"FOTO: … / APPLE\"), in the reel under every clip (\"Video: Apple\" / \"Foto: Apple · Sumber: Apple Newsroom\"), and in the caption (\"Foto: Apple\").\n\n## Article URLs\n\n- Reuters (Stephen Nellis), republished: https://www.globalbankingandfinance.com/apple-shows-first-touchscreen-laptops-amid-product-blitz/ (AFP, same event: https://www.straitstimes.com/world/united-states/apple-shows-pricey-touchscreen-laptops-a-first-for-the-iphone-maker)\n- The Verge: https://www.theverge.com/tech/1020549/macbook-studio-touchscreen-hands-on ; https://www.theverge.com/gadgets/1019554/apple-touchscreen-macbook-pro-and-tell\n- Gizmodo: https://gizmodo.com/macbook-pro-with-proled-xdr-display-hands-on-2000831735\n- CNBC: https://www.cnbc.com/2026/10/28/apple-touchscreen-macbook-pro-hands-on.html\n- 9to5Mac: https://9to5mac.com/2026/10/28/apple-announces-redesigned-macbook-pro-its-first-touchscreen-mac/\n- Business Insider: https://www.businessinsider.com/steve-jobs-touch-screen-mac-2010-10 ; Wired: https://www.wired.com/2010/10/gorilla-arm-multitouch/\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-10-29-apple-macbook-pro-layar-sentuh\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/01-01-main.png",
+      "sha256": "2bb6248cba0fff5d056de1b26fbb1e8da1b38d035a984b277b2003849980e943",
+      "bytes": 1189036
+    },
+    {
+      "slideId": "02-baru",
+      "file": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/02-02-baru.png",
+      "sha256": "f465e024aca04943e8b10cb972ca73712bf74cc3c4f45c1eea6f16aa7cf68b90",
+      "bytes": 996766
+    },
+    {
+      "slideId": "03-jobs",
+      "file": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/03-03-jobs.png",
+      "sha256": "435313461a5252b07f74a985ec8b77cac8ba59f5ff125325a8f1490e21c31edd",
+      "bytes": 939690
+    },
+    {
+      "slideId": "04-harga",
+      "file": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/04-04-harga.png",
+      "sha256": "bed6fc5fb60b5dd42a5475c16f20da0962c0dc32c14fc0c6926a2eee24e891b7",
+      "bytes": 1247746
+    },
+    {
+      "slideId": "05-catatan",
+      "file": "content/posts/2026-10-29-apple-macbook-pro-layar-sentuh/out/png/05-05-catatan.png",
+      "sha256": "ef8ebbf4e52833dd5ae15febf9a1807f86a2c3bdb48a0aa59076304b0ecdf614",
+      "bytes": 1073214
+    }
+  ],
+  "generatedAt": "2026-10-29T09:17:27.286Z"
+}
