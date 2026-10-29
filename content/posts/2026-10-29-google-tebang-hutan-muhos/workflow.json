@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-google-tebang-hutan-muhos",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "151b4ef678369e8f1f046b6643509c44ad1da97da22ebac81a2022fb6818dfd2",
+      "at": "2026-10-29T05:11:04.831Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "f179306e413a76febc0f76d8cf3122cce4ab5c12545a6554aba25ff790a8d03e",
+      "at": "2026-10-29T05:11:20.078Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "302116ed9a282eaa902085557f653889e96a9e9b585af58ab16abf7aa46bc634",
+      "at": "2026-10-29T05:11:46.159Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "2c31ac0ff2fd83dfed5843ee9ea6be4a1738b083d852bb06f0da078724bed372",
+      "at": "2026-10-29T05:12:04.755Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "ba04a00b6d1d4440f100bf4f27415eff674cd22148bb2ec78f4e4225a22ccfa0",
+      "at": "2026-10-29T05:12:12.441Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "2ecf13cb3b14dd3058c35b3674656b0eef5820c7aecc4a8c3aeedffd0b3089f8",
+      "at": "2026-10-29T05:12:20.138Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+      "at": "2026-10-29T05:13:01.127Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+      "at": "2026-10-29T05:47:28.891Z"
+    }
+  ]
+}

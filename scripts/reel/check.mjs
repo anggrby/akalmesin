@@ -1,8 +1,9 @@
 // npm run reel:check -- <slug> [--mp4 <file>]
 // Deterministic reel gates. Independent of carousel gates and hashes.
+import fs from 'node:fs';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
-import {loadPost, parseArgs, readJSON, writeJSON} from '../core.mjs';
+import {loadPost, parseArgs, readJSON, writeJSON, fileHash} from '../core.mjs';
 
 const {
   _: [slug],
@@ -47,11 +48,44 @@ const missing = spec.beats.flatMap(b => b.onScreen.filter(o => !carousel.include
 gate('on-screen facts in verified carousel copy', !missing.length, missing.join('; ') || 'all facts found');
 const nums = spec.beats.flatMap(b => b.onScreen.flatMap(o => (o.text.match(/\d+/g) || []).filter(n => !carousel.includes(n)).map(n => `${o.text}: ${n}`)));
 gate('on-screen numbers in carousel copy', !nums.length, nums.join('; ') || 'ok');
-const photoBeats = spec.beats.filter(b => b.photo).map(b => b.id);
-const noCredit = man.frames.filter(
-  f => photoBeats.includes(f.beat) && f.credit !== post.slides.find(s => s.id === spec.beats.find(b => b.id === f.beat).photo).credit
-);
-gate('footage credits shown', !noCredit.length, noCredit.map(f => f.file).join(', ') || `${photoBeats.length} photo beats credited`);
+if (spec.layout === 'news') {
+  // News layout: media shown as-is, credit + location tag for every media item, watermark, all in safe area.
+  const badTag = man.frames.filter(f => f.credit !== spec.media[f.media]?.tag || !inside(f.creditBox));
+  gate(
+    'media credit tag on screen (every cue)',
+    !badTag.length,
+    badTag.map(f => f.file).join(', ') || `${new Set(man.frames.map(f => f.media)).size} media items credited`
+  );
+  const unused = Object.keys(spec.media).filter(k => !spec.beats.some(b => b.media === k));
+  const noLic = Object.entries(spec.media).filter(([, m]) => !/(CC BY|CC0|Domain publik)/.test(m.tag));
+  gate('every media item used and licensed', !unused.length && !noLic.length, [...unused, ...noLic.map(([k]) => k)].join(', ') || 'ok');
+  const badLoc = man.frames.filter(f => !f.location || !inside(f.locationBox));
+  gate('location tag on screen', !badLoc.length, badLoc.map(f => f.file).join(', ') || 'ok');
+  const badWm = man.frames.filter(f => !inside(f.watermark));
+  gate('watermark in safe area', !badWm.length, badWm.map(f => f.file).join(', ') || 'ok');
+  const allowed = new Set(man.allowedMediaFilters);
+  const used = man.mediaGraphs.flatMap(g => g.graph.split(',').map(x => x.split('=')[0]));
+  const bad = used.filter(f => !allowed.has(f));
+  const flagged = Object.entries(spec.media).filter(([, m]) => m.filter !== 'none');
+  const ink = man.mediaGraphs.filter(g => /blue-ink|processed/.test(g.graph));
+  gate(
+    'no-filter (media as-is)',
+    spec.mediaFilter === 'none' && !bad.length && !flagged.length && !ink.length,
+    bad.length || flagged.length
+      ? `bad filters: ${bad.join(',')} flagged: ${flagged.map(([k]) => k).join(',')}`
+      : `only ${[...new Set(used)].join(', ')} (geometry/timing)`
+  );
+  const hashes = Object.values(spec.media).filter(
+    m => !fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8').includes(fileHash(path.join(paths.dir, m.file)))
+  );
+  gate('provenance SHA-256 for every media file', !hashes.length, hashes.map(m => m.file).join(', ') || 'all hashes listed');
+} else {
+  const photoBeats = spec.beats.filter(b => b.photo).map(b => b.id);
+  const noCredit = man.frames.filter(
+    f => photoBeats.includes(f.beat) && f.credit !== post.slides.find(s => s.id === spec.beats.find(b => b.id === f.beat).photo).credit
+  );
+  gate('footage credits shown', !noCredit.length, noCredit.map(f => f.file).join(', ') || `${photoBeats.length} photo beats credited`);
+}
 const hook = man.frames[0];
 gate('hook within 2 s', hook.start === 0 && hook.onScreen.length > 0, `first text at 0.0 s, first cue "${hook.subText}"`);
 const errors = results.filter(r => !r.ok);

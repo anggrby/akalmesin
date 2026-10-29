@@ -1,0 +1,215 @@
+{
+  "slug": "2026-10-29-google-tebang-hutan-muhos",
+  "category": "Komputasi",
+  "title": "Google tebang hutan Finlandia demi data center",
+  "format": "in-depth",
+  "formatReason": "In-depth: Main + four detail slides (perintah LVV, aturan 200 hektare, permintaan maaf Google, reaksi publik dan status).",
+  "eventDate": "2026-10-22",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Google tebang hutan",
+        "demi data center"
+      ],
+      "summary": "Google menebang sekitar 330 hektare hutan di Muhos, Finlandia, sebelum kajian dampak lingkungan yang wajib dilakukan selesai.",
+      "credit": "FOTO: HUTAN TEBANG HABIS, FINLANDIA / TERO LAAKSO (CC BY 2.0)",
+      "alt": "Foto ilustrasi area hutan yang ditebang habis di Finlandia selatan, dengan tunggul dan sisa ranting di tanah.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-clearcutting-southern-finland",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Clearcutting_in_Southern_Finland.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/0/04/Clearcutting_in_Southern_Finland.jpg",
+        "originalFile": "assets/originals/commons-clearcutting-southern-finland.jpg",
+        "subject": "Clear-cut forest in southern Finland, 2008 (generic, not the Muhos site)",
+        "supplier": "Tero Laakso / Wikimedia Commons",
+        "license": "CC BY 2.0",
+        "process": {
+          "crop": [
+            0,
+            500,
+            3872,
+            2092
+          ],
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "02-lvv",
+      "layout": "detail1",
+      "paragraphs": [
+        "Pada 6 Oktober 2026, otoritas perizinan dan pengawasan Finlandia (LVV) memerintahkan anak usaha Google, Tuike Finland, menghentikan pekerjaan persiapan di Muhos dan Kajaani. Menurut LVV, pohon sudah ditebang, lapisan tanah atas dikupas, dan jalan proyek dibangun, padahal **kajian dampak lingkungan belum selesai**."
+      ],
+      "credit": "FOTO: KANTOR PEMERINTAH MUHOS / ESTORMIZ (CC0)",
+      "alt": "Foto gedung kantor pemerintah kota Muhos bertuliskan Muhoksen kunta saat musim dingin.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-muhos-town-hall-2026",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Muhos_Town_Hall_20260303_01.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/3/30/Muhos_Town_Hall_20260303_01.jpg",
+        "originalFile": "assets/originals/commons-muhos-town-hall-2026.jpg",
+        "subject": "Muhos Town Hall, 3 March 2026",
+        "supplier": "Estormiz / Wikimedia Commons",
+        "license": "CC0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "03-aturan",
+      "layout": "detail2",
+      "paragraphs": [
+        "Hukum Finlandia mewajibkan kajian dampak lingkungan jika hutan dihilangkan secara permanen di area lebih dari 200 hektare. Di Muhos, Google sendiri mengonfirmasi luas tebangan sekitar 330 hektare, **jauh di atas ambang batas**. Helsingin Sanomat melaporkan LVV sudah menegaskan kewajiban ini kepada Tuike Finland sejak Mei."
+      ],
+      "credit": "FOTO: BEKAS TEBANGAN DI TURKU / LPFI (CC BY-SA 3.0)",
+      "alt": "Foto ilustrasi bekas tebangan hutan pinus di Turku, Finlandia, dengan tanah yang sudah digarap.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-clearcut-turku-2011",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Kalhygge_K%C3%A4rmemets%C3%A4_2011.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Kalhygge_K%C3%A4rmemets%C3%A4_2011.jpg",
+        "originalFile": "assets/originals/commons-clearcut-turku-2011.jpg",
+        "subject": "Clear-cut in pine forest, Kärmemetsä, Turku, 2011 (generic)",
+        "supplier": "LPfi / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "04-google",
+      "layout": "detail1",
+      "paragraphs": [
+        "Pada 13 Oktober, Country Manager Google Finlandia, Antti Järvinen, **meminta maaf secara terbuka**. Ia menyebut semua keputusan diambil berdasarkan pemahaman terbaik perusahaan atas aturan saat itu. Google juga berencana menanam pohon di lahan seluas 130 hektare, angka yang dinilai terlalu kecil oleh kelompok konservasi."
+      ],
+      "credit": "FOTO: TEBANG HABIS DI LAPLAND / GREENPEACE FINLAND (CC BY 2.0)",
+      "alt": "Foto ilustrasi forwarder kehutanan bekerja di area tebang habis bersalju di Salla, Lapland.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-forwarder-clearcut-lapland",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Ponsse_forwarder_working_in_Lapland.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Ponsse_forwarder_working_in_Lapland.jpg",
+        "originalFile": "assets/originals/commons-forwarder-clearcut-lapland.jpg",
+        "subject": "Forwarder on a clear-cut in Moukavaara, Salla, Lapland, January 2009 (generic)",
+        "supplier": "Greenpeace Finland / Wikimedia Commons",
+        "license": "CC BY 2.0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "05-reaksi",
+      "layout": "detail2",
+      "paragraphs": [
+        "Kasus ini memicu kemarahan nasional. Inisiatif warga yang menuntut aturan data center lebih ketat kini didukung sekitar 98.000 orang, sementara The Guardian mencatat 145 data center baru sedang direncanakan di Finlandia. Polisi juga melakukan penyelidikan awal, dan **hasilnya belum diumumkan**."
+      ],
+      "credit": "FOTO: PLTA PYHÄKOSKI DI SUNGAI OULUJOKI, MUHOS / ESTORMIZ (PD)",
+      "alt": "Foto gedung PLTA Pyhäkoski di tepi Sungai Oulujoki, Muhos, Finlandia.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-pyhakoski-power-plant-muhos-2006",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Pyhakoski_Power_Plant_Muhos_2006_08_26.JPG",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/d/da/Pyhakoski_Power_Plant_Muhos_2006_08_26.JPG",
+        "originalFile": "assets/originals/commons-pyhakoski-power-plant-muhos-2006.jpg",
+        "subject": "Pyhäkoski hydropower plant on the Oulujoki river, Muhos, 26 Aug 2006",
+        "supplier": "Estormiz / Wikimedia Commons",
+        "license": "Public domain",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Sekitar 330 hektare hutan di Muhos, Finlandia utara, kini rata dengan tanah demi data center Google. Masalahnya, penebangan itu dilakukan sebelum kajian dampak lingkungan yang diwajibkan hukum selesai. Pada 6 Oktober 2026, otoritas LVV memerintahkan pekerjaan persiapan di Muhos dan Kajaani dihentikan.",
+    "Hukum Finlandia mewajibkan kajian tersebut untuk penebangan permanen di atas 200 hektare. Country Manager Google Finlandia, Antti Järvinen, sudah meminta maaf, tetapi menyebut perusahaan bertindak sesuai pemahaman terbaiknya atas aturan saat itu. Menurut perkiraan yang dikutip The Guardian, sekitar 250.000 pohon hilang di lokasi ini.",
+    "Kasus ini memicu perdebatan nasional soal ledakan data center di Finlandia, dengan 145 proyek baru dalam tahap perencanaan. Polisi masih melakukan penyelidikan awal, dan kajian lingkungannya belum rampung. Menurutmu, perlukah aturan yang lebih ketat sebelum data center boleh membuka lahan?",
+    "Sumber: LVV, Yle, Helsingin Sanomat, The Guardian, Kansalaisaloite.fi / Foto: Tero Laakso, Estormiz, LPfi, Greenpeace Finland via Wikimedia Commons\n\n#akalmesin #DataCenter #Google #Finlandia #Lingkungan"
+  ],
+  "sources": [
+    {
+      "title": "Yle — LVV laittoi datakeskustyömaat jäihin Muhoksella ja Kajaanissa",
+      "url": "https://yle.fi/a/74-20250109",
+      "published": "2026-10-06",
+      "supports": [
+        "LVV order to Tuike Finland 6 Oct, stop by 23 Oct until EIA complete",
+        "tree removal, topsoil stripping, site roads, ditches",
+        "Google confirmed ~330 ha Muhos, just under 200 ha Kajaani"
+      ]
+    },
+    {
+      "title": "BBC — Finland orders halt to work on two Google data centres",
+      "url": "https://www.bbc.com/news/articles/cvj6jkx6g1r0o",
+      "published": "2026-10-06",
+      "supports": [
+        "€13bn investment",
+        "Google: fallen short of our own high standards",
+        "130 ha tree planting"
+      ]
+    },
+    {
+      "title": "Helsingin Sanomat — Google ei saanut poikkeuslupaa, mutta hakkasi silti",
+      "url": "https://www.hs.fi/politiikka/art-2000012304991.html",
+      "published": "2026-09-28",
+      "supports": [
+        "EIA required above 200 ha permanent removal",
+        "LVV letter 22 May confirmed EIA applies"
+      ]
+    },
+    {
+      "title": "Yle News — Google Finland head apologises for forest clearances",
+      "url": "https://yle.fi/a/74-20251367",
+      "published": "2026-10-13",
+      "supports": [
+        "Antti Järvinen apology",
+        "best understanding of the legislation at the time"
+      ]
+    },
+    {
+      "title": "Yle News — police probe suspected illegal logging",
+      "url": "https://yle.fi/a/74-20250446",
+      "published": "2026-10-07",
+      "supports": [
+        "police preliminary investigation (per Iltalehti)"
+      ]
+    },
+    {
+      "title": "The Guardian — 'Pure arrogance': Google illegally fells 250,000 trees",
+      "url": "https://www.theguardian.com/environment/ng-interactive/2026/oct/22/finland-google-felling-trees-datacentre",
+      "published": "2026-10-22",
+      "supports": [
+        "estimated 250,000 trees",
+        "145 new datacentres in planning",
+        "conservationists say 130 ha too low"
+      ]
+    },
+    {
+      "title": "Kansalaisaloite.fi — Datakeskukset kuriin",
+      "url": "https://www.kansalaisaloite.fi/fi/aloite/17997",
+      "published": "2026-09-15",
+      "supports": [
+        "98,006 support statements (read 29 Oct 2026)"
+      ]
+    }
+  ]
+}

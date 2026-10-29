@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-google-tebang-hutan-muhos",
+  "copyRevision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
+  "creditsRevision": "5d47769843133de1d61aa75317ecdef38cd50b151fa132917fcaea39b19255d0",
+  "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+  "builtAt": "2026-10-29T05:47:28.891Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/slides/01-main.html",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/01-01-main.png",
+      "pngHash": "f0832fd504b568591800b83292ddde7f6c0d5b87e815ec42252b1daf05ed226a",
+      "imageHash": "34d056c1934043e5954ea795d1ef7bcf0c87b04852ac93528f69881988e3a230",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-lvv",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/slides/02-lvv.html",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/02-02-lvv.png",
+      "pngHash": "1876a55050fcfb61930ad36f7ea9b47f5b9c2c7daa6d682434cfd8f241b05354",
+      "imageHash": "b87c31600325748b2fbc536d93c33ff6e1bd740b33a1493f1adfc58133f1aac9",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-aturan",
+      "layout": "detail2",
+      "html": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/slides/03-aturan.html",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/03-03-aturan.png",
+      "pngHash": "31e9a024254fcabbf3f1ca56c74cb6e1bdc4a34f8c345f2d5aa56fc70e16ebae",
+      "imageHash": "ab4afa056b6637f3e0824df9813b0970530e2fb86a4dfc881c9801c36ddd5283",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-google",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/slides/04-google.html",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/04-04-google.png",
+      "pngHash": "2a7a46dbc8bbca1223be4632382488a3b68f0bbb5713bf458f4396af98eb9203",
+      "imageHash": "9c05ae656c0dc471bf9c51cc95972c6c952dea040a79dfdbd7c3492c0b267c52",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-reaksi",
+      "layout": "detail2",
+      "html": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/slides/05-reaksi.html",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/05-05-reaksi.png",
+      "pngHash": "506d2bb4470410e5ea4951b385548a5e200f549033478105cc972db11c911cde",
+      "imageHash": "d0583e105cc89b7349bb377fed88c3b2b319cab245c7f4885c0430f4ba910075",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

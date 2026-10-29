@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-google-tebang-hutan-muhos",
+  "designRevision": "0e904506c9f99c5c48ab54bfd066b9d15208d9454e4510851d96e77a7cc0ed8f",
+  "copyRevision": "8f5e8405cebc38e7a43d91d512b0c335c0d41b4278288c73fb9014dddf2a30be",
+  "checkedAt": "2026-10-29T05:47:29.705Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9698376458650432,
+        "meanDistance": 3.4284050923078317,
+        "inkPixels": 0.9107052257737189
+      },
+      "gap": 64,
+      "photoHeight": 702
+    },
+    {
+      "id": "02-lvv",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/02-02-lvv.png",
+      "ink": {
+        "onRamp": 0.9654046639231825,
+        "meanDistance": 2.8045955753721628,
+        "inkPixels": 0.46492455418381345
+      },
+      "gap": 54,
+      "photoHeight": 702
+    },
+    {
+      "id": "03-aturan",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/03-03-aturan.png",
+      "ink": {
+        "onRamp": 0.9685823754789272,
+        "meanDistance": 4.232994856163071,
+        "inkPixels": 0.8940704251049079
+      },
+      "gap": 54,
+      "photoHeight": 702
+    },
+    {
+      "id": "04-google",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/04-04-google.png",
+      "ink": {
+        "onRamp": 0.9514851485148514,
+        "meanDistance": 4.2198093630933755,
+        "inkPixels": 0.5583975064173083
+      },
+      "gap": 54,
+      "photoHeight": 702
+    },
+    {
+      "id": "05-reaksi",
+      "png": "content/posts/2026-10-29-google-tebang-hutan-muhos/out/png/05-05-reaksi.png",
+      "ink": {
+        "onRamp": 0.9867695473251029,
+        "meanDistance": 2.6151441283205603,
+        "inkPixels": 0.5397530864197531
+      },
+      "gap": 54,
+      "photoHeight": 702
+    }
+  ]
+}

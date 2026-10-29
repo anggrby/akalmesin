@@ -23,15 +23,18 @@ fs.mkdirSync(frames, {recursive: true});
 const sh = (cmd, args) => execFileSync(cmd, args, {stdio: ['ignore', 'pipe', 'pipe']}).toString();
 const probeDur = f => Number(sh('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]));
 
-if (!flags['reuse-tts'] || !fs.existsSync(path.join(tts, 'words.json')))
-  sh('python3', [path.join(ROOT, 'scripts/reel/tts.py'), path.join(reelDir, 'reel.json'), tts]);
-const words = readJSON(path.join(tts, 'words.json'));
+let words;
+if (spec.layout !== 'news') {
+  if (!flags['reuse-tts'] || !fs.existsSync(path.join(tts, 'words.json')))
+    sh('python3', [path.join(ROOT, 'scripts/reel/tts.py'), path.join(reelDir, 'reel.json'), tts]);
+  words = readJSON(path.join(tts, 'words.json'));
+}
 
 // Subtitle cues: split each beat's narration at punctuation / ~30 chars, time from WordBoundary offsets.
 const TAIL = 0.35,
   MAXC = 30;
-function cuesFor(beat, start) {
-  const ws = words[beat.id];
+function cuesFor(beat, start, wordsIn = words) {
+  const ws = wordsIn[beat.id];
   const text = beat.narration;
   let pos = 0;
   const spans = ws.map(w => {
@@ -60,6 +63,12 @@ function cuesFor(beat, start) {
       end: start + (k === groups.length - 1 ? end : groups[k + 1][0].t)
     }))
   };
+}
+if (spec.layout === 'news') {
+  const {renderNews} = await import('./news.mjs');
+  const cues = (words, beat, start) => cuesFor(beat, start, words);
+  console.log(JSON.stringify(await renderNews({spec, post, paths, reelDir, work, tts, frames, outArg, flags, cuesFor: cues, sh, probeDur})));
+  process.exit(0);
 }
 let t = 0;
 const timeline = spec.beats.map(beat => {
