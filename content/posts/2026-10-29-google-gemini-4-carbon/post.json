@@ -13,7 +13,7 @@
         "Google umumkan",
         "Gemini 4 Carbon"
       ],
-      "summary": "Google menyebutnya model terkuatnya sejauh ini, dengan lompatan besar di bidang keamanan siber—tetapi aksesnya masih sangat terbatas.",
+      "summary": "Diklaim sebagai model terkuat Google sejauh ini dengan lompatan besar di bidang keamanan siber—namun aksesnya masih dibatasi ketat",
       "credit": "FOTO: SUNDAR PICHAI / MAURIZIO PESCE (CC BY 2.0)",
       "alt": "Foto CEO Google Sundar Pichai berbicara di panggung Google I/O 2015.",
       "imagePosition": "50% 35%",
@@ -34,7 +34,7 @@
       "id": "02-benchmark",
       "layout": "detail1",
       "paragraphs": [
-        "Google mengklaim Gemini 4 Carbon kini menempati **peringkat pertama Artificial Analysis Intelligence Index v5.0** dengan skor 59, di atas Claude Opus 5.5 dan GPT-6 Astra. Model ini diumumkan hanya dua minggu setelah Gemini 4 Argon, dengan peningkatan di bidang coding, tugas agentik, sains, hingga pengembangan web."
+        "Google mengklaim Gemini 4 Carbon kini menduduki **peringkat pertama di Artificial Analysis Intelligence Index v5.0 dengan skor 59**, mengungguli Claude Opus 5.5 dan GPT-6 Astra. Model ini diumumkan hanya berselang dua minggu setelah Gemini 4 Argon, membawa peningkatan signifikan di bidang coding, tugas agentik, sains, hingga pengembangan web."
       ],
       "credit": "FOTO: GRAFIK SEC-BENCH PRO / GOOGLE",
       "alt": "Grafik batang resmi Google: skor SEC-bench Pro, Gemini 4 Carbon di posisi teratas dengan 88,2 persen.",
@@ -58,7 +58,7 @@
       "id": "03-keamanan",
       "layout": "detail2",
       "paragraphs": [
-        "Fokus utamanya adalah keamanan siber. Menurut Google, Carbon unggul di SEC-bench Pro (88,2%) untuk menemukan celah, ExploitGym (54,8%) untuk menguji apakah celah bisa dieksploitasi, dan CWE-bench (71,0%) untuk menambalnya—**dari mendeteksi hingga memperbaiki bug**."
+        "Fokus utamanya terletak pada keamanan siber. Menurut Google, Carbon unggul di tiga benchmark sekaligus: SEC-bench Pro (88,2%) untuk menemukan celah keamanan, ExploitGym (54,8%) untuk menguji apakah celah tersebut bisa dieksploitasi, dan CWE-bench (71,0%) untuk menambalnya—**mandiri dari mendeteksi hingga memperbaiki bug.**"
       ],
       "credit": "FOTO: GRAFIK EXPLOITGYM / GOOGLE",
       "alt": "Grafik batang resmi Google: skor ExploitGym, Gemini 4 Carbon di posisi teratas dengan 54,8 persen.",
@@ -82,7 +82,7 @@
       "id": "04-tugas-panjang",
       "layout": "detail1",
       "paragraphs": [
-        "Carbon juga dirancang untuk tugas rekayasa software yang panjang. Google mengaku timnya pernah melihat model ini **bekerja berhari-hari** untuk melacak dan menambal bug rumit di codebase besar. Google juga mengklaim Carbon memangkas klaim tanpa dasar sekitar dua kali lipat dibanding Argon, dan percobaan curang di Terminal-Bench 4.0 turun menjadi 0,4%."
+        "Carbon juga dirancang untuk menangani proyek rekayasa software berdurasi panjang. Google mengungkap bahwa tim internalnya pernah mendapati model ini **bekerja nonstop berhari-hari** untuk melacak sekaligus menambal bug rumit di codebase berskala besar. Tingkat halusinasinya juga diklaim turun sekitar separuh dibanding Argon, sementara kecenderungan berbuat curang (cheating) di Terminal-Bench 4.0 ditekan hingga 0,4%."
       ],
       "credit": "FOTO: GRAFIK CWE-BENCH / GOOGLE",
       "alt": "Grafik batang resmi Google: skor CWE-bench, Gemini 4 Carbon di posisi teratas dengan 71,0 persen.",
@@ -106,7 +106,7 @@
       "id": "05-akses",
       "layout": "detail2",
       "paragraphs": [
-        "Untuk saat ini, Carbon baru dibuka bagi sebagian tim pertahanan siber lewat Fairwind Program. Harga perkenalannya US$2 per sejuta token input dan US$10 per sejuta token output, lalu naik menjadi US$4 dan US$20—**belum ada tanggal pasti kapan dibuka untuk umum**."
+        "Saat ini, akses Carbon baru dibuka terbatas bagi sejumlah tim pertahanan siber lewat Fairwind Program. Tarif promo awalnya dipatok US$2 per satu juta token input dan US$10 per satu juta token output (sebelum nantinya naik menjadi US$4 dan US$20)—namun **belum ada jadwal pasti kapan model ini akan dibuka untuk publik.**"
       ],
       "credit": "FOTO: GAMBAR RESMI GEMINI 4 CARBON / GOOGLE",
       "alt": "Gambar resmi Google untuk Gemini 4 Carbon: kristal biru dan tulisan Gemini 4 Carbon.",
@@ -125,9 +125,9 @@
     }
   ],
   "caption": [
-    "Belum genap dua minggu setelah merilis Gemini 4 Argon, Google kembali mengumumkan model baru. Gemini 4 Carbon diumumkan pada 28 Oktober 2026 dan disebut Google sebagai model terkuatnya sejauh ini, dengan fokus pada keamanan siber, coding, dan tugas panjang yang kompleks. Jarak rilis sedekat ini menunjukkan betapa cepatnya persaingan model AI saat ini.",
-    "Google mengklaim Carbon menempati peringkat pertama Artificial Analysis Intelligence Index v5.0 dan unggul di sejumlah benchmark keamanan siber, mulai dari menemukan celah hingga menambalnya. Di internal Google, model ini juga disebut mampu bekerja berhari-hari untuk menyelesaikan tugas rekayasa software yang rumit.",
-    "Meski begitu, Carbon belum bisa dicoba publik. Aksesnya baru diberikan kepada sebagian tim pertahanan siber lewat Fairwind Program, sementara developer dan pengguna umum masih harus menunggu tanpa tanggal pasti. Menurutmu, apakah model AI sekuat ini memang sebaiknya dibuka secara bertahap?",
+    "Belum genap dua minggu setelah merilis Gemini 4 Argon, Google sudah kembali mengumumkan model baru. Gemini 4 Carbon diperkenalkan pada 28 Oktober 2026 sebagai model terkuat Google sejauh ini, dengan fokus utama pada keamanan siber, coding, dan penyelesaian tugas panjang yang kompleks. Jarak rilis yang sedekat ini menunjukkan betapa ketatnya persaingan model AI sekarang.",
+    "Google mengklaim Carbon langsung memuncaki peringkat Artificial Analysis Intelligence Index v5.0 dan menyapu bersih sejumlah benchmark keamanan siber—mulai dari mencari celah keamanan hingga menambalnya. Dalam pengujian internal Google, model ini bahkan disebut mampu bekerja nonstop selama berhari-hari untuk menuntaskan masalah rekayasa software yang rumit.",
+    "Meski begitu, Carbon belum bisa dicoba oleh publik. Aksesnya baru diberikan secara terbatas kepada tim pertahanan siber terpilih lewat Fairwind Program, sementara developer dan pengguna umum masih harus menunggu tanpa jadwal rilis yang pasti. Menurutmu, apakah model AI sekuat ini memang lebih aman jika dirilis secara bertahap?",
     "Sumber: Google, The Verge, Reuters / Foto: Maurizio Pesce via Wikimedia Commons (CC BY 2.0), Google\n\n#akalmesin #Google #Gemini #KeamananSiber #KecerdasanBuatan"
   ],
   "sources": [

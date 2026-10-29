@@ -1,14 +1,69 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-google-gemini-4-carbon",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-10-29T03:52:59.044Z",
+      "source": "carbon-owner-edits.json sha256:92124524535f39df35a8b2f48fb2a56e63e9669385f21631ce024595607b0600",
+      "context": "8 field(s) changed",
+      "at": "2026-10-29T03:52:59.044Z",
+      "atWIB": "2026-10-29 10:52 WIB",
+      "via": "review-save",
+      "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
+      "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-10-29T03:59:22.974Z",
+      "revision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-10-29T03:52:59.044Z",
+      "source": "carbon-owner-edits.json sha256:92124524535f39df35a8b2f48fb2a56e63e9669385f21631ce024595607b0600",
+      "context": "8 field(s) changed",
+      "at": "2026-10-29T03:52:59.044Z",
+      "atWIB": "2026-10-29 10:52 WIB",
+      "via": "review-save",
+      "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
+      "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-10-29T03:59:22.974Z",
+      "revision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1"
+    }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "408f909f-26a5-8187-9282-cc205dfc7204",
+    "url": "https://app.notion.com/p/Google-umumkan-Gemini-4-Carbon-408f909f26a581879282cc205dfc7204",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-10-29-google-gemini-4-carbon",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-10-29-google-gemini-4-carbon",
+    "approvedRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+    "orderedAssetHashes": [
+      "7d7a5c14b891e6fc19e152f9ba8b5ea7dc8592d2a47daf35f268df5fe5eb4a8c",
+      "11760c7e9ba2b8d0c318d4cf7b1f178f03b7c21bfb35544fc7cd4aee0804e378",
+      "31419441a4417b524d21dadf803402658ebdc089ab11b7a8bfcc7a6578518f91",
+      "b02d62b25f00058ae3901e3e04f7a9b12cba09599b9386da6141eaa73f7c7df0",
+      "61a3c9bfa2851467474b743400d0c65ffb69cae5e52254dbb7cd9e83b06bdcfb"
+    ],
+    "uploadedAssetHashes": [
+      "7d7a5c14b891e6fc19e152f9ba8b5ea7dc8592d2a47daf35f268df5fe5eb4a8c",
+      "11760c7e9ba2b8d0c318d4cf7b1f178f03b7c21bfb35544fc7cd4aee0804e378",
+      "31419441a4417b524d21dadf803402658ebdc089ab11b7a8bfcc7a6578518f91",
+      "b02d62b25f00058ae3901e3e04f7a9b12cba09599b9386da6141eaa73f7c7df0",
+      "61a3c9bfa2851467474b743400d0c65ffb69cae5e52254dbb7cd9e83b06bdcfb"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-10-29T03:59:40.409Z",
+    "exportedAtWIB": "2026-10-29 10:59 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -20,6 +75,33 @@
       "event": "design-built",
       "designRevision": "ec7e15d132ff30e0b6740ea3b076927617735f834da917f4a2f777b5cdfc1cd1",
       "at": "2026-10-29T02:22:35.802Z"
+    },
+    {
+      "event": "copy-recorded",
+      "who": "owner",
+      "mode": "review",
+      "from": "b2255d645dd9aa602ce7355c9226a534684d84d0a28179cc33f209d9882c2185",
+      "to": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
+      "file": "carbon-owner-edits.json",
+      "at": "2026-10-29T03:59:16.830Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+      "at": "2026-10-29T03:59:22.293Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "carbon-owner-edits.json sha256:92124524535f39df35a8b2f48fb2a56e63e9669385f21631ce024595607b0600",
+      "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
+      "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+      "at": "2026-10-29T03:52:59.044Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "408f909f-26a5-8187-9282-cc205dfc7204",
+      "at": "2026-10-29T03:59:40.409Z"
     }
   ]
 }

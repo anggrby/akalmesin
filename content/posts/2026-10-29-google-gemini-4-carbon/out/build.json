@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-google-gemini-4-carbon",
-  "copyRevision": "b2255d645dd9aa602ce7355c9226a534684d84d0a28179cc33f209d9882c2185",
+  "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
   "creditsRevision": "e59f8fde0ee60a3ecf9ed51452dac5c8f3d9e678fb80555dee2ad4e646863fa7",
-  "designRevision": "ec7e15d132ff30e0b6740ea3b076927617735f834da917f4a2f777b5cdfc1cd1",
-  "builtAt": "2026-10-29T02:22:35.802Z",
+  "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+  "builtAt": "2026-10-29T03:59:22.293Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/01-main.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/01-01-main.png",
-      "pngHash": "177d14658020a859449e21d1b6a91fe7e519c489d7f827e56e80691150b3183e",
+      "pngHash": "7d7a5c14b891e6fc19e152f9ba8b5ea7dc8592d2a47daf35f268df5fe5eb4a8c",
       "imageHash": "c52e0d17b41b9769ee954c74696e7485fa99ad9d50f3aaf6ae7a2527e8f008d6",
       "geometry": {
         "canvas": {
@@ -40,66 +40,8 @@
       "layout": "detail1",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/02-benchmark.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/02-02-benchmark.png",
-      "pngHash": "f03c646d19b459be7b42d504e5c9abd2e6ae0399152a71af84a4d33f837635da",
+      "pngHash": "11760c7e9ba2b8d0c318d4cf7b1f178f03b7c21bfb35544fc7cd4aee0804e378",
       "imageHash": "1e7ba4821e5812a92e190b03708409863af864dfd0de9ee1f35504374644d914",
-      "geometry": {
-        "canvas": {
-          "x": 0,
-          "y": 0,
-          "width": 1080,
-          "height": 1350,
-          "bottom": 1350,
-          "right": 1080
-        },
-        "photo": {
-          "x": 0,
-          "y": 648,
-          "width": 1080,
-          "height": 702,
-          "bottom": 1350,
-          "right": 1080
-        },
-        "textPhotoGap": 54,
-        "quote": null,
-        "violations": []
-      }
-    },
-    {
-      "id": "03-keamanan",
-      "layout": "detail2",
-      "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/03-keamanan.html",
-      "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/03-03-keamanan.png",
-      "pngHash": "3b189045af75346db4d8c8891945ca5c292e2a4c7bc6e794d19fa3b029f072b1",
-      "imageHash": "5bdef1f441617645464c45668f09118898643c3598fdc0d59b11024ff623aa76",
-      "geometry": {
-        "canvas": {
-          "x": 0,
-          "y": 0,
-          "width": 1080,
-          "height": 1350,
-          "bottom": 1350,
-          "right": 1080
-        },
-        "photo": {
-          "x": 0,
-          "y": 588,
-          "width": 1080,
-          "height": 762,
-          "bottom": 1350,
-          "right": 1080
-        },
-        "textPhotoGap": 54,
-        "quote": null,
-        "violations": []
-      }
-    },
-    {
-      "id": "04-tugas-panjang",
-      "layout": "detail1",
-      "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/04-tugas-panjang.html",
-      "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/04-04-tugas-panjang.png",
-      "pngHash": "eb8271f57515ee6a6b3202853cadf129de67e3d0084f589929c528b7f1bd6f0d",
-      "imageHash": "f823ad9950c18f1922a86a1d0bc38fecaa5a653623f094fe6f5d1e72c53f333f",
       "geometry": {
         "canvas": {
           "x": 0,
@@ -123,11 +65,69 @@
       }
     },
     {
+      "id": "03-keamanan",
+      "layout": "detail2",
+      "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/03-keamanan.html",
+      "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/03-03-keamanan.png",
+      "pngHash": "31419441a4417b524d21dadf803402658ebdc089ab11b7a8bfcc7a6578518f91",
+      "imageHash": "5bdef1f441617645464c45668f09118898643c3598fdc0d59b11024ff623aa76",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 708,
+          "width": 1080,
+          "height": 642,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-tugas-panjang",
+      "layout": "detail1",
+      "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/04-tugas-panjang.html",
+      "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/04-04-tugas-panjang.png",
+      "pngHash": "b02d62b25f00058ae3901e3e04f7a9b12cba09599b9386da6141eaa73f7c7df0",
+      "imageHash": "f823ad9950c18f1922a86a1d0bc38fecaa5a653623f094fe6f5d1e72c53f333f",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
       "id": "05-akses",
       "layout": "detail2",
       "html": "content/posts/2026-10-29-google-gemini-4-carbon/out/slides/05-akses.html",
       "png": "content/posts/2026-10-29-google-gemini-4-carbon/out/png/05-05-akses.png",
-      "pngHash": "1d22629f321e02ed3d645b4d64cadcd9a4e432a4c79e9a98cbea22efbf0c19be",
+      "pngHash": "61a3c9bfa2851467474b743400d0c65ffb69cae5e52254dbb7cd9e83b06bdcfb",
       "imageHash": "6ebb2b4e3b1c9f88aab89944d6ffe3d490c477ee345d04db571994c8948d7e46",
       "geometry": {
         "canvas": {
@@ -140,9 +140,9 @@
         },
         "photo": {
           "x": 0,
-          "y": 588,
+          "y": 648,
           "width": 1080,
-          "height": 762,
+          "height": 702,
           "bottom": 1350,
           "right": 1080
         },

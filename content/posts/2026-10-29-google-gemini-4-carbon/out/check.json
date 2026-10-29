@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "slug": "2026-10-29-google-gemini-4-carbon",
-  "designRevision": "ec7e15d132ff30e0b6740ea3b076927617735f834da917f4a2f777b5cdfc1cd1",
-  "copyRevision": "b2255d645dd9aa602ce7355c9226a534684d84d0a28179cc33f209d9882c2185",
-  "checkedAt": "2026-10-29T02:22:36.596Z",
+  "designRevision": "e6b3a9922d60ef48d19b52f323c4485701977c17765b3cd149936d8ab5be6ca1",
+  "copyRevision": "b962cabc70cf2cb7785ff3df2693143d842e1daab6397742a0603e592ae4454a",
+  "checkedAt": "2026-10-29T03:59:22.962Z",
   "passed": true,
   "problems": [],
   "warnings": [],
@@ -28,7 +28,7 @@
         "inkPixels": 0.24973196881091617
       },
       "gap": 54,
-      "photoHeight": 702
+      "photoHeight": 642
     },
     {
       "id": "03-keamanan",
@@ -39,7 +39,7 @@
         "inkPixels": 0.26900584795321636
       },
       "gap": 54,
-      "photoHeight": 762
+      "photoHeight": 642
     },
     {
       "id": "04-tugas-panjang",
@@ -50,7 +50,7 @@
         "inkPixels": 0.25865009746588696
       },
       "gap": 54,
-      "photoHeight": 642
+      "photoHeight": 522
     },
     {
       "id": "05-akses",
@@ -61,7 +61,7 @@
         "inkPixels": 0.9894249512670565
       },
       "gap": 54,
-      "photoHeight": 762
+      "photoHeight": 702
     }
   ]
 }
