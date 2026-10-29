@@ -1,0 +1,204 @@
+{
+  "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
+  "category": "Komputasi",
+  "title": "MacBook Pro akhirnya bisa disentuh",
+  "format": "in-depth",
+  "eventDate": "2026-10-28",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "MacBook Pro akhirnya",
+        "bisa disentuh"
+      ],
+      "summary": "Apple resmi memperkenalkan MacBook Pro pertama berlayar sentuh, 16 tahun setelah Steve Jobs menyebut layar sentuh di laptop tidak cocok.",
+      "credit": "FOTO: MACBOOK PRO 16 INCI GENERASI M4 / AZURESATURN (CC0)",
+      "alt": "Foto MacBook Pro 16 inci generasi M4 berwarna perak di atas meja kayu toko, model lama tanpa layar sentuh.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-macbook-pro-16-m4-pro",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:MacBook_Pro_(16-inch,_M4_Pro,_Silver).jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/4/43/MacBook_Pro_%2816-inch%2C_M4_Pro%2C_Silver%29.jpg",
+        "originalFile": "assets/originals/commons-macbook-pro-16-m4-pro.jpg",
+        "subject": "16-inch MacBook Pro M4 Pro, Dec 2025 (older non-touch model, not the new one)",
+        "supplier": "AzureSaturn / Wikimedia Commons",
+        "license": "CC0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "02-baru",
+      "layout": "detail1",
+      "paragraphs": [
+        "Model barunya bernama MacBook Pro with PROLED XDR Display, tersedia dalam ukuran 14 dan 16 inci. Layarnya kini OLED tandem dengan sensor sentuh yang tertanam langsung di panel. Di macOS 27, kamu bisa menggeser, mencubit, dan mengetuk dua kali, sementara tombol kecil seperti menu **otomatis membesar saat disentuh**."
+      ],
+      "credit": "FOTO: TOUCH BAR MACBOOK PRO 15 INCI / IM3847 (CC BY-SA 4.0)",
+      "alt": "Foto close-up Touch Bar, strip layar sentuh tipis di atas keyboard MacBook Pro 15 inci.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-touch-bar-15in-macbook-pro",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Touch_bar_of_15%22_MacBook_pro.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Touch_bar_of_15%22_MacBook_pro.jpg",
+        "originalFile": "assets/originals/commons-touch-bar-15in-macbook-pro.jpg",
+        "subject": "Touch Bar of a 15-inch MacBook Pro, 13 May 2018",
+        "supplier": "IM3847 / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "03-jobs",
+      "layout": "detail2",
+      "paragraphs": [
+        "Pada Oktober 2010, Steve Jobs menolak ide laptop layar sentuh. Menurutnya, layar sentuh yang tegak membuat lengan cepat pegal dan **secara ergonomis buruk sekali**. Apple sempat mencoba jalan tengah lewat Touch Bar pada 2016, lalu menghapusnya pada 2023. Dalam presentasi kali ini, Apple sama sekali tidak menyebut Jobs."
+      ],
+      "credit": "FOTO: STEVE JOBS DI WWDC 2010 / MATTHEW YOHE (CC BY-SA 3.0)",
+      "alt": "Foto Steve Jobs tersenyum sambil memegang iPhone 4 di panggung WWDC 2010.",
+      "imagePosition": "50% 30%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-steve-jobs-2010",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Steve_Jobs_Headshot_2010-CROP.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Steve_Jobs_Headshot_2010-CROP.jpg",
+        "originalFile": "assets/originals/commons-steve-jobs-2010.jpg",
+        "subject": "Steve Jobs at WWDC, 7 June 2010 (not the October 2010 event)",
+        "supplier": "Matthew Yohe / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "04-harga",
+      "layout": "detail1",
+      "paragraphs": [
+        "Harganya mulai US$2.899 untuk versi 14 inci dengan M5 Pro, US$400 lebih mahal dari model tanpa layar sentuh. Ini harga awal MacBook Pro termahal yang pernah ada. Pemesanan sudah dibuka di 30 negara dan barang tiba 6 November. Untuk Indonesia, Apple baru menyebut **akan segera hadir**, tanpa harga resmi."
+      ],
+      "credit": "FOTO: APPLE STORE SINGAPURA / MOHEEN REEYAD (CC BY-SA 4.0)",
+      "alt": "Foto interior Apple Store Marina Bay Sands di Singapura pada malam hari.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-apple-marina-bay-sands",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Apple_Marina_Bay_Sands_(202139).jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Apple_Marina_Bay_Sands_%28202139%29.jpg",
+        "originalFile": "assets/originals/commons-apple-marina-bay-sands.jpg",
+        "subject": "Apple Marina Bay Sands store, Singapore, 15 Aug 2023",
+        "supplier": "Moheen Reeyad / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    },
+    {
+      "id": "05-catatan",
+      "layout": "detail2",
+      "paragraphs": [
+        "Ada beberapa catatan dari hands-on awal. Laptop ini **tidak mendukung Apple Pencil**, dan layarnya tidak bisa dilipat 180 derajat seperti tablet. The Verge melaporkan layarnya sedikit bergoyang saat diketuk keras, meski ada engsel baru. Menurut CNBC, fitur sentuh ini kemungkinan tidak akan mengubah cara kebanyakan orang memakai laptop."
+      ],
+      "credit": "FOTO: IPHONE DUO DAN MACBOOK PRO / SIMONWALDHERR (CC BY 4.0)",
+      "alt": "Foto iPhone Duo berdiri di depan layar MacBook Pro yang menampilkan jam dan kalender.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-10-29",
+        "treatment": "blue-ink",
+        "id": "commons-iphone-duo-macbook-pro-2026",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:IPhone_Duo_and_MacBook_Pro.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/9/9e/IPhone_Duo_and_MacBook_Pro.jpg",
+        "originalFile": "assets/originals/commons-iphone-duo-macbook-pro-2026.jpg",
+        "subject": "iPhone Duo and a MacBook Pro, 23 Oct 2026 (MacBook model not identified)",
+        "supplier": "SimonWaldherr / Wikimedia Commons",
+        "license": "CC BY 4.0",
+        "process": {
+          "maxWidth": 1080
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Enam belas tahun lalu, Steve Jobs bilang layar sentuh di laptop itu buruk secara ergonomis. Pada 28 Oktober 2026, Apple justru memperkenalkan MacBook Pro pertama yang layarnya bisa disentuh, lengkap dengan layar OLED dan Dynamic Island.",
+    "Harganya mulai US$2.899 untuk versi 14 inci, US$400 di atas model biasa. Pemesanan sudah dibuka di 30 negara dan pengiriman mulai 6 November. Di Indonesia, Apple baru menyebut akan segera hadir, tanpa harga resmi. Angka rupiah yang beredar sejauh ini hanya hasil konversi kurs.",
+    "Catatannya: tidak ada dukungan Apple Pencil, layarnya tidak bisa dilipat penuh, dan aplikasi pihak ketiga baru menyesuaikan diri akhir tahun ini. Menurutmu, laptop memang perlu layar sentuh, atau trackpad sudah cukup?",
+    "Sumber: Apple Newsroom, Reuters, The Verge, Gizmodo, CNBC, Business Insider / Foto: AzureSaturn, IM3847, Matthew Yohe, Moheen Reeyad, SimonWaldherr via Wikimedia Commons\n\n#akalmesin #Apple #MacBookPro #LayarSentuh #Laptop"
+  ],
+  "sources": [
+    {
+      "title": "Apple Newsroom — Apple unveils groundbreaking MacBook Pro with PROLED XDR Display",
+      "url": "https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
+      "published": "2026-10-28",
+      "supports": [
+        "name, sizes, tandem OLED, in-panel touch, macOS 27 gestures, prices, 30 countries, 6 Nov"
+      ]
+    },
+    {
+      "title": "Apple Newsroom Indonesia",
+      "url": "https://www.apple.com/id/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
+      "published": "2026-10-28",
+      "supports": [
+        "akan segera hadir di Indonesia"
+      ]
+    },
+    {
+      "title": "Reuters (event coverage)",
+      "url": "",
+      "published": "2026-10-28",
+      "supports": [
+        "Pro and tell event, Los Angeles, John Ternus"
+      ]
+    },
+    {
+      "title": "The Verge hands-on",
+      "url": "",
+      "published": "2026-10-28",
+      "supports": [
+        "wobble on firm taps",
+        "Pencil missed opportunity",
+        "Touch Bar 2016–2023"
+      ]
+    },
+    {
+      "title": "Gizmodo",
+      "url": "",
+      "published": "2026-10-28",
+      "supports": [
+        "no Apple Pencil (Apple)",
+        "Jobs not mentioned"
+      ]
+    },
+    {
+      "title": "CNBC",
+      "url": "",
+      "published": "2026-10-28",
+      "supports": [
+        "won't change the way most people use laptops"
+      ]
+    },
+    {
+      "title": "Business Insider / Wired — Jobs Back to the Mac, 20 Oct 2010",
+      "url": "",
+      "published": "2010-10-20",
+      "supports": [
+        "Jobs touch quote"
+      ]
+    }
+  ],
+  "formatReason": "In-depth: Main + empat slide detail (apa yang baru, sikap Jobs 2010, harga dan ketersediaan, catatan dari hands-on)."
+}

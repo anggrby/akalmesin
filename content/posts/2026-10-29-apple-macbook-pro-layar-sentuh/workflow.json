@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-10-29-apple-macbook-pro-layar-sentuh",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "a7cd2f2c68ad459dfd3d5df777642b09762ab229d3c49c6cae2bf6ae86a39a21",
+      "at": "2026-10-29T08:00:17.299Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "24097160ca79af3073d6661e0ab3f448ba89b66f71439d1b858d55a93272a69b",
+      "at": "2026-10-29T08:00:48.028Z"
+    }
+  ]
+}
