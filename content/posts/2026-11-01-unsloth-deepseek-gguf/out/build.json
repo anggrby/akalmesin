@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-01-unsloth-deepseek-gguf",
+  "copyRevision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
+  "creditsRevision": "a28c3f591469fbaf9d86fe2e50f1330c8cc9b650dbd48adb3aa6e8c09d948083",
+  "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+  "builtAt": "2026-11-01T13:43:51.728Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/slides/01-main.html",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/01-01-main.png",
+      "pngHash": "2ed0f8bd3078ebade89381b3f1ecb56ca111c98b2cf3ac6408a0830bfbd50c3f",
+      "imageHash": "6e0bbf779c48466134017c6e24fde0c523d4235e6d2e18b03d5092a070668442",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 703,
+          "width": 1080,
+          "height": 647,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-rilis",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/slides/02-rilis.html",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/02-02-rilis.png",
+      "pngHash": "38da02a52fc2ac562ce08c6d03bbd26cd2178a4eb4798f74ebc5ab7fd115d751",
+      "imageHash": "479e3a99f165264e09d2229c2a3dba5f3dd6daee3866e42e87044404e505aee1",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 768,
+          "width": 1080,
+          "height": 582,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-benchmark",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/slides/03-benchmark.html",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/03-03-benchmark.png",
+      "pngHash": "c4a422dd7b2390eb828b1d5a3f18df756118d4db8c28d847880f5aa1ebd4db81",
+      "imageHash": "4a248061fd8ef56477692d58b25e861e965989366d432e0e2506be8e3185cec3",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-ram",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/slides/04-ram.html",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/04-04-ram.png",
+      "pngHash": "fd997131a551751e4e22fe214210be7643f495afc5ad2e879f4b5f7f2851c181",
+      "imageHash": "1c364500fcc30cda0b457aa929986b5a04830e9888fc34f3ac98da6294ddd5f0",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 888,
+          "width": 1080,
+          "height": 462,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-batas",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/slides/05-batas.html",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/05-05-batas.png",
+      "pngHash": "d6f09731dd9d7c78fa8eb9714f214d31becc4e6019e9d0390acd0fafa9460466",
+      "imageHash": "e5750486507716bf40a52060970945fcbacf26c460b94ef7dc4cda7df8ba6e11",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 888,
+          "width": 1080,
+          "height": 462,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

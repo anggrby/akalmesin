@@ -2,6 +2,12 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-11-01 — Repo is SoT; AGENTS routes; no editorial skill; chat paste = Simpan; caption chrome contrast
+
+- Owner: pipeline should trust the checkout, not an external Codex skill; AGENTS.md is the task router; `docs/workflow.md` owns the steps. Chat paste of review feedback is a valid path to `edits/*.json` + `review:apply` (same schema as HTML Simpan). Do not hand-write `edits.log.md` as a substitute for apply.
+- `AGENTS.md` flow table rewritten to single-pass (was still showing the old two-gate table above a single-pass bullet). Codex `akalmesin-editorial` skill gutted to a pointer at this repo.
+- Editor chrome: slide `body { color: var(--color-text-primary) }` (#F2F2F5) was painting caption/photo panels white-on-white. Text color now lives on `.post`; `templates/html/editor.css` sets dark ink on caption/photo chrome (owner reported unreadable caption).
+
 ## 2026-10-28 — Adopt the connector-made Kimi row instead of making a new one (t56u)
 
 - Owner (t56u): "Yes approved for kimi" (final, revision 7bfb0d4853cd…), then "Yes, replace the images on the existing Kimi row in Notion".

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 3,
+  "brand": "akalmesin",
+  "kind": "owner-edits",
+  "mode": "review",
+  "slug": "2026-11-01-google-suncatcher-orbit",
+  "baseRevision": "bd2025c745739c9ddbff26a0b746cdd973e51d67cf2a62e868e43fe0c39ae234",
+  "designRevision": "1ad7ec0309f43ffb3846b889d6fe1f441c8573b1b49f87190daa4c515b2d5e55",
+  "slides": [
+    {
+      "slug": "2026-11-01-google-suncatcher-orbit",
+      "slideId": "01-main",
+      "fields": {
+        "headline": "Google terima respons AI\npertama dari orbit Bumi",
+        "summary": "Model Gemma 4 yang berjalan di chip TPU satelit Suncatcher berhasil menulis haiku dari luar angkasa—namun masih berstatus uji riset.",
+        "credit": "FOTO: PROJECT SUNCATCHER / GOOGLE"
+      }
+    },
+    {
+      "slug": "2026-11-01-google-suncatcher-orbit",
+      "slideId": "02-haiku",
+      "fields": {
+        "paragraph-0": "Menurut Google, satelit prototipe Project Suncatcher—yang mengorbit pada 1 Oktober 2026 bersama Planet lewat misi SpaceX Transporter-18—berhasil menjalankan **model terbuka Gemma 4 di chip TPU kelas data center**. Saat melintas di atas Svalbard, Norwegia, satelit itu menerima prompt lalu membalasnya dengan sebait haiku: \"Blue marble below / Data streams in silent grace / Starlight feeds my core.\"",
+        "credit": "FOTO: THE BLUE MARBLE / NASA"
+      }
+    },
+    {
+      "slug": "2026-11-01-google-suncatcher-orbit",
+      "slideId": "03-tpu",
+      "fields": {
+        "paragraph-0": "Inti eksperimennya sederhana: **menguji apakah chip AI Google sanggup beroperasi di luar angkasa.** Google menyebut keberhasilan ini sebagai momen \"Hello World\"—respons AI pertama dari TPU kelas data center langsung dari orbit. Selain haiku, tim juga menguji pembuatan puisi limerick bertema antariksa dan prompt berbasis data telemetri. Foto di bawah adalah TPU v4 sebagai ilustrasi hardware Google, bukan unit chip yang terpasang di satelit.",
+        "credit": "FOTO: TPU V4 / JOUPPI DKK"
+      }
+    },
+    {
+      "slug": "2026-11-01-google-suncatcher-orbit",
+      "slideId": "04-svalbard",
+      "fields": {
+        "paragraph-0": "Kenapa harus ke luar angkasa? Google tengah menjajaki apakah infrastruktur machine learning suatu saat nanti bisa ditempatkan di orbit, tempat pasokan energi surya jauh lebih melimpah. Namun untuk sekarang, tujuannya masih sangat mendasar: **mengumpulkan data terkait guncangan saat peluncuran, paparan radiasi, dan suhu ekstrem** yang hanya bisa diuji langsung di antariksa. Balasan haiku tadi dipancarkan kembali ke Bumi melalui stasiun bumi di Svalbard.",
+        "credit": "FOTO: SVALBARD / COPERNICUS"
+      }
+    },
+    {
+      "slug": "2026-11-01-google-suncatcher-orbit",
+      "slideId": "05-batas",
+      "fields": {
+        "paragraph-0": "Proyek ini masih berupa riset jangka panjang, bukan data center AI di orbit yang siap dipakai publik. Langkah berikutnya adalah menguji ketahanan TPU terhadap suhu panas dan radiasi antariksa dalam durasi yang lebih lama. Google menargetkan peluncuran **dua satelit yang saling terhubung pada 2027.** Sistem pendinginan chip di ruang hampa—yang sama sekali tanpa aliran udara—tetap menjadi tantangan terbesar yang mereka akui sendiri.",
+        "credit": "FOTO: FALCON 9 / SPACEX"
+      }
+    }
+  ],
+  "captions": [
+    {
+      "slug": "2026-11-01-google-suncatcher-orbit",
+      "paragraphs": [
+        "Google mengumumkan satelit prototipe Project Suncatcher baru saja menghasilkan respons AI pertamanya di luar angkasa. Menurut Google, model terbuka Gemma 4 dijalankan di TPU kelas data center, lalu membalas dengan haiku saat satelit melintas di atas Svalbard, Norwegia—minggu-minggu setelah mengorbit pada 1 Oktober 2026.",
+        "Project Suncatcher adalah moonshot riset Google bersama Planet: menjajaki apakah infrastruktur machine learning suatu saat bisa ditempatkan di antariksa, tempat pasokan energi surya jauh lebih melimpah. Untuk sekarang tujuannya masih sangat mendasar—mengumpulkan data soal guncangan peluncuran, radiasi, dan suhu ekstrem. Selain haiku, Google juga menguji limerick dan prompt telemetri.",
+        "Ini belum data center AI di orbit yang siap dipakai publik. Google masih akan menguji ketahanan TPU terhadap panas dan radiasi, lalu menargetkan dua satelit saling terhubung pada 2027. Menurutmu, masuk akalkah suatu hari memindahkan sebagian komputasi AI ke luar angkasa?",
+        "Sumber: Google Research, The Verge, NPR / Foto: Google, NASA, Jouppi dkk, Copernicus, SpaceX\n\n#akalmesin #Google #Suncatcher #AI #Antariksa"
+      ]
+    }
+  ],
+  "savedAt": "2026-11-01T13:11:00.737Z"
+}

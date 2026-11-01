@@ -1,0 +1,209 @@
+{
+  "slug": "2026-11-01-google-suncatcher-orbit",
+  "category": "AI",
+  "title": "Google terima respons AI pertama dari orbit Bumi",
+  "format": "in-depth",
+  "formatReason": "In-depth: Main + four details (what happened, hardware/model, why space, limits/next). Mission timeline, Gemma/TPU facts, and the 2027 caveat each need their own slide.",
+  "eventDate": "2026-10-30",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Google terima respons AI",
+        "pertama dari orbit Bumi"
+      ],
+      "summary": "Model Gemma 4 yang berjalan di chip TPU satelit Suncatcher berhasil menulis haiku dari luar angkasa—namun masih berstatus uji riset.",
+      "credit": "FOTO: PROJECT SUNCATCHER / GOOGLE",
+      "alt": "Key art resmi Google untuk Project Suncatcher: ikon matahari dan judul proyek di atas gradasi kuning-oranye.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-01",
+        "treatment": "blue-ink",
+        "id": "google-suncatcher-social",
+        "kind": "source-photo",
+        "sourceURL": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/",
+        "originalURL": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Project_Suncatcher_social.width-1300.png",
+        "originalFile": "assets/originals/google-suncatcher-social.png",
+        "subject": "Official Project Suncatcher social key art (sunburst mark + wordmark on yellow-orange gradient)",
+        "supplier": "Google"
+      }
+    },
+    {
+      "id": "02-haiku",
+      "layout": "detail1",
+      "paragraphs": [
+        "Menurut Google, satelit prototipe Project Suncatcher—yang mengorbit pada 1 Oktober 2026 bersama Planet lewat misi SpaceX Transporter-18—berhasil menjalankan **model terbuka Gemma 4 di chip TPU kelas data center**. Saat melintas di atas Svalbard, Norwegia, satelit itu menerima prompt lalu membalasnya dengan sebait haiku: \"Blue marble below / Data streams in silent grace / Starlight feeds my core.\""
+      ],
+      "credit": "FOTO: THE BLUE MARBLE / NASA",
+      "alt": "Foto Bumi dari Apollo 17, Blue Marble, yang sering digambarkan sebagai 'blue marble' dari orbit.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-01",
+        "treatment": "blue-ink",
+        "id": "nasa-blue-marble",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1280px-The_Earth_seen_from_Apollo_17.jpg",
+        "originalFile": "assets/originals/nasa-blue-marble.jpg",
+        "subject": "Apollo 17 Blue Marble photograph of Earth (7 Dec 1972)",
+        "supplier": "NASA / Apollo 17 crew",
+        "license": "Public domain (NASA)"
+      }
+    },
+    {
+      "id": "03-tpu",
+      "layout": "detail2",
+      "paragraphs": [
+        "Inti eksperimennya sederhana: **menguji apakah chip AI Google sanggup beroperasi di luar angkasa.** Google menyebut keberhasilan ini sebagai momen \"Hello World\"—respons AI pertama dari TPU kelas data center langsung dari orbit. Selain haiku, tim juga menguji pembuatan puisi limerick bertema antariksa dan prompt berbasis data telemetri. Foto di bawah adalah TPU v4 sebagai ilustrasi hardware Google, bukan unit chip yang terpasang di satelit."
+      ],
+      "credit": "FOTO: TPU V4 / JOUPPI DKK",
+      "alt": "Foto close-up paket chip Google TPU v4 berwarna tembaga dengan heatsink, dari makalah arXiv.",
+      "imagePosition": "50% 45%",
+      "imageSource": {
+        "retrieved": "2026-11-01",
+        "treatment": "blue-ink",
+        "id": "commons-tpu-v4",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:TPU_v4.png",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/9/99/TPU_v4.png",
+        "originalFile": "assets/originals/commons-tpu-v4.png",
+        "subject": "Google TPU v4 package photograph (illustrative of Google TPU hardware; not the flown Suncatcher tray)",
+        "supplier": "Jouppi et al. / Wikimedia Commons",
+        "license": "CC BY 4.0",
+        "process": {
+          "maxWidth": 1200
+        }
+      }
+    },
+    {
+      "id": "04-svalbard",
+      "layout": "detail1",
+      "paragraphs": [
+        "Kenapa harus ke luar angkasa? Google tengah menjajaki apakah infrastruktur machine learning suatu saat nanti bisa ditempatkan di orbit, tempat pasokan energi surya jauh lebih melimpah. Namun untuk sekarang, tujuannya masih sangat mendasar: **mengumpulkan data terkait guncangan saat peluncuran, paparan radiasi, dan suhu ekstrem** yang hanya bisa diuji langsung di antariksa. Balasan haiku tadi dipancarkan kembali ke Bumi melalui stasiun bumi di Svalbard."
+      ],
+      "credit": "FOTO: SVALBARD / COPERNICUS",
+      "alt": "Citra satelit stasiun bumi Svalbard Satellite Station di pulau bersalju, bagian dari segmen darat Copernicus.",
+      "imagePosition": "50% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-01",
+        "treatment": "blue-ink",
+        "id": "commons-svalbard-station",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Svalbard_Satellite_Station,_an_important_part_of_the_Copernicus_Sentinel_ground_segment.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Svalbard_Satellite_Station%2C_an_important_part_of_the_Copernicus_Sentinel_ground_segment.jpg",
+        "originalFile": "assets/originals/commons-svalbard-station.jpg",
+        "subject": "Svalbard Satellite Station from Copernicus Sentinel imagery (ground-station location named in Google's downlink)",
+        "supplier": "European Union / Copernicus",
+        "license": "Copernicus Sentinel open access / attribution",
+        "process": {
+          "crop": [
+            400,
+            200,
+            3600,
+            2000
+          ],
+          "maxWidth": 1400
+        }
+      }
+    },
+    {
+      "id": "05-batas",
+      "layout": "detail2",
+      "paragraphs": [
+        "Proyek ini masih berupa riset jangka panjang, bukan data center AI di orbit yang siap dipakai publik. Langkah berikutnya adalah menguji ketahanan TPU terhadap suhu panas dan radiasi antariksa dalam durasi yang lebih lama. Google menargetkan peluncuran **dua satelit yang saling terhubung pada 2027.** Sistem pendinginan chip di ruang hampa—yang sama sekali tanpa aliran udara—tetap menjadi tantangan terbesar yang mereka akui sendiri."
+      ],
+      "credit": "FOTO: FALCON 9 / SPACEX",
+      "alt": "Roket Falcon 9 SpaceX meluncur malam hari dengan jejak api, ilustrasi peluncuran rideshare ke orbit.",
+      "imagePosition": "50% 35%",
+      "imageSource": {
+        "retrieved": "2026-11-01",
+        "treatment": "blue-ink",
+        "id": "commons-falcon9-ses10",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:SES-10_Launch_-_world%27s_first_reflight_of_an_orbital_class_rocket_(33361035200).jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/b/b8/SES-10_Launch_-_world%27s_first_reflight_of_an_orbital_class_rocket_%2833361035200%29.jpg",
+        "originalFile": "assets/originals/commons-falcon9-ses10.jpg",
+        "subject": "SpaceX Falcon 9 launch (SES-10); illustrative of SpaceX rideshare launches to orbit, not a photo of Transporter-18",
+        "supplier": "SpaceX / Wikimedia Commons",
+        "license": "CC0",
+        "process": {
+          "crop": [
+            200,
+            0,
+            2585,
+            1974
+          ],
+          "maxWidth": 1400
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Google mengumumkan satelit prototipe Project Suncatcher baru saja menghasilkan respons AI pertamanya di luar angkasa. Menurut Google, model terbuka Gemma 4 dijalankan di TPU kelas data center, lalu membalas dengan haiku saat satelit melintas di atas Svalbard, Norwegia—minggu-minggu setelah mengorbit pada 1 Oktober 2026.",
+    "Project Suncatcher adalah moonshot riset Google bersama Planet: menjajaki apakah infrastruktur machine learning suatu saat bisa ditempatkan di antariksa, tempat pasokan energi surya jauh lebih melimpah. Untuk sekarang tujuannya masih sangat mendasar—mengumpulkan data soal guncangan peluncuran, radiasi, dan suhu ekstrem. Selain haiku, Google juga menguji limerick dan prompt telemetri.",
+    "Ini belum data center AI di orbit yang siap dipakai publik. Google masih akan menguji ketahanan TPU terhadap panas dan radiasi, lalu menargetkan dua satelit saling terhubung pada 2027. Menurutmu, masuk akalkah suatu hari memindahkan sebagian komputasi AI ke luar angkasa?",
+    "Sumber: Google Research, The Verge, NPR / Foto: Google, NASA, Jouppi dkk, Copernicus, SpaceX\n\n#akalmesin #Google #Suncatcher #AI #Antariksa"
+  ],
+  "sources": [
+    {
+      "title": "Google — We've received our first response from the Project Suncatcher prototype satellite",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/",
+      "published": "2026-10-30",
+      "supports": [
+        "first AI response from data-center-class TPU in orbit",
+        "Gemma 4",
+        "haiku text",
+        "Svalbard downlink",
+        "limericks and telemetry",
+        "thermal and radiation next",
+        "twin satellites 2027"
+      ]
+    },
+    {
+      "title": "Google — Our Project Suncatcher prototype satellite is in orbit",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype/",
+      "published": "2026-10-01",
+      "supports": [
+        "1 Oct 2026 launch",
+        "Planet partnership",
+        "Transporter-18 / SpaceX",
+        "contact confirmed"
+      ]
+    },
+    {
+      "title": "Google — Learn about Project Suncatcher (facts)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/",
+      "published": "2026",
+      "supports": [
+        "moonshot framing",
+        "solar power rationale",
+        "cooling challenge",
+        "radiation/vibration pre-tests",
+        "key art"
+      ]
+    },
+    {
+      "title": "The Verge — Google's satellite AI server transmits its first response to Earth",
+      "url": "https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission",
+      "published": "2026-10-30",
+      "supports": [
+        "haiku",
+        "Gemma 4",
+        "2027 twins",
+        "coverage match"
+      ]
+    },
+    {
+      "title": "NPR — Google launches Project Suncatcher",
+      "url": "https://www.npr.org/2026/10/01/nx-s1-5983697/project-suncatcher-google-ai-data-center-space",
+      "published": "2026-10-01",
+      "supports": [
+        "four TPUs",
+        "Planet",
+        "heat/runtime context",
+        "launch day"
+      ]
+    }
+  ]
+}

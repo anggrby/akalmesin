@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-01-google-suncatcher-orbit",
+  "copyRevision": "77b0c769c666ca35fea3284eb57982275b64baa50bb14c4ad91d0a91a5e89b2b",
+  "creditsRevision": "283ab64d59725cf378f79c990aacb3f4fd4bc97bec98e42d1937a399b14172d9",
+  "designRevision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f",
+  "builtAt": "2026-11-01T13:25:44.427Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-01-google-suncatcher-orbit/out/slides/01-main.html",
+      "png": "content/posts/2026-11-01-google-suncatcher-orbit/out/png/01-01-main.png",
+      "pngHash": "c114480563a16b8f8816cdf5638aac2a01df23a50519d39188a3d4a76305f514",
+      "imageHash": "1be6b1dbeeeae71722f66499d8f2d614cf0c65903cd4583bbd56330efbdbef25",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-haiku",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-01-google-suncatcher-orbit/out/slides/02-haiku.html",
+      "png": "content/posts/2026-11-01-google-suncatcher-orbit/out/png/02-02-haiku.png",
+      "pngHash": "969ff14e20c2105d5af7187b2bee788873b2a200ab830ceaa387bc3f15b93747",
+      "imageHash": "1222ce154a50add34b43ffc5fb280a641e2622bd12f70b4e3804287223fb93bf",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 768,
+          "width": 1080,
+          "height": 582,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-tpu",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-01-google-suncatcher-orbit/out/slides/03-tpu.html",
+      "png": "content/posts/2026-11-01-google-suncatcher-orbit/out/png/03-03-tpu.png",
+      "pngHash": "aba73675a0c0f6f53c304eaed390974fe36f282be0cafe7993651186b6f53ec0",
+      "imageHash": "810d7bc926a6c014571920cf828b33f91ed269839859da64de520b5d38cf3d0a",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-svalbard",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-01-google-suncatcher-orbit/out/slides/04-svalbard.html",
+      "png": "content/posts/2026-11-01-google-suncatcher-orbit/out/png/04-04-svalbard.png",
+      "pngHash": "2c27fdb95343753bcd6b3c5f9d908f7546e0d38531c881c14d0e424bff5eb37d",
+      "imageHash": "975349c77fee5c05ebf20d1b3d091064637949f1dda3e9bb6f95ca645a83719e",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-batas",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-01-google-suncatcher-orbit/out/slides/05-batas.html",
+      "png": "content/posts/2026-11-01-google-suncatcher-orbit/out/png/05-05-batas.png",
+      "pngHash": "c8c257dc0550a0f107e10d97f0efdccd58102f0b2fc932165f9e6d5440ed5e23",
+      "imageHash": "1712b17e3834cb42276eaa6fc3372ef8d69c4374ca23055843752f6c848ac912",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

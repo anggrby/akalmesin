@@ -1,13 +1,13 @@
 /* Every value comes from brand/tokens.json via slideTokensCSS() (scripts/core.mjs). No literals here. */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { color: var(--color-text-primary); font-family: 'Manrope', sans-serif; }
+body { font-family: 'Manrope', sans-serif; }
 .post {
   --side: var(--main-side); --header-top: var(--main-header-top); --row-to-divider: var(--main-row-to-divider);
   --divider-to-content: var(--main-divider-to-content); --content-width: var(--main-content-width); --copy-to-image: var(--main-summary-to-image);
   width: var(--canvas-width); height: var(--canvas-height); overflow: hidden;
   display: flex; flex-direction: column; position: relative;
-  background: var(--color-page-bg); border-radius: var(--radius-editorial);
+  background: var(--color-page-bg); color: var(--color-text-primary); border-radius: var(--radius-editorial);
   -webkit-font-smoothing: antialiased;
 }
 .post-detail1, .post-detail2 {

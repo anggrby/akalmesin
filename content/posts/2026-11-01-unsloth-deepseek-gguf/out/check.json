@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-01-unsloth-deepseek-gguf",
+  "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+  "copyRevision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
+  "checkedAt": "2026-11-01T13:43:53.225Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [
+    "Caption sekitar 178 kata; panduan 100–160 kata."
+  ],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9927186761229314,
+        "meanDistance": 0.8533267636587675,
+        "inkPixels": 0.043451536643026006
+      },
+      "gap": 64,
+      "photoHeight": 647
+    },
+    {
+      "id": "02-rilis",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/02-02-rilis.png",
+      "ink": {
+        "onRamp": 0.9984259259259259,
+        "meanDistance": 0.7539054875946876,
+        "inkPixels": 0.9959259259259259
+      },
+      "gap": 54,
+      "photoHeight": 582
+    },
+    {
+      "id": "03-benchmark",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/03-03-benchmark.png",
+      "ink": {
+        "onRamp": 0.9743953592146363,
+        "meanDistance": 1.8779033696107694,
+        "inkPixels": 0.8345470771976796
+      },
+      "gap": 54,
+      "photoHeight": 522
+    },
+    {
+      "id": "04-ram",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/04-04-ram.png",
+      "ink": {
+        "onRamp": 0.9739672364672365,
+        "meanDistance": 1.816879174374222,
+        "inkPixels": 0.02733262108262108
+      },
+      "gap": 54,
+      "photoHeight": 462
+    },
+    {
+      "id": "05-batas",
+      "png": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/05-05-batas.png",
+      "ink": {
+        "onRamp": 0.9809192324854975,
+        "meanDistance": 1.8702778985658066,
+        "inkPixels": 0.1426149040606872
+      },
+      "gap": 54,
+      "photoHeight": 462
+    }
+  ]
+}

@@ -1,7 +1,10 @@
-/* Editor chrome around the 1080×1350 slides. Slides are scaled with CSS, not re-laid out. */
+/* Editor chrome around the 1080×1350 slides. Slides are scaled with CSS, not re-laid out.
+ * Slide text color lives on .post (near-white on dark canvas). Chrome outside .post must
+ * set its own dark ink — otherwise caption/photo panels inherit the slide color and vanish. */
 body.editor {
   margin: 0;
   background: #d7d7d7;
+  color: #111;
   font-family: 'Manrope', sans-serif;
 }
 .toolbar {
@@ -77,12 +80,14 @@ body.editor {
   margin: 8px 16px 48px;
   max-width: 760px;
   background: #fff;
+  color: #111;
   padding: 16px 20px;
   border-radius: 8px;
 }
 .caption-panel h2 {
   font-size: 18px;
   margin: 0 0 8px;
+  color: #111;
 }
 #wordcount {
   font:
@@ -94,10 +99,13 @@ body.editor {
   white-space: pre-wrap;
   font-size: 16px;
   line-height: 1.55;
+  color: #111;
+  caret-color: #111;
   padding: 8px;
   margin: 6px 0;
   border: 1px solid #ddd;
   border-radius: 4px;
+  background: #fff;
 }
 #warnings {
   color: #b00020;
@@ -121,11 +129,16 @@ body.editor {
   flex: none;
   margin-right: 16px;
   background: #fff;
+  color: #111;
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 13px;
   line-height: 1.45;
   overflow-wrap: anywhere;
+}
+.slide-label,
+.alt {
+  color: #111;
 }
 .photo-panel h2 {
   font-size: 18px;

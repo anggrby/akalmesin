@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 3,
+  "brand": "akalmesin",
+  "kind": "owner-edits",
+  "mode": "review",
+  "slug": "2026-11-01-unsloth-deepseek-gguf",
+  "baseRevision": "a5fca705e8c765a21c19f2c741a6ef6b6259894c7193f0a07058cd670c75942c",
+  "designRevision": "7530bc1cd7ff8002a9491e599f7d63ba11d4ee8a730bea0cdb8f2b231fd4a536",
+  "slides": [
+    {
+      "slug": "2026-11-01-unsloth-deepseek-gguf",
+      "slideId": "01-main",
+      "fields": {
+        "headline": "Unsloth Rilis GGUF\nDeepSeek Flash Lokal",
+        "summary": "Kuantisasi Dynamic V3.1 ini diklaim unggul di berbagai benchmark dan bisa dijalankan mulai dari ~128 GB RAM, meski klaim skornya masih menunggu verifikasi independen.",
+        "credit": "FOTO: LOGO UNSLOTH / UNSLOTH"
+      }
+    },
+    {
+      "slug": "2026-11-01-unsloth-deepseek-gguf",
+      "slideId": "02-rilis",
+      "fields": {
+        "paragraph-0": "Pada 30 Oktober 2026, Unsloth merilis format GGUF Dynamic V3.1 (preview) untuk **DeepSeek-V4.1-Flash-1017, model open-weights yang dirancang khusus untuk coding dan tugas agentic**. File model ini sudah tersedia di Hugging Face. Versi aslinya memiliki context window 1 juta token dengan arsitektur utama 552B parameter, ditambah tabel Engram ~196B yang bisa dialihkan (offload) ke SSD agar tidak membebani kapasitas RAM sepenuhnya.",
+        "credit": "FOTO: MODEL CARD / HUGGING FACE × UNSLOTH"
+      }
+    },
+    {
+      "slug": "2026-11-01-unsloth-deepseek-gguf",
+      "slideId": "03-benchmark",
+      "fields": {
+        "paragraph-0": "Unsloth mengklaim varian **UD-Q2_K_XL (334,8 GB) berhasil meraih skor rata-rata 87,49 di enam benchmark**—nyaris menyamai presisi referensi Q8 (87,68)—dengan rincian skor AIME25 97,50, GPQA Diamond 89,58, dan LiveCodeBench v6 84,76. Bahkan, varian 1-bit UD-IQ1_S (233 GB) disebut masih mampu mencetak skor 92,92 di AIME25. Seluruh angka ini berasal dari pengujian internal Unsloth dan masih menunggu verifikasi independen.",
+        "credit": "FOTO: GRAFIK UNSLOTH VS GSQ-RCO / UNSLOTH"
+      }
+    },
+    {
+      "slug": "2026-11-01-unsloth-deepseek-gguf",
+      "slideId": "04-ram",
+      "fields": {
+        "paragraph-0": "Bagi yang ingin menjalankannya secara lokal, Unsloth menyebut **varian 1-bit membutuhkan sekitar 128–145 GB RAM/VRAM** jika tabel Engram dipetakan (mmap) ke SSD, sementara varian 2-bit butuh 176–205 GB. Kebutuhan ruang penyimpanannya pun tetap masif—file UD-IQ1_S saja berukuran 233 GB. Konfigurasi 64 GB RAM disebut tetap bisa berjalan meski jauh lebih lambat, menandakan model coding open-weights kelas frontier kini mulai menuntut spesifikasi workstation, bukan lagi laptop tipis.",
+        "credit": "FOTO: GRAFIK AIME25 / UNSLOTH"
+      }
+    },
+    {
+      "slug": "2026-11-01-unsloth-deepseek-gguf",
+      "slideId": "05-batas",
+      "fields": {
+        "paragraph-0": "Unsloth turut mematahkan klaim GSQ-RCO (ISTA) yang menyebut seluruh kuantisasinya meraih skor sempurna 100% di AIME25—**mereka gagal mereproduksi angka tersebut dan justru menemukan penurunan performa saat diuji ulang**. Catatan lainnya, kuantisasi bit rendah cenderung menghasilkan rantai penalaran (reasoning) yang lebih bertele-tele sehingga lebih sering membentur batas maksimal token. Artinya, ukuran file yang lebih ramping tetap hadir dengan trade-off, bukan salinan sempurna.",
+        "credit": "FOTO: GRAFIK KLAIM GSQ-RCO / UNSLOTH"
+      }
+    }
+  ],
+  "captions": [
+    {
+      "slug": "2026-11-01-unsloth-deepseek-gguf",
+      "paragraphs": [
+        "Menjalankan model AI kelas frontier di komputer lokal kini makin menantang, tapi bukan mustahil. Pada 30 Oktober 2026, Unsloth resmi merilis kuantisasi GGUF Dynamic V3.1 (preview) untuk DeepSeek-V4.1-Flash-1017, sebuah model open-weights raksasa yang dirancang untuk kebutuhan coding dan tugas agentic. Unsloth mengklaim metode kuantisasi terbaru mereka mampu memangkas ukuran model secara ekstrem tanpa mengorbankan akurasi secara signifikan.",
+        "Dalam pengujian internalnya, varian 2-bit (334,8 GB) diklaim mencatat rata-rata skor 87,49 di enam benchmark utama, nyaris menyamai presisi Q8 (87,68). Uniknya, arsitektur utama 552B parameter pada model ini dilengkapi tabel Engram ~196B yang bisa dialihkan (offload) ke SSD menggunakan fitur mmap, sehingga varian 1-bit (233 GB) sudah bisa dijalankan dengan kombinasi 128–145 GB RAM/VRAM, atau minimal 64 GB RAM dengan konsekuensi kecepatan inference yang lebih lambat.",
+        "Meski begitu, seluruh skor di atas masih berupa klaim internal yang menunggu verifikasi independen, apalagi varian bit rendah terbukti cenderung berpikir lebih bertele-tele hingga rawan membentur batas token. Dengan ukuran file dan syarat RAM sebesar ini, apakah merakit PC/workstation lokal untuk AI masih worth it, atau mending sewa cloud GPU saja?",
+        "Sumber: Unsloth, Hugging Face / Foto: Unsloth\n\n#akalmesin #DeepSeek #Unsloth #LocalLLM #OpenWeights"
+      ]
+    }
+  ],
+  "savedAt": "2026-11-01T13:40:00.000Z",
+  "note": "Owner review paste via chat; agent wrote Simpan-equivalent edits.json"
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-01-unsloth-deepseek-gguf",
+  "stage": "export",
+  "approvals": {
+    "selected": null,
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-01T13:40:00.000Z",
+      "source": "owner-review-chat-2026-11-01.json sha256:8856bc30ab5402711c2e41e1c7dd6239c6b4735e15b8cfac7fb765ae3b2811de",
+      "context": "11 field(s) changed",
+      "at": "2026-11-01T13:40:00.000Z",
+      "atWIB": "2026-11-01 20:40 WIB",
+      "via": "review-save",
+      "copyRevision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
+      "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-01T13:43:53.234Z",
+      "revision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-01T13:40:00.000Z",
+      "source": "owner-review-chat-2026-11-01.json sha256:8856bc30ab5402711c2e41e1c7dd6239c6b4735e15b8cfac7fb765ae3b2811de",
+      "context": "11 field(s) changed",
+      "at": "2026-11-01T13:40:00.000Z",
+      "atWIB": "2026-11-01 20:40 WIB",
+      "via": "review-save",
+      "copyRevision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
+      "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-01T13:43:53.234Z",
+      "revision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a"
+    }
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "1dc955abb5641f54abbe2a3af497879bda3c6b9c97e5e74079da10bd7676db48",
+      "at": "2026-11-01T12:44:31.014Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "8f781ff898d5767776b4c74e7b302010b53f395d9ad94cc7d106b2f12680c909",
+      "at": "2026-11-01T12:45:41.335Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "f0e252776714e3a4d6c47e5aea3315be950ce8e09f82f08b215b575271393bbb",
+      "at": "2026-11-01T12:49:31.877Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "bf1634fec3aea3c6074267888aa8a5b626e1c9f4d2f7236fe6323d1e471cb41e",
+      "at": "2026-11-01T13:41:49.240Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "dc52a4d685bba07c16730a67857fd43cbe0e738bee4e1a82cf5355a50878457a",
+      "at": "2026-11-01T13:42:30.160Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "7530bc1cd7ff8002a9491e599f7d63ba11d4ee8a730bea0cdb8f2b231fd4a536",
+      "at": "2026-11-01T13:43:41.651Z"
+    },
+    {
+      "event": "copy-recorded",
+      "who": "Angger",
+      "mode": "review",
+      "from": "a5fca705e8c765a21c19f2c741a6ef6b6259894c7193f0a07058cd670c75942c",
+      "to": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
+      "file": "owner-review-chat-2026-11-01.json",
+      "at": "2026-11-01T13:43:43.333Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+      "at": "2026-11-01T13:43:51.728Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "owner-review-chat-2026-11-01.json sha256:8856bc30ab5402711c2e41e1c7dd6239c6b4735e15b8cfac7fb765ae3b2811de",
+      "copyRevision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
+      "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+      "at": "2026-11-01T13:40:00.000Z"
+    }
+  ]
+}

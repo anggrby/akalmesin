@@ -2,24 +2,37 @@
 
 This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news account run by Angger. It covers one job: taking a post from his request to an approved Notion entry. It never publishes or schedules anything.
 
-## The flow (details in [docs/workflow.md](docs/workflow.md))
+**Source of truth for the pipeline:** [docs/workflow.md](docs/workflow.md). This file is only the router and non‑negotiables. Do not load an external editorial skill; the checkout is enough.
 
-| #   | Step                                                                          | Command                                                                                | Gate                                     |
-| --- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------- |
-| 1   | Angger asks for a post                                                        | `npm run post:new -- <slug> --category AI`                                             | —                                        |
-| 2   | Research: fill `sources.md` and `post.json`                                   | —                                                                                      | `approve --gate selected` with his words |
-| 3   | Propose copy (text only)                                                      | `npm run copy:review -- <slug>` → paste `out/copy-proposal.md`                         | —                                        |
-| 4   | He edits in `out/copy-review.html` (grey placeholders) and presses **Simpan** | —                                                                                      | —                                        |
-| 5   | Record his file: applies it and logs a sentence/word diff                     | `npm run copy:record -- <slug> edits.json`                                             | `approve --gate copy` with his words     |
-| 6   | Design: blue ink + render                                                     | `npm run design:build -- <slug>`                                                       | needs current copy approval              |
-| 7   | Check, then look at `out/contact-sheet.png`                                   | `npm run design:check -- <slug>`                                                       | must pass                                |
-| 8   | Send him `out/<slug>.html` plus the contact sheet                             | `approve --gate final`, then `npm run export -- <slug>` (one command: Notion REST API) | needs current final approval             |
+## Task router
+
+| Ask                        | Open next                                                                                                              | Do                                                                                       |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| New post / “tonight”       | [docs/workflow.md](docs/workflow.md) (single-pass)                                                                     | `npm run post:new` → research → fill `post.json` + `sources.md` → `npm run review:build` |
+| Voice / caption            | [brand/voice.md](brand/voice.md), [Terra](brand/examples/terra/README.md), [feedback log](brand/style-feedback-log.md) | Draft Indonesian copy into `post.json`                                                   |
+| Visuals / crops            | [brand/design.md](brand/design.md), [brand/tokens.json](brand/tokens.json)                                             | Assets in `assets/originals/`; process in `post.json`; never invent sheet values         |
+| Owner Simpan or chat paste | workflow § single-pass                                                                                                 | Save under `edits/`, then `npm run review:apply -- <slug> <edits.json>`                  |
+| Export to Notion           | workflow § final → Notion                                                                                              | Only after current copy + final; `npm run export -- <slug>`                              |
+| Change a rule              | The file that owns it + [docs/decisions.md](docs/decisions.md)                                                         | Update both; do not invent parallel playbooks                                            |
+
+## The flow (single-pass; details in workflow.md)
+
+| #   | Step                                                                    | Command                                       | Gate                         |
+| --- | ----------------------------------------------------------------------- | --------------------------------------------- | ---------------------------- |
+| 1   | Angger asks for a post                                                  | `npm run post:new -- <slug> --category AI`    | —                            |
+| 2   | Research: fill `sources.md` and `post.json` (copy + images)             | —                                             | —                            |
+| 3   | Build review HTML (real slides + blue ink)                              | `npm run review:build -- <slug>`              | records **no** approval      |
+| 4   | He reviews `out/<slug>.html` (edit in place) or pastes feedback in chat | —                                             | —                            |
+| 5   | Apply his Simpan / chat-equivalent `edits.json`                         | `npm run review:apply -- <slug> <edits.json>` | passing apply = copy + final |
+| 6   | Export to Notion when he says so                                        | `npm run export -- <slug>`                    | needs current copy + final   |
+
+Legacy two-gate commands (`copy:review`, `copy:record`, `design:build` alone, separate `approve` for copy/final) remain in the repo for old posts; **do not use them for new work** unless workflow.md says otherwise.
 
 ## Rules that are not negotiable
 
-- **Default flow is single-pass review:** `npm run review:build -- <slug>` → send him `out/<slug>.html` → `npm run review:apply -- <slug> <edits.json>`. A passing apply records his Save as copy + final approval; see docs/workflow.md.
-- **Approvals are his verbatim words.** Record them with `npm run approve -- <slug> --gate … --words "…" --source "chat tNNu"`. Positive feedback ("so far so good") is not an approval, and neither is a draft that already exists. Never paraphrase his words.
-- Any copy change clears the copy and final approvals (`copy:record` handles this). Any design change, including a token or post.css change, makes final stale (the hashes catch it).
+- **Default flow is single-pass review** (table above). See docs/workflow.md.
+- **Approvals are his verbatim words**, or a passing `review:apply` of his Simpan / chat-equivalent edits file (`Saved in review editor …`). Positive feedback ("so far so good") is not an approval, and neither is a draft that already exists. Never paraphrase his words.
+- Any copy change clears the copy and final approvals (`copy:record` / `review:apply` handle this). Any design change, including a token or post.css change, makes final stale (the hashes catch it).
 - Write the copy in his voice: [brand/voice.md](brand/voice.md). Before writing, read the [Terra example](brand/examples/terra/README.md) and the [feedback log](brand/style-feedback-log.md). Visual rules live in [brand/design.md](brand/design.md); every design value comes from [brand/tokens.json](brand/tokens.json), transcribed from his measured sheets in `brand/references/design-values-*.png`. Never guess a value that is not on a sheet; add it under `unmeasured`. Slide layouts: `main`, `detail1`, `detail2`, `quote` (optional, only for an important quote from a person in the news, with that person's own photo; no masthead, no photo credit; see brand/design.md). Main/Detail images start where the copy ends and their height follows the copy. All checks are deterministic code.
 - Notion: `npm run export -- <slug>` finds the page by its body marker, creates or updates it, uploads the PNGs, verifies them by SHA-256 and writes the receipt. Re-running never makes a second page. The connector route is only a fallback (docs/workflow.md). Post only to the akalmesin database.
 - Never publish, schedule, push to a remote, or message anyone without his explicit instruction. Neither Export nor Notion grants that.

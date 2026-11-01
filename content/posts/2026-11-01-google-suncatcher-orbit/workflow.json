@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-01-google-suncatcher-orbit",
+  "stage": "export",
+  "approvals": {
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-01T13:11:00.737Z",
+      "source": "2026-11-01-google-suncatcher-orbit-edits-2026-11-01131100.json sha256:d58187dbb74d4ce2cb0928ad87d78eff67347f1afdc507c16a94b22762cdb89d",
+      "context": "10 field(s) changed",
+      "at": "2026-11-01T13:11:00.737Z",
+      "atWIB": "2026-11-01 20:11 WIB",
+      "via": "review-save",
+      "copyRevision": "77b0c769c666ca35fea3284eb57982275b64baa50bb14c4ad91d0a91a5e89b2b",
+      "designRevision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-01T13:25:45.980Z",
+      "revision": "77b0c769c666ca35fea3284eb57982275b64baa50bb14c4ad91d0a91a5e89b2b"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-01T13:11:00.737Z",
+      "source": "2026-11-01-google-suncatcher-orbit-edits-2026-11-01131100.json sha256:d58187dbb74d4ce2cb0928ad87d78eff67347f1afdc507c16a94b22762cdb89d",
+      "context": "10 field(s) changed",
+      "at": "2026-11-01T13:11:00.737Z",
+      "atWIB": "2026-11-01 20:11 WIB",
+      "via": "review-save",
+      "copyRevision": "77b0c769c666ca35fea3284eb57982275b64baa50bb14c4ad91d0a91a5e89b2b",
+      "designRevision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-01T13:25:45.980Z",
+      "revision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f"
+    }
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "8fdff9b9650321bb13af3f17b322dc34f254a3d2eabebda1f709b1df3bc52992",
+      "at": "2026-11-01T12:43:26.747Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "ac4316bf815c2230f78d4b50810d09818111310079ce4783060ccb63d5c32783",
+      "at": "2026-11-01T12:43:46.559Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "ec997f74a60a905337df8b44c4850fb2605273123aef05b393b0b41f0f157473",
+      "at": "2026-11-01T12:44:05.176Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "bb417454aac0c3f76cbae3224648027d0afcebfe94ccc9fbf135ecbd2868a215",
+      "at": "2026-11-01T12:49:23.660Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "cf9ffe6b71f4417ff07cbd8e519beec3c83db4af06ba090d105ea52778382055",
+      "at": "2026-11-01T13:07:09.447Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "1ad7ec0309f43ffb3846b889d6fe1f441c8573b1b49f87190daa4c515b2d5e55",
+      "at": "2026-11-01T13:07:29.298Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "bb417454aac0c3f76cbae3224648027d0afcebfe94ccc9fbf135ecbd2868a215",
+      "at": "2026-11-01T13:15:01.721Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "ddafb49a0153aabb8eb04bed03d1b944c0db924125c8f45005af4a4ee081447d",
+      "at": "2026-11-01T13:15:21.793Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "bb417454aac0c3f76cbae3224648027d0afcebfe94ccc9fbf135ecbd2868a215",
+      "at": "2026-11-01T13:25:35.524Z"
+    },
+    {
+      "event": "copy-recorded",
+      "who": "Angger",
+      "mode": "review",
+      "from": "b12d23a6e6c53e1d44345996f5569aced41c74ec27ff5e4449a11104df1f5ebc",
+      "to": "77b0c769c666ca35fea3284eb57982275b64baa50bb14c4ad91d0a91a5e89b2b",
+      "file": "2026-11-01-google-suncatcher-orbit-edits-2026-11-01131100.json",
+      "at": "2026-11-01T13:25:37.011Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f",
+      "at": "2026-11-01T13:25:44.427Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "2026-11-01-google-suncatcher-orbit-edits-2026-11-01131100.json sha256:d58187dbb74d4ce2cb0928ad87d78eff67347f1afdc507c16a94b22762cdb89d",
+      "copyRevision": "77b0c769c666ca35fea3284eb57982275b64baa50bb14c4ad91d0a91a5e89b2b",
+      "designRevision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f",
+      "at": "2026-11-01T13:11:00.737Z"
+    }
+  ]
+}
