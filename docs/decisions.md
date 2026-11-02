@@ -2,6 +2,12 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-11-02 — Caption length max 100 words (was 160)
+
+- Owner asked to change the caption limit max from 160 to 100.
+- Guide is now about **100 words** (`suggestedWordMinimum` and `suggestedWordMaximum` both 100), still counted on the 3 body paragraphs only (no hashtags, `Sumber/Foto` footer, or `Ilustrasi` lines), still a warning not a hard gate.
+- Updated: `brand/editorial-policy.json`, `brand/voice.md`. Older 100–160 / 100–150 entries kept as history.
+
 ## 2026-11-02 — `review:serve` writes Simpan into `edits/`
 
 - Owner asked to fix the static-HTML limit: browser Simpan could only download JSON, not write `content/posts/<slug>/edits/`.

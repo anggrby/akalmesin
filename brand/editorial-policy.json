@@ -3,7 +3,7 @@
   "caption": {
     "bodyParagraphs": 3,
     "suggestedWordMinimum": 100,
-    "suggestedWordMaximum": 160,
+    "suggestedWordMaximum": 100,
     "maxHashtags": 5,
     "closingQuestionCount": 1
   },

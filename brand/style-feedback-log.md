@@ -176,7 +176,7 @@ Open points reported to the owner (not changed): caption ~185 words vs 100–150
 
 ## Owner decision: caption length (28 Oktober 2026, t49u ~13:56 WIB)
 
-Owner: "Not necessary for now, 100-160 is not including the hashtag and the Source. So it just pure the copy text". The caption guide is now **100–160 words**, counting only the 3 body paragraphs (no hashtags, `Sumber/Foto` footer or `Ilustrasi` lines), and it is a warning, not a hard gate. This supersedes the 100–150 figure in the entries above, which are kept as history. Kimi caption under the new rule: 185 words (still a warning). Status: **owner rule**.
+Owner: "Not necessary for now, 100-160 is not including the hashtag and the Source. So it just pure the copy text". Caption guide was **100–160 words**, counting only the 3 body paragraphs (no hashtags, `Sumber/Foto` footer or `Ilustrasi` lines), warning not a hard gate. Superseded the 100–150 figure above. Kimi under that rule: 185 words (still a warning). **Superseded 2 Nov 2026:** owner set max to 100 → about **100 words** (see `docs/decisions.md`).
 
 ## Owner decision: dark mode, logo masthead, category list (29 Oktober 2026, t92u–t94u)
 
