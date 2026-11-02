@@ -1,257 +1,175 @@
-# akalmesin: Proposed vs. Adjusted (style feedback log)
+Berikut adalah rumusan ulang panduan redaksional dan gaya penulisan **akalmesin** (`editorial-style.md`) yang menggabungkan seluruh keputusan dari catatan _feedback_ milikmu beserta penyempurnaan atas celah-celah inkonsistensi sebelumnya:
 
-## Evidence status — 27 October 2026
+---
 
-Read this log before drafting to understand observed owner edits. It is a historical feedback record, not a second rulebook or current story-status tracker. [editorial-style.md](voice.md) is the authoritative writing guide; [DESIGN.md](design.md) owns the visual specification; [workflow.md](../docs/workflow.md) owns approval and delivery. See [the repository map](../docs/workflow.md) for ownership.
+# Panduan Redaksional & Gaya Penulisan akalmesin (`editorial-style.md`)
 
-The entries below preserve the order in which observations, inferences and later owner decisions were recorded. Earlier caption-only voice decisions were later extended to both slide copy and captions. Type sizes from the old frame remain provisional. Historical status statements refer to that round of review, not current readiness. Resolve the current stage from the story's workflow.json/review.md and [current status](../docs/workflow.md).
+Panduan ini adalah acuan tunggal untuk penulisan teks _slide carousel_, _caption_ Instagram, dan _alt text_ **akalmesin**. Aturan suara (_voice_) di dokumen ini berlaku penuh untuk **teks slide maupun _caption_**, menggantikan gaya berita netral yang kaku.
 
-## Purpose
+---
 
-Records what the AI proposed and what the owner (Angger) changed before approving, so later agents can draft closer to his preferences. The current writing rules derived from this evidence live in [editorial-style.md](voice.md).
+## 1. Karakter & Nada Suara (_Tone of Voice_)
 
-## How to use
+- **Teman yang Paham Teknologi:** Tulis dengan Bahasa Indonesia jurnalistik yang jernih, santai, dan mengalir—seperti seorang teman yang mengerti teknologi atau editor yang ramah bagi pembaca awam yang penasaran, bukan akademisi yang kaku.
 
-- Read this before you draft copy for a new post.
-- After every post, add a new dated entry: one table row per change, plus anything accepted unchanged that is worth noting.
-- Label each preference as **observed** (he actually made the edit) or **inferred** (our generalisation). Note how many posts support it. Distinguish an explicit owner decision from a repeated observation; record confirmed changes in the authoritative guide rather than adding a competing rule here.
+- **Sapaan Natural:** Kata ganti `kamu` atau `kita` boleh digunakan jika terasa mengalir secara alami (terutama pada _hook_ pembuka atau pertanyaan penutup di _caption_), namun jangan dipaksakan masuk ke dalam _slide_ detail yang fokus memaparkan fakta.
 
-## Process notes (owner, 27 Oct 2026)
+- **Skeptisisme Sehat & Atribusi Aktif:** Jangan pernah menelan klaim sepihak perusahaan teknologi sebagai fakta mutlak.
 
-These notes describe that original review/testing session. Current production and maintenance follow the authoritative workflow/editor guides linked above; the temporary-workspace note is not a ban on maintained tests or approved story source in this repository.
+- Gunakan kalimat aktif dengan kata kerja atribusi yang tegas seperti `"Moonshot mengklaim..."`, `"Reuters melaporkan..."`, atau `"Goldman Sachs mencatat..."` (hindari bentuk pasif kaku seperti _"Menurut X, model ini mencetak..."_).
 
-- He reviews the design as an editable HTML file and edits the text directly. He does not write notes on it.
-- While testing, don't save files to the repo. Keep work on the box (e.g. /workspace/tmp/).
-- Export to Notion only after his adjustments and explicit approval. Notion delivery does not authorize publishing or scheduling on Instagram.
+- Selalu sertakan batasan (_hedge_) yang jelas bahwa angka _benchmark_ berasal dari `"pengujian internal dan masih menunggu verifikasi independen"`.
 
-## Recorded observations and decisions (GPT-6.1 Terra, 27 Oct 2026)
+---
 
-1. **Emphasis (observed, explicitly requested):** detail copy needs "emphasized sentences". Bold the key phrase of a detail slide.
-   - _Inferred:_ usually one phrase per slide. On a benchmark slide with numbers, up to two (the gain and the cost).
-   - _Inferred:_ bold the takeaway (who gets it, how much better, what it's for), not model names or the whole sentence.
-   - Example: "tersedia bagi seluruh pengguna **Plus, Pro, Enterprise, dan Edu** di ChatGPT Work dan Codex".
-   - **Price slides also get one emphasized phrase** (owner-confirmed rule, 27 Oct 2026). Bold the comparison that carries the headline claim. Example: "harga input Terra baru **50% lebih rendah dan harga output sekitar 58% lebih rendah**".
-2. **Terminology (owner-confirmed rule):** use the loanword "benchmark", not "tolok ukur". This applies to slide copy, the caption **and** alt text.
-3. **Accepted as proposed (observed):**
-   - Headline: "OpenAI luncurkan GPT-6.1 Terra dengan harga API lebih rendah".
-   - The summary.
-   - The four-model price comparison with GPT-5.6 Terra as a reference.
-   - The caveat "berasal dari pengujian OpenAI dan belum diverifikasi secara independen".
-   - Photos and credits ("FOTO: … / OPENAI", "ILUSTRASI AI: … / AKALMESIN").
-   - In-depth depth with 4 details.
-   - The scripted blue-ink treatment.
-   - The caption, which was not part of the editor.
-4. **Not acted on:** the "Sol." widow in the Main summary was approved as is. He doesn't seem to mind it, but we still shouldn't create widows.
+## 2. Diksi, Skala Kata Kerja, & Anti-Terjemahan Harfiah (_Anti-Calque_)
 
-5. **AI-illustration disclosure in the caption (owner-confirmed rule, 27 Oct 2026):** when any slide uses an AI illustration, add a disclosure to the caption's source/credit line as well as the on-slide credit. Current form (v5): a line after the footer, "Ilustrasi slide 5: AI / akalmesin." Repo basis: templates/editorial-copy.md asks the caption to "Include translation/illustration disclosure when applicable".
-6. **Captions follow the owner's own brand guide, not the repo (owner rule, 27 Oct 2026).** For CAPTIONS, his brand guide (section 8, "Writing voice" and "Caption structure — standard 3-paragraph format") overrides the repo's brand/editorial-style.md and the AGENTS.md news voice. This replaces my earlier "working convention" note on 100–150 words, which is now an owner rule. His reason: "Tujuannya sederhana: di Instagram, pembaca hanya melihat 1–2 baris pertama caption sebelum tombol "more" (selengkapnya). Jika kalimat pertama langsung berisi nama resmi yang kaku, pembaca awam cenderung melewati unggahan tersebut karena terasa berat, padahal target pembaca akalmesin adalah orang yang penasaran dengan teknologi namun tidak selalu punya latar belakang spesialis."
-   - **Exactly 3 paragraphs, roughly 100–150 words.** Count only the 3 paragraphs, not the footer or hashtags.
-     - P1 is the hook plus "Apa yang baru". Open with a short observational hook or relatable analogy in plain words, not a sentence that leads with the official name. Then give the core news right away: what, when, who and the key numbers, attributed ("Menurut OpenAI").
-     - P2 is "Kenapa penting & cara kerja", in plain language: what it is, prices and availability.
-     - P3 is "Apa batasnya, implikasi & diskusi": the caveats, then **one** natural closing question.
-   - **Footer:** `Sumber: [Institusi / Sumber Utama] / Foto: [Kredit Foto]`, then the AI-illustration disclosure if any slide uses one. Full source links stay in the package and the Notion body, not the caption.
-   - **Hashtags: at most 5** (#akalmesin plus up to 4 specific ones). This follows the owner's own research: Instagram's official creator account announced a 5-hashtag limit per post in December 2025. **His guide's 8–10 rule is outdated.**
-   - kamu/kita is allowed where it comes naturally; don't force it.
-   - _Inference:_ the hook must stay factual. Base it on something in the source (here, X1 "understands what's on screen, takes action across apps") so it doesn't overclaim.
-   - _Historical inference, later withdrawn in Voice decision below:_ slide copy (headline, summary, details) still follows the repo's neutral news voice. The owner only changed the caption rules.
+- **Haram Menerjemahkan Mentah (_Calque_) yang Salah Konteks:**
+- _Leaders_ (untuk perusahaan/emiten) $\rightarrow$ gunakan **"jajaran raksasa..."**, bukan _"pemimpin"_ (karena terdengar seperti perorangan).
 
-### Caption: old (v4, repo news style) vs. new (v5, owner's guide)
+- _Traders_ (pasar modal/saham) $\rightarrow$ gunakan **"para _trader_ / pelaku pasar"**, bukan _"pedagang"_.
 
-**Old (v4):**
+- _Chipmaker_ $\rightarrow$ gunakan **"produsen chip"**, bukan _"chipmaker"_.
+
+- _Domestic demand_ (ekonomi makro) $\rightarrow$ gunakan **"daya beli domestik"**, bukan sekadar _"permintaan domestik"_.
+
+- Metafora puitis bahasa Inggris $\rightarrow$ ubah ke bahasa lugas. Contoh: jangan tulis _"tenaga surya lebih murah hati"_ (_more generous_), melainkan **"pasokan energi surya jauh lebih melimpah"**.
+
+- **Sesuaikan Intensitas Kata Kerja dengan Skala Fakta:**
+- Penurunan besar (~40–50%) $\rightarrow$ gunakan **"anjlok sekitar 40%"** atau **"kehilangan sekitar separuh nilai sahamnya / tergerus sekitar 50%"**, jangan hanya menulis _"turun"_ atau _"berkurang"_.
+
+- Persaingan harga $\rightarrow$ gunakan **"terjebak dalam perang harga"**, bukan _"masuk perang harga"_.
+
+- Sanggahan klaim teknis $\rightarrow$ gunakan **"turut mematahkan..."** dan **"gagal mereproduksi..."**, bukan _"menantang"_ atau _"tidak bisa mereproduksi"_.
+
+- Eksperimen perangkat keras/antariksa $\rightarrow$ pilih kata kerja konkret seperti **"terima"** (bukan _dapat_), **"mengorbit"**, **"membalasnya"** (bukan _mengirim balik_), **"sanggup beroperasi"**, dan **"tengah menjajaki"**.
+
+- **Hindari Hiperbola Kosong & Slang yang Tidak Tepat:**
+- Hapus kata sifat bombastis yang tidak perlu di kalimat utama (misal: tulis `"Model dengan 3 triliun parameter"`, bukan _"Model raksasa..."_).
+
+- Gunakan diksi teknis yang proporsional (misal: tulis `"Kebutuhan ruang penyimpanan tetap masif"`, bukan _"Disk tetap gemuk"_; gunakan `"menjalankannya secara lokal"`, bukan _"di rumah"_).
+
+---
+
+## 3. Lokalisasi Istilah Teknis & Penjelasan Singkat (_Gloss_)
+
+- **Gunakan Istilah Pinjaman (_Loanwords_) Populer:**
+- Wajib gunakan kata _**benchmark**_ di seluruh elemen (teks _slide_, _caption_, dan _alt text_), bukan _"tolok ukur"_.
+
+- Pertahankan istilah bahasa Inggris yang sudah akrab di telinga pembaca teknologi Indonesia ketimbang terjemahan Indonesianya yang kaku: _open-weights_, _context window_, _agentic_, _offload_, _reasoning_, _software_, _website_, _coding_, _data center_, _listing_, dan _oversubscribed_.
+
+- **Patuhi Struktur Hukum DM (Diterangkan–Menerangkan):**
+- Jangan menaruh kata sifat bahasa Inggris di depan kata benda bahasa Indonesia di awal kalimat (hindari _"Open weight Model AI"_). Gunakan urutan Bahasa Indonesia yang baku: **"Model AI _open-weights_"**.
+
+- _Pengecualian metrik finansial:_ Pertahankan urutan istilah keuangan baku bahasa Inggris seperti **"Rasio _trailing P/E_"** (bukan _P/E trailing_).
+
+- **Sisipkan Penjelasan Singkat (_Gloss_) di Dalam Kurung:**
+- Saat memperkenalkan istilah teknis atau finansial yang mungkin asing bagi pembaca awam, berikan padanan singkat di dalam kurung (atau sebaliknya):
+
+- `"dirilis secara terbuka (open-weights)"`
+
+- `"tingkat halusinasi (klaim keliru)"`
+
+- `"bobot model (weight) penuhnya"`
+
+- `"dialihkan (offload) ke SSD"`
+
+- `"rantai penalaran (reasoning)"`
+
+- `"Rasio trailing P/E (harga saham terhadap laba bersih)"`
+
+---
+
+## 4. Struktur & Aturan Teks _Slide Carousel_
+
+### Kategori (_Masthead_)
+
+- Ditulis **HURUF KAPITAL SEMUA (_ALL UPPERCASE_)** dari daftar resmi: `AI`, `KOMPUTER`, `SAINS`, `PROGRAMMING`, `TUTORIAL AI`, `TEKNOLOGI`, `ROBOTIKA`.
+
+- **Aturan Khusus `TUTORIAL AI`:** Hanya digunakan untuk konten panduan cara memakai AI; berita tentang perkembangan AI wajib menggunakan kategori `AI`.
+
+### Slide 01 — Main
+
+- **Headline (2 Baris, ~4–6 Kata):**
+- Sebutkan nama perusahaan/pelaku dan inti rilis/perkembangannya secara faktual dan lugas.
+
+- Gunakan **Sentence case** secara konsisten (hanya huruf awal kalimat dan nama resmi perusahaan/produk yang menggunakan huruf kapital) agar pembaca mudah membedakan kata kerja biasa dengan nama produk:
+- ✅ `"OpenAI luncurkan GPT-6.1 Terra dengan harga API lebih rendah"`
+
+- ✅ `"Google terima respons AI pertama dari orbit Bumi"`
+
+- ✅ `"Moonshot AI rilis Kimi K3.1 Pro!"`
+
+- **Summary (1 Kalimat Utuh & Mengalir):**
+- Berisi satu gagasan utama yang merangkum keunggulan konkret (dengan bahasa sehari-hari seperti `"urusan kendali komputer"`, `"pengolahan visual"`, `"tarif separuh"`) atau jadwal rilisnya.
+
+- **Keselarasan Klaim (_Hedge Alignment_):** Jika seluruh berita bertumpu pada klaim sepihak vendor, janji rilis, atau eksperimen awal, masukkan status batasannya langsung di _Summary_ Slide 01 menggunakan kata **"diklaim"**, **"dijanjikan"**, atau klausa penyeimbang setelah tanda pisah (_em dash_ `—`) maupun koma:
+
+- ✅ `"Model Gemma 4 yang berjalan di chip TPU satelit Suncatcher berhasil menulis haiku dari luar angkasa—namun masih berstatus uji riset."`
+
+- ✅ `"Kuantisasi Dynamic V3.1 ini diklaim unggul di banyak benchmark mulai dari ~128 GB RAM, meski klaim skornya masih menunggu verifikasi independen."`
+
+### Slide 02–05 — Detail
+
+- **1 Paragraf Padat per Slide:** Hindari kalimat terpotong yang menggantung atau pembuka dengan titik dua yang kaku (`"Inti eksperimennya:"` atau `"Langkah berikutnya:"`). Haluskan menjadi kalimat yang utuh (`"Inti eksperimennya sederhana: menguji apakah..."` atau `"Langkah berikutnya adalah..."`).
+
+- **Aturan Penekanan _Bold_ (Gradasi Biru `#F2F2F5` $\rightarrow$ `#4E4FEB`):**
+- Wajib memberikan **1 frasa _bold_ per slide detail** (termasuk pada slide harga).
+
+- **Pilih Inti _Takeaway_-nya:** Tebalkan informasi yang paling berdampak bagi pembaca—seperti siapa yang mendapat akses (`"**Plus, Pro, Enterprise, dan Edu**"`), persentase penghematan harga (`"**50% lebih rendah dan harga output sekitar 58% lebih rendah**"`), rekomendasi penggunaan (`"**riset mendalam dan pemrograman kompleks**"`), atau skala kejadian (`"**anjlok sekitar 40%**"`), bukan sekadar menebalkan nama model atau seluruh kalimat.
+
+- Jaga agar penekanan tetap dalam **1 frasa yang menyatu** per slide agar efek visual gradasi birunya tetap tajam dan tidak memecah fokus mata.
+
+---
+
+## 5. Struktur & Aturan _Caption_ Instagram
+
+- **Target Panjang Teks (100–150 Kata):**
+- Hanya menghitung **3 paragraf isi** (tidak termasuk baris `Sumber/Foto`, `Ilustrasi`, dan _hashtag_).
+
+- _Tips Disiplin Kata:_ Jangan menyalin ulang seluruh angka _benchmark_ dari Slide 02–04 ke dalam _caption_ agar panjang teks tidak membengkak hingga >175 kata. Cukup rangkum daya tarik utamanya di Paragraf 2.
+
+- **Struktur Baku 3 Paragraf:**
+
+1. **Paragraf 1 (_Hook_ Observasional + Inti Berita):**
+
+- Buka dengan 1 kalimat _hook_ observasional atau analogi sederhana yang relevan dengan keseharian pembaca, sehingga 1–2 baris pertama sebelum tombol _"more"_ tidak terasa berat akibat deretan nama teknis resmi. _(Catatan: Jika fakta utamanya sudah sangat konkret dan memikat seperti respons AI pertama dari luar angkasa, kalimat "Bayangkan..." boleh dilewati dan langsung masuk ke inti berita)_.
+
+- Lanjutkan langsung dengan fakta utama: apa yang dirilis, tanggal rilis, siapa pembuatnya, dan klaim utamanya dengan atribusi (`"Menurut OpenAI..."`).
+
+2. **Paragraf 2 (Kenapa Penting, Harga & Cara Kerja):**
+
+- Jelaskan fungsi praktis, arsitektur singkat, harga, serta ketersediaannya dengan bahasa yang ramah pembaca (misal menulis `"varian 2-bit"` ketimbang kode spesifik `UD-Q2` di _caption_). Pastikan metafora dan istilah yang dipakai selaras dengan teks di _slide_.
+
+3. **Paragraf 3 (Batasan, Implikasi & 1 Pertanyaan Diskusi):**
+
+- Tegaskan kembali batasan utamanya (klaim pengujian internal yang belum diverifikasi independen, kendala perangkat keras, atau status riset jangka panjang).
+
+- Tutup dengan **1 pertanyaan diskusi yang natural** dan relevan bagi pembaca (boleh menyelipkan ekspresi kasual yang wajar seperti `"worth it"` atau `"mending"`).
+
+- **Format Footer & Kredit:**
+
+```text
+Sumber: [Nama Institusi / Media Utama] / Foto: [Kredit Foto]
+Ilustrasi slide [X]: AI / akalmesin
 
 ```
-OpenAI meluncurkan GPT-6.1 Terra pada 26 Oktober 2026 waktu AS. Menurut OpenAI, model ini dirancang untuk penggunaan komputer, penalaran visual, dan penulisan yang lebih jelas, serta merupakan peningkatan signifikan dari GPT-5.6 Terra.
 
-GPT-6.1 Terra tersedia bagi pengguna Plus, Pro, Enterprise, dan Edu di ChatGPT Work dan Codex, serta melalui API OpenAI. Harga API standarnya US$1 per 1 juta token input dan US$5 per 1 juta token output, separuh harga GPT-6.1 Sol. Dibandingkan GPT-5.6 Terra, harga input turun 50% dan harga output turun sekitar 58%.
+- Baris `Ilustrasi slide [X]: AI / akalmesin` **wajib ditambahkan** tepat di bawah baris `Sumber/Foto` setiap kali ada _slide_ yang menggunakan ilustrasi buatan AI.
 
-Klaim peningkatan kinerja berasal dari benchmark yang dijalankan OpenAI sendiri. OpenAI tetap menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk riset mendalam dan pemrograman kompleks.
+- Pastikan penulisan kredit foto pada _slide_ konsisten di seluruh unggahan (misalnya: gunakan `/ COMMONS` di semua _slide_, jangan dicampur dengan `/ WIKIMEDIA`).
 
-Sumber: OpenAI (blog pengumuman, dokumentasi dan halaman harga API, system card addendum, unggahan @OpenAI di X). Grafik: OpenAI. Ilustrasi slide 5: AI / akalmesin.
+- **Aturan _Hashtag_ (Maksimal 5):**
+- Gunakan **maksimal 5 _hashtag_** (mengikuti batas resmi kreator Instagram): wajib `#akalmesin` ditambah maksimal 4 _hashtag_ spesifik yang merujuk pada entitas, topik, atau kasus penggunaan (contoh: `#OpenAI #GPT61 #LocalLLM #OpenWeights`). Hindari _hashtag_ nama kategori umum (`#Programming`) atau ekstensi format teknis semata (`#GGUF`).
 
-#akalmesin #OpenAI #AI
-```
+---
 
-**New (v5), 147 words in the 3 paragraphs:**
+## 6. Ringkasan Spesifikasi Desain & Alur Kerja (_Dark Mode_)
 
-```
-Bayangkan asisten AI yang bisa membaca isi layar dan menjalankan tugas di berbagai aplikasi, dengan ongkos lebih murah. Itulah yang dijanjikan GPT-6.1 Terra, model baru yang diluncurkan OpenAI pada 26 Oktober 2026 waktu AS. Menurut OpenAI, model ini lebih baik daripada GPT-5.6 Terra dalam penggunaan komputer, penalaran visual, dan penulisan.
+- **Palet & Tipografi _Dark Mode_:** Latar belakang `#0A0A0F`, teks _headline_ `#F2F2F5`, teks _summary_ dan kategori `#B4B4BE`, menggunakan logo _wordmark_ `akalmesin` pada _masthead_ dengan garis pemisah putih transparan 50% (`1 px rgba(255,255,255,0.5)`), serta garis batas tipis `1 px rgba(255,255,255,0.12)` di tepi atas foto.
 
-Terra dirancang untuk menyeimbangkan biaya dan kemampuan. Harga API standarnya US$1 per 1 juta token input dan US$5 per 1 juta token output, separuh harga GPT-6.1 Sol. Dibandingkan GPT-5.6 Terra, harga input turun 50% dan output sekitar 58%. Model ini tersedia bagi pengguna Plus, Pro, Enterprise, dan Edu di ChatGPT Work dan Codex, serta lewat API.
+- **Alur Kerja Peninjauan:** Draf ditinjau melalui file HTML interaktif di ruang kerja sementara (`/workspace/tmp/`) dan baru diekspor ke Notion setelah teks disunting serta disetujui penuh.
 
-Ada batasnya. Angka benchmark-nya berasal dari pengujian OpenAI sendiri dan belum diverifikasi secara independen. OpenAI pun tetap menyarankan GPT-6.1 Sol atau GPT-6 Astra untuk riset mendalam dan pemrograman kompleks. Menurutmu, mana yang lebih penting saat memilih model AI: harga atau kemampuan?
+---
 
-Sumber: OpenAI / Foto: OpenAI
-Ilustrasi slide 5: AI / akalmesin
-
-#akalmesin #OpenAI #GPT61 #ChatGPT #KecerdasanBuatan
-```
-
-## Differences between the owner's brand guide and the repo (found 27 Oct 2026)
-
-Only the caption conflict (including hashtags) was resolved by the owner when this table was written. The "Repo" column describes the docs at that moment. Later the same day, the published Terra post confirmed the repo layout, the 4–6 / 6–9 word formula became a soft guideline, and the 86/37/20–21 px sizes stayed provisional.
-
-| Area                 | Owner's guide                                                                   | Repo                                                                                                                                                                                                                    |
-| -------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Caption length/shape | 3 paragraphs, ~100–150 words, fixed P1/P2/P3 roles                              | "complete short news report"; no length or shape rule (brand/editorial-style.md:11) — **resolved: guide wins for captions**                                                                                             |
-| Opening hook         | Observational hook/analogy wanted in the first line                             | Neutral news lead; no rhetorical teasers (brand-guide.md:17, editorial-style.md:9) — **resolved for captions**                                                                                                          |
-| Closing question     | One natural question to invite comments                                         | "Do not end with a mandatory question" (editorial-style.md:11) — **resolved for captions**                                                                                                                              |
-| Voice                | Knowledgeable friend; kamu/kita when natural; wit through analogy               | Friend/wit direction "superseded for news copy"; avoid casual kamu/kita (AGENTS.md:17, brand-guide.md:17) — resolved for captions only, open for slides                                                                 |
-| Footer/hashtags      | `Sumber: … / Foto: …`; guide says 8–10 hashtags                                 | No footer format; source references in the caption; no hashtag rule — **resolved: Sumber/Foto footer, max 5 hashtags (owner's research overrides the guide's 8–10)**                                                    |
-| Layout items         | Article label, footer row with navigation arrow, photo window 1080×584 at y 648 | Article kicker and footer/arrow row superseded; photo runs to the bottom edge; 54 px text-to-photo gap — **later confirmed by the published Terra post; the guide's label, arrow, and 1080×584 window are not adopted** |
-| Type sizes           | Headline 86/100 px −4%, supporting 37 px, labels 20–21 px (24 Oct snapshot)     | **Superseded 28 Oct:** the owner's measured sheets are the source of truth; see brand/tokens.json                                                                                                                       |
-| Headline formula     | ~4–6-word headline + 6–9-word supporting line, 2 lines each                     | **Later adopted as a soft guideline, not a hard cap**                                                                                                                                                                   |
-
-## Per-post log
-
-| Post                     | Slide                      | Proposed                                                                             | Adjusted                                                                                                      | Inferred preference                                           |
-| ------------------------ | -------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| 2026-10-27 GPT-6.1 Terra | 03 Ketersediaan            | "…seluruh pengguna Plus, Pro, Enterprise, dan Edu di ChatGPT Work…"                  | "…seluruh pengguna **Plus, Pro, Enterprise, dan Edu** di…"                                                    | Bold the audience/availability takeaway                       |
-| 2026-10-27 GPT-6.1 Terra | 04 Hasil uji               | "Pada tolok ukur Agents' Last Exam"                                                  | "Pada benchmark Agents' Last Exam"                                                                            | Loanword "benchmark" over "tolok ukur"                        |
-| 2026-10-27 GPT-6.1 Terra | 04 Hasil uji               | "…15 poin persentase di atas GPT-5.6 Terra dengan biaya sekitar sepertiganya…"       | "**15 poin persentase di atas GPT-5.6 Terra** **dengan biaya sekitar sepertiganya**"                          | Bold the headline number and the cost advantage               |
-| 2026-10-27 GPT-6.1 Terra | 05 Keamanan                | "…untuk riset mendalam dan pemrograman kompleks."                                    | "…untuk **riset mendalam dan pemrograman kompleks**."                                                         | Bold the practical "use it for…" guidance                     |
-| 2026-10-27 GPT-6.1 Terra | 01 Main, 02 Harga, caption | —                                                                                    | unchanged                                                                                                     | Factual headline and full price comparison accepted           |
-| 2026-10-27 GPT-6.1 Terra | Caption                    | "Klaim peningkatan kinerja berasal dari tolok ukur…"                                 | "…berasal dari benchmark…"                                                                                    | "benchmark" applies to the caption too                        |
-| 2026-10-27 GPT-6.1 Terra | Caption                    | "…Grafik: OpenAI."                                                                   | "…Grafik: OpenAI. Ilustrasi slide 5: AI / akalmesin."                                                         | Disclose AI illustrations in the caption                      |
-| 2026-10-27 GPT-6.1 Terra | 02 Harga                   | no bold                                                                              | "**50% lebih rendah dan harga output sekitar 58% lebih rendah**"                                              | Price slides get one emphasized phrase                        |
-| 2026-10-27 GPT-6.1 Terra | Alt text 04                | "Detail hasil tolok ukur internal OpenAI"                                            | "Detail hasil benchmark internal OpenAI"                                                                      | "benchmark" applies to alt text too                           |
-| 2026-10-27 GPT-6.1 Terra | Caption (v5)               | Repo news style: official-name-first lead, no question, long source line, 3 hashtags | Owner's guide: hook + 3 paragraphs (147 words), closing question, "Sumber: OpenAI / Foto: OpenAI", 5 hashtags | Owner's guide overrides the repo for captions; max 5 hashtags |
-
-## Voice decision (27 Oktober 2026)
-
-- **Owner decision:** the voice from his brand guide (sections 1, 8 and 10) now applies to **slide copy and captions**. In both, it overrides the repo's neutral news voice (AGENTS.md:17, brand/brand-guide.md:17, brand/editorial-style.md). The voice rules: clear, natural journalistic Indonesian, like a knowledgeable friend or accessible editor; kamu/kita only where natural; explain terms briefly; an occasional relatable observation; Main headline about 4–6 words plus a 6–9-word supporting line. The previous inference that "slide copy still follows the repo's neutral voice" is withdrawn.
-- _Inference from his research:_ explain what an API is, separate API pricing from a consumer subscription, say who benefits from a lower price, and keep the benchmark limitation prominent.
-- **Later the same day:** the published Terra post confirmed the repo layout. The 4–6 / 6–9 word line is a soft guideline. Type sizes stay provisional. This paragraph is the note as it was written before that confirmation.
-- **Status at the time of this entry:** the v6 slide-copy proposal (`final/copy-A-v6-proposal.md` in the original review workspace) was awaiting owner review; Notion, HTML and PNGs had not been updated. See the later rounds below. This is not the current story status.
-
-## Round v6: slide copy in the owner's voice (27 Oktober 2026)
-
-Owner approved his edited HTML ("Use this version"). What I proposed in copy-A-v6-proposal.md compared with what he did:
-
-| Slide         | Proposed (v6)                                                                                                | Owner's final                                                                                                                          | Inferred preference                                                                                                                                                                                                                                                                      |
-| ------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 01 headline   | "OpenAI rilis GPT-6.1 Terra yang lebih hemat" (+ Alt A/B)                                                    | Kept the original "OpenAI luncurkan GPT-6.1 Terra dengan harga API lebih rendah"                                                       | _Inference:_ he prefers a factual headline that names the development over a shorter hook line                                                                                                                                                                                           |
-| 01 summary    | "Menurut OpenAI, lebih cakap dan separuh harga GPT-6.1 Sol"                                                  | "Diklaim melampaui GPT-5.6 Terra untuk urusan kendali komputer, pengolahan visual, dan penulisan—dengan tarif separuh dari model Sol." | _Inference:_ keep the concrete list of what improved; use everyday wording ("urusan kendali komputer", "pengolahan visual", "tarif"); "Diklaim" as a lighter attribution than "Menurut OpenAI"; em dash allowed; short reference "model Sol" acceptable after the full name has appeared |
-| 02–05 details | Rewrites with term glosses (API, token, benchmark), "kamu", and a "Terra bukan untuk semua pekerjaan" opener | Kept the previous detail text (no glosses, no "kamu")                                                                                  | _Inference:_ detail slides stay plain and factual; voice changes are mostly wanted on the Main summary and the caption. Confirm before generalizing                                                                                                                                      |
-| 02 bold       | Keep one bold phrase                                                                                         | No bold in his file                                                                                                                    | Unclear: may come from editing an older copy. Asked                                                                                                                                                                                                                                      |
-| 04 alt text   | "benchmark"                                                                                                  | "tolok ukur"                                                                                                                           | Unclear: may come from editing an older copy. The "benchmark" rule stands until he says otherwise. Asked                                                                                                                                                                                 |
-
-### v6 follow-up (27 Oktober 2026)
-
-- The owner said he "probably uploaded the wrong file". He **intended** the earlier fixes, so the price-slide bold and "benchmark" in alt text were restored. Both rules stand.
-- "Diklaim" was accepted as the Main attribution ("yah that's okay for now"). _Inference:_ he tolerates the lighter passive attribution on the Main slide when the caption names OpenAI. "for now" suggests he may revisit it.
-- Process lesson (_inference_): when his edited file undoes earlier agreed fixes, ask before treating it as intentional.
-
-## Kimi K3.1 Pro (2026-10-28-kimi-k3-1-pro), 28 Oktober 2026
-
-Two layers: (1) the owner rewrote the AI copy draft before design, saying "I think your copy is too kaku and unnatural" (t42u); (2) he then edited the review HTML (text-review-edits packet, schema 2, review revision `9aea1224…`, imported with `npm run edits:import`). Neither layer is a final approval. "Posts" = number of posts supporting the preference (Terra counted where it applies).
-
-### Layer 1: AI draft vs. owner's rewrite (t42u)
-
-| Slide       | Proposed (AI draft)                                                 | Adjusted (owner)                                                                               | Preference                                                                                                                         | Label                                 | Posts                                              |
-| ----------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | -------------------------------------------------- |
-| Overall     | Compact, neutral wording                                            | "too kaku and unnatural"; fuller conversational sentences                                      | Copy must read natural and relaxed, not stiff                                                                                      | **owner-stated** (his words)          | 1                                                  |
-| 01 headline | "Kimi K3.1 Pro kejar model AI tertutup"                             | "Moonshot AI rilis Kimi K3.1! Pro diklaim mengalahkan GPT-6 Astra."                            | Name the company and the release plainly; "rilis" + exclamation allowed                                                            | observed                              | 1 (Terra: factual headline naming the development) |
-| 01 summary  | "Bobot modelnya dijanjikan terbuka paling lambat 4 November."       | "Modelnya akan dirilis secara terbuka (open-weights) paling lambat 4 November."                | Plain verb ("dirilis") + English term in brackets                                                                                  | observed                              | 1                                                  |
-| 02          | "Menurut Moonshot, … mencetak … di atas … hanya 0,7 poin di bawah"  | "Moonshot mengklaim … meraih skor … mengungguli … hanya terpaut 0,7 poin dari"                 | "mengklaim" attribution; lively verbs; em dash joins clauses                                                                       | observed                              | 1                                                  |
-| 03          | "Dari teks…", "perangkat CAD", "situs interaktif", "sudah tersedia" | "Cukup bermodalkan teks…", "software CAD", "website interaktif", "sudah bisa dicoba"           | Prefer everyday English loanwords (software, website) over formal Indonesian equivalents; reader-oriented phrasing ("bisa dicoba") | observed                              | 1                                                  |
-| 04          | "tingkat klaim keliru turun"                                        | "tingkat halusinasi (klaim keliru) berhasil ditekan"                                           | Use the common term with a short gloss in brackets                                                                                 | observed                              | 1                                                  |
-| 05          | "Bobot lengkapnya dijanjikan rilis…; per 26 Oktober belum muncul"   | "…dijanjikan rilis publik…, meski pantauan per 26 Oktober menunjukkan file-nya belum tersedia" | Keeps the hedge, in plain connected words ("meski") instead of a semicolon                                                         | observed                              | 1                                                  |
-| Caption     | 149 words; "jendela konteks", "Selain menulis kode", "lebih cepat"  | ~187 words; "context window", "Tak hanya jago coding", "lebih ngebut", "Model raksasa"         | Casual register (jago, ngebut); keep English tech terms; he accepted a caption above 150 words                                     | observed; length tolerance _inferred_ | 1                                                  |
-| Caveats     | Vendor-claim and unreleased-weights hedges                          | All kept, reworded                                                                             | Hedges stay, in plain words                                                                                                        | observed                              | 2 (Terra caveat kept)                              |
-
-### Layer 2: owner's HTML edits (packet saved 28 Oct 2026 11:12 WIB)
-
-| Slide/field               | Before (approved copy)                                                                        | After (owner HTML edit)                                                             | Preference                                                                       | Label                                          |
-| ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------- |
-| 01 headline               | "Moonshot AI rilis / Kimi K3.1!"                                                              | "Moonshot AI rilis / Kimi K3.1 Pro!"                                                | Full product name in the headline (resolves the "K3.1! Pro" split I asked about) | observed                                       |
-| 01 summary                | "Pro diklaim mengalahkan GPT-6 Astra. Modelnya akan dirilis…"                                 | "Modelnya akan dirilis secara terbuka (open-weights) paling lambat 4 November."     | Main carries one point; competitor claim left to slide 2                         | observed; reason _inferred_                    |
-| 02                        | "Lembaga independen Artificial Analysis juga…"                                                | "Artificial Analysis juga…"                                                         | Shorter attribution                                                              | observed                                       |
-| 04                        | "tolok ukur" (already changed by agent)                                                       | "benchmark"                                                                         | Confirms the existing "benchmark" rule                                           | **owner-confirmed rule** (27 Oct), re-observed |
-| 05                        | "Bobot model penuhnya"                                                                        | "Bobot model (weight) penuhnya"                                                     | Gloss Indonesian term with the English one                                       | observed                                       |
-| Caption p1                | "Model AI terbuka yang bisa diunduh bebas…"; "Model raksasa berkapasitas 3 triliun parameter" | "Open weight Model AI yang bisa diunduh bebas…"; "Model dengan 3 triliun parameter" | Use the English term "open weight"; drop the hype adjective "raksasa"            | observed                                       |
-| Caption p3                | "meski lembaga independen Artificial Analysis…"; "baru akan dibuka"                           | "meski Artificial Analysis…"; "baru akan dirilis"                                   | Shorter attribution; "dirilis" over "dibuka"                                     | observed                                       |
-| Credits, hashtags, footer | —                                                                                             | unchanged                                                                           | accepted as built                                                                | observed                                       |
-
-Open points reported to the owner (not changed): caption ~185 words vs 100–150; "Open weight Model AI" capitalization; "independen" qualifier removed from both places; Main summary states the open release as fact ("akan dirilis") while slide 5 says "dijanjikan"; slide 1 alt text still mentions the GPT-6 Astra claim.
-
-## Owner decision: caption length (28 Oktober 2026, t49u ~13:56 WIB)
-
-Owner: "Not necessary for now, 100-160 is not including the hashtag and the Source. So it just pure the copy text". Caption guide was **100–160 words**, counting only the 3 body paragraphs (no hashtags, `Sumber/Foto` footer or `Ilustrasi` lines), warning not a hard gate. Superseded the 100–150 figure above. Kimi under that rule: 185 words (still a warning). **Superseded 2 Nov 2026:** owner set max to 100 → about **100 words** (see `docs/decisions.md`).
-
-## Owner decision: dark mode, logo masthead, category list (29 Oktober 2026, t92u–t94u)
-
-- t92u: "I am thinking to make the post in dark mode instead of white…" → 3×3 dark grid mockup.
-- t93u: "Ohh i love the dark mode so much! can you use akalmesin wordmark logo instead of using text in masthead?" → logo masthead mock.
-- t94u (relayed brief): adopt dark mode as the real design (bg #0A0A0F, headline #F2F2F5, summary/category #B4B4BE, divider #4E4FEB, logo in the masthead), category ALL UPPERCASE from AI, KOMPUTER, SAINS, PROGRAMMING, TUTORIAL AI, TEKNOLOGI, ROBOTIKA, and remove all existing posts from the repo.
-
-Agent addition: a 1 px rgba(255,255,255,0.12) hairline on the photo's top edge, because in the mock dark photo tops blended into the page (1.23:1 on Genie). Status: **owner rule** (hairline: agent choice, reported).
-
-## Owner decision: TUTORIAL AI scope (29 Oktober 2026, t95u)
-
-Owner: "Don't use Tutorial AI for that category, Tutorial AI is for tutorial how to use AI, for news like that just use AI." News about AI uses `AI`; `TUTORIAL AI` only for how-to-use-AI tutorials. Status: **owner rule**.
-
-## Owner decision: masthead divider (29 Oktober 2026, t95u)
-
-Owner: "Use white divider in masthead with 50% transparancy". `stroke.divider` is now 1 px rgba(255,255,255,0.5), replacing #4E4FEB. Status: **owner rule**.
-
-## Owner decision: gradient bold (29 Oktober 2026, t96u)
-
-Owner: "commit to use the blue of our color." Bold phrases in Detail slides use a 90° gradient #F2F2F5 → #4E4FEB (token `color.bold-gradient`), clone per wrapped line. 40 px bold; min contrast 3.43:1 at the blue end (large-text bar only). Status: **owner rule**.
-
-## Google Project Suncatcher (2026-11-01-google-suncatcher-orbit), 1 November 2026
-
-Single-pass review: owner edited in `out/…html` / chat-equivalent Simpan (`edits/2026-11-01-google-suncatcher-orbit-edits-2026-11-01131100.json`), applied with `review:apply`. Copy + final approved that night. "Posts" counts Terra + Kimi where the preference already appeared.
-
-| Slide/field  | Proposed (AI)                                                                                  | Adjusted (owner)                                                                                                                       | Preference                                                                                                              | Label    | Posts                        |
-| ------------ | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------- |
-| 01 headline  | "Google **dapat** respons AI / pertama dari orbit"                                             | "Google **terima** respons AI / pertama dari orbit **Bumi**"                                                                           | Prefer "terima" over "dapat" for receiving a reply; name "Bumi" when "orbit" alone is thin                              | observed | 1                            |
-| 01 summary   | "Gemma 4 di TPU satelit Suncatcher menulis haiku dari antariksa—masih uji riset"               | "Model Gemma 4 yang berjalan di chip TPU satelit Suncatcher berhasil menulis haiku dari luar angkasa—namun masih berstatus uji riset." | Fuller Main sentence: name the subject, "chip", "berhasil", "luar angkasa", hedge with "namun masih berstatus"          | observed | 2 (Kimi fuller Main)         |
-| 02           | "diluncurkan… menjalankan model terbuka **Gemma 4 di TPU…**"; "mengirim balik haiku"           | "yang mengorbit… misi SpaceX… berhasil menjalankan **model terbuka Gemma 4 di chip TPU…**"; "membalasnya dengan sebait haiku"          | Launch as "mengorbit" + "misi"; "berhasil menjalankan"; "chip" gloss; "membalas" over "mengirim balik"                  | observed | 1                            |
-| 03           | "Inti eksperimennya: **apakah chip… bisa bekerja…**"; "menyebutnya tonggak"; "Setelah haiku"   | "Inti eksperimennya sederhana: **menguji apakah chip… sanggup beroperasi…**"; "menyebut keberhasilan… sebagai momen"; "Selain haiku"   | Soften abrupt colon openers; "sederhana" / "sanggup beroperasi"; "Selain" over "Setelah" for parallel tests             | observed | 1                            |
-| 04           | "Kenapa antariksa?"; "mengeksplorasi… tenaga surya lebih murah hati"; "fokusnya lebih membumi" | "Kenapa harus ke luar angkasa?"; "tengah menjajaki… pasokan energi surya jauh lebih melimpah"; "tujuannya masih sangat mendasar"       | Drop poetic metaphor ("murah hati"); plain abundance wording; "menjajaki" / "ditempatkan"; practical "mendasar" framing | observed | 1                            |
-| 05           | "Ini masih riset…"; "Langkah berikutnya:"; "Pendinginan chip… jadi tantangan besar"            | "Proyek ini masih berupa riset…"; "Langkah berikutnya adalah…"; "Sistem pendinginan… menjadi tantangan terbesar"                       | Explicit subject ("Proyek ini"); "adalah" over colon; fuller "Sistem pendinginan… yang sama sekali tanpa…"              | observed | 2 (Kimi fuller hedges)       |
-| Caption ¶1   | "Bayangkan chip AI… menulis puisi dari orbit." then news                                       | Dropped Bayangkan; lead with "Menurut Google…"                                                                                         | Hook not required when the news lead is already concrete; don't force the observational opener                          | observed | 1 (vs Terra/Kimi hooks kept) |
-| Caption ¶2–3 | "tenaga surya lebih murah hati"; "menilai ketahanan"                                           | Same orbit wording as slides ("pasokan energi… melimpah"); "menguji ketahanan"                                                         | Keep caption and slides aligned on key metaphors; "menguji" over softer "menilai"                                       | observed | 1                            |
-
-Accepted unchanged (observed): category AI; 4 detail slides + Main; photo credits / blue-ink TPU; 3-paragraph caption shape; max-5 hashtags; caveat that this is long-term research, not a public orbital data center.
-
-_Inference (1 post):_ Prefer concrete verbs ("terima", "membalas", "mengorbit", "menjajaki") over lighter or poetic ones when describing a hardware experiment. Confirm before treating "drop Bayangkan" as a rule—Terra/Kimi still used hooks.
-
-## Unsloth DeepSeek GGUF (2026-11-01-unsloth-deepseek-gguf), 1 November 2026
-
-Same night, single-pass review via chat paste → `edits/owner-review-chat-2026-11-01.json` → `review:apply`. Owner also replaced the Main Docs/R1 chip collage with the Unsloth brand plate (visual, recorded in the post assets—not a copy rule).
-
-| Slide/field | Proposed (AI)                                                                                       | Adjusted (owner)                                                                                                                              | Preference                                                                                                                      | Label    | Posts                                  |
-| ----------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- | -------------------------------------- |
-| 01 headline | "Unsloth rilis GGUF / DeepSeek Flash lokal"                                                         | "Unsloth **Rilis** GGUF / DeepSeek Flash **Lokal**"                                                                                           | Title-case the key Indonesian verbs/adjectives in the Main headline                                                             | observed | 1                                      |
-| 01 summary  | "Dynamic V3.1 diklaim unggul di banyak benchmark—1-bit dari ~128 GB RAM"                            | "Kuantisasi Dynamic V3.1 ini diklaim unggul… mulai dari ~128 GB RAM, meski klaim skornya masih menunggu verifikasi independen."               | Name the product class on Main; fold the independence hedge into the Main summary, not only a later slide                       | observed | 1                                      |
-| 02          | "model terbuka… tugas agentik"; "punya konteks"; "tulang punggung… di-SSD"                          | "model **open-weights**… tugas **agentic**"; "context window"; "arsitektur utama… dialihkan (offload) ke SSD"                                 | Prefer common English tech terms (open-weights, agentic, context window, offload) with or without a short gloss                 | observed | 2 (Kimi open-weights / context window) |
-| 03          | "Menurut tabel Unsloth, **UD-Q2…**"; short 1-bit line; "Angka ini dari Unsloth, belum diverifikasi" | "Unsloth mengklaim varian **UD-Q2…**"; "Bahkan, varian 1-bit… disebut masih mampu…"; "Seluruh angka… pengujian internal… menunggu verifikasi" | "mengklaim" attribution; expand short score lines; spell out "pengujian internal"                                               | observed | 2 (Kimi "mengklaim")                   |
-| 04          | "menjalankan di rumah"; "Disk tetap gemuk"; short 64 GB + separate frontier line                    | "menjalankannya secara lokal"; "Kebutuhan ruang… tetap masif"; fold the workstation-vs-laptop takeaway into the 64 GB sentence                | "lokal" over "di rumah"; "masif" over slangy "gemuk"; one denser paragraph beats a punchy leftover line                         | observed | 1                                      |
-| 05          | "juga menantang… tidak bisa mereproduksi… melihat degradasi"; "berpikir lebih panjang… kena batas"  | "turut mematahkan… gagal mereproduksi… penurunan performa"; "rantai penalaran (reasoning)… bertele-tele… membentur batas maksimal token"      | Stronger verbs for a dispute; gloss "reasoning"; colloquial "bertele-tele" / "membentur" OK on a caveat slide                   | observed | 1                                      |
-| Caption ¶1  | "Model coding raksasa biasanya hanya hidup di cloud—kecuali kamu punya RAM…"                        | "Menjalankan model AI kelas frontier di komputer lokal kini makin menantang, tapi bukan mustahil." then dated release + open-weights framing  | Observational hook about the reader's situation, not a "raksasa/cloud" tease; lead with date + what shipped                     | observed | 2 (caption hook pattern)               |
-| Caption ¶2  | Named UD-Q2 + short Engram/RAM                                                                      | "varian 2-bit" + scores; denser Engram/mmap/64 GB paragraph                                                                                   | Prefer readable size labels ("varian 2-bit") in caption; put architecture + RAM path in one connected block                     | observed | 1                                      |
-| Caption ¶3  | Short hedge + competitor reject + "Menurutmu, seberapa penting… di mesin sendiri…"                  | Merge hedge + bit-low verbosity; closing Q: "apakah merakit PC/workstation lokal… masih worth it, atau mending sewa cloud GPU saja?"          | One practical, slightly colloquial closing question ("worth it", "mending"); drop the separate competitor beat from the caption | observed | 2 (closing Q)                          |
-| Hashtags    | `#GGUF #Programming`                                                                                | `#LocalLLM #OpenWeights` (kept `#akalmesin #DeepSeek #Unsloth`)                                                                               | Prefer topic/use-case tags over format or category-name tags                                                                    | observed | 1                                      |
-
-Accepted unchanged (observed): category PROGRAMMING; vendor-score hedge present somewhere; Engram/mmap RAM path as a story beat; blue-ink on the Unsloth chart (agent later used minTone onRamp so labels stay readable).
-
-_Inferences (1–2 posts):_ (1) English loanwords for model-distribution and agent tooling match Kimi; keep using them. (2) Main may carry the independence caveat when the whole post is vendor benchmarks. (3) Title-case on Main headline words is new—do not generalize until it shows up again. Caption landed ~178 words (above the 100–160 warning); same tolerance pattern as Kimi.
-
-## China AI bubble (2026-11-02-china-ai-bubble), 2 November 2026
-
-Single-pass review via chat paste → `edits/owner-review-chat-2026-11-02.json` → `review:apply` (first apply failed photo height on slide 5; agent trimmed that paragraph for layout, then `owner-review-chat-2026-11-02-b.json` approved). Below: **only preferences not already logged** (anti-kaku, English loanwords, active “X mengklaim/mencatat”, gloss-in-brackets, title-case Main, caption length tolerance → see Kimi / Unsloth / Suncatcher). Title-case Main re-observed here (Unsloth row, now 2 posts).
-
-| Slide/field           | Proposed (AI)                                               | Adjusted (owner)                                                               | Preference                                                                                           | Label    | Posts |
-| --------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | -------- | ----- |
-| 02 / caption          | "pemimpin AI dan semikonduktor"                             | "jajaran raksasa AI dan semikonduktor"                                         | Do not calque English "leaders" as "pemimpin" for companies/issuers—it reads as people               | observed | 1     |
-| 03 / caption          | "Pedagang menyebut"                                         | "Para trader menyoroti" / "Para pelaku pasar menyoroti"                        | "Pedagang" = traditional-goods seller; for equities use trader / pelaku pasar                        | observed | 1     |
-| 02 bold / scale verbs | "**turun** sekitar 40%"                                     | "**anjlok** sekitar 40%"                                                       | Verb intensity should match the drop size (~40% → anjlok, not turun)                                 | observed | 1     |
-| 04                    | "sudah turun sekitar separuh" / "berkurang sekitar separuh" | "kehilangan sekitar separuh **nilai sahamnya**" / "tergerus sekitar **50%**"   | For a stock that halved, name nilai saham (or %); vary "tergerus" vs bare "turun separuh"            | observed | 1     |
-| 04                    | "Chipmaker CXMT"                                            | "Produsen chip CXMT"                                                           | Company-type label: "produsen chip" over the English compound "chipmaker"                            | observed | 1     |
-| 05 / caption          | "P/E trailing" / "100 kali laba trailing"                   | "Rasio **trailing P/E** (harga saham terhadap laba bersih) … kisaran 100 kali" | Finance metrics: English order trailing P/E (not P/E trailing) + short gloss for non-finance readers | observed | 1     |
-| 05                    | "masuk perang harga"                                        | "terjebak dalam perang harga"                                                  | Price-war risk: "terjebak dalam" over flat "masuk"                                                   | observed | 1     |
-| 05 / caption          | "pemulihan permintaan domestik"                             | "pemulihan daya beli domestik"                                                 | Macro demand in market copy: "daya beli" over bare "permintaan"                                      | observed | 1     |
-| 05 credit             | `/ WIKIMEDIA` while 1–4 used `/ COMMONS`                    | `/ COMMONS` on all slides                                                      | Keep Commons credit suffixes consistent across the post                                              | observed | 1     |
-
-Accepted unchanged / already logged (not re-tabled): category AI; active "Reuters melaporkan" / "Goldman Sachs mencatat"; English loanwords data center, listing, oversubscribed (with Indonesian gloss); rebound berkelanjutan; max-5 hashtags (agent dropped two extras from the paste); caption ~187 words (warning only).
+Apakah ada poin aturan di atas yang ingin kamu ubah sedikit, atau kita langsung gunakan standar ini untuk membedah draf berita barumu?
