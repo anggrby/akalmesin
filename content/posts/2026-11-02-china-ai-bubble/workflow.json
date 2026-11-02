@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-02-china-ai-bubble",
+  "stage": "notion-delivered",
+  "approvals": {
+    "selected": null,
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-02T09:05:00.000Z",
+      "source": "owner-review-chat-2026-11-02-b.json sha256:f90d3a008bea4705bd5a651869f283e2458f9fe3a4bf2f8c25ef0c75749fd8e4",
+      "context": "no changes",
+      "at": "2026-11-02T09:05:00.000Z",
+      "atWIB": "2026-11-02 16:05 WIB",
+      "via": "review-save",
+      "copyRevision": "f84841dd0bdf9b1068271589c6ac0964fe7288f0fa105ecfc9f1d991a8d10698",
+      "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-02T09:04:29.122Z",
+      "revision": "f84841dd0bdf9b1068271589c6ac0964fe7288f0fa105ecfc9f1d991a8d10698"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-02T09:05:00.000Z",
+      "source": "owner-review-chat-2026-11-02-b.json sha256:f90d3a008bea4705bd5a651869f283e2458f9fe3a4bf2f8c25ef0c75749fd8e4",
+      "context": "no changes",
+      "at": "2026-11-02T09:05:00.000Z",
+      "atWIB": "2026-11-02 16:05 WIB",
+      "via": "review-save",
+      "copyRevision": "f84841dd0bdf9b1068271589c6ac0964fe7288f0fa105ecfc9f1d991a8d10698",
+      "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-02T09:04:29.122Z",
+      "revision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c"
+    }
+  },
+  "designStale": false,
+  "notion": {
+    "pageId": "40cf909f-26a5-810c-af4d-c6155efcd353",
+    "url": "https://app.notion.com/p/Gelembung-AI-Pecah-di-Pasar-Tiongkok-40cf909f26a5810caf4dc6155efcd353",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-02-china-ai-bubble",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-02-china-ai-bubble",
+    "approvedRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+    "orderedAssetHashes": [
+      "82486fe9ab186f189e7ac4e81c8df1ce03632ed98530a4241d2bbecae24a6d36",
+      "63cc10fe06635d785c0b4be1b95be9e29f3faa916d8a36d0768cc0c785409fd6",
+      "eaa1914545a86f9dcf83c43e61a8e33cd81167aff65f0d4dcb2280fa85c937da",
+      "ec39534c67913c34a0aa17846bd7fdcfea0138b1eb59fa1877b4bbb1000e9669",
+      "9b67bc4c772ca728f278633394a2948edf06a3d5796280df8516ef66de7dd3cf"
+    ],
+    "uploadedAssetHashes": [
+      "82486fe9ab186f189e7ac4e81c8df1ce03632ed98530a4241d2bbecae24a6d36",
+      "63cc10fe06635d785c0b4be1b95be9e29f3faa916d8a36d0768cc0c785409fd6",
+      "eaa1914545a86f9dcf83c43e61a8e33cd81167aff65f0d4dcb2280fa85c937da",
+      "ec39534c67913c34a0aa17846bd7fdcfea0138b1eb59fa1877b4bbb1000e9669",
+      "9b67bc4c772ca728f278633394a2948edf06a3d5796280df8516ef66de7dd3cf"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-02T09:27:59.380Z",
+    "exportedAtWIB": "2026-11-02 16:27 WIB"
+  },
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "4d76cecbd04de38ee2ae05ef26932068942e4ee4ab0f829612ea081a08c3e5d2",
+      "at": "2026-11-02T08:55:28.937Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "e49662854fed99aecb4aa51befc20b5b268989502ed8125b8bc57dd255384dbe",
+      "at": "2026-11-02T08:57:11.749Z"
+    },
+    {
+      "event": "copy-recorded",
+      "who": "owner",
+      "mode": "review",
+      "from": "3329b8acdcab149b73f75c096358353170a77028d532a7b9b1467711ead648b8",
+      "to": "fcb58b8b18f5ff69d420082cdaae3f0cfd1bcc3b56bc4c6d14eb8166d5562d8a",
+      "file": "owner-review-chat-2026-11-02.json",
+      "at": "2026-11-02T09:02:52.239Z"
+    },
+    {
+      "event": "review-apply-failed",
+      "file": "owner-review-chat-2026-11-02.json",
+      "sha256": "38d6fae4f08d7e48fff12635ebfb401d3a47cea322ac3372e406f6a8568cf924",
+      "problems": [
+        "05-outlook: Photo too short for useful crop"
+      ],
+      "at": "2026-11-02T09:02:52.239Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+      "at": "2026-11-02T09:04:01.440Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+      "at": "2026-11-02T09:04:27.576Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "owner-review-chat-2026-11-02-b.json sha256:f90d3a008bea4705bd5a651869f283e2458f9fe3a4bf2f8c25ef0c75749fd8e4",
+      "copyRevision": "f84841dd0bdf9b1068271589c6ac0964fe7288f0fa105ecfc9f1d991a8d10698",
+      "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+      "at": "2026-11-02T09:05:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40cf909f-26a5-810c-af4d-c6155efcd353",
+      "at": "2026-11-02T09:27:59.380Z"
+    }
+  ]
+}

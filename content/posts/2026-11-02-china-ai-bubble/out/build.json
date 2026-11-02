@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-02-china-ai-bubble",
+  "copyRevision": "f84841dd0bdf9b1068271589c6ac0964fe7288f0fa105ecfc9f1d991a8d10698",
+  "creditsRevision": "b4128e42c343a6ac6a08072cbc4e9ac92f39dde6a4b57a715a307c506af29018",
+  "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+  "builtAt": "2026-11-02T09:04:27.576Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-02-china-ai-bubble/out/slides/01-main.html",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/01-01-main.png",
+      "pngHash": "82486fe9ab186f189e7ac4e81c8df1ce03632ed98530a4241d2bbecae24a6d36",
+      "imageHash": "b2148cf2aec29d49fabb43093a76d03a492a45a6e5e707768fcd3e947a958ae0",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 703,
+          "width": 1080,
+          "height": 647,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-selloff",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-02-china-ai-bubble/out/slides/02-selloff.html",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/02-02-selloff.png",
+      "pngHash": "63cc10fe06635d785c0b4be1b95be9e29f3faa916d8a36d0768cc0c785409fd6",
+      "imageHash": "02269da15a059f3865b74011dbe26f427ded7017685e7d8c730365a86adb6c86",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 828,
+          "width": 1080,
+          "height": 522,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-penyebab",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-02-china-ai-bubble/out/slides/03-penyebab.html",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/03-03-penyebab.png",
+      "pngHash": "eaa1914545a86f9dcf83c43e61a8e33cd81167aff65f0d4dcb2280fa85c937da",
+      "imageHash": "a5e3f035e373ff46bb5ec32f77f5c748bac4680bad616cc174f9bfc024b0421f",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 888,
+          "width": 1080,
+          "height": 462,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-saham-ritel",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-02-china-ai-bubble/out/slides/04-saham-ritel.html",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/04-04-saham-ritel.png",
+      "pngHash": "ec39534c67913c34a0aa17846bd7fdcfea0138b1eb59fa1877b4bbb1000e9669",
+      "imageHash": "7c2721873758a45b63f52aa491061b73431395d6b761945e499af55542f8e941",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 888,
+          "width": 1080,
+          "height": 462,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "05-outlook",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-02-china-ai-bubble/out/slides/05-outlook.html",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/05-05-outlook.png",
+      "pngHash": "9b67bc4c772ca728f278633394a2948edf06a3d5796280df8516ef66de7dd3cf",
+      "imageHash": "9e57742feebf516bb2deb160ada3baa933dec801b92d7e7aebda054c072e4e90",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 948,
+          "width": 1080,
+          "height": 402,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

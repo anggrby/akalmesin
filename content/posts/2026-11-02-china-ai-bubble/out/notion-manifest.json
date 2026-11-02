@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-02-china-ai-bubble",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-11-02T09:05:00.000Z",
+    "source": "owner-review-chat-2026-11-02-b.json sha256:f90d3a008bea4705bd5a651869f283e2458f9fe3a4bf2f8c25ef0c75749fd8e4",
+    "context": "no changes",
+    "at": "2026-11-02T09:05:00.000Z",
+    "atWIB": "2026-11-02 16:05 WIB",
+    "via": "review-save",
+    "copyRevision": "f84841dd0bdf9b1068271589c6ac0964fe7288f0fa105ecfc9f1d991a8d10698",
+    "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-11-02T09:04:29.122Z",
+    "revision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-11-02-china-ai-bubble\". Never match by title alone.",
+  "properties": {
+    "Post": "Gelembung AI Pecah di Pasar Tiongkok",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Saat Wall Street masih berdebat soal ada tidaknya AI bubble, Reuters melaporkan bahwa gelembung tersebut justru sudah pecah di Tiongkok. Indeks STAR50 di bursa Shanghai—yang menaungi jajaran raksasa AI dan semikonduktor lokal—anjlok sekitar 40% dalam kurun kurang dari empat bulan hingga akhir Oktober 2026, menguapkan sekitar US$480 miliar kapitalisasi pasar.\n\nReli panjang selama dua tahun yang didorong euforia AI—termasuk sejak kemunculan DeepSeek pada awal 2025—kini membentur pertanyaan paling mendasar: kapan belanja besar-besaran AI ini mulai menghasilkan laba bersih. Para pelaku pasar menyoroti valuasi yang terlampau mahal, pengetatan pajak, hingga risiko larangan perangkat Tiongkok di data center global. Apalagi, Goldman Sachs mencatat saham berbasis AI sudah menguasai 42% kapitalisasi pasar Tiongkok dan 57% total volume transaksi.\n\nSaham primadona ritel seperti produsen robot Unitree bahkan sudah tergerus separuh nilainya sejak listing Agustus lalu, sementara rasio trailing P/E STAR50 masih bertengger di angka ~100 kali. Sejumlah analis menilai rebound yang sehat butuh pembuktian laba dan pemulihan daya beli domestik, bukan sekadar harga saham yang terdiskon. Menurutmu, aksi jual (sell-off) di Tiongkok ini adalah peringatan dini bagi saham AI global, atau murni dinamika pasar lokal?\n\nSumber: Reuters, CNBC, Goldman Sachs (via Reuters) / Foto: Wikimedia Commons\n\n#akalmesin #AI #Tiongkok #STAR50 #GelembungAI",
+    "Topic": "AI",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-selloff.png",
+      "03-03-penyebab.png",
+      "04-04-saham-ritel.png",
+      "05-05-outlook.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-11-02-china-ai-bubble",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-02-china-ai-bubble",
+  "body": "# Approved copy\n\n## 01-main\n\nGelembung AI Pecah di Pasar Tiongkok\n\nIndeks saham AI dan chip STAR50 anjlok sekitar 40% dalam waktu kurang dari empat bulan—menguapkan sekitar US$480 miliar nilai pasar sementara investor kini menuntut bukti nyata laba dari belanja AI.\n\n## 02-selloff\n\nReuters melaporkan pada akhir Oktober 2026 bahwa indeks STAR50 di bursa Shanghai—yang berisi jajaran raksasa AI dan semikonduktor Tiongkok—**anjlok sekitar 40% dalam waktu kurang dari empat bulan**. Koreksi tajam ini menguapkan sekitar US$480 miliar nilai pasar. Indeks blue-chip CSI300 turut merosot sekitar 20% dari puncaknya di bulan Juni, kontras dengan indeks Nasdaq AS yang baru terkoreksi sekitar 6% dari rekor tertingginya.\n\n## 03-penyebab\n\nKoreksi ini dipicu oleh kombinasi berbagai faktor, bukan satu pemicu tunggal. Para trader menyoroti valuasi yang sudah kelewat mahal, beban tagihan pajak, hingga ancaman pembatasan perangkat Tiongkok di data center luar negeri. Goldman Sachs mencatat saham terkait AI kini telah menyumbang **42% kapitalisasi pasar Tiongkok** serta 57% total volume transaksi gabungan di bursa A-shares daratan dan H-shares Hong Kong—sehingga guncangan di sektor ini langsung menyeret hampir seluruh pasar.\n\n## 04-saham-ritel\n\nSaham-saham favorit investor ritel ikut terpukul telak. Unitree, produsen robot yang kelebihan permintaan (oversubscribed) hingga ~8.000 kali saat melantai (listing) pada Agustus lalu, **kini telah kehilangan sekitar separuh nilai sahamnya**. Produsen chip CXMT merosot lebih dari 25% hanya dalam sebulan. MetaX dan Moore Threads—yang sempat meroket ratusan persen saat debut—juga telah tergerus sekitar 50% sejak Juli, sementara pemasok komponen optik Innolight dan Eoptolink anjlok sekitar 60% dari titik puncaknya.\n\n## 05-outlook\n\nGelombang koreksi ini belum tentu berakhir. Rasio trailing P/E (harga saham terhadap laba bersih) STAR50 masih bertengger di kisaran 100 kali—sudah turun dari hampir 250, tetapi masih jauh di atas Nasdaq 100 di kisaran 30 kali. Wang Zhuo memperingatkan produsen chip dan pemasok AI Tiongkok **pada akhirnya akan terjebak dalam perang harga**, mengikuti pola klasik manufaktur di sana. Sejumlah analis menilai rebound yang berkelanjutan menuntut bukti laba dari belanja AI serta pemulihan daya beli domestik—bukan sekadar valuasi yang lebih murah.\n\n# Caption\n\nSaat Wall Street masih berdebat soal ada tidaknya AI bubble, Reuters melaporkan bahwa gelembung tersebut justru sudah pecah di Tiongkok. Indeks STAR50 di bursa Shanghai—yang menaungi jajaran raksasa AI dan semikonduktor lokal—anjlok sekitar 40% dalam kurun kurang dari empat bulan hingga akhir Oktober 2026, menguapkan sekitar US$480 miliar kapitalisasi pasar.\n\nReli panjang selama dua tahun yang didorong euforia AI—termasuk sejak kemunculan DeepSeek pada awal 2025—kini membentur pertanyaan paling mendasar: kapan belanja besar-besaran AI ini mulai menghasilkan laba bersih. Para pelaku pasar menyoroti valuasi yang terlampau mahal, pengetatan pajak, hingga risiko larangan perangkat Tiongkok di data center global. Apalagi, Goldman Sachs mencatat saham berbasis AI sudah menguasai 42% kapitalisasi pasar Tiongkok dan 57% total volume transaksi.\n\nSaham primadona ritel seperti produsen robot Unitree bahkan sudah tergerus separuh nilainya sejak listing Agustus lalu, sementara rasio trailing P/E STAR50 masih bertengger di angka ~100 kali. Sejumlah analis menilai rebound yang sehat butuh pembuktian laba dan pemulihan daya beli domestik, bukan sekadar harga saham yang terdiskon. Menurutmu, aksi jual (sell-off) di Tiongkok ini adalah peringatan dini bagi saham AI global, atau murni dinamika pasar lokal?\n\nSumber: Reuters, CNBC, Goldman Sachs (via Reuters) / Foto: Wikimedia Commons\n\n#akalmesin #AI #Tiongkok #STAR50 #GelembungAI\n\n# Sources\n\n- [Reuters — In China, the AI bubble has already burst (via Investing.com)](https://www.investing.com/news/economy-news/analysisin-china-the-ai-bubble-has-already-burst-4972445)\n- [CNBC — China’s tech darlings are losing their shine. Here’s what’s behind the sell-off](https://www.cnbc.com/2026/10/29/china-tech-stocks-selloff.html)\n- [The Guardian — Chinese markets lose trillions as race for AI supremacy with US takes its toll](https://www.theguardian.com/world/2026/oct/27/chinese-markets-lose-trillions-ai-race-beijing)\n\n# Alt text and photo credits\n\n01-main: Panorama skyline Pudong, Shanghai, kawasan keuangan tempat bursa dan STAR Market berada.\n\nFOTO: PUDONG SHANGHAI / COMMONS\n\n02-selloff: Papan tampilan indeks saham Hang Seng di toko keuangan di Des Voeux Road Central, Hong Kong—ilustrasi pasar saham China/HK.\n\nFOTO: HANG SENG INDEX / COMMONS\n\n03-penyebab: Kompleks pabrik Semiconductor Manufacturing International Corporation (SMIC) di Shenzhen, ilustrasi industri chip Tiongkok.\n\nFOTO: PABRIK SMIC / COMMONS\n\n04-saham-ritel: Robot humanoid Unitree G1 berdiri di pameran UAV Expo 2024; Unitree disebut Reuters sebagai saham favorit ritel yang sudah turun sekitar separuh.\n\nFOTO: UNITREE G1 / COMMONS\n\n05-outlook: Deretan rak server di pusat data Wikimedia Foundation; ilustrasi infrastruktur pusat data, bukan fasilitas AI Tiongkok tertentu.\n\nFOTO: RAK SERVER / COMMONS\n\n# Approval\n\n\"Saved in review editor 2026-11-02T09:05:00.000Z\" — owner-review-chat-2026-11-02-b.json sha256:f90d3a008bea4705bd5a651869f283e2458f9fe3a4bf2f8c25ef0c75749fd8e4, 2026-11-02 16:05 WIB\n\nApproved design revision: 885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c\n\n# Source ledger\n\n# Sources — Gelembung AI mulai pecah di Tiongkok (retrieved 2026-11-02 ~15:55 WIB)\n\nPrimary analysis: Reuters via Investing.com, \"In China, the AI bubble has already burst\" (26 Oct 2026; updated 27 Oct), https://www.investing.com/news/economy-news/analysisin-china-the-ai-bubble-has-already-burst-4972445 (R). Market follow-up: CNBC, Lee Ying Shan, \"China’s tech darlings are losing their shine…\" (28–30 Oct 2026), https://www.cnbc.com/2026/10/29/china-tech-stocks-selloff.html (C). Broader wipeout figure: The Guardian / Bloomberg, \"Chinese markets lose trillions…\" (27 Oct 2026), https://www.theguardian.com/world/2026/oct/27/chinese-markets-lose-trillions-ai-race-beijing (G). Secondary reprints of the Reuters package: Mint, Seoul Economic Daily, Digital Today (used only to cross-check names/figures already in R). FT commentary on Chinese AI IPO corrections (MiniMax / Z.ai) is background only and is not restated as a headline claim here.\n\n\"Verified\" = figures and named moves attributed in Reuters/CNBC reporting to index data or named companies. \"Claim\" = analyst/fund-manager interpretation or forward-looking assessment.\n\n| Claim (copy) | Status | Source |\n| --- | --- | --- |\n| STAR50 (Shanghai STAR Market AI/semiconductor leaders) down ~40% in under four months by late Oct 2026 | Verified (Reuters reporting of index move) | R; C |\n| ~US$480 billion of market value erased in that STAR50/AI-chip meltdown | Verified (Reuters figure) | R |\n| Broader China blue-chip index (CSI300) down ~20% from June highs | Verified (Reuters) | R |\n| Nasdaq down ~6% from a record high about three weeks before the Reuters piece | Verified (Reuters contrast) | R |\n| No single obvious selling trigger; traders cite high valuations, tax bills, and risk of bans on Chinese data-centre equipment | Claim / trader attribution | R |\n| Goldman Sachs: AI stocks ~42% of China market cap and ~57% of turnover across mainland A-shares + Hong Kong H-shares | Verified as GS figure via Reuters | R |\n| Unitree shares halved since August listing; IPO was ~8,000× oversubscribed by retail | Verified (Reuters) | R |\n| CXMT down more than a quarter in the past month (as of Reuters piece) | Verified (Reuters) | R |\n| MetaX and Moore Threads halved since July after huge debut pops | Verified (Reuters) | R |\n| Zhongji Innolight and Eoptolink down ~60% from June/July highs | Verified (Reuters) | R |\n| STAR50 still ~100× trailing earnings (down from nearly 250); Nasdaq 100 ~30× for comparison | Verified as reported multiples (Reuters) | R |\n| DeepSeek’s early-2025 emergence helped fuel the prior China tech rally | Coverage framing (CNBC) | C |\n| Rebound needs clearer AI earnings returns + stronger domestic demand, not cheaper valuations alone | Claim (analysts via CNBC) | C |\n| Fund manager Dong Baozhen: market became a “speculative crazy bull” and “now we see the bubble bursting” | Verified quote | R |\n| Fund manager Wang Zhuo: chipmakers/AI suppliers will end in a price war; “All bubbles inevitably burst.” | Verified quote | R |\n| Guardian/Bloomberg: ~$2.4tn wiped from Chinese stock market since May | Broader market figure; not used as the headline $480B claim | G |\n| No quote slide: named speakers lack a suitable portrait for a quote layout | — | — |\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-11-02-china-ai-bubble\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-11-02-china-ai-bubble/out/png/01-01-main.png",
+      "sha256": "82486fe9ab186f189e7ac4e81c8df1ce03632ed98530a4241d2bbecae24a6d36",
+      "bytes": 958301
+    },
+    {
+      "slideId": "02-selloff",
+      "file": "content/posts/2026-11-02-china-ai-bubble/out/png/02-02-selloff.png",
+      "sha256": "63cc10fe06635d785c0b4be1b95be9e29f3faa916d8a36d0768cc0c785409fd6",
+      "bytes": 1029937
+    },
+    {
+      "slideId": "03-penyebab",
+      "file": "content/posts/2026-11-02-china-ai-bubble/out/png/03-03-penyebab.png",
+      "sha256": "eaa1914545a86f9dcf83c43e61a8e33cd81167aff65f0d4dcb2280fa85c937da",
+      "bytes": 876488
+    },
+    {
+      "slideId": "04-saham-ritel",
+      "file": "content/posts/2026-11-02-china-ai-bubble/out/png/04-04-saham-ritel.png",
+      "sha256": "ec39534c67913c34a0aa17846bd7fdcfea0138b1eb59fa1877b4bbb1000e9669",
+      "bytes": 865111
+    },
+    {
+      "slideId": "05-outlook",
+      "file": "content/posts/2026-11-02-china-ai-bubble/out/png/05-05-outlook.png",
+      "sha256": "9b67bc4c772ca728f278633394a2948edf06a3d5796280df8516ef66de7dd3cf",
+      "bytes": 891642
+    }
+  ],
+  "generatedAt": "2026-11-02T09:27:36.336Z"
+}

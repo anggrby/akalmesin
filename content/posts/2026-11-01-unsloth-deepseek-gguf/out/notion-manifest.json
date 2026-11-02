@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-01-unsloth-deepseek-gguf",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-11-01T13:40:00.000Z",
+    "source": "owner-review-chat-2026-11-01.json sha256:8856bc30ab5402711c2e41e1c7dd6239c6b4735e15b8cfac7fb765ae3b2811de",
+    "context": "11 field(s) changed",
+    "at": "2026-11-01T13:40:00.000Z",
+    "atWIB": "2026-11-01 20:40 WIB",
+    "via": "review-save",
+    "copyRevision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
+    "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-11-01T13:43:53.234Z",
+    "revision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-11-01-unsloth-deepseek-gguf\". Never match by title alone.",
+  "properties": {
+    "Post": "Unsloth Rilis GGUF DeepSeek Flash Lokal",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Menjalankan model AI kelas frontier di komputer lokal kini makin menantang, tapi bukan mustahil. Pada 30 Oktober 2026, Unsloth resmi merilis kuantisasi GGUF Dynamic V3.1 (preview) untuk DeepSeek-V4.1-Flash-1017, sebuah model open-weights raksasa yang dirancang untuk kebutuhan coding dan tugas agentic. Unsloth mengklaim metode kuantisasi terbaru mereka mampu memangkas ukuran model secara ekstrem tanpa mengorbankan akurasi secara signifikan.\n\nDalam pengujian internalnya, varian 2-bit (334,8 GB) diklaim mencatat rata-rata skor 87,49 di enam benchmark utama, nyaris menyamai presisi Q8 (87,68). Uniknya, arsitektur utama 552B parameter pada model ini dilengkapi tabel Engram ~196B yang bisa dialihkan (offload) ke SSD menggunakan fitur mmap, sehingga varian 1-bit (233 GB) sudah bisa dijalankan dengan kombinasi 128–145 GB RAM/VRAM, atau minimal 64 GB RAM dengan konsekuensi kecepatan inference yang lebih lambat.\n\nMeski begitu, seluruh skor di atas masih berupa klaim internal yang menunggu verifikasi independen, apalagi varian bit rendah terbukti cenderung berpikir lebih bertele-tele hingga rawan membentur batas token. Dengan ukuran file dan syarat RAM sebesar ini, apakah merakit PC/workstation lokal untuk AI masih worth it, atau mending sewa cloud GPU saja?\n\nSumber: Unsloth, Hugging Face / Foto: Unsloth\n\n#akalmesin #DeepSeek #Unsloth #LocalLLM #OpenWeights",
+    "Topic": "PROGRAMMING",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-rilis.png",
+      "03-03-benchmark.png",
+      "04-04-ram.png",
+      "05-05-batas.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-11-01-unsloth-deepseek-gguf",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-01-unsloth-deepseek-gguf",
+  "body": "# Approved copy\n\n## 01-main\n\nUnsloth Rilis GGUF DeepSeek Flash Lokal\n\nKuantisasi Dynamic V3.1 ini diklaim unggul di berbagai benchmark dan bisa dijalankan mulai dari ~128 GB RAM, meski klaim skornya masih menunggu verifikasi independen.\n\n## 02-rilis\n\nPada 30 Oktober 2026, Unsloth merilis format GGUF Dynamic V3.1 (preview) untuk **DeepSeek-V4.1-Flash-1017, model open-weights yang dirancang khusus untuk coding dan tugas agentic**. File model ini sudah tersedia di Hugging Face. Versi aslinya memiliki context window 1 juta token dengan arsitektur utama 552B parameter, ditambah tabel Engram ~196B yang bisa dialihkan (offload) ke SSD agar tidak membebani kapasitas RAM sepenuhnya.\n\n## 03-benchmark\n\nUnsloth mengklaim varian **UD-Q2_K_XL (334,8 GB) berhasil meraih skor rata-rata 87,49 di enam benchmark**—nyaris menyamai presisi referensi Q8 (87,68)—dengan rincian skor AIME25 97,50, GPQA Diamond 89,58, dan LiveCodeBench v6 84,76. Bahkan, varian 1-bit UD-IQ1_S (233 GB) disebut masih mampu mencetak skor 92,92 di AIME25. Seluruh angka ini berasal dari pengujian internal Unsloth dan masih menunggu verifikasi independen.\n\n## 04-ram\n\nBagi yang ingin menjalankannya secara lokal, Unsloth menyebut **varian 1-bit membutuhkan sekitar 128–145 GB RAM/VRAM** jika tabel Engram dipetakan (mmap) ke SSD, sementara varian 2-bit butuh 176–205 GB. Kebutuhan ruang penyimpanannya pun tetap masif—file UD-IQ1_S saja berukuran 233 GB. Konfigurasi 64 GB RAM disebut tetap bisa berjalan meski jauh lebih lambat, menandakan model coding open-weights kelas frontier kini mulai menuntut spesifikasi workstation, bukan lagi laptop tipis.\n\n## 05-batas\n\nUnsloth turut mematahkan klaim GSQ-RCO (ISTA) yang menyebut seluruh kuantisasinya meraih skor sempurna 100% di AIME25—**mereka gagal mereproduksi angka tersebut dan justru menemukan penurunan performa saat diuji ulang**. Catatan lainnya, kuantisasi bit rendah cenderung menghasilkan rantai penalaran (reasoning) yang lebih bertele-tele sehingga lebih sering membentur batas maksimal token. Artinya, ukuran file yang lebih ramping tetap hadir dengan trade-off, bukan salinan sempurna.\n\n# Caption\n\nMenjalankan model AI kelas frontier di komputer lokal kini makin menantang, tapi bukan mustahil. Pada 30 Oktober 2026, Unsloth resmi merilis kuantisasi GGUF Dynamic V3.1 (preview) untuk DeepSeek-V4.1-Flash-1017, sebuah model open-weights raksasa yang dirancang untuk kebutuhan coding dan tugas agentic. Unsloth mengklaim metode kuantisasi terbaru mereka mampu memangkas ukuran model secara ekstrem tanpa mengorbankan akurasi secara signifikan.\n\nDalam pengujian internalnya, varian 2-bit (334,8 GB) diklaim mencatat rata-rata skor 87,49 di enam benchmark utama, nyaris menyamai presisi Q8 (87,68). Uniknya, arsitektur utama 552B parameter pada model ini dilengkapi tabel Engram ~196B yang bisa dialihkan (offload) ke SSD menggunakan fitur mmap, sehingga varian 1-bit (233 GB) sudah bisa dijalankan dengan kombinasi 128–145 GB RAM/VRAM, atau minimal 64 GB RAM dengan konsekuensi kecepatan inference yang lebih lambat.\n\nMeski begitu, seluruh skor di atas masih berupa klaim internal yang menunggu verifikasi independen, apalagi varian bit rendah terbukti cenderung berpikir lebih bertele-tele hingga rawan membentur batas token. Dengan ukuran file dan syarat RAM sebesar ini, apakah merakit PC/workstation lokal untuk AI masih worth it, atau mending sewa cloud GPU saja?\n\nSumber: Unsloth, Hugging Face / Foto: Unsloth\n\n#akalmesin #DeepSeek #Unsloth #LocalLLM #OpenWeights\n\n# Sources\n\n- [Unsloth — DeepSeek-V4.1-Flash: Run Locally Guide (Dynamic V3.1)](https://unsloth.ai/docs/models/deepseek-v4.1-flash)\n- [Hugging Face — unsloth/DeepSeek-V4.1-Flash-1017-GGUF](https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF)\n- [AI Primer — Unsloth releases DeepSeek-V4.1-Flash-1017 GGUFs and disputes quantization claims](https://www.ai-primer.com/engineer/stories/unsloth-deepseek-quants)\n\n# Alt text and photo credits\n\n01-main: Wordmark Unsloth (sloth + tulisan unsloth) di atas latar editorial.\n\nFOTO: LOGO UNSLOTH / UNSLOTH\n\n02-rilis: Kartu sosial Hugging Face untuk repositori unsloth/DeepSeek-V4.1-Flash-1017-GGUF.\n\nFOTO: MODEL CARD / HUGGING FACE × UNSLOTH\n\n03-benchmark: Grafik Unsloth membandingkan Dynamic V3.1 dengan GSQ-RCO di delapan benchmark DeepSeek-V4.1-Flash-1017.\n\nFOTO: GRAFIK UNSLOTH VS GSQ-RCO / UNSLOTH\n\n04-ram: Grafik batang Unsloth untuk skor AIME25 berbagai kuantisasi DeepSeek-V4.1-Flash-1017.\n\nFOTO: GRAFIK AIME25 / UNSLOTH\n\n05-batas: Grafik Unsloth membandingkan klaim pemulihan GSQ-RCO dengan hasil pengukuran ulang mereka di AIME25.\n\nFOTO: GRAFIK KLAIM GSQ-RCO / UNSLOTH\n\n# Approval\n\n\"Saved in review editor 2026-11-01T13:40:00.000Z\" — owner-review-chat-2026-11-01.json sha256:8856bc30ab5402711c2e41e1c7dd6239c6b4735e15b8cfac7fb765ae3b2811de, 2026-11-01 20:40 WIB\n\nApproved design revision: 62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a\n\n# Source ledger\n\n# Sources — Unsloth rilis kuantisasi DeepSeek-V4.1-Flash untuk lokal (retrieved 2026-11-01 ~19:40 WIB)\n\nPrimary: Unsloth docs, \"DeepSeek-V4.1-Flash: Run Locally Guide\", Dynamic V3.1 Update dated 30 Oct 2026, https://unsloth.ai/docs/models/deepseek-v4.1-flash (UD). Hugging Face model card discussion announcing Dynamic V3.1 GGUFs, https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF (HF). Secondary write-up: AI Primer, https://www.ai-primer.com/engineer/stories/unsloth-deepseek-quants (AP).\n\nStory pointer: owner's Grok/X Explore summary screenshot (\"Unsloth Releases Top-Ranked AI Coding Model Quants\"). That blurb also mashed in OpenCode + Claude subscription CLI news; **not** part of this post — separate story, not verified here. Grok's \"93% cache hits\" line is not in Unsloth's V3.1 write-up; omitted.\n\nAll benchmark numbers below are **Unsloth's own measurements** of their quants vs GSQ-RCO; not independent third-party replication.\n\n| Claim (copy)                                                                                                                         | Status                                                    | Source |\n| ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | ------ |\n| Dynamic V3.1 (preview) GGUFs for DeepSeek-V4.1-Flash-1017 released / documented 30 Oct 2026                                          | Verified (Unsloth)                                        | UD; HF |\n| Model framed as strong open model for coding/agentic tasks; 1M context; 552B backbone + 196B Engram                                  | **Claim** (Unsloth / DeepSeek product framing)            | UD     |\n| UD-Q2_K_XL (334.8 GB): AIME25 97.50; GPQA-D 89.58; LCB v6 84.76; avg of 6 = 87.49 (near Q8 reference 87.68)                           | **Claim** (Unsloth table)                                 | UD     |\n| UD-IQ1_S (233 GB): AIME25 92.92; needs ~128–145 GB RAM/VRAM with Engram on SSD                                                       | **Claim** (Unsloth table + hardware guide)                | UD; AP |\n| Engram n-gram tables (~110.6–202.8 GB) can stay on SSD via mmap                                                                      | Verified as Unsloth's stated mechanism                    | UD     |\n| Unsloth could not reproduce ISTA GSQ-RCO's claimed 100% AIME25 on all quants; their re-runs show degradation                         | **Claim** (Unsloth methodology critique); dispute noted   | UD; AP |\n| Lower-bit quants tend to reason longer / hit token caps more often                                                                   | **Claim** (Unsloth truncation study)                      | UD     |\n| Available on Hugging Face as unsloth/DeepSeek-V4.1-Flash-1017-GGUF                                                                   | Verified                                                  | HF; UD |\n| Not used: OpenCode Claude CLI subscription support from the Grok mashup                                                              | Out of scope                                              | —      |\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-11-01-unsloth-deepseek-gguf\n\nAccount: akalmesin\n\nEditorial depth: in-depth\n\nSlide count: 5",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/01-01-main.png",
+      "sha256": "2ed0f8bd3078ebade89381b3f1ecb56ca111c98b2cf3ac6408a0830bfbd50c3f",
+      "bytes": 718285
+    },
+    {
+      "slideId": "02-rilis",
+      "file": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/02-02-rilis.png",
+      "sha256": "38da02a52fc2ac562ce08c6d03bbd26cd2178a4eb4798f74ebc5ab7fd115d751",
+      "bytes": 983504
+    },
+    {
+      "slideId": "03-benchmark",
+      "file": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/03-03-benchmark.png",
+      "sha256": "c4a422dd7b2390eb828b1d5a3f18df756118d4db8c28d847880f5aa1ebd4db81",
+      "bytes": 823724
+    },
+    {
+      "slideId": "04-ram",
+      "file": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/04-04-ram.png",
+      "sha256": "fd997131a551751e4e22fe214210be7643f495afc5ad2e879f4b5f7f2851c181",
+      "bytes": 677860
+    },
+    {
+      "slideId": "05-batas",
+      "file": "content/posts/2026-11-01-unsloth-deepseek-gguf/out/png/05-05-batas.png",
+      "sha256": "d6f09731dd9d7c78fa8eb9714f214d31becc4e6019e9d0390acd0fafa9460466",
+      "bytes": 719995
+    }
+  ],
+  "generatedAt": "2026-11-01T14:37:00.271Z"
+}

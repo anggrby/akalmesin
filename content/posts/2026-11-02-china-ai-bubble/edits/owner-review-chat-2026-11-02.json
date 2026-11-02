@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 3,
+  "brand": "akalmesin",
+  "kind": "owner-edits",
+  "mode": "review",
+  "slug": "2026-11-02-china-ai-bubble",
+  "baseRevision": "3329b8acdcab149b73f75c096358353170a77028d532a7b9b1467711ead648b8",
+  "designRevision": "e49662854fed99aecb4aa51befc20b5b268989502ed8125b8bc57dd255384dbe",
+  "slides": [
+    {
+      "slug": "2026-11-02-china-ai-bubble",
+      "slideId": "01-main",
+      "fields": {
+        "headline": "Gelembung AI Pecah\ndi Pasar Tiongkok",
+        "summary": "Indeks saham AI dan chip STAR50 anjlok sekitar 40% dalam waktu kurang dari empat bulan—menguapkan sekitar US$480 miliar nilai pasar sementara investor kini menuntut bukti nyata laba dari belanja AI.",
+        "credit": "FOTO: PUDONG SHANGHAI / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-02-china-ai-bubble",
+      "slideId": "02-selloff",
+      "fields": {
+        "paragraph-0": "Reuters melaporkan pada akhir Oktober 2026 bahwa indeks STAR50 di bursa Shanghai—yang berisi jajaran raksasa AI dan semikonduktor Tiongkok—**anjlok sekitar 40% dalam waktu kurang dari empat bulan**. Koreksi tajam ini menguapkan sekitar US$480 miliar nilai pasar. Indeks blue-chip CSI300 turut merosot sekitar 20% dari puncaknya di bulan Juni, kontras dengan indeks Nasdaq AS yang baru terkoreksi sekitar 6% dari rekor tertingginya.",
+        "credit": "FOTO: HANG SENG INDEX / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-02-china-ai-bubble",
+      "slideId": "03-penyebab",
+      "fields": {
+        "paragraph-0": "Koreksi ini dipicu oleh kombinasi berbagai faktor, bukan satu pemicu tunggal. Para trader menyoroti valuasi yang sudah kelewat mahal, beban tagihan pajak, hingga ancaman pembatasan perangkat Tiongkok di data center luar negeri. Goldman Sachs mencatat saham terkait AI kini telah menyumbang **42% kapitalisasi pasar Tiongkok** serta 57% total volume transaksi gabungan di bursa A-shares daratan dan H-shares Hong Kong—sehingga guncangan di sektor ini langsung menyeret hampir seluruh pasar.",
+        "credit": "FOTO: PABRIK SMIC / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-02-china-ai-bubble",
+      "slideId": "04-saham-ritel",
+      "fields": {
+        "paragraph-0": "Saham-saham favorit investor ritel ikut terpukul telak. Unitree, produsen robot yang kelebihan permintaan (oversubscribed) hingga ~8.000 kali saat melantai (listing) pada Agustus lalu, **kini telah kehilangan sekitar separuh nilai sahamnya**. Produsen chip CXMT merosot lebih dari 25% hanya dalam sebulan. MetaX dan Moore Threads—yang sempat meroket ratusan persen saat debut—juga telah tergerus sekitar 50% sejak Juli, sementara pemasok komponen optik Innolight dan Eoptolink anjlok sekitar 60% dari titik puncaknya.",
+        "credit": "FOTO: UNITREE G1 / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-02-china-ai-bubble",
+      "slideId": "05-outlook",
+      "fields": {
+        "paragraph-0": "Gelombang koreksi ini pun belum tentu berakhir. Rasio trailing P/E (harga saham terhadap laba bersih) indeks STAR50 masih bertengger di kisaran 100 kali—sudah turun dari puncaknya di hampir 250 kali, tetapi masih jauh di atas Nasdaq 100 yang berada di kisaran 30 kali. Manajer investasi Wang Zhuo memperingatkan bahwa produsen chip dan pemasok AI Tiongkok **pada akhirnya akan terjebak dalam perang harga**, mengikuti pola klasik industri manufaktur di sana. Sejumlah analis menilai rebound yang berkelanjutan menuntut bukti laba yang jelas dari belanja AI serta pemulihan daya beli domestik—bukan sekadar valuasi saham yang lebih murah.",
+        "credit": "FOTO: RAK SERVER / COMMONS"
+      }
+    }
+  ],
+  "captions": [
+    {
+      "slug": "2026-11-02-china-ai-bubble",
+      "paragraphs": [
+        "Saat Wall Street masih berdebat soal ada tidaknya AI bubble, Reuters melaporkan bahwa gelembung tersebut justru sudah pecah di Tiongkok. Indeks STAR50 di bursa Shanghai—yang menaungi jajaran raksasa AI dan semikonduktor lokal—anjlok sekitar 40% dalam kurun kurang dari empat bulan hingga akhir Oktober 2026, menguapkan sekitar US$480 miliar kapitalisasi pasar.",
+        "Reli panjang selama dua tahun yang didorong euforia AI—termasuk sejak kemunculan DeepSeek pada awal 2025—kini membentur pertanyaan paling mendasar: kapan belanja besar-besaran AI ini mulai menghasilkan laba bersih. Para pelaku pasar menyoroti valuasi yang terlampau mahal, pengetatan pajak, hingga risiko larangan perangkat Tiongkok di data center global. Apalagi, Goldman Sachs mencatat saham berbasis AI sudah menguasai 42% kapitalisasi pasar Tiongkok dan 57% total volume transaksi.",
+        "Saham primadona ritel seperti produsen robot Unitree bahkan sudah tergerus separuh nilainya sejak listing Agustus lalu, sementara rasio trailing P/E STAR50 masih bertengger di angka ~100 kali. Sejumlah analis menilai rebound yang sehat butuh pembuktian laba dan pemulihan daya beli domestik, bukan sekadar harga saham yang terdiskon. Menurutmu, aksi jual (sell-off) di Tiongkok ini adalah peringatan dini bagi saham AI global, atau murni dinamika pasar lokal?",
+        "Sumber: Reuters, CNBC, Goldman Sachs (via Reuters) / Foto: Wikimedia Commons\n\n#akalmesin #AI #Tiongkok #STAR50 #GelembungAI"
+      ]
+    }
+  ],
+  "savedAt": "2026-11-02T09:01:00.000Z",
+  "note": "Owner review paste via chat; agent wrote Simpan-equivalent edits.json. Italic *…* stripped (slides/caption only support **bold**). Caption mid-paragraph ? → . so one closing question remains. Hashtags capped at 5 (dropped #SahamTeknologi #Semikonduktor). Slide 5 credit unified to / COMMONS."
+}

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-01-google-suncatcher-orbit",
-  "stage": "export",
+  "stage": "notion-delivered",
   "approvals": {
     "copy": {
       "gate": "copy",
@@ -35,7 +35,34 @@
     }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40bf909f-26a5-811c-a102-dbeeb95664be",
+    "url": "https://app.notion.com/p/Google-terima-respons-AI-pertama-dari-orbit-Bumi-40bf909f26a5811ca102dbeeb95664be",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-01-google-suncatcher-orbit",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-01-google-suncatcher-orbit",
+    "approvedRevision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f",
+    "orderedAssetHashes": [
+      "c114480563a16b8f8816cdf5638aac2a01df23a50519d39188a3d4a76305f514",
+      "969ff14e20c2105d5af7187b2bee788873b2a200ab830ceaa387bc3f15b93747",
+      "aba73675a0c0f6f53c304eaed390974fe36f282be0cafe7993651186b6f53ec0",
+      "2c27fdb95343753bcd6b3c5f9d908f7546e0d38531c881c14d0e424bff5eb37d",
+      "c8c257dc0550a0f107e10d97f0efdccd58102f0b2fc932165f9e6d5440ed5e23"
+    ],
+    "uploadedAssetHashes": [
+      "c114480563a16b8f8816cdf5638aac2a01df23a50519d39188a3d4a76305f514",
+      "969ff14e20c2105d5af7187b2bee788873b2a200ab830ceaa387bc3f15b93747",
+      "aba73675a0c0f6f53c304eaed390974fe36f282be0cafe7993651186b6f53ec0",
+      "2c27fdb95343753bcd6b3c5f9d908f7546e0d38531c881c14d0e424bff5eb37d",
+      "c8c257dc0550a0f107e10d97f0efdccd58102f0b2fc932165f9e6d5440ed5e23"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-01T14:36:59.970Z",
+    "exportedAtWIB": "2026-11-01 21:36 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -104,6 +131,11 @@
       "copyRevision": "77b0c769c666ca35fea3284eb57982275b64baa50bb14c4ad91d0a91a5e89b2b",
       "designRevision": "139f9dc99328a3c09495412e98430bb983f249850531b802dd663a99fb78f81f",
       "at": "2026-11-01T13:11:00.737Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40bf909f-26a5-811c-a102-dbeeb95664be",
+      "at": "2026-11-01T14:36:59.970Z"
     }
   ]
 }

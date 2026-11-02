@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-02-china-ai-bubble",
+  "designRevision": "885080a2ef1c07793da6deb965100ef45e82c44a41129ca469a9c0325bf7894c",
+  "copyRevision": "f84841dd0bdf9b1068271589c6ac0964fe7288f0fa105ecfc9f1d991a8d10698",
+  "checkedAt": "2026-11-02T09:04:29.087Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [
+    "Caption sekitar 187 kata; panduan 100–160 kata."
+  ],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9658103189895098,
+        "meanDistance": 2.326761136123939,
+        "inkPixels": 0.9843502461999571
+      },
+      "gap": 64,
+      "photoHeight": 647
+    },
+    {
+      "id": "02-selloff",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/02-02-selloff.png",
+      "ink": {
+        "onRamp": 0.9611316872427984,
+        "meanDistance": 3.4281535209888565,
+        "inkPixels": 0.9166255144032922
+      },
+      "gap": 54,
+      "photoHeight": 522
+    },
+    {
+      "id": "03-penyebab",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/03-03-penyebab.png",
+      "ink": {
+        "onRamp": 0.971604938271605,
+        "meanDistance": 2.524892161558629,
+        "inkPixels": 0.872880658436214
+      },
+      "gap": 54,
+      "photoHeight": 462
+    },
+    {
+      "id": "04-saham-ritel",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/04-04-saham-ritel.png",
+      "ink": {
+        "onRamp": 0.9981929181929182,
+        "meanDistance": 1.22731423214583,
+        "inkPixels": 0.9757590557590557
+      },
+      "gap": 54,
+      "photoHeight": 462
+    },
+    {
+      "id": "05-outlook",
+      "png": "content/posts/2026-11-02-china-ai-bubble/out/png/05-05-outlook.png",
+      "ink": {
+        "onRamp": 0.952536231884058,
+        "meanDistance": 4.633291621566209,
+        "inkPixels": 0.9782407407407407
+      },
+      "gap": 54,
+      "photoHeight": 402
+    }
+  ]
+}

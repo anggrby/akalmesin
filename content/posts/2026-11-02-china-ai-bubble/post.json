@@ -1,0 +1,200 @@
+{
+  "slug": "2026-11-02-china-ai-bubble",
+  "category": "AI",
+  "title": "Gelembung AI Pecah di Pasar Tiongkok",
+  "format": "in-depth",
+  "formatReason": "In-depth: Main + four details (scale of the selloff, why it broke, retail-favorite stocks hit, valuation/outlook hedge). Reuters figures, named companies, and the earnings question each need their own slide.",
+  "eventDate": "2026-10-26",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Gelembung AI Pecah",
+        "di Pasar Tiongkok"
+      ],
+      "summary": "Indeks saham AI dan chip STAR50 anjlok sekitar 40% dalam waktu kurang dari empat bulan—menguapkan sekitar US$480 miliar nilai pasar sementara investor kini menuntut bukti nyata laba dari belanja AI.",
+      "credit": "FOTO: PUDONG SHANGHAI / COMMONS",
+      "alt": "Panorama skyline Pudong, Shanghai, kawasan keuangan tempat bursa dan STAR Market berada.",
+      "imagePosition": "50% 55%",
+      "imageSource": {
+        "retrieved": "2026-11-02",
+        "treatment": "blue-ink",
+        "id": "commons-pudong-panorama-2017",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Pudong_Shanghai_November_2017_panorama.jpg",
+        "originalURL": "https://commons.wikimedia.org/wiki/Special:FilePath/Pudong_Shanghai_November_2017_panorama.jpg",
+        "originalFile": "assets/originals/pudong-skyline.jpg",
+        "subject": "Pudong, Shanghai financial skyline panorama (November 2017)",
+        "supplier": "King of Hearts / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "crop": [
+            1500,
+            600,
+            5000,
+            3200
+          ],
+          "maxWidth": 1600
+        }
+      }
+    },
+    {
+      "id": "02-selloff",
+      "layout": "detail1",
+      "paragraphs": [
+        "Reuters melaporkan pada akhir Oktober 2026 bahwa indeks STAR50 di bursa Shanghai—yang berisi jajaran raksasa AI dan semikonduktor Tiongkok—**anjlok sekitar 40% dalam waktu kurang dari empat bulan**. Koreksi tajam ini menguapkan sekitar US$480 miliar nilai pasar. Indeks blue-chip CSI300 turut merosot sekitar 20% dari puncaknya di bulan Juni, kontras dengan indeks Nasdaq AS yang baru terkoreksi sekitar 6% dari rekor tertingginya."
+      ],
+      "credit": "FOTO: HANG SENG INDEX / COMMONS",
+      "alt": "Papan tampilan indeks saham Hang Seng di toko keuangan di Des Voeux Road Central, Hong Kong—ilustrasi pasar saham China/HK.",
+      "imagePosition": "50% 45%",
+      "imageSource": {
+        "retrieved": "2026-11-02",
+        "treatment": "blue-ink",
+        "id": "commons-hang-seng-display-2017",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:HK_%E4%B8%8A%E7%92%B0_Sheung_Wan_%E5%BE%B7%E8%BC%94%E9%81%93%E4%B8%AD_Des_Voeux_Road_Central_shop_Sun_Hung_Kei_Financial_display_sign_Hang_Seng_Stock_Index_October_2017_IX1.jpg",
+        "originalURL": "https://commons.wikimedia.org/wiki/Special:FilePath/HK_上環_Sheung_Wan_德輔道中_Des_Voeux_Road_Central_shop_Sun_Hung_Kei_Financial_display_sign_Hang_Seng_Stock_Index_October_2017_IX1.jpg",
+        "originalFile": "assets/originals/hang-seng-display.jpg",
+        "subject": "Hang Seng Index street display board, Sheung Wan / Central Hong Kong (Oct 2017); illustrative of China/HK equity screens, not a live STAR50 chart",
+        "supplier": "Wkct2 / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "maxWidth": 1400
+        }
+      }
+    },
+    {
+      "id": "03-penyebab",
+      "layout": "detail2",
+      "paragraphs": [
+        "Koreksi ini dipicu oleh kombinasi berbagai faktor, bukan satu pemicu tunggal. Para trader menyoroti valuasi yang sudah kelewat mahal, beban tagihan pajak, hingga ancaman pembatasan perangkat Tiongkok di data center luar negeri. Goldman Sachs mencatat saham terkait AI kini telah menyumbang **42% kapitalisasi pasar Tiongkok** serta 57% total volume transaksi gabungan di bursa A-shares daratan dan H-shares Hong Kong—sehingga guncangan di sektor ini langsung menyeret hampir seluruh pasar."
+      ],
+      "credit": "FOTO: PABRIK SMIC / COMMONS",
+      "alt": "Kompleks pabrik Semiconductor Manufacturing International Corporation (SMIC) di Shenzhen, ilustrasi industri chip Tiongkok.",
+      "imagePosition": "50% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-02",
+        "treatment": "blue-ink",
+        "id": "commons-smic-shenzhen-factory",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:SMIC%EF%BC%8CShenzhen_Factory.jpg",
+        "originalURL": "https://commons.wikimedia.org/wiki/Special:FilePath/SMIC，Shenzhen_Factory.jpg",
+        "originalFile": "assets/originals/smic-shenzhen-factory.jpg",
+        "subject": "SMIC Shenzhen factory exterior (illustrative of China’s semiconductor industry; SMIC itself is not named in the slide copy)",
+        "supplier": "Siyuwj / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "crop": [
+            200,
+            400,
+            3600,
+            2400
+          ],
+          "maxWidth": 1400
+        }
+      }
+    },
+    {
+      "id": "04-saham-ritel",
+      "layout": "detail1",
+      "paragraphs": [
+        "Saham-saham favorit investor ritel ikut terpukul telak. Unitree, produsen robot yang kelebihan permintaan (oversubscribed) hingga ~8.000 kali saat melantai (listing) pada Agustus lalu, **kini telah kehilangan sekitar separuh nilai sahamnya**. Produsen chip CXMT merosot lebih dari 25% hanya dalam sebulan. MetaX dan Moore Threads—yang sempat meroket ratusan persen saat debut—juga telah tergerus sekitar 50% sejak Juli, sementara pemasok komponen optik Innolight dan Eoptolink anjlok sekitar 60% dari titik puncaknya."
+      ],
+      "credit": "FOTO: UNITREE G1 / COMMONS",
+      "alt": "Robot humanoid Unitree G1 berdiri di pameran UAV Expo 2024; Unitree disebut Reuters sebagai saham favorit ritel yang sudah turun sekitar separuh.",
+      "imagePosition": "50% 35%",
+      "imageSource": {
+        "retrieved": "2026-11-02",
+        "treatment": "blue-ink",
+        "id": "commons-unitree-g1",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Unitree_G1.jpg",
+        "originalURL": "https://commons.wikimedia.org/wiki/Special:FilePath/Unitree_G1.jpg",
+        "originalFile": "assets/originals/unitree-g1.jpg",
+        "subject": "Unitree G1 humanoid robot at UAV Expo 2024 (18 Nov 2024)",
+        "supplier": "Sayanesy / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "maxWidth": 1200
+        }
+      }
+    },
+    {
+      "id": "05-outlook",
+      "layout": "detail2",
+      "paragraphs": [
+        "Gelombang koreksi ini belum tentu berakhir. Rasio trailing P/E (harga saham terhadap laba bersih) STAR50 masih bertengger di kisaran 100 kali—sudah turun dari hampir 250, tetapi masih jauh di atas Nasdaq 100 di kisaran 30 kali. Wang Zhuo memperingatkan produsen chip dan pemasok AI Tiongkok **pada akhirnya akan terjebak dalam perang harga**, mengikuti pola klasik manufaktur di sana. Sejumlah analis menilai rebound yang berkelanjutan menuntut bukti laba dari belanja AI serta pemulihan daya beli domestik—bukan sekadar valuasi yang lebih murah."
+      ],
+      "credit": "FOTO: RAK SERVER / COMMONS",
+      "alt": "Deretan rak server di pusat data Wikimedia Foundation; ilustrasi infrastruktur pusat data, bukan fasilitas AI Tiongkok tertentu.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-02",
+        "treatment": "blue-ink",
+        "id": "commons-wmf-servers-8055",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Wikimedia_Foundation_Servers-8055_35.jpg",
+        "originalURL": "https://commons.wikimedia.org/wiki/Special:FilePath/Wikimedia_Foundation_Servers-8055_35.jpg",
+        "originalFile": "assets/originals/data-center-servers.jpg",
+        "subject": "Wikimedia Foundation data-center server racks (illustrative of data-centre infrastructure named in the export-curb risk; not a Chinese AI facility)",
+        "supplier": "Victor Grigas / Wikimedia Foundation",
+        "license": "CC BY-SA 3.0",
+        "process": {
+          "crop": [
+            400,
+            200,
+            4400,
+            3000
+          ],
+          "maxWidth": 1400
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Saat Wall Street masih berdebat soal ada tidaknya AI bubble, Reuters melaporkan bahwa gelembung tersebut justru sudah pecah di Tiongkok. Indeks STAR50 di bursa Shanghai—yang menaungi jajaran raksasa AI dan semikonduktor lokal—anjlok sekitar 40% dalam kurun kurang dari empat bulan hingga akhir Oktober 2026, menguapkan sekitar US$480 miliar kapitalisasi pasar.",
+    "Reli panjang selama dua tahun yang didorong euforia AI—termasuk sejak kemunculan DeepSeek pada awal 2025—kini membentur pertanyaan paling mendasar: kapan belanja besar-besaran AI ini mulai menghasilkan laba bersih. Para pelaku pasar menyoroti valuasi yang terlampau mahal, pengetatan pajak, hingga risiko larangan perangkat Tiongkok di data center global. Apalagi, Goldman Sachs mencatat saham berbasis AI sudah menguasai 42% kapitalisasi pasar Tiongkok dan 57% total volume transaksi.",
+    "Saham primadona ritel seperti produsen robot Unitree bahkan sudah tergerus separuh nilainya sejak listing Agustus lalu, sementara rasio trailing P/E STAR50 masih bertengger di angka ~100 kali. Sejumlah analis menilai rebound yang sehat butuh pembuktian laba dan pemulihan daya beli domestik, bukan sekadar harga saham yang terdiskon. Menurutmu, aksi jual (sell-off) di Tiongkok ini adalah peringatan dini bagi saham AI global, atau murni dinamika pasar lokal?",
+    "Sumber: Reuters, CNBC, Goldman Sachs (via Reuters) / Foto: Wikimedia Commons\n\n#akalmesin #AI #Tiongkok #STAR50 #GelembungAI"
+  ],
+  "sources": [
+    {
+      "title": "Reuters — In China, the AI bubble has already burst (via Investing.com)",
+      "url": "https://www.investing.com/news/economy-news/analysisin-china-the-ai-bubble-has-already-burst-4972445",
+      "published": "2026-10-26",
+      "supports": [
+        "STAR50 ~40% drop in under four months",
+        "~US$480B wiped",
+        "CSI300 ~20% from June highs",
+        "Nasdaq ~6% contrast",
+        "Goldman Sachs 42%/57%",
+        "Unitree halved / 8000× oversubscribed",
+        "CXMT / MetaX / Moore Threads / Innolight / Eoptolink moves",
+        "STAR50 ~100× P/E vs ~250 peak; Nasdaq 100 ~30×",
+        "Dong Baozhen and Wang Zhuo quotes",
+        "trader attributions: valuations, tax, data-centre equipment ban risk"
+      ]
+    },
+    {
+      "title": "CNBC — China’s tech darlings are losing their shine. Here’s what’s behind the sell-off",
+      "url": "https://www.cnbc.com/2026/10/29/china-tech-stocks-selloff.html",
+      "published": "2026-10-28",
+      "supports": [
+        "STAR50 >40% from July peak",
+        "DeepSeek early-2025 rally framing",
+        "earnings vs AI excitement",
+        "rebound needs clearer AI returns and domestic demand"
+      ]
+    },
+    {
+      "title": "The Guardian — Chinese markets lose trillions as race for AI supremacy with US takes its toll",
+      "url": "https://www.theguardian.com/world/2026/oct/27/chinese-markets-lose-trillions-ai-race-beijing",
+      "published": "2026-10-27",
+      "supports": [
+        "STAR50 ~40% since June",
+        "Bloomberg ~$2.4tn broader wipeout since May (background only)"
+      ]
+    }
+  ]
+}

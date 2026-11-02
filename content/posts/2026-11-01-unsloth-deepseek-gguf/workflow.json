@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-01-unsloth-deepseek-gguf",
-  "stage": "export",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
     "copy": {
@@ -36,7 +36,34 @@
     }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40bf909f-26a5-813f-9e14-f564444686f2",
+    "url": "https://app.notion.com/p/Unsloth-Rilis-GGUF-DeepSeek-Flash-Lokal-40bf909f26a5813f9e14f564444686f2",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-01-unsloth-deepseek-gguf",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-01-unsloth-deepseek-gguf",
+    "approvedRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
+    "orderedAssetHashes": [
+      "2ed0f8bd3078ebade89381b3f1ecb56ca111c98b2cf3ac6408a0830bfbd50c3f",
+      "38da02a52fc2ac562ce08c6d03bbd26cd2178a4eb4798f74ebc5ab7fd115d751",
+      "c4a422dd7b2390eb828b1d5a3f18df756118d4db8c28d847880f5aa1ebd4db81",
+      "fd997131a551751e4e22fe214210be7643f495afc5ad2e879f4b5f7f2851c181",
+      "d6f09731dd9d7c78fa8eb9714f214d31becc4e6019e9d0390acd0fafa9460466"
+    ],
+    "uploadedAssetHashes": [
+      "2ed0f8bd3078ebade89381b3f1ecb56ca111c98b2cf3ac6408a0830bfbd50c3f",
+      "38da02a52fc2ac562ce08c6d03bbd26cd2178a4eb4798f74ebc5ab7fd115d751",
+      "c4a422dd7b2390eb828b1d5a3f18df756118d4db8c28d847880f5aa1ebd4db81",
+      "fd997131a551751e4e22fe214210be7643f495afc5ad2e879f4b5f7f2851c181",
+      "d6f09731dd9d7c78fa8eb9714f214d31becc4e6019e9d0390acd0fafa9460466"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-01T14:37:17.894Z",
+    "exportedAtWIB": "2026-11-01 21:37 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -90,6 +117,11 @@
       "copyRevision": "8db71328f245497a205150a2c094e106df0aff0491e976e58236abc813325904",
       "designRevision": "62a0ebfec08fd7c0b4566d5cc0fc3019ac4cc3e467bfd367cab6dd844886894a",
       "at": "2026-11-01T13:40:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40bf909f-26a5-813f-9e14-f564444686f2",
+      "at": "2026-11-01T14:37:17.894Z"
     }
   ]
 }
