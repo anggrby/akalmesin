@@ -44,9 +44,9 @@ export function renderSlidePage({post, slide, imageURL, css}) {
   return `<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=1080"><title>${e(post.title)} — ${e(slide.id)}</title><style>${css}</style></head><body>${renderSlide({post, slide, imageURL})}</body></html>`;
 }
 
-/** The editor: every slide + caption, contenteditable, "Simpan" downloads edits.json. No server needed.
- * mode "copy" = grey placeholders (legacy two-gate flow); mode "review" = the real slides with real images, a photo
- * list (source/licence/credit) and live checks; Simpan in review mode is the owner's single approval (npm run review:apply). */
+/** The editor: every slide + caption, contenteditable. "Simpan" downloads edits.json when opened as a file;
+ * with `npm run review:serve` it POSTs into that post's edits/ instead. mode "copy" = grey placeholders
+ * (legacy); mode "review" = real slides + photo list + live checks; apply with npm run review:apply. */
 export function renderEditor({
   post,
   mode,
@@ -90,7 +90,7 @@ export function renderEditor({
   }).replaceAll('<', '\\u003c');
   const label = review ? 'Review (teks + desain) — Simpan = setuju' : 'Review teks (gambar = placeholder)';
   const hint = review
-    ? 'Ini slide asli. Klik teks di slide atau caption untuk mengedit; Ctrl/⌘+B = tebal. "Simpan" mengunduh file edits.json — kirim ke agent. Simpan tanpa perubahan = setuju apa adanya. Simpan nonaktif selama ada teks yang meluap.'
+    ? 'Ini slide asli. Klik teks di slide atau caption untuk mengedit; Ctrl/⌘+B = tebal. Lewat <code>npm run review:serve</code>, Simpan menulis ke <code>edits/</code>; dibuka sebagai file, Simpan mengunduh JSON. Simpan tanpa perubahan = setuju apa adanya. Simpan nonaktif selama ada teks yang meluap.'
     : 'Klik teks untuk mengedit. Ctrl/⌘+B = tebal (disimpan sebagai **teks**). Enter di judul = baris baru. "Simpan" mengunduh file edits.json — kirim file itu ke agent.';
   const code =
     (inspectSource ? `const inspectLayout = (${inspectSource});\n` : 'const inspectLayout = null;\n') +

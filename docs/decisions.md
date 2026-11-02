@@ -2,6 +2,12 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-11-02 — `review:serve` writes Simpan into `edits/`
+
+- Owner asked to fix the static-HTML limit: browser Simpan could only download JSON, not write `content/posts/<slug>/edits/`.
+- `npm run review:serve -- <slug>` serves `out/<slug>.html` on 127.0.0.1 and accepts `POST /save`; the editor posts there when the save hook is injected. `file://` and plain opens still download. Serve does **not** run `review:apply` or record approval — apply stays explicit.
+- Chat paste and download remain valid fallbacks.
+
 ## 2026-11-01 — Repo is SoT; AGENTS routes; no editorial skill; chat paste = Simpan; caption chrome contrast
 
 - Owner: pipeline should trust the checkout, not an external Codex skill; AGENTS.md is the task router; `docs/workflow.md` owns the steps. Chat paste of review feedback is a valid path to `edits/*.json` + `review:apply` (same schema as HTML Simpan). Do not hand-write `edits.log.md` as a substitute for apply.

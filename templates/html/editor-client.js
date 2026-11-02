@@ -202,17 +202,39 @@
     }
   } catch {}
 
-  $('#save').addEventListener('click', () => {
+  $('#save').addEventListener('click', async () => {
     const edits = check();
     if (edits.blocked.length) return;
     delete edits.blocked;
-    const url = URL.createObjectURL(new Blob([JSON.stringify(edits, null, 2)], {type: 'application/json'}));
-    const a = Object.assign(document.createElement('a'), {href: url, download: `${data.slug}-edits-${edits.savedAt.slice(0, 19).replace(/[:T]/g, '')}.json`});
+    const body = JSON.stringify(edits, null, 2);
+    const filename = `${data.slug}-edits-${edits.savedAt.slice(0, 19).replace(/[:T]/g, '')}.json`;
+    // Set by npm run review:serve (injects window.__AKALMESIN_SAVE_URL__). file:// and plain opens still download.
+    const saveUrl = typeof window.__AKALMESIN_SAVE_URL__ === 'string' ? window.__AKALMESIN_SAVE_URL__ : null;
+    if (saveUrl) {
+      $('#save').disabled = true;
+      $('#status').textContent = 'menyimpan…';
+      try {
+        const r = await fetch(saveUrl, {method: 'POST', headers: {'Content-Type': 'application/json'}, body});
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) throw Error(j.error || 'HTTP ' + r.status);
+        try {
+          localStorage.removeItem(draftKey);
+        } catch {}
+        $('#status').textContent = 'tersimpan di ' + (j.rel || 'edits/');
+        return;
+      } catch (err) {
+        $('#status').textContent = 'gagal tulis edits/ (' + err.message + ') — unduhan cadangan';
+      } finally {
+        $('#save').disabled = false;
+      }
+    }
+    const url = URL.createObjectURL(new Blob([body], {type: 'application/json'}));
+    const a = Object.assign(document.createElement('a'), {href: url, download: filename});
     document.body.append(a);
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    $('#status').textContent = 'tersimpan — kirim file .json ke agent';
+    if (!saveUrl) $('#status').textContent = 'tersimpan — kirim file .json ke agent';
   });
   check();
 })();

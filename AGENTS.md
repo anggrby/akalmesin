@@ -6,25 +6,25 @@ This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news a
 
 ## Task router
 
-| Ask                        | Open next                                                                                                              | Do                                                                                       |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| New post / “tonight”       | [docs/workflow.md](docs/workflow.md) (single-pass)                                                                     | `npm run post:new` → research → fill `post.json` + `sources.md` → `npm run review:build` |
-| Voice / caption            | [brand/voice.md](brand/voice.md), [Terra](brand/examples/terra/README.md), [feedback log](brand/style-feedback-log.md) | Draft Indonesian copy into `post.json`                                                   |
-| Visuals / crops            | [brand/design.md](brand/design.md), [brand/tokens.json](brand/tokens.json)                                             | Assets in `assets/originals/`; process in `post.json`; never invent sheet values         |
-| Owner Simpan or chat paste | workflow § single-pass                                                                                                 | Save under `edits/`, then `npm run review:apply -- <slug> <edits.json>`                  |
-| Export to Notion           | workflow § final → Notion                                                                                              | Only after current copy + final; `npm run export -- <slug>`                              |
-| Change a rule              | The file that owns it + [docs/decisions.md](docs/decisions.md)                                                         | Update both; do not invent parallel playbooks                                            |
+| Ask                        | Open next                                                                                                              | Do                                                                                            |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| New post / “tonight”       | [docs/workflow.md](docs/workflow.md) (single-pass)                                                                     | `npm run post:new` → research → fill `post.json` + `sources.md` → `npm run review:build`      |
+| Voice / caption            | [brand/voice.md](brand/voice.md), [Terra](brand/examples/terra/README.md), [feedback log](brand/style-feedback-log.md) | Draft Indonesian copy into `post.json`                                                        |
+| Visuals / crops            | [brand/design.md](brand/design.md), [brand/tokens.json](brand/tokens.json)                                             | Assets in `assets/originals/`; process in `post.json`; never invent sheet values              |
+| Owner Simpan or chat paste | workflow § single-pass                                                                                                 | Prefer `review:serve` (Simpan writes `edits/`); else save under `edits/`, then `review:apply` |
+| Export to Notion           | workflow § final → Notion                                                                                              | Only after current copy + final; `npm run export -- <slug>`                                   |
+| Change a rule              | The file that owns it + [docs/decisions.md](docs/decisions.md)                                                         | Update both; do not invent parallel playbooks                                                 |
 
 ## The flow (single-pass; details in workflow.md)
 
-| #   | Step                                                                    | Command                                       | Gate                         |
-| --- | ----------------------------------------------------------------------- | --------------------------------------------- | ---------------------------- |
-| 1   | Angger asks for a post                                                  | `npm run post:new -- <slug> --category AI`    | —                            |
-| 2   | Research: fill `sources.md` and `post.json` (copy + images)             | —                                             | —                            |
-| 3   | Build review HTML (real slides + blue ink)                              | `npm run review:build -- <slug>`              | records **no** approval      |
-| 4   | He reviews `out/<slug>.html` (edit in place) or pastes feedback in chat | —                                             | —                            |
-| 5   | Apply his Simpan / chat-equivalent `edits.json`                         | `npm run review:apply -- <slug> <edits.json>` | passing apply = copy + final |
-| 6   | Export to Notion when he says so                                        | `npm run export -- <slug>`                    | needs current copy + final   |
+| #   | Step                                                                      | Command                                       | Gate                         |
+| --- | ------------------------------------------------------------------------- | --------------------------------------------- | ---------------------------- |
+| 1   | Angger asks for a post                                                    | `npm run post:new -- <slug> --category AI`    | —                            |
+| 2   | Research: fill `sources.md` and `post.json` (copy + images)               | —                                             | —                            |
+| 3   | Build review HTML (real slides + blue ink)                                | `npm run review:build -- <slug>`              | records **no** approval      |
+| 4   | He reviews via `review:serve` (Simpan → `edits/`), the HTML file, or chat | `npm run review:serve -- <slug>`              | —                            |
+| 5   | Apply his Simpan / chat-equivalent `edits.json`                           | `npm run review:apply -- <slug> <edits.json>` | passing apply = copy + final |
+| 6   | Export to Notion when he says so                                          | `npm run export -- <slug>`                    | needs current copy + final   |
 
 Legacy two-gate commands (`copy:review`, `copy:record`, `design:build` alone, separate `approve` for copy/final) remain in the repo for old posts; **do not use them for new work** unless workflow.md says otherwise.
 

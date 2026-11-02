@@ -125,6 +125,7 @@ if (isMain(import.meta.url))
     if (cmd === 'build') {
       const r = await reviewBuild(a._[1], {copyTo: a['copy-to']});
       console.log(`✓ ${rel(r.html)} (${(r.bytes / 1024 / 1024).toFixed(2)} MB) · design ${r.build.designRevision.slice(0, 12)} · no approval recorded`);
+      console.log(`  next: npm run review:serve -- ${a._[1]}   # Simpan writes into edits/`);
       r.check.warnings.forEach(w => console.log('  ⚠ ' + w));
       r.check.problems.forEach(p => console.log('  ✗ ' + p));
       if (!r.check.passed) process.exitCode = 1;

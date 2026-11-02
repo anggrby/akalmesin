@@ -8,6 +8,7 @@
   "scripts": {
     "post:new": "node scripts/post-new.mjs",
     "review:build": "node scripts/review.mjs build",
+    "review:serve": "node scripts/review-serve.mjs",
     "review:apply": "node scripts/review.mjs apply",
     "copy:review": "node scripts/copy-review.mjs",
     "copy:record": "node scripts/copy-record.mjs",
