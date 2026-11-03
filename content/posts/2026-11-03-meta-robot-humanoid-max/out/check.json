@@ -3,11 +3,9 @@
   "slug": "2026-11-03-meta-robot-humanoid-max",
   "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
   "copyRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
-  "checkedAt": "2026-11-03T03:30:14.654Z",
-  "passed": false,
-  "problems": [
-    "Copy approval missing or stale"
-  ],
+  "checkedAt": "2026-11-03T03:38:25.370Z",
+  "passed": true,
+  "problems": [],
   "warnings": [],
   "slides": [
     {

@@ -4,8 +4,36 @@
   "stage": "design-check",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-03T03:38:00.000Z",
+      "source": "2026-11-03-meta-robot-humanoid-max-edits-2026-11-03103800.json sha256:520862e4071f0db07b809cb561dca3a3d3c8aceebe009784e4a21bfd76d82d47",
+      "context": "no changes",
+      "at": "2026-11-03T03:38:00.000Z",
+      "atWIB": "2026-11-03 10:38 WIB",
+      "via": "review-save",
+      "copyRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
+      "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-03T03:38:03.023Z",
+      "revision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-03T03:38:00.000Z",
+      "source": "2026-11-03-meta-robot-humanoid-max-edits-2026-11-03103800.json sha256:520862e4071f0db07b809cb561dca3a3d3c8aceebe009784e4a21bfd76d82d47",
+      "context": "no changes",
+      "at": "2026-11-03T03:38:00.000Z",
+      "atWIB": "2026-11-03 10:38 WIB",
+      "via": "review-save",
+      "copyRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
+      "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-03T03:38:03.023Z",
+      "revision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d"
+    }
   },
   "designStale": false,
   "notion": null,
@@ -40,6 +68,29 @@
       "event": "design-built",
       "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
       "at": "2026-11-03T03:30:02.522Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+      "at": "2026-11-03T03:38:02.203Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "2026-11-03-meta-robot-humanoid-max-edits-2026-11-03103800.json sha256:520862e4071f0db07b809cb561dca3a3d3c8aceebe009784e4a21bfd76d82d47",
+      "copyRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
+      "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+      "at": "2026-11-03T03:38:00.000Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+      "at": "2026-11-03T03:38:16.471Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+      "at": "2026-11-03T03:38:24.619Z"
     }
   ]
 }

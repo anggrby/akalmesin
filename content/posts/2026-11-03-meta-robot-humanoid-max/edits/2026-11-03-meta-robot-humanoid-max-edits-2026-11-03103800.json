@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 3,
+  "brand": "akalmesin",
+  "kind": "owner-edits",
+  "mode": "review",
+  "slug": "2026-11-03-meta-robot-humanoid-max",
+  "baseRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
+  "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+  "slides": [
+    {
+      "slug": "2026-11-03-meta-robot-humanoid-max",
+      "slideId": "01-main",
+      "fields": {
+        "summary": "The Information melaporkan Meta membangun prototipe robot humanoid bernama Max bersama startup Tiongkok Fourier, meski Meta menyebutnya sebatas riset internal.",
+        "credit": "FOTO: ILUSTRASI ROBOT FOURIER GR-3 / FOURIER"
+      }
+    },
+    {
+      "slug": "2026-11-03-meta-robot-humanoid-max",
+      "slideId": "02-max",
+      "fields": {
+        "paragraph-0": "The Information melaporkan Meta membuat Max bersama Fourier asal Shanghai **dalam sekitar tiga bulan**. Tingginya sekitar 1,5 meter dan beratnya sekitar 48 kg. Robot ini dilaporkan punya layar yang menampilkan ekspresi wajah, speaker, dan tangan lima jari untuk mengambil benda kecil.",
+        "credit": "FOTO: ILUSTRASI ROBOT FOURIER GR-3 / FOURIER"
+      }
+    },
+    {
+      "slug": "2026-11-03-meta-robot-humanoid-max",
+      "slideId": "03-chip",
+      "fields": {
+        "paragraph-0": "Otaknya dilaporkan berupa chip **Jetson Thor** buatan Nvidia. Meta ingin robot seperti ini menjadi wujud fisik bagi Muse, agen AI-nya, dan kelak membantu pekerjaan rumah. Menurut laporan itu, Li-Chen Miller, wakil presiden produk robotika Meta, menghabiskan hampir dua bulan di pabrik Fourier di Shanghai.",
+        "credit": "FOTO: ILUSTRASI NVIDIA JETSON ORIN NX / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-03-meta-robot-humanoid-max",
+      "slideId": "04-max2",
+      "fields": {
+        "paragraph-0": "Meta dilaporkan menggarap versi kedua, Max 2, sejak September dengan torso dan tangan baru, proyektor, serta **sensor tambahan untuk tangga**. Belum ada tanggal rilis. Kepada The Information, Meta menyatakan kerja sama ini untuk riset internal dan tidak berencana menjual unitnya. Reuters belum bisa memverifikasi laporan ini.",
+        "credit": "FOTO: KANTOR PUSAT META / COMMONS"
+      }
+    }
+  ],
+  "captions": [
+    {
+      "slug": "2026-11-03-meta-robot-humanoid-max",
+      "paragraphs": [
+        "Meta ternyata sudah punya robot humanoid sendiri. The Information melaporkan Meta membangun prototipe bernama Max bersama startup Tiongkok Fourier hanya dalam sekitar tiga bulan, lalu memperlihatkannya kepada sebagian karyawan pada akhir Agustus.",
+        "Max dilaporkan setinggi sekitar 1,5 meter, berbobot sekitar 48 kg, dan memakai chip Nvidia Jetson Thor. Meta dilaporkan menggarap versi keduanya, Max 2, sejak September dengan tangan baru dan sensor untuk tangga. Meta menyebut proyek ini riset internal dan tidak berencana menjualnya.",
+        "Reuters belum memverifikasi laporan ini, dan menurut sumber The Information belum ada tanggal rilis produknya. Menurutmu, kamu mau robot humanoid buatan Meta membantu pekerjaan di rumahmu?",
+        "Sumber: The Information (via Reuters, Engadget, TNW) / Foto: Fourier (ilustrasi GR-3), Wikimedia Commons\n\n#akalmesin #Robotika #Meta #RobotHumanoid #Fourier"
+      ]
+    }
+  ],
+  "savedAt": "2026-11-03T03:38:00.000Z",
+  "note": "Owner chat review (t112u: no Simpan; record final revision as edits JSON) + safe-edit round approved \"Yes\" (t110u); agent wrote Simpan-equivalent edits.json from current post.json (645a3c4). No headline field."
+}
