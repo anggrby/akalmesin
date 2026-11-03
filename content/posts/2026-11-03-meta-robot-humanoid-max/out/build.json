@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-03-meta-robot-humanoid-max",
+  "copyRevision": "0c2d18e9755cd9592d8234900d31568c40162a9d13229e8029d47565ab1a76f1",
+  "creditsRevision": "9cd61d83c0bf73602f71e53937dfaa0b6df3ef1e19a2b1edc0ac49fb13351671",
+  "designRevision": "5a9ace78f8c5bccffc3117a0bf488c911b01ebb7afd4cc2795eed8f71ab5d934",
+  "builtAt": "2026-11-03T02:35:39.048Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-03-meta-robot-humanoid-max/out/slides/01-main.html",
+      "png": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/01-01-main.png",
+      "pngHash": "a89ce1388d174563b13bfa02a5ce22ba3a7420863d0dd6fa5f8d84f78260f530",
+      "imageHash": "81f31a1a0d704f6803e857a29b4f3b33a7714d0d3763bcbdbf7ae8e0eda7da43",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 703,
+          "width": 1080,
+          "height": 647,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-max",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-03-meta-robot-humanoid-max/out/slides/02-max.html",
+      "png": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/02-02-max.png",
+      "pngHash": "5b391c85810aa02806dc5327e68e434b87d91b49d92b96f8f2663ce794245477",
+      "imageHash": "e8773eddb3cb82b3f54b7146cbef57478c62765214efcb954c87dc2e2c37d224",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-chip",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-03-meta-robot-humanoid-max/out/slides/03-chip.html",
+      "png": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/03-03-chip.png",
+      "pngHash": "1c5a884102cea262bce25dac2e2ab0af52d1fc19eab08a52289d92aff6eb7eca",
+      "imageHash": "9e9ad92b50b0283a43f874013f52311dba76c60b484fe3b290c418a2c03107c5",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-max2",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-03-meta-robot-humanoid-max/out/slides/04-max2.html",
+      "png": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/04-04-max2.png",
+      "pngHash": "2506ffe5dafc541358818211e9408a54e089b569a203d70e2cb0b206fc5a2a4e",
+      "imageHash": "071b1dc9d4ad2f1d86a8ff90a4ccd420346d9872950f2bd6a0ea9d621f5f932f",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 708,
+          "width": 1080,
+          "height": 642,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

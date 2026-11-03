@@ -1,0 +1,166 @@
+{
+  "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+  "category": "AI",
+  "title": "Agen AI suntikkan terapi gen ke otak tikus",
+  "format": "standard",
+  "formatReason": "Reel-only story (owner t107u); carousel copy holds the verified facts the reel cards and Notion export use. Main + three details: what the agent chose, the safeguards and model refusals, the result and caveats.",
+  "eventDate": "2026-10-28",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Agen AI suntikkan terapi",
+        "gen ke otak tikus"
+      ],
+      "summary": "Startup Exin Therapeutics mengklaim agen AI berbasis Claude memilih dan menyuntikkan terapi gen ke otak tikus hidup, meski efeknya pada kejang belum diketahui.",
+      "credit": "FOTO: RIG BEDAH EXIN / EXIN THERAPEUTICS",
+      "alt": "Rig bedah bermotor buatan Exin Therapeutics dengan mikroskop, lengan robot berwarna merah muda, dan layar kendali agen AI.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "exin-rig-main",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/OcanaSantero/status/2115442964574908902",
+        "originalURL": "https://pbs.twimg.com/media/HVtOKh7aIAAFGeA.jpg?name=orig",
+        "originalFile": "assets/originals/x-2115442964-rig-main.jpg",
+        "subject": "Exin's motorized stereotaxic surgery rig with cameras and the agent control screen (no animal visible)",
+        "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "process": {
+          "maxWidth": 1600,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "02-pilihan",
+      "layout": "detail1",
+      "paragraphs": [
+        "WIRED melaporkan agen ini diberi 19 pilihan terapi gen dalam spreadsheet, tikus model epilepsi, dan rig bedah bermotor dengan kamera. Tujuannya satu: mengurangi kejang. Agen itu memilih terapi, area otak, dan **titik suntiknya sendiri**, lalu mengendalikan lengan robot untuk menyuntikkan 250 nanoliter."
+      ],
+      "credit": "FOTO: RIG BEDAH BERMOTOR / EXIN THERAPEUTICS",
+      "alt": "Rig bedah bermotor berbasis Arduino dengan mikroskop, lampu, dan pompa suntik, terhubung ke layar kendali agen.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "exin-arduino-rig",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/OcanaSantero/status/2115442965464150135",
+        "originalURL": "https://pbs.twimg.com/media/HVtYeo9aEAAsWHT.jpg?name=orig",
+        "originalFile": "assets/originals/x-2115442965-arduino-rig.jpg",
+        "subject": "Exin's Arduino-based motorized surgery rig (crop removes the X carousel arrows)",
+        "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "process": {
+          "crop": [
+            235,
+            0,
+            750,
+            749
+          ],
+          "maxWidth": 1200
+        }
+      }
+    },
+    {
+      "id": "03-pengaman",
+      "layout": "detail2",
+      "paragraphs": [
+        "Manusia tetap terlibat. Dokter hewan membuka tengkorak tikus, memegang **tombol darurat** yang memutus daya motor, dan harus menyetujui setiap langkah yang tidak bisa dibatalkan. CEO Gabriel Ocana-Santero menulis Claude Opus 5.5 langsung menolak tugas ini, dan Opus 5 berhenti sebelum operasi sungguhan. Tim akhirnya memakai Claude Sonnet 5."
+      ],
+      "credit": "FOTO: TOMBOL DARURAT RIG / EXIN THERAPEUTICS",
+      "alt": "Tombol darurat merah bertuliskan STOP di samping layar kecil dan kabel rig bedah Exin.",
+      "imagePosition": "50% 45%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "exin-estop",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/OcanaSantero/status/2115442968874139867",
+        "originalURL": "https://pbs.twimg.com/media/HVtUT8vaYAAKWMW.jpg?name=orig",
+        "originalFile": "assets/originals/x-2115442968-safety-vet.jpg",
+        "subject": "Physical emergency-stop button of Exin's rig (cuts power to every motor)",
+        "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "process": {
+          "maxWidth": 1200
+        }
+      }
+    },
+    {
+      "id": "04-hasil",
+      "layout": "detail1",
+      "paragraphs": [
+        "Menurut WIRED, prosedurnya berlangsung sedikit lebih dari satu jam, lebih lama dari biasanya sekitar 45 menit. Tikusnya pulih dengan baik, tetapi **efeknya pada kejang belum diketahui**. Klaim ini baru diumumkan lewat X dan laporan teknisnya belum terbit. Anthropic tidak menanggapi permintaan komentar WIRED."
+      ],
+      "credit": "FOTO: TIKUS SETELAH OPERASI / EXIN THERAPEUTICS",
+      "alt": "Seekor tikus hitam berjalan di kandang kaca berisi serbuk kayu dan botol minum setelah operasi.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "exin-mouse-frame",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/OcanaSantero/status/2115442970530857372",
+        "originalURL": "https://video.twimg.com/amplify_video/2115380549229613056/vid/avc1/1280x720/FFQSJIr7w-G9JirB.mp4",
+        "originalFile": "assets/originals/x-2115442970-mouse-recovered-frame.jpg",
+        "subject": "Still frame (2.5 s) from Exin's video of the mouse moving in its cage after the procedure",
+        "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "process": {
+          "maxWidth": 1280
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Sebuah agen AI memilih sendiri terapi gen, menentukan titik di otak, lalu mengendalikan lengan robot untuk menyuntikkannya ke tikus hidup. WIRED melaporkan percobaan ini dijalankan startup Exin Therapeutics di San Francisco dengan model Claude Sonnet 5, setelah dua model Claude lain menolak.",
+    "Agen itu memilih dari 19 terapi untuk tikus model epilepsi dan menyuntikkan 250 nanoliter. Dokter hewan tetap membuka tengkorak, menyetujui setiap langkah penting, dan memegang tombol darurat. Prosedurnya berlangsung sedikit lebih dari satu jam.",
+    "Tikusnya pulih dengan baik, tetapi efeknya pada kejang belum diketahui dan laporan teknisnya belum terbit. Menurutmu, sejauh mana AI boleh dilepas di laboratorium biologi?",
+    "Sumber: WIRED, Tom's Hardware, X @OcanaSantero / Foto: Courtesy of Exin Therapeutics\n\n#akalmesin #AI #AgenAI #TerapiGen #Bioteknologi"
+  ],
+  "sources": [
+    {
+      "title": "WIRED — An AI Agent Injected Drugs Into a Live Mouse’s Brain (Emily Mullin)",
+      "url": "https://www.wired.com/story/an-ai-agent-did-brain-surgery-on-live-mouse/",
+      "published": "2026-10-31",
+      "supports": [
+        "Exin Therapeutics, San Francisco; CEO Gabriel Ocana Santero",
+        "19 options in a spreadsheet",
+        "vet did craniotomy; agent chose therapy, region, coordinates, controlled arms/injector",
+        "Opus 5.5 refused; switched to Sonnet 5",
+        "human approval, e-stop",
+        "a little over an hour vs ~45 min",
+        "mouse recovering; seizure results pending",
+        "Anthropic did not respond"
+      ]
+    },
+    {
+      "title": "Tom’s Hardware — AI agent used to perform controversial brain surgery on a mouse (Jowi Morales)",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/startup-uses-ai-agent-to-perform-controversial-brain-surgery-on-a-mouse-anthropic-sonnet-controlled-motorized-surgery-rig-ai-given-free-reign-to-treat-epilepsy-with-a-range-of-gene-therapy-vectors-after-opus-5-5-refused-to-conduct-biological-experiment",
+      "published": "2026-10-31",
+      "supports": [
+        "X thread 28 Oct 2026",
+        "coordinates from three papers",
+        "250 nL",
+        "vet gated irreversible steps, kill switch",
+        "Opus 5 dry run then refused live surgery"
+      ]
+    },
+    {
+      "title": "X — Gabriel Ocana-Santero thread",
+      "url": "https://x.com/OcanaSantero/status/2115442964574908902",
+      "published": "2026-10-28",
+      "supports": [
+        "19 vectors, epilepsy model, motorized rig with cameras, goal reduce seizures",
+        "Opus 5.5 refused; Opus 5 stopped at live surgery",
+        "human gates, validators, e-stop held by vet",
+        "technical report to come",
+        "photos and video"
+      ]
+    }
+  ]
+}

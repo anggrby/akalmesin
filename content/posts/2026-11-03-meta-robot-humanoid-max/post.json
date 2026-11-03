@@ -1,0 +1,170 @@
+{
+  "slug": "2026-11-03-meta-robot-humanoid-max",
+  "category": "ROBOTIKA",
+  "title": "Meta diam-diam bikin robot humanoid Max",
+  "format": "standard",
+  "formatReason": "Main + three details: what Max is (with an explicit not-Max photo note), the chip and Meta's aim, Max 2 and Meta's own statement. Everything is The Information's reporting, framed as dilaporkan.",
+  "eventDate": "2026-10-31",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Meta diam-diam bikin",
+        "robot humanoid Max"
+      ],
+      "summary": "The Information melaporkan Meta membangun prototipe robot humanoid bernama Max bersama startup Tiongkok Fourier, meski Meta menyebutnya sebatas riset internal.",
+      "credit": "FOTO: ILUSTRASI ROBOT FOURIER GR-3 / FOURIER",
+      "alt": "Ilustrasi: robot humanoid Fourier GR-3 berwarna krem menari bersama pengunjung di stan Fourier CES 2026; ini bukan robot Max milik Meta.",
+      "imagePosition": "30% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "fourier-gr3-ces-dance",
+        "kind": "news-photo",
+        "sourceURL": "https://www.prnewswire.com/news-releases/fourier-makes-ces-debut-with-gr-3-a-next-generation-care-focused-humanoid-robot-302654579.html",
+        "originalURL": "https://mma.prnewswire.com/media/2856122/9f1e8b0a6de0ab741c0e1afc788ac1c6.jpg?p=original",
+        "originalFile": "assets/originals/fourier-gr3-ces-dance.jpg",
+        "subject": "Fourier GR-3 dancing with a visitor at CES 2026 (illustration only; not Meta's Max)",
+        "supplier": "Fourier (press photo via PR Newswire)",
+        "license": "Fourier press photo distributed with its PR Newswire release (7 Jan 2026) for media use; editorial, credited to Fourier; no Creative Commons licence",
+        "process": {
+          "maxWidth": 1442
+        }
+      }
+    },
+    {
+      "id": "02-max",
+      "layout": "detail1",
+      "paragraphs": [
+        "Menurut The Information, Max dibuat bersama Fourier asal Shanghai **dalam sekitar tiga bulan**. Tingginya sekitar 1,5 meter dan beratnya sekitar 48 kg. Robot ini dilaporkan punya layar yang menampilkan ekspresi wajah, speaker, dan tangan lima jari untuk mengambil benda kecil. Foto di slide ini adalah robot Fourier GR-3, bukan Max."
+      ],
+      "credit": "FOTO: ILUSTRASI ROBOT FOURIER GR-3 / FOURIER",
+      "alt": "Ilustrasi: robot Fourier GR-3 bermain catur dengan pengunjung CES 2026; bukan robot Max.",
+      "imagePosition": "60% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "fourier-gr3-ces-chess",
+        "kind": "news-photo",
+        "sourceURL": "https://www.prnewswire.com/news-releases/fourier-makes-ces-debut-with-gr-3-a-next-generation-care-focused-humanoid-robot-302654579.html",
+        "originalURL": "https://mma.prnewswire.com/media/2856123/IMG_9108.jpg?p=original",
+        "originalFile": "assets/originals/fourier-gr3-ces-chess.jpg",
+        "subject": "Visitors playing a chess game with Fourier GR-3 at CES 2026 (illustration only; not Max)",
+        "supplier": "Fourier (press photo via PR Newswire)",
+        "license": "Fourier press photo distributed with its PR Newswire release (7 Jan 2026) for media use; editorial, credited to Fourier; no Creative Commons licence",
+        "process": {
+          "maxWidth": 1623
+        }
+      }
+    },
+    {
+      "id": "03-chip",
+      "layout": "detail2",
+      "paragraphs": [
+        "Otaknya dilaporkan berupa chip **Jetson Thor** buatan Nvidia. Meta ingin robot seperti ini menjadi tubuh fisik bagi Muse, agen AI-nya, dan kelak membantu pekerjaan rumah. Li-Chen Miller, wakil presiden produk robotika Meta, disebut menghabiskan hampir dua bulan di pabrik Fourier di Shanghai."
+      ],
+      "credit": "FOTO: ILUSTRASI NVIDIA JETSON ORIN NX / COMMONS",
+      "alt": "Ilustrasi: modul Nvidia Jetson Orin NX terpasang di papan sirkuit di Computex 2025; bukan Jetson Thor.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "commons-jetson-orin-nx",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Nvidia_Jetson_Orin_NX_on_a_motherboard_Computex_2025.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/8/89/Nvidia_Jetson_Orin_NX_on_a_motherboard_Computex_2025.jpg",
+        "originalFile": "assets/originals/jetson-orin-nx.jpg",
+        "subject": "Nvidia Jetson Orin NX module on a carrier board, Computex 2025 (illustration of the Jetson family; not Jetson Thor)",
+        "supplier": "4300streetcar / Wikimedia Commons",
+        "license": "CC BY 4.0",
+        "process": {
+          "crop": [
+            1200,
+            600,
+            6000,
+            4500
+          ],
+          "maxWidth": 1600
+        }
+      }
+    },
+    {
+      "id": "04-max2",
+      "layout": "detail1",
+      "paragraphs": [
+        "Versi kedua, Max 2, dilaporkan digarap sejak September dengan torso dan tangan baru, proyektor, serta sensor tambahan untuk **menghadapi tangga**. Belum ada tanggal rilis. Kepada The Information, Meta menyatakan kerja sama ini untuk riset internal dan tidak berencana menjual unitnya. Reuters belum bisa memverifikasi laporan ini."
+      ],
+      "credit": "FOTO: KANTOR PUSAT META / COMMONS",
+      "alt": "Papan logo Meta di depan kantor pusat Meta Platforms di Menlo Park, California, di bawah langit berawan.",
+      "imagePosition": "75% 60%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "commons-meta-hq",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Meta_Platforms_Headquarters_Menlo_Park_California.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Meta_Platforms_Headquarters_Menlo_Park_California.jpg",
+        "originalFile": "assets/originals/meta-hq-menlo-park.jpg",
+        "subject": "Meta Platforms headquarters sign, Menlo Park, California (Mar 2022)",
+        "supplier": "LPS.1 / Wikimedia Commons",
+        "license": "CC0 1.0",
+        "process": {
+          "crop": [
+            1800,
+            1500,
+            2712,
+            1508
+          ],
+          "maxWidth": 1600
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Meta ternyata sudah punya robot humanoid sendiri. The Information melaporkan prototipe bernama Max itu dibangun bersama startup Tiongkok Fourier hanya dalam sekitar tiga bulan, lalu diperlihatkan kepada sebagian karyawan Meta pada akhir Agustus.",
+    "Max dilaporkan setinggi sekitar 1,5 meter, berbobot sekitar 48 kg, dan memakai chip Nvidia Jetson Thor. Versi keduanya, Max 2, digarap sejak September dengan tangan baru dan sensor untuk menghadapi tangga. Meta menyebut proyek ini riset internal dan tidak berencana menjualnya.",
+    "Laporan ini belum diverifikasi Reuters, dan menurut sumber The Information belum ada tanggal rilis produknya. Menurutmu, kamu mau robot humanoid buatan Meta membantu pekerjaan di rumahmu?",
+    "Sumber: The Information (via Reuters, Engadget, TNW) / Foto: Fourier (ilustrasi GR-3), Wikimedia Commons\n\n#akalmesin #Robotika #Meta #RobotHumanoid #Fourier"
+  ],
+  "sources": [
+    {
+      "title": "Reuters (via Investing.com) — Meta builds humanoid robot with Chinese startup Fourier, The Information says",
+      "url": "https://www.investing.com/news/stock-market-news/meta-builds-humanoid-robot-with-chinese-startup-fourier-the-information-says-4989297",
+      "published": "2026-10-31",
+      "supports": [
+        "prototype with Fourier",
+        "second version in work",
+        "Reuters could not immediately verify"
+      ]
+    },
+    {
+      "title": "Engadget — Meta reportedly built a humanoid robot prototype that can do household chores (Jackson Chen)",
+      "url": "https://www.engadget.com/2303434/meta-reportedly-built-a-humanoid-robot-prototype-that-can-do-household-chores/",
+      "published": "2026-11-01",
+      "supports": [
+        "codename Max",
+        "~3 months with Fourier",
+        "~106 lb, ~1.5 m",
+        "face display, speaker, hands for small objects",
+        "Jetson Thor",
+        "no launch date",
+        "Max 2 since September: torso, hands, projector, sensors for stairs",
+        "household chores aim"
+      ]
+    },
+    {
+      "title": "The Next Web — Meta built a humanoid robot with China’s Fourier, The Information reports",
+      "url": "https://thenextweb.com/news/meta-humanoid-robot-fourier-max",
+      "published": "2026-11-01",
+      "supports": [
+        "~48 kg",
+        "five-fingered hands",
+        "Meta: internal research, no plans to sell",
+        "Li-Chen Miller ~two months at Fourier Shanghai factory",
+        "shown to staff at late-August summit",
+        "humanoids as physical form for Muse"
+      ]
+    }
+  ]
+}

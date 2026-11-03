@@ -158,7 +158,8 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
         if (probeDur(src) < Number(D) + (beat.videoStart || 0)) throw Error(`${m.file} too short for ${beat.id}`);
       }
     } else if (m.kind === 'photo') {
-      const pan = 60,
+      // Linear horizontal slide. media.pan (px each side, default 60) lets a reel move faster (owner t107u).
+      const pan = m.pan ?? 60,
         s = Math.max((CLIP.h * 1.08) / h, (CLIP.w + 2 * pan) / w);
       const W = Math.round((w * s) / 2) * 2,
         H = Math.round((h * s) / 2) * 2;
@@ -234,7 +235,7 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
     '-i',
     path.join(ROOT, mu.file),
     '-af',
-    `loudnorm=I=${mu.lufs ?? -18}:TP=-1.5:LRA=11,afade=t=in:d=${fin},afade=t=out:st=${(full - fout).toFixed(3)}:d=${fout},aresample=48000`,
+    `loudnorm=I=${mu.lufs ?? -18}:TP=-1.5:LRA=11${mu.gainDb ? `,volume=${mu.gainDb}dB` : ''},afade=t=in:d=${fin},afade=t=out:st=${(full - fout).toFixed(3)}:d=${fout},aresample=48000`,
     '-ac',
     '2',
     wav
@@ -374,9 +375,15 @@ export function checkCard({spec, man, gate, inside, hit, paths, mp4, dur, carous
   const unused = Object.keys(spec.media).filter(k => !spec.beats.some(b => b.media === k));
   const prov = fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8');
   const appleOK = m => m.rights === 'apple-t89u' && /Apple/.test(m.tag) && /t89u/.test(prov) && /LEGAL_NOTICE/.test(prov) && /(takedown|strike)/i.test(prov);
-  const noLic = Object.entries(spec.media).filter(([, m]) => !appleOK(m) && (!/(CC BY|CC0|Domain publik)/.test(m.tag) || /apple\.com/.test(m.sourceURL || '')));
+  // Owner-approved courtesy media (t107u): company-supplied footage credited on screen as "Courtesy of …",
+  // with the owner decision id and the takedown/strike risk written in provenance.
+  const courtesyOK = m =>
+    m.rights === 'owner-courtesy' && /Courtesy of /.test(m.tag) && !!m.decision && prov.includes(m.decision) && /(takedown|strike)/i.test(prov);
+  const noLic = Object.entries(spec.media).filter(
+    ([, m]) => !appleOK(m) && !courtesyOK(m) && (!/(CC BY|CC0|Domain publik)/.test(m.tag) || /apple\.com/.test(m.sourceURL || ''))
+  );
   gate(
-    'every media item used and licensed (CC/PD, or Apple media under owner decision t89u with terms + risk in provenance)',
+    'every media item used and licensed (CC/PD, Apple media under t89u, or owner-approved courtesy media; terms + risk in provenance)',
     !unused.length && !noLic.length,
     [...unused, ...noLic.map(([k]) => k)].join(', ') || 'ok'
   );

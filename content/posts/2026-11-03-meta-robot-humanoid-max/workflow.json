@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-03-meta-robot-humanoid-max",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "bde152d514456ac89fa163ae287e5bb3fb1f291d71deff21703317a6c875cb4e",
+      "at": "2026-11-03T02:32:47.302Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "fcfaf4f6ad77f148b37d25ddafb9a79d76173b8c246f213ed0e68a7760f6389d",
+      "at": "2026-11-03T02:33:13.255Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "8c1cd04dc203bf31e56a2969924ffdcd96015bfaeebf40d8509013060b99ab42",
+      "at": "2026-11-03T02:33:31.038Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "5a9ace78f8c5bccffc3117a0bf488c911b01ebb7afd4cc2795eed8f71ab5d934",
+      "at": "2026-11-03T02:35:39.048Z"
+    }
+  ]
+}

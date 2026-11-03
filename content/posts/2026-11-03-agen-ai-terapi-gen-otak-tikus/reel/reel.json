@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "kind": "reel",
+  "layout": "card",
+  "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+  "title": "Agen AI suntikkan terapi gen ke otak tikus",
+  "mechanism": "Card format (owner t107u): hook on the agent choosing and injecting, the setup numbers, the human safeguards + Claude refusals, the unknown result + question",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "minSeconds": 15,
+    "maxSeconds": 26
+  },
+  "voice": {
+    "engine": "none"
+  },
+  "mood": "investigative-tense",
+  "footage": "Exin Therapeutics photos and video from the CEO's X thread, credited 'Courtesy of Exin Therapeutics' by owner decision t107u; non-graphic frames only; see reel/PROVENANCE.md.",
+  "mediaFilter": "none",
+  "media": {
+    "rig": {
+      "kind": "photo",
+      "file": "assets/originals/x-2115442964-rig-main.jpg",
+      "location": "Rig bedah Exin",
+      "tag": "Foto: Courtesy of Exin Therapeutics",
+      "sourceURL": "https://pbs.twimg.com/media/HVtOKh7aIAAFGeA.jpg?name=orig",
+      "rights": "owner-courtesy",
+      "decision": "t107u",
+      "filter": "none",
+      "pan": 150
+    },
+    "arm": {
+      "kind": "photo",
+      "file": "reel/media/x-2115442965-arduino-rig-crop.jpg",
+      "location": "Lengan robot rig",
+      "tag": "Foto: Courtesy of Exin Therapeutics",
+      "sourceURL": "https://pbs.twimg.com/media/HVtYeo9aEAAsWHT.jpg?name=orig",
+      "rights": "owner-courtesy",
+      "decision": "t107u",
+      "filter": "none",
+      "pan": 150
+    },
+    "stop": {
+      "kind": "photo",
+      "file": "assets/originals/x-2115442968-safety-vet.jpg",
+      "location": "Tombol darurat rig",
+      "tag": "Foto: Courtesy of Exin Therapeutics",
+      "sourceURL": "https://pbs.twimg.com/media/HVtUT8vaYAAKWMW.jpg?name=orig",
+      "rights": "owner-courtesy",
+      "decision": "t107u",
+      "filter": "none",
+      "pan": 150
+    },
+    "mouse": {
+      "kind": "video",
+      "file": "reel/media/x-2115442970-mouse-recovered.mp4",
+      "location": "Tikus setelah operasi",
+      "tag": "Video: Courtesy of Exin Therapeutics",
+      "sourceURL": "https://video.twimg.com/amplify_video/2115380549229613056/vid/avc1/1280x720/FFQSJIr7w-G9JirB.mp4",
+      "rights": "owner-courtesy",
+      "decision": "t107u",
+      "filter": "none"
+    }
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "seconds": 5.3,
+      "media": "rig",
+      "source": "Sumber: WIRED, X @OcanaSantero",
+      "onScreen": [
+        {
+          "text": "Agen AI memilih terapi gen sendiri,",
+          "fact": "memilih terapi, area otak, dan titik suntiknya sendiri"
+        },
+        {
+          "text": "lalu menyuntikkannya ke otak tikus hidup.",
+          "fact": "otak tikus hidup"
+        }
+      ]
+    },
+    {
+      "id": "fakta",
+      "seconds": 5,
+      "media": "arm",
+      "source": "Sumber: WIRED, Tom's Hardware",
+      "onScreen": [
+        {
+          "text": "19 pilihan terapi, rig bedah bermotor.",
+          "fact": "19 pilihan terapi gen"
+        },
+        {
+          "text": "Agen itu menyuntikkan 250 nanoliter.",
+          "fact": "menyuntikkan 250 nanoliter"
+        }
+      ]
+    },
+    {
+      "id": "pengaman",
+      "seconds": 5,
+      "media": "stop",
+      "source": "Sumber: WIRED, X @OcanaSantero",
+      "onScreen": [
+        {
+          "text": "Dokter hewan memegang tombol darurat.",
+          "fact": "tombol darurat yang memutus daya motor"
+        },
+        {
+          "text": "Claude Opus 5.5 menolak tugas ini.",
+          "fact": "Claude Opus 5.5 langsung menolak tugas ini"
+        }
+      ]
+    },
+    {
+      "id": "tanya",
+      "seconds": 5.3,
+      "media": "mouse",
+      "videoStart": 0,
+      "onScreen": [
+        {
+          "text": "Efek pada kejang belum diketahui.",
+          "fact": "pada kejang belum diketahui"
+        },
+        {
+          "text": "Sejauh mana AI boleh dilepas di laboratorium?",
+          "fact": "AI boleh dilepas di laboratorium"
+        }
+      ]
+    }
+  ],
+  "cardDate": "28 Okt 2026",
+  "publishAs": "reel-only",
+  "musicOverrides": {
+    "gainDb": -2.5
+  }
+}

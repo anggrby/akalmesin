@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+  "copyRevision": "03e3f0453a4c0e5085484ef36e9514d4f1061ca3f843a0380466bfc9fa505350",
+  "creditsRevision": "002beb566718a7210346356ca70cfe4f1780c0456aa814a8232fdb91c3987ce4",
+  "designRevision": "b4598ba11cbef5dfa65084fec331628b4a60bf8fccb3cab048f746862fe868fb",
+  "builtAt": "2026-11-03T02:25:10.357Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/slides/01-main.html",
+      "png": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/01-01-main.png",
+      "pngHash": "04d78f35c1c4a6714b2c6a7a2a53e354e322fe1a33e24e4dc5fbf65ad1cb01aa",
+      "imageHash": "b9f20da8f8f8aeb74260df053a1a48ea73daab83b135dea3457f7ef999e8d504",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-pilihan",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/slides/02-pilihan.html",
+      "png": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/02-02-pilihan.png",
+      "pngHash": "85cf45818dde459883ef0bb28a0faaf6a19a0c640f4c4da6cf3ab59dba4823f8",
+      "imageHash": "f6d39bd21cc27e2c11f53b6b78d459fffd800791e9ed13d60eed3af20186b8b3",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-pengaman",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/slides/03-pengaman.html",
+      "png": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/03-03-pengaman.png",
+      "pngHash": "a8f48d124a5f090f4d31d57384ee442e52dda5966fcd399292d15c7d53da479d",
+      "imageHash": "9301a81b516ad00786de11d2a861d56785e670fdaf12ab83b4f1d61fd7eb3772",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 708,
+          "width": 1080,
+          "height": 642,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-hasil",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/slides/04-hasil.html",
+      "png": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/04-04-hasil.png",
+      "pngHash": "01a0975777b902875e623b47c41d0e0d05fa0f0aa967ccab41b9895e0434ce88",
+      "imageHash": "a4fbee01811468606353bc96c78769b739e60d118b21643bfbdacaa420655c81",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

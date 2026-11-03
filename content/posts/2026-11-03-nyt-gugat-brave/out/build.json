@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-03-nyt-gugat-brave",
+  "copyRevision": "fa6dd2f7fc225fac65486165a72404be8e047bf8bba836561bfb8673ac3f3f8a",
+  "creditsRevision": "bf58dca9c3e63a28f6651f5d60468a9ce9fafff3555c0874d185f97fe781757f",
+  "designRevision": "744531414f332035144385d5c35be5df00e4af2c3cca489832c19ce4d0178fd7",
+  "builtAt": "2026-11-03T02:35:59.543Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-03-nyt-gugat-brave/out/slides/01-main.html",
+      "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/01-01-main.png",
+      "pngHash": "ed1f381ed425a50647bcbb5d04b38d85b462c275503af7f428dad328baba9e2a",
+      "imageHash": "b6788af8ab739c2abcd4d1f92cdc81e187fce53f6c440b534abe79809d685ea5",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-indeks",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-03-nyt-gugat-brave/out/slides/02-indeks.html",
+      "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/02-02-indeks.png",
+      "pngHash": "105d3d17aa5b39bf9b01e098c8b1bb904479957c1fcbde59065fa8b694f7311c",
+      "imageHash": "ff0a7f3bc69f44941e6d42b08ca5466c781c7244bf61524396a918e4c71f92ed",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 588,
+          "width": 1080,
+          "height": 762,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-pelanggan",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-03-nyt-gugat-brave/out/slides/03-pelanggan.html",
+      "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/03-03-pelanggan.png",
+      "pngHash": "a8b074a37fbbb4cc15a2b16fdc682ef8a542fc68224e07b7b70a705eeabbc3bd",
+      "imageHash": "9bf1e01b4326bfe9b974537a2d2410a7129e2bb954933c46797d566e6a7f7f5b",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 588,
+          "width": 1080,
+          "height": 762,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-paywall",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-03-nyt-gugat-brave/out/slides/04-paywall.html",
+      "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/04-04-paywall.png",
+      "pngHash": "9a6dfd8520e34f65afad6f81d7b28bd5b06de5b29e4aef624660ee18a2a90e04",
+      "imageHash": "cb1e6c6dce0c3d2dc89594a16745fc9169ed5be64b6a4621be53517ea91f7b5d",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-03-nyt-gugat-brave",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "c2738b8332885d91fa0f1d68b5cb29e5a4f9c48d57f2f7d3cda4e2daefe7adf0",
+      "at": "2026-11-03T02:35:47.160Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "744531414f332035144385d5c35be5df00e4af2c3cca489832c19ce4d0178fd7",
+      "at": "2026-11-03T02:35:59.543Z"
+    }
+  ]
+}

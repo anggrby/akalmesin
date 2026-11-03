@@ -1,0 +1,146 @@
+{
+  "mp4": "reel.mp4",
+  "passed": true,
+  "results": [
+    {
+      "name": "duration",
+      "ok": true,
+      "detail": "22.60 s"
+    },
+    {
+      "name": "resolution",
+      "ok": true,
+      "detail": "1080x1920"
+    },
+    {
+      "name": "fps",
+      "ok": true,
+      "detail": "30/1"
+    },
+    {
+      "name": "codecs",
+      "ok": true,
+      "detail": "h264+aac"
+    },
+    {
+      "name": "card text fits safe area (no overflow, <= 4 lines)",
+      "ok": true,
+      "detail": "hook:2 lines, fakta:2 lines, pengaman:2 lines, tanya:2 lines"
+    },
+    {
+      "name": "card above clip, no overlap",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "clip within frame and safe area",
+      "ok": true,
+      "detail": "{\"x\":60,\"y\":690,\"w\":900,\"h\":676}"
+    },
+    {
+      "name": "clip ~4:3",
+      "ok": true,
+      "detail": "1.331"
+    },
+    {
+      "name": "card facts in verified carousel copy",
+      "ok": true,
+      "detail": "all facts found"
+    },
+    {
+      "name": "card numbers in carousel copy",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "media credit under clip (every beat)",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "every media item used and licensed (CC/PD, Apple media under t89u, or owner-approved courtesy media; terms + risk in provenance)",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "provenance SHA-256 + source URL for every media file",
+      "ok": true,
+      "detail": "all listed"
+    },
+    {
+      "name": "no-filter (media as-is)",
+      "ok": true,
+      "detail": "only scale, crop, pad, fps, setsar, format"
+    },
+    {
+      "name": "Apple video unaltered (contain-fit, no crop/zoom/pan/colour); Apple stills: smooth Ken Burns <=115%, no edges (t90u)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Apple credit shown (\"Video/Foto: Apple\") on every Apple clip",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "tweet card: round logo avatar only image, no tick/platform logo",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "no bottom text mark in card layout (owner t90u)",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "handle-to-copy gap airy (>= 44 px)",
+      "ok": true,
+      "detail": "48, 48, 48, 48 px"
+    },
+    {
+      "name": "captions only where set, in safe area, not over card",
+      "ok": true,
+      "detail": "0 beats with caption"
+    },
+    {
+      "name": "music mood set, track present + provenance hash",
+      "ok": true,
+      "detail": "investigative-tense → scripts/reel/music/investigative-tense_komiku-tension_48s.m4a"
+    },
+    {
+      "name": "no AI narration",
+      "ok": true,
+      "detail": "voice.engine=none"
+    },
+    {
+      "name": "music loudness sane (-24..-14 LUFS)",
+      "ok": true,
+      "detail": "-21.4 LUFS"
+    },
+    {
+      "name": "no clipping (true peak <= -1 dBTP)",
+      "ok": true,
+      "detail": "-3.4 dBTP"
+    },
+    {
+      "name": "card reading time <= 15 chars/s",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "name": "outro = last 2.0 s",
+      "ok": true,
+      "detail": "20.60–22.60 s"
+    },
+    {
+      "name": "outro text",
+      "ok": true,
+      "detail": "\"Ikuti @akalmesin\" / \"Bagikan ke temanmu\""
+    },
+    {
+      "name": "hook card at 0 s",
+      "ok": true,
+      "detail": "Agen AI memilih terapi gen sendiri, lalu menyuntikkannya ke otak tikus hidup."
+    }
+  ]
+}

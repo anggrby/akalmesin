@@ -1,0 +1,172 @@
+{
+  "slug": "2026-11-03-nyt-gugat-brave",
+  "category": "AI",
+  "title": "New York Times gugat browser Brave soal AI",
+  "format": "standard",
+  "formatReason": "Main + three details: the index and unnamed crawler, the AI customers and the 'fence' framing, paywall blocker + other papers + Brave's (non-)response. All allegations; no quote slide (no key quoted person with own photo).",
+  "eventDate": "2026-11-02",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "NYT gugat browser",
+        "Brave soal AI"
+      ],
+      "summary": "The New York Times menuduh Brave menyalin artikelnya tanpa izin dan menjual aksesnya ke perusahaan AI, tuduhan yang belum diuji di pengadilan.",
+      "credit": "FOTO: GEDUNG NEW YORK TIMES / COMMONS",
+      "alt": "Fasad Gedung The New York Times di Manhattan dengan logo koran itu, dilihat dari atas, dengan deretan taksi kuning di jalan.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "commons-nyt-building-2012",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:NewYork_Times_building_1140917.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/0/0e/NewYork_Times_building_1140917.jpg",
+        "originalFile": "assets/originals/nyt-building-2012.jpg",
+        "subject": "The New York Times Building, Manhattan, with the newspaper's wordmark (May 2012)",
+        "supplier": "Ermell / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "maxWidth": 1600,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "02-indeks",
+      "layout": "detail1",
+      "paragraphs": [
+        "Dalam gugatan di pengadilan federal Manhattan, The Times menuduh Brave membangun indeks lebih dari 30 miliar halaman web dengan crawler yang namanya tidak pernah diungkap. Akibatnya, penerbit **tidak bisa memblokirnya**. Akses ke indeks itu lalu dijual lewat Brave Search API."
+      ],
+      "credit": "FOTO: HALAMAN SAMBUTAN BRAVE / COMMONS",
+      "alt": "Tangkapan layar halaman sambutan browser Brave dengan logo singa oranye dan tulisan Brave the new Internet.",
+      "imagePosition": "50% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "commons-brave-welcome",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Brave_Browser_Welcome_Page.png",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/8/83/Brave_Browser_Welcome_Page.png",
+        "originalFile": "assets/originals/brave-welcome-page.png",
+        "subject": "Brave browser welcome page screenshot (Jan 2021)",
+        "supplier": "Hidden Lemon / Wikimedia Commons",
+        "license": "CC0 1.0",
+        "process": {
+          "crop": [
+            700,
+            100,
+            1480,
+            1100
+          ],
+          "maxWidth": 1480,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "03-pelanggan",
+      "layout": "detail2",
+      "paragraphs": [
+        "Gugatan itu menyebut lima pelanggan AI Brave: Anthropic, Perplexity, Mistral, xAI, dan Cohere, meski mereka tidak ikut digugat. The Times juga menyoroti Ask Brave yang menjawab pertanyaan dengan isi artikel, dan menyamakan Brave dengan **penadah konten curian**."
+      ],
+      "credit": "FOTO: BROWSER BRAVE DI WINDOWS 11 / COMMONS",
+      "alt": "Tangkapan layar browser Brave di Windows 11 yang membuka halaman depan Wikipedia.",
+      "imagePosition": "50% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "commons-brave-windows-11",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Brave_On_Windows_11.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Brave_On_Windows_11.jpg",
+        "originalFile": "assets/originals/brave-windows-11.jpg",
+        "subject": "Brave browser running on Windows 11, showing the Wikipedia portal (Nov 2021)",
+        "supplier": "Justauserboy / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "crop": [
+            0,
+            0,
+            1400,
+            1020
+          ],
+          "maxWidth": 1400,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "04-paywall",
+      "layout": "detail1",
+      "paragraphs": [
+        "Fitur \"Paywall blocker\" di browser Brave juga digugat karena dipromosikan untuk **menembus paywall**. Di hari yang sama, Daily News, Chicago Tribune, dan Orlando Sentinel mengajukan gugatan serupa. The Times meminta ganti rugi dan perintah pengadilan, sementara Brave belum menanggapi permintaan komentar TechCrunch."
+      ],
+      "credit": "FOTO: GEDUNG NEW YORK TIMES / COMMONS",
+      "alt": "Gedung The New York Times di Manhattan saat senja, menjulang di antara gedung-gedung lain.",
+      "imagePosition": "50% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-03",
+        "treatment": "blue-ink",
+        "id": "commons-nyt-building-sunset",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:The_New_York_Times_Building_at_sunset,_2021-09-30.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/a/a9/The_New_York_Times_Building_at_sunset%2C_2021-09-30.jpg",
+        "originalFile": "assets/originals/nyt-building-sunset.jpg",
+        "subject": "The New York Times Building at sunset (30 Sep 2021)",
+        "supplier": "Jdforrester / Wikimedia Commons",
+        "license": "CC BY 4.0",
+        "process": {
+          "maxWidth": 1400,
+          "minTone": 0.3
+        }
+      }
+    }
+  ],
+  "caption": [
+    "The New York Times menggugat Brave, browser yang dikenal karena fitur privasinya. Dalam gugatan yang diajukan Senin, 2 November 2026, The Times menuduh Brave menyalin artikelnya tanpa izin lalu menjual akses konten itu ke berbagai perusahaan AI.",
+    "Menurut gugatan, akses itu dijual lewat Brave Search API ke pelanggan seperti Anthropic, Perplexity, Mistral, xAI, dan Cohere. Browser Brave juga dituduh punya fitur yang menembus paywall. Daily News, Chicago Tribune, dan Orlando Sentinel mengajukan gugatan serupa.",
+    "Semua ini masih tuduhan yang belum diuji di pengadilan, dan Brave belum menanggapi. Menurutmu, mesin pencari boleh menjual isi berita ke perusahaan AI tanpa izin penerbitnya?",
+    "Sumber: Gugatan The New York Times, TechCrunch, The Verge / Foto: Wikimedia Commons\n\n#akalmesin #AI #Brave #NewYorkTimes #HakCipta"
+  ],
+  "sources": [
+    {
+      "title": "The New York Times Co. v. Brave Software, complaint, S.D.N.Y. 1:26-cv-09549 (filed 2 Nov 2026)",
+      "url": "https://nytco-assets.nytimes.com/2026/11/new-york-times-brave-complaint-11-2-26.pdf",
+      "published": "2026-11-02",
+      "supports": [
+        "Brave Index >30B pages",
+        "crawler never named",
+        "Search API sold to GenAI companies incl. Anthropic, Perplexity, Mistral, xAI, Cohere",
+        "Ask Brave",
+        "Paywall blocker promoted as 'Bypass Paywalls'",
+        "ad blocking + own ads",
+        "statutory/actual damages, injunctive relief, jury trial"
+      ]
+    },
+    {
+      "title": "TechCrunch — New York Times and other outlets sue web browser Brave over alleged content scraping (Rebecca Bellan)",
+      "url": "https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/",
+      "published": "2026-11-02",
+      "supports": [
+        "filed Monday in Manhattan federal court",
+        "Daily News, Chicago Tribune, Orlando Sentinel similar suit",
+        "'burglar' / AI 'fence' quote",
+        "injunction and damages",
+        "Brave did not immediately respond"
+      ]
+    },
+    {
+      "title": "The Verge — The New York Times sues Brave web browser for AI scraping and bypassing paywalls",
+      "url": "https://www.theverge.com/tech/1024588/brave-lawsuit-ai-scraping-new-york-times",
+      "published": "2026-11-02",
+      "supports": [
+        "second suit by Daily News, Chicago Tribune, Orlando Sentinel",
+        "Brave did not respond",
+        "Perplexity spokesperson reaction (not used)"
+      ]
+    }
+  ]
+}
