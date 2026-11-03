@@ -54,6 +54,10 @@ npm run format:check               # Prettier; npm run format fixes everything
 
 To use a Chrome you already have, set `AKALMESIN_CHROME_PATH`, for example `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Nothing else is machine-specific: every path resolves from the repo root.
 
+## Cursor Cloud specific instructions
+
+Cloud agents install from [`.cursor/environment.json`](.cursor/environment.json), which runs [`.cursor/install.sh`](.cursor/install.sh): `npm ci`, the Playwright Chromium build the renderer expects, and that browser’s system libraries. After install, `npm run doctor` and `npm test` are the checks. `NOTION_UPLOAD_TOKEN` is only required for `npm run export`.
+
 ## Layout
 
 `brand/` covers voice, design, tokens (`tokens.json`, the single source), fonts, logos, the policy numbers and the Terra example. `templates/` holds `copy.md` plus the HTML slide, CSS and editor. `scripts/` has one file per command, plus `core.mjs` (shared), `quality.mjs` (editorial checks) and `blue-ink.mjs` (the treatment). `content/posts/DATE-slug/` holds `post.json`, `sources.md`, `workflow.json`, `edits.log.md`, `edits/` (his Simpan files), `assets/{originals,processed,PROVENANCE.md}` and `out/` (generated; only build/check/manifest JSON is tracked). `research/news/` holds the shortlists.

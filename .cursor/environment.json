@@ -1,0 +1,4 @@
+{
+  "name": "akalmesin",
+  "install": "bash .cursor/install.sh"
+}
