@@ -37,7 +37,7 @@
       "id": "02-max",
       "layout": "detail1",
       "paragraphs": [
-        "Menurut The Information, Max dibuat bersama Fourier asal Shanghai **dalam sekitar tiga bulan**. Tingginya sekitar 1,5 meter dan beratnya sekitar 48 kg. Robot ini dilaporkan punya layar yang menampilkan ekspresi wajah, speaker, dan tangan lima jari untuk mengambil benda kecil. Foto di slide ini adalah robot Fourier GR-3, bukan Max."
+        "The Information melaporkan Meta membuat Max bersama Fourier asal Shanghai **dalam sekitar tiga bulan**. Tingginya sekitar 1,5 meter dan beratnya sekitar 48 kg. Robot ini dilaporkan punya layar yang menampilkan ekspresi wajah, speaker, dan tangan lima jari untuk mengambil benda kecil."
       ],
       "credit": "FOTO: ILUSTRASI ROBOT FOURIER GR-3 / FOURIER",
       "alt": "Ilustrasi: robot Fourier GR-3 bermain catur dengan pengunjung CES 2026; bukan robot Max.",
@@ -62,7 +62,7 @@
       "id": "03-chip",
       "layout": "detail2",
       "paragraphs": [
-        "Otaknya dilaporkan berupa chip **Jetson Thor** buatan Nvidia. Meta ingin robot seperti ini menjadi tubuh fisik bagi Muse, agen AI-nya, dan kelak membantu pekerjaan rumah. Li-Chen Miller, wakil presiden produk robotika Meta, disebut menghabiskan hampir dua bulan di pabrik Fourier di Shanghai."
+        "Otaknya dilaporkan berupa chip **Jetson Thor** buatan Nvidia. Meta ingin robot seperti ini menjadi wujud fisik bagi Muse, agen AI-nya, dan kelak membantu pekerjaan rumah. Menurut laporan itu, Li-Chen Miller, wakil presiden produk robotika Meta, menghabiskan hampir dua bulan di pabrik Fourier di Shanghai."
       ],
       "credit": "FOTO: ILUSTRASI NVIDIA JETSON ORIN NX / COMMONS",
       "alt": "Ilustrasi: modul Nvidia Jetson Orin NX terpasang di papan sirkuit di Computex 2025; bukan Jetson Thor.",
@@ -93,7 +93,7 @@
       "id": "04-max2",
       "layout": "detail1",
       "paragraphs": [
-        "Versi kedua, Max 2, dilaporkan digarap sejak September dengan torso dan tangan baru, proyektor, serta sensor tambahan untuk **menghadapi tangga**. Belum ada tanggal rilis. Kepada The Information, Meta menyatakan kerja sama ini untuk riset internal dan tidak berencana menjual unitnya. Reuters belum bisa memverifikasi laporan ini."
+        "Meta dilaporkan menggarap versi kedua, Max 2, sejak September dengan torso dan tangan baru, proyektor, serta **sensor tambahan untuk tangga**. Belum ada tanggal rilis. Kepada The Information, Meta menyatakan kerja sama ini untuk riset internal dan tidak berencana menjual unitnya. Reuters belum bisa memverifikasi laporan ini."
       ],
       "credit": "FOTO: KANTOR PUSAT META / COMMONS",
       "alt": "Papan logo Meta di depan kantor pusat Meta Platforms di Menlo Park, California, di bawah langit berawan.",
@@ -122,9 +122,9 @@
     }
   ],
   "caption": [
-    "Meta ternyata sudah punya robot humanoid sendiri. The Information melaporkan prototipe bernama Max itu dibangun bersama startup Tiongkok Fourier hanya dalam sekitar tiga bulan, lalu diperlihatkan kepada sebagian karyawan Meta pada akhir Agustus.",
-    "Max dilaporkan setinggi sekitar 1,5 meter, berbobot sekitar 48 kg, dan memakai chip Nvidia Jetson Thor. Versi keduanya, Max 2, digarap sejak September dengan tangan baru dan sensor untuk menghadapi tangga. Meta menyebut proyek ini riset internal dan tidak berencana menjualnya.",
-    "Laporan ini belum diverifikasi Reuters, dan menurut sumber The Information belum ada tanggal rilis produknya. Menurutmu, kamu mau robot humanoid buatan Meta membantu pekerjaan di rumahmu?",
+    "Meta ternyata sudah punya robot humanoid sendiri. The Information melaporkan Meta membangun prototipe bernama Max bersama startup Tiongkok Fourier hanya dalam sekitar tiga bulan, lalu memperlihatkannya kepada sebagian karyawan pada akhir Agustus.",
+    "Max dilaporkan setinggi sekitar 1,5 meter, berbobot sekitar 48 kg, dan memakai chip Nvidia Jetson Thor. Meta dilaporkan menggarap versi keduanya, Max 2, sejak September dengan tangan baru dan sensor untuk tangga. Meta menyebut proyek ini riset internal dan tidak berencana menjualnya.",
+    "Reuters belum memverifikasi laporan ini, dan menurut sumber The Information belum ada tanggal rilis produknya. Menurutmu, kamu mau robot humanoid buatan Meta membantu pekerjaan di rumahmu?",
     "Sumber: The Information (via Reuters, Engadget, TNW) / Foto: Fourier (ilustrasi GR-3), Wikimedia Commons\n\n#akalmesin #Robotika #Meta #RobotHumanoid #Fourier"
   ],
   "sources": [

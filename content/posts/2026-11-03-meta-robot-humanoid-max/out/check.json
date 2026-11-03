@@ -1,11 +1,13 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-meta-robot-humanoid-max",
-  "designRevision": "5a9ace78f8c5bccffc3117a0bf488c911b01ebb7afd4cc2795eed8f71ab5d934",
-  "copyRevision": "0c2d18e9755cd9592d8234900d31568c40162a9d13229e8029d47565ab1a76f1",
-  "checkedAt": "2026-11-03T02:35:39.812Z",
-  "passed": true,
-  "problems": [],
+  "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+  "copyRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
+  "checkedAt": "2026-11-03T03:30:14.654Z",
+  "passed": false,
+  "problems": [
+    "Copy approval missing or stale"
+  ],
   "warnings": [],
   "slides": [
     {
@@ -50,7 +52,7 @@
         "inkPixels": 0.9544444444444444
       },
       "gap": 54,
-      "photoHeight": 642
+      "photoHeight": 702
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-meta-robot-humanoid-max",
-  "copyRevision": "0c2d18e9755cd9592d8234900d31568c40162a9d13229e8029d47565ab1a76f1",
+  "copyRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
   "creditsRevision": "9cd61d83c0bf73602f71e53937dfaa0b6df3ef1e19a2b1edc0ac49fb13351671",
-  "designRevision": "5a9ace78f8c5bccffc3117a0bf488c911b01ebb7afd4cc2795eed8f71ab5d934",
-  "builtAt": "2026-11-03T02:35:39.048Z",
+  "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+  "builtAt": "2026-11-03T03:30:02.522Z",
   "slides": [
     {
       "id": "01-main",
@@ -40,7 +40,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-11-03-meta-robot-humanoid-max/out/slides/02-max.html",
       "png": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/02-02-max.png",
-      "pngHash": "5b391c85810aa02806dc5327e68e434b87d91b49d92b96f8f2663ce794245477",
+      "pngHash": "4cd24d6e7ffcf96183e23f76699fd4aee3b78699a00b4af15b02e8711a91d7ec",
       "imageHash": "e8773eddb3cb82b3f54b7146cbef57478c62765214efcb954c87dc2e2c37d224",
       "geometry": {
         "canvas": {
@@ -69,7 +69,7 @@
       "layout": "detail2",
       "html": "content/posts/2026-11-03-meta-robot-humanoid-max/out/slides/03-chip.html",
       "png": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/03-03-chip.png",
-      "pngHash": "1c5a884102cea262bce25dac2e2ab0af52d1fc19eab08a52289d92aff6eb7eca",
+      "pngHash": "438d26d3088be8804eee19e1d17f5fd1092af4e04ee84e6d45ee7b6e0997c3e5",
       "imageHash": "9e9ad92b50b0283a43f874013f52311dba76c60b484fe3b290c418a2c03107c5",
       "geometry": {
         "canvas": {
@@ -98,7 +98,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-11-03-meta-robot-humanoid-max/out/slides/04-max2.html",
       "png": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/04-04-max2.png",
-      "pngHash": "2506ffe5dafc541358818211e9408a54e089b569a203d70e2cb0b206fc5a2a4e",
+      "pngHash": "d024db3c0f5e2f5889fd39ae12d07c64f03e5893cde8119d8a922366766d4b76",
       "imageHash": "071b1dc9d4ad2f1d86a8ff90a4ccd420346d9872950f2bd6a0ea9d621f5f932f",
       "geometry": {
         "canvas": {
@@ -111,9 +111,9 @@
         },
         "photo": {
           "x": 0,
-          "y": 708,
+          "y": 648,
           "width": 1080,
-          "height": 642,
+          "height": 702,
           "bottom": 1350,
           "right": 1080
         },
