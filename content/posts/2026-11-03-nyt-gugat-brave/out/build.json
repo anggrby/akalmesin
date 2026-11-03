@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-nyt-gugat-brave",
-  "copyRevision": "fa6dd2f7fc225fac65486165a72404be8e047bf8bba836561bfb8673ac3f3f8a",
-  "creditsRevision": "bf58dca9c3e63a28f6651f5d60468a9ce9fafff3555c0874d185f97fe781757f",
-  "designRevision": "744531414f332035144385d5c35be5df00e4af2c3cca489832c19ce4d0178fd7",
-  "builtAt": "2026-11-03T02:35:59.543Z",
+  "copyRevision": "add2588cd95717823a427c6c9d6e3b1330e4d664697c55b3fd69f3299cbee5bb",
+  "creditsRevision": "67e78ab968acb016eb9884f54e872d13ef84c4a0505106469d31302e34a07e9c",
+  "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+  "builtAt": "2026-11-03T03:47:54.298Z",
   "slides": [
     {
       "id": "01-main",
       "layout": "main",
       "html": "content/posts/2026-11-03-nyt-gugat-brave/out/slides/01-main.html",
       "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/01-01-main.png",
-      "pngHash": "ed1f381ed425a50647bcbb5d04b38d85b462c275503af7f428dad328baba9e2a",
+      "pngHash": "1120bd44ab987717e623c3b9ee2314e4ac52e8f1b5cf140e4579663663960ece",
       "imageHash": "b6788af8ab739c2abcd4d1f92cdc81e187fce53f6c440b534abe79809d685ea5",
       "geometry": {
         "canvas": {
@@ -69,8 +69,8 @@
       "layout": "detail2",
       "html": "content/posts/2026-11-03-nyt-gugat-brave/out/slides/03-pelanggan.html",
       "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/03-03-pelanggan.png",
-      "pngHash": "a8b074a37fbbb4cc15a2b16fdc682ef8a542fc68224e07b7b70a705eeabbc3bd",
-      "imageHash": "9bf1e01b4326bfe9b974537a2d2410a7129e2bb954933c46797d566e6a7f7f5b",
+      "pngHash": "a4e838a77a5ac6a5d9eef2a2ffe35d5c2c968d998cc37c23f2dbd11bd41c5240",
+      "imageHash": "4a94a9a6ed3f81adaa4ea2f312919b00c8f4f736faed3c9150cc4f95eac69317",
       "geometry": {
         "canvas": {
           "x": 0,
@@ -98,7 +98,7 @@
       "layout": "detail1",
       "html": "content/posts/2026-11-03-nyt-gugat-brave/out/slides/04-paywall.html",
       "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/04-04-paywall.png",
-      "pngHash": "9a6dfd8520e34f65afad6f81d7b28bd5b06de5b29e4aef624660ee18a2a90e04",
+      "pngHash": "54bc16a36ded6a3d4591a1aebb8ee0b719dc34f89f64cff5da715dc07b517b5e",
       "imageHash": "cb1e6c6dce0c3d2dc89594a16745fc9169ed5be64b6a4621be53517ea91f7b5d",
       "geometry": {
         "canvas": {
@@ -111,9 +111,9 @@
         },
         "photo": {
           "x": 0,
-          "y": 648,
+          "y": 708,
           "width": 1080,
-          "height": 702,
+          "height": 642,
           "bottom": 1350,
           "right": 1080
         },

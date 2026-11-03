@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 3,
+  "brand": "akalmesin",
+  "kind": "owner-edits",
+  "mode": "review",
+  "slug": "2026-11-03-nyt-gugat-brave",
+  "baseRevision": "fa6dd2f7fc225fac65486165a72404be8e047bf8bba836561bfb8673ac3f3f8a",
+  "designRevision": "a95a1b29ae988c47b6e33ca220819328ba78a81b4c614573bc1597369b572231",
+  "slides": [
+    {
+      "slug": "2026-11-03-nyt-gugat-brave",
+      "slideId": "01-main",
+      "fields": {
+        "headline": "NYT gugat Brave\nsoal scraping untuk AI",
+        "summary": "The New York Times menuduh Brave menyalin artikelnya tanpa izin dan menjual aksesnya ke perusahaan AI, tuduhan yang belum diuji di pengadilan.",
+        "credit": "FOTO: GEDUNG NEW YORK TIMES / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-03-nyt-gugat-brave",
+      "slideId": "02-indeks",
+      "fields": {
+        "paragraph-0": "Dalam gugatan di pengadilan federal Manhattan, The Times menuduh Brave membangun indeks lebih dari 30 miliar halaman web dengan crawler yang namanya tidak pernah diungkap. Akibatnya, penerbit **tidak bisa memblokirnya**. Akses ke indeks itu lalu dijual lewat Brave Search API.",
+        "credit": "FOTO: HALAMAN SAMBUTAN BRAVE / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-03-nyt-gugat-brave",
+      "slideId": "03-pelanggan",
+      "fields": {
+        "paragraph-0": "Gugatan itu menyebut lima pelanggan AI Brave: Anthropic, Perplexity, Mistral, xAI, dan Cohere, meski mereka tidak ikut digugat. The Times juga menyoroti Ask Brave yang menjawab pertanyaan dengan isi artikel, dan menyamakan Brave dengan **penadah konten curian**.",
+        "credit": "FOTO: TAMPILAN ASK BRAVE / COMMONS"
+      }
+    },
+    {
+      "slug": "2026-11-03-nyt-gugat-brave",
+      "slideId": "04-paywall",
+      "fields": {
+        "paragraph-0": "Fitur \"Paywall blocker\" di browser Brave juga digugat karena dipromosikan untuk **menembus paywall**. Di hari yang sama, Daily News, Chicago Tribune, dan Orlando Sentinel mengajukan gugatan serupa. The Times meminta ganti rugi dan perintah pengadilan untuk menghentikan praktik itu, sementara Brave belum menanggapi permintaan komentar TechCrunch.",
+        "credit": "FOTO: GEDUNG NEW YORK TIMES / COMMONS"
+      }
+    }
+  ],
+  "captions": [
+    {
+      "slug": "2026-11-03-nyt-gugat-brave",
+      "paragraphs": [
+        "The New York Times menggugat Brave, browser yang dikenal karena fitur privasinya. Dalam gugatan yang diajukan Senin, 2 November 2026, The Times menuduh Brave menyalin artikelnya tanpa izin lalu menjual akses konten itu ke berbagai perusahaan AI.",
+        "Menurut gugatan, akses itu dijual lewat Brave Search API ke pelanggan seperti Anthropic, Perplexity, Mistral, xAI, dan Cohere. Browser Brave juga dituduh punya fitur yang menembus paywall. Daily News, Chicago Tribune, dan Orlando Sentinel mengajukan gugatan serupa.",
+        "Semua ini masih tuduhan yang belum diuji di pengadilan, dan Brave belum menanggapi. Menurutmu, mesin pencari boleh menjual isi berita ke perusahaan AI tanpa izin penerbitnya?",
+        "Sumber: Gugatan The New York Times, TechCrunch, The Verge / Foto: Wikimedia Commons\n\n#akalmesin #AI #Brave #NewYorkTimes #HakCipta"
+      ]
+    }
+  ],
+  "savedAt": "2026-11-03T03:48:00.000Z",
+  "note": "Owner chat review (t113u: take the valid points, no Simpan). Valid points: headline sentence case 2 lines, injunction wording on 04; slide 03 photo replaced with Ask Brave screenshot (CC0) before this save."
+}

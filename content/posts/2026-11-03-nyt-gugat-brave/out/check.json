@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-nyt-gugat-brave",
-  "designRevision": "744531414f332035144385d5c35be5df00e4af2c3cca489832c19ce4d0178fd7",
-  "copyRevision": "fa6dd2f7fc225fac65486165a72404be8e047bf8bba836561bfb8673ac3f3f8a",
-  "checkedAt": "2026-11-03T02:36:00.344Z",
+  "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+  "copyRevision": "add2588cd95717823a427c6c9d6e3b1330e4d664697c55b3fd69f3299cbee5bb",
+  "checkedAt": "2026-11-03T03:47:55.206Z",
   "passed": true,
   "problems": [],
   "warnings": [],
@@ -34,9 +34,9 @@
       "id": "03-pelanggan",
       "png": "content/posts/2026-11-03-nyt-gugat-brave/out/png/03-03-pelanggan.png",
       "ink": {
-        "onRamp": 0.9934950178605001,
-        "meanDistance": 1.2418671617009387,
-        "inkPixels": 0.08435796202293665
+        "onRamp": 0.9951178451178451,
+        "meanDistance": 0.9984400010076295,
+        "inkPixels": 0.9965698653198654
       },
       "gap": 54,
       "photoHeight": 762
@@ -50,7 +50,7 @@
         "inkPixels": 0.8977865439403901
       },
       "gap": 54,
-      "photoHeight": 702
+      "photoHeight": 642
     }
   ]
 }

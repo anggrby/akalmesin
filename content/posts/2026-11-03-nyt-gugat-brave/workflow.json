@@ -4,8 +4,36 @@
   "stage": "design-check",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-03T03:48:00.000Z",
+      "source": "2026-11-03-nyt-gugat-brave-edits-2026-11-03104800.json sha256:091f3421ec6e5d98175630af493c57f874feed88a1551edac6e16223f9aa8894",
+      "context": "3 field(s) changed",
+      "at": "2026-11-03T03:48:00.000Z",
+      "atWIB": "2026-11-03 10:48 WIB",
+      "via": "review-save",
+      "copyRevision": "add2588cd95717823a427c6c9d6e3b1330e4d664697c55b3fd69f3299cbee5bb",
+      "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-03T03:47:30.017Z",
+      "revision": "add2588cd95717823a427c6c9d6e3b1330e4d664697c55b3fd69f3299cbee5bb"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-03T03:48:00.000Z",
+      "source": "2026-11-03-nyt-gugat-brave-edits-2026-11-03104800.json sha256:091f3421ec6e5d98175630af493c57f874feed88a1551edac6e16223f9aa8894",
+      "context": "3 field(s) changed",
+      "at": "2026-11-03T03:48:00.000Z",
+      "atWIB": "2026-11-03 10:48 WIB",
+      "via": "review-save",
+      "copyRevision": "add2588cd95717823a427c6c9d6e3b1330e4d664697c55b3fd69f3299cbee5bb",
+      "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-03T03:47:30.017Z",
+      "revision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977"
+    }
   },
   "designStale": false,
   "notion": null,
@@ -20,6 +48,43 @@
       "event": "design-built",
       "designRevision": "744531414f332035144385d5c35be5df00e4af2c3cca489832c19ce4d0178fd7",
       "at": "2026-11-03T02:35:59.543Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "a95a1b29ae988c47b6e33ca220819328ba78a81b4c614573bc1597369b572231",
+      "at": "2026-11-03T03:47:03.381Z"
+    },
+    {
+      "event": "copy-recorded",
+      "who": "owner",
+      "mode": "review",
+      "from": "fa6dd2f7fc225fac65486165a72404be8e047bf8bba836561bfb8673ac3f3f8a",
+      "to": "add2588cd95717823a427c6c9d6e3b1330e4d664697c55b3fd69f3299cbee5bb",
+      "file": "2026-11-03-nyt-gugat-brave-edits-2026-11-03104800.json",
+      "at": "2026-11-03T03:47:21.319Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+      "at": "2026-11-03T03:47:29.083Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "2026-11-03-nyt-gugat-brave-edits-2026-11-03104800.json sha256:091f3421ec6e5d98175630af493c57f874feed88a1551edac6e16223f9aa8894",
+      "copyRevision": "add2588cd95717823a427c6c9d6e3b1330e4d664697c55b3fd69f3299cbee5bb",
+      "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+      "at": "2026-11-03T03:48:00.000Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+      "at": "2026-11-03T03:47:45.423Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+      "at": "2026-11-03T03:47:54.298Z"
     }
   ]
 }
