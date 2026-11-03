@@ -9,6 +9,7 @@ export const loadPolicy = (root = ROOT) => readJSON(path.join(root, 'brand/edito
 const CREDIT = /^(FOTO|ILUSTRASI AI): .+ \/ .+/;
 /** credit_fragment rule for one credit text (prefix removed). Self-contained: the review editor embeds this exact function. */
 export function badCreditText(t, max = 100, maxWords = 14) {
+  t = String(t).replace(/\bDok\.(?=\s)/g, 'Dok'); // Indonesian "Dok." (dokumentasi) is an abbreviation, not a sentence end (t115u)
   const words = (String(t).match(/[\p{L}\p{N}]+(?:[.,'’\-][\p{L}\p{N}]+)*/gu) || []).length;
   return t.length > max || words > maxWords || /[.!?;](\s|$)|[—–]|\b(?:Sumber|Foto)\s*:/i.test(t);
 }

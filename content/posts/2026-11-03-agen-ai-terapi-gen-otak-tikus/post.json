@@ -27,7 +27,7 @@
         "originalFile": "assets/originals/x-2115442964-rig-main.jpg",
         "subject": "Exin's motorized stereotaxic surgery rig with cameras and the agent control screen (no animal visible)",
         "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
-        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u, shown as 'Dok. Exin Therapeutics' since t115u (takedown risk accepted)",
         "process": {
           "maxWidth": 1600,
           "minTone": 0.3
@@ -53,7 +53,7 @@
         "originalFile": "assets/originals/x-2115442965-arduino-rig.jpg",
         "subject": "Exin's Arduino-based motorized surgery rig (crop removes the X carousel arrows)",
         "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
-        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u, shown as 'Dok. Exin Therapeutics' since t115u (takedown risk accepted)",
         "process": {
           "crop": [
             235,
@@ -84,7 +84,7 @@
         "originalFile": "assets/originals/x-2115442968-safety-vet.jpg",
         "subject": "Physical emergency-stop button of Exin's rig (cuts power to every motor)",
         "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
-        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u, shown as 'Dok. Exin Therapeutics' since t115u (takedown risk accepted)",
         "process": {
           "maxWidth": 1200
         }
@@ -109,7 +109,7 @@
         "originalFile": "assets/originals/x-2115442970-mouse-recovered-frame.jpg",
         "subject": "Still frame (2.5 s) from Exin's video of the mouse moving in its cage after the procedure",
         "supplier": "Exin Therapeutics (posted on X by CEO Gabriel Ocana-Santero)",
-        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u (takedown risk accepted)",
+        "license": "Company media, no licence granted; credited 'Courtesy of Exin Therapeutics' by owner decision t107u, shown as 'Dok. Exin Therapeutics' since t115u (takedown risk accepted)",
         "process": {
           "maxWidth": 1280
         }
@@ -117,10 +117,10 @@
     }
   ],
   "caption": [
-    "Sebuah agen AI memilih sendiri terapi gen, menentukan titik di otak, lalu mengendalikan lengan robot untuk menyuntikkannya ke tikus hidup. WIRED melaporkan percobaan ini dijalankan startup Exin Therapeutics di San Francisco dengan model Claude Sonnet 5, setelah dua model Claude lain menolak.",
+    "Agen AI memilih sendiri terapi gen, menentukan titik di otak, lalu mengendalikan lengan robot untuk menyuntikkannya ke tikus hidup. WIRED melaporkan percobaan ini dijalankan startup Exin Therapeutics di San Francisco dengan Claude Sonnet 5, setelah dua model Claude lain menolak.",
     "Agen itu memilih dari 19 terapi untuk tikus model epilepsi dan menyuntikkan 250 nanoliter. Dokter hewan tetap membuka tengkorak, menyetujui setiap langkah penting, dan memegang tombol darurat. Prosedurnya berlangsung sedikit lebih dari satu jam.",
-    "Tikusnya pulih dengan baik, tetapi efeknya pada kejang belum diketahui dan laporan teknisnya belum terbit. Menurutmu, sejauh mana AI boleh dilepas di laboratorium biologi?",
-    "Sumber: WIRED, Tom's Hardware, X @OcanaSantero / Foto: Courtesy of Exin Therapeutics\n\n#akalmesin #AI #AgenAI #TerapiGen #Bioteknologi"
+    "Tikusnya pulih dengan baik, tetapi efeknya pada kejang belum diketahui dan laporan teknisnya belum terbit. Menurutmu, sejauh mana AI boleh diberi kendali fisik di laboratorium biologi?",
+    "Sumber: WIRED, Tom's Hardware, X @OcanaSantero / Foto: Dok. Exin Therapeutics\n\n#akalmesin #AI #AgenAI #TerapiGen #Bioteknologi"
   ],
   "sources": [
     {

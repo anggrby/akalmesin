@@ -16,14 +16,14 @@
     "engine": "none"
   },
   "mood": "investigative-tense",
-  "footage": "Exin Therapeutics photos and video from the CEO's X thread, credited 'Courtesy of Exin Therapeutics' by owner decision t107u; non-graphic frames only; see reel/PROVENANCE.md.",
+  "footage": "Exin Therapeutics photos and video from the CEO's X thread, credited 'Dok. Exin Therapeutics' (originally 'Courtesy of', changed by owner review t115u) by owner decision t107u; non-graphic frames only; see reel/PROVENANCE.md.",
   "mediaFilter": "none",
   "media": {
     "rig": {
       "kind": "photo",
       "file": "assets/originals/x-2115442964-rig-main.jpg",
       "location": "Rig bedah Exin",
-      "tag": "Foto: Courtesy of Exin Therapeutics",
+      "tag": "Foto: Dok. Exin Therapeutics",
       "sourceURL": "https://pbs.twimg.com/media/HVtOKh7aIAAFGeA.jpg?name=orig",
       "rights": "owner-courtesy",
       "decision": "t107u",
@@ -34,7 +34,7 @@
       "kind": "photo",
       "file": "reel/media/x-2115442965-arduino-rig-crop.jpg",
       "location": "Lengan robot rig",
-      "tag": "Foto: Courtesy of Exin Therapeutics",
+      "tag": "Foto: Dok. Exin Therapeutics",
       "sourceURL": "https://pbs.twimg.com/media/HVtYeo9aEAAsWHT.jpg?name=orig",
       "rights": "owner-courtesy",
       "decision": "t107u",
@@ -45,7 +45,7 @@
       "kind": "photo",
       "file": "assets/originals/x-2115442968-safety-vet.jpg",
       "location": "Tombol darurat rig",
-      "tag": "Foto: Courtesy of Exin Therapeutics",
+      "tag": "Foto: Dok. Exin Therapeutics",
       "sourceURL": "https://pbs.twimg.com/media/HVtUT8vaYAAKWMW.jpg?name=orig",
       "rights": "owner-courtesy",
       "decision": "t107u",
@@ -55,8 +55,8 @@
     "mouse": {
       "kind": "video",
       "file": "reel/media/x-2115442970-mouse-recovered.mp4",
-      "location": "Tikus setelah operasi",
-      "tag": "Video: Courtesy of Exin Therapeutics",
+      "location": "Tikus pasca-operasi",
+      "tag": "Video: Dok. Exin Therapeutics",
       "sourceURL": "https://video.twimg.com/amplify_video/2115380549229613056/vid/avc1/1280x720/FFQSJIr7w-G9JirB.mp4",
       "rights": "owner-courtesy",
       "decision": "t107u",
@@ -82,39 +82,39 @@
     },
     {
       "id": "fakta",
-      "seconds": 5,
+      "seconds": 6.5,
       "media": "arm",
       "source": "Sumber: WIRED, Tom's Hardware",
       "onScreen": [
         {
-          "text": "19 pilihan terapi, rig bedah bermotor.",
+          "text": "Dari 19 pilihan terapi, agen itu mengendalikan rig bedah bermotor",
           "fact": "19 pilihan terapi gen"
         },
         {
-          "text": "Agen itu menyuntikkan 250 nanoliter.",
+          "text": "dan menyuntikkan 250 nanoliter.",
           "fact": "menyuntikkan 250 nanoliter"
         }
       ]
     },
     {
       "id": "pengaman",
-      "seconds": 5,
+      "seconds": 6,
       "media": "stop",
       "source": "Sumber: WIRED, X @OcanaSantero",
       "onScreen": [
         {
-          "text": "Dokter hewan memegang tombol darurat.",
+          "text": "Dokter hewan memegang tombol darurat,",
           "fact": "tombol darurat yang memutus daya motor"
         },
         {
-          "text": "Claude Opus 5.5 menolak tugas ini.",
+          "text": "sementara Claude Opus 5.5 sempat menolak tugas ini.",
           "fact": "Claude Opus 5.5 langsung menolak tugas ini"
         }
       ]
     },
     {
       "id": "tanya",
-      "seconds": 5.3,
+      "seconds": 6.15,
       "media": "mouse",
       "videoStart": 0,
       "onScreen": [
@@ -123,10 +123,12 @@
           "fact": "pada kejang belum diketahui"
         },
         {
-          "text": "Sejauh mana AI boleh dilepas di laboratorium?",
-          "fact": "AI boleh dilepas di laboratorium"
+          "text": "Sejauh mana AI boleh diberi kendali fisik di laboratorium?",
+          "fact": "AI boleh diberi kendali fisik di laboratorium"
         }
-      ]
+      ],
+      "source": "Sumber: WIRED",
+      "holdLast": 0.7
     }
   ],
   "cardDate": "28 Okt 2026",

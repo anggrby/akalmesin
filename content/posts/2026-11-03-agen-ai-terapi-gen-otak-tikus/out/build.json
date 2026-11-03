@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
-  "copyRevision": "03e3f0453a4c0e5085484ef36e9514d4f1061ca3f843a0380466bfc9fa505350",
-  "creditsRevision": "002beb566718a7210346356ca70cfe4f1780c0456aa814a8232fdb91c3987ce4",
-  "designRevision": "b4598ba11cbef5dfa65084fec331628b4a60bf8fccb3cab048f746862fe868fb",
-  "builtAt": "2026-11-03T02:25:10.357Z",
+  "copyRevision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17",
+  "creditsRevision": "5b17a00eab9f179f53b83ee67d451b00d32eea023b28d9e9b8fdd31e1500666c",
+  "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+  "builtAt": "2026-11-03T04:19:27.591Z",
   "slides": [
     {
       "id": "01-main",

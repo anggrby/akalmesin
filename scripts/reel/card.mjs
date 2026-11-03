@@ -14,7 +14,7 @@ import {SAFE} from './visuals.mjs';
 import {OUTRO, renderOutro} from './outro.mjs';
 import {MUSIC, contrast} from './news.mjs';
 
-export const CARD_FILTERS = ['scale', 'crop', 'zoompan', 'pad', 'fps', 'setsar', 'format', 'trim', 'setpts'];
+export const CARD_FILTERS = ['scale', 'crop', 'zoompan', 'pad', 'fps', 'setsar', 'format', 'trim', 'setpts', 'tpad'];
 export const CLIP = {x: 60, y: 690, w: 900, h: 676}; // ~4:3 inside the safe area
 const tokens = readJSON(path.join(ROOT, 'brand/tokens.json'));
 const WHITE = tokens.color['reversed-text'].value,
@@ -174,7 +174,10 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
         H = Math.round((h * s) / 2) * 2;
       vf = `scale=${W}:${H},crop=${CLIP.w}:${CLIP.h},pad=1080:1920:${CLIP.x}:${CLIP.y}:black,fps=30,setsar=1,format=yuv420p`;
       input = ['-ss', String(beat.videoStart || 0), '-t', D, '-i', src];
-      if (probeDur(src) < Number(D) + (beat.videoStart || 0)) throw Error(`${m.file} too short for ${beat.id}`);
+      const short = Number(D) + (beat.videoStart || 0) - probeDur(src);
+      // beat.holdLast (seconds, owner t115u): freeze the clip's last frame for up to that long when the source is too short. No content change.
+      if (short > 0 && beat.holdLast >= short) vf = `tpad=stop_mode=clone:stop_duration=${beat.holdLast},${vf}`;
+      else if (short > 0) throw Error(`${m.file} too short for ${beat.id}`);
     }
     graphs.push({beat: beat.id, media: beat.media, kind: m.kind, rights: m.rights || null, fit, videoStart: beat.videoStart || 0, graph: vf});
     sh('ffmpeg', [
@@ -375,10 +378,10 @@ export function checkCard({spec, man, gate, inside, hit, paths, mp4, dur, carous
   const unused = Object.keys(spec.media).filter(k => !spec.beats.some(b => b.media === k));
   const prov = fs.readFileSync(path.join(paths.dir, 'reel/PROVENANCE.md'), 'utf8');
   const appleOK = m => m.rights === 'apple-t89u' && /Apple/.test(m.tag) && /t89u/.test(prov) && /LEGAL_NOTICE/.test(prov) && /(takedown|strike)/i.test(prov);
-  // Owner-approved courtesy media (t107u): company-supplied footage credited on screen as "Courtesy of …",
+  // Owner-approved courtesy media (t107u): company-supplied footage credited on screen as "Courtesy of …" or "Dok. …" (t115u),
   // with the owner decision id and the takedown/strike risk written in provenance.
   const courtesyOK = m =>
-    m.rights === 'owner-courtesy' && /Courtesy of /.test(m.tag) && !!m.decision && prov.includes(m.decision) && /(takedown|strike)/i.test(prov);
+    m.rights === 'owner-courtesy' && /(Courtesy of |Dok\. )/.test(m.tag) && !!m.decision && prov.includes(m.decision) && /(takedown|strike)/i.test(prov);
   const noLic = Object.entries(spec.media).filter(
     ([, m]) => !appleOK(m) && !courtesyOK(m) && (!/(CC BY|CC0|Domain publik)/.test(m.tag) || /apple\.com/.test(m.sourceURL || ''))
   );

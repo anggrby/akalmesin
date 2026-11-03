@@ -10,3 +10,5 @@ All media are Exin Therapeutics' own photos/video, posted by CEO Gabriel Ocana-S
 | 4      | originals/x-2115442970-mouse-recovered-frame.jpg | ee93cda39ef2a83f4c1bc2e1344fedfb606d1aa00f12057f6075bfa17e6b57bf | https://x.com/OcanaSantero/status/2115442970530857372 / still at 2.5 s of https://video.twimg.com/amplify_video/2115380549229613056/vid/avc1/1280x720/FFQSJIr7w-G9JirB.mp4 | frame grab (ffmpeg), blue-ink                              | FOTO: TIKUS SETELAH OPERASI / EXIN THERAPEUTICS |
 
 Four distinct originals; Main not repeated. No AI illustrations.
+
+Credit wording change (owner review t115u, 2026-11-03): on-screen and caption credit is now "Dok. Exin Therapeutics" (Indonesian for "courtesy/documentation of"), replacing "Courtesy of Exin Therapeutics". Same t107u decision and same takedown / copyright-strike risk as above.

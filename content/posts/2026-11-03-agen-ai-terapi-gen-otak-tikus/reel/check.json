@@ -5,7 +5,7 @@
     {
       "name": "duration",
       "ok": true,
-      "detail": "22.60 s"
+      "detail": "25.97 s"
     },
     {
       "name": "resolution",
@@ -25,7 +25,7 @@
     {
       "name": "card text fits safe area (no overflow, <= 4 lines)",
       "ok": true,
-      "detail": "hook:2 lines, fakta:2 lines, pengaman:2 lines, tanya:2 lines"
+      "detail": "hook:2 lines, fakta:3 lines, pengaman:3 lines, tanya:3 lines"
     },
     {
       "name": "card above clip, no overlap",
@@ -70,7 +70,7 @@
     {
       "name": "no-filter (media as-is)",
       "ok": true,
-      "detail": "only scale, crop, pad, fps, setsar, format"
+      "detail": "only scale, crop, pad, fps, setsar, format, tpad"
     },
     {
       "name": "Apple video unaltered (contain-fit, no crop/zoom/pan/colour); Apple stills: smooth Ken Burns <=115%, no edges (t90u)",
@@ -115,7 +115,7 @@
     {
       "name": "music loudness sane (-24..-14 LUFS)",
       "ok": true,
-      "detail": "-21.4 LUFS"
+      "detail": "-21.6 LUFS"
     },
     {
       "name": "no clipping (true peak <= -1 dBTP)",
@@ -130,7 +130,7 @@
     {
       "name": "outro = last 2.0 s",
       "ok": true,
-      "detail": "20.60–22.60 s"
+      "detail": "23.97–25.97 s"
     },
     {
       "name": "outro text",
