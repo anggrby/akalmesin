@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-11-03T04:27:00.000Z",
+    "source": "2026-11-03-agen-ai-terapi-gen-otak-tikus-edits-2026-11-03112700.json sha256:85519979f7e59fdfb7fb40a3634a88f61a90d65afd390f6ae93afc17e81ea51d",
+    "context": "no changes",
+    "at": "2026-11-03T04:27:00.000Z",
+    "atWIB": "2026-11-03 11:27 WIB",
+    "via": "review-save",
+    "copyRevision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17",
+    "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-11-03T04:28:24.685Z",
+    "revision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-11-03-agen-ai-terapi-gen-otak-tikus\". Never match by title alone.",
+  "properties": {
+    "Post": "Agen AI suntikkan terapi gen ke otak tikus",
+    "Status": "Ready to Publish",
+    "Format": "Reel / video",
+    "Caption": "Agen AI memilih sendiri terapi gen, menentukan titik di otak, lalu mengendalikan lengan robot untuk menyuntikkannya ke tikus hidup. WIRED melaporkan percobaan ini dijalankan startup Exin Therapeutics di San Francisco dengan Claude Sonnet 5, setelah dua model Claude lain menolak.\n\nAgen itu memilih dari 19 terapi untuk tikus model epilepsi dan menyuntikkan 250 nanoliter. Dokter hewan tetap membuka tengkorak, menyetujui setiap langkah penting, dan memegang tombol darurat. Prosedurnya berlangsung sedikit lebih dari satu jam.\n\nTikusnya pulih dengan baik, tetapi efeknya pada kejang belum diketahui dan laporan teknisnya belum terbit. Menurutmu, sejauh mana AI boleh diberi kendali fisik di laboratorium biologi?\n\nSumber: WIRED, Tom's Hardware, X @OcanaSantero / Foto: Dok. Exin Therapeutics\n\n#akalmesin #AI #AgenAI #TerapiGen #Bioteknologi",
+    "Topic": "AI",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-pilihan.png",
+      "03-03-pengaman.png",
+      "04-04-hasil.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-11-03-agen-ai-terapi-gen-otak-tikus",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-03-agen-ai-terapi-gen-otak-tikus",
+  "body": "# Approved copy\n\n## 01-main\n\nAgen AI suntikkan terapi gen ke otak tikus\n\nStartup Exin Therapeutics mengklaim agen AI berbasis Claude memilih dan menyuntikkan terapi gen ke otak tikus hidup, meski efeknya pada kejang belum diketahui.\n\n## 02-pilihan\n\nWIRED melaporkan agen ini diberi 19 pilihan terapi gen dalam spreadsheet, tikus model epilepsi, dan rig bedah bermotor dengan kamera. Tujuannya satu: mengurangi kejang. Agen itu memilih terapi, area otak, dan **titik suntiknya sendiri**, lalu mengendalikan lengan robot untuk menyuntikkan 250 nanoliter.\n\n## 03-pengaman\n\nManusia tetap terlibat. Dokter hewan membuka tengkorak tikus, memegang **tombol darurat** yang memutus daya motor, dan harus menyetujui setiap langkah yang tidak bisa dibatalkan. CEO Gabriel Ocana-Santero menulis Claude Opus 5.5 langsung menolak tugas ini, dan Opus 5 berhenti sebelum operasi sungguhan. Tim akhirnya memakai Claude Sonnet 5.\n\n## 04-hasil\n\nMenurut WIRED, prosedurnya berlangsung sedikit lebih dari satu jam, lebih lama dari biasanya sekitar 45 menit. Tikusnya pulih dengan baik, tetapi **efeknya pada kejang belum diketahui**. Klaim ini baru diumumkan lewat X dan laporan teknisnya belum terbit. Anthropic tidak menanggapi permintaan komentar WIRED.\n\n# Caption\n\nAgen AI memilih sendiri terapi gen, menentukan titik di otak, lalu mengendalikan lengan robot untuk menyuntikkannya ke tikus hidup. WIRED melaporkan percobaan ini dijalankan startup Exin Therapeutics di San Francisco dengan Claude Sonnet 5, setelah dua model Claude lain menolak.\n\nAgen itu memilih dari 19 terapi untuk tikus model epilepsi dan menyuntikkan 250 nanoliter. Dokter hewan tetap membuka tengkorak, menyetujui setiap langkah penting, dan memegang tombol darurat. Prosedurnya berlangsung sedikit lebih dari satu jam.\n\nTikusnya pulih dengan baik, tetapi efeknya pada kejang belum diketahui dan laporan teknisnya belum terbit. Menurutmu, sejauh mana AI boleh diberi kendali fisik di laboratorium biologi?\n\nSumber: WIRED, Tom's Hardware, X @OcanaSantero / Foto: Dok. Exin Therapeutics\n\n#akalmesin #AI #AgenAI #TerapiGen #Bioteknologi\n\n# Sources\n\n- [WIRED — An AI Agent Injected Drugs Into a Live Mouse’s Brain (Emily Mullin)](https://www.wired.com/story/an-ai-agent-did-brain-surgery-on-live-mouse/)\n- [Tom’s Hardware — AI agent used to perform controversial brain surgery on a mouse (Jowi Morales)](https://www.tomshardware.com/tech-industry/artificial-intelligence/startup-uses-ai-agent-to-perform-controversial-brain-surgery-on-a-mouse-anthropic-sonnet-controlled-motorized-surgery-rig-ai-given-free-reign-to-treat-epilepsy-with-a-range-of-gene-therapy-vectors-after-opus-5-5-refused-to-conduct-biological-experiment)\n- [X — Gabriel Ocana-Santero thread](https://x.com/OcanaSantero/status/2115442964574908902)\n\n# Alt text and photo credits\n\n01-main: Rig bedah bermotor buatan Exin Therapeutics dengan mikroskop, lengan robot berwarna merah muda, dan layar kendali agen AI.\n\nFOTO: RIG BEDAH EXIN / EXIN THERAPEUTICS\n\n02-pilihan: Rig bedah bermotor berbasis Arduino dengan mikroskop, lampu, dan pompa suntik, terhubung ke layar kendali agen.\n\nFOTO: RIG BEDAH BERMOTOR / EXIN THERAPEUTICS\n\n03-pengaman: Tombol darurat merah bertuliskan STOP di samping layar kecil dan kabel rig bedah Exin.\n\nFOTO: TOMBOL DARURAT RIG / EXIN THERAPEUTICS\n\n04-hasil: Seekor tikus hitam berjalan di kandang kaca berisi serbuk kayu dan botol minum setelah operasi.\n\nFOTO: TIKUS SETELAH OPERASI / EXIN THERAPEUTICS\n\n# Approval\n\n\"Saved in review editor 2026-11-03T04:27:00.000Z\" — 2026-11-03-agen-ai-terapi-gen-otak-tikus-edits-2026-11-03112700.json sha256:85519979f7e59fdfb7fb40a3634a88f61a90d65afd390f6ae93afc17e81ea51d, 2026-11-03 11:27 WIB\n\nApproved design revision: a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e\n\n# Source ledger\n\n# Sources — Agen AI suntikkan terapi gen ke otak tikus (retrieved 2026-11-03 WIB)\n\nPrimary: Gabriel Ocana-Santero (CEO/cofounder, Exin Therapeutics) thread on X, 28 Oct 2026, https://x.com/OcanaSantero/status/2115442964574908902 (X). Reporting: WIRED, Emily Mullin, \"An AI Agent Injected Drugs Into a Live Mouse’s Brain\" (31 Oct 2026), https://www.wired.com/story/an-ai-agent-did-brain-surgery-on-live-mouse/ (W). Tom’s Hardware, Jowi Morales (31 Oct 2026), https://www.tomshardware.com/tech-industry/artificial-intelligence/startup-uses-ai-agent-to-perform-controversial-brain-surgery-on-a-mouse-anthropic-sonnet-controlled-motorized-surgery-rig-ai-given-free-reign-to-treat-epilepsy-with-a-range-of-gene-therapy-vectors-after-opus-5-5-refused-to-conduct-biological-experiment (T).\n\nEverything is the company's own account (single source, no paper or technical report yet); copy frames it as \"mengklaim\" / \"WIRED melaporkan\".\n\n| Claim (copy)                                                                                                                     | Status                  | Source          |\n| -------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------------- |\n| Exin Therapeutics, San Francisco startup; CEO/cofounder Gabriel Ocana(-)Santero                                                  | Verified                | W; T            |\n| Agent got 19 gene-therapy options in a spreadsheet, an epilepsy mouse model, a motorized rig with cameras; goal: reduce seizures | Company claim, reported | X; W; T         |\n| Agent chose therapy, brain region and injection coordinates, drove the arms and injector                                         | Company claim, reported | X; W; T         |\n| 250 nanolitres injected                                                                                                          | Company claim           | X (quoted in T) |\n| Vet did the craniotomy, gated every irreversible step, held a physical e-stop cutting motor power                                | Company claim, reported | X; W; T         |\n| Claude Opus 5.5 refused; Opus 5 ran the dry run but stopped before the live surgery; team used Claude Sonnet 5                   | Company claim, reported | X; W; T         |\n| Procedure slightly over an hour vs typical ~45 minutes                                                                           | Santero to WIRED        | W               |\n| Mouse recovering well; effect on seizures not yet assessed; technical report to come                                             | Company claim           | W; T; X         |\n| Anthropic did not respond to WIRED                                                                                               | Verified                | W               |\n| No quote slide: the speaker is the company itself; reel and carousel use attribution instead                                     | —                       | —               |\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-11-03-agen-ai-terapi-gen-otak-tikus\n\nAccount: akalmesin\n\nEditorial depth: standard\n\nSlide count: 4",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/01-01-main.png",
+      "sha256": "04d78f35c1c4a6714b2c6a7a2a53e354e322fe1a33e24e4dc5fbf65ad1cb01aa",
+      "bytes": 1216971
+    },
+    {
+      "slideId": "02-pilihan",
+      "file": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/02-02-pilihan.png",
+      "sha256": "85cf45818dde459883ef0bb28a0faaf6a19a0c640f4c4da6cf3ab59dba4823f8",
+      "bytes": 1089703
+    },
+    {
+      "slideId": "03-pengaman",
+      "file": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/03-03-pengaman.png",
+      "sha256": "a8f48d124a5f090f4d31d57384ee442e52dda5966fcd399292d15c7d53da479d",
+      "bytes": 1055616
+    },
+    {
+      "slideId": "04-hasil",
+      "file": "content/posts/2026-11-03-agen-ai-terapi-gen-otak-tikus/out/png/04-04-hasil.png",
+      "sha256": "01a0975777b902875e623b47c41d0e0d05fa0f0aa967ccab41b9895e0434ce88",
+      "bytes": 1174867
+    }
+  ],
+  "generatedAt": "2026-11-03T04:39:03.205Z"
+}

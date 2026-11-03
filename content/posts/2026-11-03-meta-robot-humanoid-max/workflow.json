@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-meta-robot-humanoid-max",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
     "copy": {
@@ -36,7 +36,32 @@
     }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40df909f-26a5-81a5-84f5-e2837c2245ed",
+    "url": "https://app.notion.com/p/Meta-diam-diam-bikin-robot-humanoid-Max-40df909f26a581a584f5e2837c2245ed",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-03-meta-robot-humanoid-max",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-03-meta-robot-humanoid-max",
+    "approvedRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+    "orderedAssetHashes": [
+      "a89ce1388d174563b13bfa02a5ce22ba3a7420863d0dd6fa5f8d84f78260f530",
+      "4cd24d6e7ffcf96183e23f76699fd4aee3b78699a00b4af15b02e8711a91d7ec",
+      "438d26d3088be8804eee19e1d17f5fd1092af4e04ee84e6d45ee7b6e0997c3e5",
+      "d024db3c0f5e2f5889fd39ae12d07c64f03e5893cde8119d8a922366766d4b76"
+    ],
+    "uploadedAssetHashes": [
+      "a89ce1388d174563b13bfa02a5ce22ba3a7420863d0dd6fa5f8d84f78260f530",
+      "4cd24d6e7ffcf96183e23f76699fd4aee3b78699a00b4af15b02e8711a91d7ec",
+      "438d26d3088be8804eee19e1d17f5fd1092af4e04ee84e6d45ee7b6e0997c3e5",
+      "d024db3c0f5e2f5889fd39ae12d07c64f03e5893cde8119d8a922366766d4b76"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-03T04:38:56.453Z",
+    "exportedAtWIB": "2026-11-03 11:38 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -91,6 +116,11 @@
       "event": "design-built",
       "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
       "at": "2026-11-03T03:38:24.619Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40df909f-26a5-81a5-84f5-e2837c2245ed",
+      "at": "2026-11-03T04:38:56.453Z"
     }
   ]
 }

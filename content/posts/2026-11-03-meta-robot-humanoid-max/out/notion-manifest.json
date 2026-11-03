@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-03-meta-robot-humanoid-max",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-11-03T03:38:00.000Z",
+    "source": "2026-11-03-meta-robot-humanoid-max-edits-2026-11-03103800.json sha256:520862e4071f0db07b809cb561dca3a3d3c8aceebe009784e4a21bfd76d82d47",
+    "context": "no changes",
+    "at": "2026-11-03T03:38:00.000Z",
+    "atWIB": "2026-11-03 10:38 WIB",
+    "via": "review-save",
+    "copyRevision": "0d198857d4c781de39cdcdfc869062cc73310cef51d8e8edb09d98b301f85907",
+    "designRevision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-11-03T03:38:03.023Z",
+    "revision": "6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-11-03-meta-robot-humanoid-max\". Never match by title alone.",
+  "properties": {
+    "Post": "Meta diam-diam bikin robot humanoid Max",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Meta ternyata sudah punya robot humanoid sendiri. The Information melaporkan Meta membangun prototipe bernama Max bersama startup Tiongkok Fourier hanya dalam sekitar tiga bulan, lalu memperlihatkannya kepada sebagian karyawan pada akhir Agustus.\n\nMax dilaporkan setinggi sekitar 1,5 meter, berbobot sekitar 48 kg, dan memakai chip Nvidia Jetson Thor. Meta dilaporkan menggarap versi keduanya, Max 2, sejak September dengan tangan baru dan sensor untuk tangga. Meta menyebut proyek ini riset internal dan tidak berencana menjualnya.\n\nReuters belum memverifikasi laporan ini, dan menurut sumber The Information belum ada tanggal rilis produknya. Menurutmu, kamu mau robot humanoid buatan Meta membantu pekerjaan di rumahmu?\n\nSumber: The Information (via Reuters, Engadget, TNW) / Foto: Fourier (ilustrasi GR-3), Wikimedia Commons\n\n#akalmesin #Robotika #Meta #RobotHumanoid #Fourier",
+    "Topic": "Robotika",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-max.png",
+      "03-03-chip.png",
+      "04-04-max2.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-11-03-meta-robot-humanoid-max",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-03-meta-robot-humanoid-max",
+  "body": "# Approved copy\n\n## 01-main\n\nMeta diam-diam bikin robot humanoid Max\n\nThe Information melaporkan Meta membangun prototipe robot humanoid bernama Max bersama startup Tiongkok Fourier, meski Meta menyebutnya sebatas riset internal.\n\n## 02-max\n\nThe Information melaporkan Meta membuat Max bersama Fourier asal Shanghai **dalam sekitar tiga bulan**. Tingginya sekitar 1,5 meter dan beratnya sekitar 48 kg. Robot ini dilaporkan punya layar yang menampilkan ekspresi wajah, speaker, dan tangan lima jari untuk mengambil benda kecil.\n\n## 03-chip\n\nOtaknya dilaporkan berupa chip **Jetson Thor** buatan Nvidia. Meta ingin robot seperti ini menjadi wujud fisik bagi Muse, agen AI-nya, dan kelak membantu pekerjaan rumah. Menurut laporan itu, Li-Chen Miller, wakil presiden produk robotika Meta, menghabiskan hampir dua bulan di pabrik Fourier di Shanghai.\n\n## 04-max2\n\nMeta dilaporkan menggarap versi kedua, Max 2, sejak September dengan torso dan tangan baru, proyektor, serta **sensor tambahan untuk tangga**. Belum ada tanggal rilis. Kepada The Information, Meta menyatakan kerja sama ini untuk riset internal dan tidak berencana menjual unitnya. Reuters belum bisa memverifikasi laporan ini.\n\n# Caption\n\nMeta ternyata sudah punya robot humanoid sendiri. The Information melaporkan Meta membangun prototipe bernama Max bersama startup Tiongkok Fourier hanya dalam sekitar tiga bulan, lalu memperlihatkannya kepada sebagian karyawan pada akhir Agustus.\n\nMax dilaporkan setinggi sekitar 1,5 meter, berbobot sekitar 48 kg, dan memakai chip Nvidia Jetson Thor. Meta dilaporkan menggarap versi keduanya, Max 2, sejak September dengan tangan baru dan sensor untuk tangga. Meta menyebut proyek ini riset internal dan tidak berencana menjualnya.\n\nReuters belum memverifikasi laporan ini, dan menurut sumber The Information belum ada tanggal rilis produknya. Menurutmu, kamu mau robot humanoid buatan Meta membantu pekerjaan di rumahmu?\n\nSumber: The Information (via Reuters, Engadget, TNW) / Foto: Fourier (ilustrasi GR-3), Wikimedia Commons\n\n#akalmesin #Robotika #Meta #RobotHumanoid #Fourier\n\n# Sources\n\n- [Reuters (via Investing.com) — Meta builds humanoid robot with Chinese startup Fourier, The Information says](https://www.investing.com/news/stock-market-news/meta-builds-humanoid-robot-with-chinese-startup-fourier-the-information-says-4989297)\n- [Engadget — Meta reportedly built a humanoid robot prototype that can do household chores (Jackson Chen)](https://www.engadget.com/2303434/meta-reportedly-built-a-humanoid-robot-prototype-that-can-do-household-chores/)\n- [The Next Web — Meta built a humanoid robot with China’s Fourier, The Information reports](https://thenextweb.com/news/meta-humanoid-robot-fourier-max)\n\n# Alt text and photo credits\n\n01-main: Ilustrasi: robot humanoid Fourier GR-3 berwarna krem menari bersama pengunjung di stan Fourier CES 2026; ini bukan robot Max milik Meta.\n\nFOTO: ILUSTRASI ROBOT FOURIER GR-3 / FOURIER\n\n02-max: Ilustrasi: robot Fourier GR-3 bermain catur dengan pengunjung CES 2026; bukan robot Max.\n\nFOTO: ILUSTRASI ROBOT FOURIER GR-3 / FOURIER\n\n03-chip: Ilustrasi: modul Nvidia Jetson Orin NX terpasang di papan sirkuit di Computex 2025; bukan Jetson Thor.\n\nFOTO: ILUSTRASI NVIDIA JETSON ORIN NX / COMMONS\n\n04-max2: Papan logo Meta di depan kantor pusat Meta Platforms di Menlo Park, California, di bawah langit berawan.\n\nFOTO: KANTOR PUSAT META / COMMONS\n\n# Approval\n\n\"Saved in review editor 2026-11-03T03:38:00.000Z\" — 2026-11-03-meta-robot-humanoid-max-edits-2026-11-03103800.json sha256:520862e4071f0db07b809cb561dca3a3d3c8aceebe009784e4a21bfd76d82d47, 2026-11-03 10:38 WIB\n\nApproved design revision: 6c1f9ba319488b03072836b428718df3d6e5853bff81f2bb5872d2f77d9a171d\n\n# Source ledger\n\n# Sources — Meta diam-diam bikin robot humanoid Max (retrieved 2026-11-03 WIB)\n\nOriginal report: The Information, Jyoti Mann, 31 Oct 2026 (paywalled; not read directly). Read via: Reuters on Investing.com (31 Oct 2026), https://www.investing.com/news/stock-market-news/meta-builds-humanoid-robot-with-chinese-startup-fourier-the-information-says-4989297 (R); Engadget, Jackson Chen (1 Nov 2026), https://www.engadget.com/2303434/meta-reportedly-built-a-humanoid-robot-prototype-that-can-do-household-chores/ (E); The Next Web (1 Nov 2026), https://thenextweb.com/news/meta-humanoid-robot-fourier-max (N).\n\nAll Max facts are The Information's sourcing; copy uses \"dilaporkan\" / \"menurut The Information\". Photos are illustrations (Fourier GR-3, Jetson Orin NX), never presented as Max or Jetson Thor.\n\n| Claim (copy)                                                                                                                   | Status                            | Source  |\n| ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | ------- |\n| Meta built humanoid prototype with Chinese startup Fourier; working on a second version                                        | Reported (The Information)        | R; E; N |\n| Reuters could not immediately verify                                                                                           | Verified                          | R       |\n| Codename Max; built in ~3 months                                                                                               | Reported                          | E; N    |\n| ~1.5 m tall, ~48 kg (106 lb)                                                                                                   | Reported                          | E; N    |\n| Face-expression display, speaker(s), five-fingered hands for small objects                                                     | Reported                          | E; N    |\n| Nvidia Jetson Thor                                                                                                             | Reported                          | E; N    |\n| Max 2 since September: new torso/hands, projector, extra sensors to handle stairs                                              | Reported                          | E; N    |\n| No launch date                                                                                                                 | Reported (one source)             | E; N    |\n| Meta: work with Fourier is internal research/experimentation; no plans to sell units                                           | Meta statement to The Information | N       |\n| Shown to some staff at a late-August internal robotics summit                                                                  | Reported                          | N       |\n| Li-Chen Miller (VP product, robotics) spent almost two months at Fourier's Shanghai factory                                    | Reported                          | N       |\n| Humanoids seen as physical form for Muse, Meta's AI agent; household tasks                                                     | Reported                          | N; E    |\n| Brief said \"Max 2 can climb stairs\": sources only say sensors \"to help it handle stairs\" — copy uses \"untuk menghadapi tangga\" | Judgement                         | E; N    |\n| No quote slide: no important quoted person with own photo                                                                      | —                                 | —       |\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-11-03-meta-robot-humanoid-max\n\nAccount: akalmesin\n\nEditorial depth: standard\n\nSlide count: 4",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/01-01-main.png",
+      "sha256": "a89ce1388d174563b13bfa02a5ce22ba3a7420863d0dd6fa5f8d84f78260f530",
+      "bytes": 1115817
+    },
+    {
+      "slideId": "02-max",
+      "file": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/02-02-max.png",
+      "sha256": "4cd24d6e7ffcf96183e23f76699fd4aee3b78699a00b4af15b02e8711a91d7ec",
+      "bytes": 1236833
+    },
+    {
+      "slideId": "03-chip",
+      "file": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/03-03-chip.png",
+      "sha256": "438d26d3088be8804eee19e1d17f5fd1092af4e04ee84e6d45ee7b6e0997c3e5",
+      "bytes": 1304247
+    },
+    {
+      "slideId": "04-max2",
+      "file": "content/posts/2026-11-03-meta-robot-humanoid-max/out/png/04-04-max2.png",
+      "sha256": "d024db3c0f5e2f5889fd39ae12d07c64f03e5893cde8119d8a922366766d4b76",
+      "bytes": 1342451
+    }
+  ],
+  "generatedAt": "2026-11-03T04:38:51.381Z"
+}

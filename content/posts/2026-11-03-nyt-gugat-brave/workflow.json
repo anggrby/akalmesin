@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-nyt-gugat-brave",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
     "copy": {
@@ -36,7 +36,32 @@
     }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40df909f-26a5-81ae-b111-f9024d4b6ad2",
+    "url": "https://app.notion.com/p/NYT-gugat-Brave-soal-scraping-untuk-AI-40df909f26a581aeb111f9024d4b6ad2",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-03-nyt-gugat-brave",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-03-nyt-gugat-brave",
+    "approvedRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
+    "orderedAssetHashes": [
+      "1120bd44ab987717e623c3b9ee2314e4ac52e8f1b5cf140e4579663663960ece",
+      "105d3d17aa5b39bf9b01e098c8b1bb904479957c1fcbde59065fa8b694f7311c",
+      "a4e838a77a5ac6a5d9eef2a2ffe35d5c2c968d998cc37c23f2dbd11bd41c5240",
+      "54bc16a36ded6a3d4591a1aebb8ee0b719dc34f89f64cff5da715dc07b517b5e"
+    ],
+    "uploadedAssetHashes": [
+      "1120bd44ab987717e623c3b9ee2314e4ac52e8f1b5cf140e4579663663960ece",
+      "105d3d17aa5b39bf9b01e098c8b1bb904479957c1fcbde59065fa8b694f7311c",
+      "a4e838a77a5ac6a5d9eef2a2ffe35d5c2c968d998cc37c23f2dbd11bd41c5240",
+      "54bc16a36ded6a3d4591a1aebb8ee0b719dc34f89f64cff5da715dc07b517b5e"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-03T04:39:03.029Z",
+    "exportedAtWIB": "2026-11-03 11:39 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -85,6 +110,11 @@
       "event": "design-built",
       "designRevision": "638f49d797d359128733cefe516277020cb7bb358b8acdf8df787ff53fc0e977",
       "at": "2026-11-03T03:47:54.298Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40df909f-26a5-81ae-b111-f9024d4b6ad2",
+      "at": "2026-11-03T04:39:03.029Z"
     }
   ]
 }

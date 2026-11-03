@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
-  "stage": "export",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
     "copy": {
@@ -36,7 +36,32 @@
     }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40df909f-26a5-8177-9b15-d4c740a552f2",
+    "url": "https://app.notion.com/p/Agen-AI-suntikkan-terapi-gen-ke-otak-tikus-40df909f26a581779b15d4c740a552f2",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-03-agen-ai-terapi-gen-otak-tikus",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-03-agen-ai-terapi-gen-otak-tikus",
+    "approvedRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+    "orderedAssetHashes": [
+      "04d78f35c1c4a6714b2c6a7a2a53e354e322fe1a33e24e4dc5fbf65ad1cb01aa",
+      "85cf45818dde459883ef0bb28a0faaf6a19a0c640f4c4da6cf3ab59dba4823f8",
+      "a8f48d124a5f090f4d31d57384ee442e52dda5966fcd399292d15c7d53da479d",
+      "01a0975777b902875e623b47c41d0e0d05fa0f0aa967ccab41b9895e0434ce88"
+    ],
+    "uploadedAssetHashes": [
+      "04d78f35c1c4a6714b2c6a7a2a53e354e322fe1a33e24e4dc5fbf65ad1cb01aa",
+      "85cf45818dde459883ef0bb28a0faaf6a19a0c640f4c4da6cf3ab59dba4823f8",
+      "a8f48d124a5f090f4d31d57384ee442e52dda5966fcd399292d15c7d53da479d",
+      "01a0975777b902875e623b47c41d0e0d05fa0f0aa967ccab41b9895e0434ce88"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-03T04:39:11.872Z",
+    "exportedAtWIB": "2026-11-03 11:39 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -76,6 +101,11 @@
       "copyRevision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17",
       "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
       "at": "2026-11-03T04:27:00.000Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40df909f-26a5-8177-9b15-d4c740a552f2",
+      "at": "2026-11-03T04:39:11.872Z"
     }
   ]
 }

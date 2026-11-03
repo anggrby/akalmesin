@@ -138,7 +138,7 @@ Panduan ini adalah acuan tunggal untuk penulisan teks _slide carousel_, _caption
 
 ## 5. Struktur & Aturan _Caption_ Instagram
 
-- **Target Panjang Teks (100–150 Kata):**
+- **Target Panjang Teks (sekitar 100 Kata, peringatan saja):**
 - Hanya menghitung **3 paragraf isi** (tidak termasuk baris `Sumber/Foto`, `Ilustrasi`, dan _hashtag_).
 
 - _Tips Disiplin Kata:_ Jangan menyalin ulang seluruh angka _benchmark_ dari Slide 02–04 ke dalam _caption_ agar panjang teks tidak membengkak hingga >175 kata. Cukup rangkum daya tarik utamanya di Paragraf 2.
