@@ -20,6 +20,12 @@ Panduan ini adalah acuan tunggal untuk penulisan teks _slide carousel_, _caption
 
 - Selalu sertakan batasan (_hedge_) yang jelas bahwa angka _benchmark_ berasal dari `"pengujian internal dan masih menunggu verifikasi independen"`.
 
+- **Setia pada Sumber:** Jangan menambah detail, nada, atau sebab-akibat yang tidak ada di sumber (ditolak: _"ribuan artikel"_, _"identitas tersembunyi"_ untuk crawler yang namanya tidak diungkap, _"membobol"_, _"secara ilegal"_, _"mustahil"_, _"diam-diam"_, serta penambah nada seperti _"bahkan"_, _"berambisi"_, _"murni"_, _"menegaskan"_). Isi gugatan tetap ditulis sebagai tuduhan. Pernyataan resmi perusahaan tentang dirinya cukup ditulis `"Meta menyatakan..."`, bukan _"diklaim"_.
+
+- **Cek Sumber Sebelum Menerima Koreksi:** Peninjau luar (termasuk AI) bisa memakai pengetahuan lama. Jangan terima koreksi nama, versi model, atau angka tanpa membuka sumbernya (contoh: _Claude Opus 5.5_ memang ada di sumber). Salin nama perusahaan persis dari sumber, bukan dari render kredit (Exin, bukan _"Erin"_).
+
+- **Peran Manusia dalam Eksperimen:** Pada berita eksperimen hewan atau AI yang mengendalikan alat fisik, jangan hilangkan peran manusia (siapa yang membedah, menyetujui langkah, dan memegang tombol darurat).
+
 ---
 
 ## 2. Diksi, Skala Kata Kerja, & Anti-Terjemahan Harfiah (_Anti-Calque_)
@@ -34,6 +40,10 @@ Panduan ini adalah acuan tunggal untuk penulisan teks _slide carousel_, _caption
 - _Domestic demand_ (ekonomi makro) $\rightarrow$ gunakan **"daya beli domestik"**, bukan sekadar _"permintaan domestik"_.
 
 - Metafora puitis bahasa Inggris $\rightarrow$ ubah ke bahasa lugas. Contoh: jangan tulis _"tenaga surya lebih murah hati"_ (_more generous_), melainkan **"pasokan energi surya jauh lebih melimpah"**.
+
+- _Injunction_ $\rightarrow$ gunakan **"perintah pengadilan untuk menghentikan..."**, bukan _"putusan sela"_ (istilah itu berarti putusan antara).
+
+- Hindari kata yang memunculkan makna lain: **"diberi kendali fisik"**, bukan _"dilepas"_ (terdengar seperti melepas hewan); **"wujud fisik"** untuk agen AI, bukan _"tubuh fisik"_.
 
 - **Sesuaikan Intensitas Kata Kerja dengan Skala Fakta:**
 - Penurunan besar (~40–50%) $\rightarrow$ gunakan **"anjlok sekitar 40%"** atau **"kehilangan sekitar separuh nilai sahamnya / tergerus sekitar 50%"**, jangan hanya menulis _"turun"_ atau _"berkurang"_.
@@ -100,6 +110,8 @@ Panduan ini adalah acuan tunggal untuk penulisan teks _slide carousel_, _caption
 
 - ✅ `"Moonshot AI rilis Kimi K3.1 Pro!"`
 
+- Sebut isu spesifiknya, bukan topik umum: ✅ `"NYT gugat Brave / soal scraping untuk AI"`, bukan _"soal AI"_. Jangan pernah memakai _Title Case_.
+
 - **Summary (1 Kalimat Utuh & Mengalir):**
 - Berisi satu gagasan utama yang merangkum keunggulan konkret (dengan bahasa sehari-hari seperti `"urusan kendali komputer"`, `"pengolahan visual"`, `"tarif separuh"`) atau jadwal rilisnya.
 
@@ -119,6 +131,8 @@ Panduan ini adalah acuan tunggal untuk penulisan teks _slide carousel_, _caption
 - **Pilih Inti _Takeaway_-nya:** Tebalkan informasi yang paling berdampak bagi pembaca—seperti siapa yang mendapat akses (`"**Plus, Pro, Enterprise, dan Edu**"`), persentase penghematan harga (`"**50% lebih rendah dan harga output sekitar 58% lebih rendah**"`), rekomendasi penggunaan (`"**riset mendalam dan pemrograman kompleks**"`), atau skala kejadian (`"**anjlok sekitar 40%**"`), bukan sekadar menebalkan nama model atau seluruh kalimat.
 
 - Jaga agar penekanan tetap dalam **1 frasa yang menyatu** per slide agar efek visual gradasi birunya tetap tajam dan tidak memecah fokus mata.
+
+- **Tanpa Disclaimer Foto di Teks Slide:** Jika foto hanya ilustrasi, cukup tulis di kredit (`FOTO: ILUSTRASI ...`) dan _alt text_; jangan tambahkan kalimat penjelasan foto di paragraf.
 
 ---
 
@@ -159,6 +173,10 @@ Ilustrasi slide [X]: AI / akalmesin
 
 - Pastikan penulisan kredit foto pada _slide_ konsisten di seluruh unggahan (misalnya: gunakan `/ COMMONS` di semua _slide_, jangan dicampur dengan `/ WIKIMEDIA`).
 
+- Baris `Sumber:` mencantumkan semua sumber utama yang dipakai (misal gugatan aslinya plus media yang dikutip), bukan hanya satu media.
+
+- Aturan panjang (~100 kata, 3 paragraf, 1 pertanyaan) dan maksimal 5 _hashtag_ juga berlaku untuk _caption_ Reels.
+
 - **Aturan _Hashtag_ (Maksimal 5):**
 - Gunakan **maksimal 5 _hashtag_** (mengikuti batas resmi kreator Instagram): wajib `#akalmesin` ditambah maksimal 4 _hashtag_ spesifik yang merujuk pada entitas, topik, atau kasus penggunaan (contoh: `#OpenAI #GPT61 #LocalLLM #OpenWeights`). Hindari _hashtag_ nama kategori umum (`#Programming`) atau ekstensi format teknis semata (`#GGUF`).
 
@@ -167,6 +185,10 @@ Ilustrasi slide [X]: AI / akalmesin
 ## 6. Ringkasan Spesifikasi Desain & Alur Kerja (_Dark Mode_)
 
 - **Palet & Tipografi _Dark Mode_:** Latar belakang `#0A0A0F`, teks _headline_ `#F2F2F5`, teks _summary_ dan kategori `#B4B4BE`, menggunakan logo _wordmark_ `akalmesin` pada _masthead_ dengan garis pemisah putih transparan 50% (`1 px rgba(255,255,255,0.5)`), serta garis batas tipis `1 px rgba(255,255,255,0.12)` di tepi atas foto.
+
+- **Foto Relevan & Kredit Terbaca:** Untuk tangkapan layar, pakai tampilan produk yang dibahas (misal halaman Ask Brave), bukan halaman yang tidak terkait. Pilih foto atau _crop_ dengan bagian bawah yang bersih agar kredit tidak menimpa teks kecil.
+
+- **Teks Kartu Reels:** Tulis kalimat utuh yang disambung kata hubung, bukan potongan telegrafis, dan pertahankan versi model persis. Kredit _"Courtesy of X"_ dilokalkan menjadi `Dok. X`.
 
 - **Alur Kerja Peninjauan:** Draf ditinjau melalui file HTML interaktif di ruang kerja sementara (`/workspace/tmp/`) dan baru diekspor ke Notion setelah teks disunting serta disetujui penuh.
 

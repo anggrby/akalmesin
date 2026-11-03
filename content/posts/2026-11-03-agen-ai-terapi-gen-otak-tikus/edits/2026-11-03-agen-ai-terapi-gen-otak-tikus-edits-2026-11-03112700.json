@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 3,
+  "brand": "akalmesin",
+  "kind": "owner-edits",
+  "mode": "review",
+  "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+  "baseRevision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17",
+  "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+  "slides": [
+    {
+      "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+      "slideId": "01-main",
+      "fields": {
+        "summary": "Startup Exin Therapeutics mengklaim agen AI berbasis Claude memilih dan menyuntikkan terapi gen ke otak tikus hidup, meski efeknya pada kejang belum diketahui.",
+        "credit": "FOTO: RIG BEDAH EXIN / EXIN THERAPEUTICS"
+      }
+    },
+    {
+      "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+      "slideId": "02-pilihan",
+      "fields": {
+        "paragraph-0": "WIRED melaporkan agen ini diberi 19 pilihan terapi gen dalam spreadsheet, tikus model epilepsi, dan rig bedah bermotor dengan kamera. Tujuannya satu: mengurangi kejang. Agen itu memilih terapi, area otak, dan **titik suntiknya sendiri**, lalu mengendalikan lengan robot untuk menyuntikkan 250 nanoliter.",
+        "credit": "FOTO: RIG BEDAH BERMOTOR / EXIN THERAPEUTICS"
+      }
+    },
+    {
+      "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+      "slideId": "03-pengaman",
+      "fields": {
+        "paragraph-0": "Manusia tetap terlibat. Dokter hewan membuka tengkorak tikus, memegang **tombol darurat** yang memutus daya motor, dan harus menyetujui setiap langkah yang tidak bisa dibatalkan. CEO Gabriel Ocana-Santero menulis Claude Opus 5.5 langsung menolak tugas ini, dan Opus 5 berhenti sebelum operasi sungguhan. Tim akhirnya memakai Claude Sonnet 5.",
+        "credit": "FOTO: TOMBOL DARURAT RIG / EXIN THERAPEUTICS"
+      }
+    },
+    {
+      "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+      "slideId": "04-hasil",
+      "fields": {
+        "paragraph-0": "Menurut WIRED, prosedurnya berlangsung sedikit lebih dari satu jam, lebih lama dari biasanya sekitar 45 menit. Tikusnya pulih dengan baik, tetapi **efeknya pada kejang belum diketahui**. Klaim ini baru diumumkan lewat X dan laporan teknisnya belum terbit. Anthropic tidak menanggapi permintaan komentar WIRED.",
+        "credit": "FOTO: TIKUS SETELAH OPERASI / EXIN THERAPEUTICS"
+      }
+    }
+  ],
+  "captions": [
+    {
+      "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
+      "paragraphs": [
+        "Agen AI memilih sendiri terapi gen, menentukan titik di otak, lalu mengendalikan lengan robot untuk menyuntikkannya ke tikus hidup. WIRED melaporkan percobaan ini dijalankan startup Exin Therapeutics di San Francisco dengan Claude Sonnet 5, setelah dua model Claude lain menolak.",
+        "Agen itu memilih dari 19 terapi untuk tikus model epilepsi dan menyuntikkan 250 nanoliter. Dokter hewan tetap membuka tengkorak, menyetujui setiap langkah penting, dan memegang tombol darurat. Prosedurnya berlangsung sedikit lebih dari satu jam.",
+        "Tikusnya pulih dengan baik, tetapi efeknya pada kejang belum diketahui dan laporan teknisnya belum terbit. Menurutmu, sejauh mana AI boleh diberi kendali fisik di laboratorium biologi?",
+        "Sumber: WIRED, Tom's Hardware, X @OcanaSantero / Foto: Dok. Exin Therapeutics\n\n#akalmesin #AI #AgenAI #TerapiGen #Bioteknologi"
+      ]
+    }
+  ],
+  "savedAt": "2026-11-03T04:27:00.000Z",
+  "note": "Owner approval t116u (\"Yeah that's good, approved.\") of the reel incl. 0.65 s last-frame hold on card 4; no-change Simpan-equivalent, no headline field."
+}

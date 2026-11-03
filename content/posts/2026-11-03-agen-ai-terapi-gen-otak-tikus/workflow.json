@@ -1,11 +1,39 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-03-agen-ai-terapi-gen-otak-tikus",
-  "stage": "design-check",
+  "stage": "export",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-03T04:27:00.000Z",
+      "source": "2026-11-03-agen-ai-terapi-gen-otak-tikus-edits-2026-11-03112700.json sha256:85519979f7e59fdfb7fb40a3634a88f61a90d65afd390f6ae93afc17e81ea51d",
+      "context": "no changes",
+      "at": "2026-11-03T04:27:00.000Z",
+      "atWIB": "2026-11-03 11:27 WIB",
+      "via": "review-save",
+      "copyRevision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17",
+      "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-03T04:28:24.685Z",
+      "revision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-03T04:27:00.000Z",
+      "source": "2026-11-03-agen-ai-terapi-gen-otak-tikus-edits-2026-11-03112700.json sha256:85519979f7e59fdfb7fb40a3634a88f61a90d65afd390f6ae93afc17e81ea51d",
+      "context": "no changes",
+      "at": "2026-11-03T04:27:00.000Z",
+      "atWIB": "2026-11-03 11:27 WIB",
+      "via": "review-save",
+      "copyRevision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17",
+      "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-03T04:28:24.685Z",
+      "revision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e"
+    }
   },
   "designStale": false,
   "notion": null,
@@ -35,6 +63,19 @@
       "event": "design-built",
       "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
       "at": "2026-11-03T04:19:27.591Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+      "at": "2026-11-03T04:28:23.968Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "2026-11-03-agen-ai-terapi-gen-otak-tikus-edits-2026-11-03112700.json sha256:85519979f7e59fdfb7fb40a3634a88f61a90d65afd390f6ae93afc17e81ea51d",
+      "copyRevision": "98abc55b7a26a2d50b99eaa4be658bcde716fabf7a53e6cdf58d6d1761812f17",
+      "designRevision": "a243ffdcc7ef542487317e55cc4af891479fd6c397c1643c06111a2a67d3084e",
+      "at": "2026-11-03T04:27:00.000Z"
     }
   ]
 }
