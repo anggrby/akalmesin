@@ -1,0 +1,183 @@
+{
+  "slug": "2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+  "category": "ROBOTIKA",
+  "title": "Enam robot AgiBot jaga minimarket 24 jam",
+  "format": "standard",
+  "formatReason": "Reel-only story (owner pt118u brief: publishAs reel-only, card layout). Carousel copy holds the verified facts the reel cards and Notion export use. Main + three details: the setup, AgiBot's numbers, what was not published. No quote slide.",
+  "eventDate": "2026-11-02",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Enam robot AgiBot jaga",
+        "minimarket 24 jam"
+      ],
+      "summary": "Enam robot humanoid AgiBot G2 menjaga minimarket di Shanghai selama 24 jam. Semua angka hasilnya berasal dari AgiBot sendiri.",
+      "credit": "FOTO: MINIMARKET UJI COBA AGIBOT / AGIBOT",
+      "alt": "Minimarket dilihat dari atas, dengan rak-rak produk dan beberapa robot humanoid putih AgiBot G2 di antara rak.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "agibot-store-overview",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalFile": "assets/originals/x-2117086439-store-overview.jpg",
+        "subject": "Store overview with several G2 robots (frame grab, livestream at ~5000 s into the broadcast, overlay cropped out)",
+        "supplier": "AgiBot (official X livestream replay)",
+        "license": "Company livestream footage (AgiBot's official X broadcast), no licence granted; credited 'Dok. AgiBot' by owner decision t89u/t107u/t115u (takedown / copyright-strike risk accepted)",
+        "process": {
+          "maxWidth": 1200,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "02-tugas",
+      "layout": "detail1",
+      "paragraphs": [
+        "Tantangan bertajuk \"Robots Never Clock Out\" berlangsung dari 2 November pukul 10.00 hingga 3 November pukul 10.00 waktu China, di **minimarket di distrik Xuhui, Shanghai**. Robot G2 mengisi rak, membuat kopi, menyiapkan makanan, menyapa pembeli, dan membersihkan meja."
+      ],
+      "credit": "FOTO: ROBOT G2 DI ANTARA RAK / AGIBOT",
+      "alt": "Robot humanoid AgiBot G2 beroda berdiri di antara rak minuman dan makanan ringan di minimarket.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "agibot-shelves",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalFile": "assets/originals/x-2117086439-shelves.jpg",
+        "subject": "G2 robot between store shelves (frame grab, livestream at ~600 s into the broadcast, overlay cropped out)",
+        "supplier": "AgiBot (official X livestream replay)",
+        "license": "Company livestream footage (AgiBot's official X broadcast), no licence granted; credited 'Dok. AgiBot' by owner decision t89u/t107u/t115u (takedown / copyright-strike risk accepted)",
+        "process": {
+          "maxWidth": 1200,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "03-angka",
+      "layout": "detail2",
+      "paragraphs": [
+        "Menurut AgiBot, mereka menyelesaikan 1.730 tugas, termasuk 683 sapaan dan 147 kopi. Siaran langsungnya ditonton lebih dari 2 juta orang. Tapi **hanya 4 dari 6 robot lulus penilaian**; robot pembersih dan satu robot patroli rak tidak lulus."
+      ],
+      "credit": "FOTO: ROBOT G2 MELAYANI PEMBELI / AGIBOT",
+      "alt": "Dua pembeli berdiri di dekat robot AgiBot G2 di depan rak produk, robot lain berada di belakang.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "agibot-customers",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalFile": "assets/originals/x-2117086439-customers.jpg",
+        "subject": "G2 robots with customers in the store (frame grab, livestream at ~9000 s into the broadcast, overlay cropped out)",
+        "supplier": "AgiBot (official X livestream replay)",
+        "license": "Company livestream footage (AgiBot's official X broadcast), no licence granted; credited 'Dok. AgiBot' by owner decision t89u/t107u/t115u (takedown / copyright-strike risk accepted)",
+        "process": {
+          "maxWidth": 1200,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "04-catatan",
+      "layout": "detail1",
+      "paragraphs": [
+        "AgiBot tidak merilis tingkat keberhasilan. Seberapa sering manusia turun tangan juga tidak dirilis. Durasi 24 jam pun belum membuktikan robot bekerja mandiri tanpa henti. **Semua angka ini klaim AgiBot sendiri.**"
+      ],
+      "credit": "FOTO: ROBOT G2 DI LORONG TOKO / AGIBOT",
+      "alt": "Robot AgiBot G2 di lorong minimarket dengan rak produk dan pembeli di sekitarnya.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "agibot-customers-2",
+        "kind": "news-photo",
+        "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+        "originalFile": "assets/originals/x-2117086439-customers-2.jpg",
+        "subject": "G2 robots in the store aisle (frame grab, livestream at ~9010 s into the broadcast, overlay cropped out)",
+        "supplier": "AgiBot (official X livestream replay)",
+        "license": "Company livestream footage (AgiBot's official X broadcast), no licence granted; credited 'Dok. AgiBot' by owner decision t89u/t107u/t115u (takedown / copyright-strike risk accepted)",
+        "process": {
+          "maxWidth": 1200,
+          "minTone": 0.3
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Enam robot humanoid AgiBot G2 menjaga sebuah minimarket di distrik Xuhui, Shanghai, selama 24 jam, dari 2 November pukul 10.00 hingga 3 November pukul 10.00 waktu China. Tantangan ini disiarkan langsung dengan judul \"Robots Never Clock Out\".",
+    "Menurut AgiBot, robot-robot itu menyelesaikan 1.730 tugas, dari menyapa pembeli, mengisi rak, membersihkan meja, sampai membuat 147 kopi. Siaran langsungnya ditonton lebih dari 2 juta orang. Namun hanya 4 dari 6 robot lulus penilaian, dan AgiBot tidak merilis tingkat keberhasilan maupun seberapa sering manusia turun tangan. Semua angka ini klaim AgiBot sendiri.",
+    "Kamu mau dilayani robot di minimarket?",
+    "Sumber: AgiBot, Interesting Engineering, Humanoids Daily, TechSpot / Foto: Dok. AgiBot\n\n#akalmesin #Robotika #AgiBot #RobotHumanoid #Ritel"
+  ],
+  "sources": [
+    {
+      "title": "AgiBot — Robots Never Clock Out | AGIBOT G2's 24-Hour Convenience Store Challenge (official X livestream)",
+      "url": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+      "published": "2026-11-02",
+      "supports": [
+        "six G2",
+        "24-hour shift as convenience store trainees",
+        "footage"
+      ]
+    },
+    {
+      "title": "Interesting Engineering — Jijo Malayil",
+      "url": "https://interestingengineering.com/ai-robotics/agibot-humanoid-robots-in-convenience-store",
+      "published": "2026-11-03",
+      "supports": [
+        "Robots Never Clock Out",
+        "2 Nov 10:00 to 3 Nov 10:00 China time",
+        "stocking, coffee, hot food, greeting, rubbish"
+      ]
+    },
+    {
+      "title": "Humanoids Daily",
+      "url": "https://www.humanoidsdaily.com/news/agibot-g2-24-hour-convenience-store-livestream",
+      "published": "2026-11-03",
+      "supports": [
+        "24 h does not prove uninterrupted autonomy",
+        "no intervention policy published",
+        "AI Day coverage sponsored by AgiBot (disclosure)"
+      ]
+    },
+    {
+      "title": "TechSpot — Six humanoid robots worked a 24-hour shift at a convenience store",
+      "url": "https://www.techspot.com/news/114445-six-humanoid-robots-worked-24-hour-shift-convenience.html",
+      "published": "2026-11-03",
+      "supports": [
+        "Xuhui district, Shanghai",
+        "1,730 tasks incl. 683 greetings, 147 coffees",
+        "4 of 6 passed (cleaning robot and one shelf-patrol robot did not, per ITHome)",
+        "no success or takeover rate"
+      ]
+    },
+    {
+      "title": "RoBrief — AgiBot G2 24-hour store, 1,730 tasks",
+      "url": "https://robrief.com/en/articles/agibot-g2-24-hour-store-1730-tasks",
+      "published": "2026-11-03",
+      "supports": [
+        "task breakdown",
+        "more than 2 million viewers"
+      ]
+    },
+    {
+      "title": "Servospace",
+      "url": "https://servospace.io/news/agibot-g2-humanoids-24-hour-convenience-store-shift-1730-tasks",
+      "published": "2026-11-03",
+      "supports": [
+        "1,730 tasks",
+        "Securities Times citing AgiBot"
+      ]
+    }
+  ]
+}

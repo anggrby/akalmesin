@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+  "stage": "design-check",
+  "approvals": {
+    "selected": null,
+    "copy": null,
+    "final": null
+  },
+  "designStale": false,
+  "notion": null,
+  "legacyRevisions": {},
+  "history": [
+    {
+      "event": "design-built",
+      "designRevision": "437b6d3157ccd9ac60688cac3ccc2455581f6e3761d6441a2d46bb76d85fd62e",
+      "at": "2026-11-04T14:06:50.416Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "7244b8c5a3f6bffa2922f2d7bd61bc25edd75f87f390982df8db48a1b7fb55c2",
+      "at": "2026-11-04T14:07:09.025Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "fbe9f3989dea32c1361d2f9b8802111f4348079573e4de440b45f968c88c43d3",
+      "at": "2026-11-04T14:07:30.181Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+      "at": "2026-11-04T14:07:54.984Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+      "at": "2026-11-04T14:17:59.977Z"
+    }
+  ]
+}

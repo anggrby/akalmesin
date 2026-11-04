@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+  "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+  "copyRevision": "c350ba818ede14847bd34dc5d78db4a61ef129fbafc652aaa09f05cdff52e30d",
+  "checkedAt": "2026-11-04T14:18:11.816Z",
+  "passed": true,
+  "problems": [],
+  "warnings": [
+    "Caption sekitar 95 kata; panduan 100–100 kata."
+  ],
+  "slides": [
+    {
+      "id": "01-main",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/01-01-main.png",
+      "ink": {
+        "onRamp": 0.9982556750298686,
+        "meanDistance": 1.4902543495191873,
+        "inkPixels": 0.8672162485065711
+      },
+      "gap": 64,
+      "photoHeight": 702
+    },
+    {
+      "id": "02-tugas",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/02-02-tugas.png",
+      "ink": {
+        "onRamp": 0.9995698924731182,
+        "meanDistance": 1.3338050143725066,
+        "inkPixels": 0.9802628434886499
+      },
+      "gap": 54,
+      "photoHeight": 762
+    },
+    {
+      "id": "03-angka",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/03-03-angka.png",
+      "ink": {
+        "onRamp": 0.9977299880525687,
+        "meanDistance": 1.5503945342201566,
+        "inkPixels": 0.8854002389486261
+      },
+      "gap": 54,
+      "photoHeight": 822
+    },
+    {
+      "id": "04-catatan",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/04-04-catatan.png",
+      "ink": {
+        "onRamp": 0.9981362007168458,
+        "meanDistance": 1.4862990909746072,
+        "inkPixels": 0.8711827956989248
+      },
+      "gap": 54,
+      "photoHeight": 822
+    }
+  ]
+}

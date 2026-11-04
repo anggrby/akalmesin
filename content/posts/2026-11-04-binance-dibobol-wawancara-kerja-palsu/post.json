@@ -1,0 +1,213 @@
+{
+  "slug": "2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+  "category": "TEKNOLOGI",
+  "title": "Binance dibobol lewat wawancara kerja palsu",
+  "format": "standard",
+  "formatReason": "Main + three details in attack order: June fake installer, September fake interview plus the internal AI tool, then the FBI attribution, North Korea's denial and Binance's recovery figures. No quote slide (no key quote with the speaker's own photo); no diagram (photos carry it).",
+  "eventDate": "2026-10-29",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Binance dibobol lewat",
+        "wawancara kerja palsu"
+      ],
+      "summary": "Binance kehilangan sekitar US$6,3 miliar, kira-kira Rp114 triliun, dalam pembobolan kripto terbesar sejauh ini. Pintu masuknya: engineer yang dijebak lewat proses rekrutmen palsu.",
+      "credit": "FOTO: RICHARD TENG, CEO BINANCE / COMMONS",
+      "alt": "Richard Teng, CEO Binance, berbicara di panggung dengan jas biru dan latar gelap.",
+      "imagePosition": "50% 35%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-teng-bbw2023",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:RichardTeng_BBW2023_Istanbul1.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/5/5e/RichardTeng_BBW2023_Istanbul1.jpg",
+        "originalFile": "assets/originals/teng-bbw2023.jpg",
+        "subject": "Richard Teng (now Binance CEO) speaking at Binance Blockchain Week 2023, Istanbul",
+        "supplier": "Binance / Wikimedia Commons",
+        "license": "CC BY 4.0",
+        "process": {
+          "crop": [
+            300,
+            60,
+            470,
+            560
+          ],
+          "maxWidth": 1400,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "02-installer",
+      "layout": "detail1",
+      "paragraphs": [
+        "Menurut laporan Binance, jejak serangan dimulai Juni. Seorang developer yang sedang mencari alat AI untuk coding mengklik iklan Google berbahaya, lalu mengunduh **installer Homebrew yang sudah diubah** penyerang."
+      ],
+      "credit": "FOTO: HOMEBREW DI TERMINAL MAC / COMMONS",
+      "alt": "Tangkapan layar jendela Terminal di Mac yang menampilkan perintah dan bantuan Homebrew.",
+      "imagePosition": "50% 30%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-homebrew-terminal",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Sample_of_Homebrew_2.2.12_in_Mac_Terminal.png",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/d/da/Sample_of_Homebrew_2.2.12_in_Mac_Terminal.png",
+        "originalFile": "assets/originals/homebrew-terminal.png",
+        "subject": "Homebrew 2.2.12 running in macOS Terminal (screenshot)",
+        "supplier": "MohammedAbdulMalek / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "crop": [
+            0,
+            0,
+            1700,
+            1300
+          ],
+          "maxWidth": 1400,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "03-wawancara",
+      "layout": "detail2",
+      "paragraphs": [
+        "September, perekrut palsu mengajak seorang engineer ikut beberapa sesi wawancara, lalu memberinya \"tugas\" berisi malware. Pada 20 Oktober, dari komputer yang sudah dikuasai, penyerang memakai **alat AI internal Binance** untuk mengendalikan laptop dua karyawan lain. Dana dikuras pada 29 Oktober."
+      ],
+      "credit": "FOTO: ILUSTRASI WAWANCARA DARING / COMMONS",
+      "alt": "Seorang perempuan tersenyum di depan laptop saat panggilan video di ruangan berdinding kayu.",
+      "imagePosition": "60% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-video-call-laptop",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Woman_smiling_and_using_laptop_during_video_call_in_cozy_wooden_room.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Woman_smiling_and_using_laptop_during_video_call_in_cozy_wooden_room.jpg",
+        "originalFile": "assets/originals/video-call-laptop.jpg",
+        "subject": "Generic photo of a person on a laptop video call (illustration, not a person in the story)",
+        "supplier": "Shixart1985 / Wikimedia Commons",
+        "license": "CC BY 2.0",
+        "process": {
+          "maxWidth": 1600,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "04-fbi",
+      "layout": "detail1",
+      "paragraphs": [
+        "FBI menyatakan Korea Utara bertanggung jawab, lewat kelompok yang dijuluki **TraderTraitor**, yang juga dikaitkan dengan pembobolan Bybit US$1,5 miliar pada 2025. Korea Utara membantah. Binance mengklaim sekitar US$2,85 miliar sudah dibekukan atau dicegat, dan 98% kerugian sudah ditutup dari cadangannya."
+      ],
+      "credit": "FOTO: MARKAS FBI, WASHINGTON / COMMONS",
+      "alt": "Gedung J. Edgar Hoover, markas FBI di Washington DC, dengan pepohonan di depannya dan langit biru.",
+      "imagePosition": "45% 60%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-fbi-hq",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:FBI_Headquarters_-_J._Edgar_Hoover_Building_(53840035941).jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/7/72/FBI_Headquarters_-_J._Edgar_Hoover_Building_%2853840035941%29.jpg",
+        "originalFile": "assets/originals/fbi-hq.jpg",
+        "subject": "J. Edgar Hoover Building, FBI headquarters, Washington DC (June 2024)",
+        "supplier": "ajay_suresh / Wikimedia Commons",
+        "license": "CC BY 2.0",
+        "process": {
+          "maxWidth": 1600,
+          "minTone": 0.3
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Binance, bursa kripto terbesar di dunia, kehilangan sekitar US$6,3 miliar (kira-kira Rp114 triliun) pada 29 Oktober. BBC menyebutnya pembobolan kripto terbesar sejauh ini, dan FBI serta Secret Service ikut membantu penyelidikan.",
+    "Menurut laporan Binance, penyerang masuk lewat installer Homebrew palsu dan wawancara kerja palsu yang berujung tugas berisi malware. Dari komputer yang dikuasai, mereka memakai alat AI internal Binance untuk mengendalikan laptop dua karyawan lain. FBI menuding Korea Utara, yang membantah. Binance mengklaim 98% kerugian sudah ditutup dan penarikan dana kembali dibuka.",
+    "Menurutmu, perusahaan perlu membatasi akses alat AI internal ke komputer karyawan?",
+    "Sumber: FBI, laporan Binance, BBC, The Verge, SecurityWeek, Reuters / Foto: Wikimedia Commons\n\n#akalmesin #Binance #Kripto #KeamananSiber #KoreaUtara"
+  ],
+  "sources": [
+    {
+      "title": "FBI PSA — North Korea Responsible for $6 Billion Binance Attack",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "published": "2026-10-31",
+      "supports": [
+        "more than $6 billion",
+        "attributed to North Korea / TraderTraitor",
+        "628 addresses listed"
+      ]
+    },
+    {
+      "title": "Binance announcement — incident report",
+      "url": "https://www.binance.com/en/support/announcement/detail/d3306d9dca5243548c813b605e1d1751",
+      "published": "2026-11-01",
+      "supports": [
+        "attack chain per Binance",
+        "recovery figures"
+      ]
+    },
+    {
+      "title": "Binance announcement — follow-up",
+      "url": "https://www.binance.com/en/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7",
+      "published": "2026-11-02",
+      "supports": [
+        "withdrawals restored",
+        "replenishment"
+      ]
+    },
+    {
+      "title": "BBC — Binance hack (Liv McMahon)",
+      "url": "https://www.bbc.com/news/articles/ck5ynwz9gy67o",
+      "published": "2026-11-03",
+      "supports": [
+        "US$6.3bn, largest crypto hack to date",
+        "fake interview + assignment malware",
+        "internal AI tool took control of two other engineers' laptops",
+        "98% replenished",
+        "Kim Yo Jong denial",
+        "TraderTraitor behind Bybit $1.5bn in 2025"
+      ]
+    },
+    {
+      "title": "The Verge — Binance hack timeline (Richard Lawler)",
+      "url": "https://www.theverge.com/news/1025576/binance-cyrpto-theft-explained",
+      "published": "2026-11-03",
+      "supports": [
+        "June malicious Google ad + tampered installer",
+        "September fake recruiter, multiple interviews",
+        "20 October AI tool",
+        "29 October attack",
+        "US$2.85B frozen or intercepted"
+      ]
+    },
+    {
+      "title": "SecurityWeek — Binance $6.34B hack",
+      "url": "https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/",
+      "published": "2026-11-03",
+      "supports": [
+        "tampered Homebrew installer found while searching for an AI coding tool"
+      ]
+    },
+    {
+      "title": "Reuters (via Investing.com) — Binance says outflows normalised as North Korea rejects US allegation",
+      "url": "https://ca.investing.com/news/economy-news/north-korea-rejects-us-allegation-overbinance-crypto-heist-4924089",
+      "published": "2026-11-03",
+      "supports": [
+        "North Korea denial"
+      ]
+    },
+    {
+      "title": "Bank Indonesia — JISDOR 4 Nov 2026",
+      "url": "https://www.bi.go.id/id/statistik/informasi-kurs/jisdor/default.aspx",
+      "published": "2026-11-04",
+      "supports": [
+        "Rp18.140 per US$"
+      ]
+    }
+  ]
+}

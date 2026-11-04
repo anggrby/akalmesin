@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+  "copyRevision": "c350ba818ede14847bd34dc5d78db4a61ef129fbafc652aaa09f05cdff52e30d",
+  "creditsRevision": "96eea369b38ffcfb26cc8122b1f3cf77fc9467ec0a2e1b0b928c9c41a45abcfe",
+  "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+  "builtAt": "2026-11-04T14:18:11.047Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/slides/01-main.html",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/01-01-main.png",
+      "pngHash": "07616be7af702a7b15650041119426dbb68532f2b6779e2e440d0a20b568b75d",
+      "imageHash": "0edd63dbaf87431748d27341c6df608c307563e311a2913a6c454b33dfc472d8",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-tugas",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/slides/02-tugas.html",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/02-02-tugas.png",
+      "pngHash": "7094ff18e815b1ef024a71d4fdc2462070c454448d73455b03ec796cb30c885c",
+      "imageHash": "616355b75607740f2eabd4d745ce3412e0ff874753c6287b4948d77dddfe5bec",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 588,
+          "width": 1080,
+          "height": 762,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-angka",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/slides/03-angka.html",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/03-03-angka.png",
+      "pngHash": "f858180dfd92e7fb1af6c03f294161d8e54fa1f3502e3b0f7ed12f0ecf26b5f7",
+      "imageHash": "ed593f89993b3699c2cee82f9e3bed849308e47b55e55ad8378363adf45419bb",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 528,
+          "width": 1080,
+          "height": 822,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-catatan",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/slides/04-catatan.html",
+      "png": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/04-04-catatan.png",
+      "pngHash": "790df06fadbe64041639d4c5c1085aa240e17f5e5937ff4c1cb6162eee4c2edc",
+      "imageHash": "1a0195a2ad409239d4ed243894492986f876da3b15da6e7b178e46559707c3a1",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 528,
+          "width": 1080,
+          "height": 822,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

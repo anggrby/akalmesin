@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+  "copyRevision": "1443268d2d00397c410ff1b29ea5f125d7326d46581bee4696d21dbe1a5976e1",
+  "creditsRevision": "ccded2d7f92a7d4592c97375fe1582e2d01a9ee7c10f1665ed19877728beae57",
+  "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+  "builtAt": "2026-11-04T14:17:59.977Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/slides/01-main.html",
+      "png": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/01-01-main.png",
+      "pngHash": "1aa9f98996422ad770700ec722259e9a5b84312d3fca1c0f221d4f8b1a4445a9",
+      "imageHash": "35aa84eea870e372614a0a2461b2cc463f7e6a6bc80c883603c8979ed76caa1f",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 703,
+          "width": 1080,
+          "height": 647,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-installer",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/slides/02-installer.html",
+      "png": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/02-02-installer.png",
+      "pngHash": "231b0acf3d2b1fd7735ea3d773ed97c3f2226b02f08e2680e1adadbcd6b65b41",
+      "imageHash": "22878b905e309527778cf723e86e955a411b0728d2239b69a1b6fdd6b29564fa",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 528,
+          "width": 1080,
+          "height": 822,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-wawancara",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/slides/03-wawancara.html",
+      "png": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/03-03-wawancara.png",
+      "pngHash": "7f3525336ec5394fbf41f043bc7c284f204a8ce9ad6c919475506f5545e838c4",
+      "imageHash": "034bc7894e2ad985b9225e89bda7a13a7b620e29cd231d29c7bf869cfbdb3bf8",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-fbi",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/slides/04-fbi.html",
+      "png": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/04-04-fbi.png",
+      "pngHash": "073c784f9a6baffe93f1ed6f684219e6f7b2afcfc9fbd8a9263656e112ed8c51",
+      "imageHash": "930f7ff137eb1f6f29652550b1b5ae9ec8fbfe8217123e685ad22c99666285de",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}

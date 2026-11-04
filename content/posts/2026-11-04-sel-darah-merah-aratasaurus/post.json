@@ -1,0 +1,176 @@
+{
+  "slug": "2026-11-04-sel-darah-merah-aratasaurus",
+  "category": "SAINS",
+  "title": "Sel darah merah di tulang dinosaurus 115 juta tahun",
+  "format": "standard",
+  "formatReason": "Main + three details: what was found, how the team tested it, and a skeptics slide (the finding is disputed). No quote slide: no photo of Grice or the skeptics is available under a usable licence. Main image is a life reconstruction, credited ILUSTRASI.",
+  "eventDate": "2026-11-02",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "headline": [
+        "Sel darah merah di tulang",
+        "dinosaurus 115 juta tahun"
+      ],
+      "summary": "Studi di jurnal PNAS mengklaim menemukan sisa sel darah merah dan jejak heme di tulang Aratasaurus museunacionali. Ilmuwan lain belum yakin.",
+      "credit": "FOTO: ILUSTRASI ARATASAURUS / COMMONS",
+      "alt": "Ilustrasi rekonstruksi Aratasaurus, dinosaurus pemakan daging berbulu, berdiri di antara akar pohon dengan langit jingga.",
+      "imagePosition": "60% 45%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-aratasaurus-reconstruction",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Aratasaurus_museunacionali.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/9/97/Aratasaurus_museunacionali.jpg",
+        "originalFile": "assets/originals/aratasaurus-reconstruction.jpg",
+        "subject": "Life reconstruction of Aratasaurus museunacionali (illustration)",
+        "supplier": "Maurilio Oliveira / Wikimedia Commons",
+        "license": "CC BY 4.0",
+        "process": {
+          "maxWidth": 1414,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "02-temuan",
+      "layout": "detail1",
+      "paragraphs": [
+        "Tim yang dipimpin Kliti Grice dari Curtin University meneliti tulang kaki belakang dinosaurus sepanjang sekitar 3 meter itu. Di dalam saluran pembuluh darah tulang, mereka menemukan struktur berbentuk cakram selebar rata-rata 23 mikron, ditambah **jejak heme**, komponen hemoglobin dalam darah."
+      ],
+      "credit": "FOTO: FOSIL TULANG ARATASAURUS / COMMONS",
+      "alt": "Fosil tulang paha dan tulang kering Aratasaurus yang masih tertanam di batuan, dengan garis putus-putus menandai bentuk tulang.",
+      "imagePosition": "50% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-aratasaurus-holotype",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Aratasaurus.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/4/41/Aratasaurus.jpg",
+        "originalFile": "assets/originals/aratasaurus-holotype.jpg",
+        "subject": "Holotype MPSC R 2089 of Aratasaurus museunacionali, femur and tibia before preparation (Sayão et al. 2020)",
+        "supplier": "Sayão et al. / Wikimedia Commons",
+        "license": "CC BY 4.0",
+        "process": {
+          "maxWidth": 1412,
+          "minTone": 0.3,
+          "crop": [
+            0,
+            120,
+            1412,
+            700
+          ]
+        }
+      }
+    },
+    {
+      "id": "03-uji",
+      "layout": "detail2",
+      "paragraphs": [
+        "Fosil ini selamat dari kebakaran Museu Nacional Brasil pada 2018. Tim menjalankan hampir 30 uji, termasuk membandingkannya dengan lapisan mikroba di sekitarnya. Di lapisan itu, molekul terkait klorofil lebih dari 300 kali lebih banyak daripada heme. Di dalam tulang, **rasionya terbalik**."
+      ],
+      "credit": "FOTO: KEBAKARAN MUSEU NACIONAL 2018 / COMMONS",
+      "alt": "Gedung Museu Nacional di Rio de Janeiro terbakar pada malam hari, api menyala di atap di balik pagar.",
+      "imagePosition": "50% 40%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-museu-nacional-fire",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Fire_at_Museu_Nacional_01.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/8/85/Fire_at_Museu_Nacional_01.jpg",
+        "originalFile": "assets/originals/museu-nacional-fire.jpg",
+        "subject": "Fire at the National Museum of Brazil, Rio de Janeiro, 2 September 2018",
+        "supplier": "Felipe Milanez / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "maxWidth": 1600,
+          "minTone": 0.3
+        }
+      }
+    },
+    {
+      "id": "04-skeptis",
+      "layout": "detail1",
+      "paragraphs": [
+        "Ilmuwan lain belum yakin. Mary Schweitzer dari NC State menyebut struktur itu lebih besar dari sel darah burung atau buaya dan tidak punya inti. Evan Saitta dari Field Museum menilai bukti heme meyakinkan, tapi cakramnya bisa saja gumpalan mangan oksida. Maria McNamara dari UCC ingin hasilnya **diuji ulang oleh lab lain**."
+      ],
+      "credit": "FOTO: LAB BERGERAK MARY SCHWEITZER / COMMONS",
+      "alt": "Trailer putih laboratorium bergerak milik Mary Schweitzer terparkir di halaman rumput Museum of the Rockies.",
+      "imagePosition": "50% 50%",
+      "imageSource": {
+        "retrieved": "2026-11-04",
+        "treatment": "blue-ink",
+        "id": "commons-schweitzer-lab",
+        "kind": "news-photo",
+        "sourceURL": "https://commons.wikimedia.org/wiki/File:Schweitzer_Lab.jpg",
+        "originalURL": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Schweitzer_Lab.jpg",
+        "originalFile": "assets/originals/schweitzer-lab.jpg",
+        "subject": "Mary H. Schweitzer's mobile laboratory, Museum of the Rockies, Bozeman (2009)",
+        "supplier": "Vladimír Socha (Meridas) / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "process": {
+          "maxWidth": 1500,
+          "minTone": 0.3
+        }
+      }
+    }
+  ],
+  "caption": [
+    "Tim peneliti yang dipimpin Kliti Grice dari Curtin University mengklaim menemukan sisa sel darah merah di tulang Aratasaurus museunacionali, dinosaurus berumur 115 juta tahun. Studinya terbit di jurnal PNAS pada 2 November 2026.",
+    "Mereka menemukan struktur berbentuk cakram di saluran pembuluh darah tulang, plus jejak heme, komponen hemoglobin. Fosilnya selamat dari kebakaran Museu Nacional Brasil pada 2018. Namun ilmuwan lain belum yakin: ukurannya lebih besar dari sel darah hewan sekarang, tidak ada inti, dan cakramnya bisa saja gumpalan mineral. Grice sendiri mengaku yakin.",
+    "Menurutmu, klaim seperti ini perlu diuji ulang dulu sebelum dipercaya?",
+    "Sumber: PNAS, Science, The Guardian, Curtin University / Foto: Wikimedia Commons\n\n#akalmesin #Sains #Dinosaurus #Paleontologi #Fosil"
+  ],
+  "sources": [
+    {
+      "title": "PNAS — Heme signatures in mineralized red blood cells within vascular canals of a 115-million-year-old dinosaur bone",
+      "url": "https://doi.org/10.1073/pnas.2614248123",
+      "published": "2026-11-02",
+      "supports": [
+        "heme B (HPLC-MS)",
+        "Raman",
+        "TEM Fe/N/C",
+        "hausmannite",
+        "red blood cell-like structures in vascular canals"
+      ]
+    },
+    {
+      "title": "Science — Rodrigo Pérez Ortega",
+      "url": "https://www.science.org/content/article/did-scientists-just-find-115-million-year-old-dinosaur-blood",
+      "published": "2026-11-02",
+      "supports": [
+        "Grice / Curtin lead",
+        "~3 m, 34 kg",
+        "average 23 microns",
+        "almost 30 tests",
+        ">300:1 chlorophyll-related vs heme in microbial mat, reversed in bone",
+        "survived 2018 museum fire",
+        "McNamara, Schweitzer, Saitta skepticism",
+        "Grice confident"
+      ]
+    },
+    {
+      "title": "The Guardian — Ian Sample",
+      "url": "https://www.theguardian.com/science/2026/nov/02/fossilised-red-blood-cells-aratasaurus-dinosaurs-bone",
+      "published": "2026-11-02",
+      "supports": [
+        "hind leg bones",
+        "found in a mine in 2008",
+        "Schweitzer: no nuclear bulge",
+        "Grice: extraordinary claim needs extraordinary evidence"
+      ]
+    },
+    {
+      "title": "Curtin University media release",
+      "url": "https://www.curtin.edu.au/news/media-release/dinosaur-blood-oldest-discovery-rewrites-what-fossils-can-reveal-about-the-past/",
+      "published": "2026-11-03",
+      "supports": [
+        "Curtin-led study"
+      ]
+    }
+  ]
+}

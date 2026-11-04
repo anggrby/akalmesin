@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "kind": "reel",
+  "layout": "card",
+  "slug": "2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+  "title": "Enam robot AgiBot jaga minimarket 24 jam",
+  "mechanism": "Card format: hook on six G2 robots running a Shanghai store for 24 h, AgiBot's task numbers, the caveats (4 of 6 passed, no intervention data), the 'AgiBot's own numbers' disclaimer + question",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "minSeconds": 15,
+    "maxSeconds": 26
+  },
+  "voice": {
+    "engine": "none"
+  },
+  "mood": "tech-upbeat",
+  "footage": "AgiBot's own livestream footage from its official X broadcast, credited 'Dok. AgiBot' by owner decision t89u/t107u/t115u; overlay cropped out; see reel/PROVENANCE.md.",
+  "mediaFilter": "none",
+  "media": {
+    "overview": {
+      "kind": "video",
+      "file": "reel/media/agibot-store-overview.mp4",
+      "location": "Minimarket uji coba, Shanghai",
+      "tag": "Video: Dok. AgiBot",
+      "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+      "rights": "owner-courtesy",
+      "decision": "t89u/t107u/t115u",
+      "filter": "none"
+    },
+    "shelves": {
+      "kind": "video",
+      "file": "reel/media/agibot-shelves.mp4",
+      "location": "Robot G2 di antara rak",
+      "tag": "Video: Dok. AgiBot",
+      "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+      "rights": "owner-courtesy",
+      "decision": "t89u/t107u/t115u",
+      "filter": "none"
+    },
+    "customers": {
+      "kind": "video",
+      "file": "reel/media/agibot-customers.mp4",
+      "location": "Robot G2 di toko",
+      "tag": "Video: Dok. AgiBot",
+      "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+      "rights": "owner-courtesy",
+      "decision": "t89u/t107u/t115u",
+      "filter": "none"
+    },
+    "aisle": {
+      "kind": "video",
+      "file": "reel/media/agibot-customers-2.mp4",
+      "location": "Lorong toko",
+      "tag": "Video: Dok. AgiBot",
+      "sourceURL": "https://x.com/AGIBOTofficial/status/2117086439569867218",
+      "rights": "owner-courtesy",
+      "decision": "t89u/t107u/t115u",
+      "filter": "none"
+    }
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "seconds": 5.6,
+      "media": "overview",
+      "videoStart": 0,
+      "source": "Sumber: AgiBot, TechSpot",
+      "onScreen": [
+        {
+          "text": "Enam robot AgiBot G2 menjaga minimarket di Shanghai",
+          "fact": "menjaga minimarket di Shanghai"
+        },
+        {
+          "text": "selama 24 jam, 2–3 November.",
+          "fact": "selama 24 jam"
+        }
+      ]
+    },
+    {
+      "id": "angka",
+      "seconds": 5.8,
+      "media": "shelves",
+      "videoStart": 0,
+      "source": "Sumber: AgiBot via TechSpot",
+      "onScreen": [
+        {
+          "text": "Menurut AgiBot, mereka menyelesaikan 1.730 tugas,",
+          "fact": "menyelesaikan 1.730 tugas"
+        },
+        {
+          "text": "termasuk 683 sapaan dan 147 kopi.",
+          "fact": "683 sapaan dan 147 kopi"
+        }
+      ]
+    },
+    {
+      "id": "catatan",
+      "seconds": 6.2,
+      "media": "customers",
+      "videoStart": 0,
+      "source": "Sumber: TechSpot, Humanoids Daily",
+      "onScreen": [
+        {
+          "text": "Hanya 4 dari 6 robot lulus penilaian.",
+          "fact": "hanya 4 dari 6 robot lulus penilaian"
+        },
+        {
+          "text": "Seberapa sering manusia turun tangan tidak dirilis.",
+          "fact": "seberapa sering manusia turun tangan"
+        }
+      ]
+    },
+    {
+      "id": "tanya",
+      "seconds": 5.2,
+      "media": "aisle",
+      "videoStart": 0,
+      "source": "Sumber: AgiBot",
+      "onScreen": [
+        {
+          "text": "Semua angka ini klaim AgiBot sendiri.",
+          "fact": "Semua angka ini klaim AgiBot sendiri"
+        },
+        {
+          "text": "Mau dilayani robot di minimarket?",
+          "fact": "dilayani robot di minimarket"
+        }
+      ]
+    }
+  ],
+  "cardDate": "2 Nov 2026",
+  "publishAs": "reel-only",
+  "musicOverrides": {
+    "gainDb": -2.5
+  }
+}

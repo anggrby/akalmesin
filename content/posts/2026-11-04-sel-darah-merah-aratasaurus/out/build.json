@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-sel-darah-merah-aratasaurus",
+  "copyRevision": "e21b047bfa05dcb4d27f9e427674d172ab653b30d4fc16a0e1b28694d6faf612",
+  "creditsRevision": "5f59ab75fad7fc88dd63023fffb79b291a4d2bbf5ec7b6a5d73da8e9d6dce4f6",
+  "designRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+  "builtAt": "2026-11-04T14:18:06.759Z",
+  "slides": [
+    {
+      "id": "01-main",
+      "layout": "main",
+      "html": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/slides/01-main.html",
+      "png": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/01-01-main.png",
+      "pngHash": "a6be5d8bac9237952af55a1ed556eead2071cd17d24e964030d1ecc24bf2aeb6",
+      "imageHash": "59a4590e7ca63c1b15857ba1fc3ad7717d86f6475383ccf19db35684d5910bf0",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 64,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "02-temuan",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/slides/02-temuan.html",
+      "png": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/02-02-temuan.png",
+      "pngHash": "26561f85142c38273ef8b17f53739d54a4e461ab17bdde9a44c4f315c9a9deb9",
+      "imageHash": "2cd3c97f54f447bdb3e33d20c8983189b4a15c68af109b047f29d225779b03b8",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "03-uji",
+      "layout": "detail2",
+      "html": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/slides/03-uji.html",
+      "png": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/03-03-uji.png",
+      "pngHash": "aed276f758de25d8e29d5eca722dbfa0226e61fc064e90d46aaa586d1ea218b5",
+      "imageHash": "8e0f1cb9e27e7d711cbf3f4e42fe1aac1aa274f682031d7773dde7055edb9fa4",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 588,
+          "width": 1080,
+          "height": 762,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    },
+    {
+      "id": "04-skeptis",
+      "layout": "detail1",
+      "html": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/slides/04-skeptis.html",
+      "png": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/04-04-skeptis.png",
+      "pngHash": "63721a0ae10a9d8ba97c6d9246d37aa69ac20ecdad8f948c09057d5c49d0dc6e",
+      "imageHash": "698dfae3abf98d45bb518e47ccc422f3a42d555f7a324708c0a919343ac2b12f",
+      "geometry": {
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1350,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "photo": {
+          "x": 0,
+          "y": 648,
+          "width": 1080,
+          "height": 702,
+          "bottom": 1350,
+          "right": 1080
+        },
+        "textPhotoGap": 54,
+        "quote": null,
+        "violations": []
+      }
+    }
+  ]
+}
