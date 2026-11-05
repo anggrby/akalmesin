@@ -1,14 +1,67 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-04-binance-dibobol-wawancara-kerja-palsu",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-05T02:45:50.936Z",
+      "source": "owner-review-chat-2026-11-05.json sha256:d7fc662149dcb96c88f111c430ef1f36eccdb0be218ce8ed06343e7a56d17033",
+      "context": "no changes",
+      "at": "2026-11-05T02:45:50.936Z",
+      "atWIB": "2026-11-05 09:45 WIB",
+      "via": "review-save",
+      "copyRevision": "1443268d2d00397c410ff1b29ea5f125d7326d46581bee4696d21dbe1a5976e1",
+      "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-05T02:45:58.438Z",
+      "revision": "1443268d2d00397c410ff1b29ea5f125d7326d46581bee4696d21dbe1a5976e1"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-05T02:45:50.936Z",
+      "source": "owner-review-chat-2026-11-05.json sha256:d7fc662149dcb96c88f111c430ef1f36eccdb0be218ce8ed06343e7a56d17033",
+      "context": "no changes",
+      "at": "2026-11-05T02:45:50.936Z",
+      "atWIB": "2026-11-05 09:45 WIB",
+      "via": "review-save",
+      "copyRevision": "1443268d2d00397c410ff1b29ea5f125d7326d46581bee4696d21dbe1a5976e1",
+      "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-05T02:45:58.438Z",
+      "revision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722"
+    }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40ff909f-26a5-8108-b9a9-c3f7df754a2d",
+    "url": "https://app.notion.com/p/Binance-dibobol-lewat-wawancara-kerja-palsu-40ff909f26a58108b9a9c3f7df754a2d",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+    "approvedRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+    "orderedAssetHashes": [
+      "1aa9f98996422ad770700ec722259e9a5b84312d3fca1c0f221d4f8b1a4445a9",
+      "231b0acf3d2b1fd7735ea3d773ed97c3f2226b02f08e2680e1adadbcd6b65b41",
+      "7f3525336ec5394fbf41f043bc7c284f204a8ce9ad6c919475506f5545e838c4",
+      "073c784f9a6baffe93f1ed6f684219e6f7b2afcfc9fbd8a9263656e112ed8c51"
+    ],
+    "uploadedAssetHashes": [
+      "1aa9f98996422ad770700ec722259e9a5b84312d3fca1c0f221d4f8b1a4445a9",
+      "231b0acf3d2b1fd7735ea3d773ed97c3f2226b02f08e2680e1adadbcd6b65b41",
+      "7f3525336ec5394fbf41f043bc7c284f204a8ce9ad6c919475506f5545e838c4",
+      "073c784f9a6baffe93f1ed6f684219e6f7b2afcfc9fbd8a9263656e112ed8c51"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-05T02:46:26.691Z",
+    "exportedAtWIB": "2026-11-05 09:46 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -35,6 +88,24 @@
       "event": "design-built",
       "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
       "at": "2026-11-04T14:17:59.977Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+      "at": "2026-11-05T02:45:57.703Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "owner-review-chat-2026-11-05.json sha256:d7fc662149dcb96c88f111c430ef1f36eccdb0be218ce8ed06343e7a56d17033",
+      "copyRevision": "1443268d2d00397c410ff1b29ea5f125d7326d46581bee4696d21dbe1a5976e1",
+      "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+      "at": "2026-11-05T02:45:50.936Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40ff909f-26a5-8108-b9a9-c3f7df754a2d",
+      "at": "2026-11-05T02:46:26.691Z"
     }
   ]
 }

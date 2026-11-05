@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-sel-darah-merah-aratasaurus",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-11-05T02:45:58.557Z",
+    "source": "owner-review-chat-2026-11-05.json sha256:0522bda4ae152004351658e97dc3e85a13d3151459da7ee4019f0468467a5641",
+    "context": "no changes",
+    "at": "2026-11-05T02:45:58.557Z",
+    "atWIB": "2026-11-05 09:45 WIB",
+    "via": "review-save",
+    "copyRevision": "e21b047bfa05dcb4d27f9e427674d172ab653b30d4fc16a0e1b28694d6faf612",
+    "designRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-11-05T02:46:04.758Z",
+    "revision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-11-04-sel-darah-merah-aratasaurus\". Never match by title alone.",
+  "properties": {
+    "Post": "Sel darah merah di tulang dinosaurus 115 juta tahun",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Tim peneliti yang dipimpin Kliti Grice dari Curtin University mengklaim menemukan sisa sel darah merah di tulang Aratasaurus museunacionali, dinosaurus berumur 115 juta tahun. Studinya terbit di jurnal PNAS pada 2 November 2026.\n\nMereka menemukan struktur berbentuk cakram di saluran pembuluh darah tulang, plus jejak heme, komponen hemoglobin. Fosilnya selamat dari kebakaran Museu Nacional Brasil pada 2018. Namun ilmuwan lain belum yakin: ukurannya lebih besar dari sel darah hewan sekarang, tidak ada inti, dan cakramnya bisa saja gumpalan mineral. Grice sendiri mengaku yakin.\n\nMenurutmu, klaim seperti ini perlu diuji ulang dulu sebelum dipercaya?\n\nSumber: PNAS, Science, The Guardian, Curtin University / Foto: Wikimedia Commons\n\n#akalmesin #Sains #Dinosaurus #Paleontologi #Fosil",
+    "Topic": "SAINS",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-temuan.png",
+      "03-03-uji.png",
+      "04-04-skeptis.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-11-04-sel-darah-merah-aratasaurus",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-04-sel-darah-merah-aratasaurus",
+  "body": "# Approved copy\n\n## 01-main\n\nSel darah merah di tulang dinosaurus 115 juta tahun\n\nStudi di jurnal PNAS mengklaim menemukan sisa sel darah merah dan jejak heme di tulang Aratasaurus museunacionali. Ilmuwan lain belum yakin.\n\n## 02-temuan\n\nTim yang dipimpin Kliti Grice dari Curtin University meneliti tulang kaki belakang dinosaurus sepanjang sekitar 3 meter itu. Di dalam saluran pembuluh darah tulang, mereka menemukan struktur berbentuk cakram selebar rata-rata 23 mikron, ditambah **jejak heme**, komponen hemoglobin dalam darah.\n\n## 03-uji\n\nFosil ini selamat dari kebakaran Museu Nacional Brasil pada 2018. Tim menjalankan hampir 30 uji, termasuk membandingkannya dengan lapisan mikroba di sekitarnya. Di lapisan itu, molekul terkait klorofil lebih dari 300 kali lebih banyak daripada heme. Di dalam tulang, **rasionya terbalik**.\n\n## 04-skeptis\n\nIlmuwan lain belum yakin. Mary Schweitzer dari NC State menyebut struktur itu lebih besar dari sel darah burung atau buaya dan tidak punya inti. Evan Saitta dari Field Museum menilai bukti heme meyakinkan, tapi cakramnya bisa saja gumpalan mangan oksida. Maria McNamara dari UCC ingin hasilnya **diuji ulang oleh lab lain**.\n\n# Caption\n\nTim peneliti yang dipimpin Kliti Grice dari Curtin University mengklaim menemukan sisa sel darah merah di tulang Aratasaurus museunacionali, dinosaurus berumur 115 juta tahun. Studinya terbit di jurnal PNAS pada 2 November 2026.\n\nMereka menemukan struktur berbentuk cakram di saluran pembuluh darah tulang, plus jejak heme, komponen hemoglobin. Fosilnya selamat dari kebakaran Museu Nacional Brasil pada 2018. Namun ilmuwan lain belum yakin: ukurannya lebih besar dari sel darah hewan sekarang, tidak ada inti, dan cakramnya bisa saja gumpalan mineral. Grice sendiri mengaku yakin.\n\nMenurutmu, klaim seperti ini perlu diuji ulang dulu sebelum dipercaya?\n\nSumber: PNAS, Science, The Guardian, Curtin University / Foto: Wikimedia Commons\n\n#akalmesin #Sains #Dinosaurus #Paleontologi #Fosil\n\n# Sources\n\n- [PNAS — Heme signatures in mineralized red blood cells within vascular canals of a 115-million-year-old dinosaur bone](https://doi.org/10.1073/pnas.2614248123)\n- [Science — Rodrigo Pérez Ortega](https://www.science.org/content/article/did-scientists-just-find-115-million-year-old-dinosaur-blood)\n- [The Guardian — Ian Sample](https://www.theguardian.com/science/2026/nov/02/fossilised-red-blood-cells-aratasaurus-dinosaurs-bone)\n- [Curtin University media release](https://www.curtin.edu.au/news/media-release/dinosaur-blood-oldest-discovery-rewrites-what-fossils-can-reveal-about-the-past/)\n\n# Alt text and photo credits\n\n01-main: Ilustrasi rekonstruksi Aratasaurus, dinosaurus pemakan daging berbulu, berdiri di antara akar pohon dengan langit jingga.\n\nFOTO: ILUSTRASI ARATASAURUS / COMMONS\n\n02-temuan: Fosil tulang paha dan tulang kering Aratasaurus yang masih tertanam di batuan, dengan garis putus-putus menandai bentuk tulang.\n\nFOTO: FOSIL TULANG ARATASAURUS / COMMONS\n\n03-uji: Gedung Museu Nacional di Rio de Janeiro terbakar pada malam hari, api menyala di atap di balik pagar.\n\nFOTO: KEBAKARAN MUSEU NACIONAL 2018 / COMMONS\n\n04-skeptis: Trailer putih laboratorium bergerak milik Mary Schweitzer terparkir di halaman rumput Museum of the Rockies.\n\nFOTO: LAB BERGERAK MARY SCHWEITZER / COMMONS\n\n# Approval\n\n\"Saved in review editor 2026-11-05T02:45:58.557Z\" — owner-review-chat-2026-11-05.json sha256:0522bda4ae152004351658e97dc3e85a13d3151459da7ee4019f0468467a5641, 2026-11-05 09:45 WIB\n\nApproved design revision: e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a\n\n# Source ledger\n\n# Sources: Sel darah merah di tulang dinosaurus 115 juta tahun\n\n- PNAS, published 2026-11-02, DOI 10.1073/pnas.2614248123: https://doi.org/10.1073/pnas.2614248123 (\"Heme signatures in mineralized red blood cells within vascular canals of a 115-million-year-old dinosaur bone\"; HPLC-MS heme B; Raman; TEM Fe/N/C; hausmannite Mn3O4). Paper licence unclear (copyright field blank), so no paper figures used.\n- Science, Rodrigo Pérez Ortega, 2026-11-02: https://www.science.org/content/article/did-scientists-just-find-115-million-year-old-dinosaur-blood (lead author Kliti Grice, Curtin; Aratasaurus ~3 m / 34 kg; structures average 23 × ~20 microns in vascular canals; heme by Raman, degraded heme too; chlorophyll-related molecules outnumber heme >300:1 in the microbial mat, reversed in bone; almost 30 tests; fossil survived the 2018 Museu Nacional fire; skeptics McNamara (UCC, \"very cautious\", wants replication), Schweitzer (NC State: larger than bird/croc red cells, no nucleus), Saitta (Field Museum: heme convincing, discs could be manganese oxide blobs); Grice \"I'm confident\")\n- The Guardian, Ian Sample, 2026-11-02: https://www.theguardian.com/science/2026/nov/02/fossilised-red-blood-cells-aratasaurus-dinosaurs-bone (hind leg bones; found in a mine in 2008; hausmannite; Schweitzer expected a \"nuclear bulge\"; Grice: \"Any extraordinary claim needs extraordinary analytical evidence\")\n- Curtin University release, 2026-11-03: https://www.curtin.edu.au/news/media-release/dinosaur-blood-oldest-discovery-rewrites-what-fossils-can-reveal-about-the-past/\n\n## Judgement calls\n\n- Framed as a claim throughout (\"mengklaim\"); skeptics slide 04 and caption name the three objections. The team's own preservation explanation (hausmannite, rapid burial) is left out to keep the carousel short; not contradicted.\n- \"Komponen hemoglobin\" is a plain-language gloss for heme.\n- Main image is an artist's reconstruction (credit FOTO: ILUSTRASI). Slide 04 shows Schweitzer's mobile lab (2009), not the skeptics themselves: no free photo of Schweitzer, Saitta or McNamara on Commons. Weakest photo of the set.\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-11-04-sel-darah-merah-aratasaurus\n\nAccount: akalmesin\n\nEditorial depth: standard\n\nSlide count: 4",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/01-01-main.png",
+      "sha256": "a6be5d8bac9237952af55a1ed556eead2071cd17d24e964030d1ecc24bf2aeb6",
+      "bytes": 1356440
+    },
+    {
+      "slideId": "02-temuan",
+      "file": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/02-02-temuan.png",
+      "sha256": "26561f85142c38273ef8b17f53739d54a4e461ab17bdde9a44c4f315c9a9deb9",
+      "bytes": 1095423
+    },
+    {
+      "slideId": "03-uji",
+      "file": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/03-03-uji.png",
+      "sha256": "aed276f758de25d8e29d5eca722dbfa0226e61fc064e90d46aaa586d1ea218b5",
+      "bytes": 1222532
+    },
+    {
+      "slideId": "04-skeptis",
+      "file": "content/posts/2026-11-04-sel-darah-merah-aratasaurus/out/png/04-04-skeptis.png",
+      "sha256": "63721a0ae10a9d8ba97c6d9246d37aa69ac20ecdad8f948c09057d5c49d0dc6e",
+      "bytes": 1059797
+    }
+  ],
+  "generatedAt": "2026-11-05T02:46:26.835Z"
+}

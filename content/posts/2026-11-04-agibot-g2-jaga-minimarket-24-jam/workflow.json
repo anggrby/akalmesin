@@ -1,14 +1,67 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-04-agibot-g2-jaga-minimarket-24-jam",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-05T02:46:04.853Z",
+      "source": "owner-review-chat-2026-11-05.json sha256:8ec266b08f70faf82f9d4755dda52cacec4869d57cb1cf6f98aac7f7d0f8df9f",
+      "context": "no changes",
+      "at": "2026-11-05T02:46:04.853Z",
+      "atWIB": "2026-11-05 09:46 WIB",
+      "via": "review-save",
+      "copyRevision": "c350ba818ede14847bd34dc5d78db4a61ef129fbafc652aaa09f05cdff52e30d",
+      "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-05T02:46:08.637Z",
+      "revision": "c350ba818ede14847bd34dc5d78db4a61ef129fbafc652aaa09f05cdff52e30d"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-05T02:46:04.853Z",
+      "source": "owner-review-chat-2026-11-05.json sha256:8ec266b08f70faf82f9d4755dda52cacec4869d57cb1cf6f98aac7f7d0f8df9f",
+      "context": "no changes",
+      "at": "2026-11-05T02:46:04.853Z",
+      "atWIB": "2026-11-05 09:46 WIB",
+      "via": "review-save",
+      "copyRevision": "c350ba818ede14847bd34dc5d78db4a61ef129fbafc652aaa09f05cdff52e30d",
+      "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-05T02:46:08.637Z",
+      "revision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f"
+    }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40ff909f-26a5-814f-b87d-c5f9f4ff1ba2",
+    "url": "https://app.notion.com/p/Enam-robot-AgiBot-jaga-minimarket-24-jam-40ff909f26a5814fb87dc5f9f4ff1ba2",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+    "approvedRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+    "orderedAssetHashes": [
+      "07616be7af702a7b15650041119426dbb68532f2b6779e2e440d0a20b568b75d",
+      "7094ff18e815b1ef024a71d4fdc2462070c454448d73455b03ec796cb30c885c",
+      "f858180dfd92e7fb1af6c03f294161d8e54fa1f3502e3b0f7ed12f0ecf26b5f7",
+      "790df06fadbe64041639d4c5c1085aa240e17f5e5937ff4c1cb6162eee4c2edc"
+    ],
+    "uploadedAssetHashes": [
+      "07616be7af702a7b15650041119426dbb68532f2b6779e2e440d0a20b568b75d",
+      "7094ff18e815b1ef024a71d4fdc2462070c454448d73455b03ec796cb30c885c",
+      "f858180dfd92e7fb1af6c03f294161d8e54fa1f3502e3b0f7ed12f0ecf26b5f7",
+      "790df06fadbe64041639d4c5c1085aa240e17f5e5937ff4c1cb6162eee4c2edc"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-05T02:46:38.762Z",
+    "exportedAtWIB": "2026-11-05 09:46 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -35,6 +88,24 @@
       "event": "design-built",
       "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
       "at": "2026-11-04T14:18:11.047Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+      "at": "2026-11-05T02:46:08.004Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "owner-review-chat-2026-11-05.json sha256:8ec266b08f70faf82f9d4755dda52cacec4869d57cb1cf6f98aac7f7d0f8df9f",
+      "copyRevision": "c350ba818ede14847bd34dc5d78db4a61ef129fbafc652aaa09f05cdff52e30d",
+      "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+      "at": "2026-11-05T02:46:04.853Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40ff909f-26a5-814f-b87d-c5f9f4ff1ba2",
+      "at": "2026-11-05T02:46:38.762Z"
     }
   ]
 }

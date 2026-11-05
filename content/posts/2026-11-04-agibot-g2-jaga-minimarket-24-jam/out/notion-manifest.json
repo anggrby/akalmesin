@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-11-05T02:46:04.853Z",
+    "source": "owner-review-chat-2026-11-05.json sha256:8ec266b08f70faf82f9d4755dda52cacec4869d57cb1cf6f98aac7f7d0f8df9f",
+    "context": "no changes",
+    "at": "2026-11-05T02:46:04.853Z",
+    "atWIB": "2026-11-05 09:46 WIB",
+    "via": "review-save",
+    "copyRevision": "c350ba818ede14847bd34dc5d78db4a61ef129fbafc652aaa09f05cdff52e30d",
+    "designRevision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-11-05T02:46:08.637Z",
+    "revision": "7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-11-04-agibot-g2-jaga-minimarket-24-jam\". Never match by title alone.",
+  "properties": {
+    "Post": "Enam robot AgiBot jaga minimarket 24 jam",
+    "Status": "Ready to Publish",
+    "Format": "Reel / video",
+    "Caption": "Enam robot humanoid AgiBot G2 menjaga sebuah minimarket di distrik Xuhui, Shanghai, selama 24 jam, dari 2 November pukul 10.00 hingga 3 November pukul 10.00 waktu China. Tantangan ini disiarkan langsung dengan judul \"Robots Never Clock Out\".\n\nMenurut AgiBot, robot-robot itu menyelesaikan 1.730 tugas, dari menyapa pembeli, mengisi rak, membersihkan meja, sampai membuat 147 kopi. Siaran langsungnya ditonton lebih dari 2 juta orang. Namun hanya 4 dari 6 robot lulus penilaian, dan AgiBot tidak merilis tingkat keberhasilan maupun seberapa sering manusia turun tangan. Semua angka ini klaim AgiBot sendiri.\n\nKamu mau dilayani robot di minimarket?\n\nSumber: AgiBot, Interesting Engineering, Humanoids Daily, TechSpot / Foto: Dok. AgiBot\n\n#akalmesin #Robotika #AgiBot #RobotHumanoid #Ritel",
+    "Topic": "Robotika",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-tugas.png",
+      "03-03-angka.png",
+      "04-04-catatan.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-04-agibot-g2-jaga-minimarket-24-jam",
+  "body": "# Approved copy\n\n## 01-main\n\nEnam robot AgiBot jaga minimarket 24 jam\n\nEnam robot humanoid AgiBot G2 menjaga minimarket di Shanghai selama 24 jam. Semua angka hasilnya berasal dari AgiBot sendiri.\n\n## 02-tugas\n\nTantangan bertajuk \"Robots Never Clock Out\" berlangsung dari 2 November pukul 10.00 hingga 3 November pukul 10.00 waktu China, di **minimarket di distrik Xuhui, Shanghai**. Robot G2 mengisi rak, membuat kopi, menyiapkan makanan, menyapa pembeli, dan membersihkan meja.\n\n## 03-angka\n\nMenurut AgiBot, mereka menyelesaikan 1.730 tugas, termasuk 683 sapaan dan 147 kopi. Siaran langsungnya ditonton lebih dari 2 juta orang. Tapi **hanya 4 dari 6 robot lulus penilaian**; robot pembersih dan satu robot patroli rak tidak lulus.\n\n## 04-catatan\n\nAgiBot tidak merilis tingkat keberhasilan. Seberapa sering manusia turun tangan juga tidak dirilis. Durasi 24 jam pun belum membuktikan robot bekerja mandiri tanpa henti. **Semua angka ini klaim AgiBot sendiri.**\n\n# Caption\n\nEnam robot humanoid AgiBot G2 menjaga sebuah minimarket di distrik Xuhui, Shanghai, selama 24 jam, dari 2 November pukul 10.00 hingga 3 November pukul 10.00 waktu China. Tantangan ini disiarkan langsung dengan judul \"Robots Never Clock Out\".\n\nMenurut AgiBot, robot-robot itu menyelesaikan 1.730 tugas, dari menyapa pembeli, mengisi rak, membersihkan meja, sampai membuat 147 kopi. Siaran langsungnya ditonton lebih dari 2 juta orang. Namun hanya 4 dari 6 robot lulus penilaian, dan AgiBot tidak merilis tingkat keberhasilan maupun seberapa sering manusia turun tangan. Semua angka ini klaim AgiBot sendiri.\n\nKamu mau dilayani robot di minimarket?\n\nSumber: AgiBot, Interesting Engineering, Humanoids Daily, TechSpot / Foto: Dok. AgiBot\n\n#akalmesin #Robotika #AgiBot #RobotHumanoid #Ritel\n\n# Sources\n\n- [AgiBot — Robots Never Clock Out | AGIBOT G2's 24-Hour Convenience Store Challenge (official X livestream)](https://x.com/AGIBOTofficial/status/2117086439569867218)\n- [Interesting Engineering — Jijo Malayil](https://interestingengineering.com/ai-robotics/agibot-humanoid-robots-in-convenience-store)\n- [Humanoids Daily](https://www.humanoidsdaily.com/news/agibot-g2-24-hour-convenience-store-livestream)\n- [TechSpot — Six humanoid robots worked a 24-hour shift at a convenience store](https://www.techspot.com/news/114445-six-humanoid-robots-worked-24-hour-shift-convenience.html)\n- [RoBrief — AgiBot G2 24-hour store, 1,730 tasks](https://robrief.com/en/articles/agibot-g2-24-hour-store-1730-tasks)\n- [Servospace](https://servospace.io/news/agibot-g2-humanoids-24-hour-convenience-store-shift-1730-tasks)\n\n# Alt text and photo credits\n\n01-main: Minimarket dilihat dari atas, dengan rak-rak produk dan beberapa robot humanoid putih AgiBot G2 di antara rak.\n\nFOTO: MINIMARKET UJI COBA AGIBOT / AGIBOT\n\n02-tugas: Robot humanoid AgiBot G2 beroda berdiri di antara rak minuman dan makanan ringan di minimarket.\n\nFOTO: ROBOT G2 DI ANTARA RAK / AGIBOT\n\n03-angka: Dua pembeli berdiri di dekat robot AgiBot G2 di depan rak produk, robot lain berada di belakang.\n\nFOTO: ROBOT G2 MELAYANI PEMBELI / AGIBOT\n\n04-catatan: Robot AgiBot G2 di lorong minimarket dengan rak produk dan pembeli di sekitarnya.\n\nFOTO: ROBOT G2 DI LORONG TOKO / AGIBOT\n\n# Approval\n\n\"Saved in review editor 2026-11-05T02:46:04.853Z\" — owner-review-chat-2026-11-05.json sha256:8ec266b08f70faf82f9d4755dda52cacec4869d57cb1cf6f98aac7f7d0f8df9f, 2026-11-05 09:46 WIB\n\nApproved design revision: 7a562e45011e790c50463b01a58a3ad5153a0aac44e5d16c6505dae5eb33885f\n\n# Source ledger\n\n# Sources: Enam robot AgiBot jaga minimarket 24 jam\n\n- AgiBot official X livestream replay, 2026-11-02: https://x.com/AGIBOTofficial/status/2117086439569867218 (\"Robots Never Clock Out | AGIBOT G2's 24-Hour Convenience Store Challenge\"; six G2 as convenience store trainees; on-screen 11.02–11.03 10:00–10:00). Footage source. The YouTube VOD (V9nxugBVArw) is \"not available\".\n- Interesting Engineering, Jijo Malayil, 2026-11-03: https://interestingengineering.com/ai-robotics/agibot-humanoid-robots-in-convenience-store (2 Nov 10:00 to 3 Nov 10:00 China time; stocking, coffee, hot food, greeting, rubbish)\n- Humanoids Daily, 2026-11-03: https://www.humanoidsdaily.com/news/agibot-g2-24-hour-convenience-store-livestream (24 h does not prove uninterrupted autonomy; no intervention policy published. Disclosure: its AI Day coverage was sponsored by AgiBot)\n- TechSpot, 2026-11-03: https://www.techspot.com/news/114445-six-humanoid-robots-worked-24-hour-shift-convenience.html (Xuhui district, Shanghai; 1,730 tasks; 4 of 6 passed; the cleaning robot and one shelf-patrol robot did not, per ITHome; no success or takeover rate)\n- RoBrief: https://robrief.com/en/articles/agibot-g2-24-hour-store-1730-tasks (683 greetings, 369 fetch/deliver, 277 restock/inspect, 147 coffees, 128 table cleanings, 126 breakfast orders; >2 million viewers)\n- Servospace: https://servospace.io/news/agibot-g2-humanoids-24-hour-convenience-store-shift-1730-tasks (Securities Times citing AgiBot; VP Ren Guanghui spoke to reporters)\n\n## Judgement calls\n\n- All numbers (1,730 tasks, breakdown, viewers, 4 of 6 passed) come from AgiBot via secondary reports (Securities Times, ITHome); none independently verified. Copy says so (\"Menurut AgiBot\", \"Semua angka ini klaim AgiBot sendiri\").\n- Shanghai/Xuhui and the task numbers are not in IE or Humanoids Daily; they come from TechSpot/RoBrief/Servospace citing AgiBot.\n- \"24 jam\" is not presented as uninterrupted autonomy (slide 04, reel card 3).\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-11-04-agibot-g2-jaga-minimarket-24-jam\n\nAccount: akalmesin\n\nEditorial depth: standard\n\nSlide count: 4",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/01-01-main.png",
+      "sha256": "07616be7af702a7b15650041119426dbb68532f2b6779e2e440d0a20b568b75d",
+      "bytes": 1015113
+    },
+    {
+      "slideId": "02-tugas",
+      "file": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/02-02-tugas.png",
+      "sha256": "7094ff18e815b1ef024a71d4fdc2462070c454448d73455b03ec796cb30c885c",
+      "bytes": 1017994
+    },
+    {
+      "slideId": "03-angka",
+      "file": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/03-03-angka.png",
+      "sha256": "f858180dfd92e7fb1af6c03f294161d8e54fa1f3502e3b0f7ed12f0ecf26b5f7",
+      "bytes": 1076699
+    },
+    {
+      "slideId": "04-catatan",
+      "file": "content/posts/2026-11-04-agibot-g2-jaga-minimarket-24-jam/out/png/04-04-catatan.png",
+      "sha256": "790df06fadbe64041639d4c5c1085aa240e17f5e5937ff4c1cb6162eee4c2edc",
+      "bytes": 1067061
+    }
+  ],
+  "generatedAt": "2026-11-05T02:46:32.520Z"
+}

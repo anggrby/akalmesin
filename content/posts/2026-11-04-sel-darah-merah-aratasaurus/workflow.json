@@ -1,14 +1,67 @@
 {
   "schemaVersion": 1,
   "slug": "2026-11-04-sel-darah-merah-aratasaurus",
-  "stage": "design-check",
+  "stage": "notion-delivered",
   "approvals": {
     "selected": null,
-    "copy": null,
-    "final": null
+    "copy": {
+      "gate": "copy",
+      "words": "Saved in review editor 2026-11-05T02:45:58.557Z",
+      "source": "owner-review-chat-2026-11-05.json sha256:0522bda4ae152004351658e97dc3e85a13d3151459da7ee4019f0468467a5641",
+      "context": "no changes",
+      "at": "2026-11-05T02:45:58.557Z",
+      "atWIB": "2026-11-05 09:45 WIB",
+      "via": "review-save",
+      "copyRevision": "e21b047bfa05dcb4d27f9e427674d172ab653b30d4fc16a0e1b28694d6faf612",
+      "designRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-05T02:46:04.758Z",
+      "revision": "e21b047bfa05dcb4d27f9e427674d172ab653b30d4fc16a0e1b28694d6faf612"
+    },
+    "final": {
+      "gate": "final",
+      "words": "Saved in review editor 2026-11-05T02:45:58.557Z",
+      "source": "owner-review-chat-2026-11-05.json sha256:0522bda4ae152004351658e97dc3e85a13d3151459da7ee4019f0468467a5641",
+      "context": "no changes",
+      "at": "2026-11-05T02:45:58.557Z",
+      "atWIB": "2026-11-05 09:45 WIB",
+      "via": "review-save",
+      "copyRevision": "e21b047bfa05dcb4d27f9e427674d172ab653b30d4fc16a0e1b28694d6faf612",
+      "designRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+      "copyRule": 2,
+      "designRule": 2,
+      "recordedAt": "2026-11-05T02:46:04.758Z",
+      "revision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a"
+    }
   },
   "designStale": false,
-  "notion": null,
+  "notion": {
+    "pageId": "40ff909f-26a5-819c-80cf-d51ac0a4d5a2",
+    "url": "https://app.notion.com/p/Sel-darah-merah-di-tulang-dinosaurus-115-juta-tahun-40ff909f26a5819c80cfd51ac0a4d5a2",
+    "action": "created",
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "apiVersion": "2025-09-03",
+    "contentId": "akalmesin:2026-11-04-sel-darah-merah-aratasaurus",
+    "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-04-sel-darah-merah-aratasaurus",
+    "approvedRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+    "orderedAssetHashes": [
+      "a6be5d8bac9237952af55a1ed556eead2071cd17d24e964030d1ecc24bf2aeb6",
+      "26561f85142c38273ef8b17f53739d54a4e461ab17bdde9a44c4f315c9a9deb9",
+      "aed276f758de25d8e29d5eca722dbfa0226e61fc064e90d46aaa586d1ea218b5",
+      "63721a0ae10a9d8ba97c6d9246d37aa69ac20ecdad8f948c09057d5c49d0dc6e"
+    ],
+    "uploadedAssetHashes": [
+      "a6be5d8bac9237952af55a1ed556eead2071cd17d24e964030d1ecc24bf2aeb6",
+      "26561f85142c38273ef8b17f53739d54a4e461ab17bdde9a44c4f315c9a9deb9",
+      "aed276f758de25d8e29d5eca722dbfa0226e61fc064e90d46aaa586d1ea218b5",
+      "63721a0ae10a9d8ba97c6d9246d37aa69ac20ecdad8f948c09057d5c49d0dc6e"
+    ],
+    "assetsMatchBuild": true,
+    "exportedAt": "2026-11-05T02:46:32.358Z",
+    "exportedAtWIB": "2026-11-05 09:46 WIB"
+  },
   "legacyRevisions": {},
   "history": [
     {
@@ -30,6 +83,24 @@
       "event": "design-built",
       "designRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
       "at": "2026-11-04T14:18:06.759Z"
+    },
+    {
+      "event": "design-built",
+      "designRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+      "at": "2026-11-05T02:46:04.053Z"
+    },
+    {
+      "event": "approved",
+      "gate": "review",
+      "source": "owner-review-chat-2026-11-05.json sha256:0522bda4ae152004351658e97dc3e85a13d3151459da7ee4019f0468467a5641",
+      "copyRevision": "e21b047bfa05dcb4d27f9e427674d172ab653b30d4fc16a0e1b28694d6faf612",
+      "designRevision": "e6e7f0191b4d8087a8b5805a608e6f43ff3bb6715709d92e06cb5ed99a4f972a",
+      "at": "2026-11-05T02:45:58.557Z"
+    },
+    {
+      "event": "notion-created",
+      "pageId": "40ff909f-26a5-819c-80cf-d51ac0a4d5a2",
+      "at": "2026-11-05T02:46:32.358Z"
     }
   ]
 }

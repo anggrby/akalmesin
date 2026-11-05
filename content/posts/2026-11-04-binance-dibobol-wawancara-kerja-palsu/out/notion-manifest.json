@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "slug": "2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+  "destination": {
+    "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
+    "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
+    "accountPageId": "403f909f-26a5-80a6-bb5f-ff38accdc8d0",
+    "version": "2025-09-03"
+  },
+  "approvedRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+  "approval": {
+    "gate": "final",
+    "words": "Saved in review editor 2026-11-05T02:45:50.936Z",
+    "source": "owner-review-chat-2026-11-05.json sha256:d7fc662149dcb96c88f111c430ef1f36eccdb0be218ce8ed06343e7a56d17033",
+    "context": "no changes",
+    "at": "2026-11-05T02:45:50.936Z",
+    "atWIB": "2026-11-05 09:45 WIB",
+    "via": "review-save",
+    "copyRevision": "1443268d2d00397c410ff1b29ea5f125d7326d46581bee4696d21dbe1a5976e1",
+    "designRevision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722",
+    "copyRule": 2,
+    "designRule": 2,
+    "recordedAt": "2026-11-05T02:45:58.438Z",
+    "revision": "cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722"
+  },
+  "existingPageId": null,
+  "lookup": "Before creating, query data source 405f909f-26a5-8029-8e7a-000b3f2a28a4 and read page bodies for the exact marker \"akalmesin-content-id:akalmesin:2026-11-04-binance-dibobol-wawancara-kerja-palsu\". Never match by title alone.",
+  "properties": {
+    "Post": "Binance dibobol lewat wawancara kerja palsu",
+    "Status": "Ready to Publish",
+    "Format": "Carousel",
+    "Caption": "Binance, bursa kripto terbesar di dunia, kehilangan sekitar US$6,3 miliar (kira-kira Rp114 triliun) pada 29 Oktober. BBC menyebutnya pembobolan kripto terbesar sejauh ini, dan FBI serta Secret Service ikut membantu penyelidikan.\n\nMenurut laporan Binance, penyerang masuk lewat installer Homebrew palsu dan wawancara kerja palsu yang berujung tugas berisi malware. Dari komputer yang dikuasai, mereka memakai alat AI internal Binance untuk mengendalikan laptop dua karyawan lain. FBI menuding Korea Utara, yang membantah. Binance mengklaim 98% kerugian sudah ditutup dan penarikan dana kembali dibuka.\n\nMenurutmu, perusahaan perlu membatasi akses alat AI internal ke komputer karyawan?\n\nSumber: FBI, laporan Binance, BBC, The Verge, SecurityWeek, Reuters / Foto: Wikimedia Commons\n\n#akalmesin #Binance #Kripto #KeamananSiber #KoreaUtara",
+    "Topic": "TEKNOLOGI",
+    "Publish date": null,
+    "Assets": [
+      "01-01-main.png",
+      "02-02-installer.png",
+      "03-03-wawancara.png",
+      "04-04-fbi.png"
+    ]
+  },
+  "contentId": "akalmesin:2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+  "bodyMarker": "akalmesin-content-id:akalmesin:2026-11-04-binance-dibobol-wawancara-kerja-palsu",
+  "body": "# Approved copy\n\n## 01-main\n\nBinance dibobol lewat wawancara kerja palsu\n\nBinance kehilangan sekitar US$6,3 miliar, kira-kira Rp114 triliun, dalam pembobolan kripto terbesar sejauh ini. Pintu masuknya: engineer yang dijebak lewat proses rekrutmen palsu.\n\n## 02-installer\n\nMenurut laporan Binance, jejak serangan dimulai Juni. Seorang developer yang sedang mencari alat AI untuk coding mengklik iklan Google berbahaya, lalu mengunduh **installer Homebrew yang sudah diubah** penyerang.\n\n## 03-wawancara\n\nSeptember, perekrut palsu mengajak seorang engineer ikut beberapa sesi wawancara, lalu memberinya \"tugas\" berisi malware. Pada 20 Oktober, dari komputer yang sudah dikuasai, penyerang memakai **alat AI internal Binance** untuk mengendalikan laptop dua karyawan lain. Dana dikuras pada 29 Oktober.\n\n## 04-fbi\n\nFBI menyatakan Korea Utara bertanggung jawab, lewat kelompok yang dijuluki **TraderTraitor**, yang juga dikaitkan dengan pembobolan Bybit US$1,5 miliar pada 2025. Korea Utara membantah. Binance mengklaim sekitar US$2,85 miliar sudah dibekukan atau dicegat, dan 98% kerugian sudah ditutup dari cadangannya.\n\n# Caption\n\nBinance, bursa kripto terbesar di dunia, kehilangan sekitar US$6,3 miliar (kira-kira Rp114 triliun) pada 29 Oktober. BBC menyebutnya pembobolan kripto terbesar sejauh ini, dan FBI serta Secret Service ikut membantu penyelidikan.\n\nMenurut laporan Binance, penyerang masuk lewat installer Homebrew palsu dan wawancara kerja palsu yang berujung tugas berisi malware. Dari komputer yang dikuasai, mereka memakai alat AI internal Binance untuk mengendalikan laptop dua karyawan lain. FBI menuding Korea Utara, yang membantah. Binance mengklaim 98% kerugian sudah ditutup dan penarikan dana kembali dibuka.\n\nMenurutmu, perusahaan perlu membatasi akses alat AI internal ke komputer karyawan?\n\nSumber: FBI, laporan Binance, BBC, The Verge, SecurityWeek, Reuters / Foto: Wikimedia Commons\n\n#akalmesin #Binance #Kripto #KeamananSiber #KoreaUtara\n\n# Sources\n\n- [FBI PSA — North Korea Responsible for $6 Billion Binance Attack](https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack)\n- [Binance announcement — incident report](https://www.binance.com/en/support/announcement/detail/d3306d9dca5243548c813b605e1d1751)\n- [Binance announcement — follow-up](https://www.binance.com/en/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7)\n- [BBC — Binance hack (Liv McMahon)](https://www.bbc.com/news/articles/ck5ynwz9gy67o)\n- [The Verge — Binance hack timeline (Richard Lawler)](https://www.theverge.com/news/1025576/binance-cyrpto-theft-explained)\n- [SecurityWeek — Binance $6.34B hack](https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/)\n- [Reuters (via Investing.com) — Binance says outflows normalised as North Korea rejects US allegation](https://ca.investing.com/news/economy-news/north-korea-rejects-us-allegation-overbinance-crypto-heist-4924089)\n- [Bank Indonesia — JISDOR 4 Nov 2026](https://www.bi.go.id/id/statistik/informasi-kurs/jisdor/default.aspx)\n\n# Alt text and photo credits\n\n01-main: Richard Teng, CEO Binance, berbicara di panggung dengan jas biru dan latar gelap.\n\nFOTO: RICHARD TENG, CEO BINANCE / COMMONS\n\n02-installer: Tangkapan layar jendela Terminal di Mac yang menampilkan perintah dan bantuan Homebrew.\n\nFOTO: HOMEBREW DI TERMINAL MAC / COMMONS\n\n03-wawancara: Seorang perempuan tersenyum di depan laptop saat panggilan video di ruangan berdinding kayu.\n\nFOTO: ILUSTRASI WAWANCARA DARING / COMMONS\n\n04-fbi: Gedung J. Edgar Hoover, markas FBI di Washington DC, dengan pepohonan di depannya dan langit biru.\n\nFOTO: MARKAS FBI, WASHINGTON / COMMONS\n\n# Approval\n\n\"Saved in review editor 2026-11-05T02:45:50.936Z\" — owner-review-chat-2026-11-05.json sha256:d7fc662149dcb96c88f111c430ef1f36eccdb0be218ce8ed06343e7a56d17033, 2026-11-05 09:45 WIB\n\nApproved design revision: cc1a639547ca886f14e88ef8992d0dad724a5ba41cc1c97d0106338174ade722\n\n# Source ledger\n\n# Sources: Binance dibobol lewat wawancara kerja palsu\n\n- FBI PSA, 2026-10-31: https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack (\"more than $6 billion\"; attributed to North Korea, \"TraderTraitor\"; 628 addresses listed: 608 ETH, 19 BTC, 1 SOL)\n- Binance incident report: https://www.binance.com/en/support/announcement/detail/d3306d9dca5243548c813b605e1d1751 and follow-up https://www.binance.com/en/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7\n- BBC, Liv McMahon, 2026-11-03: https://www.bbc.com/news/articles/ck5ynwz9gy67o (US$6.3bn / £4.7bn, \"largest crypto hack to date\"; contact via job platform, malware disguised as an assignment at the second interview; compromised PC + internal AI tool took control of two other engineers' laptops; withdrawals restored Sunday; >100% of loss set aside, 98% replenished as of Saturday; FBI and Secret Service assisting; Kim Yo Jong denial, \"sinister attempt\"; TraderTraitor/Lazarus behind the US$1.5bn Bybit hack in 2025)\n- The Verge, Richard Lawler, 2026-11-03: https://www.theverge.com/news/1025576/binance-cyrpto-theft-explained (June: malicious Google ad → tampered installer; September: fake recruiter, multiple interviews, fake assignment, malicious pyenv; 20 Oct: AI tool used to control the first engineer's machine and a third employee's; 29 Oct: attack; MPC / EIP-7702; Teng: ~US$2.85B frozen or intercepted; 98% replenished)\n- SecurityWeek, 2026-11-03: https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/ (US$6.34B; June installer was tampered Homebrew, found while searching for an AI coding tool; container deployment token)\n- Reuters via Investing.com: https://ca.investing.com/news/economy-news/north-korea-rejects-us-allegation-overbinance-crypto-heist-4924089 (North Korea rejects the allegation)\n\n## Rupiah conversion\n\nBank Indonesia JISDOR, 4 Nov 2026: Rp18.140 per US$ (https://www.bi.go.id/id/statistik/informasi-kurs/jisdor/default.aspx).\nUS$6,3 miliar × 18.140 = Rp114,3 triliun → \"kira-kira Rp114 triliun\". (US$6,34 miliar would be ≈ Rp115 triliun.)\n\n## Judgement calls\n\n- Loss figure: sources range US$6.3B (BBC, Verge) to US$6.34B (SecurityWeek; Hacker News says 6.43). Copy uses \"sekitar US$6,3 miliar\".\n- Attribution stated as FBI's attribution; North Korea's denial included (slide 4 and caption).\n- Recovery: Binance's own percentages conflict (98% as of 31 Oct vs 95% in a later update per Blockchain.News). Copy uses \"98%\" attributed to Binance (\"mengklaim\").\n- The sources don't explain exactly how the AI tool was used to take over the laptops; copy only says it was used \"untuk mengendalikan laptop dua karyawan lain\" (BBC).\n- Slide 3 photo is a generic illustration (credit ILUSTRASI); the main photo of Teng is from 2023, cropped to drop the outdated on-screen title.\n\n# Export metadata\n\nakalmesin-content-id:akalmesin:2026-11-04-binance-dibobol-wawancara-kerja-palsu\n\nAccount: akalmesin\n\nEditorial depth: standard\n\nSlide count: 4",
+  "assets": [
+    {
+      "slideId": "01-main",
+      "file": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/01-01-main.png",
+      "sha256": "1aa9f98996422ad770700ec722259e9a5b84312d3fca1c0f221d4f8b1a4445a9",
+      "bytes": 837137
+    },
+    {
+      "slideId": "02-installer",
+      "file": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/02-02-installer.png",
+      "sha256": "231b0acf3d2b1fd7735ea3d773ed97c3f2226b02f08e2680e1adadbcd6b65b41",
+      "bytes": 979827
+    },
+    {
+      "slideId": "03-wawancara",
+      "file": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/03-03-wawancara.png",
+      "sha256": "7f3525336ec5394fbf41f043bc7c284f204a8ce9ad6c919475506f5545e838c4",
+      "bytes": 1131519
+    },
+    {
+      "slideId": "04-fbi",
+      "file": "content/posts/2026-11-04-binance-dibobol-wawancara-kerja-palsu/out/png/04-04-fbi.png",
+      "sha256": "073c784f9a6baffe93f1ed6f684219e6f7b2afcfc9fbd8a9263656e112ed8c51",
+      "bytes": 1179783
+    }
+  ],
+  "generatedAt": "2026-11-05T02:46:20.842Z"
+}
