@@ -1,4 +1,5 @@
 import {loadDependency, browserPath} from './runtime.mjs';
+import {interruptedRead} from './recovery.mjs';
 
 const ORIGIN = 'https://www.instagram.com';
 const USERNAME = /^[a-zA-Z0-9._]{1,30}$/;
@@ -35,8 +36,13 @@ export class InstagramBrowser {
       headless,
       executablePath: executablePath || browserPath(chromium)
     });
-    const page = context.pages()[0] || (await context.newPage());
-    return new InstagramBrowser(page, {account, context});
+    try {
+      const page = context.pages()[0] || (await context.newPage());
+      return new InstagramBrowser(page, {account, context});
+    } catch (error) {
+      await context.close().catch(() => {});
+      throw error;
+    }
   }
 
   constructor(page, {account, context} = {}) {
@@ -47,6 +53,7 @@ export class InstagramBrowser {
     this.beforeMutation = null;
     this.shouldSkipIdentity = null;
     this.profileIdentity = null;
+    this.mutationAttempt = null;
     this.page.on('response', response => {
       const status = response.status();
       let url;
@@ -138,9 +145,32 @@ export class InstagramBrowser {
       )
         throw new GrowthBrowserStop('identity_mismatch', 'Target identity changed before the action');
       if (this.beforeMutation) this.beforeMutation();
+      if (this.mutationAttempt) this.mutationAttempt.dispatched = true;
       await locator.click({timeout: 1000, noWaitAfter: true});
     } else await locator.click();
     await this.guard();
+  }
+
+  async withReadRecovery(operation, options) {
+    try {
+      return await operation();
+    } catch (error) {
+      throw (await interruptedRead(this, error, options)) || error;
+    }
+  }
+
+  async withMutationRecovery(operation) {
+    if (this.mutationAttempt) throw new Error('Overlapping relationship operations are not supported');
+    const attempt = {dispatched: false};
+    this.mutationAttempt = attempt;
+    try {
+      return await operation();
+    } catch (error) {
+      if (!attempt.dispatched) throw (await interruptedRead(this, error)) || error;
+      throw error;
+    } finally {
+      this.mutationAttempt = null;
+    }
   }
 
   async login() {
@@ -550,54 +580,58 @@ export class InstagramBrowser {
   }
 
   async follow(username) {
-    username = cleanUsername(username);
-    await this.assertAccount();
-    const header = await this.openProfile(username);
-    const userId = this.profileIdentity.userId;
-    const state = await this.waitRelationship(header);
-    if (state === 'following' || state === 'requested') return {status: 'skipped', userId};
-    if (state !== 'not_following') throw new GrowthBrowserStop('ambiguous_ui', 'Cannot establish current follow state');
-    if (userId && this.shouldSkipIdentity && this.shouldSkipIdentity(userId, username)) return {status: 'skipped', userId};
-    await this.click(await this.relationshipControl(header, 'not_following'), {mutation: true, targetUsername: username, expectedTargetUserId: userId});
-    let next = await this.waitRelationship(header, ['following', 'requested'], {timeout: 3000});
-    if (!next) {
-      // A successful Follow can leave Instagram's current profile controls stale.
-      // Read the saved relationship once; never submit a second Follow click.
-      const fresh = await this.openProfile(username);
+    return this.withMutationRecovery(async () => {
+      username = cleanUsername(username);
       await this.assertAccount();
-      if (userId && this.profileIdentity.userId !== userId)
-        throw new GrowthBrowserStop('identity_mismatch', 'Target identity changed during follow confirmation');
-      next = await this.waitRelationship(fresh, ['following', 'requested']);
-    }
-    return {
-      status: next === 'following' || next === 'requested' ? next : 'uncertain',
-      userId,
-      ...(next ? {} : {detail: 'Follow click returned, but neither the live controls nor a fresh profile read-back confirmed its result.'})
-    };
+      const header = await this.openProfile(username);
+      const userId = this.profileIdentity.userId;
+      const state = await this.waitRelationship(header);
+      if (state === 'following' || state === 'requested') return {status: 'skipped', userId};
+      if (state !== 'not_following') throw new GrowthBrowserStop('ambiguous_ui', 'Cannot establish current follow state');
+      if (userId && this.shouldSkipIdentity && this.shouldSkipIdentity(userId, username)) return {status: 'skipped', userId};
+      await this.click(await this.relationshipControl(header, 'not_following'), {mutation: true, targetUsername: username, expectedTargetUserId: userId});
+      let next = await this.waitRelationship(header, ['following', 'requested'], {timeout: 3000});
+      if (!next) {
+        // A successful Follow can leave Instagram's current profile controls stale.
+        // Read the saved relationship once; never submit a second Follow click.
+        const fresh = await this.openProfile(username);
+        await this.assertAccount();
+        if (userId && this.profileIdentity.userId !== userId)
+          throw new GrowthBrowserStop('identity_mismatch', 'Target identity changed during follow confirmation');
+        next = await this.waitRelationship(fresh, ['following', 'requested']);
+      }
+      return {
+        status: next === 'following' || next === 'requested' ? next : 'uncertain',
+        userId,
+        ...(next ? {} : {detail: 'Follow click returned, but neither the live controls nor a fresh profile read-back confirmed its result.'})
+      };
+    });
   }
 
   async unfollow(username, {expectedUserId} = {}) {
-    username = cleanUsername(username);
-    if (typeof expectedUserId !== 'string' || !/^[0-9]{1,30}$/.test(expectedUserId))
-      throw new GrowthBrowserStop('identity_unverified', 'A stable target user ID is required before unfollow');
-    const observed = await this.inspect(username);
-    if (!observed.userId || observed.userId !== expectedUserId)
-      throw new GrowthBrowserStop('identity_mismatch', 'The observed target ID does not match the recorded user ID');
-    if (observed.relationship === 'unknown' || observed.followsBack === null)
-      throw new GrowthBrowserStop('ambiguous_ui', 'Cannot establish relationship and reciprocal-follow state');
-    if (observed.relationship !== 'following' || observed.followsBack !== false) return {status: 'skipped'};
-    const header = await this.openProfile(username);
-    if (this.profileIdentity.userId !== expectedUserId) throw new GrowthBrowserStop('identity_mismatch', 'The target ID changed before unfollow');
-    if ((await this.waitRelationship(header)) !== 'following') throw new GrowthBrowserStop('ambiguous_ui', 'Relationship changed before unfollow');
-    await this.click(await this.relationshipControl(header, 'following'));
-    const dialog = this.page.getByRole('dialog');
-    if (!(await this.poll(async () => (await dialog.count()) === 1 && (await dialog.isVisible()))))
-      throw new GrowthBrowserStop('ambiguous_ui', 'Unfollow confirmation did not open');
-    await this.click(dialog.getByRole('button', {name: /^(unfollow|berhenti mengikuti)$/i}), {
-      mutation: true,
-      targetUsername: username,
-      expectedTargetUserId: expectedUserId
+    return this.withMutationRecovery(async () => {
+      username = cleanUsername(username);
+      if (typeof expectedUserId !== 'string' || !/^[0-9]{1,30}$/.test(expectedUserId))
+        throw new GrowthBrowserStop('identity_unverified', 'A stable target user ID is required before unfollow');
+      const observed = await this.inspect(username);
+      if (!observed.userId || observed.userId !== expectedUserId)
+        throw new GrowthBrowserStop('identity_mismatch', 'The observed target ID does not match the recorded user ID');
+      if (observed.relationship === 'unknown' || observed.followsBack === null)
+        throw new GrowthBrowserStop('ambiguous_ui', 'Cannot establish relationship and reciprocal-follow state');
+      if (observed.relationship !== 'following' || observed.followsBack !== false) return {status: 'skipped'};
+      const header = await this.openProfile(username);
+      if (this.profileIdentity.userId !== expectedUserId) throw new GrowthBrowserStop('identity_mismatch', 'The target ID changed before unfollow');
+      if ((await this.waitRelationship(header)) !== 'following') throw new GrowthBrowserStop('ambiguous_ui', 'Relationship changed before unfollow');
+      await this.click(await this.relationshipControl(header, 'following'));
+      const dialog = this.page.getByRole('dialog');
+      if (!(await this.poll(async () => (await dialog.count()) === 1 && (await dialog.isVisible()))))
+        throw new GrowthBrowserStop('ambiguous_ui', 'Unfollow confirmation did not open');
+      await this.click(dialog.getByRole('button', {name: /^(unfollow|berhenti mengikuti)$/i}), {
+        mutation: true,
+        targetUsername: username,
+        expectedTargetUserId: expectedUserId
+      });
+      return {status: (await this.waitRelationship(header, ['not_following'])) === 'not_following' ? 'unfollowed' : 'uncertain'};
     });
-    return {status: (await this.waitRelationship(header, ['not_following'])) === 'not_following' ? 'unfollowed' : 'uncertain'};
   }
 }

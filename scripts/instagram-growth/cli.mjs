@@ -4,7 +4,10 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {GrowthStore, validateConfig, sessionAt} from './core.mjs';
-import {acquireLock, unlockStoppedWorker, collectPool, runSession, reconcileActions} from './runner.mjs';
+import {acquireLock, unlockStoppedWorker, collectPool, runSession, reconcileActions, isOperatorStop} from './runner.mjs';
+
+import {runDaemon} from './scheduler.mjs';
+import {launchWithRecovery} from './recovery.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const HELP = `Instagram growth worker for @akalmesin
@@ -21,6 +24,10 @@ Usage: npm run instagram:growth -- COMMAND [options]
   resume      Clear pause only after all uncertain actions are reconciled
   exclude     Permanently skip --username USER (local list; no Instagram block)
   unlock      Remove a crashed worker's lock only if its PID has stopped
+  autostart-install    Install and load macOS login startup
+  autostart-status     Inspect the macOS login job
+  autostart-start      Start the installed job after resolving a pause
+  autostart-uninstall  Stop and remove login startup; keep private state
 
 Options:
   --config PATH     Default: instagram-growth.config.json
@@ -63,11 +70,32 @@ export async function main(argv = process.argv.slice(2)) {
     process.stdout.write(HELP);
     return;
   }
-  const commands = ['login', 'preview', 'run', 'daemon', 'status', 'pause', 'reconcile', 'resume', 'exclude', 'unlock'];
+  const commands = [
+    'login',
+    'preview',
+    'run',
+    'daemon',
+    'status',
+    'pause',
+    'reconcile',
+    'resume',
+    'exclude',
+    'unlock',
+    'autostart-install',
+    'autostart-status',
+    'autostart-start',
+    'autostart-uninstall'
+  ];
   if (!commands.includes(args.command)) throw new Error(`Unknown command: ${args.command}`);
   const stateDirectory = path.resolve(ROOT, args.stateDirectory || '.instagram-growth');
-  const config = validateConfig(JSON.parse(fs.readFileSync(path.resolve(ROOT, args.config || 'instagram-growth.config.json'), 'utf8')));
+  const configPath = path.resolve(ROOT, args.config || 'instagram-growth.config.json');
+  const config = validateConfig(JSON.parse(fs.readFileSync(configPath, 'utf8')));
   const log = value => process.stdout.write(`${JSON.stringify({at: new Date().toISOString(), ...value})}\n`);
+  if (args.command.startsWith('autostart-')) {
+    const {manageAutostart} = await import('./autostart.mjs');
+    log(manageAutostart({action: args.command.slice('autostart-'.length), root: ROOT, stateDirectory, configPath}));
+    return;
+  }
   if (args.command === 'unlock') {
     log({unlocked: unlockStoppedWorker(stateDirectory)});
     return;
@@ -89,7 +117,7 @@ export async function main(argv = process.argv.slice(2)) {
     }
     // Even local resume/exclude share this lock so they cannot race a worker
     // between its eligibility check and a browser click. pause stays interruptible.
-    release = acquireLock(stateDirectory);
+    release = acquireLock(stateDirectory, {recoverStale: args.command === 'daemon'});
     if (args.command === 'exclude') {
       if (!args.username) throw new Error('exclude requires --username USER');
       store.exclude(args.username, args.reason || 'Excluded by operator.');
@@ -108,29 +136,36 @@ export async function main(argv = process.argv.slice(2)) {
     }
     const {InstagramBrowser} = await import('./browser.mjs');
     const withBrowser = async fn => {
-      const browser = await InstagramBrowser.launch({
-        profileDirectory: path.join(stateDirectory, 'browser'),
-        account: config.account,
-        headless: args.command !== 'login'
-      });
+      const browser = await launchWithRecovery(() =>
+        InstagramBrowser.launch({
+          profileDirectory: path.join(stateDirectory, 'browser'),
+          account: config.account,
+          headless: args.command !== 'login'
+        })
+      );
       const abortBrowser = () => {
         void browser.close().catch(() => {});
       };
       controller.signal.addEventListener('abort', abortBrowser, {once: true});
       try {
-        await browser.page.goto('https://www.instagram.com/', {waitUntil: 'domcontentloaded'});
-        if (args.command !== 'login') {
-          const ready = await browser.poll(async () => {
-            try {
-              await browser.assertAccount();
-              return true;
-            } catch (error) {
-              if (error.code === 'account_unverified') return false;
-              throw error;
+        await browser.withReadRecovery(
+          async () => {
+            await browser.page.goto('https://www.instagram.com/', {waitUntil: 'domcontentloaded'});
+            if (args.command !== 'login') {
+              const ready = await browser.poll(async () => {
+                try {
+                  await browser.assertAccount();
+                  return true;
+                } catch (error) {
+                  if (error.code === 'account_unverified') return false;
+                  throw error;
+                }
+              });
+              if (!ready) throw new Error('Cannot verify @akalmesin navigation. Run login or inspect the browser UI.');
             }
-          });
-          if (!ready) throw new Error('Cannot verify @akalmesin navigation. Run login or inspect the browser UI.');
-        }
+          },
+          {allowLogin: args.command === 'login'}
+        );
         return await fn(browser);
       } finally {
         controller.signal.removeEventListener('abort', abortBrowser);
@@ -167,28 +202,24 @@ export async function main(argv = process.argv.slice(2)) {
       log({event: 'preview', noRelationshipChanges: true, candidates: store.candidates(17).map(row => row.username), ...store.report(config)});
       return;
     }
-    const run = () => withBrowser(browser => runSession({store, browser, config, log, signal: controller.signal}));
+    const run = expectedSession => withBrowser(browser => runSession({store, browser, config, log, signal: controller.signal, expectedSession}));
     if (args.command === 'run') {
-      log(await run());
+      store.scheduleSessions(config);
+      const result = await run();
+      if (result.status === 'session-complete') store.completeSession({date: result.date, name: result.session});
+      log(result);
       return;
     }
-    log({event: 'daemon-started', headless: true, timezone: config.timezone, sessions: config.sessions});
-    const completed = new Set();
-    while (!controller.signal.aborted) {
-      if (store.paused()) throw new Error(`Paused: ${store.paused().reason}`);
-      const session = sessionAt(config, new Date());
-      const key = session && `${session.date}:${session.name}`;
-      if (session && !completed.has(key)) {
-        log(await run());
-        completed.add(key);
-      }
-      await sleep(30000, undefined, {signal: controller.signal});
-    }
+    await runDaemon({store, config, run, log, signal: controller.signal});
   } catch (error) {
+    if (release && isOperatorStop(error, controller.signal) && !store.listUnresolved().length && !store.paused()) {
+      log({event: 'daemon-stopped', reason: 'operator-stop', paused: null});
+      return;
+    }
     // Only the lock owner may latch a failure. A rejected competing command
     // must not pause the healthy worker that owns the browser. Login/reconcile
     // failures still latch after ownership, including setup/inspection warnings.
-    if (release && ['login', 'preview', 'run', 'daemon', 'reconcile'].includes(args.command))
+    if (release && !store.paused() && ['login', 'preview', 'run', 'daemon', 'reconcile'].includes(args.command))
       store.pause(`${error.code || error.name || 'ERROR'}: ${error.message}`);
     throw error;
   } finally {

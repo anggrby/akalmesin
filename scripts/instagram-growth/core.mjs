@@ -7,6 +7,7 @@ export const DEFAULT_CONFIG = Object.freeze({
   timezone: 'Asia/Jakarta',
   dailyFollowLimit: 50,
   minDelaySeconds: 30,
+  sessionStartJitterMinutes: 0,
   reviewAfterDays: 7,
   sessions: [
     {name: 'morning', start: '08:00', end: '11:00', limit: 17},
@@ -22,6 +23,12 @@ const integer = (value, name, min, max) => {
   if (!Number.isInteger(value) || value < min || value > max) throw new Error(`Invalid ${name}`);
   return value;
 };
+export function randomInteger(min, max, random = Math.random) {
+  if (min === max) return min;
+  const value = random();
+  if (!Number.isFinite(value) || value < 0 || value >= 1) throw new Error('Invalid random sample');
+  return min + Math.floor(value * (max - min + 1));
+}
 const normalizeUserId = value => {
   if (value == null) return null;
   if (typeof value === 'number' && Number.isSafeInteger(value) && value >= 0) value = String(value);
@@ -90,6 +97,9 @@ export function validateConfig(input = {}) {
   if (c.account !== 'akalmesin' || c.timezone !== 'Asia/Jakarta') throw new Error('Account and timezone must be akalmesin and Asia/Jakarta');
   integer(c.dailyFollowLimit, 'dailyFollowLimit', 1, 50);
   integer(c.minDelaySeconds, 'minDelaySeconds', 30, Number.MAX_SAFE_INTEGER);
+  c.maxDelaySeconds = input.maxDelaySeconds ?? c.minDelaySeconds;
+  integer(c.maxDelaySeconds, 'maxDelaySeconds', c.minDelaySeconds, Number.MAX_SAFE_INTEGER);
+  integer(c.sessionStartJitterMinutes, 'sessionStartJitterMinutes', 0, 1439);
   integer(c.reviewAfterDays, 'reviewAfterDays', 7, Number.MAX_SAFE_INTEGER);
   integer(c.candidateScanLimit, 'candidateScanLimit', 1, 300);
   integer(c.maxUnfollowsPerSession, 'maxUnfollowsPerSession', 1, 17);
@@ -102,6 +112,7 @@ export function validateConfig(input = {}) {
     const start = minute(s.start),
       end = minute(s.end);
     if (start >= end) throw new Error('Invalid session interval');
+    if (c.sessionStartJitterMinutes > end - start) throw new Error('Session start jitter exceeds its window');
     integer(s.limit, 'session limit', 1, caps[s.name]);
     return {name: s.name, start: s.start, end: s.end, limit: s.limit};
   });
@@ -165,6 +176,10 @@ export class GrowthStore {
       );
       CREATE INDEX IF NOT EXISTS action_budget ON actions(date, session_name, kind, status);
       CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS scheduled_sessions (
+        date TEXT NOT NULL, name TEXT NOT NULL, scheduled_at TEXT NOT NULL, completed_at TEXT,
+        PRIMARY KEY(date,name)
+      );
     `);
   }
   close() {
@@ -313,6 +328,49 @@ export class GrowthStore {
       .all()
       .map(r => ({...r}));
   }
+  plannedSessions(now = new Date()) {
+    return this.db
+      .prepare('SELECT date,name,scheduled_at AS scheduledAt,completed_at AS completedAt FROM scheduled_sessions WHERE date=? ORDER BY scheduled_at,name')
+      .all(localParts(now).date)
+      .map(row => ({...row}));
+  }
+  scheduleSessions(config, now = new Date(), random = Math.random) {
+    const c = validateConfig(config),
+      date = localParts(now).date;
+    return this.transaction(() => {
+      for (const session of c.sessions) {
+        if (this.db.prepare('SELECT 1 FROM scheduled_sessions WHERE date=? AND name=?').get(date, session.name)) continue;
+        const offset = randomInteger(0, Math.max(0, c.sessionStartJitterMinutes * 60 - 1), random);
+        const start = new Date(`${date}T${session.start}:00+07:00`).getTime();
+        this.db
+          .prepare('INSERT INTO scheduled_sessions(date,name,scheduled_at) VALUES(?,?,?)')
+          .run(date, session.name, new Date(start + offset * 1000).toISOString());
+      }
+      return this.plannedSessions(now);
+    });
+  }
+  completeSession(session, now = new Date()) {
+    const result = this.db
+      .prepare('UPDATE scheduled_sessions SET completed_at=COALESCE(completed_at,?) WHERE date=? AND name=?')
+      .run(iso(now), session.date, session.name);
+    if (!result.changes) throw new Error('Session was not scheduled');
+  }
+  actionReadyAt(config, random = Math.random) {
+    const c = validateConfig(config);
+    return this.transaction(() => {
+      const action = this.db.prepare('SELECT id,MAX(created_at,updated_at) AS at FROM actions ORDER BY MAX(created_at,updated_at) DESC,id DESC LIMIT 1').get();
+      if (!action) return null;
+      const stored = this.db.prepare("SELECT value FROM settings WHERE key='action_spacing'").get();
+      const plan = stored && JSON.parse(stored.value);
+      if (plan && plan.id === action.id && plan.after === action.at && plan.min === c.minDelaySeconds && plan.max === c.maxDelaySeconds) return plan.readyAt;
+      const seconds = randomInteger(c.minDelaySeconds, c.maxDelaySeconds, random);
+      const readyAt = new Date(new Date(action.at).getTime() + seconds * 1000).toISOString();
+      this.db
+        .prepare("INSERT INTO settings(key,value) VALUES('action_spacing',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value")
+        .run(JSON.stringify({id: action.id, after: action.at, min: c.minDelaySeconds, max: c.maxDelaySeconds, readyAt}));
+      return readyAt;
+    });
+  }
   lastActionAt() {
     return this.db.prepare('SELECT MAX(MAX(created_at,updated_at)) AS at FROM actions').get().at ?? null;
   }
@@ -378,6 +436,13 @@ export class GrowthStore {
       return this.get(username);
     });
   }
+  restoreReview(username, previousReviewedAt) {
+    const previous = previousReviewedAt == null ? null : iso(new Date(previousReviewedAt));
+    const result = this.db
+      .prepare("UPDATE candidates SET last_reviewed_at=? WHERE username=? AND status='following' AND excluded=0 AND protected=0")
+      .run(previous, normalizeUsername(username));
+    if (!result.changes) throw new Error('Review cannot be retried for this candidate');
+  }
   deferReview(username, now = new Date()) {
     const result = this.db.prepare('UPDATE candidates SET last_reviewed_at=? WHERE username=?').run(iso(now), normalizeUsername(username));
     if (!result.changes) throw new Error('Unknown candidate');
@@ -423,7 +488,8 @@ export class GrowthStore {
       unresolved: this.listUnresolved(),
       statuses,
       dueReviews: this.dueReviews(now, validateConfig(config).reviewAfterDays).length,
-      lastActionAt: this.lastActionAt()
+      lastActionAt: this.lastActionAt(),
+      schedule: this.plannedSessions(now)
     };
   }
 }

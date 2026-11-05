@@ -2,6 +2,28 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-11-05 — Serialize lock recovery and include browser creation in reconnect handling
+
+The owner requested fixing both reproduced findings in [PR #4’s review](https://github.com/anggrby/akalmesin/pull/4#pullrequestreview-5785428743). A private SQLite coordinator now serializes lock-file checks, reclamation, replacement creation and release. Release verifies its ownership token and file identity. The coordinator’s OS lock is released on process death, avoiding a second manually recoverable filesystem lock. Live/unverifiable owners stay protected and prior lock records remain readable.
+
+Browser/context creation is now inside the daemon’s known-transient reconnect boundary. Fresh account and restriction checks still precede work. Configuration/profile errors remain stops, and any context created before page setup failed is closed. Regressions use controlled Node subprocesses for the concurrent interleaving and the real CLI with mocked startup and clocks. Results and runtime activation are recorded in the [runbook](instagram-growth.md#pr-4-startup-fixes--5-november-2026).
+
+## 2026-11-05 — Resume automatically after sleep when no click may have dispatched
+
+The owner clarified that automatic recovery after sleep and wake is essential. Idle polling already resumes. The daemon now also reconnects after known connection/navigation failures during preparation or reads, using a fresh headless browser and the existing saved login, history, daily targets and allowances.
+
+The browser records the exact dispatch boundary. Only a proven undispatched intent can be cancelled for automatic retry; an interrupted Unfollow restores its prior review position. A possible submission retains its reservation and pauses. Warning, account, domain and verification checks still stop the worker; their pauses are not cleared by reconnect logic. Delays back off from 30 seconds to five minutes using short wall-clock waits, allowing a long sleep to consume the delay. Expired windows remain skipped.
+
+Evidence and deployment status are in the [runbook](instagram-growth.md#sleep-and-wake-recovery--5-november-2026). Regression fixtures simulate network loss, browser/context closure, sleep gaps, continuation without duplicate confirmed follows, and restriction precedence. Physical Mac sleep is not required for fixture verification.
+
+## 2026-11-05 — Local Mac login startup and saved randomized timing
+
+The owner chose local operation, requested randomized waits under a minute and varied daily timing, then authorized a new branch to implement automatic startup for a Mac normally opened at 09:00–10:00 and shut down around 23:00 WIB. The tracked configuration selects 30–59 seconds of intentional waiting and daily targets in 09:00–10:00, 13:00–14:00 and 19:00–20:00. The morning action window is 09:00–11:00; the later windows and 17/17/16 caps remain in place. Browser loading/checks can extend the actual gap beyond one minute. No claim of reduced detection risk follows from randomization.
+
+Daily plans, successful window completion and action-spacing deadlines persist with the existing SQLite journal. A late wake can use the current window, while expired windows are skipped. A user LaunchAgent starts the headless daemon at login without copying credentials, changing accounts or automatically clearing pauses. Normal idle shutdown is a clean stop; uncertain actions and restriction causes remain persistent. A dead local lock may be reclaimed only after verifying the recorded PID has stopped.
+
+Evidence and installation status are recorded in the [runbook](instagram-growth.md#local-mac-startup--5-november-2026). Tests use temporary state and fixture pages; actual seven-day results remain unverified.
+
 ## 2026-11-05 — Rotate reviews and separate no-dispatch session expiry from uncertainty
 
 The owner accepted the findings in [PR #2’s review](https://github.com/anggrby/akalmesin/pull/2#pullrequestreview-5779842040) and requested fixes and a commit. An eligible review now prioritizes never/least recently reviewed accounts, preventing a persistent pending-request backlog from monopolizing every daily batch. A rejected lock contender cannot change the existing worker’s pause.
