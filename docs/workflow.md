@@ -112,6 +112,8 @@ The repo stops at Notion. These rules come verbatim from the old workflow, kept 
 
 After the approved Notion entry is **Ready to Publish**, the separate publisher bot creates a Postiz draft. It schedules only after the owner gives a date and time in **WIB**. Do not invent a time or treat Ready to Publish, Export, or this workflow as publication permission. Record the actual instruction and resulting state in `review.md`. Keep Postiz URLs, API keys, and tokens out of docs and the repo.
 
+**Reels are supported** (owner t124u). A reel-only post (`reel/reel.json` `"publishAs": "reel-only"`, Notion Format **Reel / video**) is published by the akalmesin Publisher as an Instagram Reel from the mp4 (`content/posts/<slug>/out/reel/reel.mp4`). The Notion row's `Assets` hold only the card PNGs, so the handoff must name the mp4 path.
+
 If the owner changes approved copy or assets, the publisher draft is stale until the Notion entry is updated and the owner confirms the schedule again. Drafting and Export do not run the publisher bot.
 
 ### Publication scorecard

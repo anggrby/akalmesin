@@ -303,3 +303,7 @@ Credit edits after copy approval were forcing a copy re-approval (OpenAI post, t
 ## 2026-10-28 — Single-pass review; Save is the approval
 
 Owner (t67u–t69u, authorised t69u: "…only the copy that still my attention. You can make change now"): one review HTML with real slides and editable copy. A Save applied by `review:apply` with every check green counts as both the copy and final approval. A Save with zero changes is an approval. A failed check means no approval. Design rule 2 removes slide alt text from `designRevision` (alt stays in the export). Old final approvals without `designRule` are checked against `legacyDesignRevision`. The `selected` gate is no longer required. The placeholder copy editor and `approve --gate` remain available as fallbacks.
+
+## 2026-11-05 — Reels are published by the Publisher
+
+Owner t124u: "Make sure you update the rule regarding the reels". The akalmesin Publisher now publishes single-video posts as Instagram Reels and posts the reel mp4. Reel-only posts (`publishAs: reel-only`, Format "Reel / video") go out as Reels from `out/reel/reel.mp4`; the Notion row holds only card PNGs, so the handoff names the mp4 path.
