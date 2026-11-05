@@ -2,6 +2,14 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-11-05 — Rotate reviews and separate no-dispatch session expiry from uncertainty
+
+The owner accepted the findings in [PR #2’s review](https://github.com/anggrby/akalmesin/pull/2#pullrequestreview-5779842040) and requested fixes and a commit. An eligible review now prioritizes never/least recently reviewed accounts, preventing a persistent pending-request backlog from monopolizing every daily batch. A rejected lock contender cannot change the existing worker’s pause.
+
+A session ending during browser preparation is a normal completion only when that action’s own pre-click guard blocked dispatch before ever permitting it. The journal keeps a terminal `cancelled` record, releases the unused reservation and preserves candidate eligibility and relationships. Error-code matching alone cannot establish this proof; possibly dispatched or otherwise uncertain actions still retain their reservations and pause for reconciliation. Existing pauses, history and exclusions are not cleared. No schema migration or live daemon restart is needed to validate the code.
+
+Evidence: regressions first reproduced the failures against the prior code. Core and runner tests pass after the fixes, including multi-day rotation, lock contention and follow/unfollow cancellation. Full-suite results are recorded in the [runbook](instagram-growth.md#review-fixes--5-november-2026); actual seven-day live behavior remains unverified.
+
 ## 2026-11-04 — Confirm saved follow state without repeating clicks
 
 The afternoon worker did start at 13:00 WIB. Its first follow succeeded, but complete DOM text included an SVG/icon label and the confirmation checker returned unknown. A subsequent successful click left the current profile controls stale. The worker stopped on uncertainty in both cases. Headless read-back confirmed the original target IDs and Following states, so those results were reconciled and their original budget reservations retained.

@@ -185,9 +185,11 @@ export async function main(argv = process.argv.slice(2)) {
       await sleep(30000, undefined, {signal: controller.signal});
     }
   } catch (error) {
-    // Login/reconcile failures also latch: a subsequent daemon cannot silently
-    // pick up a browser that has shown a restriction during setup or inspection.
-    if (['login', 'preview', 'run', 'daemon', 'reconcile'].includes(args.command)) store.pause(`${error.code || error.name || 'ERROR'}: ${error.message}`);
+    // Only the lock owner may latch a failure. A rejected competing command
+    // must not pause the healthy worker that owns the browser. Login/reconcile
+    // failures still latch after ownership, including setup/inspection warnings.
+    if (release && ['login', 'preview', 'run', 'daemon', 'reconcile'].includes(args.command))
+      store.pause(`${error.code || error.name || 'ERROR'}: ${error.message}`);
     throw error;
   } finally {
     process.removeListener('SIGINT', onSignal);

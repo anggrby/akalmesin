@@ -247,3 +247,39 @@ test('identity is durable before a click and cannot be changed for a candidate',
   store.exclude('other', 'owner exclusion', morning);
   assert.throws(() => store.rememberIdentity('other', '55'));
 });
+
+test('cancelled intents persist without changing candidates or consuming allowances', t => {
+  const path = fixture(t);
+  let store = new GrowthStore(path);
+  store.addCandidates(
+    [
+      {username: 'alice', userId: '100'},
+      {username: 'bob', userId: '200'}
+    ],
+    morning
+  );
+  const follow = store.beginAction('alice', 'follow', {now: morning, session});
+  store.finishAction(follow, {status: 'cancelled', now: morning, detail: 'Mutation guard prevented dispatch.'});
+  const bob = store.beginAction('bob', 'follow', {now: morning, session});
+  store.finishAction(bob, {status: 'following', now: morning});
+  const unfollow = store.beginAction('bob', 'unfollow', {now: morning, session});
+  store.finishAction(unfollow, {status: 'cancelled', now: morning});
+  store.close();
+  store = new GrowthStore(path);
+  t.after(() => store.close());
+  assert.deepEqual(store.listUnresolved(), []);
+  assert.equal(store.budget(session, DEFAULT_CONFIG).dailyUsed, 1);
+  assert.equal(store.unfollowCount(session), 0);
+  assert.equal(store.get('alice').status, 'new');
+  assert.equal(store.get('alice').protected, false);
+  assert.equal(store.get('alice').excluded, false);
+  assert.equal(store.get('bob').status, 'following');
+  assert.equal(store.get('bob').excluded, false);
+  assert.deepEqual(
+    store.candidates().map(c => c.username),
+    ['alice']
+  );
+  assert.equal(store.hasKnownIdentity('100', 'renamed_alice'), false);
+  assert.equal(store.hasKnownIdentity('200', 'renamed_bob'), true);
+  assert.throws(() => store.finishAction(follow, {status: 'following', now: morning}));
+});

@@ -220,7 +220,7 @@ export class GrowthStore {
     const except = exceptUsername == null ? '' : normalizeUsername(exceptUsername);
     return !!this.db
       .prepare(
-        "SELECT 1 FROM candidates c WHERE c.user_id=? AND c.username!=? AND (c.excluded=1 OR c.protected=1 OR EXISTS (SELECT 1 FROM actions a WHERE a.username=c.username AND a.kind='follow')) LIMIT 1"
+        "SELECT 1 FROM candidates c WHERE c.user_id=? AND c.username!=? AND (c.excluded=1 OR c.protected=1 OR EXISTS (SELECT 1 FROM actions a WHERE a.username=c.username AND a.kind='follow' AND a.status!='cancelled')) LIMIT 1"
       )
       .get(id, except);
   }
@@ -264,7 +264,7 @@ export class GrowthStore {
     });
   }
   finishAction(id, {status, now = new Date(), userId, detail} = {}) {
-    if (!['following', 'requested', 'unfollowed', 'skipped', 'uncertain', 'abandoned'].includes(status)) throw new Error('Invalid action status');
+    if (!['following', 'requested', 'unfollowed', 'skipped', 'uncertain', 'abandoned', 'cancelled'].includes(status)) throw new Error('Invalid action status');
     const at = iso(now);
     const observedUserId = normalizeUserId(userId);
     return this.transaction(() => {
@@ -343,7 +343,7 @@ export class GrowthStore {
   unfollowCount(session) {
     return Number(
       this.db
-        .prepare("SELECT COUNT(*) AS count FROM actions WHERE date=? AND session_name=? AND kind='unfollow' AND status!='skipped'")
+        .prepare("SELECT COUNT(*) AS count FROM actions WHERE date=? AND session_name=? AND kind='unfollow' AND status NOT IN ('skipped','cancelled')")
         .get(session.date, session.name).count
     );
   }
@@ -356,7 +356,7 @@ export class GrowthStore {
         `SELECT * FROM candidates WHERE excluded=0 AND protected=0 AND follows_back IS NOT 1 AND
       ((status='following' AND accepted_at IS NOT NULL AND accepted_at<=?) OR (status='requested' AND requested_at IS NOT NULL AND requested_at<=?))
       AND (last_reviewed_at IS NULL OR substr(datetime(last_reviewed_at, '+7 hours'),1,10)<?)
-      AND NOT EXISTS (SELECT 1 FROM actions a WHERE a.username=candidates.username AND a.status='uncertain') ORDER BY COALESCE(accepted_at,requested_at),username`
+      AND NOT EXISTS (SELECT 1 FROM actions a WHERE a.username=candidates.username AND a.status='uncertain') ORDER BY last_reviewed_at IS NOT NULL,last_reviewed_at,COALESCE(accepted_at,requested_at),username`
       )
       .all(cutoff, cutoff, today)
       .map(r => this.row(r));

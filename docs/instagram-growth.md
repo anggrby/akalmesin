@@ -2,6 +2,12 @@
 
 Optional, owner-authorized browser automation for **@akalmesin**. This is separate from carousel production and Notion delivery. The starting source is the visible followers of [@aico.community](https://www.instagram.com/aico.community/), supplied by the owner on 4 November 2026. It does not publish posts or send messages.
 
+## Review fixes — 5 November 2026
+
+The [PR review](https://github.com/anggrby/akalmesin/pull/2#pullrequestreview-5779842040) identified review starvation, lock-contention pauses and a persistent stop after proven pre-click window expiry. Eligible reviews now rotate by never/least recently reviewed status. Rejected competing commands preserve the existing lock and pause. A window expiry attested by the current action’s own pre-click guard finalizes only that undispatched intent as `cancelled`; ambiguous or possibly dispatched operations still pause.
+
+All **63 growth tests pass** with `npm run test:instagram-growth`. Changed-file Prettier and `git diff --check` pass. Regression coverage exercises a multi-day pending backlog, all five competing browser commands, cancelled follow/unfollow persistence and later eligibility, and failures without proof that dispatch was blocked. These are fixture checks. The live daemon has not been restarted to load these fixes, and actual seven-day outcomes remain unverified. The dated live results below are historical.
+
 ## Current status — 4 November 2026
 
 Implemented in this checkout. The initial 53 growth fixtures and 72 editorial tests passed. Focused regression checks for visible relationship labels, warning stops, mutation guards and stale-profile read-back pass after the live confirmation fix. Changed files pass Prettier and `git diff --check`; the full-repository formatter has five pre-existing Markdown issues that remain untouched.
@@ -24,7 +30,7 @@ For code layout and an agent maintenance handoff, see [scripts/instagram-growth/
 | Afternoon | 13:00–17:00 | 17                  |
 | Evening   | 19:00–22:00 | 16                  |
 
-The three sessions share a maximum of 50 per WIB calendar day. A session starts when the daemon first sees its window; it does not spread each follow uniformly through that whole window. Each relationship action has at least 30 seconds of spacing after the previous result. Missed sessions are skipped; their allowance is not moved into a later session. Times can be adjusted in config without overlapping windows or increasing the agreed caps.
+The three sessions share a maximum of 50 per WIB calendar day. A session starts when the daemon first sees its window; it does not spread each follow uniformly through that whole window. Each relationship action has at least 30 seconds of spacing after the previous result. Missed sessions are skipped; their allowance is not moved into a later session. If pre-click preparation crosses the window boundary, the mutation guard blocks dispatch and the worker cancels only that proven undispatched intent without pausing future sessions. Its unused reservation is released; confirmed or uncertain actions keep their existing counts. Times can be adjusted in config without overlapping windows or increasing the agreed caps.
 
 ## Start
 
@@ -64,7 +70,7 @@ The worker records durable intent before clicking and records the observed outco
 
 After seven days, the worker inspects managed relationships. A visible reciprocal badge or an exact match in akalmesin's own Followers search confirms a follow-back. Absence requires both an explicit empty search result and a successful, complete response tied to that exact query and akalmesin’s stable owner ID. Unrelated, stale or incomplete results remain unknown. Missing badges, incomplete searches and failed lookups remain unknown and cannot authorize an unfollow. The browser repeats the check before clicking Unfollow. Follow-backs are retained and leave the initial review queue.
 
-Each session inspects at most 17 due accounts and makes at most 17 unfollows; a backlog can take longer than seven days. Pending private requests are left pending. If acceptance is first observed later, a new seven-day clock starts then. Relationships ended manually are preserved. Unfollowed accounts are permanently excluded from future follows; this is a **local exclusion list**, not Instagram's Block feature.
+Eligible accounts are ordered by never-reviewed status, then oldest last review, then relationship age. A deferred pending request or unknown observation can be inspected once per WIB day and rotates behind less recently reviewed accounts on later days. Each session inspects at most 17 due accounts and makes at most 17 unfollows; a backlog can take longer than seven days. Pending private requests are left pending. If acceptance is first observed later, a new seven-day clock starts then. Relationships ended manually are preserved. Unfollowed accounts are permanently excluded from future follows; this is a **local exclusion list**, not Instagram's Block feature.
 
 Usernames can change. Automatic unfollow requires a freshly verified numeric account ID matching the ID recorded at follow time. A missing ID defers review; a changed ID excludes that username without changing the relationship. Known numeric IDs are checked across usernames before a follow, so a previously processed/excluded identity is skipped after a rename when that ID is available. The fresh ID is saved before the click. When metadata is unavailable, username history still applies and existing follows are protected by the pre-action check; cross-username matching cannot be guaranteed. Unfollowed usernames remain in the local exclusion list.
 
@@ -87,7 +93,7 @@ npm run instagram:growth -- exclude --username someone --reason "keep out of can
 npm run instagram:growth -- unlock
 ```
 
-`exclude` changes only the local list. `unlock` removes a crashed worker's lock only when its recorded PID is no longer running; it refuses to unlock a live worker. Only one login/preview/run/daemon/reconcile process can own the browser at a time. Status and pause can run while the daemon is active.
+`exclude` changes only the local list. `unlock` removes a crashed worker's lock only when its recorded PID is no longer running; it refuses to unlock a live worker. Only one login/preview/run/daemon/reconcile process can own the browser at a time. A command rejected for lock contention leaves the active worker’s lock and pause unchanged. Status and pause can run while the daemon is active.
 
 ## Private local state
 

@@ -92,6 +92,16 @@ export async function runSession({store, browser, config, now = () => new Date()
   }
   let follows = 0,
     unfollows = 0;
+  let currentAction;
+  let windowEndedBeforeMutation;
+  const sessionResult = () => ({
+    status: 'session-complete',
+    session: session.name,
+    date: session.date,
+    follows,
+    unfollows,
+    budget: store.budget(session, config)
+  });
   const previousIdentityFilter = browser.shouldSkipIdentity;
   browser.shouldSkipIdentity = (userId, username) => {
     if (previousIdentityFilter?.(userId, username) || store.hasKnownIdentity(userId, username)) return true;
@@ -102,7 +112,13 @@ export async function runSession({store, browser, config, now = () => new Date()
   browser.beforeMutation = () => {
     previousMutationGuard?.();
     assertRunning(store, signal);
-    if (!sameSession(config, session, now())) throw new GrowthRunStop('The session window ended before the click.', 'WINDOW_ENDED');
+    if (!sameSession(config, session, now())) {
+      const error = new GrowthRunStop('The session window ended before the click.', 'WINDOW_ENDED');
+      if (currentAction && !currentAction.mutationAllowed) windowEndedBeforeMutation = error;
+      throw error;
+    }
+    // Once this guard permits dispatch, subsequent errors cannot prove no click.
+    if (currentAction) currentAction.mutationAllowed = true;
   };
   try {
     await browser.guard();
@@ -141,8 +157,10 @@ export async function runSession({store, browser, config, now = () => new Date()
       assertRunning(store, signal);
       if (!sameSession(config, session, now())) break;
       const id = store.beginAction(candidate.username, 'unfollow', {now: now(), session});
+      currentAction = {id, username: candidate.username, kind: 'unfollow', mutationAllowed: false};
       const result = await browser.unfollow(candidate.username, {expectedUserId: candidate.userId});
       store.finishAction(id, {...result, now: now()});
+      currentAction = null;
       log({event: 'unfollow-result', username: candidate.username, status: result.status});
       if (result.status === 'uncertain') throw new GrowthRunStop('Unfollow outcome is uncertain.', 'UNCERTAIN');
       if (result.status === 'unfollowed') unfollows++;
@@ -161,15 +179,25 @@ export async function runSession({store, browser, config, now = () => new Date()
         assertRunning(store, signal);
         if (!sameSession(config, session, now()) || store.budget(session, config).remaining <= 0) break;
         const id = store.beginAction(candidate.username, 'follow', {now: now(), session});
+        currentAction = {id, username: candidate.username, kind: 'follow', mutationAllowed: false};
         const result = await browser.follow(candidate.username);
         store.finishAction(id, {...result, now: now()});
+        currentAction = null;
         log({event: 'follow-result', username: candidate.username, status: result.status});
         if (result.status === 'uncertain') throw new GrowthRunStop('Follow outcome is uncertain.', 'UNCERTAIN');
         if (result.status === 'following' || result.status === 'requested') follows++;
       }
     }
-    return {status: 'session-complete', session: session.name, date: session.date, follows, unfollows, budget: store.budget(session, config)};
+    return sessionResult();
   } catch (error) {
+    // Only this action's own pre-click guard can attest that nothing dispatched.
+    // A matching error code from elsewhere, or any earlier dispatch permission,
+    // remains uncertain and follows the persistent pause/reconciliation path.
+    if (windowEndedBeforeMutation && error === windowEndedBeforeMutation && currentAction && !currentAction.mutationAllowed) {
+      store.finishAction(currentAction.id, {status: 'cancelled', now: now(), detail: 'Session window ended; mutation guard prevented dispatch.'});
+      log({event: 'action-cancelled', username: currentAction.username, kind: currentAction.kind, reason: 'window-ended-before-dispatch'});
+      return sessionResult();
+    }
     // Persist the latch across restarts. No automatic retry of warnings, changed
     // UI, transport failures, uncertain writes, or verification challenges.
     store.pause(`${error.code || error.name || 'ERROR'}: ${error.message}`, now());

@@ -14,7 +14,7 @@ npm run instagram:growth -- status
 
 Inspect the existing `.instagram-growth/worker.log` and the PID recorded in `.instagram-growth/worker.lock` before launching anything. A daemon may already be running headlessly. `status` reports local state; it does not prove the recorded process is alive.
 
-**Do not launch a second browser-owning command to check whether the first is working.** Login, preview, run, daemon and reconcile share a process lock and browser profile. A competing command currently raises a lock error and can also persist a pause through the CLI error handler. Use `status` and logs instead. Status and pause are allowed while the daemon is active.
+**Do not launch a second browser-owning command to check whether the first is working.** Login, preview, run, daemon and reconcile share a process lock and browser profile. A competing command raises a lock error without changing the active worker’s lock or persistent pause. Use `status` and logs instead. Status and pause are allowed while the daemon is active.
 
 Preserve the saved profile, journal, counters, exclusions, pause and unresolved actions. Do not clear local state, switch to a new state directory or delete a live lock to restart an allowance.
 
@@ -58,7 +58,9 @@ The foreground daemon can be stopped with Ctrl+C. An existing detached daemon is
 5. Click once, confirm the relationship, then finalize the journal. A stale Follow control may be confirmed with one fresh profile read, requiring the same numeric ID when an original ID was available; never repeat the click just to test whether it worked.
 6. On restrictions, challenges, unknown controls or unconfirmed outcomes, persist a pause and stop. There is no automatic visible-browser fallback, challenge solving or evasion.
 
-Seven-day reviews only manage this worker’s relationships. A missing lookup is **unknown**, never proof that someone does not follow back. An unfollow requires a matching fresh numeric target ID and fresh reciprocal evidence. Pending private requests remain pending; observing acceptance starts a new seven-day clock. Follow-backs are retained. Confirmed unfollows enter the permanent local exclusion list. Review batches are bounded, so a backlog can take longer than seven days; see the [runbook](../../docs/instagram-growth.md#history-and-seven-day-reviews).
+When the session window expires inside pre-click preparation, only the worker’s own mutation guard can prove that dispatch was blocked. It finalizes that intent as `cancelled`, releases its reservation and ends the session normally, preserving the candidate for a later attempt. This never clears an existing pause or resolves other uncertain actions. Once the guard has permitted dispatch, a later error remains uncertain even if it has a window-expiry code.
+
+Seven-day reviews only manage this worker’s relationships. A missing lookup is **unknown**, never proof that someone does not follow back. An unfollow requires a matching fresh numeric target ID and fresh reciprocal evidence. Pending private requests remain pending; observing acceptance starts a new seven-day clock. Follow-backs are retained. Confirmed unfollows enter the permanent local exclusion list. Eligible reviews prioritize never-reviewed accounts, then the least recently reviewed, with at most one inspection per account per WIB day. Pending requests and unknown observations remain in this rotation. Review batches are bounded, so a backlog can take longer than seven days; see the [runbook](../../docs/instagram-growth.md#history-and-seven-day-reviews).
 
 ## Reading status and recovering safely
 
