@@ -5,11 +5,33 @@
   "minDelaySeconds": 30,
   "reviewAfterDays": 7,
   "sessions": [
-    {"name": "morning", "start": "08:00", "end": "11:00", "limit": 17},
-    {"name": "afternoon", "start": "13:00", "end": "17:00", "limit": 17},
-    {"name": "evening", "start": "19:00", "end": "22:00", "limit": 16}
+    {
+      "name": "morning",
+      "start": "09:00",
+      "end": "11:00",
+      "limit": 17
+    },
+    {
+      "name": "afternoon",
+      "start": "13:00",
+      "end": "17:00",
+      "limit": 17
+    },
+    {
+      "name": "evening",
+      "start": "19:00",
+      "end": "22:00",
+      "limit": 16
+    }
   ],
-  "sources": [{"type": "followers", "account": "aico.community"}],
+  "sources": [
+    {
+      "type": "followers",
+      "account": "aico.community"
+    }
+  ],
   "candidateScanLimit": 300,
-  "maxUnfollowsPerSession": 17
+  "maxUnfollowsPerSession": 17,
+  "maxDelaySeconds": 59,
+  "sessionStartJitterMinutes": 60
 }

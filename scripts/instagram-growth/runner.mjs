@@ -3,8 +3,9 @@ import path from 'node:path';
 import os from 'node:os';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {sessionAt} from './core.mjs';
+import {GrowthReadInterrupted, interruptedRead} from './recovery.mjs';
 
-export function acquireLock(directory) {
+export function acquireLock(directory, {recoverStale = false} = {}) {
   fs.mkdirSync(directory, {recursive: true, mode: 0o700});
   const file = path.join(directory, 'worker.lock');
   let handle;
@@ -12,6 +13,15 @@ export function acquireLock(directory) {
     handle = fs.openSync(file, 'wx', 0o600);
   } catch (error) {
     if (error.code !== 'EEXIST') throw error;
+    if (recoverStale) {
+      let recovered = false;
+      try {
+        recovered = unlockStoppedWorker(directory);
+      } catch {
+        /* Live or unverifiable owners remain locked. */
+      }
+      if (recovered) return acquireLock(directory);
+    }
     throw new Error('Another growth command owns worker.lock. If it crashed, use the unlock command after checking that it stopped.');
   }
   fs.writeFileSync(handle, JSON.stringify({pid: process.pid, hostname: os.hostname(), startedAt: new Date().toISOString()}));
@@ -42,6 +52,10 @@ export class GrowthRunStop extends Error {
   }
 }
 
+export function isOperatorStop(error, signal) {
+  return !!signal?.aborted && (error === signal.reason || (error?.code === 'ABORT_ERR' && error.cause === signal.reason));
+}
+
 function assertRunning(store, signal) {
   signal?.throwIfAborted();
   const pause = store.paused();
@@ -53,12 +67,12 @@ function sameSession(config, expected, now) {
   return current && current.date === expected.date && current.name === expected.name;
 }
 
-export async function waitForSpacing({store, browser, config, now = () => new Date(), wait = sleep, signal}) {
+export async function waitForSpacing({store, browser, config, now = () => new Date(), wait = sleep, signal, random = Math.random}) {
   for (;;) {
     assertRunning(store, signal);
     await browser.guard();
-    const last = store.lastActionAt();
-    const remaining = last ? config.minDelaySeconds * 1000 - (now().getTime() - new Date(last).getTime()) : 0;
+    const deadline = store.actionReadyAt(config, random);
+    const remaining = deadline ? new Date(deadline).getTime() - now().getTime() : 0;
     if (remaining <= 0) return;
     await wait(Math.min(1000, remaining), undefined, {signal});
   }
@@ -82,9 +96,10 @@ export async function collectPool({store, browser, config, now = () => new Date(
   return observed;
 }
 
-export async function runSession({store, browser, config, now = () => new Date(), wait = sleep, log = () => {}, signal}) {
+export async function runSession({store, browser, config, now = () => new Date(), wait = sleep, log = () => {}, signal, expectedSession}) {
   const session = sessionAt(config, now());
-  if (!session) return {status: 'outside-window', follows: 0, unfollows: 0};
+  if (!session || (expectedSession && (session.date !== expectedSession.date || session.name !== expectedSession.name)))
+    return {status: 'outside-window', follows: 0, unfollows: 0};
   assertRunning(store, signal);
   if (store.listUnresolved().length) {
     store.pause('An earlier action has an uncertain outcome. Run reconcile before resume.', now());
@@ -157,7 +172,7 @@ export async function runSession({store, browser, config, now = () => new Date()
       assertRunning(store, signal);
       if (!sameSession(config, session, now())) break;
       const id = store.beginAction(candidate.username, 'unfollow', {now: now(), session});
-      currentAction = {id, username: candidate.username, kind: 'unfollow', mutationAllowed: false};
+      currentAction = {id, username: candidate.username, kind: 'unfollow', mutationAllowed: false, previousReviewedAt: candidate.lastReviewedAt};
       const result = await browser.unfollow(candidate.username, {expectedUserId: candidate.userId});
       store.finishAction(id, {...result, now: now()});
       currentAction = null;
@@ -198,9 +213,30 @@ export async function runSession({store, browser, config, now = () => new Date()
       log({event: 'action-cancelled', username: currentAction.username, kind: currentAction.kind, reason: 'window-ended-before-dispatch'});
       return sessionResult();
     }
+    if (!signal?.aborted && !store.paused()) {
+      let retry = error instanceof GrowthReadInterrupted ? error : null;
+      if (!currentAction && !store.listUnresolved().length && !retry) {
+        try {
+          retry = await interruptedRead(browser, error);
+        } catch (guardError) {
+          error = guardError;
+        }
+      }
+      if (retry && currentAction && !currentAction.mutationAllowed) {
+        store.finishAction(currentAction.id, {
+          status: 'cancelled',
+          now: now(),
+          detail: 'Connection interrupted before dispatch; eligible for a fresh guarded attempt.'
+        });
+        if (currentAction.kind === 'unfollow') store.restoreReview(currentAction.username, currentAction.previousReviewedAt);
+        log({event: 'action-cancelled', username: currentAction.username, kind: currentAction.kind, reason: 'connection-interrupted-before-dispatch'});
+      }
+      if (retry && !store.listUnresolved().length) throw retry;
+    }
     // Persist the latch across restarts. No automatic retry of warnings, changed
-    // UI, transport failures, uncertain writes, or verification challenges.
-    store.pause(`${error.code || error.name || 'ERROR'}: ${error.message}`, now());
+    // UI, uncertain writes, or verification challenges. Only proven read failures reconnect.
+    if (!store.paused() && (!isOperatorStop(error, signal) || store.listUnresolved().length))
+      store.pause(`${error.code || error.name || 'ERROR'}: ${error.message}`, now());
     throw error;
   } finally {
     browser.beforeMutation = previousMutationGuard;

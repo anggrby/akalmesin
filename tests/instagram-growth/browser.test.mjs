@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {loadDependency, browserPath} from '../../scripts/instagram-growth/runtime.mjs';
 import {InstagramBrowser, GrowthBrowserStop} from '../../scripts/instagram-growth/browser.mjs';
+import {GrowthReadInterrupted} from '../../scripts/instagram-growth/recovery.mjs';
 
 const {chromium} = await loadDependency('playwright-core');
 const origin = 'https://www.instagram.com';
@@ -395,4 +396,56 @@ test('follow confirms stale controls through a fresh profile read without clicki
   assert.deepEqual(await client.follow('alice'), {status: 'following', userId: '101'});
   assert.equal(clicks, 1);
   assert.equal(visits, 2);
+});
+
+test('recovery: a disconnected profile load is attested before any Follow dispatch', async t => {
+  const {client, page} = await setup(t);
+  let clicks = 0;
+  client.beforeMutation = () => clicks++;
+  await page.route('**/alice/', route => route.abort('internetdisconnected'));
+  await assert.rejects(client.follow('alice'), error => error instanceof GrowthReadInterrupted);
+  assert.equal(clicks, 0);
+});
+
+test('recovery: a transport failure after Follow dispatch never gains permission to retry', async t => {
+  const {client} = await setup(t);
+  let clicks = 0,
+    reads = 0;
+  client.beforeMutation = () => clicks++;
+  const original = client.waitRelationship.bind(client);
+  client.waitRelationship = async (...args) => {
+    if (++reads === 2) throw new Error('net::ERR_NETWORK_CHANGED');
+    return original(...args);
+  };
+  await assert.rejects(client.follow('alice'), error => !(error instanceof GrowthReadInterrupted) && /ERR_NETWORK_CHANGED/.test(error.message));
+  assert.equal(clicks, 1);
+});
+
+test('recovery: Unfollow preflight can reconnect without submitting a relationship change', async t => {
+  const {client} = await setup(t);
+  let clicks = 0;
+  client.beforeMutation = () => clicks++;
+  client.inspect = async () => {
+    throw new Error('page.goto: net::ERR_CONNECTION_RESET');
+  };
+  await assert.rejects(client.unfollow('carol', {expectedUserId: '103'}), error => error instanceof GrowthReadInterrupted);
+  assert.equal(clicks, 0);
+});
+
+test('recovery: a restriction warning wins over a temporary connection error', async t => {
+  const {client, page} = await setup(t);
+  client.openProfile = async () => {
+    await page.evaluate(() => document.body.insertAdjacentHTML('beforeend', '<div role="alert">Try again later</div>'));
+    throw new Error('net::ERR_CONNECTION_CLOSED');
+  };
+  await assert.rejects(client.follow('alice'), error => error.code === 'rate_limited' && !(error instanceof GrowthReadInterrupted));
+});
+
+test('recovery: a closed browser before a read can be replaced', async t => {
+  const {client, page} = await setup(t);
+  await page.close();
+  await assert.rejects(
+    client.withReadRecovery(() => client.assertAccount()),
+    error => error instanceof GrowthReadInterrupted
+  );
 });
