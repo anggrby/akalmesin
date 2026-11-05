@@ -9,7 +9,7 @@ Media: AgiBot's own livestream replay on its official X account (https://x.com/A
 
 | Key       | File                                 | SHA-256                                                          | Source window (s into broadcast) |
 | --------- | ------------------------------------ | ---------------------------------------------------------------- | -------------------------------- |
-| overview  | reel/media/agibot-store-overview.mp4 | 6a73dbd888f66a9fe0234b7e45ef092204b9dd8d235bc3db3f261a5d5dbd5cfc | 5000.5–5008.5                    |
+| overview  | reel/media/agibot-store-overview.mp4 | f884cb74ec41b68770705a46b37801ba9e59a627c6aa7063dc7c84d5709bc526 | 5003.0–5011.0                    |
 | shelves   | reel/media/agibot-shelves.mp4        | 94823f21bcf33d02c381b14ce6dbe1b7666caa6774e191f2e8f6b06bf3dad9a0 | 600.5–608.5                      |
 | customers | reel/media/agibot-customers.mp4      | ff6d8f2677629c1e7919a6617d321573a4ef8bb21e0564ef0013c26895eeb727 | 9000–9008                        |
 | aisle     | reel/media/agibot-customers-2.mp4    | ce1b7e95d54de44d3cbcfc16ea258ec18f1f3ee3d210c6030949d43b9b8474a2 | 9010–9018                        |
@@ -22,3 +22,8 @@ Carousel stills (frame grabs, assets/originals):
 - x-2117086439-customers-2.jpg sha256 c64d518906e7f16691ac66abdda047074c07c24c19a83810481922b99c125b0a (04)
 
 Raw section downloads (not committed, deleted from /tmp after the build): seg-600.mp4 sha256 45f530fcf379cb4d04efebced867c7ce6e6e69ef27971ae871c8c569a94918f4; seg-5000.mp4 sha256 636af3e20a1aa38acda900a72686557afe067c7cfce8295575cbdbac04786660; seg-9000.mp4 sha256 b7fa1118a274a35f4d7f4b6e53f9260756568466f47385cbb47f1036b99df93f.
+
+## Revision v2 (glitch fix)
+
+- The overview clip was re-cut to 5003.0–5011.0 s, from a `--download-sections` segment that starts at 5000 s (sha256 b1c2c9eb79d4c77bb267414efc68f208724c264530ff4c99340a71a60b480202), using crop=744:428:28:80 and libx264 crf 16 with no audio. The old 5000.5–5008.5 s cut picked up the livestream's own black scene transition at about 5002.0–5002.5 s, which showed as a black media area in the reel at 1.47–2.07 s.
+- The headline now has a typing effect (reel.json `typing`), at 40 chars/s with a blue caret. It applies from the 2nd card onward (the first card shows the text fully from frame 0) and finishes by about 36% of each card's duration.

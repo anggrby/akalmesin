@@ -134,5 +134,10 @@
   "publishAs": "reel-only",
   "musicOverrides": {
     "gainDb": -2.5
+  },
+  "typing": {
+    "cps": 40,
+    "maxShare": 0.4,
+    "caret": true
   }
 }

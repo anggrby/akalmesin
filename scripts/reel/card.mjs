@@ -112,8 +112,57 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
         onScreen: [...document.querySelectorAll('[data-fact]')].map(e => ({text: e.textContent}))
       };
     });
-    manifest.push({file: path.relative(paths.dir, png), beat: beat.id, media: beat.media, start: b.start, end: b.end, ...meas});
     const D = (b.end - b.start).toFixed(3);
+    // Opt-in typing effect (reel.json "typing": {"cps"?, "maxShare"?, "caret"?}; owner pt120u): the headline types out
+    // character by character when the card appears, then stays static. Untyped text stays in the layout (hidden), so
+    // line breaks never move. Off unless set, so reels without it render exactly as before.
+    let overlayInput = ['-loop', '1', '-framerate', '30', '-t', D, '-i', png],
+      typing = null;
+    if (spec.typing && (i > 0 || spec.typing.firstCard)) {
+      const full = beat.onScreen.map(o => o.text).join(' ');
+      const share = spec.typing.maxShare ?? 0.4;
+      const cps = Math.max(spec.typing.cps ?? 40, full.length / (share * Number(D)));
+      const nFrames = Math.ceil((full.length / cps) * 30);
+      const list = [],
+        tdir = path.join(frames, `type-${String(i).padStart(3, '0')}`);
+      fs.rmSync(tdir, {recursive: true, force: true});
+      fs.mkdirSync(tdir, {recursive: true});
+      let last = -1,
+        lastFile = null,
+        held = 0;
+      for (let k = 0; k < nFrames; k++) {
+        const n = Math.min(full.length, Math.floor(((k + 1) / 30) * cps));
+        if (n !== last) {
+          if (lastFile) list.push(`file '${lastFile}'`, `duration ${(held / 30).toFixed(6)}`);
+          await page.evaluate(
+            ({full, n, caret, blue}) => {
+              const hl = document.querySelector('#hl');
+              const e = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'})[c]);
+              hl.innerHTML =
+                e(full.slice(0, n)) +
+                (caret
+                  ? `<span style="display:inline-block;width:0;position:relative"><span style="position:absolute;left:2px;top:-0.95em;width:4px;height:1.1em;background:${blue}"></span></span>`
+                  : '') +
+                `<span style="visibility:hidden">${e(full.slice(n))}</span>`;
+            },
+            {full, n, caret: spec.typing.caret !== false, blue: BLUE}
+          );
+          lastFile = path.join(tdir, `${String(k).padStart(4, '0')}.png`);
+          await page.screenshot({path: lastFile, omitBackground: true});
+          last = n;
+          held = 0;
+        }
+        held++;
+      }
+      list.push(`file '${lastFile}'`, `duration ${(held / 30).toFixed(6)}`);
+      const rest = Number(D) - nFrames / 30;
+      list.push(`file '${png}'`, `duration ${Math.max(rest, 1 / 30).toFixed(6)}`, `file '${png}'`);
+      const listFile = path.join(tdir, 'list.txt');
+      writeFile(listFile, list.join('\n') + '\n');
+      overlayInput = ['-f', 'concat', '-safe', '0', '-i', listFile];
+      typing = {chars: full.length, cps: +cps.toFixed(2), typedBy: +(nFrames / 30).toFixed(3), share: +(nFrames / 30 / Number(D)).toFixed(3)};
+    }
+    manifest.push({file: path.relative(paths.dir, png), beat: beat.id, media: beat.media, start: b.start, end: b.end, ...meas, ...(typing ? {typing} : {})});
     const [w, h] = sh('ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height', '-of', 'csv=p=0', src])
       .trim()
       .split(',')
@@ -185,16 +234,9 @@ export async function renderCard({spec, paths, reelDir, work, frames, outArg, sh
       '-v',
       'error',
       ...input,
-      '-loop',
-      '1',
-      '-framerate',
-      '30',
-      '-t',
-      D,
-      '-i',
-      png,
+      ...overlayInput,
       '-filter_complex',
-      `[0:v]${vf}[b];[1:v]format=rgba[o];[b][o]overlay=0:0,format=yuv420p[v]`,
+      `[0:v]${vf}[b];[1:v]${typing ? 'fps=30,' : ''}format=rgba[o];[b][o]overlay=0:0,format=yuv420p[v]`,
       '-map',
       '[v]',
       '-t',
