@@ -8,3 +8,6 @@ content/posts/*/out/*
 __pycache__/
 .env.local
 .env
+
+# Private Instagram browser session and action history
+.instagram-growth/

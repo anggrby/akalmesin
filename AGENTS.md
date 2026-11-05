@@ -1,6 +1,6 @@
 # Working on akalmesin
 
-This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news account run by Angger. It covers one job: taking a post from his request to an approved Notion entry. It never publishes or schedules anything.
+This repo makes Instagram carousels for **akalmesin**, an Indonesian tech-news account run by Angger. It covers one job: taking a post from his request to an approved Notion entry. It never publishes or schedules posts. The separately authorized [Instagram growth worker](docs/instagram-growth.md) has its own runbook and does not change the editorial flow.
 
 **Source of truth for the pipeline:** [docs/workflow.md](docs/workflow.md). This file is only the router and non‑negotiables. Do not load an external editorial skill; the checkout is enough.
 

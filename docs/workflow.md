@@ -106,7 +106,7 @@ If he edits text in the final HTML (mode design), go back to step 5, then rebuil
 
 ## Outside this repo
 
-The repo stops at Notion. These rules come verbatim from the old workflow, kept for the separate publisher bot and for measurement (decided 2026-10-28, t50u: step 9 stays out of the repo).
+Editorial production stops at Notion. The optional [Instagram growth worker](instagram-growth.md) is a separate owner-authorized tool. These publishing rules come verbatim from the old workflow, kept for the separate publisher bot and for measurement (decided 2026-10-28, t50u: step 9 stays out of the repo).
 
 ### Separate publishing handoff
 
