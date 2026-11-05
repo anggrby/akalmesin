@@ -230,6 +230,86 @@ async function children(api, id) {
   } while (cursor);
   return all;
 }
+async function queryAll(api) {
+  const pages = [];
+  let cursor;
+  do {
+    const r = await api.call('POST', `data_sources/${NOTION.dataSourceId}/query`, {page_size: 100, ...(cursor ? {start_cursor: cursor} : {})});
+    pages.push(...r.results);
+    cursor = r.has_more && r.next_cursor;
+  } while (cursor);
+  return pages.filter(p => !p.in_trash && !p.archived);
+}
+
+// ---------- Publish-date slots (owner t127u) ----------
+// "It auto assign the date published +1day from the last posts. For example last posts 1 nov 1pm, 2pm, 3pm the
+// exported posts will be 2 nov 1pm, 2pm, 3pm." Slot times come from the most recent WIB day with dated posts
+// (Ready to Publish / Scheduled / Published, rows this repo auto-assigned excluded so a batch fills one day in
+// order); new exports take those times on following days, skipping taken and past slots.
+const WIB_MS = 7 * 3600e3,
+  DAY_MS = 864e5;
+export const FALLBACK_SLOTS = ['10:00', '15:00', '20:00'];
+const REFERENCE = new Set(['Ready to Publish', 'Scheduled', 'Published']);
+const wibParts = ms => {
+  const d = new Date(ms + WIB_MS).toISOString();
+  return {day: d.slice(0, 10), time: d.slice(11, 16)};
+};
+const atWIB = (day, time) => Date.parse(`${day}T${time}:00+07:00`);
+export const isoWIB = ms => wibParts(ms).day + 'T' + wibParts(ms).time + ':00+07:00';
+/** Pure: rows = [{id, status, start}] (start = Notion date.start or null). Returns {start, day, time, template}. */
+export function planSlot(rows, {now = Date.now(), autoIds = new Set()} = {}) {
+  const dated = rows.filter(r => r.start),
+    timed = dated.filter(r => r.start.includes('T'));
+  const taken = new Set(timed.map(r => Date.parse(r.start)));
+  const ref = dated.filter(r => REFERENCE.has(r.status) && !autoIds.has(r.id));
+  const dayOf = r => (r.start.includes('T') ? wibParts(Date.parse(r.start)).day : r.start.slice(0, 10));
+  let template = ref.map(dayOf).sort().pop() || null,
+    times = [];
+  if (template)
+    times = [
+      ...new Set(
+        ref
+          .filter(r => r.start.includes('T') && dayOf(r) === template)
+          .map(r => wibParts(Date.parse(r.start)).time)
+          .sort()
+      )
+    ];
+  const fallback = !times.length;
+  if (fallback) times = FALLBACK_SLOTS;
+  let day = template ? new Date(Date.parse(template + 'T00:00:00Z') + DAY_MS).toISOString().slice(0, 10) : wibParts(now).day;
+  for (let n = 0; n < 3660; n++) {
+    for (const t of times) {
+      const ms = atWIB(day, t);
+      if (ms > now && !taken.has(ms)) return {start: isoWIB(ms), day, time: t, template, times, fallback};
+    }
+    day = new Date(Date.parse(day + 'T00:00:00Z') + DAY_MS).toISOString().slice(0, 10);
+  }
+  throw Error('no free publish slot found');
+}
+/** Page ids whose Publish date this repo auto-assigned (receipts in content/posts/*\/workflow.json). */
+export function autoAssignedIds(root = ROOT) {
+  const dir = path.join(root, 'content/posts'),
+    ids = new Set();
+  if (!fs.existsSync(dir)) return ids;
+  for (const s of fs.readdirSync(dir)) {
+    const f = path.join(dir, s, 'workflow.json');
+    if (!fs.existsSync(f)) continue;
+    const n = readJSON(f).notion;
+    if (n?.publishDate?.source === 'auto' && n.pageId) ids.add(n.pageId.replace(/-/g, ''));
+  }
+  return ids;
+}
+const rowsOf = pages =>
+  pages.map(p => ({
+    id: p.id.replace(/-/g, ''),
+    status: p.properties?.Status?.status?.name ?? null,
+    start: p.properties?.['Publish date']?.date?.start ?? null
+  }));
+/** Read-only: the slot the next export would get. */
+export async function nextSlot(api, {now = Date.now(), root = ROOT} = {}) {
+  return planSlot(rowsOf(await queryAll(api)), {now, autoIds: autoAssignedIds(root)});
+}
+
 /** Every live page in the Posts data source whose body contains the exact marker paragraph. */
 export async function findByMarker(api, marker) {
   const pages = [];
@@ -243,12 +323,12 @@ export async function findByMarker(api, marker) {
   for (const p of pages.filter(p => !p.in_trash && !p.archived)) if ((await children(api, p.id)).some(b => plain(b).trim() === marker)) hits.push(p);
   return hits;
 }
-/** On create: Status "Ready to Publish", empty Publish date. On update: Status and Publish date are the owner's and are left alone. */
-export function properties(m, fileUploads, {update = false} = {}) {
+/** On create: Status "Ready to Publish", Publish date = the planned slot (or empty). On update: Status and Publish date are the owner's and are left alone. */
+export function properties(m, fileUploads, {update = false, publishAt = null} = {}) {
   const P = m.properties;
   return {
     Post: {title: richText(P.Post)},
-    ...(update ? {} : {Status: {status: {name: P.Status}}, 'Publish date': {date: null}}),
+    ...(update ? {} : {Status: {status: {name: P.Status}}, 'Publish date': {date: publishAt ? {start: publishAt} : null}}),
     Format: {select: {name: P.Format}},
     Caption: {rich_text: richText(P.Caption)},
     Topic: {select: {name: P.Topic}},
@@ -319,7 +399,7 @@ export async function adoptPlan(api, pageId, m, known) {
 }
 const sha = buf => crypto.createHash('sha256').update(buf).digest('hex');
 /** Read the page back: properties, marker, asset order and the SHA-256 of every downloaded file. */
-export async function verify(api, pageId, m, {owner} = {}) {
+export async function verify(api, pageId, m, {owner, publishAt = null} = {}) {
   const page = await api.call('GET', 'pages/' + pageId),
     P = page.properties,
     txt = x => x.map(t => t.plain_text ?? t.text.content).join('');
@@ -330,8 +410,11 @@ export async function verify(api, pageId, m, {owner} = {}) {
   if (P.Format.select?.name !== want.Format) errs.push('Format');
   if (P.Topic.select?.name !== want.Topic) errs.push('Topic');
   if (txt(P.Caption.rich_text) !== want.Caption) errs.push('Caption');
-  if (JSON.stringify(P['Publish date'].date ?? null) !== JSON.stringify(owner ? owner.publishDate : null))
-    errs.push(owner ? 'Publish date changed' : 'Publish date is set');
+  const gotDate = P['Publish date'].date ?? null;
+  if (owner) {
+    if (JSON.stringify(gotDate) !== JSON.stringify(owner.publishDate)) errs.push('Publish date changed');
+  } else if (publishAt ? !gotDate || Date.parse(gotDate.start) !== Date.parse(publishAt) : gotDate)
+    errs.push(publishAt ? 'Publish date is not the planned slot' : 'Publish date is set');
   if (page.parent?.data_source_id && page.parent.data_source_id.replace(/-/g, '') !== NOTION.dataSourceId.replace(/-/g, '')) errs.push('wrong data source');
   if (!(await children(api, pageId)).some(b => plain(b).trim() === m.bodyMarker)) errs.push('body marker');
   const files = P.Assets.files,
@@ -397,8 +480,32 @@ export async function exportPost(ref, opts = {}) {
         `Page ${hits[0].id} has the marker but no "${END}" line (older connector-made page). Run \`npm run export -- ${m.slug} --adopt-legacy --dry-run\` to see what adoption would change; export will not guess what to delete.`
       );
   }
+  // Publish date: only on create (on update it is the owner's). Auto slot unless --publish-at / --no-publish-date.
+  let publishDate = null;
+  if (hits.length) {
+    // keep the planned-slot note written at creation, so an update does not rewrite it
+    const kept = (await children(api, hits[0].id)).map(plain).find(t => t.startsWith('Planned slot: '));
+    if (kept) m.body = m.body.replace('- Schedule:', `- ${kept}\n- Schedule:`);
+  } else {
+    if (opts.publishAt) {
+      if (!/T\d\d:\d\d.*([+-]\d\d:\d\d|Z)$/.test(opts.publishAt) || Number.isNaN(Date.parse(opts.publishAt)))
+        throw Error(`--publish-at needs an ISO date-time with offset, e.g. 2026-11-06T10:00:00+07:00 (got ${opts.publishAt})`);
+      publishDate = {start: isoWIB(Date.parse(opts.publishAt)), source: 'flag'};
+    } else if (opts.publishDate !== false) {
+      const s = await nextSlot(api, {now: opts.now ?? Date.now(), root: opts.root});
+      publishDate = {start: s.start, source: 'auto', template: s.template, times: s.times, fallback: s.fallback};
+    }
+    if (publishDate) {
+      const w = wibParts(Date.parse(publishDate.start));
+      publishDate.wib = `${w.day} ${w.time} WIB`;
+      m.body = m.body.replace(
+        '- Schedule:',
+        `- Planned slot: ${publishDate.wib} (${publishDate.source === 'auto' ? 'auto-assigned' : 'set with --publish-at'})\n- Schedule:`
+      );
+    }
+  }
   const ups = await upload(api, m),
-    props = properties(m, ups, {update: hits.length > 0});
+    props = properties(m, ups, {update: hits.length > 0, publishAt: publishDate?.start});
   let pageId, action;
   if (hits.length) {
     pageId = hits[0].id;
@@ -425,7 +532,7 @@ export async function exportPost(ref, opts = {}) {
     action = 'created';
     await appendBlocks(api, pageId, blocks.slice(100));
   }
-  const {page, hashes, assetsMatchBuild} = await verify(api, pageId, m, {owner}),
+  const {page, hashes, assetsMatchBuild} = await verify(api, pageId, m, {owner, publishAt: publishDate?.start}),
     at = new Date().toISOString();
   workflow.notion = {
     pageId,
@@ -438,6 +545,7 @@ export async function exportPost(ref, opts = {}) {
     bodyMarker: m.bodyMarker,
     approvedRevision: m.approvedRevision,
     ...(owner ? {ownerManaged: owner} : {}),
+    ...(publishDate ? {publishDate} : {}),
     ...(plan ? {adoptedLegacy: {deletedBlocks: plan.deleteBlocks.map(b => b.id), forcedBlocks: plan.foreign.map(b => b.id), previousAssets}} : {}),
     orderedAssetHashes: m.assets.map(a => a.sha256),
     uploadedAssetHashes: hashes,
@@ -463,7 +571,7 @@ export function loadEnvLocal(file = path.join(ROOT, '.env.local')) {
 if (isMain(import.meta.url))
   try {
     loadEnvLocal();
-    const a = parseArgs(undefined, ['dry-run', 'adopt-legacy']),
+    const a = parseArgs(undefined, ['dry-run', 'adopt-legacy', 'no-publish-date', 'next-slot']),
       slug = a.post || a._[0];
     if (a['adopt-legacy']) {
       const r = await exportPost(slug, {adoptLegacy: true, dryRun: !!a['dry-run'], forceBlocks: a['force-blocks'] ? String(a['force-blocks']).split(',') : []});
@@ -472,6 +580,9 @@ if (isMain(import.meta.url))
           ? JSON.stringify(r, null, 2)
           : `✓ Notion page ${r.action}: ${r.url}\n  ${r.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${r.exportedAtWIB})`
       );
+    } else if (a['next-slot']) {
+      const s = await nextSlot(client());
+      console.log(`next slot ${s.start} (${s.fallback ? 'fallback times' : 'times from ' + s.template}: ${s.times.join(', ')} WIB) — read-only`);
     } else if (a['dry-run']) {
       const m = manifest(slug),
         {paths} = loadPost(slug),
@@ -479,9 +590,9 @@ if (isMain(import.meta.url))
       writeJSON(out, m);
       console.log(`✓ ${rel(out)} — ${m.assets.length} assets, title "${m.properties.Post}" (dry run, no network)`);
     } else {
-      const n = await exportPost(slug);
+      const n = await exportPost(slug, {publishAt: a['publish-at'], publishDate: a['no-publish-date'] ? false : undefined});
       console.log(
-        `✓ Notion page ${n.action}: ${n.url}\n  ${n.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${n.exportedAtWIB})`
+        `✓ Notion page ${n.action}: ${n.url}\n  ${n.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${n.exportedAtWIB})\n  Publish date: ${n.publishDate ? n.publishDate.wib + ' (' + n.publishDate.source + ', read back OK)' : n.ownerManaged ? 'left as the owner set it (update)' : 'empty'}`
       );
     }
   } catch (e) {

@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import {ROOT, readJSON, writeJSON, designRevision} from '../scripts/core.mjs';
-import {notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
+import {planSlot, notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
 import {KIMI, tmpPost} from './helpers.mjs';
 
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -155,7 +155,8 @@ test('assets upload in slide order and the receipt is written', async () => {
   const props = s.pages.get(n.pageId).properties;
   assert.equal(props.Status.status.name, 'Ready to Publish');
   assert.equal(props.Format.select.name, 'Carousel');
-  assert.equal(props['Publish date'].date, null);
+  assert.match(props['Publish date'].date.start, /T\d\d:\d\d:00\+07:00$/);
+  assert.equal(wf.notion.publishDate.source, 'auto');
 });
 test('rich_text is chunked at 2000 characters and rejoins exactly', () => {
   const long = 'ą'.repeat(4500),
@@ -338,4 +339,94 @@ test('carousel export writes posting notes naming the PNG order and caption sour
   const texts = s.pages.get(n.pageId).blocks.map(text);
   assert.ok(texts.some(t => /Post as: one carousel from the PNGs in Assets, in that order/.test(t)));
   assert.ok(texts.some(t => /Caption: the Caption property, verbatim/.test(t)));
+});
+
+const NOW = Date.parse('2026-11-05T10:30:00+07:00');
+const row = (id, status, start) => ({id, status, start});
+test('planSlot: last posts 1 Nov 13/14/15 WIB → next exports get 2 Nov 13:00, 14:00, 15:00 in order', () => {
+  const rows = [
+    row('a', 'Published', '2026-11-01T13:00:00+07:00'),
+    row('b', 'Published', '2026-11-01T14:00:00+07:00'),
+    row('c', 'Scheduled', '2026-11-01T15:00:00+07:00')
+  ];
+  const now = Date.parse('2026-11-01T16:00:00+07:00'),
+    autoIds = new Set(),
+    got = [];
+  for (let i = 0; i < 4; i++) {
+    const s = planSlot(rows, {now, autoIds});
+    got.push(s.start);
+    rows.push(row('n' + i, 'Ready to Publish', s.start));
+    autoIds.add('n' + i);
+  }
+  assert.deepEqual(got, ['2026-11-02T13:00:00+07:00', '2026-11-02T14:00:00+07:00', '2026-11-02T15:00:00+07:00', '2026-11-03T13:00:00+07:00']);
+});
+test('planSlot: empty database → fallback 10:00/15:00/20:00 WIB from today, never in the past', () => {
+  const s = planSlot([], {now: NOW});
+  assert.equal(s.start, '2026-11-05T15:00:00+07:00');
+  assert.ok(s.fallback);
+});
+test('planSlot: mixed time zones convert to WIB; taken slots and Draft/empty/all-day rows handled', () => {
+  const rows = [
+    row('a', 'Published', '2026-11-04T03:00:00.000Z'), // 10:00 WIB
+    row('b', 'Scheduled', '2026-11-04T09:00:00+01:00'), // 15:00 WIB
+    row('c', 'Draft', '2026-11-09T08:00:00+07:00'), // Draft: not the reference day
+    row('d', 'Ready to Publish', null),
+    row('e', 'Error', '2026-11-05T10:00:00+07:00'), // taken even though not reference
+    row('f', 'Ready to Publish', '2026-11-05T15:00:00+07:00') // taken (reference day becomes 5 Nov)
+  ];
+  const s = planSlot(rows, {now: Date.parse('2026-11-04T20:00:00+07:00')});
+  assert.equal(s.template, '2026-11-05');
+  assert.deepEqual(s.times, ['15:00']);
+  assert.equal(s.start, '2026-11-06T15:00:00+07:00');
+  const t = planSlot(rows.slice(0, 5), {now: Date.parse('2026-11-04T20:00:00+07:00')});
+  assert.deepEqual(t.times, ['10:00', '15:00']);
+  assert.equal(t.start, '2026-11-05T15:00:00+07:00', '10:00 on 5 Nov is taken by the Error row');
+});
+test('planSlot: all-day dates are no slot (fallback times on the next day); past templates advance to the future', () => {
+  const a = planSlot([row('a', 'Published', '2026-11-04')], {now: Date.parse('2026-11-04T08:00:00+07:00')});
+  assert.ok(a.fallback);
+  assert.equal(a.start, '2026-11-05T10:00:00+07:00');
+  const b = planSlot([row('a', 'Published', '2026-10-01T13:00:00+07:00')], {now: NOW});
+  assert.equal(b.start, '2026-11-05T13:00:00+07:00');
+  const c = planSlot([row('a', 'Published', '2026-10-01T09:00:00+07:00')], {now: NOW});
+  assert.equal(c.start, '2026-11-06T09:00:00+07:00');
+});
+test('export: --publish-at overrides, --no-publish-date leaves it empty, both read back', async () => {
+  const dir = approvedPost(),
+    s = fakeNotion(),
+    n = await exportPost(dir, {...opts(s), publishAt: '2026-11-07T06:00:00Z'});
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2026-11-07T13:00:00+07:00');
+  assert.equal(n.publishDate.source, 'flag');
+  assert.ok(
+    s.pages
+      .get(n.pageId)
+      .blocks.map(text)
+      .some(t => /Planned slot: 2026-11-07 13:00 WIB \(set with --publish-at\)/.test(t))
+  );
+  const d2 = approvedPost(),
+    s2 = fakeNotion(),
+    n2 = await exportPost(d2, {...opts(s2), publishDate: false});
+  assert.equal(s2.pages.get(n2.pageId).properties['Publish date'].date, null);
+  await assert.rejects(exportPost(approvedPost(), {...opts(fakeNotion()), publishAt: '2026-11-07'}), /with offset/);
+});
+test('export: auto slot from the queried rows, recorded in posting notes and receipt; updates keep the date', async () => {
+  const other = {
+    id: 'other',
+    properties: {Status: {status: {name: 'Published'}}, 'Publish date': {date: {start: '2030-01-01T13:00:00+07:00'}}},
+    blocks: []
+  };
+  const dir = approvedPost(),
+    s = fakeNotion({pages: [other]}),
+    n = await exportPost(dir, {...opts(s), now: NOW});
+  assert.equal(n.publishDate.start, '2030-01-02T13:00:00+07:00');
+  assert.ok(
+    s.pages
+      .get(n.pageId)
+      .blocks.map(text)
+      .some(t => /Planned slot: 2030-01-02 13:00 WIB \(auto-assigned\)/.test(t))
+  );
+  assert.deepEqual(s.pages.get('other').properties, other.properties, 'other rows untouched');
+  const again = await exportPost(dir, {...opts(s), now: NOW});
+  assert.equal(again.action, 'updated');
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2030-01-02T13:00:00+07:00');
 });
