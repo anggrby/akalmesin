@@ -74,16 +74,31 @@ export function manifest(ref) {
       bytes = fs.statSync(file).size;
     if (fileHash(file) !== s.pngHash) throw Error(s.png + ' changed after the approved build');
     if (bytes > 20 * 1024 * 1024) throw Error(s.png + ' exceeds Notion 20 MB upload limit');
-    return {slideId: s.id, file: s.png, sha256: s.pngHash, bytes};
+    return {slideId: s.id, file: s.png, name: path.basename(s.png), contentType: 'image/png', sha256: s.pngHash, bytes};
   });
+  const format = notionFormat(post, paths.dir);
+  if (format === REEL_FORMAT) assets.unshift(reelAsset(post, paths)); // the video the Publisher posts, first in Assets (owner t126u)
   const topic = topicFor(post.category);
   const contentId = post.contentId || 'akalmesin:' + post.slug,
     marker = 'akalmesin-content-id:' + contentId;
+  const caption = post.caption.join('\n\n');
+  const reel = assets.find(a => a.kind === 'video');
   const body = [
+    '# Posting notes',
+    [
+      `- Format: ${format}${reel ? ' (publishAs reel-only)' : ''}`,
+      reel
+        ? `- Post as: one Instagram Reel from ${reel.name} (first file in Assets, ${(reel.bytes / 1024 / 1024).toFixed(1)} MB, sha256 ${reel.sha256.slice(0, 12)}). The card PNGs after it are reference only; do not post them.`
+        : `- Post as: ${format === 'Single image' ? 'one image' : 'one carousel'} from the PNGs in Assets, in that order (${assets.length} file${assets.length > 1 ? 's' : ''}).`,
+      '- Caption: the Caption property, verbatim (includes the sources line and hashtags). Do not edit it.',
+      `- Approved copy ${copyRevision(post).slice(0, 12)} · design ${final.revision.slice(0, 12)}. Credits and sources below are already in the media or caption; nothing else needs adding.`,
+      '- Schedule: only at a date and time (WIB) Angger gives. Ready to Publish is not permission to post.',
+      `- Content id: ${marker}`
+    ].join('\n'),
     '# Approved copy',
     ...post.slides.map(s => `## ${s.id}\n\n` + (s.layout === 'main' ? `${s.headline.join(' ')}\n\n${s.summary}` : s.paragraphs.join('\n\n'))),
     '# Caption',
-    post.caption.join('\n\n'),
+    caption,
     '# Sources',
     post.sources.map(s => `- [${s.title}](${s.url})`).join('\n'),
     '# Alt text and photo credits',
@@ -107,11 +122,11 @@ export function manifest(ref) {
     properties: {
       Post: post.title,
       Status: 'Ready to Publish',
-      Format: notionFormat(post, paths.dir),
-      Caption: post.caption.join('\n\n'),
+      Format: format,
+      Caption: caption,
       Topic: topic,
       'Publish date': null,
-      Assets: assets.map(a => path.basename(a.file))
+      Assets: assets.map(a => a.name)
     },
     contentId,
     bodyMarker: marker,
@@ -119,6 +134,19 @@ export function manifest(ref) {
     assets,
     generatedAt: new Date().toISOString()
   };
+}
+
+/** Reel-only: the rendered mp4, which must be the one reel:check passed (hash recorded in reel/check.json). */
+function reelAsset(post, paths) {
+  const file = path.join(paths.out, 'reel/reel.mp4'),
+    check = path.join(paths.dir, 'reel/check.json');
+  if (!fs.existsSync(file)) throw Error(`${rel(file)} is missing: run npm run reel:build -- ${post.slug} and reel:check first.`);
+  const c = fs.existsSync(check) ? readJSON(check) : {};
+  const sha256 = fileHash(file),
+    bytes = fs.statSync(file).size;
+  if (!c.passed) throw Error(`reel/check.json is missing or not passed: run npm run reel:check -- ${post.slug}.`);
+  if (c.sha256 !== sha256) throw Error(`out/reel/reel.mp4 is not the file reel:check passed (re-run npm run reel:check -- ${post.slug}).`);
+  return {kind: 'video', file: path.relative(ROOT, file), name: post.slug + '-reel.mp4', contentType: 'video/mp4', sha256, bytes};
 }
 
 // ---------- Notion REST client ----------
@@ -227,14 +255,24 @@ export function properties(m, fileUploads, {update = false} = {}) {
     Assets: {files: fileUploads.map(u => ({name: u.name, type: 'file_upload', file_upload: {id: u.id}}))}
   };
 }
+export const SINGLE_PART_MAX = 20 * 1024 * 1024,
+  PART_SIZE = 10 * 1024 * 1024;
+/** Notion file_uploads: single-part up to 20 MB; larger files go multi-part (10 MB parts) and are completed. */
 async function upload(api, m) {
   const ups = [];
   for (const a of m.assets) {
-    const name = path.basename(a.file);
-    const up = await api.call('POST', 'file_uploads', {filename: name, content_type: 'image/png'});
-    const form = new FormData();
-    form.append('file', new Blob([fs.readFileSync(path.join(ROOT, a.file))], {type: 'image/png'}), name);
-    await api.call('POST', `file_uploads/${up.id}/send`, form, {form: true});
+    const name = a.name || path.basename(a.file),
+      type = a.contentType || 'image/png',
+      buf = fs.readFileSync(path.join(ROOT, a.file));
+    const parts = buf.length > SINGLE_PART_MAX ? Math.ceil(buf.length / PART_SIZE) : 1;
+    const up = await api.call('POST', 'file_uploads', {filename: name, content_type: type, ...(parts > 1 ? {mode: 'multi_part', number_of_parts: parts} : {})});
+    for (let i = 0; i < parts; i++) {
+      const form = new FormData();
+      form.append('file', new Blob([parts > 1 ? buf.subarray(i * PART_SIZE, (i + 1) * PART_SIZE) : buf], {type}), name);
+      if (parts > 1) form.append('part_number', String(i + 1));
+      await api.call('POST', `file_uploads/${up.id}/send`, form, {form: true});
+    }
+    if (parts > 1) await api.call('POST', `file_uploads/${up.id}/complete`, {});
     ups.push({id: up.id, name});
   }
   return ups;
@@ -298,13 +336,16 @@ export async function verify(api, pageId, m, {owner} = {}) {
   if (!(await children(api, pageId)).some(b => plain(b).trim() === m.bodyMarker)) errs.push('body marker');
   const files = P.Assets.files,
     names = files.map(f => f.name);
-  if (names.join('|') !== m.assets.map(a => path.basename(a.file)).join('|')) errs.push('Assets order: ' + names.join(', '));
+  if (names.join('|') !== m.assets.map(a => a.name || path.basename(a.file)).join('|')) errs.push('Assets order: ' + names.join(', '));
   const hashes = [];
-  for (const f of files) {
+  for (const [i, f] of files.entries()) {
     const r = await api.fetch(f.file?.url || f.external?.url);
     if (!r.ok) throw Error('Could not download ' + f.name + ' for verification (HTTP ' + r.status + ')');
-    hashes.push(sha(Buffer.from(await r.arrayBuffer())));
+    const buf = Buffer.from(await r.arrayBuffer());
+    if (m.assets[i] && buf.length !== m.assets[i].bytes) errs.push(`${f.name} size ${buf.length} ≠ ${m.assets[i].bytes}`);
+    hashes.push(sha(buf));
   }
+  if (m.assets[0]?.kind === 'video' && hashes[0] !== m.assets[0].sha256) errs.push('reel mp4 hash differs');
   const assetsMatchBuild = hashes.join(',') === m.assets.map(a => a.sha256).join(',');
   if (!assetsMatchBuild) errs.push('downloaded asset hashes differ from the build');
   if (errs.length) throw Error(`Read-back of ${pageId} failed: ${errs.join('; ')}`);
@@ -344,7 +385,7 @@ export async function exportPost(ref, opts = {}) {
       ...plan,
       deleteBlocks: [...plan.generated, ...plan.foreign],
       keepProperties: owner,
-      replaceAssets: {from: previousAssets, to: m.assets.map(a => path.basename(a.file))}
+      replaceAssets: {from: previousAssets, to: m.assets.map(a => a.name)}
     };
     if (opts.dryRun) return plan;
   }

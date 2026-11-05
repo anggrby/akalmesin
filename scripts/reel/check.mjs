@@ -36,7 +36,13 @@ if (spec.layout === 'card') {
   gate('codecs', v.codec_name === 'h264' && a?.codec_name === 'aac', `${v.codec_name}+${a?.codec_name}`);
   checkCard({spec, man, gate, inside, hit, paths, mp4, dur, carousel, norm});
   const errors = results.filter(r => !r.ok);
-  writeJSON(path.join(paths.dir, 'reel/check.json'), {mp4: path.basename(mp4), passed: !errors.length, results});
+  writeJSON(path.join(paths.dir, 'reel/check.json'), {
+    mp4: path.basename(mp4),
+    sha256: fileHash(mp4),
+    bytes: fs.statSync(mp4).size,
+    passed: !errors.length,
+    results
+  });
   for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.name}: ${r.detail}`);
   process.exit(errors.length ? 1 : 0);
 }
@@ -167,6 +173,12 @@ if (spec.layout === 'news' && man.narration === false) {
 const hook = man.frames[0];
 gate('hook within 2 s', hook.start === 0 && hook.onScreen.length > 0, `first text at 0.0 s, first cue "${hook.subText}"`);
 const errors = results.filter(r => !r.ok);
-writeJSON(path.join(paths.dir, 'reel/check.json'), {mp4: path.basename(mp4), passed: !errors.length, results});
+writeJSON(path.join(paths.dir, 'reel/check.json'), {
+  mp4: path.basename(mp4),
+  sha256: fileHash(mp4),
+  bytes: fs.statSync(mp4).size,
+  passed: !errors.length,
+  results
+});
 for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.name}: ${r.detail}`);
 process.exit(errors.length ? 1 : 0);

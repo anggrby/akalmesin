@@ -307,3 +307,7 @@ Owner (t67u–t69u, authorised t69u: "…only the copy that still my attention. 
 ## 2026-11-05 — Reels are published by the Publisher
 
 Owner t124u: "Make sure you update the rule regarding the reels". The akalmesin Publisher now publishes single-video posts as Instagram Reels and posts the reel mp4. Reel-only posts (`publishAs: reel-only`, Format "Reel / video") go out as Reels from `out/reel/reel.mp4`; the Notion row holds only card PNGs, so the handoff names the mp4 path.
+
+## 2026-11-05 — The Notion row is the whole Publisher handoff
+
+Owner t126u: "Can we make command for export the post to notion directly? so it attach asset, caption, etc without us telling the publisher". Export now puts the reel mp4 first in Assets (reel-only), the verbatim caption in Caption and a Posting notes section in the body; read-back checks every file by hash and size. No hand-off message; only Angger's WIB times are passed on.

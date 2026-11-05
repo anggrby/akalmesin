@@ -56,11 +56,20 @@ function fakeNotion({pages = [], failOnce = {}} = {}) {
     }
     if (p === 'file_uploads') {
       const id = 'u' + store.n++;
-      store.uploads.set(id, {name: JSON.parse(body).filename});
+      store.uploads.set(id, {...JSON.parse(body), name: JSON.parse(body).filename});
       return json({id});
     }
     if ((m = p.match(/^file_uploads\/(.+)\/send$/))) {
-      store.uploads.get(m[1]).bytes = Buffer.from(await body.get('file').arrayBuffer());
+      const u = store.uploads.get(m[1]),
+        chunk = Buffer.from(await body.get('file').arrayBuffer());
+      if (body.get('part_number')) u.parts = [...(u.parts || []), [Number(body.get('part_number')), chunk]];
+      else u.bytes = chunk;
+      return json({});
+    }
+    if ((m = p.match(/^file_uploads\/(.+)\/complete$/))) {
+      const u = store.uploads.get(m[1]);
+      u.bytes = Buffer.concat(u.parts.sort((x, y) => x[0] - y[0]).map(x => x[1]));
+      u.completed = true;
       return json({});
     }
     const toProps = props => ({
@@ -273,4 +282,60 @@ test('notionFormat: reel-only reel.json → Reel / video; else Carousel / Single
   } finally {
     fs.rmSync(dir, {recursive: true, force: true});
   }
+});
+
+function reelPost(mp4Bytes) {
+  const dir = approvedPost();
+  fs.mkdirSync(path.join(dir, 'reel'), {recursive: true});
+  fs.mkdirSync(path.join(dir, 'out/reel'), {recursive: true});
+  fs.writeFileSync(path.join(dir, 'reel/reel.json'), JSON.stringify({publishAs: 'reel-only'}));
+  fs.writeFileSync(path.join(dir, 'out/reel/reel.mp4'), mp4Bytes);
+  writeJSON(path.join(dir, 'reel/check.json'), {mp4: 'reel.mp4', sha256: sha(mp4Bytes), bytes: mp4Bytes.length, passed: true, results: []});
+  const wf = readJSON(path.join(dir, 'workflow.json'));
+  wf.approvals.final.revision = designRevision(readJSON(path.join(dir, 'post.json')), dir);
+  writeJSON(path.join(dir, 'workflow.json'), wf);
+  return dir;
+}
+test('reel-only export attaches the checked mp4 first, verifies it by hash and size, and writes posting notes', async () => {
+  const dir = reelPost(Buffer.from('fake-mp4-bytes')),
+    s = fakeNotion(),
+    n = await exportPost(dir, opts(s)),
+    m = manifest(dir),
+    pg = s.pages.get(n.pageId);
+  const names = pg.properties.Assets.files.map(f => f.name);
+  assert.equal(names[0], m.slug + '-reel.mp4');
+  assert.equal(names.length, m.assets.length);
+  assert.equal([...s.uploads.values()][0].content_type, 'video/mp4');
+  assert.equal(n.uploadedAssetHashes[0], sha(Buffer.from('fake-mp4-bytes')));
+  assert.equal(pg.properties.Format.select.name, 'Reel / video');
+  const texts = pg.blocks.map(text);
+  assert.ok(texts.includes('Posting notes'));
+  assert.ok(texts.some(t => /one Instagram Reel from .*-reel\.mp4/.test(t)));
+  assert.equal(pg.properties.Caption.rich_text.map(t => t.text.content).join(''), m.properties.Caption);
+});
+test('reel-only export refuses an mp4 that reel:check did not pass (before any network call)', async () => {
+  const dir = reelPost(Buffer.from('a'));
+  fs.writeFileSync(path.join(dir, 'out/reel/reel.mp4'), 'changed');
+  const s = fakeNotion();
+  await assert.rejects(exportPost(dir, opts(s)), /not the file reel:check passed/);
+  assert.equal(s.calls.length, 0);
+});
+test('files over 20 MB upload multi-part and are completed', async () => {
+  const big = crypto.randomBytes(21 * 1024 * 1024),
+    dir = reelPost(big),
+    s = fakeNotion(),
+    n = await exportPost(dir, opts(s));
+  const u = [...s.uploads.values()][0];
+  assert.equal(u.mode, 'multi_part');
+  assert.equal(u.number_of_parts, 3);
+  assert.ok(u.completed);
+  assert.equal(n.uploadedAssetHashes[0], sha(big));
+});
+test('carousel export writes posting notes naming the PNG order and caption source', async () => {
+  const dir = approvedPost(),
+    s = fakeNotion(),
+    n = await exportPost(dir, opts(s));
+  const texts = s.pages.get(n.pageId).blocks.map(text);
+  assert.ok(texts.some(t => /Post as: one carousel from the PNGs in Assets, in that order/.test(t)));
+  assert.ok(texts.some(t => /Caption: the Caption property, verbatim/.test(t)));
 });
