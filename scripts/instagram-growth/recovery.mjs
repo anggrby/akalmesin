@@ -32,3 +32,18 @@ export async function interruptedRead(browser, error, {allowLogin = false} = {})
   }
   return new GrowthReadInterrupted(error);
 }
+
+export async function launchWithRecovery(launch) {
+  try {
+    return await launch();
+  } catch (error) {
+    // Chromium sometimes wraps profile/configuration errors as TargetClosedError.
+    // Those need operator attention rather than repeated browser creation.
+    const hardFailure =
+      /ProcessSingleton|SingletonLock|profile.{0,80}(?:already in use|locked)|user data director.{0,80}(?:in use|locked)|permission denied|operation not permitted|EACCES|EPERM|ENOENT|not executable|executable.{0,80}(?:doesn.t exist|missing)|host system is missing dependencies|error while loading shared libraries|missing X server|no usable sandbox/i.test(
+        error?.message || ''
+      );
+    if (!hardFailure && isTransientBrowserError(error)) throw new GrowthReadInterrupted(error);
+    throw error;
+  }
+}

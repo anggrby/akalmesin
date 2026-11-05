@@ -449,3 +449,19 @@ test('recovery: a closed browser before a read can be replaced', async t => {
     error => error instanceof GrowthReadInterrupted
   );
 });
+
+test('browser startup closes a created context when page initialization fails', async t => {
+  const failure = Object.assign(new Error('Target page closed during initialization'), {name: 'TargetClosedError'});
+  let closed = 0;
+  t.mock.method(chromium, 'launchPersistentContext', async () => ({
+    pages: () => [],
+    newPage: async () => {
+      throw failure;
+    },
+    close: async () => {
+      closed++;
+    }
+  }));
+  await assert.rejects(InstagramBrowser.launch({profileDirectory: '/tmp/fixture-profile', account: 'akalmesin'}), error => error === failure);
+  assert.equal(closed, 1);
+});

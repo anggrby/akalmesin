@@ -1,48 +1,8 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import os from 'node:os';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {sessionAt} from './core.mjs';
 import {GrowthReadInterrupted, interruptedRead} from './recovery.mjs';
 
-export function acquireLock(directory, {recoverStale = false} = {}) {
-  fs.mkdirSync(directory, {recursive: true, mode: 0o700});
-  const file = path.join(directory, 'worker.lock');
-  let handle;
-  try {
-    handle = fs.openSync(file, 'wx', 0o600);
-  } catch (error) {
-    if (error.code !== 'EEXIST') throw error;
-    if (recoverStale) {
-      let recovered = false;
-      try {
-        recovered = unlockStoppedWorker(directory);
-      } catch {
-        /* Live or unverifiable owners remain locked. */
-      }
-      if (recovered) return acquireLock(directory);
-    }
-    throw new Error('Another growth command owns worker.lock. If it crashed, use the unlock command after checking that it stopped.');
-  }
-  fs.writeFileSync(handle, JSON.stringify({pid: process.pid, hostname: os.hostname(), startedAt: new Date().toISOString()}));
-  fs.closeSync(handle);
-  return () => fs.rmSync(file, {force: true});
-}
-
-export function unlockStoppedWorker(directory) {
-  const file = path.join(directory, 'worker.lock');
-  if (!fs.existsSync(file)) return false;
-  const owner = JSON.parse(fs.readFileSync(file, 'utf8'));
-  if (owner.hostname !== os.hostname() || !Number.isInteger(owner.pid)) throw new Error('Cannot verify this lock owner. Inspect worker.lock manually.');
-  try {
-    process.kill(owner.pid, 0);
-  } catch (error) {
-    if (error.code !== 'ESRCH') throw error;
-    fs.rmSync(file);
-    return true;
-  }
-  throw new Error(`Worker PID ${owner.pid} is still running. Stop it before unlocking.`);
-}
+export {acquireLock, unlockStoppedWorker} from './locking.mjs';
 
 export class GrowthRunStop extends Error {
   constructor(message, code = 'STOPPED') {

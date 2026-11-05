@@ -7,6 +7,7 @@ import {GrowthStore, validateConfig, sessionAt} from './core.mjs';
 import {acquireLock, unlockStoppedWorker, collectPool, runSession, reconcileActions, isOperatorStop} from './runner.mjs';
 
 import {runDaemon} from './scheduler.mjs';
+import {launchWithRecovery} from './recovery.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const HELP = `Instagram growth worker for @akalmesin
@@ -135,11 +136,13 @@ export async function main(argv = process.argv.slice(2)) {
     }
     const {InstagramBrowser} = await import('./browser.mjs');
     const withBrowser = async fn => {
-      const browser = await InstagramBrowser.launch({
-        profileDirectory: path.join(stateDirectory, 'browser'),
-        account: config.account,
-        headless: args.command !== 'login'
-      });
+      const browser = await launchWithRecovery(() =>
+        InstagramBrowser.launch({
+          profileDirectory: path.join(stateDirectory, 'browser'),
+          account: config.account,
+          headless: args.command !== 'login'
+        })
+      );
       const abortBrowser = () => {
         void browser.close().catch(() => {});
       };

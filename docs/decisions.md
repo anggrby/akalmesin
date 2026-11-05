@@ -2,6 +2,12 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-11-05 — Serialize lock recovery and include browser creation in reconnect handling
+
+The owner requested fixing both reproduced findings in [PR #4’s review](https://github.com/anggrby/akalmesin/pull/4#pullrequestreview-5785428743). A private SQLite coordinator now serializes lock-file checks, reclamation, replacement creation and release. Release verifies its ownership token and file identity. The coordinator’s OS lock is released on process death, avoiding a second manually recoverable filesystem lock. Live/unverifiable owners stay protected and prior lock records remain readable.
+
+Browser/context creation is now inside the daemon’s known-transient reconnect boundary. Fresh account and restriction checks still precede work. Configuration/profile errors remain stops, and any context created before page setup failed is closed. Regressions use controlled Node subprocesses for the concurrent interleaving and the real CLI with mocked startup and clocks. Results and runtime activation are recorded in the [runbook](instagram-growth.md#pr-4-startup-fixes--5-november-2026).
+
 ## 2026-11-05 — Resume automatically after sleep when no click may have dispatched
 
 The owner clarified that automatic recovery after sleep and wake is essential. Idle polling already resumes. The daemon now also reconnects after known connection/navigation failures during preparation or reads, using a fresh headless browser and the existing saved login, history, daily targets and allowances.

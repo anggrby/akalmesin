@@ -1,4 +1,4 @@
-import {setTimeout as sleep} from 'node:timers/promises';
+import timers from 'node:timers/promises';
 import {sessionAt} from './core.mjs';
 import {GrowthReadInterrupted} from './recovery.mjs';
 
@@ -10,7 +10,7 @@ export function scheduledSessionDue({store, config, now = new Date(), random = M
   return !scheduled.completedAt && now.getTime() >= new Date(scheduled.scheduledAt).getTime() ? session : null;
 }
 
-export async function runDaemon({store, config, run, now = () => new Date(), wait = sleep, signal, log = () => {}}) {
+export async function runDaemon({store, config, run, now = () => new Date(), wait = timers.setTimeout, signal, log = () => {}}) {
   log({event: 'daemon-started', headless: true, timezone: config.timezone, sessions: config.sessions});
   let recoveryAttempts = 0;
   while (!signal?.aborted) {

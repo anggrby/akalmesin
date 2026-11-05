@@ -36,8 +36,13 @@ export class InstagramBrowser {
       headless,
       executablePath: executablePath || browserPath(chromium)
     });
-    const page = context.pages()[0] || (await context.newPage());
-    return new InstagramBrowser(page, {account, context});
+    try {
+      const page = context.pages()[0] || (await context.newPage());
+      return new InstagramBrowser(page, {account, context});
+    } catch (error) {
+      await context.close().catch(() => {});
+      throw error;
+    }
   }
 
   constructor(page, {account, context} = {}) {
