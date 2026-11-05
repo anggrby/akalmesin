@@ -1,5 +1,7 @@
 {
   "mp4": "reel.mp4",
+  "sha256": "7822449c38546491d046e82b8f39bf56dcdf7cccb4962c369bfa661a9d59e2a6",
+  "bytes": 3409325,
   "passed": true,
   "results": [
     {

@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import {ROOT, readJSON, writeJSON, designRevision} from '../scripts/core.mjs';
-import {notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
+import {planSlot, nextSlot, notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
 import {KIMI, tmpPost} from './helpers.mjs';
 
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -56,11 +56,20 @@ function fakeNotion({pages = [], failOnce = {}} = {}) {
     }
     if (p === 'file_uploads') {
       const id = 'u' + store.n++;
-      store.uploads.set(id, {name: JSON.parse(body).filename});
+      store.uploads.set(id, {...JSON.parse(body), name: JSON.parse(body).filename});
       return json({id});
     }
     if ((m = p.match(/^file_uploads\/(.+)\/send$/))) {
-      store.uploads.get(m[1]).bytes = Buffer.from(await body.get('file').arrayBuffer());
+      const u = store.uploads.get(m[1]),
+        chunk = Buffer.from(await body.get('file').arrayBuffer());
+      if (body.get('part_number')) u.parts = [...(u.parts || []), [Number(body.get('part_number')), chunk]];
+      else u.bytes = chunk;
+      return json({});
+    }
+    if ((m = p.match(/^file_uploads\/(.+)\/complete$/))) {
+      const u = store.uploads.get(m[1]);
+      u.bytes = Buffer.concat(u.parts.sort((x, y) => x[0] - y[0]).map(x => x[1]));
+      u.completed = true;
       return json({});
     }
     const toProps = props => ({
@@ -146,7 +155,8 @@ test('assets upload in slide order and the receipt is written', async () => {
   const props = s.pages.get(n.pageId).properties;
   assert.equal(props.Status.status.name, 'Ready to Publish');
   assert.equal(props.Format.select.name, 'Carousel');
-  assert.equal(props['Publish date'].date, null);
+  assert.match(props['Publish date'].date.start, /T\d\d:\d\d:00\+07:00$/);
+  assert.equal(wf.notion.publishDate.source, 'auto');
 });
 test('rich_text is chunked at 2000 characters and rejoins exactly', () => {
   const long = 'ą'.repeat(4500),
@@ -273,4 +283,187 @@ test('notionFormat: reel-only reel.json → Reel / video; else Carousel / Single
   } finally {
     fs.rmSync(dir, {recursive: true, force: true});
   }
+});
+
+function reelPost(mp4Bytes) {
+  const dir = approvedPost();
+  fs.mkdirSync(path.join(dir, 'reel'), {recursive: true});
+  fs.mkdirSync(path.join(dir, 'out/reel'), {recursive: true});
+  fs.writeFileSync(path.join(dir, 'reel/reel.json'), JSON.stringify({publishAs: 'reel-only'}));
+  fs.writeFileSync(path.join(dir, 'out/reel/reel.mp4'), mp4Bytes);
+  writeJSON(path.join(dir, 'reel/check.json'), {mp4: 'reel.mp4', sha256: sha(mp4Bytes), bytes: mp4Bytes.length, passed: true, results: []});
+  const wf = readJSON(path.join(dir, 'workflow.json'));
+  wf.approvals.final.revision = designRevision(readJSON(path.join(dir, 'post.json')), dir);
+  writeJSON(path.join(dir, 'workflow.json'), wf);
+  return dir;
+}
+test('reel-only export attaches the checked mp4 first, verifies it by hash and size, and writes posting notes', async () => {
+  const dir = reelPost(Buffer.from('fake-mp4-bytes')),
+    s = fakeNotion(),
+    n = await exportPost(dir, opts(s)),
+    m = manifest(dir),
+    pg = s.pages.get(n.pageId);
+  const names = pg.properties.Assets.files.map(f => f.name);
+  assert.equal(names[0], m.slug + '-reel.mp4');
+  assert.equal(names.length, m.assets.length);
+  assert.equal([...s.uploads.values()][0].content_type, 'video/mp4');
+  assert.equal(n.uploadedAssetHashes[0], sha(Buffer.from('fake-mp4-bytes')));
+  assert.equal(pg.properties.Format.select.name, 'Reel / video');
+  const texts = pg.blocks.map(text);
+  assert.ok(texts.includes('Posting notes'));
+  assert.ok(texts.some(t => /one Instagram Reel from .*-reel\.mp4/.test(t)));
+  assert.equal(pg.properties.Caption.rich_text.map(t => t.text.content).join(''), m.properties.Caption);
+});
+test('reel-only export refuses an mp4 that reel:check did not pass (before any network call)', async () => {
+  const dir = reelPost(Buffer.from('a'));
+  fs.writeFileSync(path.join(dir, 'out/reel/reel.mp4'), 'changed');
+  const s = fakeNotion();
+  await assert.rejects(exportPost(dir, opts(s)), /not the file reel:check passed/);
+  assert.equal(s.calls.length, 0);
+});
+test('files over 20 MB upload multi-part and are completed', async () => {
+  const big = crypto.randomBytes(21 * 1024 * 1024),
+    dir = reelPost(big),
+    s = fakeNotion(),
+    n = await exportPost(dir, opts(s));
+  const u = [...s.uploads.values()][0];
+  assert.equal(u.mode, 'multi_part');
+  assert.equal(u.number_of_parts, 3);
+  assert.ok(u.completed);
+  assert.equal(n.uploadedAssetHashes[0], sha(big));
+});
+test('carousel export writes posting notes naming the PNG order and caption source', async () => {
+  const dir = approvedPost(),
+    s = fakeNotion(),
+    n = await exportPost(dir, opts(s));
+  const texts = s.pages.get(n.pageId).blocks.map(text);
+  assert.ok(texts.some(t => /Post as: one carousel from the PNGs in Assets, in that order/.test(t)));
+  assert.ok(texts.some(t => /Caption: the Caption property, verbatim/.test(t)));
+});
+
+const NOW = Date.parse('2026-11-05T10:30:00+07:00');
+const row = (id, status, start) => ({id, status, start});
+test('planSlot: last posts 1 Nov 13/14/15 WIB → next exports get 2 Nov 13:00, 14:00, 15:00 in order', () => {
+  const rows = [
+    row('a', 'Published', '2026-11-01T13:00:00+07:00'),
+    row('b', 'Published', '2026-11-01T14:00:00+07:00'),
+    row('c', 'Scheduled', '2026-11-01T15:00:00+07:00')
+  ];
+  const now = Date.parse('2026-11-01T16:00:00+07:00'),
+    autoIds = new Set(),
+    got = [];
+  for (let i = 0; i < 4; i++) {
+    const s = planSlot(rows, {now, autoIds});
+    got.push(s.start);
+    rows.push(row('n' + i, 'Ready to Publish', s.start));
+    autoIds.add('n' + i);
+  }
+  assert.deepEqual(got, ['2026-11-02T13:00:00+07:00', '2026-11-02T14:00:00+07:00', '2026-11-02T15:00:00+07:00', '2026-11-03T13:00:00+07:00']);
+});
+test('planSlot: empty database → fallback 10:00/15:00/20:00 WIB from today, never in the past', () => {
+  const s = planSlot([], {now: NOW});
+  assert.equal(s.start, '2026-11-05T15:00:00+07:00');
+  assert.ok(s.fallback);
+});
+test('planSlot: mixed time zones convert to WIB; taken slots and Draft/empty/all-day rows handled', () => {
+  const rows = [
+    row('a', 'Published', '2026-11-04T03:00:00.000Z'), // 10:00 WIB
+    row('b', 'Scheduled', '2026-11-04T09:00:00+01:00'), // 15:00 WIB
+    row('c', 'Draft', '2026-11-09T08:00:00+07:00'), // Draft: not the reference day
+    row('d', 'Ready to Publish', null),
+    row('e', 'Error', '2026-11-05T10:00:00+07:00'), // taken even though not reference
+    row('f', 'Ready to Publish', '2026-11-05T15:00:00+07:00') // taken (reference day becomes 5 Nov)
+  ];
+  const s = planSlot(rows, {now: Date.parse('2026-11-04T20:00:00+07:00')});
+  assert.equal(s.template, '2026-11-05');
+  assert.deepEqual(s.times, ['15:00']);
+  assert.equal(s.start, '2026-11-06T15:00:00+07:00');
+  const t = planSlot(rows.slice(0, 5), {now: Date.parse('2026-11-04T20:00:00+07:00')});
+  assert.deepEqual(t.times, ['10:00', '15:00']);
+  assert.equal(t.start, '2026-11-05T15:00:00+07:00', '10:00 on 5 Nov is taken by the Error row');
+});
+test('planSlot: all-day dates are no slot (fallback times on the next day); past templates advance to the future', () => {
+  const a = planSlot([row('a', 'Published', '2026-11-04')], {now: Date.parse('2026-11-04T08:00:00+07:00')});
+  assert.ok(a.fallback);
+  assert.equal(a.start, '2026-11-05T10:00:00+07:00');
+  const b = planSlot([row('a', 'Published', '2026-10-01T13:00:00+07:00')], {now: NOW});
+  assert.equal(b.start, '2026-11-05T13:00:00+07:00');
+  const c = planSlot([row('a', 'Published', '2026-10-01T09:00:00+07:00')], {now: NOW});
+  assert.equal(c.start, '2026-11-06T09:00:00+07:00');
+});
+test('export: --publish-at overrides, --no-publish-date leaves it empty, both read back', async () => {
+  const dir = approvedPost(),
+    s = fakeNotion(),
+    n = await exportPost(dir, {...opts(s), publishAt: '2026-11-07T06:00:00Z'});
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2026-11-07T13:00:00+07:00');
+  assert.equal(n.publishDate.source, 'flag');
+  assert.ok(
+    s.pages
+      .get(n.pageId)
+      .blocks.map(text)
+      .some(t => /Planned slot: 2026-11-07 13:00 WIB \(set with --publish-at\)/.test(t))
+  );
+  const d2 = approvedPost(),
+    s2 = fakeNotion(),
+    n2 = await exportPost(d2, {...opts(s2), publishDate: false});
+  assert.equal(s2.pages.get(n2.pageId).properties['Publish date'].date, null);
+  await assert.rejects(exportPost(approvedPost(), {...opts(fakeNotion()), publishAt: '2026-11-07'}), /with offset/);
+});
+test('export: auto slot from the queried rows, recorded in posting notes and receipt; updates keep the date', async () => {
+  const other = {
+    id: 'other',
+    properties: {Status: {status: {name: 'Published'}}, 'Publish date': {date: {start: '2030-01-01T13:00:00+07:00'}}},
+    blocks: []
+  };
+  const dir = approvedPost(),
+    s = fakeNotion({pages: [other]}),
+    n = await exportPost(dir, {...opts(s), now: NOW});
+  assert.equal(n.publishDate.start, '2030-01-02T13:00:00+07:00');
+  assert.ok(
+    s.pages
+      .get(n.pageId)
+      .blocks.map(text)
+      .some(t => /Planned slot: 2030-01-02 13:00 WIB \(auto-assigned\)/.test(t))
+  );
+  assert.deepEqual(s.pages.get('other').properties, other.properties, 'other rows untouched');
+  const again = await exportPost(dir, {...opts(s), now: NOW});
+  assert.equal(again.action, 'updated');
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2030-01-02T13:00:00+07:00');
+});
+/** Real temp root whose content/posts/<slug> is the post dir, so autoAssignedIds(root) reads the actual receipt. */
+function rootWith(dir) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'akalmesin-root-'));
+  fs.mkdirSync(path.join(root, 'content/posts'), {recursive: true});
+  fs.symlinkSync(dir, path.join(root, 'content/posts', path.basename(dir)));
+  return root;
+}
+const pub = (id, start) => ({id, properties: {Status: {status: {name: 'Published'}}, 'Publish date': {date: {start}}}, blocks: []});
+const NOW1 = Date.parse('2026-11-01T15:00:00+07:00');
+test('export: an update keeps the auto publishDate receipt, so nextSlot does not skip a day (PR #3 review)', async () => {
+  const dir = approvedPost(),
+    root = rootWith(dir),
+    s = fakeNotion({pages: [pub('r1', '2026-11-01T13:00:00+07:00'), pub('r2', '2026-11-01T14:00:00+07:00')]}),
+    o = {...opts(s), now: NOW1, root};
+  const n = await exportPost(dir, o);
+  assert.equal(n.publishDate.start, '2026-11-02T13:00:00+07:00');
+  assert.equal((await nextSlot(client(o), {now: NOW1, root})).start, '2026-11-02T14:00:00+07:00');
+  const again = await exportPost(dir, o);
+  assert.equal(again.action, 'updated');
+  assert.equal(again.publishDate.source, 'auto');
+  assert.equal(again.publishDate.carriedOver, true);
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).notion.publishDate.source, 'auto', 'receipt on disk keeps it');
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2026-11-02T13:00:00+07:00', 'Notion date untouched');
+  assert.equal((await nextSlot(client(o), {now: NOW1, root})).start, '2026-11-02T14:00:00+07:00', 'not 3 Nov');
+});
+test('export: if the owner changed the Notion date before an update, the auto receipt is dropped', async () => {
+  const dir = approvedPost(),
+    root = rootWith(dir),
+    s = fakeNotion({pages: [pub('r1', '2026-11-01T13:00:00+07:00'), pub('r2', '2026-11-01T14:00:00+07:00')]}),
+    o = {...opts(s), now: NOW1, root};
+  const n = await exportPost(dir, o);
+  s.pages.get(n.pageId).properties['Publish date'] = {date: {start: '2026-11-03T09:00:00+07:00'}};
+  const again = await exportPost(dir, o);
+  assert.equal(again.publishDate, undefined);
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).notion.publishDate, undefined);
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2026-11-03T09:00:00+07:00', "owner's date untouched");
 });

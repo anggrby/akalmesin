@@ -333,3 +333,11 @@ Owner (t67u–t69u, authorised t69u: "…only the copy that still my attention. 
 ## 2026-11-05 — Reels are published by the Publisher
 
 Owner t124u: "Make sure you update the rule regarding the reels". The akalmesin Publisher now publishes single-video posts as Instagram Reels and posts the reel mp4. Reel-only posts (`publishAs: reel-only`, Format "Reel / video") go out as Reels from `out/reel/reel.mp4`; the Notion row holds only card PNGs, so the handoff names the mp4 path.
+
+## 2026-11-05 — The Notion row is the whole Publisher handoff
+
+Owner t126u: "Can we make command for export the post to notion directly? so it attach asset, caption, etc without us telling the publisher". Export now puts the reel mp4 first in Assets (reel-only), the verbatim caption in Caption and a Posting notes section in the body; read-back checks every file by hash and size. No hand-off message; only Angger's WIB times are passed on.
+
+## 2026-11-05 — Export plans the Publish date
+
+Owner t127u: "It auto assign the date published +1day from the last posts. For example last posts 1 nov 1pm, 2pm, 3pm the exported posts will be 2 nov 1pm, 2pm, 3pm. Clear?" On create, export sets Publish date to the next free slot: the times (WIB) of the latest day with Ready to Publish / Scheduled / Published posts, on the next day, in order; taken or past slots are skipped; no timed rows → 10:00 / 15:00 / 20:00 WIB. Rows this repo auto-assigned are excluded from the reference day so a batch fills one day. Overrides: `--publish-at`, `--no-publish-date`. Open: whether the Publisher may schedule on this planned date without Angger's explicit WIB time.
