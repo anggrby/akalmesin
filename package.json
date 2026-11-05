@@ -21,7 +21,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "reel:build": "node scripts/reel/render.mjs",
-    "reel:check": "node scripts/reel/check.mjs"
+    "reel:check": "node scripts/reel/check.mjs",
+    "instagram:growth": "node --disable-warning=ExperimentalWarning scripts/instagram-growth.mjs",
+    "test:instagram-growth": "node --disable-warning=ExperimentalWarning --test tests/instagram-growth/*.test.mjs"
   },
   "devDependencies": {
     "playwright-core": "1.62.1",

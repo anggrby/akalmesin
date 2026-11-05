@@ -2,6 +2,32 @@
 
 Newest first. Each entry: date (WIB), decision, reason, evidence.
 
+## 2026-11-05 — Rotate reviews and separate no-dispatch session expiry from uncertainty
+
+The owner accepted the findings in [PR #2’s review](https://github.com/anggrby/akalmesin/pull/2#pullrequestreview-5779842040) and requested fixes and a commit. An eligible review now prioritizes never/least recently reviewed accounts, preventing a persistent pending-request backlog from monopolizing every daily batch. A rejected lock contender cannot change the existing worker’s pause.
+
+A session ending during browser preparation is a normal completion only when that action’s own pre-click guard blocked dispatch before ever permitting it. The journal keeps a terminal `cancelled` record, releases the unused reservation and preserves candidate eligibility and relationships. Error-code matching alone cannot establish this proof; possibly dispatched or otherwise uncertain actions still retain their reservations and pause for reconciliation. Existing pauses, history and exclusions are not cleared. No schema migration or live daemon restart is needed to validate the code.
+
+Evidence: regressions first reproduced the failures against the prior code. Core and runner tests pass after the fixes, including multi-day rotation, lock contention and follow/unfollow cancellation. Full-suite results are recorded in the [runbook](instagram-growth.md#review-fixes--5-november-2026); actual seven-day live behavior remains unverified.
+
+## 2026-11-04 — Confirm saved follow state without repeating clicks
+
+The afternoon worker did start at 13:00 WIB. Its first follow succeeded, but complete DOM text included an SVG/icon label and the confirmation checker returned unknown. A subsequent successful click left the current profile controls stale. The worker stopped on uncertainty in both cases. Headless read-back confirmed the original target IDs and Following states, so those results were reconciled and their original budget reservations retained.
+
+Relationship controls now use unique visible button text, excluding icon titles and hidden text. If a Follow click does not update the current controls, one fresh profile read can confirm Following/Requested against the same ID. The script never repeats the click to test its result, and restrictions or unknown outcomes still stop it. Focused regression tests cover decorative labels, stale UI with exactly one submitted click, normal follows, reciprocal checks and mutation stops. The resumed headless run has produced additional automatically confirmed follows. Current counts are in the [worker runbook](instagram-growth.md).
+
+## 2026-11-04 — Headless normal Instagram sessions
+
+The owner prefers headless operation because visible Chrome interrupts his work. Normal daemon/run, preview and reconciliation now launch headless Chromium using the existing saved profile. Only explicit `login` opens a visible window for manual authentication. The worker still stops on restrictions, verification challenges and unknown states, with no automatic visible-browser fallback. The saved-login headless preview passed without relationship changes and left 56 queued candidates. The idle daemon was restarted at 11:26 WIB to load this preference; candidate history and the session limits were preserved. Syntax, changed-file formatting and whitespace checks passed.
+
+## 2026-11-04 — Separate Instagram follow experiment
+
+The owner authorized building a follow/unfollow script with “You can proceed now”, asked to split 50 daily follows across morning, afternoon and evening, supplied [@aico.community](https://www.instagram.com/aico.community/) as the source, and required stopping on Instagram restrictions or verification challenges. He then corrected the target to `/Users/anggrby/Code/temp/akalmesin` and requested GPT-6.1 Terra with xhigh reasoning for workers.
+
+The optional [growth worker](instagram-growth.md) is scoped to @akalmesin and separate from post production, publication, scheduling and messages. Its [config](../instagram-growth.config.json) records the chosen 17/17/16 defaults and WIB windows, 30-second minimum spacing and seven-day review. Persistent local history protects prior relationships, reserves uncertain actions and permanently excludes unfollowed accounts. Browser credentials and runtime history remain ignored. This authorization does not establish that Instagram permits browser automation or guarantee follower growth.
+
+Verification: all 53 growth fixtures and 72 existing editorial tests pass on Node 24.21.0. Changed files pass formatting and whitespace checks; the repository-wide formatter reports five pre-existing Markdown issues. Live checks verified login, collection of 50 visible source candidates, numeric identity, exact-query follow-back detection, and a no-click control preflight. The detached local worker started at 11:16 WIB for the next 13:00 WIB session; its action journal is still empty. Actual follows/unfollows and seven-day results remain unverified. No editorial story approval is created by this tool.
+
 ## 2026-11-02 — Caption length max 100 words (was 160)
 
 - Owner asked to change the caption limit max from 160 to 100.
