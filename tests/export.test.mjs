@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import {ROOT, readJSON, writeJSON, designRevision} from '../scripts/core.mjs';
-import {planSlot, notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
+import {planSlot, nextSlot, notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
 import {KIMI, tmpPost} from './helpers.mjs';
 
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -429,4 +429,41 @@ test('export: auto slot from the queried rows, recorded in posting notes and rec
   const again = await exportPost(dir, {...opts(s), now: NOW});
   assert.equal(again.action, 'updated');
   assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2030-01-02T13:00:00+07:00');
+});
+/** Real temp root whose content/posts/<slug> is the post dir, so autoAssignedIds(root) reads the actual receipt. */
+function rootWith(dir) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'akalmesin-root-'));
+  fs.mkdirSync(path.join(root, 'content/posts'), {recursive: true});
+  fs.symlinkSync(dir, path.join(root, 'content/posts', path.basename(dir)));
+  return root;
+}
+const pub = (id, start) => ({id, properties: {Status: {status: {name: 'Published'}}, 'Publish date': {date: {start}}}, blocks: []});
+const NOW1 = Date.parse('2026-11-01T15:00:00+07:00');
+test('export: an update keeps the auto publishDate receipt, so nextSlot does not skip a day (PR #3 review)', async () => {
+  const dir = approvedPost(),
+    root = rootWith(dir),
+    s = fakeNotion({pages: [pub('r1', '2026-11-01T13:00:00+07:00'), pub('r2', '2026-11-01T14:00:00+07:00')]}),
+    o = {...opts(s), now: NOW1, root};
+  const n = await exportPost(dir, o);
+  assert.equal(n.publishDate.start, '2026-11-02T13:00:00+07:00');
+  assert.equal((await nextSlot(client(o), {now: NOW1, root})).start, '2026-11-02T14:00:00+07:00');
+  const again = await exportPost(dir, o);
+  assert.equal(again.action, 'updated');
+  assert.equal(again.publishDate.source, 'auto');
+  assert.equal(again.publishDate.carriedOver, true);
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).notion.publishDate.source, 'auto', 'receipt on disk keeps it');
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2026-11-02T13:00:00+07:00', 'Notion date untouched');
+  assert.equal((await nextSlot(client(o), {now: NOW1, root})).start, '2026-11-02T14:00:00+07:00', 'not 3 Nov');
+});
+test('export: if the owner changed the Notion date before an update, the auto receipt is dropped', async () => {
+  const dir = approvedPost(),
+    root = rootWith(dir),
+    s = fakeNotion({pages: [pub('r1', '2026-11-01T13:00:00+07:00'), pub('r2', '2026-11-01T14:00:00+07:00')]}),
+    o = {...opts(s), now: NOW1, root};
+  const n = await exportPost(dir, o);
+  s.pages.get(n.pageId).properties['Publish date'] = {date: {start: '2026-11-03T09:00:00+07:00'}};
+  const again = await exportPost(dir, o);
+  assert.equal(again.publishDate, undefined);
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).notion.publishDate, undefined);
+  assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2026-11-03T09:00:00+07:00', "owner's date untouched");
 });

@@ -534,6 +534,14 @@ export async function exportPost(ref, opts = {}) {
   }
   const {page, hashes, assetsMatchBuild} = await verify(api, pageId, m, {owner, publishAt: publishDate?.start}),
     at = new Date().toISOString();
+  // On update this run assigns no date. Carry the previous receipt's publishDate only while the
+  // live Notion date still equals it (same instant); if the owner changed or cleared it, drop it.
+  const prev = workflow.notion?.publishDate,
+    live = page.properties?.['Publish date']?.date?.start ?? owner?.publishDate?.start;
+  if (!publishDate && hits.length && prev?.start && live && Date.parse(live) === Date.parse(prev.start)) {
+    const {carriedOver, ...rest} = prev;
+    publishDate = {...rest, carriedOver: true};
+  }
   workflow.notion = {
     pageId,
     url: page.url,
@@ -592,7 +600,7 @@ if (isMain(import.meta.url))
     } else {
       const n = await exportPost(slug, {publishAt: a['publish-at'], publishDate: a['no-publish-date'] ? false : undefined});
       console.log(
-        `✓ Notion page ${n.action}: ${n.url}\n  ${n.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${n.exportedAtWIB})\n  Publish date: ${n.publishDate ? n.publishDate.wib + ' (' + n.publishDate.source + ', read back OK)' : n.ownerManaged ? 'left as the owner set it (update)' : 'empty'}`
+        `✓ Notion page ${n.action}: ${n.url}\n  ${n.uploadedAssetHashes.length} assets verified by SHA-256, receipt in workflow.json (${n.exportedAtWIB})\n  Publish date: ${n.publishDate?.carriedOver ? n.publishDate.wib + ' (' + n.publishDate.source + ', kept from earlier export; Notion date unchanged)' : n.publishDate ? n.publishDate.wib + ' (' + n.publishDate.source + ', read back OK)' : n.ownerManaged ? 'left as the owner set it (update)' : 'empty'}`
       );
     }
   } catch (e) {
