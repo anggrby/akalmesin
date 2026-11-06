@@ -6,6 +6,7 @@ import path from 'node:path';
 import os from 'node:os';
 import {ROOT, readJSON, writeJSON, designRevision} from '../scripts/core.mjs';
 import {planSlot, nextSlot, notionFormat, exportPost, richText, topicFor, client, manifest, bodyBlocks, legacyTexts} from '../scripts/export.mjs';
+import {schedulePost} from '../scripts/schedule.mjs';
 import {KIMI, tmpPost} from './helpers.mjs';
 
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
@@ -74,7 +75,9 @@ function fakeNotion({pages = [], failOnce = {}} = {}) {
     }
     const toProps = props => ({
       ...props,
-      Assets: {files: props.Assets.files.map(f => ({name: f.name, type: 'file', file: {url: 'https://files.test/' + f.file_upload.id}}))}
+      ...(props.Assets
+        ? {Assets: {files: props.Assets.files.map(f => ({name: f.name, type: 'file', file: {url: 'https://files.test/' + f.file_upload.id}}))}}
+        : {})
     });
     if (method === 'POST' && p === 'pages') {
       const b = JSON.parse(body),
@@ -466,4 +469,341 @@ test('export: if the owner changed the Notion date before an update, the auto re
   assert.equal(again.publishDate, undefined);
   assert.equal(readJSON(path.join(dir, 'workflow.json')).notion.publishDate, undefined);
   assert.equal(s.pages.get(n.pageId).properties['Publish date'].date.start, '2026-11-03T09:00:00+07:00', "owner's date untouched");
+});
+
+const POSTIZ_ENV = {apiKey: 'test-postiz-secret', baseUrl: 'https://postiz.test/api/public/v1', integrationId: ''};
+function fakePostiz({loseCreateResponse = false, onUpload = null} = {}) {
+  const store = {calls: [], uploads: [], postBodies: [], posts: new Map(), n: 0, groups: 0, loseCreateResponse, onUpload};
+  const json = (body, status = 200) => new Response(JSON.stringify(body), {status});
+  store.fetch = async (url, init = {}) => {
+    const method = init.method || 'GET';
+    const route = url.replace(POSTIZ_ENV.baseUrl, '');
+    store.calls.push({method, route});
+    if (method === 'GET' && route === '/integrations')
+      return json([
+        {id: 'ig-ak', name: 'akalmesin', identifier: 'instagram-standalone'},
+        {id: 'ig-other', name: 'prompt_hacking', identifier: 'instagram-standalone'}
+      ]);
+    if (method === 'POST' && route === '/upload') {
+      const name = init.body.get('file').name;
+      store.uploads.push(name);
+      store.onUpload?.(name);
+      const id = 'postiz-upload-' + store.uploads.length;
+      return json({id, path: 'https://cdn.test/' + id + '.png'});
+    }
+    if (method === 'GET' && route.startsWith('/posts?')) return json({posts: [...store.posts.values()]});
+    if (method === 'POST' && route === '/posts') {
+      const body = JSON.parse(init.body);
+      store.postBodies.push(body);
+      const value = body.posts[0].value[0];
+      const id = value.id || 'postiz-post-' + ++store.n;
+      // Postiz's public API calls createPost() with keepGroup=false, so every save gets a fresh group.
+      store.posts.set(id, {
+        id,
+        state: body.type === 'draft' ? 'DRAFT' : 'QUEUE',
+        group: 'server-group-' + ++store.groups,
+        integration: {id: body.posts[0].integration.id},
+        content: value.content,
+        publishDate: body.date
+      });
+      if (store.loseCreateResponse) throw new Error('connection lost after create');
+      return json([{postId: id, integration: body.posts[0].integration.id}]);
+    }
+    return json({message: 'unexpected Postiz route'}, 404);
+  };
+  return store;
+}
+const scheduleOpts = (notion, postiz, extra = {}) => ({
+  notionToken: 'test-token',
+  notionFetch: notion.fetch,
+  notionSleep: async () => {},
+  notionTries: 1,
+  env: POSTIZ_ENV,
+  postizFetch: postiz.fetch,
+  now: NOW1,
+  clock: () => new Date(NOW1),
+  ...extra
+});
+
+test('schedule dry-run validates the approved post but performs no network calls or writes', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const plan = await schedulePost(dir, scheduleOpts(notion, postiz, {dryRun: true}));
+  assert.equal(notion.calls.length, 0);
+  assert.equal(postiz.calls.length, 0);
+  assert.equal(plan.network, false);
+  assert.match(plan.notion.publishDate, /assigned from Notion/);
+  assert.equal(plan.postiz.type, 'schedule');
+  assert.equal(fs.existsSync(path.join(dir, 'out/postiz-state.json')), false);
+  assert.equal(fs.existsSync(path.join(dir, 'out/notion-manifest.json')), false);
+});
+
+test('draft mode creates and updates an unscheduled Postiz draft without changing Notion status', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const plan = await schedulePost(dir, scheduleOpts(notion, postiz, {draft: true, dryRun: true}));
+  assert.equal(plan.postiz.type, 'draft');
+  assert.equal(plan.notion.statusAfterPostiz, '<unchanged>');
+  assert.equal(notion.calls.length, 0);
+  assert.equal(postiz.calls.length, 0);
+  const first = await schedulePost(dir, scheduleOpts(notion, postiz, {draft: true}));
+  assert.equal(first.type, 'draft');
+  assert.equal(first.notionStatus, 'Ready to Publish');
+  assert.equal(first.scheduledAt, undefined);
+  assert.ok(first.draftedAt);
+  assert.equal(notion.pages.get(first.notionPageId).properties.Status.status.name, 'Ready to Publish');
+  assert.equal(postiz.postBodies[0].type, 'draft');
+  const uploads = postiz.uploads.length;
+  const second = await schedulePost(dir, scheduleOpts(notion, postiz, {draft: true}));
+  assert.equal(second.action, 'updated');
+  assert.equal(second.postId, first.postId);
+  assert.equal(postiz.uploads.length, uploads);
+  const workflow = readJSON(path.join(dir, 'workflow.json'));
+  assert.equal(workflow.stage, 'postiz-draft');
+  assert.equal(workflow.history.at(-1).event, 'postiz-draft');
+});
+
+test('draft mode refuses a Postiz post already promoted to QUEUE', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const first = await schedulePost(dir, scheduleOpts(notion, postiz, {draft: true}));
+  postiz.posts.get(first.postId).state = 'QUEUE';
+  const bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {draft: true})), /already QUEUE/);
+  assert.equal(postiz.postBodies.length, bodies, 'the queued post is left untouched');
+  assert.equal(postiz.posts.get(first.postId).state, 'QUEUE');
+});
+
+test('an uncertain create is recorded before POST, blocks reruns, and reconciles to the one server post', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz({loseCreateResponse: true});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  const statePath = path.join(dir, 'out/postiz-state.json');
+  const pending = readJSON(statePath);
+  assert.equal(pending.phase, 'creating');
+  assert.equal(pending.postId, undefined);
+  assert.equal(postiz.posts.size, 1, 'the fake Postiz committed the create before the response was lost');
+  const serverId = [...postiz.posts.keys()][0];
+  const serverPost = postiz.posts.get(serverId);
+  assert.notEqual(serverPost.group, pending.group, 'Postiz generated its own group; recovery must not depend on it');
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).postiz, undefined);
+
+  const notionCalls = notion.calls.length,
+    bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  assert.equal(notion.calls.length, notionCalls, 'the rerun refuses before exporting again');
+  assert.equal(postiz.postBodies.length, bodies, 'no second create is attempted');
+
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: 'postiz-missing'})), /was not found/);
+  assert.equal(postiz.posts.size, 1);
+
+  postiz.loseCreateResponse = false;
+  const fixed = await schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: serverId}));
+  assert.equal(fixed.action, 'updated');
+  assert.equal(fixed.postId, serverId);
+  assert.equal(postiz.posts.size, 1, 'reconciliation updates instead of duplicating');
+  assert.equal(postiz.postBodies.at(-1).posts[0].value[0].id, serverId);
+  const stored = readJSON(statePath);
+  assert.equal(stored.phase, undefined, 'the in-flight marker is cleared');
+  assert.equal(stored.postId, serverId);
+});
+
+test('reconciliation refuses a post on another channel and keeps the pending state', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz({loseCreateResponse: true});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  const statePath = path.join(dir, 'out/postiz-state.json');
+  const pending = readJSON(statePath);
+  const serverId = [...postiz.posts.keys()][0];
+  postiz.loseCreateResponse = false;
+  postiz.posts.get(serverId).integration = {id: 'ig-other'};
+  const bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: serverId})), /not the selected akalmesin channel/);
+  assert.equal(postiz.postBodies.length, bodies, 'no update is sent to the other channel');
+  assert.deepEqual(readJSON(statePath), pending, 'the pending record is preserved');
+  assert.equal(postiz.posts.get(serverId).state, 'QUEUE', 'the other channel post is untouched');
+});
+
+test('reconciliation refuses an unrelated post on the same channel', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz({loseCreateResponse: true});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  const statePath = path.join(dir, 'out/postiz-state.json');
+  const pending = readJSON(statePath);
+  postiz.loseCreateResponse = false;
+  const unrelated = {
+    id: 'postiz-other',
+    state: 'QUEUE',
+    group: 'another-group',
+    integration: {id: 'ig-ak'},
+    content: 'Cerita lain yang bukan bagian dari pending create.',
+    publishDate: new Date(Date.parse(pending.date) + 864e5).toISOString()
+  };
+  postiz.posts.set(unrelated.id, unrelated);
+  const bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: unrelated.id})), /does not match the pending submission's caption/);
+  assert.equal(postiz.postBodies.length, bodies, 'the unrelated post is not overwritten');
+  assert.deepEqual(readJSON(statePath), pending, 'the pending record is preserved');
+  assert.deepEqual(postiz.posts.get(unrelated.id), unrelated);
+
+  // Same caption but a different schedule instant is still not the pending create.
+  const sameCaption = {...unrelated, id: 'postiz-same-caption', content: manifest(dir).properties.Caption};
+  postiz.posts.set(sameCaption.id, sameCaption);
+  await assert.rejects(
+    schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: sameCaption.id})),
+    /does not match the pending submission's schedule date/
+  );
+  assert.equal(postiz.postBodies.length, bodies, 'no update for the wrong instant');
+  assert.deepEqual(readJSON(statePath), pending, 'the pending record is still preserved');
+});
+
+test('a schedule date that expires during uploads is refused before POST /posts with no in-flight record', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    publishAt = '2026-11-02T16:00:00+07:00';
+  let ms = Date.parse(publishAt) - 65_000;
+  const postiz = fakePostiz({onUpload: () => (ms += 10_000)});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {publishAt, clock: () => new Date(ms)})), /less than 60 seconds away/);
+  assert.equal(postiz.postBodies.length, 0, 'the expired date never reaches POST /posts');
+  assert.equal(postiz.posts.size, 0);
+  assert.equal(fs.existsSync(path.join(dir, 'out/postiz-state.json')), false, 'no false uncertain-create record');
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).postiz, undefined);
+  assert.equal([...notion.pages.values()][0].properties.Status.status.name, 'Ready to Publish');
+});
+
+test('schedule exports to Notion, schedules the same instant in Postiz, then verifies Notion Scheduled', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const receipt = await schedulePost(dir, scheduleOpts(notion, postiz));
+  const m = manifest(dir),
+    page = notion.pages.get(receipt.notionPageId);
+  assert.equal(receipt.action, 'created');
+  assert.equal(page.properties.Status.status.name, 'Scheduled');
+  assert.deepEqual(
+    postiz.uploads,
+    m.assets.map(asset => asset.name)
+  );
+  assert.equal(postiz.postBodies.length, 1);
+  const body = postiz.postBodies[0];
+  assert.equal(Date.parse(body.date), Date.parse(page.properties['Publish date'].date.start));
+  assert.equal(body.posts[0].integration.id, 'ig-ak');
+  assert.equal(body.posts[0].value[0].content, m.properties.Caption);
+  assert.deepEqual(body.posts[0].settings, {__type: 'instagram-standalone', post_type: 'post'});
+  const workflow = readJSON(path.join(dir, 'workflow.json'));
+  assert.equal(workflow.stage, 'postiz-scheduled');
+  assert.equal(workflow.postiz.notionStatus, 'Scheduled');
+  assert.equal(workflow.history.at(-1).event, 'postiz-scheduled');
+  const trackedReceipt = JSON.stringify(workflow.postiz);
+  assert.ok(!trackedReceipt.includes(POSTIZ_ENV.apiKey));
+  assert.ok(!trackedReceipt.includes(POSTIZ_ENV.baseUrl));
+  assert.ok(!trackedReceipt.includes('cdn.test'));
+  assert.match(readJSON(path.join(dir, 'out/postiz-state.json')).uploads[0].path, /cdn\.test/);
+});
+
+test('schedule rerun updates the same Postiz post, follows an owner-changed Notion date, and reuses uploads', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const first = await schedulePost(dir, scheduleOpts(notion, postiz));
+  const uploadCount = postiz.uploads.length;
+  const firstServerGroup = postiz.posts.get(first.postId).group;
+  notion.pages.get(first.notionPageId).properties['Publish date'] = {date: {start: '2026-11-10T09:00:00+07:00'}};
+  const second = await schedulePost(dir, scheduleOpts(notion, postiz));
+  assert.equal(second.action, 'updated');
+  assert.equal(second.postId, first.postId);
+  assert.equal(postiz.posts.size, 1);
+  assert.equal(notion.pages.size, 1);
+  assert.equal(postiz.uploads.length, uploadCount, 'unchanged PNGs are not uploaded again');
+  assert.equal(postiz.postBodies[1].posts[0].value[0].id, first.postId);
+  assert.equal(postiz.postBodies[1].posts[0].group, firstServerGroup, 'the update sends the server group it read back');
+  assert.notEqual(postiz.posts.get(first.postId).group, firstServerGroup, 'the fake rotates groups like the public API');
+  assert.equal(postiz.postBodies[1].date, '2026-11-10T02:00:00.000Z');
+});
+
+test('schedule rejects another Postiz channel before uploading, leaving a recoverable Notion export', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {env: {...POSTIZ_ENV, integrationId: 'ig-other'}})), /Refusing another channel/);
+  assert.equal(postiz.uploads.length, 0);
+  assert.equal(postiz.postBodies.length, 0);
+  assert.equal(notion.pages.size, 1, 'Notion export completed before channel selection failed');
+  assert.equal([...notion.pages.values()][0].properties.Status.status.name, 'Ready to Publish');
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).postiz, undefined);
+});
+
+test('schedule refuses a Published Notion row before any Notion write or Postiz request', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const first = await schedulePost(dir, scheduleOpts(notion, postiz));
+  notion.pages.get(first.notionPageId).properties.Status = {status: {name: 'Published'}};
+  const postizCalls = postiz.calls.length;
+  const before = notion.calls.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /Published/);
+  assert.equal(postiz.calls.length, postizCalls);
+  const writes = notion.calls.slice(before).filter(call => !call.startsWith('POST data_sources/') && !call.startsWith('GET blocks/'));
+  assert.deepEqual(writes, [], 'preflight reads the row but never updates the published page');
+});
+
+test('schedule refuses a Scheduled Notion row with no Postiz receipt before export', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const first = await schedulePost(dir, scheduleOpts(notion, postiz));
+  const workflow = readJSON(path.join(dir, 'workflow.json'));
+  delete workflow.postiz;
+  writeJSON(path.join(dir, 'workflow.json'), workflow);
+  fs.rmSync(path.join(dir, 'out/postiz-state.json'));
+  const before = notion.calls.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /no Postiz receipt/);
+  assert.equal(notion.pages.get(first.notionPageId).properties.Status.status.name, 'Scheduled');
+  const writes = notion.calls.slice(before).filter(call => !call.startsWith('POST data_sources/') && !call.startsWith('GET blocks/'));
+  assert.deepEqual(writes, [], 'preflight refuses before exporting or uploading');
+});
+
+test('schedule refuses a published Postiz post without uploading or updating it', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const first = await schedulePost(dir, scheduleOpts(notion, postiz));
+  postiz.posts.get(first.postId).state = 'PUBLISHED';
+  const uploads = postiz.uploads.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /already PUBLISHED/);
+  assert.equal(postiz.uploads.length, uploads);
+  assert.equal(postiz.postBodies.length, 1);
+});
+
+test('schedule requires current final approval before Notion or Postiz network calls', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz(),
+    workflow = readJSON(path.join(dir, 'workflow.json'));
+  workflow.approvals.final = null;
+  writeJSON(path.join(dir, 'workflow.json'), workflow);
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /final/);
+  assert.equal(notion.calls.length, 0);
+  assert.equal(postiz.calls.length, 0);
+});
+
+test('a failed Notion Scheduled write leaves a receipt, so retry updates the same Postiz post', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion({failOnce: {'PATCH pages': 1}}),
+    postiz = fakePostiz();
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /HTTP 429/);
+  const pending = readJSON(path.join(dir, 'workflow.json')).postiz;
+  assert.ok(pending.postId);
+  const retry = await schedulePost(dir, scheduleOpts(notion, postiz));
+  assert.equal(retry.action, 'updated');
+  assert.equal(retry.postId, pending.postId);
+  assert.equal(retry.notionStatus, 'Scheduled');
+  assert.equal(postiz.posts.size, 1);
+  assert.equal(notion.pages.size, 1);
 });

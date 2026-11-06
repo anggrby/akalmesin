@@ -1,5 +1,7 @@
 # Akal Mesin Notion ↔ Postiz sync check
 
+> **Approved PNG posts:** use `npm run schedule -- <slug>` (see `docs/workflow.md`). This tool remains for reel-only scheduling, Notion/Postiz status sync and the separate publisher runbook.
+
 Read-only health check. Compares **Akal Mesin Content Schedule** in Notion with posts on the **Akal Mesin** Postiz channel. Never writes to either side. Never prints API keys.
 
 ## Run
@@ -13,16 +15,17 @@ Exit `0` = no conflicts, `1` = conflicts (or missing env / fetch error).
 
 ## Env
 
-| Variable | Purpose |
-|---|---|
+| Variable                  | Purpose                                        |
+| ------------------------- | ---------------------------------------------- |
 | `POSTIZ_SELFHOST_API_KEY` | Postiz public API key (header `Authorization`) |
-| `NOTION_TOKEN` | Notion internal integration secret |
+| `NOTION_TOKEN`            | Notion internal integration secret             |
 
 If `NOTION_TOKEN` is missing: create an integration at https://www.notion.so/my-integrations , then share database `405f909f-26a5-8057-ad0a-e9562fe9c915` with it (••• → Connections).
 
 ## What it checks
 
 ### Matching & schedule
+
 - Stored Postiz ID first, then full normalized caption. Time disambiguates only identical full captions; prefixes and time-only pairs never claim identity.
 - Postiz QUEUE / PUBLISHED / DRAFT with no Notion row
 - Time mismatch (>1 min within a 5-min slot)
@@ -31,6 +34,7 @@ If `NOTION_TOKEN` is missing: create an integration at https://www.notion.so/my-
 - Status drift: Notion Published ↔ Postiz PUBLISHED
 
 ### Captions (full)
+
 - Normalize Notion Caption and Postiz HTML (`<p>` / `<br>`) to paragraphs
 - Paragraph-count and per-paragraph text diffs
 - Missing blank-line separators (empty `<p></p>` between content paragraphs)
@@ -38,15 +42,18 @@ If `NOTION_TOKEN` is missing: create an integration at https://www.notion.so/my-
 - Older Postiz posts that store caption as plain text (no `<p>` tags) are flagged `CAPTION_NOT_HTML_P` even if paragraph text matches
 
 ### Publish time (PUBLISHED only)
+
 - Diff in minutes between Postiz `publishDate` and Notion Publish date (printed in WIB)
 
 ### Assets / media — **asset check unavailable**
+
 `GET /posts` for this Postiz build returns only:
 `id, content, publishDate, releaseURL, releaseId, state, error, intervalInDays, group, creationMethod, settings, tags, integration`.
 
 There is **no** `image` / `media` / path list on each post. `GET /posts/<id>` is 404. A separate `GET /media` lists uploads but does not link them to a post id.
 
 So the script **cannot** verify:
+
 - carousel slide count vs Notion Assets
 - slide filenames or order
 - that a Reel / video post has exactly one `.mp4` (and no PNGs)
@@ -58,7 +65,6 @@ If a future Postiz API version exposes media on the post, the script will detect
 ## Window & channel
 
 Last 7 days → next 30 days. Channel filter: `cmvpfx9sm0009po858rtcbrh6` only. Times in WIB.
-
 
 ## Scheduler (`schedule.py`)
 
@@ -81,6 +87,7 @@ python3 tools/publishing/schedule.py --self-test
 ```
 
 ### Behaviour
+
 - Time precedence per row: Notion **Publish date**, then `--at`, then the next free **09:00, 13:00, 19:00 WIB** standing slot. A planned/passed date within 10 minutes refuses; it is not silently moved. Horizon for fallback: three days. Never `type=now`.
 - `--row` requires `Ready to Publish`; every selected row is checked again before apply. `--at` requires one row and is ignored whenever a Publish date exists.
 - `--apply` requires `--draft`, or `--schedule` with `--approved-by-angger`. Isolated run mode does not establish authority; it records the operator's acknowledgement of Angger's prior explicit plan approval.
