@@ -277,6 +277,8 @@ def fetch_postiz(api_key: str, start: datetime, end: datetime) -> list[dict[str,
     posts = data.get("posts") if isinstance(data, dict) else data
     out = []
     for p in posts or []:
+        if any(p.get(k) for k in ("deleted", "deletedAt", "isDeleted", "trashed")):
+            continue
         if (p.get("integration") or {}).get("id") != AKAL_MESIN_ID:
             continue
         out.append(
