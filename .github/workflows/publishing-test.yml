@@ -19,7 +19,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
       - run: python -m py_compile tools/publishing/*.py
       - run: python tools/publishing/schedule.py --self-test
       - run: python tools/publishing/akalmesin_sync.py --self-test
