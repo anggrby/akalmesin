@@ -360,6 +360,12 @@ Owner t124u: "Make sure you update the rule regarding the reels". The akalmesin 
 
 Owner t126u: "Can we make command for export the post to notion directly? so it attach asset, caption, etc without us telling the publisher". Export now puts the reel mp4 first in Assets (reel-only), the verbatim caption in Caption and a Posting notes section in the body; read-back checks every file by hash and size. No hand-off message; only Angger's WIB times are passed on.
 
+## 2026-10-29 — Angger set the standing publisher slots
+
+- Standing daily fallback slots are **09:00, 13:00 and 19:00 WIB**. These are publisher slots, not a request for export to discard its next-free-slot logic. Owner explicit approval still controls any actual scheduled post.
+- Owner review approval on **2026-11-06**: publisher uses the row’s Publish date first, then `--at`, then the standing fallback slots; it performs a live dry-run first and runs `--apply --schedule --approved-by-angger` only after explicit approval of that exact plan. Never now or past. The publisher tooling now lives in `tools/publishing/` without changing the editorial gates or automatically granting publication.
+- Self-hosted `POSTIZ_API_URL` and credentials remain environment configuration; no Postiz URLs in tracked docs.
+
 ## 2026-11-05 — Export plans the Publish date
 
-Owner t127u: "It auto assign the date published +1day from the last posts. For example last posts 1 nov 1pm, 2pm, 3pm the exported posts will be 2 nov 1pm, 2pm, 3pm. Clear?" On create, export sets Publish date to the next free slot: the times (WIB) of the latest day with Ready to Publish / Scheduled / Published posts, on the next day, in order; taken or past slots are skipped; no timed rows → 10:00 / 15:00 / 20:00 WIB. Rows this repo auto-assigned are excluded from the reference day so a batch fills one day. Overrides: `--publish-at`, `--no-publish-date`. Open: whether the Publisher may schedule on this planned date without Angger's explicit WIB time.
+Owner t127u: "It auto assign the date published +1day from the last posts. For example last posts 1 nov 1pm, 2pm, 3pm the exported posts will be 2 nov 1pm, 2pm, 3pm. Clear?" On create, export sets Publish date to the next free slot: the times (WIB) of the latest day with Ready to Publish / Scheduled / Published posts, on the next day, in order; taken or past slots are skipped; no timed rows → 10:00 / 15:00 / 20:00 WIB. Rows this repo auto-assigned are excluded from the reference day so a batch fills one day. Overrides: `--publish-at`, `--no-publish-date`. Resolved 2026-11-06: the planned date is the publisher's first input; actual scheduling still requires Angger's explicit approval of the live dry-run plan.
