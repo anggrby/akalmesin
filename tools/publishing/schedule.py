@@ -20,6 +20,7 @@ import mimetypes
 import os
 import re
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -27,20 +28,21 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 NOTION_DB = "405f909f-26a5-8057-ad0a-e9562fe9c915"
 NOTION_VERSION = "2022-06-28"
-POSTIZ_BASE = "https://167-104-102-132.sslip.io/api/public/v1"
+POSTIZ_BASE = os.environ.get("POSTIZ_API_URL", "").rstrip("/")
 AKAL_MESIN_ID = "cmvpfx9sm0009po858rtcbrh6"
-WIB = timezone(timedelta(hours=7), name="WIB")
+WIB = ZoneInfo("Asia/Jakarta")
 UTC = timezone.utc
 SLOTS_H = (9, 13, 19)  # WIB
 MIN_LEAD = timedelta(minutes=10)
 HORIZON_DAYS = 3
 MAX_HASHTAGS = 5
 MAX_CAPTION_WORDS = 100
-POSTS_ROOT = Path("/workspace/akalmesin-new/content/posts")
-CAPTION_PREFIX = 48
+LOOKBACK_DAYS = 90
+POST_TYPE_BY_FORMAT = {"Carousel": "post", "Single image": "post", "Reel / video": "post"}
 
 
 def die(msg: str, code: int = 1) -> None:
@@ -59,6 +61,8 @@ def require_env() -> tuple[str, str]:
             "Create a Notion integration, share DB "
             f"{NOTION_DB}, then: export NOTION_TOKEN=ntn_..."
         )
+    if not POSTIZ_BASE:
+        die("POSTIZ_API_URL must be set to the self-hosted Postiz public-v1 API URL.")
     return postiz, notion
 
 
@@ -147,7 +151,7 @@ def strip_html(s: str) -> str:
 def caption_key(text: str) -> str:
     t = strip_html(text).lower()
     t = re.sub(r"[^\w\s]", "", t, flags=re.UNICODE)
-    return re.sub(r"\s+", " ", t).strip()[:CAPTION_PREFIX]
+    return re.sub(r"\s+", " ", t).strip()
 
 
 def caption_html(caption: str) -> str:
@@ -222,6 +226,23 @@ def notion_patch(token: str, page_id: str, properties: dict[str, Any]) -> None:
     )
 
 
+def ensure_postiz_id_property(token: str) -> None:
+    existing = http_json(
+        f"https://api.notion.com/v1/databases/{NOTION_DB}",
+        headers={"Authorization": f"Bearer {token}", "Notion-Version": NOTION_VERSION},
+    )
+    prop = (existing.get("properties") or {}).get("Postiz ID")
+    if prop is not None and prop.get("type") != "rich_text":
+        raise RuntimeError("Notion 'Postiz ID' exists but is not rich_text")
+    if prop is None:
+        http_json(
+            f"https://api.notion.com/v1/databases/{NOTION_DB}",
+            method="PATCH",
+            headers={"Authorization": f"Bearer {token}", "Notion-Version": NOTION_VERSION},
+            body={"properties": {"Postiz ID": {"rich_text": {}}}},
+        )
+
+
 def row_view(row: dict[str, Any]) -> dict[str, Any]:
     props = row["properties"]
     title = "".join(x["plain_text"] for x in props["Post"]["title"])
@@ -232,10 +253,11 @@ def row_view(row: dict[str, Any]) -> dict[str, Any]:
     for f in (props.get("Assets") or {}).get("files") or []:
         url = (f.get("file") or f.get("external") or {}).get("url")
         assets.append({"name": f.get("name") or "file", "url": url})
-    assets.sort(key=lambda a: a["name"])
     return {
         "id": row["id"],
         "created": parse_iso(row["created_time"]),
+        "publish_date": (props.get("Publish date", {}).get("date") or {}).get("start"),
+        "postiz_id": "".join(x.get("plain_text", "") for x in (props.get("Postiz ID") or {}).get("rich_text") or []).strip(),
         "title": title,
         "status": status,
         "format": fmt,
@@ -301,37 +323,20 @@ def iter_slots(now: datetime) -> list[datetime]:
     return out
 
 
-def find_reel_mp4(title: str, video_override: str | None) -> Path | None:
-    if video_override:
-        p = Path(video_override)
-        return p if p.is_file() else None
-    if not POSTS_ROOT.is_dir():
-        return None
-    slug = slugify(title)
-    # token overlap scoring
-    title_tokens = set(re.findall(r"[a-z0-9]+", title.lower()))
-    best: tuple[int, Path] | None = None
-    for d in POSTS_ROOT.iterdir():
-        if not d.is_dir():
-            continue
-        cand = d / "out" / "reel" / "reel.mp4"
-        if not cand.is_file():
-            # also accept top-level reel.mp4 under out/
-            alt = d / "out" / "reel.mp4"
-            cand = alt if alt.is_file() else cand
-        if not cand.is_file():
-            continue
-        name = d.name.lower()
-        score = 0
-        if slug and slug in name:
-            score += 100
-        dir_tokens = set(re.findall(r"[a-z0-9]+", name))
-        score += len(title_tokens & dir_tokens)
-        if best is None or score > best[0]:
-            best = (score, cand)
-    if best and best[0] >= 2:
-        return best[1]
-    return None
+def reel_asset(assets: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """The handoff's first MP4, with no filename/title guessing or local search."""
+    return next(
+        (
+            a
+            for a in assets
+            if a.get("url")
+            and (
+                a.get("name", "").lower().endswith(".mp4")
+                or urllib.parse.urlparse(a["url"]).path.lower().endswith(".mp4")
+            )
+        ),
+        None,
+    )
 
 
 def download(url: str, dest: Path) -> None:
@@ -345,35 +350,59 @@ def download(url: str, dest: Path) -> None:
 
 
 def already_scheduled(row: dict[str, Any], posts: list[dict[str, Any]], now: datetime) -> dict[str, Any] | None:
-    for p in posts:
-        if p["when"] < now:
-            continue
-        if p["state"] not in ("QUEUE", "DRAFT", "PUBLISHED"):
-            continue
-        if not row["key"] or not p["key"]:
-            continue
-        if row["key"] == p["key"] or row["key"].startswith(p["key"][:24]) or p["key"].startswith(row["key"][:24]):
-            return p
-    return None
+    """An exact ID or full caption match is idempotent, in every state/time."""
+    del now
+    candidates = [p for p in posts if row.get("postiz_id") and p["id"] == row["postiz_id"]]
+    if not candidates:
+        candidates = [p for p in posts if row["key"] and p["key"] == row["key"]]
+    if len(candidates) > 1:
+        raise RuntimeError(
+            f"ambiguous full caption on {len(candidates)} existing posts; refusing to schedule"
+        )
+    return candidates[0] if candidates else None
 
+
+def body_caption_text(caption: str) -> str:
+    """Exclude the Sumber and hashtag paragraphs from the editorial word count."""
+    paragraphs = [
+        p.strip() for p in re.split(r"\n\s*\n", caption.strip()) if p.strip()
+    ]
+    body = [
+        p
+        for p in paragraphs
+        if not re.match(r"(?i)^Sumber\s*:", p)
+        and not (
+            count_hashtags(p) and len(count_hashtags(p)) <= MAX_HASHTAGS
+            and not re.sub(r"#\w+", "", p).strip()
+        )
+    ]
+    return "\n\n".join(body)
 
 def validate_row(row: dict[str, Any]) -> str | None:
     if row["archived"]:
         return "archived/in_trash"
+    if row["status"] != "Ready to Publish":
+        return f"status is {row['status']!r}; required 'Ready to Publish'"
     if not row["caption"].strip():
         return "empty caption"
     tags = count_hashtags(row["caption"])
     if len(tags) > MAX_HASHTAGS:
         return "too many hashtags (max %d), found %d: %s" % (MAX_HASHTAGS, len(tags), tags)
-    wc = word_count(row["caption"])
-    if wc > MAX_CAPTION_WORDS:
-        return "caption too long (max %d words), found %d" % (MAX_CAPTION_WORDS, wc)
-    fmt = row["format"]
-    if fmt == "Reel / video":
-        return None
-    if not row["assets"]:
+    if row["format"] == "Reel / video":
+        if not reel_asset(row["assets"]):
+            return "Reel / video has no .mp4 asset in Notion Assets; PNG reference files are not a Reel"
+    elif not row["assets"]:
         return "no Assets"
     return None
+
+
+def reserve_slot(slot: datetime, taken: list[datetime], now: datetime, source: str) -> tuple[datetime, list[str]]:
+    if slot < now + MIN_LEAD:
+        return slot, [f"{source} {fmt_wib(slot)} is in the past or <10 minutes away; use --at or a new Publish date"]
+    if not slot_free(slot, taken):
+        return slot, [f"{source} {fmt_wib(slot)} is already taken on Akal Mesin Postiz"]
+    taken.append(slot)
+    return slot, []
 
 
 def plan_slots(
@@ -383,37 +412,31 @@ def plan_slots(
     at: datetime | None,
     single_row: bool,
 ) -> tuple[list[tuple[dict[str, Any], datetime]], list[str]]:
-    """Return (assignments, errors)."""
+    """Per row: future Publish date wins, then --at, then standing free slots."""
+    if at is not None and len(rows) != 1:
+        return [], ["--at requires exactly one row (use --row)"]
     errors: list[str] = []
     taken = taken_slots(posts)
     free = [s for s in iter_slots(now) if slot_free(s, taken)]
-    assignments: list[tuple[dict[str, Any], datetime]] = []
-
-    if at is not None:
-        if at < now + MIN_LEAD:
-            errors.append(f"--at {fmt_wib(at)} is <10 minutes away (or past)")
-            return [], errors
-        if not slot_free(at, taken):
-            errors.append(f"--at {fmt_wib(at)} already taken on Postiz")
-            return [], errors
-        if len(rows) != 1 and not single_row:
-            errors.append("--at requires exactly one row (use --row)")
-            return [], errors
-        for r in rows:
-            assignments.append((r, at))
-        return assignments, errors
-
-    if len(rows) > len(free):
-        errors.append(
-            f"{len(rows)} Ready to Publish rows but only {len(free)} free slots "
-            f"in the next {HORIZON_DAYS} days "
-            f"({', '.join(fmt_wib(s) for s in free) or 'none'}). Stop."
-        )
-        return [], errors
-
-    for r, slot in zip(rows, free):
-        assignments.append((r, slot))
-    return assignments, errors
+    assigned: list[tuple[dict[str, Any], datetime]] = []
+    for row in rows:
+        publish_date = row.get("publish_date")
+        slot = parse_iso(publish_date) if publish_date else at
+        if slot is not None:
+            slot, e = reserve_slot(slot, taken, now, "Publish date" if publish_date else "--at")
+            if e:
+                errors.extend(f"{row['title']!r}: {x}" for x in e)
+                continue
+        else:
+            while free and not slot_free(free[0], taken):
+                free.pop(0)
+            if not free:
+                errors.append(f"{row['title']!r}: no free 09:00/13:00/19:00 WIB slot in horizon")
+                continue
+            slot = free.pop(0)
+            taken.append(slot)
+        assigned.append((row, slot))
+    return ([], errors) if errors else (assigned, [])
 
 
 def create_post(
@@ -456,7 +479,7 @@ def create_post(
 
 
 def verify_post(
-    api_key: str, post_id: str, when: datetime, expect_state: str, window_days: int = 14
+    api_key: str, post_id: str, when: datetime, expect_state: str, window_days: int = 30
 ) -> dict[str, Any]:
     now = datetime.now(UTC)
     posts = fetch_postiz(api_key, now - timedelta(days=2), now + timedelta(days=window_days))
@@ -474,76 +497,153 @@ def verify_post(
 
 # --- self-test (no network) ---
 
+def sample_caption(words: int = 120) -> str:
+    """Production-shaped caption: 120 body words + footer + five hashtags."""
+    tokens = [f"kata{i}" for i in range(words)]
+    groups = [tokens[:len(tokens) // 3], tokens[len(tokens) // 3: 2 * len(tokens) // 3], tokens[2 * len(tokens) // 3:]]
+    text = "\n\n".join(" ".join(group) for group in groups)
+    return (
+        text
+        + "\n\nSumber: Example newsroom / Foto: Example\n\n"
+        + "#akalmesin #teknologi #AI #berita #Indonesia"
+    )
+
+def fixture_row(caption: str, *, fmt: str = "Carousel") -> dict[str, Any]:
+    assets = [{"name": "01.png", "url": "https://example.test/01.png"}]
+    if fmt == "Reel / video":
+        assets = [
+            {"name": "story-reel.mp4", "url": "https://cdn.example.test/path/story-reel.mp4"},
+            {"name": "01.png", "url": "https://example.test/reference.png"},
+        ]
+    return {
+        "id": "fake-1",
+        "created": datetime(2026, 11, 5, 12, 0, tzinfo=WIB).astimezone(UTC),
+        "title": "Realistic long caption",
+        "status": "Ready to Publish",
+        "format": fmt,
+        "caption": caption,
+        "assets": assets,
+        "key": caption_key(caption),
+        "publish_date": None,
+        "postiz_id": "",
+        "archived": False,
+    }
+
+
+def provider_settings() -> dict[str, Any]:
+    # v1.47.0 + installed DTO allow ['post', 'story']; no 'reel' literal exists.
+    return {
+        "__type": "instagram-standalone",
+        "post_type": POST_TYPE_BY_FORMAT["Reel / video"],
+        "is_trending_audio": False,
+        "collaborators": [],
+    }
+
+
 def self_test() -> None:
     now = datetime(2026, 11, 5, 14, 0, tzinfo=WIB).astimezone(UTC)
-    # slots
     slots = iter_slots(now)
     assert all(s.astimezone(WIB).hour in SLOTS_H for s in slots)
     assert all(s >= now + MIN_LEAD for s in slots)
-    # caption html
-    h = caption_html("Hello world.\n\nSecond para.\n\n#a #b")
-    assert "<p></p>" in h and h.count("<p>") == 5  # 3 content + 2 empty separators... wait
-    # 3 paras => 3 <p>content</p> joined by 2 <p></p> => total 5 <p> open tags? 
-    # '<p>a</p><p></p><p>b</p>' has 3 opening <p>
-    assert h.startswith("<p>Hello")
-    assert h.count("<p></p>") == 2
-    # fake row planning
-    rows = [
-        {
-            "id": "fake-1",
-            "created": now,
-            "title": "Fake carousel",
-            "status": "Ready to Publish",
-            "format": "Carousel",
-            "caption": "One. " * 10 + "\n\nTwo.\n\n#akalmesin #A #B #C #D",
-            "assets": [{"name": "01.png", "url": "http://example"}],
-            "key": caption_key("One. " * 10),
-            "archived": False,
-        }
-    ]
-    posts = [
-        {
-            "id": "p1",
-            "state": "QUEUE",
-            "when": datetime(2026, 11, 5, 19, 0, tzinfo=WIB).astimezone(UTC),
-            "key": "other",
-            "error": None,
-        }
-    ]
-    asg, err = plan_slots(rows, posts, now, None, False)
-    assert not err and len(asg) == 1
-    assert asg[0][1].astimezone(WIB).hour in SLOTS_H
-    # too many rows
-    many = rows * 20
-    asg2, err2 = plan_slots(many, posts, now, None, False)
-    assert err2 and not asg2
-    # idempotent key
-    rows[0]["key"] = caption_key("One. " * 10)
-    posts.append(
-        {
-            "id": "p2",
-            "state": "QUEUE",
-            "when": datetime(2026, 11, 6, 9, 0, tzinfo=WIB).astimezone(UTC),
-            "key": rows[0]["key"],
-            "error": None,
-        }
+
+    for words in (110, 120, 180, 200):
+        caption = sample_caption(words)
+        row = fixture_row(caption)
+        assert word_count(body_caption_text(caption)) == words
+        assert validate_row(row) is None  # Long body must remain a warning.
+    assert "Sumber:" not in body_caption_text(sample_caption(110))
+    assert "#akalmesin" not in body_caption_text(sample_caption(110))
+    bad_tags = fixture_row(sample_caption(120) + " #extra")
+    assert bad_tags["caption"].count("#") == 6
+    assert "too many hashtags" in (validate_row(bad_tags) or "")
+
+    h = caption_html(sample_caption(120))
+    assert h.startswith("<p>") and h.count("<p></p>") >= 4
+    assert "<p>Sumber: Example" in h
+
+    row = fixture_row(sample_caption(120))
+    for status in ("Draft", "Scheduled", "Published", "Error", "Archived"):
+        refused = dict(row, status=status)
+        assert "required" in (validate_row(refused) or "")
+    archived = dict(row, archived=True)
+    assert validate_row(archived) == "archived/in_trash"
+
+    reel = fixture_row(sample_caption(110), fmt="Reel / video")
+    chosen = reel_asset(reel["assets"])
+    assert chosen == reel["assets"][0]
+    assert validate_row(reel) is None and provider_settings()["post_type"] == "post"
+    assert reel_asset([reel["assets"][1]]) is None
+    assert "no .mp4" in (validate_row(dict(reel, assets=reel["assets"][1:])) or "")
+    assert "POSTS_ROOT" not in globals() and "find_reel_mp4" not in globals()
+
+    # Publish date takes precedence over --at; --at only runs with one row.
+    planned = dict(row, publish_date="2026-11-06T13:00:00+07:00")
+    asg, errors = plan_slots(
+        [planned], [], now, datetime(2026, 11, 6, 19, 0, tzinfo=WIB), True
     )
-    assert already_scheduled(rows[0], posts, now)
-    # hashtag / word validation
-    bad = dict(rows[0])
-    bad["caption"] = "x\n\n#a #b #c #d #e #f"
-    assert validate_row(bad)
-    print("self-test OK")
+    assert not errors and fmt_wib(asg[0][1]) == "2026-11-06 13:00 WIB"
+    overridden = dict(row, publish_date=None)
+    asg, errors = plan_slots(
+        [overridden], [], now, datetime(2026, 11, 6, 19, 0, tzinfo=WIB), True
+    )
+    assert not errors and fmt_wib(asg[0][1]) == "2026-11-06 19:00 WIB"
+    asg, errors = plan_slots([row], [], now, None, False)
+    assert not errors and fmt_wib(asg[0][1]) == "2026-11-05 19:00 WIB"
+    asg, errors = plan_slots([row, dict(row, id="other")], [], now, datetime(2026, 11, 9, 9, 0, tzinfo=WIB), False)
+    assert errors == ["--at requires exactly one row (use --row)"] and not asg
+    for past in ("2026-11-05T12:00:00+07:00", "2026-11-05T14:05:00+07:00"):
+        asg, errors = plan_slots([dict(row, publish_date=past)], [], now, None, False)
+        assert errors and not asg
+    busy = [{"id": "slot", "state": "QUEUE", "when": asg[0][1] if asg else datetime(2026, 11, 5, 19, 0, tzinfo=WIB).astimezone(UTC), "key": "busy", "error": None}]
+    busy[0]["when"] = datetime(2026, 11, 6, 13, 0, tzinfo=WIB).astimezone(UTC)
+    _, errors = plan_slots([planned], busy, now, None, False)
+    assert "already taken" in errors[0]
+
+    # Old ERROR posts count too. Just sharing a prefix must not suppress a row.
+    unrelated = dict(busy[0], id="old-other", key="unrelated", state="QUEUE")
+    past_error = dict(busy[0], id="old", key=row["key"], state="ERROR", when=now - timedelta(days=20))
+    assert already_scheduled(row, [unrelated, past_error], now)["id"] == "old"
+    past_draft = dict(past_error, id="draft", state="DRAFT")
+    assert already_scheduled(row, [past_draft], now)["id"] == "draft"
+    assert already_scheduled(row, [], now) is None
+    truncated = dict(busy[0], key=row["key"][:24] + " another story", id="truncated")
+    assert already_scheduled(row, [truncated], now) is None
+    id_match = dict(row, key="revised caption", postiz_id="stored-id")
+    assert already_scheduled(id_match, [dict(past_error, id="stored-id", key="completely different")], now)["id"] == "stored-id"
+    try:
+        already_scheduled(row, [past_error, dict(past_error, id="duplicate")], now)
+        raise AssertionError("Ambiguous duplicates must refuse scheduling")
+    except RuntimeError:
+        pass
+
+    # Structurally verify the outgoing integration and supported Reel payload.
+    fake = {"body": None}
+    def fake_http(url, **kwargs):
+        fake["body"] = kwargs["body"]
+        return {"postId": "synthetic-id"}
+    global http_json
+    real_http = http_json
+    http_json = fake_http
+    try:
+        assert create_post("unused", post_type="draft", when=now, content="test", media=[]) == "synthetic-id"
+        target = fake["body"]["posts"][0]
+        assert target["integration"] == {"id": AKAL_MESIN_ID} and target["settings"] == provider_settings()
+        assert fake["body"]["type"] == "draft"
+    finally:
+        http_json = real_http
+    print("self-test OK: realistic captions, hard hashtags, Notion mp4, date precedence, full duplicates, safety payload")
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Schedule Ready to Publish Notion rows to Postiz (Akal Mesin).")
     ap.add_argument("--dry-run", action="store_true", default=True, help="Plan only (default).")
     ap.add_argument("--apply", action="store_true", help="Actually create posts / patch Notion.")
-    ap.add_argument("--draft", action="store_true", help="Create DRAFT instead of schedule.")
+    mode = ap.add_mutually_exclusive_group()
+    mode.add_argument("--draft", action="store_true", help="Create DRAFT; does not schedule.")
+    mode.add_argument("--schedule", action="store_true", help="Create QUEUE schedule (requires owner approval acknowledgement).")
+    ap.add_argument("--approved-by-angger", action="store_true", help="Confirm Angger approved this exact plan outside this script.")
     ap.add_argument("--at", metavar="YYYY-MM-DD HH:MM", help="Explicit WIB time for --row.")
     ap.add_argument("--row", metavar="PAGE_ID", help="Only this Notion page id.")
-    ap.add_argument("--video", metavar="PATH", help="Override reel mp4 path.")
     ap.add_argument("--no-wait", action="store_true", help="Skip 2-minute ERROR re-check.")
     ap.add_argument("--self-test", action="store_true", help="Run offline unit checks and exit.")
     args = ap.parse_args(argv)
@@ -553,8 +653,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     dry = not args.apply
-    if args.apply:
-        dry = False
+    if args.apply and not args.draft and not args.schedule:
+        die("--apply requires --draft, or --schedule with explicit owner approval")
+    if args.schedule and not args.approved_by_angger:
+        die("--schedule requires --approved-by-angger after he approved the dry-run plan")
+    if args.approved_by_angger and not args.schedule:
+        die("--approved-by-angger is only valid with --schedule")
+    if args.at and not args.row:
+        die("--at requires exactly one row (use --row)")
 
     postiz_key, notion_token = require_env()
     now = datetime.now(UTC)
@@ -567,8 +673,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.row:
         page = notion_get_page(notion_token, args.row)
         rows = [row_view(page)]
-        if rows[0]["status"] != "Ready to Publish" and not args.at:
-            print(f"WARN: row status is {rows[0]['status']!r}, not Ready to Publish")
+        if rows[0]["status"] != "Ready to Publish":
+            die(f"--row requires Status 'Ready to Publish'; got {rows[0]['status']!r}")
     else:
         raw = notion_query(
             notion_token,
@@ -578,7 +684,18 @@ def main(argv: list[str] | None = None) -> int:
         rows = [r for r in rows if not r["archived"]]
         rows.sort(key=lambda r: r["created"])
 
-    posts = fetch_postiz(postiz_key, now - timedelta(days=1), now + timedelta(days=HORIZON_DAYS + 1))
+    posts = fetch_postiz(
+        postiz_key,
+        now - timedelta(days=LOOKBACK_DAYS),
+        now + timedelta(days=HORIZON_DAYS + 1),
+    )
+    rowspan = [parse_iso(r["publish_date"]) for r in rows if r.get("publish_date")]
+    if rowspan:
+        posts = fetch_postiz(
+            postiz_key,
+            min(now - timedelta(days=LOOKBACK_DAYS), min(rowspan) - timedelta(days=1)),
+            max(now + timedelta(days=HORIZON_DAYS + 1), max(rowspan) + timedelta(days=1)),
+        )
 
     at_dt = None
     if args.at:
@@ -600,7 +717,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"SKIP {r['title']!r}: {reason}")
             failures += 1
             continue
-        existing = already_scheduled(r, posts, now)
+        try:
+            existing = already_scheduled(r, posts, now)
+        except RuntimeError as exc:
+            print(f"SKIP {r['title']!r}: {exc}")
+            failures += 1
+            continue
         if existing:
             print(
                 f"SKIP {r['title']!r}: already on Postiz as {existing['state']} "
@@ -608,13 +730,9 @@ def main(argv: list[str] | None = None) -> int:
             )
             continue
         if r["format"] == "Reel / video":
-            mp4 = find_reel_mp4(r["title"], args.video)
-            if not mp4:
-                print(f"SKIP {r['title']!r}: reel mp4 not found under {POSTS_ROOT}")
-                failures += 1
-                continue
+            asset = reel_asset(r["assets"])
             r = dict(r)
-            r["_video"] = str(mp4)
+            r["_video_asset"] = asset
         todo.append(r)
 
     if not todo:
@@ -632,19 +750,25 @@ def main(argv: list[str] | None = None) -> int:
     print()
     print("PLAN:")
     for r, slot in asg:
-        media = r.get("_video") or f"{len(r['assets'])} slides"
+        asset = r.get("_video_asset")
+        media = asset["name"] if asset else f"{len(r['assets'])} slides"
         print(
             f"  {fmt_wib(slot)}  [{r['format']}]  {r['title']!r}  "
-            f"hashtags={len(count_hashtags(r['caption']))} words={word_count(r['caption'])}  media={media}"
+            f"hashtags={len(count_hashtags(r['caption']))} body_words={word_count(body_caption_text(r['caption']))}  media={media}"
         )
 
     if dry:
         print()
-        print("Dry-run only. Re-run with --apply to create posts.")
+        for r, _ in asg:
+            count = word_count(body_caption_text(r["caption"]))
+            if count > MAX_CAPTION_WORDS:
+                print(f"WARN {r['title']!r}: body caption is {count} words; editorial limit is {MAX_CAPTION_WORDS} (warning only)")
+        print("Dry-run only. An explicit owner approval is still required before --apply; default work is a draft.")
         print(f"SUMMARY  planned={len(asg)}  failed={failures}")
         return 1 if failures else 0
 
     # APPLY
+    ensure_postiz_id_property(notion_token)
     work = Path("/tmp/akalmesin-schedule-work")
     work.mkdir(parents=True, exist_ok=True)
     expect_state = "DRAFT" if args.draft else "QUEUE"
@@ -656,14 +780,20 @@ def main(argv: list[str] | None = None) -> int:
         try:
             # refresh page for fresh asset URLs
             fresh = row_view(notion_get_page(notion_token, r["id"]))
-            fresh["_video"] = r.get("_video")
+            fresh["_video_asset"] = r.get("_video_asset")
             reason = validate_row(fresh)
             if reason:
                 raise RuntimeError(f"re-validate failed: {reason}")
 
             media_meta: list[dict[str, str]] = []
             if fresh["format"] == "Reel / video":
-                vp = Path(fresh["_video"])
+                video = reel_asset(fresh["assets"])
+                if not video:
+                    raise RuntimeError("fresh Notion Assets have no .mp4; refusing to upload PNG reference files")
+                if not video.get("url"):
+                    raise RuntimeError(f"reel asset {video['name']} has no URL")
+                vp = work / f"{fresh['id']}_{video['name']}"
+                download(video["url"], vp)
                 up = multipart_upload(f"{POSTIZ_BASE}/upload", postiz_key, vp)
                 media_meta.append({"id": up["id"], "path": up["path"]})
             else:
@@ -695,6 +825,12 @@ def main(argv: list[str] | None = None) -> int:
                     raise RuntimeError(f"flipped to ERROR: {again['error']!r}")
                 print(f"  still {again['state']}")
 
+            notion_patch(
+                notion_token,
+                fresh["id"],
+                {"Postiz ID": {"rich_text": [{"type": "text", "text": {"content": post_id}}]}},
+            )
+            print("  Notion Postiz ID stored")
             if not args.draft:
                 notion_patch(
                     notion_token,
