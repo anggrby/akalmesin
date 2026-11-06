@@ -21,14 +21,15 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Any
 
 NOTION_DB = "405f909f-26a5-8057-ad0a-e9562fe9c915"
 NOTION_VERSION = "2022-06-28"  # database/page API; property setup used 2025-09-03.
-POSTIZ_BASE = "https://167-104-102-132.sslip.io/api/public/v1"
+POSTIZ_BASE = os.environ.get("POSTIZ_API_URL", "").rstrip("/")
 AKAL_MESIN_ID = "cmvpfx9sm0009po858rtcbrh6"
-WIB = timezone(timedelta(hours=7), name="WIB")
+WIB = ZoneInfo("Asia/Jakarta")
 UTC = timezone.utc
 MATCH_WINDOW = timedelta(minutes=5)  # Existing check.py matching behaviour.
 LOOKBACK_DAYS = 30
@@ -67,7 +68,7 @@ def strip_html(value: str) -> str:
 def caption_key(value: str) -> str:
     value = strip_html(value).lower()
     value = re.sub(r"[^\w\s]", "", value, flags=re.UNICODE)
-    return re.sub(r"\s+", " ", value).strip()[:48]
+    return re.sub(r"\s+", " ", value).strip()
 
 
 def parse_time(value: str) -> datetime:
@@ -99,6 +100,7 @@ class RowRef:
     caption: str
     title: str
     when: datetime
+    postiz_id: str = ""
 
 
 def row_from_page(page: dict[str, Any]) -> RowRef | None:
@@ -110,52 +112,51 @@ def row_from_page(page: dict[str, Any]) -> RowRef | None:
     caption = "".join(part.get("plain_text", "") for part in rich)
     title_parts = (properties.get("Post") or {}).get("title") or []
     title = "".join(part.get("plain_text", "") for part in title_parts)
-    return RowRef(page["id"], caption or title, title, parse_time(raw_date))
+    stored = "".join(part.get("plain_text", "")
+                     for part in ((properties.get("Postiz ID") or {}).get("rich_text") or [])).strip()
+    return RowRef(page["id"], caption or title, title, parse_time(raw_date), stored)
 
 
 def normalized_caption(value: str) -> str:
     """Normalized caption with characters and meaningful spacing retained."""
-    return strip_html(value).casefold()
+    return re.sub(r"\s+", " ", strip_html(value)).strip().casefold()
 
 
 def caption_match(row: RowRef, post: Candidate) -> bool:
-    """Exact normalized caption preferred for unique matches; date is separate."""
+    """Only the entire normalized caption establishes identity."""
     target, candidate = normalized_caption(row.caption), normalized_caption(post.caption)
-    if not target or not candidate:
-        return False
-    nk, pk = caption_key(target), caption_key(candidate)
-    return target == candidate or nk.startswith(pk[:24]) or pk.startswith(nk[:24])
+    return bool(target) and target == candidate
 
 
-def unique_match(row: RowRef, posts: list[Candidate]) -> Candidate | None:
-    """Caption first; time breaks ties only. Unknown captions use time+prefix."""
+class AmbiguousMatch(RuntimeError):
+    pass
+
+
+def unique_match(row: RowRef, posts: list[Candidate], *, allow_id_fallback: bool = False) -> Candidate | None:
+    """Stored Postiz ID first; then only a unique full normalized caption."""
     if any(p.integration != AKAL_MESIN_ID for p in posts):
         raise RuntimeError("Unsafe input: another Postiz channel was supplied; no update")
+    if row.postiz_id:
+        found = [p for p in posts if p.post_id == row.postiz_id]
+        if len(found) > 1:
+            raise AmbiguousMatch(f"Duplicate Postiz ID {row.postiz_id!r}")
+        if found:
+            return found[0]
+        if not allow_id_fallback:
+            return None
     captioned = [p for p in posts if caption_match(row, p)]
-    if len(captioned) > 1:
-        # Within the same caption, prefer the exact text over a legacy prefix.
-        exact = [p for p in captioned
-                 if normalized_caption(p.caption) == normalized_caption(row.caption)]
-        captioned = exact or captioned
     if len(captioned) == 1:
         return captioned[0]
     if len(captioned) > 1:
         found = sorted([p for p in captioned if abs(p.when - row.when) <= MATCH_WINDOW],
                        key=lambda p: abs(p.when - row.when))
-    elif not normalized_caption(row.caption):
-        # No useful caption: preserve the existing time matching fallback.
-        found = sorted([p for p in posts if abs(p.when - row.when) <= MATCH_WINDOW],
-                       key=lambda p: abs(p.when - row.when))
     else:
-        found = sorted([p for p in posts if abs(p.when - row.when) <= MATCH_WINDOW
-                        and caption_key(row.caption) and caption_key(p.caption)
-                        and (caption_key(row.caption).startswith(caption_key(p.caption)[:24])
-                             or caption_key(p.caption).startswith(caption_key(row.caption)[:24]))],
-                       key=lambda p: abs(p.when - row.when))
+        found = []
     if len(found) > 1:
-        raise RuntimeError(f"Ambiguous Postiz match for {row.title!r}: "
-                           + ", ".join(p.post_id for p in found))
+        raise AmbiguousMatch(f"Ambiguous Postiz match for {row.title!r}: "
+                             + ", ".join(p.post_id for p in found))
     return found[0] if found else None
+
 
 class Notion:
     def __init__(self, token: str):
@@ -182,6 +183,16 @@ class Notion:
             cursor = result.get("next_cursor")
             if not cursor:
                 raise RuntimeError("Notion pagination ended without next_cursor")
+
+    def ensure_postiz_id_property(self) -> None:
+        schema = http_json(f"https://api.notion.com/v1/databases/{NOTION_DB}", headers=self.headers)
+        current = (schema.get("properties") or {}).get("Postiz ID")
+        if current is not None and current.get("type") != "rich_text":
+            raise RuntimeError("Notion property 'Postiz ID' is not rich_text")
+        if current is None:
+            http_json(f"https://api.notion.com/v1/databases/{NOTION_DB}", method="PATCH",
+                      headers=self.headers,
+                      body={"properties": {"Postiz ID": {"rich_text": {}}}})
 
     def patch(self, page_id: str, properties: dict[str, Any]) -> None:
         http_json(f"https://api.notion.com/v1/pages/{page_id}", method="PATCH",
@@ -233,6 +244,10 @@ def desired_update(page: dict[str, Any], post: Candidate) -> dict[str, Any] | No
     else:
         raise ValueError("Unsupported Postiz state")
     update: dict[str, Any] = {}
+    old_id = "".join(p.get("plain_text", "")
+                      for p in ((properties.get("Postiz ID") or {}).get("rich_text") or []))
+    if old_id != post.post_id:
+        update["Postiz ID"] = {"rich_text": [{"type": "text", "text": {"content": post.post_id}}]}
     if current != target:
         update["Status"] = {"status": {"name": target}}
     if info is not None and old_info != info:
@@ -260,45 +275,66 @@ class Sync:
         return fetch_postiz(self.api_key, now - timedelta(days=LOOKBACK_DAYS),
                             now + timedelta(days=LOOKAHEAD_DAYS))
 
-    def reconcile(self, pages: list[dict[str, Any]], posts: list[Candidate]) -> dict[str, int]:
+    def reconcile(self, pages: list[dict[str, Any]], posts: list[Candidate], *, backfill_ids: bool = False) -> dict[str, int]:
         counts = {"changed": 0, "unchanged": 0, "protected": 0, "waiting": 0, "failed": 0}
         for page in pages:
             row = row_from_page(page)
             current = ((page.get("properties", {}).get("Status", {}).get("status") or {}).get("name"))
             if row is None:
                 continue
-            if page.get("archived") or page.get("in_trash") or current in FINAL_STATUSES:
-                counts["protected"] += 1
-                try:
-                    protected_post = unique_match(row, posts)
-                except RuntimeError:
-                    protected_post = None
-                if protected_post and protected_post.state == "ERROR":
-                    print(f"PROTECTED {row.title!r}: {current}/trash preserved despite Postiz ERROR")
-                continue
+            protected = page.get("archived") or page.get("in_trash") or current in FINAL_STATUSES
             try:
-                post = unique_match(row, posts)
-            except Exception as exc:
+                # Protected rows can gain an ID only during an explicit backfill;
+                # normal polling remains strictly immutable for them.
+                post = unique_match(row, posts, allow_id_fallback=backfill_ids)
+            except AmbiguousMatch as exc:
                 print(f"SKIP {row.title!r}: {exc}", file=sys.stderr)
                 counts["failed"] += 1
                 continue
-            if post is None:
-                counts["waiting"] += 1
+            if protected and not (backfill_ids and post and not row.postiz_id):
+                counts["protected"] += 1
+                if post and post.state == "ERROR":
+                    print(f"PROTECTED {row.title!r}: {current}/trash preserved despite Postiz ERROR")
                 continue
             try:
-                update = desired_update(page, post)
+                if post is None:
+                    if backfill_ids:
+                        counts["unchanged"] += 1
+                    else:
+                        counts["waiting"] += 1
+                    continue
+                if row.postiz_id and post.post_id != row.postiz_id:
+                    raise RuntimeError("stored Postiz ID does not match caption candidate; no update")
+                if backfill_ids:
+                    update = None if row.postiz_id else {"Postiz ID": {"rich_text": [{"type": "text", "text": {"content": post.post_id}}]}}
+                else:
+                    update = desired_update(page, post)
                 if not update:
                     counts["unchanged"] += 1
                     continue
                 action = "APPLY" if self.apply else "WOULD UPDATE"
                 print(f"{action} {row.title!r} ({format_wib(row.when)}): "
-                      f"{current!r} -> {post.state}; postiz_id={post.post_id}")
+                      f"{current!r} -> {post.state}; postiz_id={post.post_id}; fields={sorted(update)}")
                 if self.apply:
-                    # Re-read immediately before PATCH so a concurrent manual
-                    # Published/Archived decision is not overwritten.
+                    # Re-read: Published/Archived and concurrent ID writes are never overwritten.
                     fresh = self.notion.get_page(row.page_id)
-                    fresh_update = desired_update(fresh, post)
-                    if fresh_update is None:
+                    fresh_row = row_from_page(fresh)
+                    if fresh_row is None:
+                        raise RuntimeError(f"{row.title!r} Publish date disappeared; no update")
+                    if backfill_ids:
+                        fresh_status = ((fresh.get("properties", {}).get("Status", {}).get("status") or {}).get("name"))
+                        fresh_protected = fresh.get("archived") or fresh.get("in_trash") or fresh_status in FINAL_STATUSES
+                        if fresh_protected != protected:
+                            raise RuntimeError(f"{row.title!r} protection status changed concurrently; no update")
+                        if fresh_row.postiz_id:
+                            if fresh_row.postiz_id != post.post_id:
+                                raise RuntimeError(f"{row.title!r} Postiz ID changed concurrently; no update")
+                            counts["unchanged"] += 1
+                            continue
+                        fresh_update = update
+                    else:
+                        fresh_update = desired_update(fresh, post)
+                    if not backfill_ids and fresh_update is None:
                         counts["protected"] += 1
                         print(f"PROTECTED {row.title!r}: status changed or already synced")
                         continue
@@ -306,7 +342,10 @@ class Sync:
                         raise RuntimeError(f"{row.title!r} changed during sync; no update, retry next poll")
                     self.notion.patch(row.page_id, update)
                     check = self.notion.get_page(row.page_id)
-                    if desired_update(check, post) is not None:
+                    check_row = row_from_page(check)
+                    if not check_row or check_row.postiz_id != post.post_id:
+                        raise RuntimeError(f"Postiz ID verification failed for {row.title!r}")
+                    if not backfill_ids and desired_update(check, post) is not None:
                         raise RuntimeError(f"Verification failed for {row.title!r}")
                 counts["changed"] += 1
             except Exception as exc:
@@ -315,110 +354,173 @@ class Sync:
         return counts
 
 
-def run_once(apply: bool) -> int:
+def run_once(apply: bool, backfill_ids: bool = False) -> int:
     api_key = os.environ.get("POSTIZ_SELFHOST_API_KEY", "").strip()
     token = os.environ.get("NOTION_TOKEN", "").strip()
     if not api_key or not token:
         print("POSTIZ_SELFHOST_API_KEY and NOTION_TOKEN must be set", file=sys.stderr)
         return 2
-    sync = Sync(api_key, Notion(token), apply=apply)
-    print(f"Akal Mesin status sync @ {format_wib(datetime.now(UTC))}; mode={'APPLY' if apply else 'DRY-RUN'}")
+    if not POSTIZ_BASE:
+        print("POSTIZ_API_URL must be set to the self-hosted Postiz public-v1 API URL", file=sys.stderr)
+        return 2
+    notion = Notion(token)
+    if apply:
+        notion.ensure_postiz_id_property()
+    sync = Sync(api_key, notion, apply=apply)
+    print(f"Akal Mesin status sync @ {format_wib(datetime.now(UTC))}; mode={'APPLY' if apply else 'DRY-RUN'}; backfill_ids={backfill_ids}")
     try:
         posts = sync.postiz()
-        counts = sync.reconcile(sync.notion.query_dated(), posts)
+        counts = sync.reconcile(sync.notion.query_dated(), posts, backfill_ids=backfill_ids)
     except Exception as exc:
         print(f"SYNC FAILED: {exc}", file=sys.stderr)
         return 1
     print("SUMMARY " + json.dumps(counts, sort_keys=True))
     return 1 if counts["failed"] else 0
 
-
 def self_test() -> None:
     when = datetime(2026, 11, 6, 13, 0, tzinfo=WIB).astimezone(UTC)
-    text = "A caption, with punctuation." + chr(10) * 2 + "Second part."
-    row = RowRef("123", text, "Example", when)
+    words = [f"kata{i}" for i in range(130)]
+    text = " ".join(words[:43]) + "\n\n" + " ".join(words[43:86]) + "\n\n" + " ".join(words[86:])
+    text += "\n\nSumber: Example / Foto: Example\n\n#akalmesin #AI #teknologi #berita #Indonesia"
     page = {"id":"123", "properties":{
         "Status":{"status":{"name":"Scheduled"}},
         "Info":{"type":"rich_text", "rich_text":[]},
         "Caption":{"rich_text":[{"plain_text":text}]},
+        "Postiz ID":{"type":"rich_text", "rich_text":[]},
         "Post":{"title":[{"plain_text":"Example"}]},
         "Publish date":{"date":{"start":"2026-11-06T13:00:00+07:00"}}}}
-    error = Candidate(AKAL_MESIN_ID,"<p>A caption, with punctuation.</p><p></p><p>Second part.</p>",when + timedelta(minutes=10),"ERROR","post1","Example error")
-    assert unique_match(row,[error]) == error
-    moved = Candidate(AKAL_MESIN_ID,text,when+timedelta(hours=2),"QUEUE","queue1","")
-    assert unique_match(row,[moved]) == moved
-    assert desired_update(page,moved) == {"Publish date":{"date":{"start":"2026-11-06T15:00:00+07:00"}}}
-    wanted = desired_update(page,error)
+    row = row_from_page(page)
+
+    html_text = "<p>" + text.replace("\n\n", "</p><p></p><p>") + "</p>"
+    error = Candidate(AKAL_MESIN_ID, html_text, when + timedelta(minutes=10), "ERROR", "post1", "Example error")
+    assert caption_key(text) == caption_key(html_text) and len(caption_key(text)) > 100
+    assert unique_match(row, [error]) == error
+    prefix = Candidate(AKAL_MESIN_ID, text[:100] + " another story", when, "ERROR", "wrong")
+    assert unique_match(row, [prefix]) is None
+    almost = Candidate(AKAL_MESIN_ID, text + " revised", when, "ERROR", "wrong2")
+    assert unique_match(row, [almost]) is None
+
+    unrelated = Candidate(AKAL_MESIN_ID, "no caption overlap", when + timedelta(days=2), "QUEUE", "by-id")
+    with_id = RowRef(row.page_id, "edited caption stored ID wins", row.title, row.when, "by-id")
+    assert unique_match(with_id, [unrelated, error]) == unrelated
+    missing = RowRef(row.page_id, row.caption, row.title, row.when, "outside-window")
+    assert unique_match(missing, [error]) is None
+    assert unique_match(missing, [error], allow_id_fallback=True) == error
+    duplicate = Candidate(AKAL_MESIN_ID, text, error.when, "QUEUE", "duplicate")
+    assert unique_match(row, [error, duplicate]) is None  # same full caption: moved time decides
+    same_time_tie = [
+        Candidate(AKAL_MESIN_ID, text, when, "QUEUE", "tie1", ""),
+        Candidate(AKAL_MESIN_ID, text, when, "QUEUE", "tie2", ""),
+    ]
+    try:
+        unique_match(row, same_time_tie)
+        raise AssertionError("Same full caption and same time must not be guessed")
+    except AmbiguousMatch:
+        pass
+    duplicated_id = Candidate(AKAL_MESIN_ID, "no caption overlap", unrelated.when, "QUEUE", "by-id")
+    try:
+        unique_match(with_id, [unrelated, duplicated_id])
+        raise AssertionError("Duplicate stored Postiz ID must not be guessed")
+    except AmbiguousMatch:
+        pass
+
+
+    moved = Candidate(AKAL_MESIN_ID, text, when + timedelta(hours=2), "QUEUE", "queue1", "")
+    update = desired_update(page, moved)
+    assert update["Publish date"] == {"date":{"start":"2026-11-06T15:00:00+07:00"}}
+    assert update["Postiz ID"]["rich_text"][0]["text"]["content"] == "queue1"
+    wanted = desired_update(page, error)
     assert wanted["Status"] == {"status":{"name":"Error"}}
     assert wanted["Info"]["rich_text"][0]["text"]["content"] == "Postiz: Example error"
-    assert wanted["Publish date"]["date"]["start"].endswith("+07:00")
-    current = {**page,"properties":{**page["properties"],"Status":{"status":{"name":"Error"}},
+    current = {**page, "properties":{**page["properties"],
+        "Postiz ID":{"type":"rich_text", "rich_text":[{"plain_text":"post1"}]},
+        "Status":{"status":{"name":"Error"}},
         "Publish date":{"date":{"start":error.when.astimezone(WIB).isoformat()}},
-        "Info":{"type":"rich_text","rich_text":[{"plain_text":"Postiz: Example error"}]}}}
-    assert desired_update(current,error) is None
-    published=Candidate(AKAL_MESIN_ID,text,error.when,"PUBLISHED","post2","")
-    assert desired_update(current,published) == {"Status":{"status":{"name":"Published"}},"Info":{"rich_text":[]}}
-    other_date=Candidate(AKAL_MESIN_ID,text,when+timedelta(hours=2),"ERROR","other")
-    assert unique_match(row,[other_date,moved]) is None  # off-time ambiguous captions must not guess
-    duplicate_after_move = when + timedelta(hours=2)
+        "Info":{"type":"rich_text", "rich_text":[{"plain_text":"Postiz: Example error"}]}}}
+    assert desired_update(current, error) is None
+    published = Candidate(AKAL_MESIN_ID, text, error.when, "PUBLISHED", "post1", "")
+    assert desired_update(current, published) == {"Status":{"status":{"name":"Published"}}, "Info":{"rich_text":[]}}
+    same_time_tie = [
+        Candidate(AKAL_MESIN_ID, text, when, "QUEUE", "tie1", ""),
+        Candidate(AKAL_MESIN_ID, text, when, "QUEUE", "tie2", ""),
+    ]
     try:
-        unique_match(RowRef("fallback-row",text,"Example",duplicate_after_move),[other_date,moved])
-        raise AssertionError("Identical captions at the identical date must fail")
+        unique_match(row, same_time_tie)
+        raise AssertionError("Same full caption and same time must not be guessed")
+    except AmbiguousMatch:
+        pass
+
+    for status in ("Published", "Archived"):
+        protected = {**page, "properties":{**page["properties"], "Status":{"status":{"name":status}}}}
+        assert desired_update(protected, error) is None
+        result = Sync("unused", Notion("unused")).reconcile([protected], [error])
+        assert result["protected"] == 1
+    assert desired_update({"in_trash":True, **page}, error) is None
+    foreign = Candidate("another-channel", text, when, "PUBLISHED", "other", "")
+    try:
+        unique_match(row, [foreign]); raise AssertionError("Wrong channel matched")
     except RuntimeError:
         pass
-    distinct = Candidate(AKAL_MESIN_ID,"Different caption",duplicate_after_move,"QUEUE","distinct")
-    assert unique_match(RowRef("fallback-row",text,"Example",duplicate_after_move),[other_date,distinct]) == other_date
-    fallback_row = RowRef("fallback",text + " extra trailing content","Example",when)
-    same_time=Candidate(AKAL_MESIN_ID,"Completely unrelated caption",when,"QUEUE","same-time")
-    assert unique_match(fallback_row,[error,same_time]) == error
-    assert unique_match(RowRef("blank","","Blank",moved.when),[moved]) == moved
-    foreign=Candidate("another-channel",text,when,"PUBLISHED","other","")
     try:
-        unique_match(row,[foreign]); raise AssertionError("Wrong channel matched")
-    except RuntimeError:
-        pass
-    try:
-        desired_update(page,foreign); raise AssertionError("Wrong channel mapped")
+        desired_update(page, foreign); raise AssertionError("Wrong channel mapped")
     except ValueError:
         pass
-    for status in ("Published","Archived"):
-        protected={**page,"properties":{**page["properties"],"Status":{"status":{"name":status}}}}
-        assert desired_update(protected,error) is None
-        assert Sync("unused",Notion("unused")).reconcile([protected],[error])["protected"] == 1
-    assert desired_update({"in_trash":True,**page},error) is None
+
     class MemoryNotion(Notion):
-        def __init__(self): self.headers={}; self.patched=[]
-        def get_page(self,page_id): return page
-        def patch(self,page_id,properties):
-            self.patched.append((page_id,properties))
-            page["properties"].update(properties)
-            if "Info" in properties:
-                texts = properties["Info"]["rich_text"]
-                page["properties"]["Info"]={"type":"rich_text","rich_text":[{"plain_text":p["text"]["content"]} for p in texts]}
-    connector=MemoryNotion()
-    result=Sync("unused",connector,apply=True).reconcile([page],[error])
-    assert result["changed"] == 1 and len(connector.patched) == 1, (result, connector.patched)
-    assert connector.patched[0][1]["Publish date"]["date"]["start"].endswith("+07:00")
-    print("Self-test OK: moved-date caption matching, fallback, QUEUE date sync, terminal protection, ERROR mapping, idempotency")
+        def __init__(self, target): self.headers={}; self.patched=[]; self.target=target
+        def get_page(self, page_id):
+            import copy
+            return copy.deepcopy(self.target)
+        def patch(self, page_id, properties):
+            self.patched.append((page_id, properties))
+            for name, value in properties.items():
+                if name in ("Info", "Postiz ID"):
+                    content = "".join(p["text"]["content"] for p in value["rich_text"])
+                    self.target["properties"][name] = {"type":"rich_text", "rich_text":[{"plain_text":content}] if content else []}
+                else:
+                    self.target["properties"][name] = value
+
+    import copy
+    target = copy.deepcopy(page)
+    connector = MemoryNotion(target)
+    result = Sync("unused", connector, apply=True).reconcile([target], [error])
+    assert result["changed"] == 1
+    assert connector.patched[0][1]["Postiz ID"]["rich_text"][0]["text"]["content"] == "post1"
+    target2 = copy.deepcopy(page)
+    connector2 = MemoryNotion(target2)
+    result = Sync("unused", connector2, apply=True).reconcile([target2], [error], backfill_ids=True)
+    assert result["changed"] == 1
+    assert list(connector2.patched[0][1]) == ["Postiz ID"]
+    for status in ("Published", "Archived"):
+        target3 = copy.deepcopy(page)
+        target3["properties"]["Status"] = {"status":{"name":status}}
+        connector3 = MemoryNotion(target3)
+        result = Sync("unused", connector3, apply=True).reconcile([target3], [error], backfill_ids=True)
+        assert result["changed"] == 1 and list(connector3.patched[0][1]) == ["Postiz ID"]
+        assert target3["properties"]["Status"]["status"]["name"] == status
+    print("Self-test OK: full captions, Postiz ID, ambiguity skips, terminal protection, idempotent updates, safe backfill")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--apply", action="store_true", help="Patch matching non-final Notion rows (default dry-run)")
     parser.add_argument("--self-test", action="store_true")
-    parser.add_argument("--lock-file", default="/tmp/akalmesin-status-sync.lock")
+    parser.add_argument("--lock-file", default="/run/lock/akalmesin-status-sync.lock")
+    parser.add_argument("--backfill-ids", action="store_true",
+                        help="Only add missing Postiz IDs to uniquely ID/full-caption matched dated rows")
     args = parser.parse_args()
     if args.self_test:
         self_test()
         return 0
     lock_path = Path(args.lock_file)
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
     with lock_path.open("a+") as lock:
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             print("Another sync is running; this invocation skipped", file=sys.stderr)
             return 1
-        return run_once(args.apply)
+        return run_once(args.apply, backfill_ids=args.backfill_ids)
 
 
 if __name__ == "__main__":
