@@ -26,7 +26,7 @@ from typing import Any
 # --- constants ---
 NOTION_DB = "405f909f-26a5-8057-ad0a-e9562fe9c915"
 NOTION_VERSION = "2022-06-28"
-POSTIZ_BASE = "https://167-104-102-132.sslip.io/api/public/v1"
+POSTIZ_BASE = os.environ.get("POSTIZ_API_URL", "").rstrip("/")
 AKAL_MESIN_ID = "cmvpfx9sm0009po858rtcbrh6"
 WIB = timezone(timedelta(hours=7), name="WIB")
 UTC = timezone.utc
@@ -64,6 +64,8 @@ def require_env() -> tuple[str, str]:
             "Share the database 'Akal Mesin Content Schedule' "
             f"({NOTION_DB}) with that integration (••• → Connections)."
         )
+    if not POSTIZ_BASE:
+        die("POSTIZ_API_URL must be set to the self-hosted Postiz public-v1 API URL.")
     return postiz, notion
 
 
