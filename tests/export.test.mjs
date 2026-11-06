@@ -473,7 +473,7 @@ test('export: if the owner changed the Notion date before an update, the auto re
 
 const POSTIZ_ENV = {apiKey: 'test-postiz-secret', baseUrl: 'https://postiz.test/api/public/v1', integrationId: ''};
 function fakePostiz({loseCreateResponse = false, onUpload = null} = {}) {
-  const store = {calls: [], uploads: [], postBodies: [], posts: new Map(), n: 0, loseCreateResponse, onUpload};
+  const store = {calls: [], uploads: [], postBodies: [], posts: new Map(), n: 0, groups: 0, loseCreateResponse, onUpload};
   const json = (body, status = 200) => new Response(JSON.stringify(body), {status});
   store.fetch = async (url, init = {}) => {
     const method = init.method || 'GET';
@@ -497,11 +497,14 @@ function fakePostiz({loseCreateResponse = false, onUpload = null} = {}) {
       store.postBodies.push(body);
       const value = body.posts[0].value[0];
       const id = value.id || 'postiz-post-' + ++store.n;
+      // Postiz's public API calls createPost() with keepGroup=false, so every save gets a fresh group.
       store.posts.set(id, {
         id,
         state: body.type === 'draft' ? 'DRAFT' : 'QUEUE',
-        group: body.posts[0].group,
-        integration: {id: body.posts[0].integration.id}
+        group: 'server-group-' + ++store.groups,
+        integration: {id: body.posts[0].integration.id},
+        content: value.content,
+        publishDate: body.date
       });
       if (store.loseCreateResponse) throw new Error('connection lost after create');
       return json([{postId: id, integration: body.posts[0].integration.id}]);
@@ -585,6 +588,8 @@ test('an uncertain create is recorded before POST, blocks reruns, and reconciles
   assert.equal(pending.postId, undefined);
   assert.equal(postiz.posts.size, 1, 'the fake Postiz committed the create before the response was lost');
   const serverId = [...postiz.posts.keys()][0];
+  const serverPost = postiz.posts.get(serverId);
+  assert.notEqual(serverPost.group, pending.group, 'Postiz generated its own group; recovery must not depend on it');
   assert.equal(readJSON(path.join(dir, 'workflow.json')).postiz, undefined);
 
   const notionCalls = notion.calls.length,
@@ -632,13 +637,30 @@ test('reconciliation refuses an unrelated post on the same channel', async () =>
   const statePath = path.join(dir, 'out/postiz-state.json');
   const pending = readJSON(statePath);
   postiz.loseCreateResponse = false;
-  const unrelated = {id: 'postiz-other', state: 'QUEUE', group: 'another-group', integration: {id: 'ig-ak'}};
+  const unrelated = {
+    id: 'postiz-other',
+    state: 'QUEUE',
+    group: 'another-group',
+    integration: {id: 'ig-ak'},
+    content: 'Cerita lain yang bukan bagian dari pending create.',
+    publishDate: new Date(Date.parse(pending.date) + 864e5).toISOString()
+  };
   postiz.posts.set(unrelated.id, unrelated);
   const bodies = postiz.postBodies.length;
-  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: unrelated.id})), /not the pending create/);
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: unrelated.id})), /does not match the pending submission's caption/);
   assert.equal(postiz.postBodies.length, bodies, 'the unrelated post is not overwritten');
   assert.deepEqual(readJSON(statePath), pending, 'the pending record is preserved');
   assert.deepEqual(postiz.posts.get(unrelated.id), unrelated);
+
+  // Same caption but a different schedule instant is still not the pending create.
+  const sameCaption = {...unrelated, id: 'postiz-same-caption', content: manifest(dir).properties.Caption};
+  postiz.posts.set(sameCaption.id, sameCaption);
+  await assert.rejects(
+    schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: sameCaption.id})),
+    /does not match the pending submission's schedule date/
+  );
+  assert.equal(postiz.postBodies.length, bodies, 'no update for the wrong instant');
+  assert.deepEqual(readJSON(statePath), pending, 'the pending record is still preserved');
 });
 
 test('a schedule date that expires during uploads is refused before POST /posts with no in-flight record', async () => {
@@ -691,6 +713,7 @@ test('schedule rerun updates the same Postiz post, follows an owner-changed Noti
     postiz = fakePostiz();
   const first = await schedulePost(dir, scheduleOpts(notion, postiz));
   const uploadCount = postiz.uploads.length;
+  const firstServerGroup = postiz.posts.get(first.postId).group;
   notion.pages.get(first.notionPageId).properties['Publish date'] = {date: {start: '2026-11-10T09:00:00+07:00'}};
   const second = await schedulePost(dir, scheduleOpts(notion, postiz));
   assert.equal(second.action, 'updated');
@@ -699,6 +722,8 @@ test('schedule rerun updates the same Postiz post, follows an owner-changed Noti
   assert.equal(notion.pages.size, 1);
   assert.equal(postiz.uploads.length, uploadCount, 'unchanged PNGs are not uploaded again');
   assert.equal(postiz.postBodies[1].posts[0].value[0].id, first.postId);
+  assert.equal(postiz.postBodies[1].posts[0].group, firstServerGroup, 'the update sends the server group it read back');
+  assert.notEqual(postiz.posts.get(first.postId).group, firstServerGroup, 'the fake rotates groups like the public API');
   assert.equal(postiz.postBodies[1].date, '2026-11-10T02:00:00.000Z');
 });
 

@@ -1,6 +1,6 @@
 // Minimal Postiz public-API client for approved akalmesin image posts.
 // Credentials and the API base URL come from the environment; neither is written to a receipt.
-import {randomUUID} from 'node:crypto';
+import {createHash, randomUUID} from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {ROOT, fileHash} from './core.mjs';
@@ -141,18 +141,43 @@ function assertScheduleTime(scheduleAt, clock) {
     throw new PostizError(`Schedule date ${scheduleAt} is less than ${MIN_SCHEDULE_LEAD_MS / 1000} seconds away; refusing to schedule.`);
 }
 
+/** Postiz stores content as sanitized HTML; decode its entities so the caption fingerprint survives. */
+export function captionFingerprint(text) {
+  const normalized = String(text || '')
+    .replace(/\r\n?/g, '\n')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0*39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .normalize('NFC')
+    .trim();
+  return createHash('sha256').update(normalized).digest('hex');
+}
+
 /**
- * The listed Postiz post must belong to the selected channel. Reconciliation also requires the
- * pending group: /posts is an account-wide lookup, so an id alone does not prove identity.
+ * The listed Postiz post must belong to the selected channel. For recovery, the supplied id must
+ * also match the pending submission's caption and schedule instant: the public API regenerates
+ * group UUIDs, so neither the client group nor an id alone proves identity.
  */
-function assertPostIdentity(existing, postId, integrationId, group) {
+function assertPostIdentity(existing, postId, integrationId, pending = null) {
   const owner = existing.integration?.id;
   if (!owner || owner !== integrationId)
     throw new PostizError(
       `Postiz post ${postId} belongs to ${owner || 'an unknown channel'}, not the selected akalmesin channel; refusing to reconcile or update it.`
     );
-  if (group && existing.group !== group)
-    throw new PostizError(`Postiz post ${postId} is not the pending create (group ${group}); refusing to reconcile it and keeping the pending state.`);
+  if (!pending) return;
+  if (!pending.captionSha256)
+    throw new PostizError(
+      'The pending Postiz create has no caption fingerprint; refusing to reconcile it. Confirm in Postiz that no post exists, remove out/postiz-state.json, and rerun.'
+    );
+  if (existing.content == null || captionFingerprint(existing.content) !== pending.captionSha256)
+    throw new PostizError(`Postiz post ${postId} does not match the pending submission's caption; refusing to reconcile it and keeping the pending state.`);
+  if (Date.parse(existing.publishDate) !== Date.parse(pending.date))
+    throw new PostizError(
+      `Postiz post ${postId} does not match the pending submission's schedule date (${pending.date}); refusing to reconcile it and keeping the pending state.`
+    );
 }
 
 /**
@@ -203,8 +228,7 @@ export async function scheduleInPostiz({
       );
     existing = await api.findPost(reconcilePost, previous.date);
     if (!existing) throw new PostizError(`Postiz post ${reconcilePost} was not found; refusing to reconcile an uncertain create to a missing post.`);
-    if (!previous.group) throw new PostizError('The pending Postiz create has no group; refusing to reconcile it.');
-    assertPostIdentity(existing, reconcilePost, integration.id, previous.group);
+    assertPostIdentity(existing, reconcilePost, integration.id, previous);
     if (existing.state === 'PUBLISHED') throw new PostizError(`Postiz post ${reconcilePost} is already PUBLISHED; refusing to update or duplicate it.`);
     previousPost = {...previous, postId: reconcilePost, phase: undefined};
     stateForReuse = {...state, postId: reconcilePost, phase: undefined};
@@ -216,7 +240,7 @@ export async function scheduleInPostiz({
     if (previousPost.integrationId !== integration.id) throw new PostizError('The stored Postiz post belongs to another channel; refusing to update it.');
     if (!existing) existing = await api.findPost(previousPost.postId, previousPost.date);
     if (!existing) throw new PostizError(`Postiz post ${previousPost.postId} was not found. Reconcile it before creating another post.`);
-    assertPostIdentity(existing, previousPost.postId, integration.id, previousPost.group);
+    assertPostIdentity(existing, previousPost.postId, integration.id);
     if (existing.state === 'PUBLISHED') throw new PostizError(`Postiz post ${previousPost.postId} is already PUBLISHED; refusing to update or duplicate it.`);
     if (type === 'draft' && existing.state === 'QUEUE')
       throw new PostizError(`Postiz post ${previousPost.postId} is already QUEUE; refusing to convert it back to a draft.`);
@@ -262,6 +286,7 @@ export async function scheduleInPostiz({
       date: scheduleAt,
       contentId: manifest.contentId,
       approvedRevision: manifest.approvedRevision,
+      captionSha256: captionFingerprint(manifest.properties.Caption),
       uploads
     });
   let result;

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {buildPostBody, envFromProcess, parseDate, redact, scheduleInPostiz, selectIntegration} from '../scripts/postiz.mjs';
+import {buildPostBody, captionFingerprint, envFromProcess, parseDate, redact, scheduleInPostiz, selectIntegration} from '../scripts/postiz.mjs';
 
 const channels = [
   {id: 'ig-ak', name: 'akalmesin', identifier: 'instagram-standalone'},
@@ -69,6 +69,16 @@ test('Postiz request body is one scheduled Instagram feed post with the verbatim
   assert.equal(body.posts[0].value[0].id, 'post-1');
   assert.equal(body.posts[0].value[0].content, 'Caption\n\n#akalmesin');
   assert.deepEqual(body.posts[0].settings, {__type: 'instagram-standalone', post_type: 'post'});
+});
+
+test('caption fingerprint survives Postiz HTML sanitization and ignores line-ending noise', () => {
+  const caption = 'R&D dan "kutipan" — hasilnya 1 < 2\n\n#akalmesin';
+  assert.equal(
+    captionFingerprint(caption),
+    captionFingerprint('R&amp;D dan &quot;kutipan&quot; — hasilnya 1 &lt; 2\r\n\r\n#akalmesin'),
+    'entities and CRLF from the stored content compare equal'
+  );
+  assert.notEqual(captionFingerprint(caption), captionFingerprint('R&D dan "kutipan" — hasilnya 2 < 3'));
 });
 
 test('Postiz rejects past and under-lead dates before any network request and redacts secrets from errors', async () => {
