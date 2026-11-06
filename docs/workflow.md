@@ -67,7 +67,7 @@ It writes `out/check.json`. Look at the contact sheet yourself before sending an
 - Same inputs → same verdicts and the same files. `builtAt` / `checkedAt` (and the workflow log timestamps) are the only varying outputs, and they never affect pass/fail. Tested: `checkPost` twice deep-equals, blue ink twice is byte-identical; Kimi built + checked twice gave identical PNG hashes and check.json minus `checkedAt`.
 - Not covered: a different Chromium, sharp/libvips or font build on another machine can shift pixels and so PNG hashes (the verdicts are expected to hold; the PNG hash check compares against the same machine's build). The ink thresholds (95 % / mean 12) and other limits are fixed numbers we chose, not proof of good looks. Code cannot judge whether a photo is relevant or really shows the quoted person, whether facts are right, or the tone; that is the owner's copy and design review.
 
-## 8. Final approval → Notion
+## 8. Final approval → Notion + Postiz
 
 Send `out/<slug>.html` and the contact sheet. When he approves, run `npm run approve -- <slug> --gate final --words "…" --source "chat tNNu" --at …`. This requires a passing, current check.
 
@@ -88,33 +88,61 @@ npm run export -- <slug>             # or --post <slug>
 
 429 and 5xx are retried with backoff. The page create is never retried blindly: re-running looks the page up by its marker first, so a second run updates and never duplicates. Pages made by the connector before this change (Terra, Anthropic, Kimi) have no `akalmesin-managed-end` line; `export` refuses to update them rather than guess, before writing anything.
 
+**Publish date is auto-planned** (owner t127u): on create, export sets it to the next free slot. The slot times are the WIB times of the posts on the most recent day with a dated Ready to Publish / Scheduled / Published row (rows this repo auto-assigned do not count, so a batch fills one day in order). Exports take those times on the following day, skip slots any live row already holds and slots in the past, and roll over to later days. If the reference day has no timed rows, the times are 10:00 / 15:00 / 20:00 WIB. The value carries `+07:00`, appears in Posting notes (`Planned slot: … WIB (auto-assigned)`), the command output and the `workflow.json` receipt (`notion.publishDate`), and is read back. `--publish-at <ISO with offset>` overrides; `--no-publish-date` leaves it empty; `--next-slot` shows the next slot read-only. Updates never change an existing row's date. Notion-only export leaves this as a plan; the combined `schedule` command below uses the same instant for Postiz.
+
 **Adopting a connector-made page (`--adopt-legacy`).** Only with the owner's go-ahead for that page. Needs `notion-legacy-body.json` in the post folder: the exact blocks the old export wrote (Kimi has it).
 
 1. `npm run export -- <slug> --adopt-legacy --dry-run` reads the page (no writes, no uploads) and prints the plan: blocks recognised as generated (plain text equal to a block in `notion-legacy-body.json` or in the new body), **foreign** blocks (anything else, edited generated text, or blocks with children), the Assets it replaces, and the owner-managed Status / Publish date it keeps.
 2. If any block is foreign, adoption refuses and lists them. Move a human note out by hand, or, with the owner's OK to delete it, list the exact ids: `--force-blocks id1,id2` (every foreign block must be listed).
 3. `npm run export -- <slug> --adopt-legacy` deletes the generated (and listed) blocks, writes marker + body + `akalmesin-managed-end`, replaces Assets with the new ordered uploads, updates the properties except Status / Publish date, reads back and SHA-256-checks like a normal export, and writes the receipt (`action: adopted`, deleted block ids, previous asset names). Running it again is a normal update. The old files are detached from the row, not kept on it.
 
+### Combined Notion + Postiz scheduling
+
+For an approved single-image or carousel post, one intentional command performs the whole handoff:
+
+```sh
+npm run schedule -- <slug> --dry-run   # local validation and request preview; no network or writes
+npm run schedule -- <slug> --draft    # Notion export + unscheduled Postiz draft; Notion status unchanged
+npm run schedule -- <slug>            # Notion export + Postiz schedule + Notion Scheduled
+# Optional on a new Notion row: --publish-at 2026-11-10T19:00:00+07:00
+```
+
+The live scheduling command runs the same Notion export first, then uses the row's actual **Publish date** as the Postiz schedule instant. A new row uses the auto-planned slot above or `--publish-at`; an update uses the existing date, including a date Angger changed in Notion. Owner decision 6 November 2026 authorizes this command to schedule from the auto-planned slot without asking for a separate WIB time. `export`, `design:build`, and Notion delivery alone never schedule. A dry run cannot know a new auto-slot without querying Notion, so it displays a placeholder instead.
+
+`--draft` performs the Notion export and creates or updates an unscheduled Postiz draft instead. It leaves Notion's status unchanged, does not require a future Publish date (a missing date becomes the request time), and records stage `postiz-draft`. It refuses to convert a Scheduled Notion row or an already scheduled Postiz post back into a draft. Running without `--draft` later can schedule that stored draft by its post id.
+
+After a matching, SHA-256-verified Notion export, `schedule`:
+
+1. Selects only the enabled `akalmesin` channel whose identifier is `instagram-standalone` (Postiz displays it as `Akal Mesin`; the match ignores case and spacing). `POSTIZ_INTEGRATION_ID` can disambiguate duplicate channel names, but cannot select another account, platform, or disabled channel.
+2. Uploads the approved PNGs in slide order through Postiz `POST /upload`, then sends one `type: schedule` request (or `type: draft` with `--draft`) to `POST /posts` with the verbatim Notion caption (sources and hashtags included). One to ten images are supported. Reel-only posts are refused before Notion or Postiz writes; use Notion-only export for those.
+3. Stores the Postiz post/group/integration ids, UTC schedule instant, approved revision, content id and upload ids/hashes in `workflow.json → postiz`. Upload paths needed for reuse stay in git-ignored `out/postiz-state.json`; the tracked receipt contains no API key, API base URL or upload URL. Credentials come from `POSTIZ_SELFHOST_API_KEY` and `POSTIZ_BASE_URL` in the environment or `.env.local`.
+4. In scheduling mode, marks the Notion row **Scheduled** and reads that status back. The workflow stage becomes `postiz-scheduled` and the history records the page/post ids and schedule instant. Draft mode skips this status write and records `postiz-draft`.
+
+Rerunning finds the same Notion page by its content marker and the same Postiz post by its stored id. It updates rather than duplicates, reuses unchanged uploads, and follows an owner-changed Notion date. It refuses a published Postiz post, a Published Notion row, a missing stored Postiz post, or a Scheduled Notion row with no local Postiz receipt. Changed copy or assets still need fresh approvals and a matching Notion export before Postiz can be updated.
+
+There are no automatic Postiz retries. If Postiz fails after Notion succeeds, the row stays Ready to Publish; fix the problem and rerun. If the final Notion status write fails, the Postiz ids are already saved, so the rerun updates rather than duplicates. Reconcile any uncertain Postiz create before attempting another create.
+
 ### Connector fallback
 
 If the REST route is unavailable (no token, or the integration lost access to the database), use the Notion connector: work only in data source `405f909f-26a5-8029-8e7a-000b3f2a28a4`, find the page by marker, create or update it with the manifest's properties and body, attach the PNGs in order, read it back, and write the receipt in `workflow.json` by hand. If the integration can't see the database, share the database with it in Notion (••• → Connections).
 
-If a create or upload ended uncertainly, look the page up by its marker before trying again. Never repeat a create blindly. Notion delivery does **not** authorize publishing to Instagram or scheduling in Postiz; that happens separately, only after he gives a date and time in WIB.
+If a create or upload ended uncertainly, look the page up by its marker before trying again. Never repeat a create blindly. Notion-only delivery does **not** publish or schedule anything; the explicit combined `schedule` command above is the only in-repo scheduling route.
 
 ## Changes after approval
 
-If he edits text in the final HTML (mode design), go back to step 5, then rebuild and recheck. For a new image or crop, edit `post.json`, log it in `edits.log.md`, then rebuild and recheck. Either way, final needs his words again. Once a page is delivered, a changed post means updating the same Notion page (step 8.2 finds it).
+If he edits text in the final HTML (mode design), go back to step 5, then rebuild and recheck. For a new image or crop, edit `post.json`, log it in `edits.log.md`, then rebuild and recheck. Either way, final needs his words again. Once a page is delivered, a changed post means updating the same Notion page (step 8.2 finds it). If it was already scheduled, rerun `schedule` after the fresh approval to update the same Postiz post; never create a second one.
 
 ## Outside this repo
 
-Editorial production stops at Notion. The optional [Instagram growth worker](instagram-growth.md) is a separate owner-authorized tool. These publishing rules come verbatim from the old workflow, kept for the separate publisher bot and for measurement (decided 2026-10-28, t50u: step 9 stays out of the repo).
+The combined `schedule` command now handles approved PNG posts through Postiz. The optional [Instagram growth worker](instagram-growth.md) remains a separate owner-authorized tool and does not change editorial production. Immediate publication and measurement remain outside this workflow.
 
-### Separate publishing handoff
+### Reel-only Publisher handoff
 
-After the approved Notion entry is **Ready to Publish**, the separate publisher bot creates a Postiz draft. It schedules only after the owner gives a date and time in **WIB**. Do not invent a time or treat Ready to Publish, Export, or this workflow as publication permission. Record the actual instruction and resulting state in `review.md`. Keep Postiz URLs, API keys, and tokens out of docs and the repo.
+**Reels are supported by Notion export** (owner t124u), but not by the in-repo Postiz command yet. For a reel-only post (`reel/reel.json` `"publishAs": "reel-only"`, Format **Reel / video**), `npm run export -- <slug>` puts the reel mp4 first in Assets as `<slug>-reel.mp4` (the file `reel:check` passed, hash in `reel/check.json`; >20 MB uploads multi-part), then the card PNGs as reference. Caption is the final caption verbatim, and Posting notes explain the format and approved revisions. Read-back checks every file by SHA-256 and size.
 
-**Reels are supported** (owner t124u). **The Notion row is the whole handoff** (owner t126u): `npm run export -- <slug>` writes everything the akalmesin Publisher needs, so no hand-off message is sent. `Assets` = the slide PNGs in order; for a reel-only post (`reel/reel.json` `"publishAs": "reel-only"`, Format **Reel / video**) the reel mp4 comes first as `<slug>-reel.mp4` (the file `reel:check` passed, hash in `reel/check.json`; >20 MB uploads multi-part), then the card PNGs as reference. `Caption` = the final caption verbatim (sources line + hashtags). The body opens with **Posting notes** (format, what to post, caption source, approved revisions, content id). Read-back checks every file by SHA-256 and size. **Publish date is auto-planned** (owner t127u): on create, export sets `Publish date` to the next free slot. The slot times are the WIB times of the posts on the most recent day with a dated Ready to Publish / Scheduled / Published row (rows this repo auto-assigned don't count, so a batch fills one day in order). Exports take those times on the following day, skip slots any live row already holds and slots in the past, and roll over to later days. If the reference day has no timed rows, the times are 10:00 / 15:00 / 20:00 WIB. The value carries `+07:00`, appears in Posting notes (`Planned slot: … WIB (auto-assigned)`), the command output and the `workflow.json` receipt (`notion.publishDate`), and is read back. `--publish-at <ISO with offset>` overrides; `--no-publish-date` leaves it empty; `--next-slot` shows the next slot read-only. Updates never change an existing row's date. The date is a plan in Notion; whether the Publisher may schedule on it without Angger's WIB times is his decision (docs/decisions.md).
+The Notion row remains the whole handoff to the separate akalmesin Publisher for these posts (owner t126u), so no hand-off message is sent. Until reel scheduling is implemented and tested in this repo, that Publisher schedules only after Angger gives a date and time in WIB; the auto-planned Notion date alone is not authorization for the external reel Publisher. Keep Postiz URLs, API keys, and tokens out of docs and tracked files.
 
-If the owner changes approved copy or assets, the publisher draft is stale until the Notion entry is updated and the owner confirms the schedule again. Drafting and Export do not run the publisher bot.
+If approved reel copy or assets change, the Publisher draft is stale until the Notion entry is updated and the owner confirms its schedule again. Notion export never runs the Publisher.
 
 ### Publication scorecard
 
