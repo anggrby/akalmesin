@@ -40,7 +40,6 @@ MIN_LEAD = timedelta(minutes=10)
 HORIZON_DAYS = 3
 MAX_HASHTAGS = 5
 MAX_CAPTION_WORDS = 100
-LOOKBACK_DAYS = 90
 POST_TYPE_BY_FORMAT = {"Carousel": "post", "Single image": "post", "Reel / video": "post"}
 
 
@@ -351,7 +350,7 @@ def download(url: str, dest: Path) -> None:
 
 
 def already_scheduled(row: dict[str, Any], posts: list[dict[str, Any]], now: datetime) -> dict[str, Any] | None:
-    """An exact ID or full caption match is idempotent, in every state/time."""
+    """ID or full-caption match on the complete Postiz history, every state/time."""
     del now
     candidates = [p for p in posts if row.get("postiz_id") and p["id"] == row["postiz_id"]]
     if not candidates:
@@ -691,12 +690,11 @@ def main(argv: list[str] | None = None) -> int:
         now + timedelta(days=HORIZON_DAYS + 1),
     )
     rowspan = [parse_iso(r["publish_date"]) for r in rows if r.get("publish_date")]
-    if rowspan:
-        posts = fetch_postiz(
-            postiz_key,
-            min(now - timedelta(days=LOOKBACK_DAYS), min(rowspan) - timedelta(days=1)),
-            max(now + timedelta(days=HORIZON_DAYS + 1), max(rowspan) + timedelta(days=1)),
-        )
+    posts = fetch_postiz(
+        postiz_key,
+        datetime(1970, 1, 1, tzinfo=UTC),
+        max([now + timedelta(days=HORIZON_DAYS + 1), *rowspan]),
+    )
 
     at_dt = None
     if args.at:
