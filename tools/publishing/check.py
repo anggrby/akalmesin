@@ -21,6 +21,7 @@ import sys
 import urllib.error
 import urllib.request
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from typing import Any
 
 # --- constants ---
@@ -28,10 +29,9 @@ NOTION_DB = "405f909f-26a5-8057-ad0a-e9562fe9c915"
 NOTION_VERSION = "2022-06-28"
 POSTIZ_BASE = os.environ.get("POSTIZ_API_URL", "").rstrip("/")
 AKAL_MESIN_ID = "cmvpfx9sm0009po858rtcbrh6"
-WIB = timezone(timedelta(hours=7), name="WIB")
+WIB = ZoneInfo("Asia/Jakarta")
 UTC = timezone.utc
 MATCH_WINDOW = timedelta(minutes=5)
-CAPTION_PREFIX_LEN = 48
 LOOKBACK_DAYS = 7
 LOOKAHEAD_DAYS = 30
 MAX_HASHTAGS = 5
@@ -104,10 +104,8 @@ def strip_html(s: str) -> str:
 
 
 def caption_key(text: str) -> str:
-    t = strip_html(text).lower()
-    t = re.sub(r"[^\w\s]", "", t, flags=re.UNICODE)
-    t = re.sub(r"\s+", " ", t).strip()
-    return t[:CAPTION_PREFIX_LEN]
+    """Exactly match akalmesin_sync.normalized_caption; never truncate a prefix."""
+    return strip_html(text).casefold()
 
 
 def normalize_para(s: str) -> str:
@@ -247,6 +245,7 @@ def notion_row_view(row: dict[str, Any]) -> dict[str, Any]:
         "format": fmt,
         "when": when,
         "caption": cap,
+        "postiz_id": "".join(x.get("plain_text", "") for x in (props.get("Postiz ID") or {}).get("rich_text") or []).strip(),
         "key": caption_key(cap or title),
         "assets": assets,  # API order as returned
         "asset_names_sorted": assets_sorted,
@@ -274,14 +273,91 @@ def same_slot(a: datetime, b: datetime) -> bool:
 
 
 def match_pair(n: dict[str, Any], p: dict[str, Any]) -> bool:
-    if n["when"] is None:
-        return False
-    if not same_slot(n["when"], p["when"]):
-        return False
-    nk, pk = n["key"], p["key"]
-    if not nk or not pk:
-        return True
-    return nk.startswith(pk[:24]) or pk.startswith(nk[:24]) or nk == pk
+    """Stored ID first, full normalized caption second; never a prefix/time-only pair."""
+    if n.get("postiz_id"):
+        return n["postiz_id"] == p["id"]
+    return bool(n["key"]) and n["key"] == p["key"]
+
+
+class PairAmbiguous(RuntimeError):
+    pass
+
+
+def pair_rows(rows: list[dict[str, Any]], posts: list[dict[str, Any]]) -> tuple[dict[str, dict[str, Any]], dict[str, str], dict[str, int]]:
+    """Pair globally so moved dates cannot defeat full-caption matching.
+
+    Stored IDs are authoritative. Only rows with no stored ID use unique full
+    normalized caption. Equal full captions may be disambiguated by exact time;
+    all other ambiguity is reported and left unmatched. Once paired, a post is
+    not reused for another row. Every input comes from the Akal Mesin allowlist.
+    """
+    remaining = {p["id"]: p for p in posts}
+    pairs: dict[str, dict[str, Any]] = {}
+    errors: dict[str, str] = {}
+    counts = {"id": 0, "caption": 0, "ambiguous": 0, "missing": 0}
+    ordered = sorted(rows, key=lambda n: 1 if n.get("postiz_id") else 0)
+    for n in ordered:
+        candidates = [p for p in remaining.values() if match_pair(n, p)]
+        if not candidates:
+            key = "stored_id_not_in_window" if n.get("postiz_id") else "no_full_caption_match"
+            errors[n["id"]] = key
+            counts["missing"] += 1
+            continue
+        if len(candidates) > 1:
+            nearby = [p for p in candidates if n["when"] is not None and same_slot(n["when"], p["when"])]
+            candidates = nearby if len(nearby) == 1 else candidates
+        if len(candidates) != 1:
+            errors[n["id"]] = "ambiguous: " + ", ".join(p["id"] for p in candidates)
+            counts["ambiguous"] += 1
+            continue
+        p = candidates[0]
+        pairs[n["id"]] = p
+        counts["caption" if not n.get("postiz_id") else "id"] += 1
+        del remaining[p["id"]]
+    return pairs, errors, counts
+
+
+def realistic_caption(words: int = 140) -> str:
+    body = " ".join(f"kata{i}" for i in range(words))
+    return body + "\n\nSumber: Example / Foto: Example\n\n#akalmesin #AI #teknologi #berita #Indonesia"
+
+
+def self_test() -> None:
+    now = datetime(2026, 11, 6, 10, 0, tzinfo=WIB).astimezone(UTC)
+    text = realistic_caption()
+    assert len(text.split()) > 140
+    def row(row_id: str, stored_id: str = "", caption: str = text) -> dict[str, Any]:
+        words = [f"kata{i}" for i in range(140)]
+        caption = (
+            " ".join(words[:45]) + "\n\n" + " ".join(words[45:90]) + "\n\n"
+            + " ".join(words[90:]) + "\n\nSumber: Example / Foto: Example\n\n"
+            "#akalmesin #AI #teknologi #berita #Indonesia"
+        ) if caption is text else caption
+        return {"id": row_id, "caption": caption, "key": caption_key(caption), "when": now, "postiz_id": stored_id}
+    def post(post_id: str, caption: str, when: datetime = now) -> dict[str, Any]:
+        return {"id": post_id, "content": caption, "key": caption_key(caption), "when": when}
+    r = row("row", "stored")
+    stored = post("stored", "caption changed in Postiz", now + timedelta(days=2))
+    wrong = post("wrong", text)
+    paired, errors, counts = pair_rows([r], [wrong, stored])
+    assert paired == {"row": stored} and counts["id"] == 1 and not errors
+    paired, errors, counts = pair_rows([row("row")], [post("html", "<p>" + text.replace("\n\n", "</p><p></p><p>") + "</p>", now + timedelta(hours=8))])
+    assert paired["row"]["id"] == "html" and counts["caption"] == 1
+    # A common 24-character prefix is not an identity.
+    prefix = row("prefix", caption=text + " revised")
+    paired, errors, counts = pair_rows([prefix], [post("prefix", text[:75] + " different")])
+    assert not paired and errors["prefix"] == "no_full_caption_match"
+    # Same caption at two dates with no exactly nearby candidate stays ambiguous.
+    duplicate = [post("one", text, now + timedelta(hours=1)), post("two", text, now + timedelta(hours=2))]
+    paired, errors, counts = pair_rows([row("row")], duplicate)
+    assert not paired and counts["ambiguous"] == 1 and "ambiguous" in errors["row"]
+    paired, errors, counts = pair_rows([row("row")], [post("one", text), post("two", text)])
+    assert not paired and "ambiguous" in errors["row"]
+    paired, errors, counts = pair_rows([row("row")], [post("one", text, now), post("two", "different", now + timedelta(hours=2))])
+    assert paired["row"]["id"] == "one"
+    assert match_pair(row("no-id"), post("unrelated", "completely different", now)) is False
+    print(f"Self-test OK: {text.count('Sumber:')} Sumber footer, 5 hashtags, ID precedence, moved full captions, prefix rejection, ambiguity")
+
 
 
 def compare_captions(n: dict[str, Any], p: dict[str, Any]) -> list[str]:
@@ -353,6 +429,9 @@ def inspect_postiz_media_capability(posts: list[dict[str, Any]]) -> dict[str, An
 
 
 def main() -> int:
+    if "--self-test" in __import__("sys").argv:
+        self_test()
+        return 0
     print("Akal Mesin sync check (read-only)")
     print(f"Notion DB: {NOTION_DB}")
     print(f"Postiz channel: {AKAL_MESIN_ID} (Akal Mesin only)")
@@ -401,9 +480,8 @@ def main() -> int:
         )
         print(
             "  Notion-side note (informational, not a Postiz verify): Format "
-            "'Reel / video' rows still list PNG Assets (carousel art); the reel "
-            ".mp4 lives in the page body / repo, so Asset filename checks alone "
-            "cannot prove a reel was queued."
+            "'Reel / video' rows carry the reel .mp4 first in Assets, followed "
+            "by reference PNGs. The public API cannot prove that exact mp4 was queued."
         )
 
     print()
@@ -438,39 +516,26 @@ def main() -> int:
                 f"NOTION_PAST_SCHEDULED  {fmt_wib(n['when'])}  {n['title']!r}  id={n['id']}"
             )
 
-    matched_posts: set[str] = set()
-    matched_rows: set[str] = set()
+    pairs, pair_errors, pair_counts = pair_rows(rows, posts)
+    print(f"PAIRING stored_id={pair_counts['id']} full_caption={pair_counts['caption']} ambiguous={pair_counts['ambiguous']} unmatched={pair_counts['missing']}")
+    for error in pair_errors.values():
+        conflicts.append("PAIRING " + error)
     caption_ok = 0
     caption_bad = 0
-
     for n in rows:
         if n["when"] is None:
             conflicts.append(
                 f"NOTION_NO_DATE  status={n['status']}  {n['title']!r}  id={n['id']}"
             )
             continue
-        cands = [p for p in posts if match_pair(n, p)]
-        if not cands:
-            time_cands = [p for p in posts if same_slot(n["when"], p["when"])]
-            if time_cands:
-                p = time_cands[0]
-                conflicts.append(
-                    f"CAPTION_MISMATCH  notion={fmt_wib(n['when'])} {n['title']!r}  "
-                    f"postiz={fmt_wib(p['when'])} id={p['id']} {p['title_guess']!r}"
-                )
-                matched_posts.add(p["id"])
-                matched_rows.add(n["id"])
-            else:
-                conflicts.append(
-                    f"NOTION_MISSING_IN_POSTIZ  {fmt_wib(n['when'])}  "
-                    f"status={n['status']}  {n['title']!r}  id={n['id']}"
-                )
+        p = pairs.get(n["id"])
+        if p is None:
+            detail = pair_errors.get(n["id"], "no match")
+            conflicts.append(
+                f"NOTION_UNPAIRED  {fmt_wib(n['when'])}  status={n['status']} "
+                f"{n['title']!r}  id={n['id']} reason={detail!r}"
+            )
             continue
-
-        cands.sort(key=lambda p: (0 if p["key"] == n["key"] else 1, abs(p["when"] - n["when"])))
-        p = cands[0]
-        matched_posts.add(p["id"])
-        matched_rows.add(n["id"])
 
         if abs(n["when"] - p["when"]) > timedelta(minutes=1):
             conflicts.append(
@@ -516,7 +581,7 @@ def main() -> int:
             )
 
     for p in posts:
-        if p["id"] in matched_posts:
+        if any(p["id"] == p2["id"] for p2 in pairs.values()):
             continue
         if p["state"] == "QUEUE":
             conflicts.append(
@@ -545,7 +610,7 @@ def main() -> int:
     print(f"  now                 {fmt_wib(now)}")
     print(f"  notion_rows         {len(rows)}")
     print(f"  postiz_posts        {len(posts)}")
-    print(f"  matched             {len(matched_rows)}")
+    print(f"  matched             {len(pairs)}")
     print(f"  caption_ok          {caption_ok}")
     print(f"  caption_with_issues {caption_bad}")
     print(f"  conflicts           {len(conflicts)}")
