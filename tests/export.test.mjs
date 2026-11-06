@@ -472,8 +472,8 @@ test('export: if the owner changed the Notion date before an update, the auto re
 });
 
 const POSTIZ_ENV = {apiKey: 'test-postiz-secret', baseUrl: 'https://postiz.test/api/public/v1', integrationId: ''};
-function fakePostiz() {
-  const store = {calls: [], uploads: [], postBodies: [], posts: new Map(), n: 0};
+function fakePostiz({loseCreateResponse = false, onUpload = null} = {}) {
+  const store = {calls: [], uploads: [], postBodies: [], posts: new Map(), n: 0, loseCreateResponse, onUpload};
   const json = (body, status = 200) => new Response(JSON.stringify(body), {status});
   store.fetch = async (url, init = {}) => {
     const method = init.method || 'GET';
@@ -487,6 +487,7 @@ function fakePostiz() {
     if (method === 'POST' && route === '/upload') {
       const name = init.body.get('file').name;
       store.uploads.push(name);
+      store.onUpload?.(name);
       const id = 'postiz-upload-' + store.uploads.length;
       return json({id, path: 'https://cdn.test/' + id + '.png'});
     }
@@ -497,6 +498,7 @@ function fakePostiz() {
       const value = body.posts[0].value[0];
       const id = value.id || 'postiz-post-' + ++store.n;
       store.posts.set(id, {id, state: body.type === 'draft' ? 'DRAFT' : 'SCHEDULED', group: body.posts[0].group});
+      if (store.loseCreateResponse) throw new Error('connection lost after create');
       return json([{postId: id, integration: body.posts[0].integration.id}]);
     }
     return json({message: 'unexpected Postiz route'}, 404);
@@ -511,6 +513,7 @@ const scheduleOpts = (notion, postiz, extra = {}) => ({
   env: POSTIZ_ENV,
   postizFetch: postiz.fetch,
   now: NOW1,
+  clock: () => new Date(NOW1),
   ...extra
 });
 
@@ -552,6 +555,65 @@ test('draft mode creates and updates an unscheduled Postiz draft without changin
   const workflow = readJSON(path.join(dir, 'workflow.json'));
   assert.equal(workflow.stage, 'postiz-draft');
   assert.equal(workflow.history.at(-1).event, 'postiz-draft');
+});
+
+test('draft mode refuses a Postiz post already promoted to QUEUE', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz();
+  const first = await schedulePost(dir, scheduleOpts(notion, postiz, {draft: true}));
+  postiz.posts.get(first.postId).state = 'QUEUE';
+  const bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {draft: true})), /already QUEUE/);
+  assert.equal(postiz.postBodies.length, bodies, 'the queued post is left untouched');
+  assert.equal(postiz.posts.get(first.postId).state, 'QUEUE');
+});
+
+test('an uncertain create is recorded before POST, blocks reruns, and reconciles to the one server post', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz({loseCreateResponse: true});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  const statePath = path.join(dir, 'out/postiz-state.json');
+  const pending = readJSON(statePath);
+  assert.equal(pending.phase, 'creating');
+  assert.equal(pending.postId, undefined);
+  assert.equal(postiz.posts.size, 1, 'the fake Postiz committed the create before the response was lost');
+  const serverId = [...postiz.posts.keys()][0];
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).postiz, undefined);
+
+  const notionCalls = notion.calls.length,
+    bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  assert.equal(notion.calls.length, notionCalls, 'the rerun refuses before exporting again');
+  assert.equal(postiz.postBodies.length, bodies, 'no second create is attempted');
+
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: 'postiz-missing'})), /was not found/);
+  assert.equal(postiz.posts.size, 1);
+
+  postiz.loseCreateResponse = false;
+  const fixed = await schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: serverId}));
+  assert.equal(fixed.action, 'updated');
+  assert.equal(fixed.postId, serverId);
+  assert.equal(postiz.posts.size, 1, 'reconciliation updates instead of duplicating');
+  assert.equal(postiz.postBodies.at(-1).posts[0].value[0].id, serverId);
+  const stored = readJSON(statePath);
+  assert.equal(stored.phase, undefined, 'the in-flight marker is cleared');
+  assert.equal(stored.postId, serverId);
+});
+
+test('a schedule date that expires during uploads is refused before POST /posts with no in-flight record', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    publishAt = '2026-11-02T16:00:00+07:00';
+  let ms = Date.parse(publishAt) - 65_000;
+  const postiz = fakePostiz({onUpload: () => (ms += 10_000)});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {publishAt, clock: () => new Date(ms)})), /less than 60 seconds away/);
+  assert.equal(postiz.postBodies.length, 0, 'the expired date never reaches POST /posts');
+  assert.equal(postiz.posts.size, 0);
+  assert.equal(fs.existsSync(path.join(dir, 'out/postiz-state.json')), false, 'no false uncertain-create record');
+  assert.equal(readJSON(path.join(dir, 'workflow.json')).postiz, undefined);
+  assert.equal([...notion.pages.values()][0].properties.Status.status.name, 'Ready to Publish');
 });
 
 test('schedule exports to Notion, schedules the same instant in Postiz, then verifies Notion Scheduled', async () => {

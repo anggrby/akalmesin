@@ -1,10 +1,10 @@
-// npm run schedule -- <slug> [--draft] [--publish-at <ISO with offset>] [--dry-run]
+// npm run schedule -- <slug> [--draft] [--publish-at <ISO with offset>] [--reconcile-post <postId>] [--dry-run]
 // Approved image post -> Notion create/update -> Postiz draft, or schedule at Notion's Publish date -> Notion Scheduled.
 import fs from 'node:fs';
 import path from 'node:path';
 import {ROOT, isMain, loadPost, parseArgs, readJSON, saveWorkflow, wib, writeJSON} from './core.mjs';
 import {client, exportPost, findByMarker, loadEnvLocal, manifest} from './export.mjs';
-import {buildPostBody, envFromProcess, parseDate, redact, scheduleInPostiz} from './postiz.mjs';
+import {buildPostBody, envFromProcess, MIN_SCHEDULE_LEAD_MS, parseDate, redact, scheduleInPostiz} from './postiz.mjs';
 
 const stateFile = paths => path.join(paths.out, 'postiz-state.json');
 
@@ -47,7 +47,10 @@ function exportedDate(notion) {
 
 function checkFuture(date, now) {
   const iso = parseDate(date);
-  if (Date.parse(iso) <= new Date(now).getTime()) throw Error(`Schedule date ${iso} is in the past; refusing to schedule.`);
+  const current = new Date(now).getTime();
+  if (Date.parse(iso) <= current) throw Error(`Schedule date ${iso} is in the past; refusing to schedule.`);
+  if (Date.parse(iso) - current < MIN_SCHEDULE_LEAD_MS)
+    throw Error(`Schedule date ${iso} is less than ${MIN_SCHEDULE_LEAD_MS / 1000} seconds away; refusing to schedule.`);
   return iso;
 }
 
@@ -96,6 +99,12 @@ export async function schedulePost(ref, opts = {}) {
   const state = readState(paths, m.contentId);
   const env = opts.env || envFromProcess();
   if (opts.dryRun) return dryRunPlan({m, workflow, state, publishAt: opts.publishAt, env, now, draft: !!opts.draft});
+  if (state?.phase === 'creating' && !state.postId && !opts.reconcilePost)
+    throw Error(
+      `A previous Postiz create for ${m.slug} ended without a response (group ${state.group}). Check Postiz, then rerun with --reconcile-post <postId>; if no post exists, remove ${path.relative(ROOT, stateFile(paths))} and rerun.`
+    );
+  if (opts.reconcilePost && !(state?.phase === 'creating' && !state.postId))
+    throw Error('--reconcile-post only applies to an uncertain create recorded in out/postiz-state.json.');
 
   const api =
     opts.notionApi ||
@@ -137,7 +146,9 @@ export async function schedulePost(ref, opts = {}) {
     type: opts.draft ? 'draft' : 'schedule',
     date,
     fetch: opts.postizFetch,
-    now,
+    clock: opts.clock || (() => new Date()),
+    saveState: next => writeJSON(stateFile(paths), next),
+    reconcilePost: opts.reconcilePost,
     log: opts.log
   });
 
@@ -176,7 +187,12 @@ if (isMain(import.meta.url))
   try {
     loadEnvLocal();
     const args = parseArgs(undefined, ['dry-run', 'draft']);
-    const result = await schedulePost(args.post || args._[0], {dryRun: !!args['dry-run'], draft: !!args.draft, publishAt: args['publish-at']});
+    const result = await schedulePost(args.post || args._[0], {
+      dryRun: !!args['dry-run'],
+      draft: !!args.draft,
+      publishAt: args['publish-at'],
+      reconcilePost: args['reconcile-post']
+    });
     if (args['dry-run']) console.log(JSON.stringify(result, null, 2));
     else if (args.draft)
       console.log(

@@ -7,6 +7,7 @@ import {ROOT, fileHash} from './core.mjs';
 
 export const CHANNEL_NAME = 'akalmesin';
 export const CHANNEL_IDENTIFIER = 'instagram-standalone';
+export const MIN_SCHEDULE_LEAD_MS = 60_000;
 
 export class PostizError extends Error {}
 
@@ -132,6 +133,14 @@ class Api {
   }
 }
 
+function assertScheduleTime(scheduleAt, clock) {
+  const current = new Date(clock()).getTime();
+  const at = Date.parse(scheduleAt);
+  if (at <= current) throw new PostizError(`Schedule date ${scheduleAt} is in the past; refusing to schedule.`);
+  if (at - current < MIN_SCHEDULE_LEAD_MS)
+    throw new PostizError(`Schedule date ${scheduleAt} is less than ${MIN_SCHEDULE_LEAD_MS / 1000} seconds away; refusing to schedule.`);
+}
+
 /**
  * Create or update one scheduled image post. Upload paths stay in git-ignored out/postiz-state.json;
  * the returned public receipt contains only ids and hashes, never the API key, base URL or upload URLs.
@@ -145,15 +154,16 @@ export async function scheduleInPostiz({
   type = 'schedule',
   date,
   fetch: fetchFn = globalThis.fetch,
-  now = new Date(),
+  clock = () => new Date(),
+  saveState = () => {},
+  reconcilePost = '',
   log = () => {}
 }) {
   if (!env.apiKey) throw new PostizError('POSTIZ_SELFHOST_API_KEY is not set.');
   if (!env.baseUrl) throw new PostizError('POSTIZ_BASE_URL is not set.');
   if (!['schedule', 'draft'].includes(type)) throw new PostizError(`Unsupported Postiz post type "${type}".`);
   const scheduleAt = parseDate(date);
-  if (type === 'schedule' && Date.parse(scheduleAt) <= new Date(now).getTime())
-    throw new PostizError(`Schedule date ${scheduleAt} is in the past; refusing to schedule.`);
+  if (type === 'schedule') assertScheduleTime(scheduleAt, clock);
   const assets = manifest.assets;
   if (!assets.length || assets.length > 10) throw new PostizError(`Postiz image posts need 1–10 assets; this post has ${assets.length}.`);
   if (assets.some(asset => asset.kind === 'video' || asset.contentType !== 'image/png'))
@@ -168,17 +178,38 @@ export async function scheduleInPostiz({
   const integration = selectIntegration(await api.integrations(), env.integrationId);
   log(`Postiz channel: ${integration.name} (${integration.identifier})`);
 
+  let existing = null;
   let serverGroup;
-  if (previous) {
-    if (previous.integrationId !== integration.id) throw new PostizError('The stored Postiz post belongs to another channel; refusing to update it.');
-    const existing = await api.findPost(previous.postId, previous.date);
-    if (!existing) throw new PostizError(`Postiz post ${previous.postId} was not found. Reconcile it before creating another post.`);
-    if (existing.state === 'PUBLISHED') throw new PostizError(`Postiz post ${previous.postId} is already PUBLISHED; refusing to update or duplicate it.`);
+  let previousPost = previous;
+  let stateForReuse = state;
+  if (previous?.phase === 'creating' && !previous.postId) {
+    if (!reconcilePost)
+      throw new PostizError(
+        `A previous Postiz create (group ${previous.group}) ended without a response; check Postiz, then rerun with --reconcile-post <postId> or remove the local in-flight state after confirming no post exists.`
+      );
+    existing = await api.findPost(reconcilePost, previous.date);
+    if (!existing) throw new PostizError(`Postiz post ${reconcilePost} was not found; refusing to reconcile an uncertain create to a missing post.`);
+    if (existing.state === 'PUBLISHED') throw new PostizError(`Postiz post ${reconcilePost} is already PUBLISHED; refusing to update or duplicate it.`);
+    previousPost = {...previous, postId: reconcilePost, phase: undefined};
+    stateForReuse = {...state, postId: reconcilePost, phase: undefined};
     serverGroup = existing.group;
-    log(`Updating Postiz post ${previous.postId} (state ${existing.state || 'unknown'}).`);
+    log(`Reconciled Postiz post ${reconcilePost} from the uncertain create.`);
+  }
+  if (previousPost) {
+    if (!previousPost.postId) throw new PostizError('The stored Postiz state has no post id; reconcile it before scheduling.');
+    if (previousPost.integrationId !== integration.id) throw new PostizError('The stored Postiz post belongs to another channel; refusing to update it.');
+    if (!existing) existing = await api.findPost(previousPost.postId, previousPost.date);
+    if (!existing) throw new PostizError(`Postiz post ${previousPost.postId} was not found. Reconcile it before creating another post.`);
+    if (existing.state === 'PUBLISHED') throw new PostizError(`Postiz post ${previousPost.postId} is already PUBLISHED; refusing to update or duplicate it.`);
+    if (type === 'draft' && existing.state === 'QUEUE')
+      throw new PostizError(`Postiz post ${previousPost.postId} is already QUEUE; refusing to convert it back to a draft.`);
+    serverGroup = existing.group;
+    log(`Updating Postiz post ${previousPost.postId} (state ${existing.state || 'unknown'}).`);
   }
 
-  const oldUploads = new Map((state && previous && state.postId === previous.postId ? state.uploads || [] : []).map(upload => [upload.file, upload]));
+  const oldUploads = new Map(
+    (stateForReuse && previousPost && stateForReuse.postId === previousPost.postId ? stateForReuse.uploads || [] : []).map(upload => [upload.file, upload])
+  );
   const uploads = [];
   for (const {asset, file, data} of files) {
     const old = oldUploads.get(asset.file);
@@ -192,17 +223,40 @@ export async function scheduleInPostiz({
     log(`Uploaded ${asset.name} to Postiz.`);
   }
 
-  const group = serverGroup || previous?.group || randomUUID();
+  const group = serverGroup || previousPost?.group || randomUUID();
   const body = buildPostBody({
     type,
     date: scheduleAt,
     integrationId: integration.id,
     group,
-    postId: previous?.postId,
+    postId: previousPost?.postId,
     caption: manifest.properties.Caption,
     images: uploads.map(upload => ({id: upload.id, path: upload.path}))
   });
-  const result = await api.upsert(body);
+  // Recheck at the submission boundary: Notion export and uploads can outlive a short schedule window.
+  // This runs before the in-flight record so an expired date leaves no false uncertain-create state.
+  if (type === 'schedule') assertScheduleTime(scheduleAt, clock);
+  if (!previousPost)
+    saveState({
+      phase: 'creating',
+      integrationId: integration.id,
+      group,
+      type,
+      date: scheduleAt,
+      contentId: manifest.contentId,
+      approvedRevision: manifest.approvedRevision,
+      uploads
+    });
+  let result;
+  try {
+    result = await api.upsert(body);
+  } catch (error) {
+    if (!previousPost)
+      throw new PostizError(
+        `Postiz create for group ${group} may have succeeded but no response was saved; check Postiz, then rerun with --reconcile-post <postId> or remove the local in-flight state after confirming no post exists. ${error.message}`
+      );
+    throw error;
+  }
   const postId = result.find?.(item => item.integration === integration.id)?.postId || result[0]?.postId;
   if (!postId) throw new PostizError('POST /posts returned no postId; reconcile Postiz before retrying.');
 

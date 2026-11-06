@@ -71,20 +71,20 @@ test('Postiz request body is one scheduled Instagram feed post with the verbatim
   assert.deepEqual(body.posts[0].settings, {__type: 'instagram-standalone', post_type: 'post'});
 });
 
-test('Postiz rejects past dates before any network request and redacts secrets from errors', async () => {
+test('Postiz rejects past and under-lead dates before any network request and redacts secrets from errors', async () => {
   let calls = 0;
+  const env = {apiKey: 'secret', baseUrl: 'https://postiz.test/api'};
+  const clock = () => new Date('2026-11-01T00:00:00Z');
+  await assert.rejects(scheduleInPostiz({manifest: {assets: []}, env, date: '2020-01-01T00:00:00Z', clock, fetch: async () => calls++}), /past/);
   await assert.rejects(
-    scheduleInPostiz({
-      manifest: {assets: []},
-      env: {apiKey: 'secret', baseUrl: 'https://postiz.test/api'},
-      date: '2020-01-01T00:00:00Z',
-      now: new Date('2026-11-01T00:00:00Z'),
-      fetch: async () => {
-        calls++;
-      }
-    }),
-    /past/
+    scheduleInPostiz({manifest: {assets: []}, env, date: '2026-11-01T00:00:30Z', clock, fetch: async () => calls++}),
+    /less than 60 seconds away/
   );
-  assert.equal(calls, 0);
+  assert.equal(calls, 0, 'no network call for a refused time');
+  await assert.rejects(
+    scheduleInPostiz({manifest: {assets: []}, env, date: '2026-11-01T00:01:00Z', clock, fetch: async () => calls++}),
+    /1–10 assets/,
+    'exactly 60 seconds ahead passes the lead check'
+  );
   assert.equal(redact('bad secret key', 'secret'), 'bad <redacted> key');
 });
