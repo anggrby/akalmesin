@@ -20,7 +20,6 @@ import mimetypes
 import os
 import re
 import sys
-import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -771,8 +770,8 @@ def main(argv: list[str] | None = None) -> int:
 
     # APPLY
     ensure_postiz_id_property(notion_token)
-    work = Path("/tmp/akalmesin-schedule-work")
-    work.mkdir(parents=True, exist_ok=True)
+    import tempfile
+    work = Path(tempfile.mkdtemp(prefix="akalmesin-schedule-"))
     expect_state = "DRAFT" if args.draft else "QUEUE"
     post_type = "draft" if args.draft else "schedule"
     ok = 0
@@ -800,6 +799,8 @@ def main(argv: list[str] | None = None) -> int:
                 media_meta.append({"id": up["id"], "path": up["path"]})
             else:
                 for a in fresh["assets"]:
+                    if a["name"].lower().endswith(".mp4"):
+                        raise RuntimeError(f"unexpected video asset {a['name']} on non-Reel row")
                     if not a["url"]:
                         raise RuntimeError(f"asset {a['name']} has no URL")
                     dest = work / f"{fresh['id']}_{a['name']}"
