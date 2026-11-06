@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 1,
-  "verifiedOn": "2026-10-26",
+  "schemaVersion": 2,
+  "verifiedOn": "2026-11-06",
   "timezone": "Asia/Jakarta",
-  "verifiedVia": "Configured notion-custom MCP; explicit guarded schema migration followed by independent get_data_source and query_data_source readback.",
+  "verifiedVia": "Read Notion database schema after PR 5 Postiz ID backfill",
   "databaseId": "405f909f-26a5-8057-ad0a-e9562fe9c915",
   "dataSourceId": "405f909f-26a5-8029-8e7a-000b3f2a28a4",
   "databaseTitle": "Akal Mesin Content Schedule",
@@ -52,6 +52,12 @@
             "name": "Archived",
             "color": "default",
             "description": null
+          },
+          {
+            "id": "0f87401d-e18f-4de4-8c8f-d61ed38896c2",
+            "name": "Error",
+            "color": "red",
+            "description": null
           }
         ],
         "groups": [
@@ -59,19 +65,28 @@
             "id": "bd485a24-520f-478b-94ee-5506797e7a8f",
             "name": "To-do",
             "color": "gray",
-            "option_ids": ["a0492c91-a425-41de-a844-53c2acb7b05b"]
+            "option_ids": [
+              "a0492c91-a425-41de-a844-53c2acb7b05b"
+            ]
           },
           {
             "id": "53c4c391-4333-42ad-8683-ca22fb10d88b",
             "name": "In progress",
             "color": "blue",
-            "option_ids": ["403c6598-59da-46ab-8dea-6dcc1df4d650", "f9e7706f-052c-4abe-b82d-15751ed3d3ca"]
+            "option_ids": [
+              "403c6598-59da-46ab-8dea-6dcc1df4d650",
+              "f9e7706f-052c-4abe-b82d-15751ed3d3ca",
+              "0f87401d-e18f-4de4-8c8f-d61ed38896c2"
+            ]
           },
           {
             "id": "f0231921-af11-4c9a-9c6a-a21f5a4c4766",
             "name": "Complete",
             "color": "green",
-            "option_ids": ["213e80db-9767-441d-9ad3-beda33fd2199", "ac88e874-d447-4709-a756-cddcfd657bdc"]
+            "option_ids": [
+              "213e80db-9767-441d-9ad3-beda33fd2199",
+              "ac88e874-d447-4709-a756-cddcfd657bdc"
+            ]
           }
         ],
         "default_option": "Draft"
@@ -171,12 +186,25 @@
       "description": "Owner-controlled publishing date; later exports preserve it.",
       "type": "date",
       "date": {}
+    },
+    "Postiz ID": {
+      "id": "G%5C%5C%60",
+      "name": "Postiz ID",
+      "description": null,
+      "type": "rich_text",
+      "rich_text": {}
+    },
+    "Info": {
+      "id": "d~Q%3A",
+      "name": "Info",
+      "description": null,
+      "type": "rich_text",
+      "rich_text": {}
     }
   },
   "notes": [
-    "Owner simplified the initial schema to seven columns; Topic is single-select.",
-    "Nine removed metadata properties were empty across the one existing draft; no values needed migration and the draft was preserved.",
-    "All retained property IDs and unrelated definitions are unchanged. Notion regenerated Topic option IDs during type conversion; the names/colors/order remain unchanged and this snapshot stores the new IDs.",
-    "Sources, depth, photo credits, publishing URL, account context and export identity/revision/hash/time belong in each post body; no hidden identity column."
+    "Editorial fields remain owner-managed by export Post and Content Schedule source of truth.",
+    "Publisher-managed fields added independently: Info rich_text, Error status, Postiz ID rich_text (2026-11-06).",
+    "Property/type snapshot of the live database, not a migration command; Notion-generated IDs are retained for traceability."
   ]
 }
