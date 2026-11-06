@@ -85,7 +85,7 @@ python3 tools/publishing/schedule.py --self-test
 - `--apply` requires `--draft`, or `--schedule` with `--approved-by-angger`. Isolated run mode does not establish authority; it records the operator's acknowledgement of Angger's prior explicit plan approval.
 - Body caption length (only paragraphs before `Sumber:` and the hashtag paragraph) is **warning only** above 100 words. More than 5 hashtags is a hard skip. Captions remain verbatim; HTML has an empty `<p></p>` between paragraphs.
 - Carousel PNGs use Notion Assets order with fresh URLs. Reel / video uses only the **first `.mp4` in Notion Assets**, downloaded fresh. No hardcoded path, title-token finder or local-video override. Missing MP4 is a hard skip. Instagram 1.47.0's provider DTO allows only `post` or `story`; a single mp4 as `post` publishes as a Reel, so no unsupported `reel` literal is sent.
-- Duplicate prevention matches stored Postiz ID or **full normalized caption** on any fetched non-deleted post at any state/time, including past ERROR/DRAFT; ambiguous full caption matches refuse.
+- Duplicate prevention matches stored Postiz ID or **full normalized caption** on the complete non-deleted Postiz history through the planning horizon, at any state/time, including past ERROR/DRAFT; ambiguous full caption matches refuse.
 - On create, `Postiz ID` (rich_text) is written to Notion and the row becomes Scheduled (non-draft only). Postiz post state and exact date are verified. Channel `cmvpfx9sm0009po858rtcbrh6` only.
 
 ## Automatic Postiz → Notion status sync (`akalmesin_sync.py`)
