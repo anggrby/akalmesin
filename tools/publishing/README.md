@@ -5,7 +5,8 @@ Read-only health check. Compares **Akal Mesin Content Schedule** in Notion with 
 ## Run
 
 ```bash
-python3 /workspace/akalmesin-sync-check/check.py
+python3 tools/publishing/check.py
+python3 tools/publishing/check.py --self-test
 ```
 
 Exit `0` = no conflicts, `1` = conflicts (or missing env / fetch error).
@@ -22,7 +23,7 @@ If `NOTION_TOKEN` is missing: create an integration at https://www.notion.so/my-
 ## What it checks
 
 ### Matching & schedule
-- Notion Scheduled/Published with no Postiz post at that time (+ caption prefix)
+- Stored Postiz ID first, then full normalized caption. Time disambiguates only identical full captions; prefixes and time-only pairs never claim identity.
 - Postiz QUEUE / PUBLISHED / DRAFT with no Notion row
 - Time mismatch (>1 min within a 5-min slot)
 - Postiz ERROR; two QUEUE posts in the same slot
@@ -50,7 +51,7 @@ So the script **cannot** verify:
 - slide filenames or order
 - that a Reel / video post has exactly one `.mp4` (and no PNGs)
 
-Notion Format `Reel / video` rows still store PNG Assets (carousel art); the reel file lives on the page body / repo. Even a Notion-only asset count would not prove the queued Postiz media.
+Notion Format `Reel / video` rows carry the first `.mp4` in Assets, followed by PNG reference files. The scheduler downloads that mp4 fresh. Asset filenames alone can’t prove the queued Postiz media.
 
 If a future Postiz API version exposes media on the post, the script will detect media-related keys and stop printing “unavailable”.
 
