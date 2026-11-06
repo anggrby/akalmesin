@@ -208,6 +208,8 @@ def fetch_postiz(api_key: str, start: datetime, end: datetime) -> list[Candidate
         raise RuntimeError("Unexpected Postiz response; no updates attempted")
     found: list[Candidate] = []
     for post in posts:
+        if any(post.get(k) for k in ("deleted", "deletedAt", "isDeleted", "trashed")):
+            continue
         integration = (post.get("integration") or {}).get("id")
         if integration != AKAL_MESIN_ID:
             continue
