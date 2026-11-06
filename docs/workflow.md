@@ -1,5 +1,3 @@
-<cursor_untrusted_data_1337 source="CallDynamicTool">
-
 # Workflow
 
 This file owns the steps, the gates, and the Notion recipe. Writing rules live in [brand/voice.md](../brand/voice.md), visual rules in [brand/design.md](../brand/design.md), and the reasons behind both in [decisions.md](decisions.md). Times are always reported in WIB.
@@ -150,6 +148,3 @@ The agent proposes the copy and the design (real photos, blue ink) together. The
 4. `npm run export -- <slug>` as before.
 
 Alt text is not part of `designRevision` (design rule 2), so alt fixes never reset approval. Alt text still goes to Notion. Approvals recorded before rule 2 (e.g. Kimi) stay valid through `legacyDesignRevision` while their content is unchanged.
-
-
-</cursor_untrusted_data_1337>
