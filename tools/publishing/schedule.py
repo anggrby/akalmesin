@@ -6,6 +6,7 @@ Default is --dry-run (no writes). Use --apply to create posts and update Notion.
 Env (never printed):
   POSTIZ_SELFHOST_API_KEY
   NOTION_TOKEN
+  POSTIZ_API_URL
 
 Exit 0 on success with nothing failed; 1 if any row failed / skipped-as-error /
 fatal config issue.
@@ -166,12 +167,6 @@ def count_hashtags(text: str) -> list[str]:
 
 def word_count(text: str) -> int:
     return len(re.findall(r"\S+", text or ""))
-
-
-def slugify(title: str) -> str:
-    t = title.lower()
-    t = re.sub(r"[^a-z0-9]+", "-", t)
-    return t.strip("-")
 
 
 # --- Notion / Postiz fetch ---
@@ -684,11 +679,6 @@ def main(argv: list[str] | None = None) -> int:
         rows = [r for r in rows if not r["archived"]]
         rows.sort(key=lambda r: r["created"])
 
-    posts = fetch_postiz(
-        postiz_key,
-        now - timedelta(days=LOOKBACK_DAYS),
-        now + timedelta(days=HORIZON_DAYS + 1),
-    )
     rowspan = [parse_iso(r["publish_date"]) for r in rows if r.get("publish_date")]
     posts = fetch_postiz(
         postiz_key,
