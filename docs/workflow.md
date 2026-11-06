@@ -126,7 +126,7 @@ There are no automatic Postiz retries. If Postiz fails after Notion succeeds, th
 
 If the REST route is unavailable (no token, or the integration lost access to the database), use the Notion connector: work only in data source `405f909f-26a5-8029-8e7a-000b3f2a28a4`, find the page by marker, create or update it with the manifest's properties and body, attach the PNGs in order, read it back, and write the receipt in `workflow.json` by hand. If the integration can't see the database, share the database with it in Notion (••• → Connections).
 
-If a create or upload ended uncertainly, look the page up by its marker before trying again. Never repeat a create blindly. Notion-only delivery does **not** publish or schedule anything; the explicit combined `schedule` command above is the only in-repo scheduling route.
+If a create or upload ended uncertainly, look the page up by its marker before trying again. Never repeat a create blindly. Notion-only delivery does **not** publish or schedule anything. The explicit combined `schedule` command above is the in-repo PNG route; `tools/publishing/` keeps its own dry-run and explicit-approval gate for reel-only scheduling, status sync and its separate runbook.
 
 ## Changes after approval
 
@@ -134,13 +134,13 @@ If he edits text in the final HTML (mode design), go back to step 5, then rebuil
 
 ## Outside this repo
 
-The combined `schedule` command now handles approved PNG posts through Postiz. The optional [Instagram growth worker](instagram-growth.md) remains a separate owner-authorized tool and does not change editorial production. Immediate publication and measurement remain outside this workflow.
+Approved PNG posts can be exported and scheduled through the explicit `npm run schedule` command. Reel-only scheduling, Notion/Postiz status sync and the separate publisher runbook remain under `tools/publishing/`; those tools do not alter editorial production or approvals. Decision 2026-10-28 (t50u) kept step 9 out of editorial production; the 2026-11-06 routes add explicit scheduling with their own gates. The optional [Instagram growth worker](instagram-growth.md) remains a separate owner-authorized tool. Immediate publication and measurement remain outside this workflow.
 
 ### Reel-only Publisher handoff
 
 **Reels are supported by Notion export** (owner t124u), but not by the in-repo Postiz command yet. For a reel-only post (`reel/reel.json` `"publishAs": "reel-only"`, Format **Reel / video**), `npm run export -- <slug>` puts the reel mp4 first in Assets as `<slug>-reel.mp4` (the file `reel:check` passed, hash in `reel/check.json`; >20 MB uploads multi-part), then the card PNGs as reference. Caption is the final caption verbatim, and Posting notes explain the format and approved revisions. Read-back checks every file by SHA-256 and size.
 
-The Notion row remains the whole handoff to the separate akalmesin Publisher for these posts (owner t126u), so no hand-off message is sent. Until reel scheduling is implemented and tested in this repo, that Publisher schedules only after Angger gives a date and time in WIB; the auto-planned Notion date alone is not authorization for the external reel Publisher. Keep Postiz URLs, API keys, and tokens out of docs and tracked files.
+The Notion row remains the whole handoff to the separate akalmesin Publisher for these posts (owner t126u), so no hand-off message is sent. The separate Publisher dry-runs `tools/publishing/schedule.py` and shows Angger the plan. Scheduling priority is the row's future Publish date, then `--at`, then the standing 09:00 / 13:00 / 19:00 WIB fallback slots. It runs `--apply --schedule --approved-by-angger` only after Angger explicitly approves that exact plan, and never posts now or in the past. Keep Postiz URLs, API keys, and tokens out of docs and tracked files.
 
 If approved reel copy or assets change, the Publisher draft is stale until the Notion entry is updated and the owner confirms its schedule again. Notion export never runs the Publisher.
 

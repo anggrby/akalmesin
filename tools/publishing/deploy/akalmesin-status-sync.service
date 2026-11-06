@@ -1,0 +1,25 @@
+[Unit]
+Description=Akal Mesin Postiz to Notion status reconciliation
+Documentation=file:/home/angger/akalmesin-sync/README.md
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=angger
+Group=angger
+WorkingDirectory=/home/angger/akalmesin-sync
+EnvironmentFile=/home/angger/akalmesin-sync/credentials.env
+ExecStartPre=/bin/touch /run/lock/akalmesin-status-sync.lock
+ExecStartPre=/bin/chown angger:angger /run/lock/akalmesin-status-sync.lock
+ExecStart=/usr/bin/python3 /home/angger/akalmesin-sync/akalmesin_sync.py --apply --lock-file /run/lock/akalmesin-status-sync.lock
+TimeoutStartSec=180
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/run/lock
+ProtectHome=read-only
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
