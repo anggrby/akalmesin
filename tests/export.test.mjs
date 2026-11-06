@@ -497,7 +497,12 @@ function fakePostiz({loseCreateResponse = false, onUpload = null} = {}) {
       store.postBodies.push(body);
       const value = body.posts[0].value[0];
       const id = value.id || 'postiz-post-' + ++store.n;
-      store.posts.set(id, {id, state: body.type === 'draft' ? 'DRAFT' : 'SCHEDULED', group: body.posts[0].group});
+      store.posts.set(id, {
+        id,
+        state: body.type === 'draft' ? 'DRAFT' : 'QUEUE',
+        group: body.posts[0].group,
+        integration: {id: body.posts[0].integration.id}
+      });
       if (store.loseCreateResponse) throw new Error('connection lost after create');
       return json([{postId: id, integration: body.posts[0].integration.id}]);
     }
@@ -600,6 +605,40 @@ test('an uncertain create is recorded before POST, blocks reruns, and reconciles
   const stored = readJSON(statePath);
   assert.equal(stored.phase, undefined, 'the in-flight marker is cleared');
   assert.equal(stored.postId, serverId);
+});
+
+test('reconciliation refuses a post on another channel and keeps the pending state', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz({loseCreateResponse: true});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  const statePath = path.join(dir, 'out/postiz-state.json');
+  const pending = readJSON(statePath);
+  const serverId = [...postiz.posts.keys()][0];
+  postiz.loseCreateResponse = false;
+  postiz.posts.get(serverId).integration = {id: 'ig-other'};
+  const bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: serverId})), /not the selected akalmesin channel/);
+  assert.equal(postiz.postBodies.length, bodies, 'no update is sent to the other channel');
+  assert.deepEqual(readJSON(statePath), pending, 'the pending record is preserved');
+  assert.equal(postiz.posts.get(serverId).state, 'QUEUE', 'the other channel post is untouched');
+});
+
+test('reconciliation refuses an unrelated post on the same channel', async () => {
+  const dir = approvedPost(),
+    notion = fakeNotion(),
+    postiz = fakePostiz({loseCreateResponse: true});
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz)), /--reconcile-post/);
+  const statePath = path.join(dir, 'out/postiz-state.json');
+  const pending = readJSON(statePath);
+  postiz.loseCreateResponse = false;
+  const unrelated = {id: 'postiz-other', state: 'QUEUE', group: 'another-group', integration: {id: 'ig-ak'}};
+  postiz.posts.set(unrelated.id, unrelated);
+  const bodies = postiz.postBodies.length;
+  await assert.rejects(schedulePost(dir, scheduleOpts(notion, postiz, {reconcilePost: unrelated.id})), /not the pending create/);
+  assert.equal(postiz.postBodies.length, bodies, 'the unrelated post is not overwritten');
+  assert.deepEqual(readJSON(statePath), pending, 'the pending record is preserved');
+  assert.deepEqual(postiz.posts.get(unrelated.id), unrelated);
 });
 
 test('a schedule date that expires during uploads is refused before POST /posts with no in-flight record', async () => {

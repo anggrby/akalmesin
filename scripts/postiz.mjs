@@ -142,6 +142,20 @@ function assertScheduleTime(scheduleAt, clock) {
 }
 
 /**
+ * The listed Postiz post must belong to the selected channel. Reconciliation also requires the
+ * pending group: /posts is an account-wide lookup, so an id alone does not prove identity.
+ */
+function assertPostIdentity(existing, postId, integrationId, group) {
+  const owner = existing.integration?.id;
+  if (!owner || owner !== integrationId)
+    throw new PostizError(
+      `Postiz post ${postId} belongs to ${owner || 'an unknown channel'}, not the selected akalmesin channel; refusing to reconcile or update it.`
+    );
+  if (group && existing.group !== group)
+    throw new PostizError(`Postiz post ${postId} is not the pending create (group ${group}); refusing to reconcile it and keeping the pending state.`);
+}
+
+/**
  * Create or update one scheduled image post. Upload paths stay in git-ignored out/postiz-state.json;
  * the returned public receipt contains only ids and hashes, never the API key, base URL or upload URLs.
  * There are no retries: an uncertain create must be reconciled before another create is attempted.
@@ -189,6 +203,8 @@ export async function scheduleInPostiz({
       );
     existing = await api.findPost(reconcilePost, previous.date);
     if (!existing) throw new PostizError(`Postiz post ${reconcilePost} was not found; refusing to reconcile an uncertain create to a missing post.`);
+    if (!previous.group) throw new PostizError('The pending Postiz create has no group; refusing to reconcile it.');
+    assertPostIdentity(existing, reconcilePost, integration.id, previous.group);
     if (existing.state === 'PUBLISHED') throw new PostizError(`Postiz post ${reconcilePost} is already PUBLISHED; refusing to update or duplicate it.`);
     previousPost = {...previous, postId: reconcilePost, phase: undefined};
     stateForReuse = {...state, postId: reconcilePost, phase: undefined};
@@ -200,6 +216,7 @@ export async function scheduleInPostiz({
     if (previousPost.integrationId !== integration.id) throw new PostizError('The stored Postiz post belongs to another channel; refusing to update it.');
     if (!existing) existing = await api.findPost(previousPost.postId, previousPost.date);
     if (!existing) throw new PostizError(`Postiz post ${previousPost.postId} was not found. Reconcile it before creating another post.`);
+    assertPostIdentity(existing, previousPost.postId, integration.id, previousPost.group);
     if (existing.state === 'PUBLISHED') throw new PostizError(`Postiz post ${previousPost.postId} is already PUBLISHED; refusing to update or duplicate it.`);
     if (type === 'draft' && existing.state === 'QUEUE')
       throw new PostizError(`Postiz post ${previousPost.postId} is already QUEUE; refusing to convert it back to a draft.`);

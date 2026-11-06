@@ -380,7 +380,7 @@ Reruns update the stored Notion page and Postiz post, reuse unchanged uploads, f
 
 The owner accepted the three reproduced findings in [PR #6's review](https://github.com/anggrby/akalmesin/pull/6#pullrequestreview-5799460887) as real safety bugs: a lost `POST /posts` response could duplicate a carousel on rerun, a future date could expire during Notion export and uploads, and `--draft` could pull a post scheduled in the Postiz UI back to draft. The combined `schedule` command now:
 
-- writes an in-flight record (group, date, uploads) to git-ignored `out/postiz-state.json` before submitting a create, refuses another create until `--reconcile-post <postId>` verifies and updates that exact server post, and never treats a missing or PUBLISHED post as reconcilable;
+- writes an in-flight record (group, date, uploads) to git-ignored `out/postiz-state.json` before submitting a create, refuses another create until `--reconcile-post <postId>` verifies that the post is on the selected akalmesin channel and carries the pending group and then updates it; a missing, wrong-channel, wrong-group, or PUBLISHED post is refused and the pending record is kept;
 - rechecks the current time with a **60-second minimum lead** immediately before `POST /posts`, after the Notion export and uploads, and refuses without sending a request or leaving a false in-flight record;
 - refuses `--draft` when Postiz reports the stored post as `QUEUE`, even if the local receipt still says draft.
 
